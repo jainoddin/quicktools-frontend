@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Search, Grid, List, Bookmark, ChevronDown, LayoutGrid, 
   Sparkles, CheckCircle2, Play, Code2, PenTool, TrendingUp,
-  Briefcase, GraduationCap, Newspaper, ArrowRight, Zap, Send, SearchX
+  Briefcase, GraduationCap, Newspaper, ArrowRight, Zap, Send, SearchX, Loader2
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -254,14 +254,20 @@ export default function BlogClient() {
         </div>
 
         {loading ? (
-          <div className="text-center py-20 text-gray-500">Loading dynamic blogs...</div>
+          <div className="flex flex-col items-center justify-center py-32 space-y-4">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-full blur-md bg-[#6D5EF8]/30 animate-pulse"></div>
+              <Loader2 className="w-10 h-10 text-[#6D5EF8] animate-spin relative z-10" />
+            </div>
+            <p className="text-[#6B7280] font-medium animate-pulse">Generating fresh AI news...</p>
+          </div>
         ) : blogs.length === 0 ? (
           <div className="text-center py-20 text-gray-500">No blogs generated yet. Check the backend.</div>
         ) : (
           <>
             {/* Featured Post */}
             {featuredPost && (
-              <Link href={`/blog/${featuredPost.slug}`} className="block relative bg-white border border-[#E5E7EB] rounded-3xl shadow-sm overflow-hidden mb-8 group cursor-pointer flex flex-col md:flex-row min-h-[320px] transition-transform hover:scale-[1.01]">
+              <Link href={`/blog/${featuredPost.slug}`} className="block relative bg-white border border-[#E5E7EB] rounded-3xl shadow-sm overflow-hidden mb-8 group cursor-pointer flex flex-col md:flex-row min-h-[320px]">
                 {/* Content Side */}
                 <div className="p-8 md:w-1/2 flex flex-col justify-center relative z-10 bg-white">
                   <div className="mb-4 flex items-center justify-between">

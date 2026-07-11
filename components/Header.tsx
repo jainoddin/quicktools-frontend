@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Zap, ChevronDown, Moon, Image as ImageIcon, PenTool, Video, Code, LayoutGrid } from 'lucide-react';
+import { Zap, ChevronDown, Moon, Image as ImageIcon, PenTool, Video, Code, LayoutGrid, LogOut } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { getEndpoint } from '../lib/api';
 
 export default function Header() {
   const pathname = usePathname();
@@ -13,6 +14,46 @@ export default function Header() {
   const hoverColor = pathname.startsWith('/tools') ? '#5B4DF5' : '#4338CA';
   const isActive = (path: string) => pathname === path;
   const isActiveStartsWith = (path: string) => pathname.startsWith(path);
+
+  const [user, setUser] = useState<any>(null);
+  const [loadingUser, setLoadingUser] = useState(true);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await fetch(getEndpoint('/api/auth/me'), {
+          credentials: 'include', // Important to send cookies
+        });
+        if (response.ok) {
+          const data = await response.json();
+          if (data.authenticated) {
+            setUser(data.user);
+          }
+        }
+      } catch (error) {
+        console.error('Failed to fetch user:', error);
+      } finally {
+        setLoadingUser(false);
+      }
+    };
+    fetchUser();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await fetch(getEndpoint('/api/auth/logout'), {
+        method: 'POST',
+        credentials: 'include',
+      });
+      setUser(null);
+      window.location.reload(); // Refresh to clear state
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
+
+  // Hide header on login and signup pages
+  if (pathname === '/login' || pathname === '/signup') return null;
 
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#E5E7EB]">
@@ -108,15 +149,50 @@ export default function Header() {
           <Link href="/contact" className={`px-3 py-1.5 rounded-full transition-colors ${isActive('/contact') ? 'bg-[#F3F4F6]' : 'hover:text-[#111827]'}`} style={isActive('/contact') ? {color: themeColor} : {}}>Contact</Link>
         </div>
         <div className="flex items-center gap-2 sm:gap-4">
-          <button className="p-2 text-[#6B7280] hover:bg-gray-100 rounded-full transition-colors hidden sm:block">
-            <Moon className="w-5 h-5" />
-          </button>
-          <button className="text-sm font-semibold text-[#111827] transition-colors px-4 py-2 hidden sm:block" style={{':hover': {color: themeColor}} as any}>
-            Login
-          </button>
-          <button className="text-white text-sm font-semibold px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg transition-all shadow-sm hover:shadow-md" style={{backgroundColor: themeColor}}>
-            Sign Up
-          </button>
+          {loadingUser ? (
+            <div className="w-8 h-8 rounded-full border-2 border-[#6D5EF8] border-t-transparent animate-spin"></div>
+          ) : user ? (
+            <div className="relative group">
+              <button className="flex items-center gap-2 focus:outline-none">
+                <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                  {user.avatar ? (
+                    <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full bg-[#6D5EF8] text-white flex items-center justify-center font-bold text-sm">
+                      {user.name.charAt(0)}
+                    </div>
+                  )}
+                </div>
+                <ChevronDown className="w-4 h-4 text-[#6B7280] group-hover:rotate-180 transition-transform duration-200" />
+              </button>
+              
+              {/* User Dropdown */}
+              <div className="absolute top-full right-0 mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="bg-white border border-[#E5E7EB] rounded-2xl shadow-xl py-2 w-48 overflow-hidden">
+                  <div className="px-4 py-2 border-b border-[#F3F4F6] mb-1">
+                    <p className="text-sm font-bold text-[#111827] truncate">{user.name}</p>
+                    <p className="text-xs text-[#6B7280] truncate">{user.email}</p>
+                  </div>
+                  <button 
+                    onClick={handleLogout}
+                    className="w-full text-left px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors flex items-center gap-2"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Log Out
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <>
+              <Link href="/login" className="text-sm font-semibold text-[#111827] transition-colors px-4 py-2 hidden sm:block" style={{':hover': {color: themeColor}} as any}>
+                Login
+              </Link>
+              <Link href="/signup" className="text-white text-sm font-semibold px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg transition-all shadow-sm hover:shadow-md" style={{backgroundColor: themeColor}}>
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>

@@ -9,6 +9,9 @@ export default function Footer() {
   const pathname = usePathname();
   const themeColor = pathname.startsWith('/tools') ? '#6D5EF8' : '#4F46E5';
 
+  // Hide footer on login and signup pages
+  if (pathname === '/login' || pathname === '/signup') return null;
+
   return (
     <footer className="bg-white border-t border-[#E5E7EB] pt-16 pb-8 mt-auto w-full">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
