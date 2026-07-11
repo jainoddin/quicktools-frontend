@@ -1,264 +1,358 @@
-import React from 'react';
-import { Metadata } from 'next';
-import { 
-  Search, Zap, Image as ImageIcon, PenTool, Code, Video,
-  ArrowRight, LayoutGrid, Moon, MessageCircle, Palette, 
-  Briefcase, TrendingUp, Crown, Flame, Sparkles, Star, 
-  Clock, Filter, ChevronDown, Globe, Share2, Mail,
-  Home, ChevronRight
-} from 'lucide-react';
+'use client';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { 
+  Search, MessageSquare, Image as ImageIcon, FileText, LayoutGrid, 
+  ChevronRight, Mic, PenTool, LayoutTemplate, QrCode, PlaySquare, 
+  MoreVertical, Star, TrendingUp, CheckCircle2
+} from 'lucide-react';
+import Sidebar from '../../components/dashboard/Sidebar';
+import DashboardHeader from '../../components/dashboard/DashboardHeader';
+import { getEndpoint } from '../../lib/api';
 
-export const metadata: Metadata = {
-  title: 'All AI Tools | QuickTools.ai',
-  description: 'Explore our curated collection of 5 premium AI tools including Image Generator, Writer, Code Generator, Background Remover, and Video Generator.',
-  alternates: {
-    canonical: 'https://quicktools.ai/tools',
-  },
-};
-
-const categories = [
-  { name: 'All Tools', icon: LayoutGrid, count: 56, active: true },
-  { name: 'AI Image', icon: ImageIcon, count: 12 },
-  { name: 'AI Writer', icon: PenTool, count: 8 },
-  { name: 'AI Video', icon: Video, count: 6 },
-  { name: 'AI Code', icon: Code, count: 6 },
-  { name: 'AI Chat', icon: MessageCircle, count: 5 },
-  { name: 'Design', icon: Palette, count: 7 },
-  { name: 'Productivity', icon: Briefcase, count: 6 },
-  { name: 'SEO', icon: Search, count: 4 },
-  { name: 'Business', icon: TrendingUp, count: 2 },
+const popularTools = [
+  { name: 'AI Image Generator', icon: ImageIcon, color: 'bg-[#6D5EF8] text-white', lightColor: 'bg-[#F5F3FF] text-[#6D5EF8]', slug: '/tools/ai-image-generator' },
+  { name: 'Background Remover', icon: LayoutGrid, color: 'bg-[#10B981] text-white', lightColor: 'bg-[#ECFDF5] text-[#10B981]', slug: '/tools/background-remover' },
+  { name: 'Image Upscaler', icon: ImageIcon, color: 'bg-[#3B82F6] text-white', lightColor: 'bg-[#EFF6FF] text-[#3B82F6]', slug: '/tools/ai-image-generator' },
+  { name: 'PDF Converter', icon: FileText, color: 'bg-[#EF4444] text-white', lightColor: 'bg-[#FEF2F2] text-[#EF4444]', slug: '/tools/ai-writer' },
+  { name: 'AI Chat Assistant', icon: MessageSquare, color: 'bg-[#8B5CF6] text-white', lightColor: 'bg-[#F5F3FF] text-[#8B5CF6]', slug: '/tools/ai-code-generator' },
+  { name: 'Text to Speech', icon: Mic, color: 'bg-[#F59E0B] text-white', lightColor: 'bg-[#FFFBEB] text-[#F59E0B]', slug: '/tools/ai-video-generator' },
+  { name: 'AI Writer', icon: PenTool, color: 'bg-[#3B82F6] text-white', lightColor: 'bg-[#EFF6FF] text-[#3B82F6]', slug: '/tools/ai-writer' },
+  { name: 'Resume Builder', icon: LayoutTemplate, color: 'bg-[#10B981] text-white', lightColor: 'bg-[#ECFDF5] text-[#10B981]', slug: '/tools/ai-writer' },
+  { name: 'QR Code Generator', icon: QrCode, color: 'bg-[#8B5CF6] text-white', lightColor: 'bg-[#F5F3FF] text-[#8B5CF6]', slug: '/tools/ai-code-generator' },
+  { name: 'YouTube Summary', icon: PlaySquare, color: 'bg-[#EF4444] text-white', lightColor: 'bg-[#FEF2F2] text-[#EF4444]', slug: '/tools/ai-video-generator' },
 ];
 
-const filters = [
-  { name: 'Popular', icon: Flame, active: true },
-  { name: 'New', icon: LayoutGrid },
-  { name: 'Trending', icon: TrendingUp },
-  { name: 'Most Used', icon: Star },
-  { name: 'Recent', icon: Clock },
+const recentTools = [
+  { name: 'Background Remover', desc: 'Removed background from image.png', icon: LayoutGrid, color: 'bg-[#ECFDF5] text-[#10B981]', time: '2 min ago' },
+  { name: 'AI Image Generator', desc: '"Cute cat in astronaut suit"', icon: ImageIcon, color: 'bg-[#F5F3FF] text-[#6D5EF8]', time: '1 hour ago' },
+  { name: 'PDF to Word', desc: 'converted_document.pdf', icon: FileText, color: 'bg-[#FEF2F2] text-[#EF4444]', time: '3 hours ago' },
 ];
 
-const tools = [
-  {
-    name: 'AI Image Generator',
-    description: 'Generate stunning images from text using advanced AI models.',
-    icon: ImageIcon,
-    color: 'bg-[#6D5EF8] text-white',
-    slug: '/tools/ai-image-generator',
-    tag: { label: 'Popular', type: 'popular', icon: Flame }
-  },
-  {
-    name: 'Background Remover',
-    description: 'Remove background from any image instantly with AI precision.',
-    icon: LayoutGrid, // Using layout grid as placeholder for background remover
-    color: 'bg-[#10B981] text-white',
-    slug: '/tools/background-remover',
-    tag: { label: 'Popular', type: 'popular', icon: Flame }
-  },
-  {
-    name: 'AI Writer',
-    description: 'Write blogs, emails, articles, and more in seconds.',
-    icon: PenTool,
-    color: 'bg-[#F43F5E] text-white',
-    slug: '/tools/ai-writer',
-    tag: { label: 'Popular', type: 'popular', icon: Flame }
-  },
-  {
-    name: 'AI Video Generator',
-    description: 'Generate videos from text with realistic AI visuals.',
-    icon: Video,
-    color: 'bg-[#8B5CF6] text-white',
-    slug: '/tools/ai-video-generator',
-    tag: { label: 'New', type: 'new', icon: Sparkles }
-  },
-  {
-    name: 'AI Code Generator',
-    description: 'Generate clean code in any programming language.',
-    icon: Code,
-    color: 'bg-[#0EA5E9] text-white',
-    slug: '/tools/ai-code-generator',
-    tag: { label: 'New', type: 'new', icon: Sparkles }
-  }
-];
+export default function DashboardPage() {
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-export default function AllToolsPage() {
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await fetch(getEndpoint('/api/auth/me'), { credentials: 'include' });
+        if (response.ok) {
+          const data = await response.json();
+          if (data.authenticated) {
+            setUser(data.user);
+          } else {
+            // Optional: redirect to login if strictly protected
+            // window.location.href = '/login';
+          }
+        }
+      } catch (error) {
+        console.error('Failed to fetch user:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUser();
+  }, []);
+
+  const firstName = user?.name?.split(' ')[0] || 'Guest';
+
   return (
-    <div className="flex-grow bg-[#F8FAFC] text-[#111827] font-sans selection:bg-[#6D5EF8] selection:text-white flex flex-col">
+    <div className="flex h-screen bg-[#F8FAFC] font-sans overflow-hidden">
       
+      {/* Sidebar */}
+      <Sidebar />
 
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col h-screen overflow-hidden relative">
+        
+        {/* Header */}
+        <DashboardHeader user={user} />
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-8 pt-[15px] relative flex-grow w-full">
-        {/* Background Gradients */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-200/40 rounded-full blur-[100px] -z-10 pointer-events-none -translate-y-1/4"></div>
-        <div className="absolute bottom-0 left-1/2 w-[600px] h-[600px] bg-blue-100/30 rounded-full blur-[120px] -z-10 pointer-events-none translate-x-1/4 translate-y-1/3"></div>
-
-        {/* Top Navigation Row */}
-        <div className="flex items-center mb-[25px]">
-          {/* Breadcrumbs */}
-          <nav className="flex items-center space-x-2 text-sm font-medium text-[#6B7280]">
-            <Link href="/" className="hover:text-[#111827] transition-colors flex items-center gap-1.5">
-              <Home className="w-4 h-4" /> Home
-            </Link>
-            <ChevronRight className="w-4 h-4 text-gray-400" />
-            <span className="text-[#6D5EF8] font-bold">All Tools</span>
-          </nav>
-        </div>
-
-        <div className="flex flex-col lg:flex-row gap-8">
-          
-          {/* Left Sidebar */}
-          <aside className="w-full lg:w-[260px] shrink-0 space-y-6 lg:sticky lg:top-24 lg:self-start">
+        {/* Scrollable Content */}
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+          <div className="max-w-[1200px] mx-auto space-y-6">
             
-            {/* Categories List */}
-            <div>
-              <h3 className="font-bold text-[#111827] mb-4 px-3">Categories</h3>
-              <div className="space-y-1">
-                {categories.map((category, index) => {
-                  const Icon = category.icon;
-                  return (
-                    <button 
-                      key={index}
-                      className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all ${
-                        category.active 
-                          ? 'bg-[#EEF2FF] text-[#6D5EF8] font-semibold' 
-                          : 'text-[#4B5563] hover:bg-white hover:text-[#111827] font-medium'
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <Icon className={`w-5 h-5 ${category.active ? 'text-[#6D5EF8]' : 'text-[#6B7280]'}`} />
-                        <span className="text-[15px]">{category.name}</span>
-                      </div>
-                      <span className={`text-xs ${
-                        category.active 
-                          ? 'text-[#6D5EF8] bg-white px-1.5 py-0.5 rounded-md shadow-sm' 
-                          : 'text-[#9CA3AF]'
-                      }`}>
-                        {category.count}
-                      </span>
-                    </button>
-                  )
-                })}
+            {/* Hero Banner */}
+            <div className="bg-gradient-to-r from-[#F5F3FF] to-[#EEF2FF] rounded-3xl p-6 md:p-10 relative overflow-hidden flex flex-col md:flex-row items-center border border-[#E5E7EB]/50 shadow-sm">
+              {/* Background Shapes */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/40 blur-3xl rounded-full -translate-y-1/2 translate-x-1/3"></div>
+              <div className="absolute bottom-0 left-10 w-40 h-40 bg-purple-200/40 blur-2xl rounded-full translate-y-1/2"></div>
+              
+              <div className="relative z-10 flex-1 w-full max-w-lg mb-8 md:mb-0">
+                <h1 className="text-2xl md:text-3xl font-bold text-[#111827] mb-2">
+                  Welcome back, {firstName}! 👋
+                </h1>
+                <p className="text-[#6B7280] mb-6">What would you like to create today?</p>
+                
+                <div className="relative flex items-center w-full max-w-md">
+                  <Search className="absolute left-4 w-5 h-5 text-[#9CA3AF]" />
+                  <input 
+                    type="text" 
+                    placeholder="Search from 100+ AI tools..." 
+                    className="w-full h-14 pl-12 pr-14 bg-white border border-white rounded-2xl shadow-sm outline-none focus:ring-4 focus:ring-[#6D5EF8]/20 transition-all text-[#111827]"
+                  />
+                  <button className="absolute right-2 w-10 h-10 bg-[#6D5EF8] hover:bg-[#5B4DF5] transition-colors rounded-xl flex items-center justify-center shadow-md">
+                    <Search className="w-5 h-5 text-white" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Illustration Placeholder (Right) */}
+              <div className="relative z-10 w-full md:w-[40%] flex justify-end">
+                <div className="relative w-[280px] h-[200px] flex items-center justify-center">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#6D5EF8]/20 to-purple-400/20 rounded-full blur-2xl"></div>
+                  {/* We use a proxy image for the 3D robot or an icon */}
+                  <div className="relative z-10 text-center animate-bounce-slow">
+                    <div className="text-[100px]">🤖</div>
+                  </div>
+                  {/* Floating Elements */}
+                  <div className="absolute top-4 right-10 bg-white p-2.5 rounded-xl shadow-lg rotate-12 animate-pulse">
+                    <ImageIcon className="w-6 h-6 text-[#10B981]" />
+                  </div>
+                  <div className="absolute bottom-4 left-10 bg-white p-2.5 rounded-xl shadow-lg -rotate-12 animate-pulse" style={{ animationDelay: '1s' }}>
+                    <Code className="w-6 h-6 text-[#6D5EF8]" />
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Premium Card */}
-            <div className="bg-gradient-to-br from-white to-[#EEF2FF] border border-[#E5E7EB] rounded-2xl p-5 shadow-sm relative overflow-hidden">
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#6D5EF8]/5 rounded-full blur-xl"></div>
-              <div className="w-10 h-10 bg-[#EEF2FF] rounded-xl flex items-center justify-center mb-4 text-[#6D5EF8]">
-                <Crown className="w-5 h-5 fill-[#6D5EF8]" />
-              </div>
-              <h4 className="font-bold text-[#111827] mb-1">Unlock Premium</h4>
-              <p className="text-sm text-[#6B7280] mb-5 leading-relaxed">
-                Get unlimited access to all tools and premium features.
-              </p>
-              <button className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm py-2.5 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20">
-                Upgrade Now
+            {/* Quick Actions Flex Row */}
+            <div className="flex items-center gap-4 overflow-x-auto pb-2 scrollbar-hide">
+              <button className="flex-1 min-w-[200px] bg-white border border-[#E5E7EB] hover:border-[#3B82F6] hover:shadow-md transition-all rounded-2xl p-4 flex items-center justify-between group">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-[#EFF6FF] rounded-xl flex items-center justify-center text-[#3B82F6]">
+                    <MessageSquare className="w-6 h-6" />
+                  </div>
+                  <div className="text-left">
+                    <div className="font-bold text-[#111827]">AI Chat</div>
+                    <div className="text-[11px] text-[#6B7280]">Chat with AI assistant</div>
+                  </div>
+                </div>
+                <ChevronRight className="w-5 h-5 text-[#9CA3AF] group-hover:text-[#3B82F6] group-hover:translate-x-1 transition-all" />
+              </button>
+
+              <button className="flex-1 min-w-[200px] bg-white border border-[#E5E7EB] hover:border-[#10B981] hover:shadow-md transition-all rounded-2xl p-4 flex items-center justify-between group">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-[#ECFDF5] rounded-xl flex items-center justify-center text-[#10B981]">
+                    <ImageIcon className="w-6 h-6" />
+                  </div>
+                  <div className="text-left">
+                    <div className="font-bold text-[#111827]">Image Generator</div>
+                    <div className="text-[11px] text-[#6B7280]">Create stunning images</div>
+                  </div>
+                </div>
+                <ChevronRight className="w-5 h-5 text-[#9CA3AF] group-hover:text-[#10B981] group-hover:translate-x-1 transition-all" />
+              </button>
+
+              <button className="flex-1 min-w-[200px] bg-white border border-[#E5E7EB] hover:border-[#8B5CF6] hover:shadow-md transition-all rounded-2xl p-4 flex items-center justify-between group">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-[#F5F3FF] rounded-xl flex items-center justify-center text-[#8B5CF6]">
+                    <FileText className="w-6 h-6" />
+                  </div>
+                  <div className="text-left">
+                    <div className="font-bold text-[#111827]">PDF Tools</div>
+                    <div className="text-[11px] text-[#6B7280]">Edit and convert PDFs</div>
+                  </div>
+                </div>
+                <ChevronRight className="w-5 h-5 text-[#9CA3AF] group-hover:text-[#8B5CF6] group-hover:translate-x-1 transition-all" />
+              </button>
+
+              <button className="flex-1 min-w-[200px] bg-gradient-to-br from-[#FFF7ED] to-[#FFEDD5] border border-[#FED7AA] hover:shadow-md transition-all rounded-2xl p-4 flex items-center justify-between group">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-[#F97316] rounded-xl flex items-center justify-center text-white shadow-sm">
+                    <LayoutGrid className="w-6 h-6" />
+                  </div>
+                  <div className="text-left">
+                    <div className="font-bold text-[#9A3412]">Explore All</div>
+                    <div className="text-[11px] text-[#C2410C]">Browse 100+ tools</div>
+                  </div>
+                </div>
+                <ChevronRight className="w-5 h-5 text-[#F97316] group-hover:translate-x-1 transition-all" />
               </button>
             </div>
-            
-          </aside>
 
-          {/* Main Content Area */}
-          <main className="flex-1 min-w-0">
-            
-            {/* Header */}
-            <div className="mb-8">
-              <h1 className="text-3xl md:text-4xl font-black text-[#111827] mb-2 tracking-tight">All AI Tools</h1>
-              <p className="text-[#6B7280] text-lg">Explore 50+ AI-powered tools to boost your productivity ✨</p>
-            </div>
-
-            {/* Search and Filters Bar */}
-            <div className="flex flex-col md:flex-row gap-4 mb-6 relative z-10">
-              <div className="relative flex-1 group">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#9CA3AF] group-focus-within:text-[#6D5EF8] transition-colors" />
-                <input 
-                  type="text"
-                  placeholder="Search tools..."
-                  className="w-full h-12 pl-11 pr-4 bg-white border border-[#E5E7EB] rounded-xl outline-none focus:border-[#6D5EF8] focus:ring-4 focus:ring-[#6D5EF8]/10 transition-all text-[15px] shadow-sm"
-                />
-              </div>
-              <div className="flex items-center gap-3 shrink-0">
-                <button className="h-12 px-4 bg-white border border-[#E5E7EB] rounded-xl flex items-center gap-2 hover:bg-[#F9FAFB] transition-colors text-[15px] font-medium text-[#4B5563] shadow-sm">
-                  All Categories <ChevronDown className="w-4 h-4 text-[#9CA3AF]" />
-                </button>
-                <button className="h-12 px-4 bg-white border border-[#E5E7EB] rounded-xl flex items-center gap-2 hover:bg-[#F9FAFB] transition-colors text-[15px] font-medium text-[#4B5563] shadow-sm">
-                  <Filter className="w-4 h-4 text-[#6B7280]" /> Filters
-                </button>
-              </div>
-            </div>
-
-            {/* Filter Chips */}
-            <div className="flex flex-wrap items-center gap-2.5 mb-8">
-              {filters.map((filter, idx) => {
-                const Icon = filter.icon;
-                return (
-                  <button
-                    key={idx}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[14px] font-semibold transition-all shadow-sm ${
-                      filter.active 
-                        ? 'bg-[#6D5EF8] text-white shadow-md shadow-[#6D5EF8]/20' 
-                        : 'bg-white text-[#4B5563] border border-[#E5E7EB] hover:bg-[#F9FAFB]'
-                    }`}
-                  >
-                    <Icon className={`w-4 h-4 ${filter.active ? 'text-white' : 'text-[#9CA3AF]'}`} />
-                    {filter.name}
-                  </button>
-                )
-              })}
-            </div>
-
-            {/* Tools Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-              {tools.map((tool, index) => (
-                <Link href={tool.slug} key={index} className="group">
-                  <div className="bg-white p-5 rounded-2xl border border-[#E5E7EB] hover:border-[#6D5EF8] hover:shadow-xl hover:shadow-[#6D5EF8]/10 transition-all duration-300 relative h-full flex flex-col">
-                    
-                    {/* Top Row: Icon and Tag */}
-                    <div className="flex items-start justify-between mb-4">
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-inner ${tool.color}`}>
-                        <tool.icon className="w-7 h-7" />
-                      </div>
-                      
-                      <div className="flex gap-2">
-                        {tool.tag && (
-                          <div className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-bold ${
-                            tool.tag.type === 'popular' 
-                              ? 'bg-red-50 text-red-500' 
-                              : 'bg-green-50 text-green-600'
-                          }`}>
-                            <tool.tag.icon className="w-3 h-3" />
-                            {tool.tag.label}
-                          </div>
-                        )}
-                        <button className="text-[#9CA3AF] hover:text-[#6D5EF8] transition-colors">
-                          <Star className="w-5 h-5" />
-                        </button>
-                      </div>
-                    </div>
-                    
-                    {/* Content */}
-                    <h3 className="text-lg font-bold text-[#111827] mb-2 group-hover:text-[#6D5EF8] transition-colors">
-                      {tool.name}
-                    </h3>
-                    <p className="text-[#6B7280] text-sm leading-relaxed mb-6 flex-grow">
-                      {tool.description}
-                    </p>
-                    
-                    {/* Try Now Button */}
-                    <div className="w-full py-2.5 bg-[#F8FAFC] group-hover:bg-[#EEF2FF] text-[#6D5EF8] rounded-xl font-semibold text-[14px] flex items-center justify-center transition-colors">
-                      Try Now <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                    
+            {/* Dashboard Grid (Left Column 2/3, Right Column 1/3) */}
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+              
+              {/* Left Column (Popular & Recent) */}
+              <div className="xl:col-span-2 space-y-6">
+                
+                {/* Popular Tools */}
+                <div className="bg-white border border-[#E5E7EB] rounded-3xl p-6 shadow-sm">
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="font-bold text-lg text-[#111827]">Popular Tools</h2>
+                    <button className="text-xs font-semibold text-[#6D5EF8] bg-[#EEF2FF] px-3 py-1.5 rounded-lg hover:bg-[#E0E7FF] transition-colors">
+                      View all
+                    </button>
                   </div>
-                </Link>
-              ))}
+                  
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    {popularTools.map((tool, i) => (
+                      <Link href={tool.slug} key={i} className="flex flex-col items-center justify-center p-3 rounded-2xl hover:bg-[#F9FAFB] transition-colors group cursor-pointer border border-transparent hover:border-[#E5E7EB]">
+                        <div className={`w-14 h-14 ${tool.lightColor} rounded-[18px] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform shadow-sm`}>
+                          <tool.icon className="w-6 h-6" />
+                        </div>
+                        <span className="text-xs font-semibold text-[#374151] text-center px-1 leading-tight">{tool.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Recent Tools */}
+                <div className="bg-white border border-[#E5E7EB] rounded-3xl p-6 shadow-sm">
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="font-bold text-lg text-[#111827]">Recent Tools</h2>
+                    <button className="text-xs font-semibold text-[#4B5563] bg-[#F3F4F6] px-3 py-1.5 rounded-lg hover:bg-[#E5E7EB] transition-colors">
+                      View all
+                    </button>
+                  </div>
+
+                  <div className="space-y-4">
+                    {recentTools.map((tool, i) => (
+                      <div key={i} className="flex items-center justify-between p-4 border border-[#E5E7EB] rounded-2xl hover:bg-[#F9FAFB] transition-colors cursor-pointer group">
+                        <div className="flex items-center gap-4">
+                          <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${tool.color}`}>
+                            <tool.icon className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <div className="font-bold text-sm text-[#111827]">{tool.name}</div>
+                            <div className="text-xs text-[#6B7280]">{tool.desc}</div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <span className="text-xs text-[#9CA3AF] hidden sm:block">{tool.time}</span>
+                          <button className="text-[#D1D5DB] hover:text-[#F59E0B] transition-colors">
+                            <Star className="w-5 h-5" />
+                          </button>
+                          <ChevronRight className="w-4 h-4 text-[#9CA3AF] group-hover:text-[#111827] transition-colors" />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="mt-4 pt-4 border-t border-[#F3F4F6] text-center">
+                    <button className="text-sm font-semibold text-[#6D5EF8] flex items-center justify-center gap-2 w-full hover:bg-[#EEF2FF] py-2 rounded-xl transition-colors">
+                      <Clock className="w-4 h-4" /> View full history
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Right Column (Usage, Plan, Tips) */}
+              <div className="space-y-6">
+                
+                {/* Usage Overview */}
+                <div className="bg-white border border-[#E5E7EB] rounded-3xl p-6 shadow-sm">
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="font-bold text-lg text-[#111827]">Usage Overview</h2>
+                    <button className="text-xs font-medium text-[#4B5563] border border-[#E5E7EB] px-2.5 py-1 rounded-md flex items-center gap-1 hover:bg-[#F9FAFB]">
+                      This month <ChevronDown className="w-3 h-3" />
+                    </button>
+                  </div>
+                  
+                  <div className="flex items-center gap-6">
+                    {/* Circular Chart Placeholder */}
+                    <div className="relative w-28 h-28 shrink-0 flex items-center justify-center">
+                      <svg viewBox="0 0 36 36" className="w-full h-full transform -rotate-90">
+                        <path
+                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                          fill="none"
+                          stroke="#EEF2FF"
+                          strokeWidth="3.5"
+                        />
+                        <path
+                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                          fill="none"
+                          stroke="#6D5EF8"
+                          strokeWidth="3.5"
+                          strokeDasharray="62, 100"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                      <div className="absolute flex flex-col items-center justify-center text-center">
+                        <span className="text-2xl font-black text-[#111827]">62%</span>
+                        <span className="text-[8px] text-[#6B7280] uppercase tracking-wide">of 10,000 credits</span>
+                      </div>
+                    </div>
+
+                    <div className="flex-1 space-y-4">
+                      <div className="flex items-center justify-between border-b border-[#F3F4F6] pb-2">
+                        <span className="text-xs text-[#6B7280]">Used</span>
+                        <span className="text-sm font-bold text-[#111827]">6,234</span>
+                      </div>
+                      <div className="flex items-center justify-between border-b border-[#F3F4F6] pb-2">
+                        <span className="text-xs text-[#6B7280]">Remaining</span>
+                        <span className="text-sm font-bold text-[#111827]">3,766</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-[#6B7280]">Resets on</span>
+                        <span className="text-xs font-semibold text-[#111827]">Jun 1, 2025</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Current Plan */}
+                <div className="bg-white border border-[#E5E7EB] rounded-3xl p-6 shadow-sm">
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="font-bold text-lg text-[#111827]">Current Plan</h2>
+                    <span className="text-xs font-bold text-[#6D5EF8] bg-[#EEF2FF] px-2.5 py-1 rounded-md">Free Plan</span>
+                  </div>
+                  
+                  <div className="space-y-3 mb-6">
+                    {['10,000 credits / month', 'Standard processing', 'Access to all tools', 'Community support'].map((feature, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-[#10B981]" />
+                        <span className="text-sm text-[#4B5563]">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <button className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold py-3 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20 flex items-center justify-center gap-2">
+                    <TrendingUp className="w-4 h-4" /> Upgrade to Pro
+                  </button>
+                </div>
+
+                {/* Tips & Shortcuts */}
+                <div className="bg-white border border-[#E5E7EB] rounded-3xl p-6 shadow-sm">
+                  <h2 className="font-bold text-lg text-[#111827] mb-4">Tips & Shortcuts</h2>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 text-sm text-[#4B5563]">
+                      <div className="w-6 h-6 bg-[#F3F4F6] rounded flex items-center justify-center font-mono text-xs text-[#6B7280]">/</div>
+                      <span>Press / to search any tool</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm text-[#4B5563]">
+                      <Star className="w-4 h-4 text-[#6D5EF8]" />
+                      <span>Add tools to favorites</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm text-[#4B5563]">
+                      <Clock className="w-4 h-4 text-[#6D5EF8]" />
+                      <span>Check your history</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm text-[#4B5563]">
+                      <CrownIcon className="w-4 h-4 text-[#F59E0B]" />
+                      <span>Upgrade for more credits</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </div>
 
-          </main>
-        </div>
+          </div>
+        </main>
       </div>
-      
-
     </div>
+  );
+}
+
+// Reusing Crown Icon
+function CrownIcon(props: any) {
+  return (
+    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14" />
+    </svg>
   );
 }
