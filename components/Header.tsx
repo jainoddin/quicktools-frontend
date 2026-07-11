@@ -154,16 +154,19 @@ export default function Header() {
           ) : user ? (
             <div className="relative group">
               <button className="flex items-center gap-2 focus:outline-none">
-                <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0">
                   {user.avatar ? (
                     <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full bg-[#6D5EF8] text-white flex items-center justify-center font-bold text-sm">
-                      {user.name.charAt(0)}
+                      {user.name.charAt(0).toUpperCase()}
                     </div>
                   )}
                 </div>
-                <ChevronDown className="w-4 h-4 text-[#6B7280] group-hover:rotate-180 transition-transform duration-200" />
+                <span className="text-sm font-semibold text-[#111827] hidden sm:block">
+                  {user.name.split(' ')[0]}
+                </span>
+                <ChevronDown className="w-4 h-4 text-[#6B7280] group-hover:rotate-180 transition-transform duration-200 shrink-0" />
               </button>
               
               {/* User Dropdown */}
