@@ -3,7 +3,8 @@
  * Uses the live server URL if deployed, otherwise falls back to localhost.
  */
 export const getApiUrl = () => {
-  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+  // Use env var if present, otherwise fallback to the live Render backend
+  return process.env.NEXT_PUBLIC_API_URL || 'https://quicktools-backend-wlm5.onrender.com';
 };
 
 /**
