@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Copy, Download, Edit2, RefreshCw, Maximize2, Minimize2, Trash2, CheckCircle2, ChevronDown, Crown, Share2, X, FileText, File, Link as LinkIcon, MessageCircle, MessageSquare, Mail, Lock } from 'lucide-react';
 
-export default function AiWriterResult() {
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
+export default function AiWriterResult({ content = '' }: { content?: string }) {
   const [showDownloadModal, setShowDownloadModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   const [downloadFormat, setDownloadFormat] = useState('pdf');
@@ -22,7 +25,7 @@ export default function AiWriterResult() {
         <h3 className="text-sm font-bold text-[#111827]">Generated Content</h3>
         <div className="flex items-center gap-4">
           <div className="text-xs font-semibold text-[#6B7280]">
-            Words: 248 <span className="mx-1 font-light text-gray-300">|</span> Characters: 1542
+            Words: {content.split(/\s+/).filter(Boolean).length} <span className="mx-1 font-light text-gray-300">|</span> Characters: {content.length}
           </div>
           <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#E5E7EB] bg-white text-xs font-semibold text-[#111827] hover:bg-gray-50 transition-colors shadow-sm">
             <Copy className="w-3.5 h-3.5 text-[#6B7280]" /> Copy <ChevronDown className="w-3.5 h-3.5 text-[#6B7280] ml-1" />
@@ -34,26 +37,17 @@ export default function AiWriterResult() {
       <div className="bg-white rounded-2xl border border-[#E5E7EB] p-6 lg:p-8 shadow-sm mb-6 flex-grow">
         <div className="flex items-start justify-between mb-6 gap-4">
           <h1 className="text-xl md:text-2xl font-bold text-[#111827] leading-tight">
-            The Future of Artificial Intelligence
+            Your Generated Content
           </h1>
           <div className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 bg-[#ECFDF5] border border-[#D1FAE5] text-[#10B981] text-[10px] font-bold rounded-md uppercase tracking-wider">
             <CheckCircle2 className="w-3.5 h-3.5" /> Original
           </div>
         </div>
 
-        <div className="prose prose-sm md:prose-base prose-gray max-w-none text-[#4B5563] space-y-5 leading-relaxed">
-          <p>
-            Artificial Intelligence (AI) is no longer a concept of the future—it's here, and it's transforming the way we live and work. From virtual assistants to self-driving cars, AI is becoming an integral part of our daily lives.
-          </p>
-          <p>
-            One of the most exciting aspects of AI is its ability to analyze vast amounts of data and derive insights that humans might miss. This is revolutionizing industries such as healthcare, finance, education, and marketing. Businesses are using AI to automate tasks, improve customer experiences, and make smarter decisions.
-          </p>
-          <p>
-            However, with great power comes great responsibility. As AI continues to evolve, it's important to address ethical concerns, data privacy, and the impact on jobs. The key is to use AI as a tool that enhances human potential, not replaces it.
-          </p>
-          <p>
-            The future of AI is bright, and the possibilities are endless. Whether you're a developer, entrepreneur, or just curious about technology, now is the perfect time to embrace the AI revolution.
-          </p>
+        <div className="prose prose-sm md:prose-base prose-gray max-w-none text-[#4B5563] space-y-5 leading-relaxed prose-headings:text-[#111827]">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {content || 'No content generated yet.'}
+          </ReactMarkdown>
         </div>
       </div>
 

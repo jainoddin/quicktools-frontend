@@ -22,24 +22,56 @@ export default function AiWriterClient() {
   const [showHistory, setShowHistory] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  const handleGenerate = () => {
+  const [generatedText, setGeneratedText] = useState('');
+
+  const handleGenerate = async () => {
+    if (!prompt.trim()) return;
+    
     setIsProcessing(true);
     setHasResult(false);
     setProgress(0);
+    setGeneratedText('');
     
-    // Simulate generation progress over ~3 seconds
+    // Simulate progress bar while waiting for backend
     const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setIsProcessing(false);
-          setHasResult(true);
-          return 100;
-        }
-        // Random increment between 5 and 15
-        return Math.min(100, prev + Math.floor(Math.random() * 10) + 5);
+      setProgress((prev) => Math.min(90, prev + Math.floor(Math.random() * 10) + 5));
+    }, 500);
+
+    try {
+      // Import getEndpoint dynamically or assume it's imported at the top. Let's just use the full URL via process.env fallback or we can import it.
+      // Wait, let's use the absolute path fallback for safety if getEndpoint is not imported.
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://quicktools-backend-wlm5.onrender.com';
+      
+      const res = await fetch(`${apiUrl}/api/tools/generate-text`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt,
+          contentType,
+          tone,
+          language,
+          creativity
+        }),
       });
-    }, 300);
+
+      const data = await res.json();
+      
+      clearInterval(interval);
+      setProgress(100);
+      
+      if (data.success) {
+        setGeneratedText(data.data);
+        setHasResult(true);
+      } else {
+        alert('Generation failed: ' + data.message);
+      }
+    } catch (error) {
+      clearInterval(interval);
+      alert('Error connecting to backend');
+      console.error(error);
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   const handleCancel = () => {
@@ -233,7 +265,7 @@ export default function AiWriterClient() {
             {isProcessing ? (
               <AiWriterProgress progress={progress} onCancel={handleCancel} />
             ) : hasResult ? (
-              <AiWriterResult />
+              <AiWriterResult content={generatedText} />
             ) : (
           <div className="bg-white rounded-3xl border border-[#E5E7EB] p-8 lg:p-12 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden h-full min-h-[600px]">
           
