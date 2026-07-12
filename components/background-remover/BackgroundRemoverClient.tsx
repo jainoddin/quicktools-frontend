@@ -204,7 +204,13 @@ export default function BackgroundRemoverClient() {
               Standard
             </button>
             <button 
-              onClick={() => setQuality('hd')}
+              onClick={() => {
+                if (!isAuthenticated) {
+                  setShowLoginPopup(true);
+                } else {
+                  setQuality('hd');
+                }
+              }}
               className={`flex-1 py-2 text-xs flex items-center justify-center gap-1.5 transition-all rounded-lg ${quality === 'hd' ? 'font-bold text-[#6D5EF8] bg-[#EEF2FF] border border-[#6D5EF8]/20 shadow-sm' : 'font-semibold text-[#6B7280] hover:text-[#111827]'}`}
             >
               HD <Crown className="w-3.5 h-3.5 text-[#F59E0B] fill-[#F59E0B]" />

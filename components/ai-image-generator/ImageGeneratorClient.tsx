@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { 
-  Wand2, Shuffle, Image as ImageIcon, 
+import {
+  Wand2, Shuffle, Image as ImageIcon,
   History, LayoutGrid, Crown, Info, Sparkles, ChevronDown, Star, ArrowLeft
 } from 'lucide-react';
 import GenerationProgress from './GenerationProgress';
@@ -45,7 +45,7 @@ export default function ImageGeneratorClient() {
             // Simulate generation completion
             setGeneratedImage("https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?w=1200&q=80");
             setIsGenerating(false);
-            
+
             if (!isAuthenticated) {
               const newCount = freeGenCount + 1;
               setFreeGenCount(newCount);
@@ -72,7 +72,7 @@ export default function ImageGeneratorClient() {
     if (prompt.trim() === '') {
       setPrompt('A futuristic city at sunset with flying cars, neon lights, and tall skyscrapers');
     }
-    
+
     // Simulate error if prompt equals 'error'
     if (prompt.toLowerCase().trim() === 'error') {
       setHasError(true);
@@ -93,7 +93,7 @@ export default function ImageGeneratorClient() {
       <LoginPopup isOpen={showLoginPopup} onClose={() => setShowLoginPopup(false)} />
       {/* Left Sidebar Controls */}
       <aside className="w-full lg:w-[320px] shrink-0 space-y-6">
-        
+
         {/* 1. Describe Your Image */}
         <div>
           <h3 className="text-sm font-bold text-[#111827] mb-3">
@@ -105,10 +105,10 @@ export default function ImageGeneratorClient() {
                 {prompt}
               </div>
             ) : (
-              <textarea 
+              <textarea
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
-                placeholder="Describe the image you want to generate..." 
+                placeholder="Describe the image you want to generate..."
                 className="w-full h-32 resize-none outline-none text-sm text-[#111827] placeholder-[#9CA3AF] bg-transparent"
               ></textarea>
             )}
@@ -117,7 +117,7 @@ export default function ImageGeneratorClient() {
                 <button className="flex items-center gap-1.5 text-xs font-medium text-[#6B7280] hover:text-[#111827] bg-[#F8FAFC] px-2.5 py-1.5 rounded-lg border border-[#E5E7EB] transition-colors">
                   <Wand2 className="w-3.5 h-3.5" /> Prompt Ideas
                 </button>
-                <button 
+                <button
                   onClick={() => setPrompt('A futuristic city at sunset with flying cars, neon lights, and tall skyscrapers')}
                   className="flex items-center gap-1.5 text-xs font-medium text-[#6B7280] hover:text-[#111827] bg-[#F8FAFC] px-2.5 py-1.5 rounded-lg border border-[#E5E7EB] transition-colors"
                 >
@@ -144,7 +144,7 @@ export default function ImageGeneratorClient() {
             <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
               <ChevronDown className="w-4 h-4 text-[#6B7280]" />
             </div>
-            <style dangerouslySetInnerHTML={{__html: `select { padding-left: 2.5rem !important; }`}} />
+            <style dangerouslySetInnerHTML={{ __html: `select { padding-left: 2.5rem !important; }` }} />
           </div>
         </div>
 
@@ -208,11 +208,11 @@ export default function ImageGeneratorClient() {
 
         {/* Generate Button Area */}
         <div className="pt-2">
-          <button 
+          <button
             onClick={generatedImage ? () => setGeneratedImage(null) : handleGenerate}
             disabled={isGenerating && !generatedImage}
             className={`w-full text-white font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 group shadow-sm ${isGenerating && !generatedImage ? 'bg-[#9CA3AF] cursor-not-allowed' : 'bg-[#6D5EF8] hover:bg-[#5B4DF5] shadow-lg shadow-[#6D5EF8]/20 hover:shadow-[#6D5EF8]/40 hover:-translate-y-0.5'}`}>
-            <Sparkles className={`w-5 h-5 ${!isGenerating && 'group-hover:scale-110 transition-transform'}`} /> 
+            <Sparkles className={`w-5 h-5 ${!isGenerating && 'group-hover:scale-110 transition-transform'}`} />
             {isGenerating ? 'Generating...' : generatedImage ? 'Create New Image' : 'Generate Image'}
           </button>
           <div className="flex items-center justify-center mt-3 text-xs text-[#9CA3AF]">
@@ -227,7 +227,7 @@ export default function ImageGeneratorClient() {
         <HistoryView onClose={() => setActiveView('generate')} />
       ) : (
         <main className="flex-grow flex flex-col min-w-0 space-y-6">
-          
+
           {/* Header Area */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
@@ -239,14 +239,14 @@ export default function ImageGeneratorClient() {
                 )}
               </h1>
               <p className="text-[#6B7280] text-sm lg:text-base mt-2">
-                {generatedImage 
+                {generatedImage
                   ? "Here is your AI-generated image. You can download, share or create more."
                   : "Create stunning images from text descriptions with the power of AI."}
               </p>
             </div>
             <div className="flex items-center gap-3">
               {generatedImage ? (
-                <button 
+                <button
                   onClick={() => setGeneratedImage(null)}
                   className="flex items-center gap-2 bg-white border border-[#E5E7EB] px-4 py-2.5 rounded-xl text-sm font-bold text-[#111827] hover:bg-gray-50 transition-all shadow-sm"
                 >
@@ -254,7 +254,7 @@ export default function ImageGeneratorClient() {
                 </button>
               ) : (
                 <>
-                  <button 
+                  <button
                     onClick={() => setActiveView('history')}
                     className="flex items-center gap-2 bg-white border border-[#E5E7EB] px-4 py-2.5 rounded-xl text-sm font-semibold text-[#111827] hover:bg-gray-50 transition-all shadow-sm"
                   >
@@ -268,68 +268,68 @@ export default function ImageGeneratorClient() {
             </div>
           </div>
 
-        {/* Dynamic State Rendering */}
-        {isGenerating ? (
-          <GenerationProgress progress={progress} onCancel={handleCancel} />
-        ) : generatedImage ? (
-          <GeneratedResult 
-            imageUrl={generatedImage} 
-            prompt={prompt} 
-            isAuthenticated={isAuthenticated}
-            onRequireLogin={() => setShowLoginPopup(true)}
-          />
-        ) : (
-          <>
-            {/* Result Box (Empty State) */}
-            <div className="flex-grow flex flex-col">
-              <div className="flex items-center justify-between mb-3">
-                <h2 className="text-sm font-bold text-[#111827]">Generated Result</h2>
-                <div className="flex items-center gap-1.5 text-xs font-medium text-[#6D5EF8] bg-[#EEF2FF] border border-[#6D5EF8]/10 px-3 py-1.5 rounded-lg">
-                  <Star className="w-3.5 h-3.5 text-[#6D5EF8]" /> Your creations are saved in history
-                </div>
-              </div>
-              
-              <div className="flex-grow min-h-[400px] lg:min-h-[500px] bg-white rounded-2xl border border-[#E5E7EB] flex flex-col items-center justify-center p-8 text-center shadow-sm relative overflow-hidden group">
-                
-                {/* Empty State Background Decoration */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-50/50 rounded-full blur-3xl -z-10 group-hover:scale-110 transition-transform duration-1000"></div>
-
-                <div className="relative w-32 h-32 mb-6">
-                  <div className="absolute inset-0 border-2 border-dashed border-[#6D5EF8]/30 rounded-2xl animate-[spin_10s_linear_infinite]"></div>
-                  <div className="absolute inset-2 bg-[#EEF2FF] rounded-xl flex items-center justify-center">
-                    <ImageIcon className="w-12 h-12 text-[#6D5EF8]/60" />
+          {/* Dynamic State Rendering */}
+          {isGenerating ? (
+            <GenerationProgress progress={progress} onCancel={handleCancel} />
+          ) : generatedImage ? (
+            <GeneratedResult
+              imageUrl={generatedImage}
+              prompt={prompt}
+              isAuthenticated={isAuthenticated}
+              onRequireLogin={() => setShowLoginPopup(true)}
+            />
+          ) : (
+            <>
+              {/* Result Box (Empty State) */}
+              <div className="flex-grow flex flex-col">
+                <div className="flex items-center justify-between mb-3">
+                  <h2 className="text-sm font-bold text-[#111827]">Generated Result</h2>
+                  <div className="flex items-center gap-1.5 text-xs font-medium text-[#6D5EF8] bg-[#EEF2FF] border border-[#6D5EF8]/10 px-3 py-1.5 rounded-lg">
+                    <Star className="w-3.5 h-3.5 text-[#6D5EF8]" /> Your creations are saved in history
                   </div>
-                  <Sparkles className="absolute -top-3 -right-3 w-8 h-8 text-[#6D5EF8] animate-pulse" />
                 </div>
-                
-                <h3 className="text-xl font-bold text-[#111827] mb-2">Your AI-generated image will appear here</h3>
-                <p className="text-sm text-[#6B7280] max-w-md mx-auto">
-                  Enter a prompt, choose your preferences, and click "Generate Image" to create stunning visuals.
-                </p>
-              </div>
-            </div>
 
-            {/* Pro Tip */}
-            <div className="bg-[#F5F3FF] border border-[#EDE9FE] rounded-2xl p-4 flex gap-3 shadow-inner">
-              <div className="shrink-0 mt-0.5">
-                <Sparkles className="w-5 h-5 text-[#6D5EF8]" />
+                <div className="flex-grow min-h-[400px] lg:min-h-[500px] bg-white rounded-2xl border border-[#E5E7EB] flex flex-col items-center justify-center p-8 text-center shadow-sm relative overflow-hidden group">
+
+                  {/* Empty State Background Decoration */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-50/50 rounded-full blur-3xl -z-10 group-hover:scale-110 transition-transform duration-1000"></div>
+
+                  <div className="relative w-32 h-32 mb-6">
+                    <div className="absolute inset-0 border-2 border-dashed border-[#6D5EF8]/30 rounded-2xl animate-[spin_10s_linear_infinite]"></div>
+                    <div className="absolute inset-2 bg-[#EEF2FF] rounded-xl flex items-center justify-center">
+                      <ImageIcon className="w-12 h-12 text-[#6D5EF8]/60" />
+                    </div>
+                    <Sparkles className="absolute -top-3 -right-3 w-8 h-8 text-[#6D5EF8] animate-pulse" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-[#111827] mb-2">Your AI-generated image will appear here</h3>
+                  <p className="text-sm text-[#6B7280] max-w-md mx-auto">
+                    Enter a prompt, choose your preferences, and click "Generate Image" to create stunning visuals.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h4 className="text-sm font-bold text-[#111827] mb-1">Pro Tip</h4>
-                <p className="text-xs text-[#6B7280] leading-relaxed">
-                  Be specific and detailed in your prompt for better results. Include details about style, lighting, mood, colors, and composition.
-                </p>
+
+              {/* Pro Tip */}
+              <div className="bg-[#F5F3FF] border border-[#EDE9FE] rounded-2xl p-4 flex gap-3 shadow-inner">
+                <div className="shrink-0 mt-0.5">
+                  <Sparkles className="w-5 h-5 text-[#6D5EF8]" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-[#111827] mb-1">Pro Tip</h4>
+                  <p className="text-xs text-[#6B7280] leading-relaxed">
+                    Be specific and detailed in your prompt for better results. Include details about style, lighting, mood, colors, and composition.
+                  </p>
+                </div>
               </div>
-            </div>
-          </>
-        )}
+            </>
+          )}
 
         </main>
       )}
 
-      <ErrorModal 
-        isOpen={hasError} 
-        onClose={() => setHasError(false)} 
+      <ErrorModal
+        isOpen={hasError}
+        onClose={() => setHasError(false)}
         onRetry={() => {
           setHasError(false);
           setPrompt('A futuristic city at sunset with flying cars, neon lights, and tall skyscrapers');
@@ -337,7 +337,7 @@ export default function ImageGeneratorClient() {
             setIsGenerating(true);
             setGeneratedImage(null);
           }, 100);
-        }} 
+        }}
       />
     </div>
   );
