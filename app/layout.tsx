@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SplashScreen from "@/components/SplashScreen";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,12 +33,18 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#111827] selection:bg-[#4F46E5] selection:text-white">
-        <Header />
-        <main className="flex-grow flex flex-col">
-          {children}
-        </main>
-        <Footer />
+      <body className="flex flex-col bg-[#F8FAFC] text-[#111827] selection:bg-[#4F46E5] selection:text-white">
+        {/* Razorpay Checkout SDK */}
+        <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
+        
+        <AuthProvider>
+          <SplashScreen />
+          <Header />
+          <main className="flex flex-col">
+            {children}
+          </main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

@@ -2,7 +2,9 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Gift, Crown, Building2, CheckCircle2, X, HelpCircle, ArrowRight, Zap, ChevronDown, ChevronUp, Home, ChevronRight } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
 
 const plans = [
   {
@@ -13,11 +15,12 @@ const plans = [
     monthlyPrice: 0,
     yearlyPrice: 0,
     features: [
-      { name: '20 AI Credits / day', included: true },
-      { name: 'Standard Speed', included: true },
-      { name: 'Watermarked Images', included: true },
-      { name: 'Basic AI Models', included: true },
-      { name: 'Community Support', included: true },
+      { name: '3 Free Demos (One-Time)', included: true },
+      { name: 'AI Image Generator', included: true },
+      { name: 'AI Background Remover', included: true },
+      { name: 'AI Text Summarizer', included: true },
+      { name: 'AI Code Writer', included: true },
+      { name: 'AI Grammar Checker', included: true },
     ],
     buttonText: 'Start Free',
     buttonSub: 'No credit card required',
@@ -27,17 +30,17 @@ const plans = [
     id: 'pro',
     name: 'Pro',
     icon: Crown,
-    description: 'For professionals & creators',
-    monthlyPrice: 999,
-    yearlyPrice: 799,
+    description: 'First month offer for new users!',
+    originalPrice: 599,
+    monthlyPrice: 49,
+    yearlyPrice: 39,
     features: [
-      { name: 'Unlimited AI Credits', included: true },
-      { name: 'Faster Generation', included: true },
-      { name: 'HD Downloads', included: true },
-      { name: 'No Watermark', included: true },
-      { name: 'Priority Queue', included: true },
-      { name: 'Premium AI Models', included: true },
-      { name: 'Email Support', included: true },
+      { name: 'Unlimited Usage', included: true },
+      { name: 'AI Image Generator', included: true },
+      { name: 'AI Background Remover', included: true },
+      { name: 'AI Text Summarizer', included: true },
+      { name: 'AI Code Writer', included: true },
+      { name: 'AI Grammar Checker', included: true },
     ],
     buttonText: 'Get Pro',
     popular: true,
@@ -47,15 +50,15 @@ const plans = [
     name: 'Business',
     icon: Building2,
     description: 'For teams & businesses',
-    monthlyPrice: 2999,
-    yearlyPrice: 2399,
+    originalPrice: 999,
+    monthlyPrice: 99,
+    yearlyPrice: 79,
     features: [
       { name: 'Everything in Pro', included: true },
-      { name: 'Team Members', included: true },
+      { name: 'Team Members (Up to 5)', included: true },
       { name: 'API Access', included: true },
       { name: 'Admin Dashboard', included: true },
       { name: 'Dedicated Support', included: true },
-      { name: 'Unlimited Downloads', included: true },
       { name: 'Custom AI Solutions', included: true },
     ],
     buttonText: 'Contact Sales',
@@ -65,27 +68,44 @@ const plans = [
 ];
 
 const compareFeatures = [
-  { name: 'AI Credits', free: '20 Credits / day', pro: 'Unlimited', business: 'Unlimited' },
-  { name: 'AI Images & Tools', free: true, pro: true, business: true },
-  { name: 'HD Downloads', free: false, pro: true, business: true },
-  { name: 'No Watermark', free: false, pro: true, business: true },
-  { name: 'Priority Generation', free: false, pro: true, business: true },
+  { name: 'Access Limit', free: '3 Demos Total', pro: 'Unlimited', business: 'Unlimited' },
+  { name: 'AI Image Generator', free: true, pro: true, business: true },
+  { name: 'AI Background Remover', free: true, pro: true, business: true },
+  { name: 'AI Text Summarizer', free: true, pro: true, business: true },
+  { name: 'AI Code Writer', free: true, pro: true, business: true },
+  { name: 'AI Grammar Checker', free: true, pro: true, business: true },
   { name: 'API Access', free: false, pro: false, business: true },
-  { name: 'Team Members', free: false, pro: false, business: true },
-  { name: 'Email Support', free: false, pro: true, business: true },
-  { name: 'Community Support', free: true, pro: true, business: true },
+  { name: 'Team Management', free: false, pro: false, business: true },
+  { name: 'Support', free: 'Community', pro: 'Priority Email', business: 'Dedicated Account Manager' },
 ];
 
 const faqs = [
-  { q: 'What is included in the Free plan?', a: 'The free plan includes 20 AI credits per day, standard generation speed, and access to basic AI models. Images will have a watermark.' },
-  { q: 'Can I cancel my subscription anytime?', a: 'Yes, you can cancel your subscription at any time from your account settings. You will continue to have access until the end of your billing period.' },
-  { q: 'Do I need a credit card to start?', a: 'No, you do not need a credit card to start using the Free plan. You only need a credit card when you decide to upgrade to a paid plan.' },
-  { q: 'Can I upgrade or downgrade later?', a: 'Absolutely. You can upgrade or downgrade your plan at any time. Prorated charges or credits will be applied automatically.' }
+  { q: 'How does the Free Trial work?', a: 'Every new user gets 3 free demos to test our 5 AI tools (Image Generator, BG Remover, Summarizer, Code Writer, Grammar Checker). Once your 3 demos are used up, you must upgrade to a paid plan.' },
+  { q: 'What happens after the first month at ₹49?', a: 'The ₹49 price is a special discount for your first month only! From the second month onwards, the subscription renews at the regular price of ₹599/month. You can cancel anytime.' },
+  { q: 'Do I need a credit card to start?', a: 'No, you do not need a credit card for your first 3 free demos. A payment method is only required when upgrading.' },
+  { q: 'Can I cancel my subscription anytime?', a: 'Yes, you can cancel your subscription at any time from your account settings. You will not be charged for the next month.' }
 ];
 
 export default function PricingClient() {
   const [isYearly, setIsYearly] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const { isAuthenticated, isLoading } = useAuth();
+  const router = useRouter();
+
+  const handlePlanClick = (planId: string) => {
+    if (isLoading) return; // Wait for auth check
+    
+    if (!isAuthenticated) {
+      router.push('/login?callbackUrl=/pricing');
+      return;
+    }
+
+    if (planId === 'free') {
+      router.push('/dashboard'); // Go directly to the user dashboard
+    } else {
+      router.push(`/checkout?plan=${planId}`);
+    }
+  };
 
   return (
     <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 pt-0">
@@ -151,6 +171,11 @@ export default function PricingClient() {
             </div>
 
             <div className="text-center mb-8">
+              {plan.originalPrice && (
+                <div className="text-sm font-bold text-[#9CA3AF] line-through mb-1">
+                  ₹{isYearly ? Math.floor(plan.originalPrice * 0.8) : plan.originalPrice}/month
+                </div>
+              )}
               <div className="flex items-end justify-center gap-1">
                 <span className="text-4xl font-black text-[#111827]">₹{isYearly ? plan.yearlyPrice : plan.monthlyPrice}</span>
                 <span className="text-[#6B7280] font-medium pb-1">/month</span>
@@ -170,6 +195,7 @@ export default function PricingClient() {
 
             <div className="mt-auto">
               <button 
+                onClick={() => handlePlanClick(plan.id)}
                 className={`w-full py-3 px-6 rounded-xl font-bold text-sm transition-all ${plan.popular ? 'bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white shadow-md' : 'bg-white border-2 border-[#EEF2FF] text-[#6D5EF8] hover:border-[#6D5EF8] hover:bg-[#EEF2FF]'}`}
               >
                 {plan.buttonText}
@@ -285,7 +311,10 @@ export default function PricingClient() {
           </div>
         </div>
         <div className="flex flex-col items-center shrink-0">
-          <button className="bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-3.5 px-8 rounded-xl shadow-md transition-all flex items-center gap-2 mb-2">
+          <button 
+            onClick={() => handlePlanClick('free')}
+            className="bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-3.5 px-8 rounded-xl shadow-md transition-all flex items-center gap-2 mb-2"
+          >
             Start Free Now <ArrowRight className="w-4 h-4" />
           </button>
           <span className="text-[11px] text-[#6D5EF8] font-medium">No credit card required</span>

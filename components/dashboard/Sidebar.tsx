@@ -1,0 +1,117 @@
+'use client';
+import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { 
+  LayoutGrid, Shapes, FolderDot, Heart, Clock, 
+  CreditCard, Settings, Key, Zap, Sun, ZapIcon, Crown, ChevronRight
+} from 'lucide-react';
+
+const navItems = [
+  { name: 'Dashboard', icon: LayoutGrid, path: '/dashboard' },
+];
+
+const generalItems = [
+  { name: 'All Tools', icon: LayoutGrid, path: '/dashboard/all', count: 56 },
+  { name: 'Categories', icon: Shapes, path: '/dashboard/categories', count: 12 },
+  { name: 'My Tools', icon: FolderDot, path: '/dashboard/my-tools', count: 8 },
+  { name: 'Favorites', icon: Heart, path: '/dashboard/favorites', count: 6 },
+  { name: 'History', icon: Clock, path: '/dashboard/history' },
+];
+
+const accountItems = [
+  { name: 'Billing', icon: CreditCard, path: '/dashboard/billing' },
+  { name: 'Settings', icon: Settings, path: '/dashboard/settings' },
+];
+
+export default function Sidebar() {
+  const pathname = usePathname();
+
+  const isActive = (path: string) => {
+    if (path === '/dashboard') return pathname === '/dashboard';
+    return pathname.startsWith(path);
+  };
+
+  return (
+    <aside className="w-[260px] bg-transparent flex flex-col shrink-0 h-full">
+      <div className="flex-1 overflow-y-auto overflow-x-hidden pr-3 pt-6 pb-6 space-y-6">
+        
+        {/* Dashboard Link */}
+        <div>
+          {navItems.map((item, i) => {
+            const active = isActive(item.path);
+            return (
+              <Link key={i} href={item.path} className={`flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium transition-all ${active ? 'bg-[#EEF2FF] text-[#6D5EF8] font-semibold' : 'text-[#4B5563] hover:bg-white hover:text-[#111827]'}`}>
+                <item.icon className={`w-5 h-5 ${active ? 'text-[#6D5EF8]' : 'text-[#6B7280]'}`} />
+                <span className="text-[15px]">{item.name}</span>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Categories Section */}
+        <div>
+          <h3 className="font-bold text-[#111827] mb-3 px-3">Categories</h3>
+          <div className="space-y-1">
+            {generalItems.map((item, i) => {
+              const active = isActive(item.path);
+              return (
+                <Link key={i} href={item.path} className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all ${active ? 'bg-[#EEF2FF] text-[#6D5EF8] font-semibold' : 'text-[#4B5563] hover:bg-white hover:text-[#111827] font-medium'}`}>
+                  <div className="flex items-center gap-3">
+                    <item.icon className={`w-5 h-5 ${active ? 'text-[#6D5EF8]' : 'text-[#6B7280]'}`} />
+                    <span className="text-[15px]">{item.name}</span>
+                  </div>
+                  {item.count !== undefined && (
+                    <span className={`text-xs ${active ? 'text-[#6D5EF8] bg-white px-1.5 py-0.5 rounded-md shadow-sm' : 'text-[#9CA3AF]'}`}>
+                      {item.count}
+                    </span>
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Account Section */}
+        <div>
+          <h3 className="font-bold text-[#111827] mb-3 px-3">Account</h3>
+          <div className="space-y-1">
+            {accountItems.map((item, i) => {
+              const active = isActive(item.path);
+              return (
+                <Link key={i} href={item.path} className={`flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium transition-all ${active ? 'bg-[#EEF2FF] text-[#6D5EF8] font-semibold' : 'text-[#4B5563] hover:bg-white hover:text-[#111827]'}`}>
+                  <item.icon className={`w-5 h-5 ${active ? 'text-[#6D5EF8]' : 'text-[#6B7280]'}`} />
+                  <span className="text-[15px]">{item.name}</span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Upgrade Card - exactly like tools page */}
+        <div className="bg-gradient-to-br from-white to-[#EEF2FF] border border-[#E5E7EB] rounded-2xl p-5 shadow-sm relative overflow-hidden">
+          <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#6D5EF8]/5 rounded-full blur-xl"></div>
+          <div className="w-10 h-10 bg-[#EEF2FF] rounded-xl flex items-center justify-center mb-4 text-[#6D5EF8]">
+            <Crown className="w-5 h-5 fill-[#6D5EF8]" />
+          </div>
+          <h4 className="font-bold text-[#111827] mb-1">Unlock Premium</h4>
+          <p className="text-sm text-[#6B7280] mb-5 leading-relaxed">
+            Get unlimited access to all tools and premium features.
+          </p>
+          <Link href="/dashboard/billing/plans" className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm py-2.5 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20 flex items-center justify-center gap-2">
+            Upgrade Now <ChevronRight className="w-3 h-3" />
+          </Link>
+        </div>
+
+        {/* Theme Toggle */}
+        <button className="w-full flex items-center justify-between px-3 py-2.5 border border-[#E5E7EB] rounded-xl text-[#4B5563] hover:bg-white transition-colors bg-white/50">
+          <div className="flex items-center gap-3 font-medium text-sm">
+            <Sun className="w-5 h-5 text-[#6B7280]" /> Light
+          </div>
+          <ChevronRight className="w-4 h-4 text-[#9CA3AF]" />
+        </button>
+
+      </div>
+    </aside>
+  );
+}
