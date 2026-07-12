@@ -17,11 +17,11 @@ export default function Footer() {
   if (pathname === '/login' || pathname === '/signup' || pathname.startsWith('/dashboard')) return null;
 
   return (
-    <footer className="bg-white border-t border-[#E5E7EB] pt-8 pb-8 w-full">
+    <footer className="bg-white border-t border-[#E5E7EB] w-full">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {!isAuthenticated && (
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12 mt-8">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-8 pb-12 pt-8 mt-8">
             <div className="col-span-2 md:col-span-2">
               <div className="flex items-center gap-2 mb-4 group cursor-pointer">
                 <div className="relative flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-1">
@@ -83,12 +83,12 @@ export default function Footer() {
           </div>
         )}
 
-        <div className={`flex flex-col md:flex-row items-center justify-between text-xs text-[#6B7280] ${!isAuthenticated ? 'pt-8 border-t border-[#E5E7EB]' : ''}`}>
+        <div className="flex flex-col md:flex-row items-center justify-between text-xs text-[#6B7280] h-[70px] border-t border-[#E5E7EB]">
           <div>© 2025 QuickTools.ai. All rights reserved.</div>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Privacy Policy</Link>
-            <Link href="/terms" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Terms of Service</Link>
-            <Link href="/cookies" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Cookies Policy</Link>
+            <Link href="/privacy" className="transition-colors hover:text-[#6D5EF8]">Privacy Policy</Link>
+            <Link href="/terms" className="transition-colors hover:text-[#6D5EF8]">Terms of Service</Link>
+            <Link href="/cookies" className="transition-colors hover:text-[#6D5EF8]">Cookies Policy</Link>
           </div>
         </div>
       </div>

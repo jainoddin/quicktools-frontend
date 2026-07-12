@@ -9,6 +9,7 @@ interface User {
   email: string;
   avatar?: string;
   role?: string;
+  savedTools?: string[];
 }
 
 interface AuthContextType {
@@ -16,6 +17,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   isLoading: boolean;
   logout: () => Promise<void>;
+  updateUser: (user: User | null) => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -23,6 +25,7 @@ const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
   isLoading: true,
   logout: async () => {},
+  updateUser: () => {},
 });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -113,7 +116,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, isLoading, logout }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, isLoading, logout, updateUser: setUser }}>
       {children}
     </AuthContext.Provider>
   );

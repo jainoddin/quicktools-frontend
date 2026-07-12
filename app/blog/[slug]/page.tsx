@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   Home, ChevronRight, Link2,
-  Clock, Check, Share2, Crown, Mail, ArrowRight, Star
+  Clock, Check, Share2, Crown, Mail, ArrowRight, Star, ChevronDown
 } from 'lucide-react';
 
 import ReactMarkdown from 'react-markdown';
@@ -119,7 +119,7 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
         <div className="flex flex-col lg:flex-row gap-10">
 
           {/* ── LEFT SIDEBAR ── */}
-          <aside className="w-full lg:w-[220px] xl:w-[250px] shrink-0 lg:sticky lg:top-24 lg:self-start space-y-6">
+          <aside className="hidden lg:block w-[220px] xl:w-[250px] shrink-0 sticky top-24 self-start space-y-6">
 
             {/* Table of Contents */}
             {blogPost.tableOfContents && blogPost.tableOfContents.length > 0 && (
@@ -236,6 +236,36 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
                 priority
               />
             </div>
+            
+            {/* Mobile Table of Contents (Native Dropdown) */}
+            {blogPost.tableOfContents && blogPost.tableOfContents.length > 0 && (
+              <details className="lg:hidden bg-white border border-[#E5E7EB] rounded-2xl mb-8 shadow-sm group">
+                <summary className="p-4 font-bold text-[#111827] cursor-pointer flex items-center justify-between list-none outline-none">
+                  <div className="flex items-center gap-2">
+                    On This Page
+                  </div>
+                  <ChevronDown className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" />
+                </summary>
+                <div className="p-4 pt-2 border-t border-[#E5E7EB]">
+                  <nav className="space-y-1">
+                    {(() => {
+                      const slugger = new GithubSlugger();
+                      return blogPost.tableOfContents.map((label: string, i: number) => {
+                        const sectionId = slugger.slug(label);
+                        return (
+                        <a
+                          key={i}
+                          href={`#${sectionId}`}
+                          className="block py-1.5 text-sm text-[#6B7280] hover:text-[#6D5EF8] transition-colors"
+                        >
+                          {label}
+                        </a>
+                      )});
+                    })()}
+                  </nav>
+                </div>
+              </details>
+            )}
 
             {/* Article Body */}
             <div className="prose prose-lg max-w-none prose-h2:text-[#111827] prose-h2:font-bold prose-p:text-[#4B5563] prose-a:text-[#6D5EF8] prose-li:text-[#4B5563] scroll-smooth">

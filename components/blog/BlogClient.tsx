@@ -4,7 +4,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Search, Grid, List, Bookmark, ChevronDown, LayoutGrid, 
   Sparkles, CheckCircle2, Play, Code2, PenTool, TrendingUp,
-  Briefcase, GraduationCap, Newspaper, ArrowRight, Zap, Send, SearchX, Loader2
+  Briefcase, GraduationCap, Newspaper, ArrowRight, Zap, Send, SearchX, Loader2,
+  Menu, X
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -43,6 +44,7 @@ export default function BlogClient() {
   const [sortBy, setSortBy] = useState('Newest First');
   const [searchQuery, setSearchQuery] = useState('');
   const [showAllTags, setShowAllTags] = useState(false);
+  const [isMobileCategoriesOpen, setIsMobileCategoriesOpen] = useState(false);
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -151,7 +153,7 @@ export default function BlogClient() {
     <div className="flex flex-col lg:flex-row gap-8 w-full">
       
       {/* Left Sidebar */}
-      <aside className="w-full lg:w-[250px] shrink-0 space-y-8 lg:sticky lg:top-24 lg:self-start pb-4">
+      <aside className="hidden lg:block w-[250px] shrink-0 space-y-8 sticky top-24 self-start pb-4">
         
         {/* Categories */}
         <div>
@@ -230,6 +232,17 @@ export default function BlogClient() {
       {/* Main Content */}
       <main className="flex-grow min-w-0">
         
+        {/* Mobile Categories Toggle */}
+        <div className="mb-4 lg:hidden">
+          <button 
+            onClick={() => setIsMobileCategoriesOpen(true)}
+            className="flex items-center gap-2 w-fit px-4 py-2.5 bg-white border border-[#E5E7EB] rounded-xl hover:bg-[#F9FAFB] transition-colors shadow-sm text-[#111827] font-semibold"
+          >
+            <Menu className="w-5 h-5 text-[#6D5EF8]" />
+            Categories
+          </button>
+        </div>
+
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
@@ -461,6 +474,60 @@ export default function BlogClient() {
         </div>
 
       </aside>
+
+      {/* Mobile Categories Drawer */}
+      {isMobileCategoriesOpen && (
+        <div className="fixed inset-0 z-[100] lg:hidden flex">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-[#111827]/40 backdrop-blur-sm transition-opacity" 
+            onClick={() => setIsMobileCategoriesOpen(false)}
+          ></div>
+          
+          {/* Drawer */}
+          <div className="relative w-[280px] max-w-[80%] h-full bg-[#F8FAFC] shadow-2xl flex flex-col overflow-y-auto animate-[textSlideIn_0.3s_ease_forwards]">
+            <div className="sticky top-0 z-10 flex items-center justify-between p-4 bg-white border-b border-[#E5E7EB]">
+              <h3 className="font-bold text-[#111827] text-lg">Categories</h3>
+              <button 
+                onClick={() => setIsMobileCategoriesOpen(false)}
+                className="p-2 bg-gray-100 text-gray-500 hover:text-gray-900 rounded-xl transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div className="p-4 flex flex-col flex-1 h-full overflow-y-auto space-y-6">
+              <ul className="space-y-1">
+                {categories.map((cat) => (
+                  <li key={cat.name}>
+                    <button 
+                      onClick={() => {
+                        setActiveCategory(cat.name);
+                        setIsMobileCategoriesOpen(false);
+                      }}
+                      className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
+                        activeCategory === cat.name 
+                          ? 'bg-[#F5F3FF] text-[#6D5EF8]' 
+                          : 'text-[#4B5563] hover:bg-white'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className={`${activeCategory === cat.name ? 'text-[#6D5EF8]' : 'text-gray-400'}`}>
+                          {cat.icon}
+                        </span>
+                        {cat.name}
+                      </div>
+                      <span className={`text-[11px] ${activeCategory === cat.name ? 'text-[#6D5EF8] font-bold' : 'text-gray-400'}`}>
+                        {cat.count}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );
