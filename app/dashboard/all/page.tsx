@@ -87,9 +87,7 @@ export default function AllToolsPage() {
           })}
         </div>
 
-        <button className="flex items-center gap-2 text-sm font-medium text-[#4B5563] bg-white border border-[#E5E7EB] px-4 py-2 rounded-xl hover:bg-[#F9FAFB] transition-colors shrink-0 shadow-sm">
-          Sort by: Popular <ChevronDown className="w-4 h-4" />
-        </button>
+
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
