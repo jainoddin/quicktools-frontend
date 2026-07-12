@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ShieldCheck, CreditCard, Smartphone, Loader2, Zap, Building2 } from 'lucide-react';
 import Stepper from '../../../components/checkout/Stepper';
@@ -150,8 +150,8 @@ const paymentMethods = [
   { id: 'card',    title: 'Card',    description: 'Visa, Mastercard, Rupay',  logos: [<VisaLogo key="v"/>, <MastercardLogo key="mc"/>, <RupayLogo key="rp"/>] },
 ];
 
-/* ─── Main Page ─── */
-export default function PaymentMethodPage() {
+// --- Main Payment Page ---
+function PaymentContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { user } = useAuth();
@@ -334,8 +334,15 @@ export default function PaymentMethodPage() {
             : `Pay ₹${totalAmount}`
           }
         </button>
-
       </div>
     </div>
+  );
+}
+
+export default function PaymentPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <PaymentContent />
+    </Suspense>
   );
 }
