@@ -29,12 +29,21 @@ export default function GeneratedResult({ imageUrl, prompt, isAuthenticated = tr
     <div className="flex flex-col gap-6 w-full animate-in fade-in slide-in-from-bottom-4 duration-700">
       
       {/* Main Image Container */}
-      <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden group shadow-lg border border-[#E5E7EB]">
+      <div 
+        className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden group shadow-lg border border-[#E5E7EB]"
+        onContextMenu={(e) => {
+          if (!isAuthenticated) {
+            e.preventDefault();
+            onRequireLogin?.();
+          }
+        }}
+      >
         <Image 
           src={imageUrl}
           fill
           alt="Generated AI Image"
-          className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+          className={`object-cover transition-transform duration-700 group-hover:scale-[1.02] ${!isAuthenticated ? 'select-none pointer-events-none' : ''}`}
+          draggable={isAuthenticated}
           sizes="(max-width: 1024px) 100vw, 60vw"
           priority
         />

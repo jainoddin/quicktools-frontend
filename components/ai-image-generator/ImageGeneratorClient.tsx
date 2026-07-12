@@ -42,10 +42,11 @@ export default function ImageGeneratorClient() {
         setProgress(prev => {
           if (prev >= 100) {
             clearInterval(interval);
-            // Simulate generation completion
-            setGeneratedImage("https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?w=1200&q=80");
+            // Generate a real image using Pollinations AI (free, no API key required)
+            const encodedPrompt = encodeURIComponent(prompt.trim() || 'A futuristic city');
+            setGeneratedImage(`https://image.pollinations.ai/prompt/${encodedPrompt}?width=1024&height=1024&nologo=true&seed=${Math.floor(Math.random() * 1000)}`);
             setIsGenerating(false);
-
+            
             if (!isAuthenticated) {
               const newCount = freeGenCount + 1;
               setFreeGenCount(newCount);
@@ -54,14 +55,14 @@ export default function ImageGeneratorClient() {
 
             return 100;
           }
-          return prev + 1;
+          return prev + 2; // Speed up the progress slightly
         });
-      }, 50); // Fast forward for testing (5 seconds total)
+      }, 50); // 50ms * 50 = 2.5 seconds total
     } else {
       setProgress(0);
     }
     return () => clearInterval(interval);
-  }, [isGenerating, freeGenCount, isAuthenticated]);
+  }, [isGenerating, freeGenCount, isAuthenticated, prompt]);
 
   const handleGenerate = () => {
     if (!isAuthenticated && freeGenCount >= 2) {
