@@ -104,8 +104,8 @@ export default function ImageGeneratorClient() {
       return;
     }
     
-    // Auth required — backend now enforces this, but block early on frontend too
-    if (!isAuthenticated) {
+    // Guest users: allow 1 free generation, then require login
+    if (!isAuthenticated && freeGenCount >= 1) {
       setShowLoginPopup(true);
       return;
     }
@@ -163,6 +163,7 @@ export default function ImageGeneratorClient() {
       } else {
         // Handle specific error types from backend
         if (data.errorType === 'AUTH_REQUIRED') {
+          // Shouldn't happen for guest 1-gen, but handle gracefully
           setShowLoginPopup(true);
         } else if (data.errorType === 'INSUFFICIENT_CREDITS') {
           setPopupType('credits');
