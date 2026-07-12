@@ -52,7 +52,7 @@ export default function HistoryView({ onClose, isAuthenticated = false, onRequir
       .then(data => {
         if (data.success) {
           setBackendFavorites(data.data);
-          const favIds = new Set(data.data.map((img: any) => img.id));
+          const favIds = new Set<number>(data.data.map((img: any) => img.id as number));
           setFavorites(favIds);
         }
       })
