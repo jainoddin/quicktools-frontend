@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import { 
   Star, ArrowRight, ChevronDown, Sparkles
@@ -16,7 +16,7 @@ function DynamicIcon({ name, className }: { name: string; className?: string }) 
   return <Icon className={className} />;
 }
 
-export default function AllToolsPage() {
+function AllToolsContent() {
   const { user, updateUser } = useAuth();
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get('q') || '';
@@ -93,7 +93,7 @@ export default function AllToolsPage() {
   };
 
   return (
-    <DashboardLayout>
+    <>
       <div className="mb-8">
         <h1 className="text-3xl md:text-4xl font-black text-[#111827] mb-2 tracking-tight">
           {searchQuery ? `Search Results for "${searchQuery}"` : categoryQuery ? `${categoryQuery} Tools` : 'All AI Tools'}
@@ -189,6 +189,20 @@ export default function AllToolsPage() {
         </div>
       )}
       </div>
+    </>
+  );
+}
+
+export default function AllToolsPage() {
+  return (
+    <DashboardLayout>
+      <Suspense fallback={
+        <div className="py-12 flex justify-center">
+          <div className="w-8 h-8 border-4 border-[#6D5EF8]/30 border-t-[#6D5EF8] rounded-full animate-spin"></div>
+        </div>
+      }>
+        <AllToolsContent />
+      </Suspense>
     </DashboardLayout>
   );
 }

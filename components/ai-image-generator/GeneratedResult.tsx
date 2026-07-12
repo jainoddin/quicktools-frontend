@@ -9,11 +9,21 @@ import ShareModal from './ShareModal';
 interface GeneratedResultProps {
   imageUrl: string;
   prompt: string;
+  isAuthenticated?: boolean;
+  onRequireLogin?: () => void;
 }
 
-export default function GeneratedResult({ imageUrl, prompt }: GeneratedResultProps) {
+export default function GeneratedResult({ imageUrl, prompt, isAuthenticated = true, onRequireLogin }: GeneratedResultProps) {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+
+  const handleAction = (action: () => void) => {
+    if (!isAuthenticated && onRequireLogin) {
+      onRequireLogin();
+    } else {
+      action();
+    }
+  };
 
   return (
     <div className="flex flex-col gap-6 w-full animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -51,12 +61,15 @@ export default function GeneratedResult({ imageUrl, prompt }: GeneratedResultPro
       {/* Action Bar */}
       <div className="flex flex-wrap items-center gap-3">
         <button 
-          onClick={() => setIsDownloadModalOpen(true)}
+          onClick={() => handleAction(() => setIsDownloadModalOpen(true))}
           className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-sm transition-colors"
         >
           <Download className="w-4 h-4" /> Download
         </button>
-        <button className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-white border border-[#E5E7EB] hover:bg-gray-50 text-[#111827] px-5 py-2.5 rounded-xl text-sm font-semibold shadow-sm transition-colors">
+        <button 
+          onClick={() => handleAction(() => setIsDownloadModalOpen(true))}
+          className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-white border border-[#E5E7EB] hover:bg-gray-50 text-[#111827] px-5 py-2.5 rounded-xl text-sm font-semibold shadow-sm transition-colors"
+        >
           <Crown className="w-4 h-4 text-[#F59E0B] fill-[#F59E0B]" /> Download HD
         </button>
         
@@ -69,13 +82,22 @@ export default function GeneratedResult({ imageUrl, prompt }: GeneratedResultPro
         >
           <Share2 className="w-4 h-4 text-[#6B7280]" /> Share
         </button>
-        <button className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-white border border-[#E5E7EB] hover:bg-gray-50 text-[#111827] px-4 py-2.5 rounded-xl text-sm font-semibold shadow-sm transition-colors">
+        <button 
+          onClick={() => handleAction(() => {})}
+          className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-white border border-[#E5E7EB] hover:bg-gray-50 text-[#111827] px-4 py-2.5 rounded-xl text-sm font-semibold shadow-sm transition-colors"
+        >
           <RefreshCw className="w-4 h-4 text-[#6B7280]" /> Regenerate
         </button>
-        <button className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-white border border-[#E5E7EB] hover:bg-gray-50 text-[#111827] px-4 py-2.5 rounded-xl text-sm font-semibold shadow-sm transition-colors">
+        <button 
+          onClick={() => handleAction(() => {})}
+          className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-white border border-[#E5E7EB] hover:bg-gray-50 text-[#111827] px-4 py-2.5 rounded-xl text-sm font-semibold shadow-sm transition-colors"
+        >
           <PenTool className="w-4 h-4 text-[#6B7280]" /> Edit Prompt
         </button>
-        <button className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-white border border-[#E5E7EB] hover:bg-gray-50 text-[#111827] px-4 py-2.5 rounded-xl text-sm font-semibold shadow-sm transition-colors">
+        <button 
+          onClick={() => handleAction(() => {})}
+          className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-white border border-[#E5E7EB] hover:bg-gray-50 text-[#111827] px-4 py-2.5 rounded-xl text-sm font-semibold shadow-sm transition-colors"
+        >
           <Sparkles className="w-4 h-4 text-[#6D5EF8]" /> Create Similar
         </button>
       </div>
@@ -179,7 +201,13 @@ export default function GeneratedResult({ imageUrl, prompt }: GeneratedResultPro
       </div>
 
       <DownloadModal isOpen={isDownloadModalOpen} onClose={() => setIsDownloadModalOpen(false)} />
-      <ShareModal isOpen={isShareModalOpen} onClose={() => setIsShareModalOpen(false)} imageUrl={imageUrl} />
+      <ShareModal 
+        isOpen={isShareModalOpen} 
+        onClose={() => setIsShareModalOpen(false)} 
+        imageUrl={imageUrl} 
+        isAuthenticated={isAuthenticated}
+        onRequireLogin={onRequireLogin}
+      />
     </div>
   );
 }

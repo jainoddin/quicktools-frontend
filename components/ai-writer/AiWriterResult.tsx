@@ -4,10 +4,26 @@ import { Copy, Download, Edit2, RefreshCw, Maximize2, Minimize2, Trash2, CheckCi
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-export default function AiWriterResult({ content = '' }: { content?: string }) {
+export default function AiWriterResult({ 
+  content = '', 
+  isAuthenticated = true,
+  onRequireLogin 
+}: { 
+  content?: string, 
+  isAuthenticated?: boolean, 
+  onRequireLogin?: () => void 
+}) {
   const [showDownloadModal, setShowDownloadModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   const [downloadFormat, setDownloadFormat] = useState('pdf');
+
+  const handleAction = (action: () => void) => {
+    if (!isAuthenticated && onRequireLogin) {
+      onRequireLogin();
+    } else {
+      action();
+    }
+  };
 
   const socialLinks = [
     { id: 'copy', label: 'Copy...', color: 'text-blue-500', bg: 'bg-blue-50', active: true, icon: <LinkIcon className="w-5 h-5" /> },
@@ -53,11 +69,14 @@ export default function AiWriterResult({ content = '' }: { content?: string }) {
 
       {/* Action Buttons Row */}
       <div className="flex flex-wrap items-center gap-3 mb-8">
-        <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#E5E7EB] bg-white text-sm font-semibold text-[#4B5563] hover:bg-gray-50 hover:text-[#111827] transition-all shadow-sm">
+        <button 
+          onClick={() => handleAction(() => {})}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#E5E7EB] bg-white text-sm font-semibold text-[#4B5563] hover:bg-gray-50 hover:text-[#111827] transition-all shadow-sm"
+        >
           <Copy className="w-4 h-4" /> Copy
         </button>
         <button 
-          onClick={() => setShowDownloadModal(true)}
+          onClick={() => handleAction(() => setShowDownloadModal(true))}
           className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#E5E7EB] bg-white text-sm font-semibold text-[#4B5563] hover:bg-gray-50 hover:text-[#111827] transition-all shadow-sm"
         >
           <Download className="w-4 h-4" /> Download
@@ -68,21 +87,36 @@ export default function AiWriterResult({ content = '' }: { content?: string }) {
         >
           <Share2 className="w-4 h-4" /> Share
         </button>
-        <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#E5E7EB] bg-white text-sm font-semibold text-[#4B5563] hover:bg-gray-50 hover:text-[#111827] transition-all shadow-sm">
+        <button 
+          onClick={() => handleAction(() => {})}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#E5E7EB] bg-white text-sm font-semibold text-[#4B5563] hover:bg-gray-50 hover:text-[#111827] transition-all shadow-sm"
+        >
           <Edit2 className="w-4 h-4" /> Edit
         </button>
-        <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#E5E7EB] bg-white text-sm font-semibold text-[#4B5563] hover:bg-gray-50 hover:text-[#111827] transition-all shadow-sm">
+        <button 
+          onClick={() => handleAction(() => {})}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#E5E7EB] bg-white text-sm font-semibold text-[#4B5563] hover:bg-gray-50 hover:text-[#111827] transition-all shadow-sm"
+        >
           <RefreshCw className="w-4 h-4" /> Regenerate
         </button>
-        <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#E5E7EB] bg-white text-sm font-semibold text-[#4B5563] hover:bg-gray-50 hover:text-[#111827] transition-all shadow-sm">
+        <button 
+          onClick={() => handleAction(() => {})}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#E5E7EB] bg-white text-sm font-semibold text-[#4B5563] hover:bg-gray-50 hover:text-[#111827] transition-all shadow-sm"
+        >
           <Maximize2 className="w-4 h-4" /> Make Longer
         </button>
-        <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#E5E7EB] bg-white text-sm font-semibold text-[#4B5563] hover:bg-gray-50 hover:text-[#111827] transition-all shadow-sm">
+        <button 
+          onClick={() => handleAction(() => {})}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#E5E7EB] bg-white text-sm font-semibold text-[#4B5563] hover:bg-gray-50 hover:text-[#111827] transition-all shadow-sm"
+        >
           <Minimize2 className="w-4 h-4" /> Make Shorter
         </button>
         
         {/* Delete Button - pushed to right on desktop */}
-        <button className="md:ml-auto flex items-center gap-2 px-4 py-2.5 rounded-xl border border-red-100 bg-red-50 text-sm font-semibold text-red-600 hover:bg-red-100 transition-all shadow-sm">
+        <button 
+          onClick={() => handleAction(() => {})}
+          className="md:ml-auto flex items-center gap-2 px-4 py-2.5 rounded-xl border border-red-100 bg-red-50 text-sm font-semibold text-red-600 hover:bg-red-100 transition-all shadow-sm"
+        >
           <Trash2 className="w-4 h-4" /> Delete
         </button>
       </div>

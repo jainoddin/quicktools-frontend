@@ -5,9 +5,17 @@ interface ShareModalProps {
   isOpen: boolean;
   onClose: () => void;
   imageUrl?: string;
+  isAuthenticated?: boolean;
+  onRequireLogin?: () => void;
 }
 
-export default function ShareModal({ isOpen, onClose, imageUrl = "https://quicktools.ai/image/abc123" }: ShareModalProps) {
+export default function ShareModal({ 
+  isOpen, 
+  onClose, 
+  imageUrl = "https://quicktools.ai/image/abc123",
+  isAuthenticated = true,
+  onRequireLogin
+}: ShareModalProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -29,6 +37,16 @@ export default function ShareModal({ isOpen, onClose, imageUrl = "https://quickt
     { id: 'whatsapp', label: 'WhatsApp', color: 'text-[#25D366]', bg: 'bg-[#25D366]/10', active: false, icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.013 2.015c-5.467 0-9.911 4.444-9.911 9.911 0 1.75.458 3.447 1.323 4.954L2.01 21.99l5.244-1.375a9.866 9.866 0 004.759 1.218c5.464 0 9.908-4.444 9.908-9.911s-4.444-9.907-9.908-9.907zm0 16.657c-1.468 0-2.903-.393-4.15-1.134l-.297-.176-3.09.81 .824-3.012-.193-.307a8.218 8.218 0 01-1.258-4.382c0-4.553 3.705-8.258 8.258-8.258 4.55 0 8.253 3.705 8.253 8.258s-3.703 8.258-8.253 8.258z"/></svg> },
   ];
 
+  const handleAction = (action: () => void) => {
+    if (!isAuthenticated && onRequireLogin) {
+      onRequireLogin();
+    } else {
+      action();
+    }
+  };
+
+  const displayUrl = isAuthenticated ? imageUrl : "https://quicktools.ai/image/xxxxxx";
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
       <div className="absolute inset-0 bg-[#111827]/40 backdrop-blur-sm" onClick={onClose}></div>
@@ -45,13 +63,28 @@ export default function ShareModal({ isOpen, onClose, imageUrl = "https://quickt
         <p className="text-sm text-[#6B7280] mb-4 sm:mb-6 shrink-0">Share this image with others</p>
         
         {/* Scrollable Content */}
-        <div className="overflow-y-auto flex-grow pr-1">
+        <div className="overflow-y-auto flex-grow pr-1 relative">
           
+          {/* Unauthenticated Overlay */}
+          {!isAuthenticated && (
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white/60 backdrop-blur-[2px] rounded-xl">
+              <div className="bg-white border border-[#E5E7EB] p-4 rounded-2xl shadow-xl text-center max-w-[80%]">
+                <Lock className="w-6 h-6 text-[#6D5EF8] mx-auto mb-2" />
+                <h4 className="text-sm font-bold text-[#111827] mb-1">Login Required</h4>
+                <p className="text-xs text-[#6B7280] mb-3">Please log in to share your generated images.</p>
+                <button onClick={onRequireLogin} className="w-full bg-[#6D5EF8] text-white text-xs font-bold py-2 rounded-lg">
+                  Login Now
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Social Grid */}
-          <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-3 mb-6">
+          <div className={`grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-3 mb-6 ${!isAuthenticated ? 'opacity-30 pointer-events-none' : ''}`}>
             {socialLinks.map((social) => (
               <div 
                 key={social.id}
+                onClick={() => handleAction(() => {})}
                 className={`flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-2xl border-2 cursor-pointer transition-all ${social.active ? 'border-[#6D5EF8] bg-[#EEF2FF]' : 'border-[#E5E7EB] hover:border-gray-300 hover:bg-gray-50'}`}
               >
                 <div className={`w-10 h-10 ${social.bg} rounded-full flex items-center justify-center ${social.color} mb-2 shadow-sm shrink-0`}>
@@ -63,16 +96,19 @@ export default function ShareModal({ isOpen, onClose, imageUrl = "https://quickt
           </div>
 
           {/* Embed Code */}
-          <div className="mb-6">
+          <div className={`mb-6 ${!isAuthenticated ? 'opacity-30 pointer-events-none' : ''}`}>
             <h3 className="text-sm font-bold text-[#111827] mb-2">Embed Code</h3>
             <div className="flex bg-white rounded-xl border border-[#E5E7EB] p-1.5 focus-within:ring-2 focus-within:ring-[#6D5EF8] transition-all">
               <input 
                 type="text" 
                 readOnly 
-                value={`<img src="${imageUrl}" alt="AI Image" />`}
+                value={`<img src="${displayUrl}" alt="AI Image" />`}
                 className="flex-grow bg-transparent text-sm text-[#6B7280] px-3 outline-none min-w-0"
               />
-              <button className="bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors shadow-sm shrink-0">
+              <button 
+                onClick={() => handleAction(() => {})}
+                className="bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors shadow-sm shrink-0"
+              >
                 Copy
               </button>
             </div>

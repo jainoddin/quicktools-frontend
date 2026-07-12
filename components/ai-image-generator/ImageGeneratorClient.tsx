@@ -10,14 +10,27 @@ import GenerationProgress from './GenerationProgress';
 import GeneratedResult from './GeneratedResult';
 import HistoryView from './HistoryView';
 import ErrorModal from './ErrorModal';
+import { useAuth } from '@/contexts/AuthContext';
+import LoginPopup from '@/components/auth/LoginPopup';
 
 export default function ImageGeneratorClient() {
+  const { isAuthenticated } = useAuth();
   const [activeView, setActiveView] = useState<'generate' | 'history'>('generate');
   const [isGenerating, setIsGenerating] = useState(false);
   const [progress, setProgress] = useState(0);
   const [prompt, setPrompt] = useState('');
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
   const [hasError, setHasError] = useState(false);
+  const [freeGenCount, setFreeGenCount] = useState(0);
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
+
+  // Load free gen count from local storage
+  useEffect(() => {
+    if (!isAuthenticated) {
+      const count = parseInt(localStorage.getItem('freeImageGenCount') || '0', 10);
+      setFreeGenCount(count);
+    }
+  }, [isAuthenticated]);
 
   // Simulate generation progress
   useEffect(() => {
@@ -32,6 +45,13 @@ export default function ImageGeneratorClient() {
             // Simulate generation completion
             setGeneratedImage("https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?w=1200&q=80");
             setIsGenerating(false);
+            
+            if (!isAuthenticated) {
+              const newCount = freeGenCount + 1;
+              setFreeGenCount(newCount);
+              localStorage.setItem('freeImageGenCount', newCount.toString());
+            }
+
             return 100;
           }
           return prev + 1;
@@ -41,9 +61,14 @@ export default function ImageGeneratorClient() {
       setProgress(0);
     }
     return () => clearInterval(interval);
-  }, [isGenerating]);
+  }, [isGenerating, freeGenCount, isAuthenticated]);
 
   const handleGenerate = () => {
+    if (!isAuthenticated && freeGenCount >= 2) {
+      setShowLoginPopup(true);
+      return;
+    }
+
     if (prompt.trim() === '') {
       setPrompt('A futuristic city at sunset with flying cars, neon lights, and tall skyscrapers');
     }
@@ -65,6 +90,7 @@ export default function ImageGeneratorClient() {
 
   return (
     <div className="flex flex-col lg:flex-row gap-8">
+      <LoginPopup isOpen={showLoginPopup} onClose={() => setShowLoginPopup(false)} />
       {/* Left Sidebar Controls */}
       <aside className="w-full lg:w-[320px] shrink-0 space-y-6">
         
@@ -246,7 +272,12 @@ export default function ImageGeneratorClient() {
         {isGenerating ? (
           <GenerationProgress progress={progress} onCancel={handleCancel} />
         ) : generatedImage ? (
-          <GeneratedResult imageUrl={generatedImage} prompt={prompt} />
+          <GeneratedResult 
+            imageUrl={generatedImage} 
+            prompt={prompt} 
+            isAuthenticated={isAuthenticated}
+            onRequireLogin={() => setShowLoginPopup(true)}
+          />
         ) : (
           <>
             {/* Result Box (Empty State) */}

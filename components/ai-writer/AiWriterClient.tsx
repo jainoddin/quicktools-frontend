@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Lightbulb, Clipboard, FileText, Smile, Globe, Sparkles, Info,
   ShoppingBag, MessageSquare, Mail, ChevronDown, Type,
@@ -9,8 +9,11 @@ import {
 import AiWriterResult from './AiWriterResult';
 import AiWriterHistory from './AiWriterHistory';
 import AiWriterProgress from './AiWriterProgress';
+import { useAuth } from '@/contexts/AuthContext';
+import LoginPopup from '@/components/auth/LoginPopup';
 
 export default function AiWriterClient() {
+  const { isAuthenticated } = useAuth();
   const [prompt, setPrompt] = useState('');
   const [contentType, setContentType] = useState('Blog Post');
   const [tone, setTone] = useState('Friendly');
@@ -23,8 +26,23 @@ export default function AiWriterClient() {
   const [progress, setProgress] = useState(0);
 
   const [generatedText, setGeneratedText] = useState('');
+  
+  const [freeGenCount, setFreeGenCount] = useState(0);
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      const count = parseInt(localStorage.getItem('freeWriterCount') || '0', 10);
+      setFreeGenCount(count);
+    }
+  }, [isAuthenticated]);
 
   const handleGenerate = async () => {
+    if (!isAuthenticated && freeGenCount >= 2) {
+      setShowLoginPopup(true);
+      return;
+    }
+
     if (!prompt.trim()) return;
     
     setIsProcessing(true);
@@ -62,6 +80,11 @@ export default function AiWriterClient() {
       if (data.success) {
         setGeneratedText(data.data);
         setHasResult(true);
+        if (!isAuthenticated) {
+          const newCount = freeGenCount + 1;
+          setFreeGenCount(newCount);
+          localStorage.setItem('freeWriterCount', newCount.toString());
+        }
       } else {
         alert('Generation failed: ' + data.message);
       }
@@ -81,6 +104,7 @@ export default function AiWriterClient() {
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 h-full">
+      <LoginPopup isOpen={showLoginPopup} onClose={() => setShowLoginPopup(false)} />
       
       {/* Left Sidebar Controls */}
       <aside className="w-full lg:w-[340px] shrink-0 space-y-6">
@@ -265,7 +289,11 @@ export default function AiWriterClient() {
             {isProcessing ? (
               <AiWriterProgress progress={progress} onCancel={handleCancel} />
             ) : hasResult ? (
-              <AiWriterResult content={generatedText} />
+              <AiWriterResult 
+                content={generatedText}
+                isAuthenticated={isAuthenticated}
+                onRequireLogin={() => setShowLoginPopup(true)} 
+              />
             ) : (
           <div className="bg-white rounded-3xl border border-[#E5E7EB] p-8 lg:p-12 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden h-full min-h-[600px]">
           

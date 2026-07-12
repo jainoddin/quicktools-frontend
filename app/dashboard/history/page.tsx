@@ -1,64 +1,34 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
-import { 
-  MessageSquare, Image as ImageIcon, FileText, LayoutGrid, 
-  PenTool, CheckCircle2, Search, Filter
-} from 'lucide-react';
-import Link from 'next/link';
+import { Search, Filter } from 'lucide-react';
+import { IconMap } from '../../../components/tools/ToolsClient';
+import { getEndpoint } from '../../../lib/api';
 
-const historyData = [
-  { 
-    tool: { name: 'AI Image Generator', icon: ImageIcon, color: 'bg-[#6D5EF8] text-white' },
-    input: 'Futuristic city with sunset',
-    resultType: 'images',
-    result: ['https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/8272f569-4d19-493a-a322-db5d2b122697.png', 'https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/8272f569-4d19-493a-a322-db5d2b122697.png', 'https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/8272f569-4d19-493a-a322-db5d2b122697.png'],
-    date: 'May 12, 2024',
-    time: '10:30 AM'
-  },
-  { 
-    tool: { name: 'AI Chat', icon: MessageSquare, color: 'bg-[#10B981] text-white' },
-    input: 'Explain quantum computing',
-    resultType: 'text',
-    result: 'Text response',
-    date: 'May 12, 2024',
-    time: '10:16 AM'
-  },
-  { 
-    tool: { name: 'PDF to Word', icon: FileText, color: 'bg-[#EF4444] text-white' },
-    input: 'contract.pdf',
-    resultType: 'link',
-    result: 'contract.docx',
-    date: 'May 12, 2024',
-    time: '09:45 AM'
-  },
-  { 
-    tool: { name: 'Background Remover', icon: LayoutGrid, color: 'bg-[#10B981] text-white' },
-    input: 'product-image.jpg',
-    resultType: 'images',
-    result: ['https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/8272f569-4d19-493a-a322-db5d2b122697.png'],
-    date: 'May 11, 2024',
-    time: '04:20 PM'
-  },
-  { 
-    tool: { name: 'AI Writer', icon: PenTool, color: 'bg-[#3B82F6] text-white' },
-    input: 'Write a blog about AI',
-    resultType: 'text',
-    result: 'Text response',
-    date: 'May 11, 2024',
-    time: '02:10 PM'
-  },
-  { 
-    tool: { name: 'Grammar Checker', icon: CheckCircle2, color: 'bg-[#10B981] text-white' },
-    input: 'My essay about AI...',
-    resultType: 'text',
-    result: 'Corrected text',
-    date: 'May 11, 2024',
-    time: '11:30 AM'
-  },
-];
+function DynamicIcon({ name }: { name: string }) {
+  // Try to find the tool by name in allTools, but we can't easily import it here if it's not exported.
+  // We'll just use a generic icon mapping based on common names for now, or just fallback.
+  // Actually, wait, IconMap expects keys like 'PenTool', 'ImageIcon', etc. 
+  // We can just use a generic LayoutGrid if not matched.
+  const Icon = IconMap['LayoutGrid'];
+  return <Icon className="w-4 h-4" />;
+}
 
 export default function HistoryPage() {
+  const [historyData, setHistoryData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(getEndpoint('/api/user/usage'), { credentials: 'include' })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          setHistoryData(data.data.history);
+        }
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
   return (
     <DashboardLayout>
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
@@ -93,42 +63,48 @@ export default function HistoryPage() {
             </tr>
           </thead>
           <tbody className="divide-y divide-[#E5E7EB]">
-            {historyData.map((item, i) => (
-              <tr key={i} className="hover:bg-[#F9FAFB] transition-colors cursor-pointer">
-                <td className="py-4 px-6">
-                  <div className="flex items-center gap-3">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${item.tool.color}`}>
-                      <item.tool.icon className="w-4 h-4" />
-                    </div>
-                    <span className="font-semibold text-sm text-[#111827]">{item.tool.name}</span>
-                  </div>
-                </td>
-                <td className="py-4 px-6">
-                  <span className="text-sm text-[#4B5563] truncate block max-w-[250px]">{item.input}</span>
-                </td>
-                <td className="py-4 px-6">
-                  {item.resultType === 'images' ? (
-                    <div className="flex items-center gap-1">
-                      {(item.result as string[]).map((img, idx) => (
-                        <div key={idx} className="w-8 h-8 rounded bg-gray-100 overflow-hidden shrink-0 border border-gray-200">
-                          <img src={img} alt="Result" className="w-full h-full object-cover" />
-                        </div>
-                      ))}
-                    </div>
-                  ) : item.resultType === 'link' ? (
-                    <span className="text-sm text-[#3B82F6] hover:underline cursor-pointer">{item.result as string}</span>
-                  ) : (
-                    <span className="text-sm text-[#6B7280]">{item.result as string}</span>
-                  )}
-                </td>
-                <td className="py-4 px-6">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-[#4B5563]">{item.date}</span>
-                    <span className="text-xs text-[#9CA3AF]">{item.time}</span>
-                  </div>
+            {loading ? (
+              <tr>
+                <td colSpan={4} className="py-12 text-center text-[#6B7280]">
+                  Loading history...
                 </td>
               </tr>
-            ))}
+            ) : historyData.length === 0 ? (
+              <tr>
+                <td colSpan={4} className="py-12 text-center text-[#6B7280]">
+                  No history found. Start using tools to see your activity here.
+                </td>
+              </tr>
+            ) : (
+              historyData.map((item: any, i) => (
+                <tr key={i} className="hover:bg-[#F9FAFB] transition-colors cursor-pointer">
+                  <td className="py-4 px-6">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-[#EEF2FF] text-[#6D5EF8]`}>
+                        <DynamicIcon name={item.toolName} />
+                      </div>
+                      <span className="font-semibold text-sm text-[#111827]">{item.toolName}</span>
+                    </div>
+                  </td>
+                  <td className="py-4 px-6">
+                    <span className="text-sm text-[#4B5563] truncate block max-w-[250px]">{item.prompt}</span>
+                  </td>
+                  <td className="py-4 px-6">
+                    <span className="text-sm text-[#6B7280]">{item.result || 'Generated content'}</span>
+                  </td>
+                  <td className="py-4 px-6">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm text-[#4B5563]">
+                        {new Date(item.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </span>
+                      <span className="text-xs text-[#9CA3AF]">
+                        {new Date(item.createdAt).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

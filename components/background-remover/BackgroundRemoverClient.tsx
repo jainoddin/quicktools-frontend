@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { 
   Upload, Image as ImageIcon, CheckCircle2, 
@@ -9,8 +9,11 @@ import {
 import BackgroundRemoverResult from './BackgroundRemoverResult';
 import HistoryView from './HistoryView';
 import BackgroundRemovalProgress from './BackgroundRemovalProgress';
+import { useAuth } from '@/contexts/AuthContext';
+import LoginPopup from '@/components/auth/LoginPopup';
 
 export default function BackgroundRemoverClient() {
+  const { isAuthenticated } = useAuth();
   const [activeView, setActiveView] = useState<'generate' | 'history'>('generate');
   const [bgOption, setBgOption] = useState<'transparent' | 'white' | 'custom'>('transparent');
   const [quality, setQuality] = useState<'standard' | 'hd'>('standard');
@@ -19,12 +22,27 @@ export default function BackgroundRemoverClient() {
   const [hasResult, setHasResult] = useState(false);
   const [progress, setProgress] = useState(0);
 
+  const [freeGenCount, setFreeGenCount] = useState(0);
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      const count = parseInt(localStorage.getItem('freeBgRemoverCount') || '0', 10);
+      setFreeGenCount(count);
+    }
+  }, [isAuthenticated]);
+
   const handleMockUpload = () => {
     const mockFile = new File([""], "dog-image.jpg", { type: "image/jpeg" });
     setImageFile(mockFile);
   };
 
   const handleRemoveBackground = () => {
+    if (!isAuthenticated && freeGenCount >= 2) {
+      setShowLoginPopup(true);
+      return;
+    }
+
     setIsProcessing(true);
     setProgress(0);
     
@@ -43,6 +61,11 @@ export default function BackgroundRemoverClient() {
       clearInterval(interval);
       setIsProcessing(false);
       setHasResult(true);
+      if (!isAuthenticated) {
+        const newCount = freeGenCount + 1;
+        setFreeGenCount(newCount);
+        localStorage.setItem('freeBgRemoverCount', newCount.toString());
+      }
     }, 3000);
   };
 
@@ -53,6 +76,7 @@ export default function BackgroundRemoverClient() {
 
   return (
     <div className="flex flex-col lg:flex-row gap-8">
+      <LoginPopup isOpen={showLoginPopup} onClose={() => setShowLoginPopup(false)} />
       {/* Left Sidebar Controls */}
       <aside className="w-full lg:w-[320px] shrink-0 space-y-6">
         
@@ -246,7 +270,10 @@ export default function BackgroundRemoverClient() {
         {isProcessing ? (
           <BackgroundRemovalProgress progress={progress} onCancel={handleCancel} />
         ) : hasResult ? (
-          <BackgroundRemoverResult />
+          <BackgroundRemoverResult 
+            isAuthenticated={isAuthenticated}
+            onRequireLogin={() => setShowLoginPopup(true)}
+          />
         ) : (
           <div className="flex-grow min-h-[400px] lg:min-h-[500px] bg-white rounded-2xl border border-[#E5E7EB] flex flex-col items-center justify-center p-8 text-center shadow-sm relative overflow-hidden group">
             
