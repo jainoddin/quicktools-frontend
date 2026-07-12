@@ -12,15 +12,10 @@ import { getEndpoint } from '../../lib/api';
 
 const popularTools = [
   { name: 'AI Image Generator', icon: ImageIcon, color: 'bg-[#6D5EF8] text-white', lightColor: 'bg-[#F5F3FF] text-[#6D5EF8]', slug: '/tools/ai-image-generator' },
+  { name: 'AI Chat Assistant', icon: MessageSquare, color: 'bg-[#8B5CF6] text-white', lightColor: 'bg-[#F5F3FF] text-[#8B5CF6]', slug: '/tools/ai-chat-assistant' },
   { name: 'Background Remover', icon: LayoutGrid, color: 'bg-[#10B981] text-white', lightColor: 'bg-[#ECFDF5] text-[#10B981]', slug: '/tools/background-remover' },
-  { name: 'Image Upscaler', icon: ImageIcon, color: 'bg-[#3B82F6] text-white', lightColor: 'bg-[#EFF6FF] text-[#3B82F6]', slug: '/tools/ai-image-generator' },
-  { name: 'PDF Converter', icon: FileText, color: 'bg-[#EF4444] text-white', lightColor: 'bg-[#FEF2F2] text-[#EF4444]', slug: '/tools/ai-writer' },
-  { name: 'AI Chat Assistant', icon: MessageSquare, color: 'bg-[#8B5CF6] text-white', lightColor: 'bg-[#F5F3FF] text-[#8B5CF6]', slug: '/tools/ai-code-generator' },
-  { name: 'Text to Speech', icon: Mic, color: 'bg-[#F59E0B] text-white', lightColor: 'bg-[#FFFBEB] text-[#F59E0B]', slug: '/tools/ai-video-generator' },
-  { name: 'AI Writer', icon: PenTool, color: 'bg-[#3B82F6] text-white', lightColor: 'bg-[#EFF6FF] text-[#3B82F6]', slug: '/tools/ai-writer' },
-  { name: 'Resume Builder', icon: LayoutTemplate, color: 'bg-[#10B981] text-white', lightColor: 'bg-[#ECFDF5] text-[#10B981]', slug: '/tools/ai-writer' },
-  { name: 'QR Code Generator', icon: QrCode, color: 'bg-[#8B5CF6] text-white', lightColor: 'bg-[#F5F3FF] text-[#8B5CF6]', slug: '/tools/ai-code-generator' },
-  { name: 'YouTube Summary', icon: PlaySquare, color: 'bg-[#EF4444] text-white', lightColor: 'bg-[#FEF2F2] text-[#EF4444]', slug: '/tools/ai-video-generator' },
+  { name: 'PDF Converter', icon: FileText, color: 'bg-[#EF4444] text-white', lightColor: 'bg-[#FEF2F2] text-[#EF4444]', slug: '/tools/pdf-converter' },
+  { name: 'AI Writer', icon: PenTool, color: 'bg-[#3B82F6] text-white', lightColor: 'bg-[#EFF6FF] text-[#3B82F6]', slug: '/tools/ai-writer' }
 ];
 
 const recentTools = [
@@ -36,6 +31,39 @@ import { useContext } from 'react';
 export default function DashboardPage() {
   const { user } = useAuth();
   const firstName = user?.name?.split(' ')[0] || 'Guest';
+  const plan = (user?.plan || 'free').toLowerCase();
+  const isPro = plan === 'pro' || plan === 'premium';
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const [timeframe, setTimeframe] = useState('month');
+  const [usageData, setUsageData] = useState<any>(null);
+  const [isLoadingUsage, setIsLoadingUsage] = useState(true);
+
+  useEffect(() => {
+    const fetchUsage = async () => {
+      try {
+        setIsLoadingUsage(true);
+        const res = await fetch(getEndpoint(`/api/user/usage?timeframe=${timeframe}`), {
+          credentials: 'include'
+        });
+        const json = await res.json();
+        if (json.success) {
+          setUsageData(json.data);
+        }
+      } catch (err) {
+        console.error('Failed to fetch usage', err);
+      } finally {
+        setIsLoadingUsage(false);
+      }
+    };
+    if (user) {
+      fetchUsage();
+    }
+  }, [timeframe, user]);
+
+  const filteredTools = popularTools.filter(tool => 
+    tool.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <DashboardLayout>
@@ -55,7 +83,9 @@ export default function DashboardPage() {
                   <Search className="absolute left-4 w-5 h-5 text-[#9CA3AF]" />
                   <input 
                     type="text" 
-                    placeholder="Search from 100+ AI tools..." 
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search from your AI tools..." 
                     className="w-full h-14 pl-12 pr-14 bg-white border border-white rounded-2xl shadow-sm outline-none focus:ring-4 focus:ring-[#6D5EF8]/20 transition-all text-[#111827]"
                   />
                   <button className="absolute right-2 w-10 h-10 bg-[#6D5EF8] hover:bg-[#5B4DF5] transition-colors rounded-xl flex items-center justify-center shadow-md">
@@ -154,7 +184,7 @@ export default function DashboardPage() {
                   </div>
                   
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                    {popularTools.map((tool, i) => (
+                    {filteredTools.map((tool, i) => (
                       <Link href={tool.slug} key={i} className="flex flex-col items-center justify-center p-3 rounded-2xl hover:bg-[#F9FAFB] transition-colors group cursor-pointer border border-transparent hover:border-[#E5E7EB]">
                         <div className={`w-14 h-14 ${tool.color} rounded-[18px] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform shadow-sm`}>
                           <tool.icon className="w-6 h-6" />
@@ -162,6 +192,11 @@ export default function DashboardPage() {
                         <span className="text-xs font-semibold text-[#374151] text-center px-1 leading-tight">{tool.name}</span>
                       </Link>
                     ))}
+                    {filteredTools.length === 0 && (
+                      <div className="col-span-full text-center text-sm text-[#6B7280] py-8">
+                        No tools found matching "{searchQuery}"
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -175,26 +210,36 @@ export default function DashboardPage() {
                   </div>
 
                   <div className="space-y-4">
-                    {recentTools.map((tool, i) => (
-                      <div key={i} className="flex items-center justify-between p-4 border border-[#E5E7EB] rounded-2xl hover:bg-[#F9FAFB] transition-colors cursor-pointer group">
-                        <div className="flex items-center gap-4">
-                          <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${tool.color}`}>
-                            <tool.icon className="w-5 h-5" />
+                    {isLoadingUsage ? (
+                      <div className="text-center text-sm text-[#6B7280] py-8 animate-pulse">Loading history...</div>
+                    ) : usageData?.history && usageData.history.length > 0 ? (
+                      usageData.history.slice(0, 3).map((item: any, i: number) => {
+                        const tool = popularTools.find(t => t.name === item.toolName) || popularTools[0];
+                        return (
+                          <div key={item._id} className="flex items-center justify-between p-4 border border-[#E5E7EB] rounded-2xl hover:bg-[#F9FAFB] transition-colors cursor-pointer group">
+                            <div className="flex items-center gap-4">
+                              <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${tool.color}`}>
+                                <tool.icon className="w-5 h-5" />
+                              </div>
+                              <div>
+                                <div className="font-bold text-sm text-[#111827]">{item.toolName}</div>
+                                <div className="text-xs text-[#6B7280] truncate max-w-[150px] sm:max-w-[200px]">{item.prompt}</div>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-4">
+                              <span className="text-xs text-[#9CA3AF] hidden sm:block">
+                                {new Date(item.createdAt).toLocaleDateString()}
+                              </span>
+                              <ChevronRight className="w-4 h-4 text-[#9CA3AF] group-hover:text-[#111827] transition-colors" />
+                            </div>
                           </div>
-                          <div>
-                            <div className="font-bold text-sm text-[#111827]">{tool.name}</div>
-                            <div className="text-xs text-[#6B7280]">{tool.desc}</div>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-4">
-                          <span className="text-xs text-[#9CA3AF] hidden sm:block">{tool.time}</span>
-                          <button className="text-[#D1D5DB] hover:text-[#F59E0B] transition-colors">
-                            <Star className="w-5 h-5" />
-                          </button>
-                          <ChevronRight className="w-4 h-4 text-[#9CA3AF] group-hover:text-[#111827] transition-colors" />
-                        </div>
+                        );
+                      })
+                    ) : (
+                      <div className="text-center text-sm text-[#6B7280] py-8">
+                        No recent tools used. Start creating!
                       </div>
-                    ))}
+                    )}
                   </div>
                   
                   <div className="mt-4 pt-4 border-t border-[#F3F4F6] text-center">
@@ -213,72 +258,103 @@ export default function DashboardPage() {
                 <div className="bg-white border border-[#E5E7EB] rounded-3xl p-6 shadow-sm">
                   <div className="flex items-center justify-between mb-6">
                     <h2 className="font-bold text-lg text-[#111827]">Usage Overview</h2>
-                    <button className="text-xs font-medium text-[#4B5563] border border-[#E5E7EB] px-2.5 py-1 rounded-md flex items-center gap-1 hover:bg-[#F9FAFB]">
-                      This month <ChevronDown className="w-3 h-3" />
-                    </button>
+                    <select 
+                      value={timeframe}
+                      onChange={(e) => setTimeframe(e.target.value)}
+                      className="text-xs font-medium text-[#4B5563] border border-[#E5E7EB] px-2.5 py-1 rounded-md bg-white hover:bg-[#F9FAFB] outline-none cursor-pointer"
+                    >
+                      <option value="today">Today</option>
+                      <option value="yesterday">Yesterday</option>
+                      <option value="week">This Week</option>
+                      <option value="month">This Month</option>
+                    </select>
                   </div>
                   
-                  <div className="flex items-center gap-6">
-                    {/* Circular Chart Placeholder */}
-                    <div className="relative w-28 h-28 shrink-0 flex items-center justify-center">
-                      <svg viewBox="0 0 36 36" className="w-full h-full transform -rotate-90">
-                        <path
-                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                          fill="none"
-                          stroke="#EEF2FF"
-                          strokeWidth="3.5"
-                        />
-                        <path
-                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                          fill="none"
-                          stroke="#6D5EF8"
-                          strokeWidth="3.5"
-                          strokeDasharray="62, 100"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                      <div className="absolute flex flex-col items-center justify-center text-center">
-                        <span className="text-2xl font-black text-[#111827]">62%</span>
-                        <span className="text-[8px] text-[#6B7280] uppercase tracking-wide">of 10,000 credits</span>
-                      </div>
+                  {isLoadingUsage ? (
+                    <div className="flex justify-center items-center py-10">
+                      <div className="w-6 h-6 border-2 border-[#6D5EF8] border-t-transparent rounded-full animate-spin"></div>
                     </div>
+                  ) : (
+                    <div className="flex items-center gap-6">
+                      <div className="relative w-28 h-28 shrink-0 flex items-center justify-center">
+                        <svg viewBox="0 0 36 36" className="w-full h-full transform -rotate-90">
+                          <path
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                            fill="none"
+                            stroke="#EEF2FF"
+                            strokeWidth="3.5"
+                          />
+                          <path
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                            fill="none"
+                            stroke="#6D5EF8"
+                            strokeWidth="3.5"
+                            strokeDasharray={`${usageData ? Math.min((usageData.creditsUsedThisPeriod / usageData.maxCredits) * 100, 100) : 0}, 100`}
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                        <div className="absolute flex flex-col items-center justify-center text-center">
+                          <span className="text-2xl font-black text-[#111827]">
+                            {usageData ? Math.round((usageData.creditsUsedThisPeriod / usageData.maxCredits) * 100) : 0}%
+                          </span>
+                          <span className="text-[8px] text-[#6B7280] uppercase tracking-wide">used</span>
+                        </div>
+                      </div>
 
-                    <div className="flex-1 space-y-4">
-                      <div className="flex items-center justify-between border-b border-[#F3F4F6] pb-2">
-                        <span className="text-xs text-[#6B7280]">Used</span>
-                        <span className="text-sm font-bold text-[#111827]">6,234</span>
-                      </div>
-                      <div className="flex items-center justify-between border-b border-[#F3F4F6] pb-2">
-                        <span className="text-xs text-[#6B7280]">Remaining</span>
-                        <span className="text-sm font-bold text-[#111827]">3,766</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-[#6B7280]">Resets on</span>
-                        <span className="text-xs font-semibold text-[#111827]">Jun 1, 2025</span>
+                      <div className="flex-1 space-y-4">
+                        <div className="flex items-center justify-between border-b border-[#F3F4F6] pb-2">
+                          <span className="text-xs text-[#6B7280]">Used</span>
+                          <span className="text-sm font-bold text-[#111827]">{usageData?.creditsUsedThisPeriod?.toLocaleString() || 0}</span>
+                        </div>
+                        <div className="flex items-center justify-between border-b border-[#F3F4F6] pb-2">
+                          <span className="text-xs text-[#6B7280]">Total</span>
+                          <span className="text-sm font-bold text-[#111827]">{usageData?.maxCredits?.toLocaleString() || 0}</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-[#6B7280]">Remaining</span>
+                          <span className="text-xs font-semibold text-[#10B981]">{usageData ? Math.max(0, usageData.maxCredits - usageData.creditsUsedThisPeriod).toLocaleString() : 0}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Current Plan */}
-                <div className="bg-white border border-[#E5E7EB] rounded-3xl p-6 shadow-sm">
+                <div className={`bg-white border rounded-3xl p-6 shadow-sm ${isPro ? 'border-[#F59E0B]/30' : 'border-[#E5E7EB]'}`}>
                   <div className="flex items-center justify-between mb-4">
                     <h2 className="font-bold text-lg text-[#111827]">Current Plan</h2>
-                    <span className="text-xs font-bold text-[#6D5EF8] bg-[#EEF2FF] px-2.5 py-1 rounded-md">Free Plan</span>
+                    <span className={`text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider ${
+                      isPro ? 'text-[#D97706] bg-[#FFFBEB]' : 'text-[#6D5EF8] bg-[#EEF2FF]'
+                    }`}>
+                      {plan} Plan
+                    </span>
                   </div>
                   
                   <div className="space-y-3 mb-6">
-                    {['10,000 credits / month', 'Standard processing', 'Access to all tools', 'Community support'].map((feature, i) => (
+                    {[
+                      isPro ? '10,000 credits / month' : 'Free credits / month',
+                      isPro ? 'HD & Original image quality' : 'Standard processing',
+                      isPro ? 'Priority support' : 'Community support',
+                      'Access to all tools'
+                    ].map((feature, i) => (
                       <div key={i} className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#10B981]" />
+                        <CheckCircle2 className={`w-4 h-4 ${isPro ? 'text-[#F59E0B]' : 'text-[#10B981]'}`} />
                         <span className="text-sm text-[#4B5563]">{feature}</span>
                       </div>
                     ))}
                   </div>
 
-                  <button className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold py-3 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20 flex items-center justify-center gap-2">
-                    <TrendingUp className="w-4 h-4" /> Upgrade to Pro
-                  </button>
+                  <Link href={isPro ? "/dashboard/billing" : "/dashboard/billing/plans"} className={`w-full font-semibold py-3 rounded-xl transition-colors shadow-md flex items-center justify-center gap-2 ${
+                    isPro 
+                      ? 'bg-[#111827] hover:bg-black text-white shadow-gray-900/20' 
+                      : 'bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white shadow-[#6D5EF8]/20'
+                  }`}>
+                    {isPro ? (
+                      <>Manage Plan</>
+                    ) : (
+                      <><TrendingUp className="w-4 h-4" /> Upgrade to Pro</>
+                    )}
+                  </Link>
                 </div>
 
                 {/* Tips & Shortcuts */}

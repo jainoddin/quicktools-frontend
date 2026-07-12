@@ -4,10 +4,14 @@ import { X, Image as ImageIcon, FileImage, Layers, Monitor, Maximize, Download, 
 interface DownloadModalProps {
   isOpen: boolean;
   onClose: () => void;
+  imageUrl: string;
+  isPro?: boolean;
+  costWarning?: string;
 }
 
-export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
+export default function DownloadModal({ isOpen, onClose, imageUrl, isPro = false, costWarning }: DownloadModalProps) {
   const [selectedFormat, setSelectedFormat] = useState('png');
+  const [isDownloading, setIsDownloading] = useState(false);
 
   // Prevent scrolling on body when modal is open
   useEffect(() => {
@@ -30,6 +34,83 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
     { id: 'hd', title: 'HD Quality', badge: 'Pro', badgeColor: 'bg-purple-100 text-[#6D5EF8]', desc: 'High resolution image (2048 x 1152)', icon: Monitor, iconBg: 'bg-[#6D5EF8]', isPro: true },
     { id: 'original', title: 'Original Size', badge: 'Pro', badgeColor: 'bg-purple-100 text-[#6D5EF8]', desc: 'Original resolution image (4096 x 2304)', icon: Maximize, iconBg: 'bg-blue-500', isPro: true },
   ];
+
+  const handleDownload = async () => {
+    const selectedOption = options.find(o => o.id === selectedFormat);
+    if (selectedOption?.isPro && !isPro) {
+      // User doesn't have Pro, shouldn't be able to click, but just in case
+      return;
+    }
+
+    setIsDownloading(true);
+    try {
+      // Fetch the image first to avoid CORS issues if directly put in canvas (Pollinations supports CORS)
+      const res = await fetch(imageUrl);
+      const blob = await res.blob();
+      
+      // If original or hd (which are just JPGs usually from pollinations), download directly for now
+      if (selectedFormat === 'hd' || selectedFormat === 'original') {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `quicktools-ai-${Date.now()}.jpg`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } else {
+        // Convert to selected format using Canvas
+        const img = new Image();
+        const url = URL.createObjectURL(blob);
+        
+        await new Promise((resolve, reject) => {
+          img.onload = resolve;
+          img.onerror = reject;
+          img.src = url;
+        });
+
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(img, 0, 0);
+          
+          let mimeType = 'image/png';
+          let extension = 'png';
+          
+          if (selectedFormat === 'jpg') {
+            mimeType = 'image/jpeg';
+            extension = 'jpg';
+          } else if (selectedFormat === 'webp') {
+            mimeType = 'image/webp';
+            extension = 'webp';
+          }
+
+          const dataUrl = canvas.toDataURL(mimeType, 1.0);
+          const a = document.createElement('a');
+          a.href = dataUrl;
+          a.download = `quicktools-ai-${Date.now()}.${extension}`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }
+        URL.revokeObjectURL(url);
+      }
+      
+      setTimeout(() => {
+        onClose();
+      }, 500);
+    } catch (error) {
+      console.error("Error downloading image:", error);
+      alert("Failed to download image. Please try again.");
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
+  const selectedOption = options.find(o => o.id === selectedFormat);
+  const isDisabled = (selectedOption?.isPro && !isPro) || isDownloading;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
@@ -82,9 +163,24 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
           ))}
         </div>
 
-        <div className="shrink-0 pt-2 border-t border-gray-50 mt-2">
-          <button className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-3.5 rounded-xl shadow-lg shadow-[#6D5EF8]/20 hover:shadow-[#6D5EF8]/40 transition-all flex items-center justify-center gap-2">
-            <Download className="w-5 h-5" /> Download Image
+        <div className="pt-2 shrink-0 space-y-4">
+          {costWarning && (
+            <div className="flex items-center gap-2 p-3 bg-amber-50 border border-amber-200 rounded-xl">
+              <span className="text-amber-500 font-bold text-lg">⚡</span>
+              <p className="text-xs font-semibold text-amber-700">{costWarning}</p>
+            </div>
+          )}
+          <button 
+            onClick={handleDownload}
+            disabled={isDisabled}
+            className={`w-full text-white font-bold py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 ${isDisabled ? 'bg-gray-300 cursor-not-allowed shadow-none' : 'bg-[#6D5EF8] hover:bg-[#5B4DF5] shadow-[#6D5EF8]/20 hover:shadow-[#6D5EF8]/40'}`}
+          >
+            {isDownloading ? (
+               <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+            ) : (
+               <Download className="w-5 h-5" />
+            )}
+            {isDownloading ? 'Processing...' : (selectedOption?.isPro && !isPro) ? 'Pro Plan Required' : 'Download Image'}
           </button>
           <p className="text-center text-[11px] text-[#9CA3AF] mt-3 mb-1">
             Your download will start automatically

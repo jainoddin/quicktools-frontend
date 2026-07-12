@@ -42,30 +42,44 @@ export default function BillingOverviewPage() {
         <div className="bg-white border border-[#E5E7EB] rounded-[24px] p-6 lg:p-8 flex flex-col shadow-sm">
           <div className="flex items-center gap-3 mb-6">
             <h2 className="text-[16px] font-bold text-[#111827]">Current Plan</h2>
-            <span className="text-[12px] font-bold text-[#6D5EF8] bg-[#EEF2FF] px-2.5 py-1 rounded-md uppercase tracking-wider">{usage.plan} Plan</span>
+            <span className={`text-[12px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider ${
+              usage.plan === 'pro' || usage.plan === 'premium' 
+                ? 'text-[#D97706] bg-[#FFFBEB] border border-[#F59E0B]/20' 
+                : 'text-[#6D5EF8] bg-[#EEF2FF]'
+            }`}>
+              {usage.plan} Plan
+            </span>
           </div>
 
           <div className="mb-8 flex-grow">
             <h3 className="text-3xl font-extrabold text-[#111827] mb-2 capitalize">{usage.plan}</h3>
-            <p className="text-sm text-[#6B7280] mb-6">Essential tools to get you started.</p>
+            <p className="text-sm text-[#6B7280] mb-6">
+              {usage.plan === 'pro' || usage.plan === 'premium' 
+                ? 'Premium tools for professionals and creators.' 
+                : 'Essential tools to get you started.'}
+            </p>
             
             <div className="space-y-3">
               {[
-                'Free credits every month',
-                'Standard processing',
-                'Community support',
-                'Access to free tools'
+                usage.plan === 'pro' || usage.plan === 'premium' ? '10,000 credits every month' : 'Free credits every month',
+                usage.plan === 'pro' || usage.plan === 'premium' ? 'HD & Original image quality' : 'Standard processing',
+                usage.plan === 'pro' || usage.plan === 'premium' ? 'Priority support' : 'Community support',
+                'Access to all tools'
               ].map((feature, i) => (
                 <div key={i} className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#10B981]" />
+                  <CheckCircle2 className={`w-4 h-4 ${usage.plan === 'pro' || usage.plan === 'premium' ? 'text-[#F59E0B]' : 'text-[#10B981]'}`} />
                   <span className="text-sm text-[#4B5563]">{feature}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <Link href="/dashboard/billing/plans" className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold py-3 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20 flex items-center justify-center">
-            Upgrade to Pro
+          <Link href="/dashboard/billing/plans" className={`w-full text-white font-semibold py-3 rounded-xl transition-colors shadow-md flex items-center justify-center ${
+            usage.plan === 'pro' || usage.plan === 'premium' 
+              ? 'bg-[#111827] hover:bg-black shadow-gray-900/20' 
+              : 'bg-[#6D5EF8] hover:bg-[#5B4DF5] shadow-[#6D5EF8]/20'
+          }`}>
+            {usage.plan === 'pro' || usage.plan === 'premium' ? 'Manage Plan' : 'Upgrade to Pro'}
           </Link>
         </div>
 

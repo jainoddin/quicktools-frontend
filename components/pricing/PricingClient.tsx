@@ -8,51 +8,53 @@ import { useAuth } from '@/contexts/AuthContext';
 
 const plans = [
   {
-    id: 'free',
-    name: 'Free',
+    id: 'starter',
+    name: 'Starter',
     icon: Gift,
-    description: 'Perfect for trying out AI tools',
-    monthlyPrice: 0,
-    yearlyPrice: 0,
+    description: 'First month 50% off!',
+    originalPrice: 10,
+    monthlyPrice: 5,
+    yearlyPrice: 96,
     features: [
-      { name: '3 Free Demos (One-Time)', included: true },
-      { name: 'AI Image Generator', included: true },
+      { name: '100 Generations / month', included: true },
+      { name: 'Standard Image Generation', included: true },
       { name: 'AI Background Remover', included: true },
       { name: 'AI Text Summarizer', included: true },
       { name: 'AI Code Writer', included: true },
-      { name: 'AI Grammar Checker', included: true },
+      { name: 'HD Image Generation', included: false },
     ],
-    buttonText: 'Start Free',
-    buttonSub: 'No credit card required',
+    buttonText: 'Get Starter',
     popular: false,
+    color: 'blue'
   },
   {
     id: 'pro',
     name: 'Pro',
     icon: Crown,
-    description: 'First month offer for new users!',
-    originalPrice: 599,
-    monthlyPrice: 49,
-    yearlyPrice: 39,
+    description: 'First month 50% off!',
+    originalPrice: 40,
+    monthlyPrice: 20,
+    yearlyPrice: 384,
     features: [
       { name: 'Unlimited Usage', included: true },
-      { name: 'AI Image Generator', included: true },
-      { name: 'AI Background Remover', included: true },
+      { name: 'HD Image Generation', included: true },
+      { name: 'Fast Processing', included: true },
+      { name: 'Priority Support', included: true },
       { name: 'AI Text Summarizer', included: true },
       { name: 'AI Code Writer', included: true },
-      { name: 'AI Grammar Checker', included: true },
     ],
     buttonText: 'Get Pro',
     popular: true,
+    color: 'gold'
   },
   {
     id: 'business',
     name: 'Business',
     icon: Building2,
-    description: 'For teams & businesses',
-    originalPrice: 999,
-    monthlyPrice: 99,
-    yearlyPrice: 79,
+    description: 'First month 50% off!',
+    originalPrice: 100,
+    monthlyPrice: 50,
+    yearlyPrice: 960,
     features: [
       { name: 'Everything in Pro', included: true },
       { name: 'Team Members (Up to 5)', included: true },
@@ -62,34 +64,33 @@ const plans = [
       { name: 'Custom AI Solutions', included: true },
     ],
     buttonText: 'Contact Sales',
-    buttonSub: 'Custom pricing for your needs',
     popular: false,
+    color: 'blue'
   }
 ];
 
 const compareFeatures = [
-  { name: 'Access Limit', free: '3 Demos Total', pro: 'Unlimited', business: 'Unlimited' },
-  { name: 'AI Image Generator', free: true, pro: true, business: true },
-  { name: 'AI Background Remover', free: true, pro: true, business: true },
-  { name: 'AI Text Summarizer', free: true, pro: true, business: true },
-  { name: 'AI Code Writer', free: true, pro: true, business: true },
-  { name: 'AI Grammar Checker', free: true, pro: true, business: true },
-  { name: 'API Access', free: false, pro: false, business: true },
-  { name: 'Team Management', free: false, pro: false, business: true },
-  { name: 'Support', free: 'Community', pro: 'Priority Email', business: 'Dedicated Account Manager' },
+  { name: 'Access Limit', starter: '100 / month', pro: 'Unlimited', business: 'Unlimited' },
+  { name: 'HD Image Generation', starter: false, pro: true, business: true },
+  { name: 'AI Background Remover', starter: true, pro: true, business: true },
+  { name: 'AI Text Summarizer', starter: true, pro: true, business: true },
+  { name: 'AI Code Writer', starter: true, pro: true, business: true },
+  { name: 'API Access', starter: false, pro: false, business: true },
+  { name: 'Team Management', starter: false, pro: false, business: true },
+  { name: 'Support', starter: 'Community', pro: 'Priority Email', business: 'Dedicated Account Manager' },
 ];
 
 const faqs = [
-  { q: 'How does the Free Trial work?', a: 'Every new user gets 3 free demos to test our 5 AI tools (Image Generator, BG Remover, Summarizer, Code Writer, Grammar Checker). Once your 3 demos are used up, you must upgrade to a paid plan.' },
-  { q: 'What happens after the first month at ₹49?', a: 'The ₹49 price is a special discount for your first month only! From the second month onwards, the subscription renews at the regular price of ₹599/month. You can cancel anytime.' },
-  { q: 'Do I need a credit card to start?', a: 'No, you do not need a credit card for your first 3 free demos. A payment method is only required when upgrading.' },
+  { q: 'What happened to the Free Trial?', a: 'To ensure high quality service, we have removed the free tier. Our Starter plan is perfect for beginners and is heavily discounted for the first month.' },
+  { q: 'What happens after the first month?', a: 'The 50% discount is a special offer for your first month! From the second month onwards, the subscription renews at the regular price. You can cancel anytime.' },
+  { q: 'Can I upgrade my plan later?', a: 'Yes! You can upgrade from Starter to Pro or Business at any time. Your billing will be pro-rated.' },
   { q: 'Can I cancel my subscription anytime?', a: 'Yes, you can cancel your subscription at any time from your account settings. You will not be charged for the next month.' }
 ];
 
 export default function PricingClient() {
   const [isYearly, setIsYearly] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isLoading, user } = useAuth();
   const router = useRouter();
 
   const handlePlanClick = (planId: string) => {
@@ -154,39 +155,48 @@ export default function PricingClient() {
         {plans.map((plan) => (
           <div 
             key={plan.id} 
-            className={`relative flex flex-col bg-white rounded-3xl p-8 ${plan.popular ? 'border-2 border-[#6D5EF8] shadow-xl shadow-[#6D5EF8]/10 scale-105 z-10' : 'border border-[#E5E7EB] shadow-sm mt-4 mb-4'}`}
+            className={`relative flex flex-col bg-white rounded-3xl p-8 ${plan.popular ? `border-2 ${plan.color === 'gold' ? 'border-[#F59E0B] shadow-[#F59E0B]/10' : 'border-[#6D5EF8] shadow-[#6D5EF8]/10'} shadow-xl scale-105 z-10` : 'border border-[#E5E7EB] shadow-sm mt-4 mb-4'}`}
           >
             {plan.popular && (
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#6D5EF8] text-white text-[10px] font-bold uppercase tracking-wider py-1 px-4 rounded-full flex items-center gap-1">
+              <div className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 ${plan.color === 'gold' ? 'bg-[#F59E0B]' : 'bg-[#6D5EF8]'} text-white text-[10px] font-bold uppercase tracking-wider py-1 px-4 rounded-full flex items-center gap-1`}>
                 ★ MOST POPULAR
               </div>
             )}
             
             <div className="flex flex-col items-center text-center mb-6">
-              <div className="w-16 h-16 bg-[#EEF2FF] rounded-full flex items-center justify-center mb-4">
-                <plan.icon className="w-8 h-8 text-[#6D5EF8]" />
+              <div className={`w-16 h-16 ${plan.color === 'gold' ? 'bg-[#FFFBEB]' : 'bg-[#EEF2FF]'} rounded-full flex items-center justify-center mb-4`}>
+                <plan.icon className={`w-8 h-8 ${plan.color === 'gold' ? 'text-[#F59E0B]' : 'text-[#6D5EF8]'}`} />
               </div>
               <h3 className="text-2xl font-bold text-[#111827] mb-1">{plan.name}</h3>
-              <p className="text-sm text-[#6B7280] h-10">{plan.description}</p>
+              <p className="text-sm text-[#6B7280] h-10">{isYearly ? 'Save 20% on annual billing!' : plan.description}</p>
             </div>
 
             <div className="text-center mb-8">
               {plan.originalPrice && (
                 <div className="text-sm font-bold text-[#9CA3AF] line-through mb-1">
-                  ₹{isYearly ? Math.floor(plan.originalPrice * 0.8) : plan.originalPrice}/month
+                  ${plan.originalPrice}/month
                 </div>
               )}
               <div className="flex items-end justify-center gap-1">
-                <span className="text-4xl font-black text-[#111827]">₹{isYearly ? plan.yearlyPrice : plan.monthlyPrice}</span>
+                <span className="text-4xl font-black text-[#111827]">${isYearly ? (plan.yearlyPrice / 12).toFixed(0) : plan.monthlyPrice}</span>
                 <span className="text-[#6B7280] font-medium pb-1">/month</span>
               </div>
+              {isYearly && (
+                <div className="text-xs font-semibold text-[#10B981] mt-2">
+                  Billed ${plan.yearlyPrice} yearly
+                </div>
+              )}
             </div>
 
             <div className="flex-grow">
               <ul className="space-y-4 mb-8">
                 {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm text-[#374151] font-medium">
-                    <CheckCircle2 className="w-5 h-5 text-white fill-[#6D5EF8] shrink-0" />
+                  <li key={i} className={`flex items-center gap-3 text-sm font-medium ${feature.included ? 'text-[#374151]' : 'text-[#9CA3AF] line-through'}`}>
+                    {feature.included ? (
+                      <CheckCircle2 className={`w-5 h-5 text-white shrink-0 ${plan.color === 'gold' ? 'fill-[#F59E0B]' : 'fill-[#6D5EF8]'}`} />
+                    ) : (
+                      <X className="w-5 h-5 text-[#D1D5DB] shrink-0" />
+                    )}
                     {feature.name}
                   </li>
                 ))}
@@ -196,13 +206,17 @@ export default function PricingClient() {
             <div className="mt-auto">
               <button 
                 onClick={() => handlePlanClick(plan.id)}
-                className={`w-full py-3 px-6 rounded-xl font-bold text-sm transition-all ${plan.popular ? 'bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white shadow-md' : 'bg-white border-2 border-[#EEF2FF] text-[#6D5EF8] hover:border-[#6D5EF8] hover:bg-[#EEF2FF]'}`}
+                disabled={isAuthenticated && (user?.plan || 'free').toLowerCase() === plan.id}
+                className={`w-full py-3 px-6 rounded-xl font-bold text-sm transition-all ${
+                  isAuthenticated && (user?.plan || 'free').toLowerCase() === plan.id
+                    ? 'bg-[#111827] hover:bg-black text-white shadow-md cursor-default'
+                    : plan.popular 
+                      ? (plan.color === 'gold' ? 'bg-[#F59E0B] hover:bg-[#D97706] text-white shadow-md' : 'bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white shadow-md')
+                      : 'bg-white border-2 border-[#EEF2FF] text-[#6D5EF8] hover:border-[#6D5EF8] hover:bg-[#EEF2FF]'
+                }`}
               >
-                {plan.buttonText}
+                {isAuthenticated && (user?.plan || 'free').toLowerCase() === plan.id ? 'Current Plan' : plan.buttonText}
               </button>
-              {plan.buttonSub && (
-                <p className="text-center text-xs text-[#6B7280] mt-3">{plan.buttonSub}</p>
-              )}
             </div>
           </div>
         ))}
@@ -217,10 +231,10 @@ export default function PricingClient() {
               <thead>
                 <tr className="bg-[#F9FAFB] border-b border-[#E5E7EB]">
                   <th className="px-6 py-4 text-left text-sm font-bold text-[#111827]">Features</th>
-                  <th className="px-6 py-4 text-center text-sm font-bold text-[#6D5EF8]">Free</th>
-                  <th className="px-6 py-4 text-center text-sm font-bold text-[#6D5EF8]">
+                  <th className="px-6 py-4 text-center text-sm font-bold text-[#6D5EF8]">Starter</th>
+                  <th className="px-6 py-4 text-center text-sm font-bold text-[#F59E0B]">
                     <div className="flex items-center justify-center gap-1">
-                      Pro <Crown className="w-4 h-4 fill-[#6D5EF8] text-[#6D5EF8]" />
+                      Pro <Crown className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]" />
                     </div>
                   </th>
                   <th className="px-6 py-4 text-center text-sm font-bold text-[#111827]">Business</th>
@@ -232,21 +246,21 @@ export default function PricingClient() {
                     <td className="px-6 py-4 text-sm font-medium text-[#374151]">{row.name}</td>
                     
                     <td className="px-6 py-4 text-center">
-                      {typeof row.free === 'boolean' ? (
-                        row.free ? <CheckCircle2 className="w-5 h-5 mx-auto text-white fill-[#6D5EF8]" /> : <X className="w-4 h-4 mx-auto text-[#D1D5DB]" />
+                      {typeof row.starter === 'boolean' ? (
+                        row.starter ? <CheckCircle2 className="w-5 h-5 mx-auto text-white fill-[#6D5EF8]" /> : <X className="w-4 h-4 mx-auto text-[#D1D5DB]" />
                       ) : (
-                        <span className="text-sm font-medium text-[#374151]">{row.free}</span>
+                        <span className="text-sm font-medium text-[#374151]">{row.starter}</span>
                       )}
                     </td>
                     
                     <td className="px-6 py-4 text-center">
                       {typeof row.pro === 'boolean' ? (
-                        row.pro ? <CheckCircle2 className="w-5 h-5 mx-auto text-white fill-[#6D5EF8]" /> : <X className="w-4 h-4 mx-auto text-[#D1D5DB]" />
+                        row.pro ? <CheckCircle2 className="w-5 h-5 mx-auto text-white fill-[#F59E0B]" /> : <X className="w-4 h-4 mx-auto text-[#D1D5DB]" />
                       ) : (
                         <span className="text-sm font-medium text-[#374151]">{row.pro}</span>
                       )}
                     </td>
-                    
+
                     <td className="px-6 py-4 text-center">
                       {typeof row.business === 'boolean' ? (
                         row.business ? <CheckCircle2 className="w-5 h-5 mx-auto text-white fill-[#6D5EF8]" /> : <X className="w-4 h-4 mx-auto text-[#D1D5DB]" />
@@ -312,12 +326,12 @@ export default function PricingClient() {
         </div>
         <div className="flex flex-col items-center shrink-0">
           <button 
-            onClick={() => handlePlanClick('free')}
+            onClick={() => handlePlanClick('starter')}
             className="bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-3.5 px-8 rounded-xl shadow-md transition-all flex items-center gap-2 mb-2"
           >
-            Start Free Now <ArrowRight className="w-4 h-4" />
+            Start Creating Now <ArrowRight className="w-4 h-4" />
           </button>
-          <span className="text-[11px] text-[#6D5EF8] font-medium">No credit card required</span>
+          <span className="text-[11px] text-[#6D5EF8] font-medium">Cancel anytime</span>
         </div>
       </div>
 

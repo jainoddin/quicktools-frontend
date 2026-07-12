@@ -96,7 +96,7 @@ export default function BackgroundRemoverResult({
       </div>
 
       {/* Modals */}
-      <DownloadModal isOpen={isDownloadModalOpen} onClose={() => setIsDownloadModalOpen(false)} />
+      <DownloadModal isOpen={isDownloadModalOpen} onClose={() => setIsDownloadModalOpen(false)} imageUrl={dogImageUrl} isPro={isAuthenticated} />
       <ShareModal 
         isOpen={isShareModalOpen} 
         onClose={() => setIsShareModalOpen(false)} 

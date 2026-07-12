@@ -16,6 +16,7 @@ import { allTools } from '../tools/ToolsClient';
 
 const accountItems = [
   { name: 'Billing', icon: CreditCard, path: '/dashboard/billing' },
+  { name: 'History', icon: Clock, path: '/dashboard/history' },
   { name: 'Settings', icon: Settings, path: '/dashboard/settings' },
 ];
 
@@ -31,7 +32,6 @@ export default function Sidebar() {
     { name: 'Categories', icon: Shapes, path: '/dashboard/categories', count: uniqueCategories },
     { name: 'My Tools', icon: FolderDot, path: '/dashboard/my-tools', count: 0 },
     { name: 'Favorites', icon: Heart, path: '/dashboard/favorites', count: favoritesCount },
-    { name: 'History', icon: Clock, path: '/dashboard/history' },
   ];
 
   const isActive = (path: string) => {
@@ -96,19 +96,35 @@ export default function Sidebar() {
         </div>
 
         {/* Upgrade Card - exactly like tools page */}
-        <div className="bg-gradient-to-br from-white to-[#EEF2FF] border border-[#E5E7EB] rounded-2xl p-5 shadow-sm relative overflow-hidden">
-          <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#6D5EF8]/5 rounded-full blur-xl"></div>
-          <div className="w-10 h-10 bg-[#EEF2FF] rounded-xl flex items-center justify-center mb-4 text-[#6D5EF8]">
-            <Crown className="w-5 h-5 fill-[#6D5EF8]" />
+        {(!user || (user.plan || '').toLowerCase() !== 'pro' && (user.plan || '').toLowerCase() !== 'premium') ? (
+          <div className="bg-gradient-to-br from-white to-[#EEF2FF] border border-[#E5E7EB] rounded-2xl p-5 shadow-sm relative overflow-hidden">
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#6D5EF8]/5 rounded-full blur-xl"></div>
+            <div className="w-10 h-10 bg-[#EEF2FF] rounded-xl flex items-center justify-center mb-4 text-[#6D5EF8]">
+              <Crown className="w-5 h-5 fill-[#6D5EF8]" />
+            </div>
+            <h4 className="font-bold text-[#111827] mb-1">Unlock Premium</h4>
+            <p className="text-sm text-[#6B7280] mb-5 leading-relaxed">
+              Get unlimited access to all tools and premium features.
+            </p>
+            <Link href="/dashboard/billing/plans" className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm py-2.5 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20 flex items-center justify-center gap-2">
+              Upgrade Now <ChevronRight className="w-3 h-3" />
+            </Link>
           </div>
-          <h4 className="font-bold text-[#111827] mb-1">Unlock Premium</h4>
-          <p className="text-sm text-[#6B7280] mb-5 leading-relaxed">
-            Get unlimited access to all tools and premium features.
-          </p>
-          <Link href="/dashboard/billing/plans" className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm py-2.5 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20 flex items-center justify-center gap-2">
-            Upgrade Now <ChevronRight className="w-3 h-3" />
-          </Link>
-        </div>
+        ) : (
+          <div className="bg-gradient-to-br from-white to-[#FFFBEB] border border-[#F59E0B]/20 rounded-2xl p-5 shadow-sm relative overflow-hidden">
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#F59E0B]/10 rounded-full blur-xl"></div>
+            <div className="w-10 h-10 bg-[#FFFBEB] rounded-xl flex items-center justify-center mb-4 text-[#F59E0B]">
+              <Crown className="w-5 h-5 fill-[#F59E0B]" />
+            </div>
+            <h4 className="font-bold text-[#111827] mb-1">Pro Member</h4>
+            <p className="text-sm text-[#6B7280] mb-5 leading-relaxed">
+              You have access to all premium features and HD tools.
+            </p>
+            <Link href="/dashboard/billing" className="w-full bg-[#111827] hover:bg-black text-white font-semibold text-sm py-2.5 rounded-xl transition-colors shadow-md shadow-gray-900/20 flex items-center justify-center gap-2">
+              Manage Plan <ChevronRight className="w-3 h-3" />
+            </Link>
+          </div>
+        )}
 
 
 

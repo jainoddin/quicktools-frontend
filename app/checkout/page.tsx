@@ -47,7 +47,7 @@ function CheckoutContent() {
             </div>
           </div>
           <div className="text-right">
-            <span className="font-bold text-[#111827] text-lg">₹{monthlyPrice}</span>
+            <span className="font-bold text-[#111827] text-lg">${monthlyPrice}</span>
             <span className="text-sm text-[#6B7280]"> /month</span>
           </div>
         </div>
@@ -56,11 +56,11 @@ function CheckoutContent() {
         <div className="space-y-4 mb-6">
           <div className="flex justify-between text-[#4B5563] text-sm">
             <span>Subtotal</span>
-            <span className="font-bold text-[#111827]">₹{subtotal.toFixed(2)}</span>
+            <span className="font-bold text-[#111827]">${subtotal.toFixed(2)}</span>
           </div>
           <div className="flex justify-between text-[#4B5563] text-sm">
             <span>GST (18%)</span>
-            <span className="font-bold text-[#111827]">₹{gst.toFixed(2)}</span>
+            <span className="font-bold text-[#111827]">${gst.toFixed(2)}</span>
           </div>
         </div>
 
@@ -84,7 +84,7 @@ function CheckoutContent() {
         {/* Total */}
         <div className="flex justify-between items-center py-6 border-t border-[#E5E7EB] mb-8">
           <span className="font-bold text-[#111827] text-lg">Total</span>
-          <span className="font-black text-[#111827] text-3xl">₹{total.toFixed(2)}</span>
+          <span className="font-black text-[#111827] text-3xl">${total.toFixed(2)}</span>
         </div>
 
         {/* Trust Indicators */}

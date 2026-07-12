@@ -56,7 +56,7 @@ export default function SuccessPage() {
             </div>
             <div className="flex justify-between items-center py-2 border-b border-[#E5E7EB] border-dashed">
               <span className="text-[#6B7280]">Amount Paid</span>
-              <span className="font-bold text-[#111827]">₹588.82</span>
+              <span className="font-bold text-[#111827]">$58.82</span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-[#E5E7EB] border-dashed">
               <span className="text-[#6B7280]">Payment ID</span>

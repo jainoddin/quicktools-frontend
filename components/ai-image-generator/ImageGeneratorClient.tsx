@@ -12,9 +12,12 @@ import HistoryView from './HistoryView';
 import ErrorModal from './ErrorModal';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginPopup from '@/components/auth/LoginPopup';
+import { getEndpoint } from '@/lib/api';
+import { useRouter } from 'next/navigation';
 
 export default function ImageGeneratorClient() {
-  const { isAuthenticated } = useAuth();
+  const router = useRouter();
+  const { isAuthenticated, user } = useAuth();
   const [activeView, setActiveView] = useState<'generate' | 'history'>('generate');
   const [isGenerating, setIsGenerating] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -23,59 +26,92 @@ export default function ImageGeneratorClient() {
   const [hasError, setHasError] = useState(false);
   const [freeGenCount, setFreeGenCount] = useState(0);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
+  const [showPremiumPopup, setShowPremiumPopup] = useState(false);
+  const [popupType, setPopupType] = useState<'hd' | 'credits'>('hd');
+  const [quality, setQuality] = useState<'standard' | 'hd'>('standard');
+  const [selectedStyle, setSelectedStyle] = useState('Realistic');
+  const [selectedRatio, setSelectedRatio] = useState('16:9');
+  const [selectedModel, setSelectedModel] = useState('dall-e-3');
 
-  // Load free gen count from local storage
+  const [recentImages, setRecentImages] = useState<any[]>([]);
+
+  // Load history from backend if authenticated, otherwise from local storage
   useEffect(() => {
     if (!isAuthenticated) {
       const count = parseInt(localStorage.getItem('freeImageGenCount') || '0', 10);
       setFreeGenCount(count);
+      
+      const savedHistory = localStorage.getItem('guestImageHistory');
+      if (savedHistory) {
+        try {
+          setRecentImages(JSON.parse(savedHistory));
+        } catch (e) {
+          console.error("Could not parse guest history", e);
+        }
+      }
+    } else {
+      // Fetch from backend for logged in users
+      fetch(getEndpoint('/api/user/usage'), {
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.data && data.data.history) {
+          // Filter only image generation history
+          const imageHistory = data.data.history.filter((item: any) => item.toolSlug === '/tools/ai-image-generator');
+          
+          const formattedHistory = imageHistory.map((item: any) => {
+            const dateObj = new Date(item.createdAt);
+            const isToday = dateObj.toLocaleDateString() === new Date().toLocaleDateString();
+            
+            return {
+              id: item._id || Date.now() + Math.random(),
+              src: item.result,
+              prompt: item.prompt.replace(/Model:.*?, Style:.*?, /, ''), // Clean up prompt
+              date: isToday ? 'Today' : dateObj.toLocaleDateString(),
+              model: 'DALL-E 3'
+            };
+          });
+          
+          setRecentImages(formattedHistory);
+        }
+      })
+      .catch(console.error);
     }
   }, [isAuthenticated]);
 
-  // Simulate generation progress
+  // Simulate generation progress visually
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (isGenerating) {
-      setProgress(0);
-      setGeneratedImage(null);
       interval = setInterval(() => {
         setProgress(prev => {
-          if (prev >= 100) {
-            clearInterval(interval);
-            // Generate a real image using Pollinations AI (free, no API key required)
-            const encodedPrompt = encodeURIComponent(prompt.trim() || 'A futuristic city');
-            setGeneratedImage(`https://image.pollinations.ai/prompt/${encodedPrompt}?width=1024&height=1024&nologo=true&seed=${Math.floor(Math.random() * 1000)}`);
-            setIsGenerating(false);
-            
-            if (!isAuthenticated) {
-              const newCount = freeGenCount + 1;
-              setFreeGenCount(newCount);
-              localStorage.setItem('freeImageGenCount', newCount.toString());
-            }
-
-            return 100;
-          }
-          return prev + 2; // Speed up the progress slightly
+          if (prev >= 95) return 95; // Wait at 95% for the actual API call to finish
+          return prev + 2; 
         });
-      }, 50); // 50ms * 50 = 2.5 seconds total
+      }, 100); 
     } else {
-      setProgress(0);
+      if (progress !== 100) setProgress(0);
     }
     return () => clearInterval(interval);
-  }, [isGenerating, freeGenCount, isAuthenticated, prompt]);
+  }, [isGenerating, progress]);
 
-  const handleGenerate = () => {
-    if (!isAuthenticated && freeGenCount >= 2) {
+  const handleGenerate = (overridePrompt?: string | any) => {
+    const isString = typeof overridePrompt === 'string';
+    const currentPrompt = isString ? overridePrompt : prompt;
+    if (currentPrompt.trim() === '' || isGenerating) {
+      return;
+    }
+    
+    // Strict Limit: Only 1 generation without login
+    if (!isAuthenticated && freeGenCount >= 1) {
       setShowLoginPopup(true);
       return;
     }
-
-    if (prompt.trim() === '') {
-      setPrompt('A futuristic city at sunset with flying cars, neon lights, and tall skyscrapers');
-    }
-
+    
     // Simulate error if prompt equals 'error'
-    if (prompt.toLowerCase().trim() === 'error') {
+    if (currentPrompt.toLowerCase().trim() === 'error') {
       setHasError(true);
       return;
     }
@@ -83,6 +119,64 @@ export default function ImageGeneratorClient() {
     setIsGenerating(true);
     setGeneratedImage(null);
     setHasError(false);
+    setProgress(0);
+    
+    // Call the actual backend API to generate the image immediately
+    fetch(getEndpoint('/api/tools/generate-image'), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({
+        prompt: currentPrompt,
+        model: selectedModel,
+        style: selectedStyle,
+        ratio: selectedRatio,
+        quality
+      }),
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        setGeneratedImage(data.data);
+        // Add to recent history
+        const newImage = {
+          id: Date.now(),
+          src: data.data,
+          prompt: currentPrompt,
+          date: 'Just now',
+          model: selectedModel
+        };
+        
+        setRecentImages(prev => {
+          const updated = [newImage, ...prev];
+          if (!isAuthenticated) {
+            localStorage.setItem('guestImageHistory', JSON.stringify(updated));
+          }
+          return updated;
+        });
+
+        if (!isAuthenticated) {
+          const newCount = freeGenCount + 1;
+          setFreeGenCount(newCount);
+          localStorage.setItem('freeImageGenCount', newCount.toString());
+        }
+      } else {
+        if (data.errorType === 'INSUFFICIENT_CREDITS') {
+          setPopupType('credits');
+          setShowPremiumPopup(true);
+        } else {
+          setHasError(true);
+        }
+      }
+    })
+    .catch((err) => {
+      console.error("Backend generation error:", err);
+      setHasError(true);
+    })
+    .finally(() => {
+      setProgress(100);
+      setIsGenerating(false);
+    });
   };
 
   const handleCancel = () => {
@@ -92,9 +186,45 @@ export default function ImageGeneratorClient() {
   return (
     <div className="flex flex-col lg:flex-row gap-8">
       <LoginPopup isOpen={showLoginPopup} onClose={() => setShowLoginPopup(false)} />
+      
+      {/* Premium Popup */}
+      {showPremiumPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in p-4">
+          <div className="bg-white rounded-2xl w-full max-w-md p-6 sm:p-8 text-center shadow-2xl">
+            <div className="w-16 h-16 bg-[#F5F3FF] rounded-full flex items-center justify-center mx-auto mb-4">
+              <Crown className="w-8 h-8 text-[#F59E0B] fill-[#F59E0B]" />
+            </div>
+            <h3 className="text-2xl font-bold text-[#111827] mb-2">
+              {popupType === 'hd' ? 'Premium Feature' : 'Out of Credits'}
+            </h3>
+            <p className="text-[#6B7280] mb-6">
+              {popupType === 'hd' 
+                ? 'HD image generation is only available for premium users. Upgrade your plan to unlock HD quality.' 
+                : 'You have run out of credits to generate images. Please upgrade your plan to get more credits.'}
+            </p>
+            <div className="flex flex-col gap-3">
+              <button 
+                onClick={() => window.location.href = '/pricing'}
+                className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-3 rounded-xl transition-all shadow-md shadow-[#6D5EF8]/20"
+              >
+                View Plans
+              </button>
+              <button 
+                onClick={() => setShowPremiumPopup(false)}
+                className="w-full bg-white border border-[#E5E7EB] hover:bg-gray-50 text-[#111827] font-bold py-3 rounded-xl transition-all"
+              >
+                Maybe Later
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Left Sidebar Controls */}
       <aside className="w-full lg:w-[320px] shrink-0 space-y-6">
-
+        
+        {/* Settings Wrapper - Disabled when image is generated */}
+        <div className={`space-y-6 transition-all duration-300 ${generatedImage ? 'pointer-events-none opacity-60 grayscale-[0.2]' : ''}`}>
         {/* 1. Describe Your Image */}
         <div>
           <h3 className="text-sm font-bold text-[#111827] mb-3">
@@ -134,10 +264,15 @@ export default function ImageGeneratorClient() {
         <div>
           <h3 className="text-sm font-bold text-[#111827] mb-3">2. Choose a Model</h3>
           <div className="relative">
-            <select className="w-full appearance-none bg-white border border-[#E5E7EB] text-sm font-medium text-[#111827] rounded-xl px-4 py-3 shadow-sm outline-none focus:ring-2 focus:ring-[#6D5EF8] focus:border-[#6D5EF8] transition-all cursor-pointer">
-              <option>DALL-E 3</option>
-              <option>Midjourney v6</option>
-              <option>Stable Diffusion XL</option>
+            <select 
+              value={selectedModel}
+              onChange={(e) => setSelectedModel(e.target.value)}
+              className="w-full appearance-none bg-white border border-[#E5E7EB] rounded-xl px-4 py-3 text-sm font-semibold text-[#111827] outline-none hover:border-gray-300 transition-colors focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8]"
+            >
+              <option value="dall-e-3">DALL-E 3</option>
+              <option value="dall-e-2">DALL-E 2</option>
+              <option value="midjourney">Midjourney v6</option>
+              <option value="stable-diffusion">Stable Diffusion XL</option>
             </select>
             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
               <div className="w-4 h-4 rounded-full border-4 border-t-red-500 border-r-blue-500 border-b-green-500 border-l-yellow-500 mr-2"></div>
@@ -154,23 +289,27 @@ export default function ImageGeneratorClient() {
           <h3 className="text-sm font-bold text-[#111827] mb-3">3. Choose a Style</h3>
           <div className="grid grid-cols-3 gap-3">
             {[
-              { name: 'Realistic', img: 'https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=100&q=80', active: true },
-              { name: 'Anime', img: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=100&q=80', active: false },
-              { name: '3D Render', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=100&q=80', active: false },
-              { name: 'Digital Art', img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=100&q=80', active: false },
-              { name: 'Painting', img: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=100&q=80', active: false },
-              { name: 'Cyberpunk', img: 'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?w=100&q=80', active: false },
+              { name: 'Realistic', img: 'https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=100&q=80' },
+              { name: 'Anime', img: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=100&q=80' },
+              { name: '3D Render', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=100&q=80' },
+              { name: 'Digital Art', img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=100&q=80' },
+              { name: 'Painting', img: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=100&q=80' },
+              { name: 'Cyberpunk', img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=100&q=80' },
             ].map((style, i) => (
-              <div key={i} className="flex flex-col items-center gap-1.5 cursor-pointer group">
-                <div className={`relative w-full aspect-square rounded-xl overflow-hidden transition-all duration-200 ${style.active ? 'ring-2 ring-[#6D5EF8] ring-offset-2' : 'hover:ring-2 hover:ring-gray-300 hover:ring-offset-1'}`}>
+              <div 
+                key={i} 
+                onClick={() => setSelectedStyle(style.name)}
+                className="flex flex-col items-center gap-1.5 cursor-pointer group"
+              >
+                <div className={`relative w-full aspect-square rounded-xl overflow-hidden transition-all duration-200 ${selectedStyle === style.name ? 'ring-2 ring-[#6D5EF8] ring-offset-2' : 'hover:ring-2 hover:ring-gray-300 hover:ring-offset-1'}`}>
                   <Image src={style.img} fill alt={style.name} className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-                  {style.active && (
+                  {selectedStyle === style.name && (
                     <div className="absolute top-1 right-1 w-4 h-4 bg-[#6D5EF8] rounded-full flex items-center justify-center shadow-sm">
                       <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                     </div>
                   )}
                 </div>
-                <span className={`text-[10px] font-semibold ${style.active ? 'text-[#6D5EF8]' : 'text-[#6B7280] group-hover:text-[#111827]'}`}>{style.name}</span>
+                <span className={`text-[10px] font-semibold ${selectedStyle === style.name ? 'text-[#6D5EF8]' : 'text-[#6B7280] group-hover:text-[#111827]'}`}>{style.name}</span>
               </div>
             ))}
           </div>
@@ -181,12 +320,16 @@ export default function ImageGeneratorClient() {
           <h3 className="text-sm font-bold text-[#111827] mb-3">4. Aspect Ratio</h3>
           <div className="grid grid-cols-4 gap-2">
             {[
-              { ratio: '1:1', label: 'Square', active: false },
-              { ratio: '16:9', label: 'Landscape', active: true },
-              { ratio: '9:16', label: 'Portrait', active: false },
-              { ratio: '4:3', label: 'Standard', active: false },
+              { ratio: '1:1', label: 'Square' },
+              { ratio: '16:9', label: 'Landscape' },
+              { ratio: '9:16', label: 'Portrait' },
+              { ratio: '4:3', label: 'Standard' },
             ].map((ar, i) => (
-              <div key={i} className={`flex flex-col items-center justify-center py-2 rounded-xl cursor-pointer transition-all border ${ar.active ? 'bg-[#EEF2FF] border-[#6D5EF8] text-[#6D5EF8]' : 'bg-white border-[#E5E7EB] text-[#6B7280] hover:border-gray-300 hover:bg-gray-50'}`}>
+              <div 
+                key={i} 
+                onClick={() => setSelectedRatio(ar.ratio)}
+                className={`flex flex-col items-center justify-center py-2 rounded-xl cursor-pointer transition-all border ${selectedRatio === ar.ratio ? 'bg-[#EEF2FF] border-[#6D5EF8] text-[#6D5EF8]' : 'bg-white border-[#E5E7EB] text-[#6B7280] hover:border-gray-300 hover:bg-gray-50'}`}
+              >
                 <span className="text-xs font-bold mb-0.5">{ar.ratio}</span>
                 <span className="text-[9px]">{ar.label}</span>
               </div>
@@ -198,26 +341,42 @@ export default function ImageGeneratorClient() {
         <div>
           <h3 className="text-sm font-bold text-[#111827] mb-3">5. Image Quality</h3>
           <div className="flex bg-white rounded-xl border border-[#E5E7EB] p-1 shadow-sm">
-            <button className="flex-1 py-2 text-xs font-semibold text-[#6B7280] hover:text-[#111827] rounded-lg transition-all">
+            <button 
+              onClick={() => setQuality('standard')}
+              className={`flex-1 py-2 text-xs transition-all rounded-lg ${quality === 'standard' ? 'font-bold text-[#6D5EF8] bg-[#EEF2FF] border border-[#6D5EF8]/20 shadow-sm' : 'font-semibold text-[#6B7280] hover:text-[#111827]'}`}
+            >
               Standard
             </button>
-            <button className="flex-1 py-2 text-xs font-bold text-[#6D5EF8] bg-[#EEF2FF] rounded-lg border border-[#6D5EF8]/20 flex items-center justify-center gap-1.5 transition-all shadow-sm">
+            <button 
+              onClick={() => {
+                const plan = (user?.plan || '').toLowerCase();
+                const isPro = plan === 'pro' || plan === 'premium';
+                if (isPro) {
+                  setQuality('hd');
+                } else {
+                  setPopupType('hd');
+                  setShowPremiumPopup(true);
+                }
+              }}
+              className={`flex-1 py-2 text-xs flex items-center justify-center gap-1.5 transition-all rounded-lg ${quality === 'hd' ? 'font-bold text-[#6D5EF8] bg-[#EEF2FF] border border-[#6D5EF8]/20 shadow-sm' : 'font-semibold text-[#6B7280] hover:text-[#111827]'}`}
+            >
               HD <Crown className="w-3.5 h-3.5 text-[#F59E0B] fill-[#F59E0B]" />
             </button>
           </div>
+        </div>
         </div>
 
         {/* Generate Button Area */}
         <div className="pt-2">
           <button
-            onClick={generatedImage ? () => setGeneratedImage(null) : handleGenerate}
-            disabled={isGenerating && !generatedImage}
-            className={`w-full text-white font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 group shadow-sm ${isGenerating && !generatedImage ? 'bg-[#9CA3AF] cursor-not-allowed' : 'bg-[#6D5EF8] hover:bg-[#5B4DF5] shadow-lg shadow-[#6D5EF8]/20 hover:shadow-[#6D5EF8]/40 hover:-translate-y-0.5'}`}>
-            <Sparkles className={`w-5 h-5 ${!isGenerating && 'group-hover:scale-110 transition-transform'}`} />
-            {isGenerating ? 'Generating...' : generatedImage ? 'Create New Image' : 'Generate Image'}
+            onClick={(!isAuthenticated && freeGenCount >= 1) ? () => setShowLoginPopup(true) : (generatedImage ? () => setGeneratedImage(null) : handleGenerate)}
+            disabled={(isGenerating && !generatedImage) || activeView === 'history'}
+            className={`w-full text-white font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 group shadow-sm ${((isGenerating && !generatedImage) || activeView === 'history') ? 'bg-[#9CA3AF] cursor-not-allowed opacity-70' : 'bg-[#6D5EF8] hover:bg-[#5B4DF5] shadow-lg shadow-[#6D5EF8]/20 hover:shadow-[#6D5EF8]/40 hover:-translate-y-0.5'}`}>
+            <Sparkles className={`w-5 h-5 ${(!isGenerating && activeView !== 'history') && 'group-hover:scale-110 transition-transform'}`} />
+            {isGenerating ? 'Generating...' : (!isAuthenticated && freeGenCount >= 1) ? 'Login to Generate More' : generatedImage ? 'Create New Image' : 'Generate Image'}
           </button>
           <div className="flex items-center justify-center mt-3 text-xs text-[#9CA3AF]">
-            This will cost 2 credits <Info className="w-3.5 h-3.5 ml-1 cursor-pointer hover:text-[#6B7280]" />
+            This will cost 5 credits <Info className="w-3.5 h-3.5 ml-1 cursor-pointer hover:text-[#6B7280]" />
           </div>
         </div>
 
@@ -225,7 +384,12 @@ export default function ImageGeneratorClient() {
 
       {/* Right Main Area */}
       {activeView === 'history' ? (
-        <HistoryView onClose={() => setActiveView('generate')} />
+        <HistoryView 
+          onClose={() => setActiveView('generate')} 
+          isAuthenticated={isAuthenticated}
+          onRequireLogin={() => setShowLoginPopup(true)}
+          recentImages={recentImages}
+        />
       ) : (
         <main className="flex-grow flex flex-col min-w-0 space-y-6">
 
@@ -276,8 +440,17 @@ export default function ImageGeneratorClient() {
             <GeneratedResult
               imageUrl={generatedImage}
               prompt={prompt}
+              aspectRatio={selectedRatio}
+              quality={quality}
+              model={selectedModel}
+              style={selectedStyle}
               isAuthenticated={isAuthenticated}
               onRequireLogin={() => setShowLoginPopup(true)}
+              onRegenerate={(newPrompt) => {
+                setPrompt(newPrompt);
+                // We need to use setTimeout to ensure state updates before generating
+                setTimeout(() => handleGenerate(newPrompt), 0);
+              }}
             />
           ) : (
             <>

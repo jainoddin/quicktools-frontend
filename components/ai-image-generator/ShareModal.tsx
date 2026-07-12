@@ -79,12 +79,26 @@ export default function ShareModal({
             </div>
           )}
 
-          {/* Social Grid */}
           <div className={`grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-3 mb-6 ${!isAuthenticated ? 'opacity-30 pointer-events-none' : ''}`}>
             {socialLinks.map((social) => (
               <div 
                 key={social.id}
-                onClick={() => handleAction(() => {})}
+                onClick={() => handleAction(() => {
+                  const url = encodeURIComponent(imageUrl);
+                  const text = encodeURIComponent('Check out this AI Generated Image!');
+                  if (social.id === 'copy') {
+                    navigator.clipboard.writeText(imageUrl);
+                    alert("Link copied to clipboard!");
+                  } else if (social.id === 'facebook') {
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+                  } else if (social.id === 'twitter') {
+                    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+                  } else if (social.id === 'linkedin') {
+                    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+                  } else if (social.id === 'whatsapp') {
+                    window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, '_blank');
+                  }
+                })}
                 className={`flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-2xl border-2 cursor-pointer transition-all ${social.active ? 'border-[#6D5EF8] bg-[#EEF2FF]' : 'border-[#E5E7EB] hover:border-gray-300 hover:bg-gray-50'}`}
               >
                 <div className={`w-10 h-10 ${social.bg} rounded-full flex items-center justify-center ${social.color} mb-2 shadow-sm shrink-0`}>

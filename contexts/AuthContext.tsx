@@ -9,6 +9,7 @@ interface User {
   email: string;
   avatar?: string;
   role?: string;
+  plan?: string;
   savedTools?: string[];
 }
 
@@ -74,7 +75,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               id: data.user.id || data.user._id,
               name: data.user.name,
               email: data.user.email,
-              avatar: data.user.avatar
+              avatar: data.user.avatar,
+              plan: data.user.plan || 'Free'
             });
             document.cookie = `user_data=${encodeURIComponent(newUserData)}; path=/; max-age=${7 * 24 * 60 * 60}`;
           } else {
