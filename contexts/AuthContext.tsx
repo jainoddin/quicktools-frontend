@@ -52,15 +52,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         const parsedUser = JSON.parse(decodeURIComponent(userDataCookie));
         setUser(parsedUser);
         setIsAuthenticated(true);
+        // If we found the cookie, we can stop loading instantly
+        setIsLoading(false);
       } catch (e) {
         console.error('Failed to parse user_data cookie:', e);
       }
     }
     
-    // We can instantly stop loading because we either have the optimistic data or we don't.
-    // This entirely eliminates the spinner!
-    setIsLoading(false);
-
     // 2. Background Verification (Silently verify the secure httpOnly token)
     const verifyAuth = async () => {
       try {
@@ -88,6 +86,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
       } catch (error) {
         console.error('Auth verification failed:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
