@@ -2,26 +2,16 @@
 import React from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import { 
-  MessageSquare, Image as ImageIcon, FileText, LayoutGrid, 
-  Mic, PenTool, QrCode, PlaySquare, ChevronDown,
-  Star, ArrowRight, Code, CheckCircle2, Flame, Sparkles
+  Star, ArrowRight, ChevronDown
 } from 'lucide-react';
 import Link from 'next/link';
+import { allTools, IconMap } from '../../../components/tools/ToolsClient';
 
-const allTools = [
-  { name: 'AI Chat', desc: 'Ask anything, get AI powered answers', icon: MessageSquare, color: 'bg-[#10B981] text-white', slug: '/tools/ai-chat', tag: { label: 'Popular', type: 'popular', icon: Flame } },
-  { name: 'AI Image Generator', desc: 'Create stunning images from text', icon: ImageIcon, color: 'bg-[#6D5EF8] text-white', slug: '/tools/ai-image-generator', tag: { label: 'Popular', type: 'popular', icon: Flame } },
-  { name: 'Background Remover', desc: 'Remove background from any image', icon: LayoutGrid, color: 'bg-[#10B981] text-white', slug: '/tools/background-remover', tag: { label: 'Popular', type: 'popular', icon: Flame } },
-  { name: 'PDF to Word', desc: 'Convert PDF files to editable Word', icon: FileText, color: 'bg-[#EF4444] text-white', slug: '/tools/pdf-converter', tag: null },
-  { name: 'Image Upscaler', desc: 'Increase image resolution with AI', icon: ImageIcon, color: 'bg-[#3B82F6] text-white', slug: '/tools/image-upscaler', tag: { label: 'New', type: 'new', icon: Sparkles } },
-  { name: 'AI Writer', desc: 'Generate high-quality content in seconds', icon: PenTool, color: 'bg-[#8B5CF6] text-white', slug: '/tools/ai-writer', tag: { label: 'Popular', type: 'popular', icon: Flame } },
-  { name: 'Text to Speech', desc: 'Convert text to natural speech', icon: Mic, color: 'bg-[#F59E0B] text-white', slug: '/tools/text-to-speech', tag: null },
-  { name: 'AI Code Generator', desc: 'Generate code with AI assistance', icon: Code, color: 'bg-[#8B5CF6] text-white', slug: '/tools/ai-code-generator', tag: { label: 'New', type: 'new', icon: Sparkles } },
-  { name: 'PDF Summarizer', desc: 'Summarize PDF content instantly', icon: FileText, color: 'bg-[#EF4444] text-white', slug: '/tools/pdf-summarizer', tag: null },
-  { name: 'Grammar Checker', desc: 'Check grammar and improve writing', icon: CheckCircle2, color: 'bg-[#10B981] text-white', slug: '/tools/grammar-checker', tag: null },
-  { name: 'YouTube Summary', desc: 'Get summary of any YouTube video', icon: PlaySquare, color: 'bg-[#EF4444] text-white', slug: '/tools/youtube-summary', tag: { label: 'New', type: 'new', icon: Sparkles } },
-  { name: 'QR Code Generator', desc: 'Create custom QR codes', icon: QrCode, color: 'bg-[#EF4444] text-white', slug: '/tools/qr-code', tag: null },
-];
+function DynamicIcon({ name, className }: { name: string; className?: string }) {
+  const Icon = IconMap[name];
+  if (!Icon) return null;
+  return <Icon className={className} />;
+}
 
 export default function AllToolsPage() {
   const filters = ['All', 'Popular', 'New', 'Free', 'Premium'];
@@ -30,7 +20,7 @@ export default function AllToolsPage() {
     <DashboardLayout>
       <div className="mb-8">
         <h1 className="text-3xl md:text-4xl font-black text-[#111827] mb-2 tracking-tight">All AI Tools</h1>
-        <p className="text-[#6B7280] text-lg">100+ AI-powered tools to boost your productivity ✨</p>
+        <p className="text-[#6B7280] text-lg">{allTools.length} AI-powered tools to boost your productivity ✨</p>
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
@@ -58,13 +48,13 @@ export default function AllToolsPage() {
               {/* Top Row: Icon and Tag */}
               <div className="flex items-start justify-between mb-4">
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-inner ${tool.color}`}>
-                  <tool.icon className="w-7 h-7" />
+                  <DynamicIcon name={tool.iconName} className="w-7 h-7" />
                 </div>
 
                 <div className="flex gap-2 items-center">
                   {tool.tag && (
                     <div className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-bold ${tool.tag.type === 'popular' ? 'bg-red-50 text-red-500' : 'bg-green-50 text-green-600'}`}>
-                      <tool.tag.icon className="w-3 h-3" />
+                      <DynamicIcon name={tool.tag.iconName} className="w-3 h-3" />
                       {tool.tag.label}
                     </div>
                   )}
@@ -79,7 +69,7 @@ export default function AllToolsPage() {
                 {tool.name}
               </h3>
               <p className="text-[#6B7280] text-sm leading-relaxed mb-6 flex-grow">
-                {tool.desc}
+                {tool.description}
               </p>
 
               {/* Try Now Button */}

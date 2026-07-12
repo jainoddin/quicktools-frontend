@@ -15,7 +15,7 @@ import { getEndpoint } from '@/lib/api';
 import LoginPopup from '@/components/auth/LoginPopup';
 
 // ✅ Static icon map — RSC bundler idi safely handle cheyagaladu
-const IconMap: Record<string, LucideIcon> = {
+export const IconMap: Record<string, LucideIcon> = {
   LayoutGrid,
   ImageIcon,
   PenTool,
@@ -59,7 +59,7 @@ const filtersList = [
   { name: 'Recent', iconName: 'Clock' },
 ];
 
-const allTools = [
+export const allTools = [
   {
     name: 'AI Image Generator',
     description: 'Generate stunning images from text using advanced AI models.',

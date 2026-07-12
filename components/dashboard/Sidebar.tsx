@@ -11,13 +11,8 @@ const navItems = [
   { name: 'Dashboard', icon: LayoutGrid, path: '/dashboard' },
 ];
 
-const generalItems = [
-  { name: 'All Tools', icon: LayoutGrid, path: '/dashboard/all', count: 56 },
-  { name: 'Categories', icon: Shapes, path: '/dashboard/categories', count: 12 },
-  { name: 'My Tools', icon: FolderDot, path: '/dashboard/my-tools', count: 8 },
-  { name: 'Favorites', icon: Heart, path: '/dashboard/favorites', count: 6 },
-  { name: 'History', icon: Clock, path: '/dashboard/history' },
-];
+import { useAuth } from '../../contexts/AuthContext';
+import { allTools } from '../tools/ToolsClient';
 
 const accountItems = [
   { name: 'Billing', icon: CreditCard, path: '/dashboard/billing' },
@@ -26,6 +21,18 @@ const accountItems = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const { user } = useAuth();
+  
+  const uniqueCategories = new Set(allTools.map(t => t.category)).size;
+  const favoritesCount = user?.savedTools?.length || 0;
+  
+  const generalItems = [
+    { name: 'All Tools', icon: LayoutGrid, path: '/dashboard/all', count: allTools.length },
+    { name: 'Categories', icon: Shapes, path: '/dashboard/categories', count: uniqueCategories },
+    { name: 'My Tools', icon: FolderDot, path: '/dashboard/my-tools', count: 0 },
+    { name: 'Favorites', icon: Heart, path: '/dashboard/favorites', count: favoritesCount },
+    { name: 'History', icon: Clock, path: '/dashboard/history' },
+  ];
 
   const isActive = (path: string) => {
     if (path === '/dashboard') return pathname === '/dashboard';
@@ -103,13 +110,7 @@ export default function Sidebar() {
           </Link>
         </div>
 
-        {/* Theme Toggle */}
-        <button className="w-full flex items-center justify-between px-3 py-2.5 border border-[#E5E7EB] rounded-xl text-[#4B5563] hover:bg-white transition-colors bg-white/50">
-          <div className="flex items-center gap-3 font-medium text-sm">
-            <Sun className="w-5 h-5 text-[#6B7280]" /> Light
-          </div>
-          <ChevronRight className="w-4 h-4 text-[#9CA3AF]" />
-        </button>
+
 
       </div>
     </aside>
