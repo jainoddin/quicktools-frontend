@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Zap, ChevronDown, Image as ImageIcon, PenTool, Video, Code, LayoutGrid, LogOut, Menu, X } from 'lucide-react';
+import { Zap, ChevronDown, Image as ImageIcon, PenTool, Video, Code, LayoutGrid, LogOut, Menu, X, LayoutDashboard, Settings } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -163,7 +163,16 @@ export default function Header() {
                     <p className="text-sm font-bold text-[#111827] truncate">{user.name}</p>
                     <p className="text-xs text-[#6B7280] truncate">{user.email}</p>
                   </div>
-                  <button onClick={handleLogout} className="w-full text-left px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors flex items-center gap-2">
+                  <Link href="/dashboard" className="w-full text-left px-4 py-2 text-sm font-medium text-[#4B5563] hover:bg-[#F9FAFB] hover:text-[#111827] transition-colors flex items-center gap-2">
+                    <LayoutDashboard className="w-4 h-4" />
+                    Dashboard
+                  </Link>
+                  <Link href="/dashboard/settings" className="w-full text-left px-4 py-2 text-sm font-medium text-[#4B5563] hover:bg-[#F9FAFB] hover:text-[#111827] transition-colors flex items-center gap-2 mb-1">
+                    <Settings className="w-4 h-4" />
+                    Settings
+                  </Link>
+                  <div className="border-t border-[#F3F4F6]"></div>
+                  <button onClick={handleLogout} className="w-full text-left px-4 py-2 mt-1 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors flex items-center gap-2">
                     <LogOut className="w-4 h-4" />
                     Log Out
                   </button>
@@ -273,11 +282,23 @@ export default function Header() {
                       <p className="text-xs text-[#6B7280]">{user.email}</p>
                     </div>
                   </div>
-                  <button onClick={handleLogout}
-                    className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 transition-colors">
-                    <LogOut className="w-4 h-4" />
-                    Log Out
-                  </button>
+                  <div className="flex flex-col gap-1 mt-1">
+                    <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-[#374151] hover:bg-[#F9FAFB] transition-colors">
+                      <LayoutDashboard className="w-4 h-4 text-[#6B7280]" />
+                      Dashboard
+                    </Link>
+                    <Link href="/dashboard/settings" onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-[#374151] hover:bg-[#F9FAFB] transition-colors">
+                      <Settings className="w-4 h-4 text-[#6B7280]" />
+                      Settings
+                    </Link>
+                    <button onClick={handleLogout}
+                      className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 transition-colors mt-2 border-t border-[#F3F4F6]">
+                      <LogOut className="w-4 h-4" />
+                      Log Out
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <div className="flex flex-col gap-2 px-1">
