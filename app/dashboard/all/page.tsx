@@ -37,8 +37,14 @@ export default function AllToolsPage() {
     }
   }, [user]);
 
+  const categoryQuery = searchParams.get('category');
+
   const filteredTools = useMemo(() => {
     let result = allTools;
+
+    if (categoryQuery) {
+      result = result.filter(t => t.category === categoryQuery);
+    }
 
     if (activeFilter === 'Popular') {
       result = result.filter(t => t.tag?.type === 'popular');
@@ -55,7 +61,7 @@ export default function AllToolsPage() {
     }
 
     return result;
-  }, [activeFilter, searchQuery]);
+  }, [activeFilter, searchQuery, categoryQuery]);
 
   const toggleStar = async (e: React.MouseEvent, slug: string) => {
     e.preventDefault();
@@ -90,12 +96,14 @@ export default function AllToolsPage() {
     <DashboardLayout>
       <div className="mb-8">
         <h1 className="text-3xl md:text-4xl font-black text-[#111827] mb-2 tracking-tight">
-          {searchQuery ? `Search Results for "${searchQuery}"` : 'All AI Tools'}
+          {searchQuery ? `Search Results for "${searchQuery}"` : categoryQuery ? `${categoryQuery} Tools` : 'All AI Tools'}
         </h1>
         <p className="text-[#6B7280] text-lg">
           {searchQuery 
             ? `Found ${filteredTools.length} tools` 
-            : `${allTools.length} AI-powered tools to boost your productivity ✨`}
+            : categoryQuery 
+              ? `${filteredTools.length} tools in ${categoryQuery}`
+              : `${allTools.length} AI-powered tools to boost your productivity ✨`}
         </p>
       </div>
 

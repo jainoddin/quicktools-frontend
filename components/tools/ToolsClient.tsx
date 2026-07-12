@@ -38,7 +38,7 @@ function DynamicIcon({ name, className }: { name: string; className?: string }) 
   return <Icon className={className} />;
 }
 
-const categoriesList = [
+export const categoriesList = [
   { name: 'All Tools', iconName: 'LayoutGrid' },
   { name: 'AI Image', iconName: 'ImageIcon' },
   { name: 'AI Writer', iconName: 'PenTool' },
