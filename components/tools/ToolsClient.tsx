@@ -10,9 +10,9 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useAuth } from '../../contexts/AuthContext';
-import { getEndpoint } from '../../lib/api';
-import LoginPopup from '../auth/LoginPopup';
+import { useAuth } from '@/contexts/AuthContext';
+import { getEndpoint } from '@/lib/api';
+import LoginPopup from '@/components/auth/LoginPopup';
 
 // ✅ Static icon map — RSC bundler idi safely handle cheyagaladu
 const IconMap: Record<string, LucideIcon> = {

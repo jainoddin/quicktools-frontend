@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Metadata } from 'next';
-import ToolsClient from '../../components/tools/ToolsClient';
+import ToolsClient from '@/components/tools/ToolsClient';
 
 export const metadata: Metadata = {
   title: 'All AI Tools | QuickTools.ai',
