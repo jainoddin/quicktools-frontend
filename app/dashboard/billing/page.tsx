@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
-import { 
+import {
   CheckCircle2, CreditCard, Receipt, History, Zap, AlertTriangle, X, Loader2
 } from 'lucide-react';
 import { getEndpoint } from '../../../lib/api';
@@ -85,11 +85,10 @@ export default function BillingOverviewPage() {
         <div className="bg-white border border-[#E5E7EB] rounded-[24px] p-6 lg:p-8 flex flex-col shadow-sm">
           <div className="flex items-center gap-3 mb-6">
             <h2 className="text-[16px] font-bold text-[#111827]">Current Plan</h2>
-            <span className={`text-[12px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider ${
-              isPro
-                ? 'text-[#D97706] bg-[#FFFBEB] border border-[#F59E0B]/20' 
+            <span className={`text-[12px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider ${isPro
+                ? 'text-[#D97706] bg-[#FFFBEB] border border-[#F59E0B]/20'
                 : 'text-[#6D5EF8] bg-[#EEF2FF]'
-            }`}>
+              }`}>
               {usage.plan} Plan
             </span>
           </div>
@@ -98,10 +97,10 @@ export default function BillingOverviewPage() {
             <h3 className="text-3xl font-extrabold text-[#111827] mb-2 capitalize">{usage.plan}</h3>
             <p className="text-sm text-[#6B7280] mb-6">
               {isPro
-                ? 'Premium tools for professionals and creators.' 
+                ? 'Premium tools for professionals and creators.'
                 : 'Essential tools to get you started.'}
             </p>
-            
+
             <div className="space-y-3">
               {[
                 isPro ? '10,000 credits every month' : 'Free credits every month',
@@ -118,11 +117,10 @@ export default function BillingOverviewPage() {
           </div>
 
           {/* Manage Plan / Upgrade Button */}
-          <Link href="/dashboard/billing/plans" className={`w-full text-white font-semibold py-3 rounded-xl transition-colors shadow-md flex items-center justify-center mb-3 ${
-            isPro
-              ? 'bg-[#111827] hover:bg-black shadow-gray-900/20' 
+          <Link href="/dashboard/billing/plans" className={`w-full text-white font-semibold py-3 rounded-xl transition-colors shadow-md flex items-center justify-center mb-3 ${isPro
+              ? 'bg-[#111827] hover:bg-black shadow-gray-900/20'
               : 'bg-[#6D5EF8] hover:bg-[#5B4DF5] shadow-[#6D5EF8]/20'
-          }`}>
+            }`}>
             {isPro ? 'Manage Plan' : 'Upgrade to Pro'}
           </Link>
 
@@ -201,7 +199,7 @@ export default function BillingOverviewPage() {
       {/* Quick Actions */}
       <div className="bg-white border border-[#E5E7EB] rounded-[24px] p-6 lg:p-8 shadow-sm">
         <h3 className="text-[16px] font-bold text-[#111827] mb-6">Quick Actions</h3>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <Link href="/dashboard/billing/plans" className="flex items-start gap-4 p-4 rounded-2xl hover:bg-[#F9FAFB] transition-colors border border-transparent hover:border-[#E5E7EB] group">
             <div className="w-10 h-10 rounded-xl bg-[#EEF2FF] flex items-center justify-center shrink-0">
