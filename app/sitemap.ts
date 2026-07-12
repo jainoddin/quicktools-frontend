@@ -2,8 +2,7 @@ import { MetadataRoute } from 'next';
 import { getEndpoint } from '../lib/api';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // TODO: Update with your production URL before deployment
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktools.ai'; 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space'; 
 
   // Fetch blogs from backend to generate dynamic URLs
   let blogs = [];
@@ -25,10 +24,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Static routes
-  const routes = ['', '/blog', '/tools', '/about', '/contact', '/pricing'].map((route) => ({
+  const routes = [
+    '', '/blog', '/about', '/contact', '/pricing', '/login', '/signup',
+    '/tools/ai-image-generator', '/tools/background-remover',
+    '/tools/ai-chat-assistant', '/tools/pdf-converter', '/tools/ai-writer'
+  ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: route === '/blog' ? 'daily' : 'weekly' as any,
+    changeFrequency: route.startsWith('/blog') || route.startsWith('/tools') ? 'daily' : 'weekly' as any,
     priority: route === '' ? 1 : 0.9,
   }));
 
