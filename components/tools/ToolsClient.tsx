@@ -59,6 +59,14 @@ const filtersList = [
   { name: 'Recent', iconName: 'Clock' },
 ];
 
+export function isNewTool(createdAt?: string) {
+  if (!createdAt) return false;
+  const launchDate = new Date(createdAt);
+  const now = new Date();
+  const diffDays = Math.floor((now.getTime() - launchDate.getTime()) / (1000 * 3600 * 24));
+  return diffDays <= 30;
+}
+
 export const allTools = [
   {
     name: 'AI Image Generator',
@@ -67,6 +75,7 @@ export const allTools = [
     color: 'bg-[#6D5EF8] text-white',
     slug: '/tools/ai-image-generator',
     category: 'AI Image',
+    createdAt: '2023-01-01',
     tag: { label: 'Popular', type: 'popular', iconName: 'Flame' }
   },
   {
@@ -76,6 +85,7 @@ export const allTools = [
     color: 'bg-[#10B981] text-white',
     slug: '/tools/background-remover',
     category: 'AI Image',
+    createdAt: '2023-02-01',
     tag: { label: 'Popular', type: 'popular', iconName: 'Flame' }
   },
   {
@@ -85,6 +95,7 @@ export const allTools = [
     color: 'bg-[#F43F5E] text-white',
     slug: '/tools/ai-writer',
     category: 'AI Writer',
+    createdAt: '2023-03-01',
     tag: { label: 'Popular', type: 'popular', iconName: 'Flame' }
   },
   {
@@ -94,7 +105,7 @@ export const allTools = [
     color: 'bg-[#8B5CF6] text-white',
     slug: '/tools/ai-video-generator',
     category: 'AI Video',
-    tag: { label: 'New', type: 'new', iconName: 'Sparkles' }
+    createdAt: '2026-07-10', // 2 days ago
   },
   {
     name: 'AI Code Generator',
@@ -103,7 +114,7 @@ export const allTools = [
     color: 'bg-[#0EA5E9] text-white',
     slug: '/tools/ai-code-generator',
     category: 'AI Code',
-    tag: { label: 'New', type: 'new', iconName: 'Sparkles' }
+    createdAt: '2026-07-05', // 7 days ago
   }
 ];
 
@@ -161,7 +172,7 @@ export default function ToolsClient() {
     }
 
     if (activeFilter === 'New') {
-       result = result.filter(t => t.tag?.type === 'new');
+       result = result.filter(t => isNewTool(t.createdAt));
     } else if (activeFilter === 'Most Used' || activeFilter === 'Recent') {
        result = result.filter(t => starredTools.includes(t.slug));
     }
@@ -344,14 +355,17 @@ export default function ToolsClient() {
                             <DynamicIcon name={tool.iconName} className="w-7 h-7" />
                           </div>
 
-                          <div className="flex gap-2">
-                            {tool.tag && (
-                              <div className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-bold ${tool.tag.type === 'popular'
-                                ? 'bg-red-50 text-red-500'
-                                : 'bg-green-50 text-green-600'
-                                }`}>
+                          <div className="flex gap-2 items-center">
+                            {tool.tag && !isNewTool(tool.createdAt) && (
+                              <div className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-bold bg-red-50 text-red-500`}>
                                 <DynamicIcon name={tool.tag.iconName} className="w-3 h-3" />
                                 {tool.tag.label}
+                              </div>
+                            )}
+                            {isNewTool(tool.createdAt) && (
+                              <div className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-bold bg-green-50 text-green-600`}>
+                                <Sparkles className="w-3 h-3" />
+                                New
                               </div>
                             )}
                             <button 
