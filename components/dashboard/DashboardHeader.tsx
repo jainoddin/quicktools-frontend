@@ -35,29 +35,28 @@ export default function DashboardHeader({ user, onMenuClick }: { user: any, onMe
       </div>
 
       {/* Center: Search */}
-      <div className="flex-1 max-w-md relative hidden md:block">
+      <form 
+        onSubmit={(e) => {
+          e.preventDefault();
+          const q = new FormData(e.currentTarget).get('q');
+          if (q) window.location.href = `/dashboard/all?q=${encodeURIComponent(q.toString())}`;
+        }}
+        className="flex-1 max-w-md relative hidden md:block"
+      >
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
         <input 
           type="text" 
+          name="q"
           placeholder="Search tools..." 
-          className="w-full h-9 pl-9 pr-12 bg-[#F9FAFB] border-none rounded-lg text-sm outline-none focus:ring-2 focus:ring-[#6D5EF8]/20 transition-all placeholder:text-[#9CA3AF] text-[#111827]"
+          className="w-full h-9 pl-9 pr-10 bg-[#F9FAFB] border-none rounded-lg text-sm outline-none focus:ring-2 focus:ring-[#6D5EF8]/20 transition-all placeholder:text-[#9CA3AF] text-[#111827]"
         />
-        <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
-          <kbd className="px-1.5 py-0.5 text-[10px] font-medium bg-white border border-[#E5E7EB] rounded text-[#6B7280] shadow-sm">⌘</kbd>
-          <kbd className="px-1.5 py-0.5 text-[10px] font-medium bg-white border border-[#E5E7EB] rounded text-[#6B7280] shadow-sm">K</kbd>
-        </div>
-      </div>
+        <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-[#9CA3AF] hover:text-[#6D5EF8] transition-colors rounded-md hover:bg-indigo-50">
+          <Search className="w-3.5 h-3.5" />
+        </button>
+      </form>
 
       {/* Right: Actions & Profile */}
       <div className="flex items-center gap-4 md:gap-6 ml-auto">
-        <button className="text-[#6B7280] hover:text-[#111827] transition-colors relative">
-          <Gift className="w-5 h-5" />
-        </button>
-        <button className="text-[#6B7280] hover:text-[#111827] transition-colors relative">
-          <Bell className="w-5 h-5" />
-          <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#6D5EF8] text-white text-[9px] font-bold flex items-center justify-center rounded-full border-2 border-white">3</span>
-        </button>
-        
         <div className="h-6 w-[1px] bg-[#E5E7EB] mx-1 hidden sm:block"></div>
 
         <div className="relative group cursor-pointer">

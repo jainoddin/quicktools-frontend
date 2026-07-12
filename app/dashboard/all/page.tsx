@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { allTools, IconMap, isNewTool } from '../../../components/tools/ToolsClient';
 import { useAuth } from '../../../contexts/AuthContext';
 import { getEndpoint } from '../../../lib/api';
+import { useSearchParams } from 'next/navigation';
 
 function DynamicIcon({ name, className }: { name: string; className?: string }) {
   const Icon = IconMap[name];
@@ -17,10 +18,18 @@ function DynamicIcon({ name, className }: { name: string; className?: string }) 
 
 export default function AllToolsPage() {
   const { user, updateUser } = useAuth();
+  const searchParams = useSearchParams();
+  const initialQuery = searchParams.get('q') || '';
+  
   const [activeFilter, setActiveFilter] = useState('All');
   const [starredTools, setStarredTools] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
   
   const filters = ['All', 'Popular', 'New'];
+
+  useEffect(() => {
+    setSearchQuery(searchParams.get('q') || '');
+  }, [searchParams]);
 
   useEffect(() => {
     if (user?.savedTools) {
@@ -29,11 +38,24 @@ export default function AllToolsPage() {
   }, [user]);
 
   const filteredTools = useMemo(() => {
-    if (activeFilter === 'All') return allTools;
-    if (activeFilter === 'Popular') return allTools.filter(t => t.tag?.type === 'popular');
-    if (activeFilter === 'New') return allTools.filter(t => isNewTool(t.createdAt));
-    return allTools;
-  }, [activeFilter]);
+    let result = allTools;
+
+    if (activeFilter === 'Popular') {
+      result = result.filter(t => t.tag?.type === 'popular');
+    } else if (activeFilter === 'New') {
+      result = result.filter(t => isNewTool(t.createdAt));
+    }
+
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      result = result.filter(t => 
+        t.name.toLowerCase().includes(q) || 
+        t.description.toLowerCase().includes(q)
+      );
+    }
+
+    return result;
+  }, [activeFilter, searchQuery]);
 
   const toggleStar = async (e: React.MouseEvent, slug: string) => {
     e.preventDefault();
@@ -67,8 +89,14 @@ export default function AllToolsPage() {
   return (
     <DashboardLayout>
       <div className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-black text-[#111827] mb-2 tracking-tight">All AI Tools</h1>
-        <p className="text-[#6B7280] text-lg">{allTools.length} AI-powered tools to boost your productivity ✨</p>
+        <h1 className="text-3xl md:text-4xl font-black text-[#111827] mb-2 tracking-tight">
+          {searchQuery ? `Search Results for "${searchQuery}"` : 'All AI Tools'}
+        </h1>
+        <p className="text-[#6B7280] text-lg">
+          {searchQuery 
+            ? `Found ${filteredTools.length} tools` 
+            : `${allTools.length} AI-powered tools to boost your productivity ✨`}
+        </p>
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
@@ -86,17 +114,16 @@ export default function AllToolsPage() {
             )
           })}
         </div>
-
-
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-        {filteredTools.map((tool, index) => {
-          const isStarred = starredTools.includes(tool.slug);
-          const toolIsNew = isNewTool(tool.createdAt);
-          
-          return (
-            <Link href={tool.slug} key={index} className="group">
+        {filteredTools.length > 0 ? (
+          filteredTools.map((tool, index) => {
+            const isStarred = starredTools.includes(tool.slug);
+            const toolIsNew = isNewTool(tool.createdAt);
+            
+            return (
+              <Link href={tool.slug} key={index} className="group">
               <div className="bg-white p-5 rounded-2xl border border-[#E5E7EB] hover:border-[#6D5EF8] hover:shadow-xl hover:shadow-[#6D5EF8]/10 transition-all duration-300 relative h-full flex flex-col">
 
                 {/* Top Row: Icon and Tag */}
@@ -143,7 +170,16 @@ export default function AllToolsPage() {
               </div>
             </Link>
           );
-        })}
+        })
+      ) : (
+        <div className="col-span-full bg-white border border-dashed border-[#E5E7EB] rounded-2xl p-12 text-center flex flex-col items-center">
+          <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
+            <Sparkles className="w-8 h-8 text-gray-400" />
+          </div>
+          <h3 className="text-lg font-bold text-[#111827] mb-2">No tools found</h3>
+          <p className="text-[#6B7280] text-sm">We couldn't find any tools matching your search.</p>
+        </div>
+      )}
       </div>
     </DashboardLayout>
   );
