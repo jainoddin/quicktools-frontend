@@ -10,7 +10,7 @@ import { getEndpoint } from '../../../lib/api';
 
 export default function BillingOverviewPage() {
   const router = useRouter();
-  const [usage, setUsage] = useState({ credits: 0, creditsUsedThisMonth: 0, maxCredits: 50, plan: 'free' });
+  const [usage, setUsage] = useState({ credits: 0, creditsUsedThisPeriod: 0, maxCredits: 15, plan: 'free' });
   const [loading, setLoading] = useState(true);
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [cancelling, setCancelling] = useState(false);
@@ -20,7 +20,16 @@ export default function BillingOverviewPage() {
     fetch(getEndpoint('/api/user/usage'), { credentials: 'include' })
       .then(res => res.json())
       .then(data => {
-        if (data.success) setUsage(data.data);
+        if (data.success) {
+          // ensure we map creditsUsedThisPeriod from API correctly, or default to 0
+          const apiUsage = data.data;
+          setUsage({
+            credits: apiUsage.credits || 0,
+            creditsUsedThisPeriod: apiUsage.creditsUsedThisPeriod || 0,
+            maxCredits: apiUsage.maxCredits || 15,
+            plan: apiUsage.plan || 'free'
+          });
+        }
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -31,7 +40,7 @@ export default function BillingOverviewPage() {
   }, []);
 
   const isPro = usage.plan === 'pro' || usage.plan === 'premium' || usage.plan === 'business';
-  const percentage = usage.maxCredits > 0 ? Math.round((usage.creditsUsedThisMonth / usage.maxCredits) * 100) : 0;
+  const percentage = usage.maxCredits > 0 ? Math.round((usage.creditsUsedThisPeriod / usage.maxCredits) * 100) : 0;
   const dashArray = `${percentage}, 100`;
 
   const handleCancelPlan = async () => {
@@ -169,11 +178,11 @@ export default function BillingOverviewPage() {
               <div className="flex-1 w-full space-y-4">
                 <div className="flex items-center justify-between border-b border-[#F3F4F6] pb-3">
                   <span className="text-sm font-medium text-[#6B7280]">Used</span>
-                  <span className="text-sm font-bold text-[#111827]">{usage.creditsUsedThisMonth.toLocaleString()}</span>
+                  <span className="text-sm font-bold text-[#111827]">{usage.creditsUsedThisPeriod.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between border-b border-[#F3F4F6] pb-3">
                   <span className="text-sm font-medium text-[#6B7280]">Remaining</span>
-                  <span className="text-sm font-bold text-[#111827]">{(usage.maxCredits - usage.creditsUsedThisMonth).toLocaleString()}</span>
+                  <span className="text-sm font-bold text-[#111827]">{(usage.maxCredits - usage.creditsUsedThisPeriod).toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between pt-1">
                   <span className="text-sm font-bold text-[#111827]">Total Credits</span>

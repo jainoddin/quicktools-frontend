@@ -50,7 +50,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     
     if (userDataCookie) {
       try {
-        const parsedUser = JSON.parse(decodeURIComponent(userDataCookie));
+        let decodedStr = decodeURIComponent(userDataCookie);
+        // Sometimes Express prefixes JSON cookies with 'j:'
+        if (decodedStr.startsWith('j:')) {
+          decodedStr = decodedStr.slice(2);
+        }
+        // Handle double-encoded URIs
+        while (decodedStr.includes('%7B') || decodedStr.includes('%22')) {
+          decodedStr = decodeURIComponent(decodedStr);
+        }
+        const parsedUser = JSON.parse(decodedStr);
         setUser(parsedUser);
         setIsAuthenticated(true);
         // If we found the cookie, we can stop loading instantly
