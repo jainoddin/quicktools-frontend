@@ -104,8 +104,8 @@ export default function ImageGeneratorClient() {
       return;
     }
     
-    // Strict Limit: Only 1 generation without login
-    if (!isAuthenticated && freeGenCount >= 1) {
+    // Auth required — backend now enforces this, but block early on frontend too
+    if (!isAuthenticated) {
       setShowLoginPopup(true);
       return;
     }
@@ -161,7 +161,10 @@ export default function ImageGeneratorClient() {
           localStorage.setItem('freeImageGenCount', newCount.toString());
         }
       } else {
-        if (data.errorType === 'INSUFFICIENT_CREDITS') {
+        // Handle specific error types from backend
+        if (data.errorType === 'AUTH_REQUIRED') {
+          setShowLoginPopup(true);
+        } else if (data.errorType === 'INSUFFICIENT_CREDITS') {
           setPopupType('credits');
           setShowPremiumPopup(true);
         } else {
