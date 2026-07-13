@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {
   Home, ChevronRight, Zap, Users, LayoutGrid, Star,
   Globe, Shield, Check, ArrowRight, Mail,
-  Sparkles, Lock, Lightbulb, Code2, Linkedin, MessageCircle
+  Sparkles, Lock, Lightbulb, Code2, MessageCircle
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -204,7 +204,7 @@ export default async function AboutPage() {
               <p className="text-xs text-[#6D5EF8] font-semibold mb-3">Founder & CEO</p>
               <div className="flex items-center gap-2">
                 <a href="https://www.linkedin.com/in/sk-jainoddin-699060250/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#EEF2FF] text-[#6D5EF8] flex items-center justify-center hover:bg-[#6D5EF8] hover:text-white transition-colors">
-                  <Linkedin className="w-4 h-4" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                 </a>
                 <a href="https://wa.me/917989015462" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#EEF2FF] text-[#6D5EF8] flex items-center justify-center hover:bg-[#6D5EF8] hover:text-white transition-colors">
                   <MessageCircle className="w-4 h-4" />
