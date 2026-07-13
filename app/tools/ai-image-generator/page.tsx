@@ -11,7 +11,7 @@ import ImageGeneratorClient from '@/components/ai-image-generator/ImageGenerator
 
 export const metadata: Metadata = {
   title: 'Powerful AI Image Generator - Create Stunning AI Art',
-  description: 'Create stunning, high-resolution images from simple text descriptions. Unleash your creativity with our powerful AI Image Generator and text-to-image models.',
+  description: 'Create stunning, high-resolution images from text descriptions. Unleash your creativity with our powerful AI Image Generator and models.',
   alternates: {
     canonical: '/tools/ai-image-generator'
   }

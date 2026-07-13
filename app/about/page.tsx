@@ -82,7 +82,7 @@ export default async function AboutPage() {
     "mainEntity": {
       "@type": "Organization",
       "name": "QuickTools.ai",
-      "foundingDate": "2024",
+      "foundingDate": "2026",
       "founders": [
         {
           "@type": "Person",
@@ -138,7 +138,8 @@ export default async function AboutPage() {
 
           {/* Right — Product Screenshot Mockup */}
           <div className="relative w-full flex items-center lg:justify-end justify-center pt-8 sm:pt-0">
-            <style dangerouslySetInnerHTML={{__html: `
+            <style dangerouslySetInnerHTML={{
+              __html: `
               @keyframes float-icon {
                 0%, 100% { transform: translateY(0px) rotate(-12deg); }
                 50% { transform: translateY(-20px) rotate(-8deg); }
@@ -147,23 +148,23 @@ export default async function AboutPage() {
                 animation: float-icon 4s ease-in-out infinite;
               }
             `}} />
-            
+
             {/* Main Mockup Image */}
             <div className="relative w-[95%] lg:w-[95%] xl:w-[100%] z-10 flex items-center justify-end ml-auto">
-              <Image 
-                src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/9ece2905-2609-40cc-be51-4621b64fc3d7.png" 
-                alt="Product Mockup" 
+              <Image
+                src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/9ece2905-2609-40cc-be51-4621b64fc3d7.png"
+                alt="Product Mockup"
                 width={800}
                 height={600}
                 className="w-full h-auto object-contain drop-shadow-2xl rounded-2xl"
               />
             </div>
-            
+
             {/* Robot Image */}
             <div className="absolute -bottom-24 -right-24 w-[380px] h-[380px] z-20 hidden md:block pointer-events-none">
-              <Image 
-                src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/e3f4b268-d502-44fc-a58d-6af941e6639b.png" 
-                alt="AI Assistant Robot" 
+              <Image
+                src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/e3f4b268-d502-44fc-a58d-6af941e6639b.png"
+                alt="AI Assistant Robot"
                 fill
                 className="object-contain drop-shadow-xl"
               />
@@ -173,7 +174,7 @@ export default async function AboutPage() {
             <div className="absolute top-[50%] lg:-left-6 left-0 w-16 h-16 bg-[#6D5EF8] rounded-2xl flex items-center justify-center shadow-xl z-20 hidden md:flex animate-float-icon">
               <Zap className="w-8 h-8 text-white fill-white" />
             </div>
-            
+
           </div>
         </section>
 
@@ -213,7 +214,7 @@ export default async function AboutPage() {
                 <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-[#EEF2FF] shadow-md bg-[#EEF2FF] flex items-center justify-center">
                   <Image
                     src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/24a81c85-d06e-436a-bb43-0c91ba47032a.png"
-                    width={160} 
+                    width={160}
                     height={160}
                     alt="Founder"
                     className="w-full h-full object-cover scale-[1.35] translate-y-3"
@@ -227,7 +228,7 @@ export default async function AboutPage() {
               <p className="text-xs text-[#6D5EF8] font-semibold mb-3">Founder & CEO</p>
               <div className="flex items-center gap-2">
                 <a href="https://www.linkedin.com/in/sk-jainoddin-699060250/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#EEF2FF] text-[#6D5EF8] flex items-center justify-center hover:bg-[#6D5EF8] hover:text-white transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>
                 </a>
                 <a href="https://wa.me/917989015462" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#EEF2FF] text-[#6D5EF8] flex items-center justify-center hover:bg-[#6D5EF8] hover:text-white transition-colors">
                   <MessageCircle className="w-4 h-4" />

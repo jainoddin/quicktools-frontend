@@ -11,7 +11,7 @@ import ContactForm from '../../components/contact/ContactForm';
 import FeedbackModal from '../../components/contact/FeedbackModal';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | QuickTools.ai',
+  title: 'Contact the QuickTools.ai Team for Support',
   description: 'Get in touch with the QuickTools.ai team. We are here to help you with any questions, feedback, or support requests regarding our AI tools.',
   alternates: { canonical: '/contact' },
 };

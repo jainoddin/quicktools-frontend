@@ -5,8 +5,8 @@ import { Home, ChevronRight } from 'lucide-react';
 import FaqClient from '../../components/faq/FaqClient';
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions | QuickTools.ai',
-  description: 'Find quick answers to the most common questions about QuickTools.ai, including billing, accounts, and API usage.',
+  title: 'Frequently Asked Questions & Support FAQs',
+  description: 'Find quick answers to the most common questions about QuickTools.ai, including billing, accounts, tool features, and API usage. Explore our FAQs.',
   alternates: { canonical: '/faq' },
 };
 

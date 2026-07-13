@@ -7,8 +7,8 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Help Center | QuickTools.ai',
-  description: 'Find answers, tutorials and support to make the most of QuickTools.ai',
+  title: 'Help Center, Documentation & Customer Support',
+  description: 'Find answers, tutorials and support to make the most of QuickTools.ai. Explore our comprehensive help center for guides, troubleshooting, and FAQs.',
   alternates: { canonical: '/help' },
 };
 

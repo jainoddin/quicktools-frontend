@@ -6,7 +6,7 @@ import AiVideoClient from '@/components/ai-video-generator/AiVideoClient';
 
 export const metadata: Metadata = {
   title: 'Professional AI Video Generator - Text to Video Creator',
-  description: 'Turn your ideas into stunning, high-quality videos instantly. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.',
+  description: 'Turn your ideas into high-quality videos instantly. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.',
   alternates: {
     canonical: '/tools/ai-video-generator'
   }

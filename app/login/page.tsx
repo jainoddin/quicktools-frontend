@@ -6,8 +6,8 @@ import { Home } from 'lucide-react';
 import { getEndpoint } from '../../lib/api';
 
 export const metadata: Metadata = {
-  title: 'Login - QuickTools.ai',
-  description: 'Sign in to access your QuickTools.ai account.',
+  title: 'Login to Your QuickTools.ai Account',
+  description: 'Sign in to access your QuickTools.ai account. Continue generating content, images, and code with our premium suite of AI tools.',
 };
 
 export default function LoginPage() {

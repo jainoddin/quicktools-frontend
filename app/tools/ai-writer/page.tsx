@@ -6,7 +6,7 @@ import AiWriterClient from '@/components/ai-writer/AiWriterClient';
 
 export const metadata: Metadata = {
   title: 'Advanced AI Writer & Content Generator for Creators',
-  description: 'Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blog posts, professional emails, and creative social media copy.',
+  description: 'Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.',
   alternates: {
     canonical: '/tools/ai-writer'
   }

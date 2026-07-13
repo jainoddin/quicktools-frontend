@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { FileText, ShieldAlert, Ban, CheckCircle2, Home, ChevronRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | QuickTools.ai',
-  description: 'Read the terms and conditions for using QuickTools.ai services and tools.',
+  title: 'Terms of Service - User Rules & Guidelines',
+  description: 'Read the Terms of Service for using QuickTools.ai. Understand your rights, responsibilities, and the rules governing our platform and AI tools.',
   alternates: { canonical: '/terms' },
 };
 

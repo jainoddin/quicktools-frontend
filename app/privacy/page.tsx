@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { Shield, Lock, FileKey, CheckCircle2, User, Home, ChevronRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | QuickTools.ai',
-  description: 'Learn how QuickTools.ai collects, uses, and protects your information.',
+  title: 'Privacy Policy - How We Protect Your Data',
+  description: 'Read our Privacy Policy to learn how QuickTools.ai collects, uses, and protects your personal information and ensures data security on our platform.',
   alternates: { canonical: '/privacy' },
 };
 

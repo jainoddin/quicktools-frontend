@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { getEndpoint } from '../../lib/api';
 
 export const metadata: Metadata = {
-  title: 'Sign Up - QuickTools.ai',
-  description: 'Create your QuickTools.ai account and access 100+ AI tools.',
+  title: 'Create Your Free QuickTools.ai Account',
+  description: 'Create your QuickTools.ai account today and get instant access to our powerful suite of premium AI tools for text, images, video, and code.',
 };
 
 export default function SignUpPage() {
