@@ -10,6 +10,13 @@ import { Suspense } from 'react';
 import HomeSearch from '../components/home/HomeSearch';
 import LatestBlogs from '../components/home/LatestBlogs';
 import FaqSection from '../components/home/FaqSection';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://quicktool.space',
+  },
+};
 
 export default function HomePage() {
   return (
