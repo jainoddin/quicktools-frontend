@@ -91,27 +91,46 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
     }
   };
 
+  const faqSchema = (blogPost.faq && blogPost.faq.length > 0) ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: blogPost.faq.map((q: any) => ({
+      '@type': 'Question',
+      name: q.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: q.answer
+      }
+    }))
+  } : null;
+
   return (
     <div className="flex-grow bg-white font-sans selection:bg-[#6D5EF8] selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       {/* Breadcrumb */}
       <div className="bg-transparent pt-[15px] pb-[25px]">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 text-sm text-[#6B7280]">
-          <Link href="/" className="hover:text-[#111827] flex items-center gap-1 transition-colors">
-            <Home className="w-3.5 h-3.5" /> Home
+        <nav className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 text-xs md:text-sm font-medium text-[#6B7280] overflow-x-auto whitespace-nowrap pb-2 [&::-webkit-scrollbar]:hidden">
+          <Link href="/" className="hover:text-[#111827] flex items-center gap-1.5 transition-colors">
+            <Home className="w-4 h-4" /> Home
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
+          <ChevronRight className="w-4 h-4 text-gray-400 shrink-0" />
           <Link href="/blog" className="hover:text-[#111827] transition-colors">Blog</Link>
-          <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
-          <span className="text-[#6B7280]">{blogPost.category}</span>
-          <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
-          <span className="text-[#111827] font-medium truncate max-w-[200px] sm:max-w-xs">
+          <ChevronRight className="w-4 h-4 text-gray-400 shrink-0" />
+          <Link href={`/blog?category=${encodeURIComponent(blogPost.category)}`} className="hover:text-[#111827] transition-colors">{blogPost.category}</Link>
+          <ChevronRight className="w-4 h-4 text-gray-400 shrink-0" />
+          <span className="text-[#6D5EF8] font-bold truncate max-w-[200px] sm:max-w-md">
             {blogPost.title}
           </span>
-        </div>
+        </nav>
       </div>
 
       {/* Main 3-Column Layout */}
@@ -273,6 +292,26 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
                 {blogPost.content}
               </ReactMarkdown>
             </div>
+
+            {/* FAQ Section */}
+            {blogPost.faq && blogPost.faq.length > 0 && (
+              <div className="mt-12 pt-8 border-t border-[#E5E7EB]">
+                <h2 className="text-2xl font-bold text-[#111827] mb-6">Frequently Asked Questions</h2>
+                <div className="space-y-4">
+                  {blogPost.faq.map((item: any, idx: number) => (
+                    <details key={idx} className="group bg-[#F9FAFB] rounded-2xl border border-[#E5E7EB] overflow-hidden">
+                      <summary className="p-5 font-semibold text-[#111827] cursor-pointer flex items-center justify-between list-none outline-none">
+                        <span>{item.question}</span>
+                        <ChevronDown className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" />
+                      </summary>
+                      <div className="p-5 pt-0 text-[#4B5563] leading-relaxed border-t border-[#E5E7EB]/50 group-open:mt-2">
+                        {item.answer}
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            )}
             
             {/* Conclusion Action */}
             <div className="mt-10 pt-4 border-t border-[#E5E7EB]">

@@ -1,0 +1,31 @@
+import React from 'react';
+import type { Metadata } from 'next';
+import ArticlesClient from '../../components/articles/ArticlesClient';
+
+export const metadata: Metadata = {
+  title: 'AI Articles & Tutorials | QuickTools.ai',
+  description: 'Expert insights, tutorials, and in-depth guides about AI tools, productivity, and the future of work.',
+  alternates: {
+    canonical: 'https://quicktools.ai/articles',
+  }
+};
+
+async function getArticles() {
+  try {
+    const res = await fetch('http://localhost:5000/api/articles?limit=50', {
+      next: { revalidate: 3600 } // Revalidate every hour
+    });
+    if (!res.ok) return { data: [], pagination: {} };
+    return await res.json();
+  } catch (error) {
+    console.error('Failed to fetch articles:', error);
+    return { data: [], pagination: {} };
+  }
+}
+
+export default async function ArticlesDirectoryPage() {
+  const articlesResponse = await getArticles();
+  const allArticles = articlesResponse.data || [];
+  
+  return <ArticlesClient initialArticles={allArticles} />;
+}

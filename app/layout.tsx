@@ -59,6 +59,35 @@ export default function RootLayout({
         {/* Razorpay Checkout SDK */}
         <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
 
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "QuickTools.ai",
+            "url": "https://quicktool.space",
+            "logo": "https://quicktool.space/icon.svg",
+            "sameAs": ["https://twitter.com/quicktoolsai"],
+            "description": "Premium AI tools platform for creators and developers."
+          })}}
+        />
+        {/* WebSite Schema with SearchAction */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "QuickTools.ai",
+            "url": "https://quicktool.space",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://quicktool.space/articles?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          })}}
+        />
+
         <AuthProvider>
           <SplashScreen />
           <Header />

@@ -311,37 +311,43 @@ export default function BlogClient() {
                 
                 {/* Image Side */}
                 <div className="md:w-1/2 h-64 md:h-auto relative overflow-hidden flex items-center justify-center">
-                  <Image src={featuredPost.coverImage} fill alt={featuredPost.title} className="object-cover transition-transform group-hover:scale-105 duration-700" />
+                  <Image src={featuredPost.coverImage} fill alt={featuredPost.title} className="object-cover" />
                   <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 hidden md:block"></div>
                 </div>
               </Link>
             )}
 
             {/* Filters Row */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-              <div className="flex items-center gap-1 border-b border-[#E5E7EB] w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#E5E7EB] gap-4 mb-6">
+              <div className="flex items-center gap-6 overflow-x-auto w-full sm:w-auto pt-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 {['All', 'Latest', 'Popular', 'Trending'].map(tab => (
                   <button 
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`px-4 py-3 text-sm font-bold border-b-2 transition-colors ${activeTab === tab ? 'border-[#6D5EF8] text-[#6D5EF8]' : 'border-transparent text-[#6B7280] hover:text-[#111827]'}`}
+                    className={`whitespace-nowrap px-1 text-sm font-bold pb-3 border-b-2 transition-colors ${activeTab === tab ? 'border-[#6D5EF8] text-[#6D5EF8]' : 'border-transparent text-[#6B7280] hover:text-[#111827]'}`}
                   >
                     {tab}
                   </button>
                 ))}
               </div>
 
-              <div className="relative shrink-0">
-                <select 
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="appearance-none bg-white border border-[#E5E7EB] rounded-xl pl-4 pr-10 py-2.5 text-sm font-semibold text-[#111827] focus:outline-none focus:ring-2 focus:ring-[#6D5EF8] shadow-sm cursor-pointer"
-                >
-                  <option value="Newest First">Newest First</option>
-                  <option value="Oldest First">Oldest First</option>
-                </select>
-                <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-                  <ChevronDown className="w-4 h-4 text-gray-500" />
+              <div className="relative shrink-0 mb-3 sm:mb-2 group z-20">
+                <button className="flex items-center justify-between w-[140px] appearance-none bg-white border border-[#E5E7EB] rounded-xl pl-4 pr-3 py-2 text-sm font-bold text-[#111827] cursor-pointer hover:border-[#6B7280] transition-colors">
+                  {sortBy}
+                  <ChevronDown className="w-4 h-4 text-[#6B7280]" />
+                </button>
+                <div className="absolute right-0 top-full mt-1 w-[140px] bg-white border border-gray-400 shadow-lg hidden group-hover:block z-50 rounded-sm overflow-hidden">
+                  <div className="flex flex-col">
+                    {['Newest First', 'Oldest First'].map(option => (
+                       <button 
+                         key={option}
+                         onClick={() => setSortBy(option)}
+                         className={`text-left px-4 py-2 text-sm font-medium ${sortBy === option ? 'bg-[#1877F2] text-white' : 'text-[#111827] hover:bg-gray-100'}`}
+                       >
+                         {option}
+                       </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
