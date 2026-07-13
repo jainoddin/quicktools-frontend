@@ -8,8 +8,8 @@ import {
   Menu, X
 } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import NewsletterForm from '../shared/NewsletterForm';
+import NewsletterSectionWrapper from '../shared/NewsletterSectionWrapper';
 import { useRouter } from 'next/navigation';
 import { getEndpoint } from '../../lib/api';
 
@@ -186,18 +186,20 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
         </div>
 
         {/* Newsletter */}
-        <div className="bg-[#F5F3FF] rounded-2xl p-5 border border-[#EDE9FE]">
-          <h3 className="font-bold text-[#6D5EF8] mb-2 text-sm">Stay Updated</h3>
-          <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
-            Subscribe to get the latest updates and amazing tips delivered to your inbox.
-          </p>
-          <NewsletterForm 
-            className="space-y-2"
-            inputClassName="w-full px-3 py-2 bg-white border border-[#E5E7EB] rounded-lg text-xs focus:outline-none focus:border-[#6D5EF8]"
-            buttonClassName="w-full py-2 bg-[#6D5EF8] text-white rounded-lg text-xs font-bold hover:bg-[#5B4DF5] transition-colors flex items-center justify-center gap-2"
-            buttonText={<><Send className="w-3 h-3" /> Subscribe</>}
-          />
-        </div>
+        <NewsletterSectionWrapper>
+          <div className="bg-[#F5F3FF] rounded-2xl p-5 border border-[#EDE9FE]">
+            <h3 className="font-bold text-[#6D5EF8] mb-2 text-sm">Stay Updated</h3>
+            <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
+              Subscribe to get the latest updates and amazing tips delivered to your inbox.
+            </p>
+            <NewsletterForm 
+              className="space-y-2"
+              inputClassName="w-full px-3 py-2 bg-white border border-[#E5E7EB] rounded-lg text-xs focus:outline-none focus:border-[#6D5EF8]"
+              buttonClassName="w-full py-2 bg-[#6D5EF8] text-white rounded-lg text-xs font-bold hover:bg-[#5B4DF5] transition-colors flex items-center justify-center gap-2"
+              buttonText={<><Send className="w-3 h-3" /> Subscribe</>}
+            />
+          </div>
+        </NewsletterSectionWrapper>
 
         {/* Popular Tags */}
         <div>

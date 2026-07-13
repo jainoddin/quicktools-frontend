@@ -73,17 +73,19 @@ export default function Footer() {
               </ul>
             </div>
 
-            <div className="col-span-2 md:col-span-1">
-              <h4 className="font-bold text-sm mb-4 text-[#111827]">Subscribe</h4>
-              <p className="text-xs text-[#6B7280] mb-4">Get the latest updates, new tools, tips, and offers.</p>
-              <NewsletterForm 
-                className="flex flex-col gap-2"
-                inputClassName="w-full px-4 py-2.5 rounded-lg border border-[#E5E7EB] text-sm focus:outline-none focus:ring-1 transition-all bg-[#F8FAFC]"
-                inputStyle={{ '--tw-ring-color': themeColor, borderColor: themeColor } as any}
-                buttonClassName="text-white font-semibold py-2.5 rounded-lg text-sm shadow-sm w-full"
-                buttonStyle={{ backgroundColor: themeColor }}
-              />
-            </div>
+            {!isAuthenticated && (
+              <div className="col-span-2 md:col-span-1">
+                <h4 className="font-bold text-sm mb-4 text-[#111827]">Subscribe</h4>
+                <p className="text-xs text-[#6B7280] mb-4">Get the latest updates, new tools, tips, and offers.</p>
+                <NewsletterForm 
+                  className="flex flex-col gap-2"
+                  inputClassName="w-full px-4 py-2.5 rounded-lg border border-[#E5E7EB] text-sm focus:outline-none focus:ring-1 transition-all bg-[#F8FAFC]"
+                  inputStyle={{ '--tw-ring-color': themeColor, borderColor: themeColor } as any}
+                  buttonClassName="text-white font-semibold py-2.5 rounded-lg text-sm shadow-sm w-full"
+                  buttonStyle={{ backgroundColor: themeColor }}
+                />
+              </div>
+            )}
           </div>
         )}
 

@@ -7,6 +7,7 @@ import {
   CheckCircle2, X, PenLine, User, Zap, ArrowRight
 } from 'lucide-react';
 import NewsletterForm from '../../components/shared/NewsletterForm';
+import NewsletterSectionWrapper from '../../components/shared/NewsletterSectionWrapper';
 
 export const metadata: Metadata = {
   title: 'Contact Us | QuickTools.ai',
@@ -261,38 +262,40 @@ export default function ContactPage() {
         </div>
 
         {/* ── BOTTOM NEWSLETTER BAR ── */}
-        <div className="mt-16 bg-white border border-[#E5E7EB] rounded-2xl p-6 sm:p-8 flex flex-col xl:flex-row items-center justify-between gap-8 shadow-sm">
-          
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-[#6D5EF8] rounded-full flex items-center justify-center shadow-md shrink-0">
-              <Zap className="w-6 h-6 text-white fill-white" />
+        <NewsletterSectionWrapper>
+          <div className="mt-16 bg-white border border-[#E5E7EB] rounded-2xl p-6 sm:p-8 flex flex-col xl:flex-row items-center justify-between gap-8 shadow-sm">
+            
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-[#6D5EF8] rounded-full flex items-center justify-center shadow-md shrink-0">
+                <Zap className="w-6 h-6 text-white fill-white" />
+              </div>
+              <div>
+                <h3 className="font-bold text-[#111827] text-base mb-1">Stay in the loop</h3>
+                <p className="text-xs text-[#6B7280]">Subscribe to get the latest AI tools, tutorials and productivity tips straight to your inbox.</p>
+              </div>
             </div>
-            <div>
-              <h3 className="font-bold text-[#111827] text-base mb-1">Stay in the loop</h3>
-              <p className="text-xs text-[#6B7280]">Subscribe to get the latest AI tools, tutorials and productivity tips straight to your inbox.</p>
+
+            <NewsletterForm 
+              className="flex w-full xl:w-auto items-center gap-2"
+              inputClassName="w-full xl:w-64 bg-white border border-[#E5E7EB] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all"
+              buttonClassName="whitespace-nowrap inline-flex items-center gap-2 px-6 py-2.5 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white text-sm font-bold rounded-lg transition-colors"
+              buttonText={<>Subscribe <Send className="w-4 h-4" /></>}
+            />
+
+            <div className="flex items-center gap-6 hidden md:flex">
+              <div className="flex items-center gap-1.5 text-xs text-[#6B7280] font-medium">
+                <CheckCircle2 className="w-4 h-4 text-[#8B5CF6]" /> No spam
+              </div>
+              <div className="flex items-center gap-1.5 text-xs text-[#6B7280] font-medium">
+                <X className="w-4 h-4 text-[#8B5CF6]" /> Unsubscribe anytime
+              </div>
+              <div className="flex items-center gap-1.5 text-xs text-[#6B7280] font-medium">
+                <MessageSquare className="w-4 h-4 text-[#8B5CF6]" /> Weekly updates
+              </div>
             </div>
+
           </div>
-
-          <NewsletterForm 
-            className="flex w-full xl:w-auto items-center gap-2"
-            inputClassName="w-full xl:w-64 bg-white border border-[#E5E7EB] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all"
-            buttonClassName="whitespace-nowrap inline-flex items-center gap-2 px-6 py-2.5 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white text-sm font-bold rounded-lg transition-colors"
-            buttonText={<>Subscribe <Send className="w-4 h-4" /></>}
-          />
-
-          <div className="flex items-center gap-6 hidden md:flex">
-            <div className="flex items-center gap-1.5 text-xs text-[#6B7280] font-medium">
-              <CheckCircle2 className="w-4 h-4 text-[#8B5CF6]" /> No spam
-            </div>
-            <div className="flex items-center gap-1.5 text-xs text-[#6B7280] font-medium">
-              <X className="w-4 h-4 text-[#8B5CF6]" /> Unsubscribe anytime
-            </div>
-            <div className="flex items-center gap-1.5 text-xs text-[#6B7280] font-medium">
-              <MessageSquare className="w-4 h-4 text-[#8B5CF6]" /> Weekly updates
-            </div>
-          </div>
-
-        </div>
+        </NewsletterSectionWrapper>
 
       </div>
     </div>

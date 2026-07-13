@@ -13,6 +13,7 @@ import rehypeSlug from 'rehype-slug';
 import GithubSlugger from 'github-slugger';
 import { getEndpoint } from '../../../lib/api';
 import NewsletterForm from '../../../components/shared/NewsletterForm';
+import NewsletterSectionWrapper from '../../../components/shared/NewsletterSectionWrapper';
 
 // ─── SEO Metadata ─────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -376,20 +377,22 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
             )}
 
             {/* Newsletter Subscribe */}
-            <div className="bg-white border border-[#E5E7EB] rounded-2xl p-5 shadow-sm">
-              <div className="w-9 h-9 bg-[#EEF2FF] rounded-xl flex items-center justify-center mb-3">
-                <Mail className="w-4 h-4 text-[#6D5EF8]" />
+            <NewsletterSectionWrapper>
+              <div className="bg-white border border-[#E5E7EB] rounded-2xl p-5 shadow-sm">
+                <div className="w-9 h-9 bg-[#EEF2FF] rounded-xl flex items-center justify-center mb-3">
+                  <Mail className="w-4 h-4 text-[#6D5EF8]" />
+                </div>
+                <h3 className="font-bold text-[#111827] mb-1">Subscribe to our newsletter</h3>
+                <p className="text-xs text-[#6B7280] mb-4 leading-relaxed">
+                  Get the latest AI tools, tutorials and productivity tips in your inbox.
+                </p>
+                <NewsletterForm
+                  className="mt-4"
+                  inputClassName="w-full h-10 px-3 border border-[#E5E7EB] rounded-xl text-sm outline-none focus:border-[#6D5EF8] focus:ring-2 focus:ring-[#6D5EF8]/10 transition-all mb-3"
+                  buttonClassName="w-full h-10 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm rounded-xl transition-colors"
+                />
               </div>
-              <h3 className="font-bold text-[#111827] mb-1">Subscribe to our newsletter</h3>
-              <p className="text-xs text-[#6B7280] mb-4 leading-relaxed">
-                Get the latest AI tools, tutorials and productivity tips in your inbox.
-              </p>
-              <NewsletterForm
-                className="mt-4"
-                inputClassName="w-full h-10 px-3 border border-[#E5E7EB] rounded-xl text-sm outline-none focus:border-[#6D5EF8] focus:ring-2 focus:ring-[#6D5EF8]/10 transition-all mb-3"
-                buttonClassName="w-full h-10 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm rounded-xl transition-colors"
-              />
-            </div>
+            </NewsletterSectionWrapper>
 
           </aside>
 

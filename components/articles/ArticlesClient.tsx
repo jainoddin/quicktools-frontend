@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Search, Flame, Bookmark, ArrowRight, Eye, ChevronDown, Clock, ChevronRight, Home } from 'lucide-react';
 import NewsletterForm from '../shared/NewsletterForm';
+import NewsletterSectionWrapper from '../shared/NewsletterSectionWrapper';
 
 const CATEGORIES = ['All Articles', 'AI & Tools', 'Productivity', 'Marketing', 'Business', 'Development', 'Design'];
 const TABS = ['All', 'Latest', 'Popular', 'Trending'];
@@ -316,28 +317,30 @@ export default function ArticlesClient({ initialArticles = [] }: { initialArticl
       </section>
 
       {/* 6. Newsletter */}
-      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-10">
-        <div className="bg-indigo-50 border border-indigo-100 rounded-3xl p-8 lg:p-12 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
-          <div className="absolute right-0 top-0 w-64 h-64 bg-indigo-200/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-          <div className="flex items-start gap-6 z-10 w-full md:w-1/2">
-            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shrink-0 shadow-sm border border-indigo-50">
-              <Image src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width={32} height={32} alt="Newsletter" className="opacity-80" />
+      <NewsletterSectionWrapper>
+        <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+          <div className="bg-indigo-50 border border-indigo-100 rounded-3xl p-8 lg:p-12 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+            <div className="absolute right-0 top-0 w-64 h-64 bg-indigo-200/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="flex items-start gap-6 z-10 w-full md:w-1/2">
+              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shrink-0 shadow-sm border border-indigo-50">
+                <Image src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width={32} height={32} alt="Newsletter" className="opacity-80" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-[#111827] mb-2">Stay Ahead with AI</h3>
+                <p className="text-[#4B5563] text-sm leading-relaxed">Get the latest AI insights, tools, and productivity tips delivered to your inbox every week.</p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-2xl font-bold text-[#111827] mb-2">Stay Ahead with AI</h3>
-              <p className="text-[#4B5563] text-sm leading-relaxed">Get the latest AI insights, tools, and productivity tips delivered to your inbox every week.</p>
+            <div className="z-10 w-full md:w-auto">
+              <NewsletterForm 
+                className="flex flex-col sm:flex-row items-center gap-3"
+                inputClassName="w-full sm:w-[300px] px-5 py-3.5 rounded-xl border border-[#D1D5DB] focus:ring-2 focus:ring-[#4F46E5] outline-none text-sm shadow-sm bg-white"
+                buttonClassName="w-full sm:w-auto bg-[#4F46E5] hover:bg-[#4338CA] text-white font-bold px-8 py-3.5 rounded-xl text-sm transition-colors shadow-sm whitespace-nowrap"
+              />
+              <p className="text-[10px] text-[#6B7280] text-center sm:text-left mt-3 px-2">No spam. Unsubscribe anytime.</p>
             </div>
           </div>
-          <div className="z-10 w-full md:w-auto">
-            <NewsletterForm 
-              className="flex flex-col sm:flex-row items-center gap-3"
-              inputClassName="w-full sm:w-[300px] px-5 py-3.5 rounded-xl border border-[#D1D5DB] focus:ring-2 focus:ring-[#4F46E5] outline-none text-sm shadow-sm bg-white"
-              buttonClassName="w-full sm:w-auto bg-[#4F46E5] hover:bg-[#4338CA] text-white font-bold px-8 py-3.5 rounded-xl text-sm transition-colors shadow-sm whitespace-nowrap"
-            />
-            <p className="text-[10px] text-[#6B7280] text-center sm:text-left mt-3 px-2">No spam. Unsubscribe anytime.</p>
-          </div>
-        </div>
-      </section>
+        </section>
+      </NewsletterSectionWrapper>
 
     </div>
   );

@@ -14,6 +14,7 @@ import {
 import ShareButtons from '@/components/blog/ShareButtons';
 import { getEndpoint } from '@/lib/api';
 import NewsletterForm from '@/components/shared/NewsletterForm';
+import NewsletterSectionWrapper from '@/components/shared/NewsletterSectionWrapper';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space';
 
@@ -451,24 +452,26 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
             </div>
 
             {/* Newsletter CTA */}
-            <div className="bg-[#4F46E5] rounded-2xl p-6 shadow-lg text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
-              <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center mb-4 backdrop-blur-sm relative z-10 border border-white/20">
-                <Mail className="w-5 h-5 text-white" />
+            <NewsletterSectionWrapper>
+              <div className="bg-[#4F46E5] rounded-2xl p-6 shadow-lg text-white relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center mb-4 backdrop-blur-sm relative z-10 border border-white/20">
+                  <Mail className="w-5 h-5 text-white" />
+                </div>
+                <h3 className="font-bold text-xl mb-2 relative z-10">Stay Ahead with AI</h3>
+                <p className="text-white/80 text-xs leading-relaxed mb-5 relative z-10">
+                  Get the latest AI insights, tools and productivity tips delivered to your inbox.
+                </p>
+                <NewsletterForm 
+                  className="space-y-2 relative z-10"
+                  inputClassName="w-full px-4 py-2.5 bg-white rounded-xl text-sm text-[#111827] focus:outline-none placeholder:text-gray-400 font-medium"
+                  buttonClassName="w-full py-2.5 bg-[#4338CA] border border-white/10 text-white rounded-xl text-sm font-bold hover:bg-[#3730A3] transition-colors"
+                />
+                <p className="text-[10px] text-white/50 text-center mt-3 relative z-10">
+                  No spam. Unsubscribe anytime.
+                </p>
               </div>
-              <h3 className="font-bold text-xl mb-2 relative z-10">Stay Ahead with AI</h3>
-              <p className="text-white/80 text-xs leading-relaxed mb-5 relative z-10">
-                Get the latest AI insights, tools and productivity tips delivered to your inbox.
-              </p>
-              <NewsletterForm 
-                className="space-y-2 relative z-10"
-                inputClassName="w-full px-4 py-2.5 bg-white rounded-xl text-sm text-[#111827] focus:outline-none placeholder:text-gray-400 font-medium"
-                buttonClassName="w-full py-2.5 bg-[#4338CA] border border-white/10 text-white rounded-xl text-sm font-bold hover:bg-[#3730A3] transition-colors"
-              />
-              <p className="text-[10px] text-white/50 text-center mt-3 relative z-10">
-                No spam. Unsubscribe anytime.
-              </p>
-            </div>
+            </NewsletterSectionWrapper>
 
             {/* Related Articles */}
             <div>

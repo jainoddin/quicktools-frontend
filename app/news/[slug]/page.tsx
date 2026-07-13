@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { ChevronRight, ArrowRight, Check, Home, Mail } from 'lucide-react';
 import ShareButtons from '../../../components/blog/ShareButtons';
 import NewsletterForm from '../../../components/shared/NewsletterForm';
+import NewsletterSectionWrapper from '../../../components/shared/NewsletterSectionWrapper';
 import type { Metadata } from 'next';
 import { getEndpoint } from '../../../lib/api';
 
@@ -338,23 +339,25 @@ export default async function NewsDetailPage({ params }: any) {
             )}
 
             {/* Newsletter Box */}
-            <div className="bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] rounded-2xl p-6 text-white shadow-md relative overflow-hidden">
-              <div className="flex items-center gap-2 mb-2 relative z-10">
-                <span className="text-xl">📫</span>
-                <h3 className="font-bold text-lg">Stay Updated</h3>
+            <NewsletterSectionWrapper>
+              <div className="bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] rounded-2xl p-6 text-white shadow-md relative overflow-hidden">
+                <div className="flex items-center gap-2 mb-2 relative z-10">
+                  <span className="text-xl">📫</span>
+                  <h3 className="font-bold text-lg">Stay Updated</h3>
+                </div>
+                <p className="text-sm text-indigo-100 mb-5 relative z-10">
+                  Get the latest AI news straight to your inbox.
+                </p>
+                <NewsletterForm 
+                  className="relative z-10 flex flex-col gap-3"
+                  inputClassName="w-full px-4 py-3 rounded-xl text-sm text-gray-900 border-0 focus:ring-2 focus:ring-white/50 bg-white/95"
+                  buttonClassName="w-full bg-white text-[#4F46E5] font-bold text-sm px-4 py-3 rounded-xl hover:bg-indigo-50 transition-colors shadow-sm"
+                />
+                <p className="text-[10px] text-indigo-200 mt-4 text-center relative z-10">
+                  No spam. Unsubscribe anytime.
+                </p>
               </div>
-              <p className="text-sm text-indigo-100 mb-5 relative z-10">
-                Get the latest AI news straight to your inbox.
-              </p>
-              <NewsletterForm 
-                className="relative z-10 flex flex-col gap-3"
-                inputClassName="w-full px-4 py-3 rounded-xl text-sm text-gray-900 border-0 focus:ring-2 focus:ring-white/50 bg-white/95"
-                buttonClassName="w-full bg-white text-[#4F46E5] font-bold text-sm px-4 py-3 rounded-xl hover:bg-indigo-50 transition-colors shadow-sm"
-              />
-              <p className="text-[10px] text-indigo-200 mt-4 text-center relative z-10">
-                No spam. Unsubscribe anytime.
-              </p>
-            </div>
+            </NewsletterSectionWrapper>
 
           </aside>
         </div>
