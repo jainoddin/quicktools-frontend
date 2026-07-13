@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { 
-  Home, ChevronRight, Mail, Send, Zap
+  Home, ChevronRight, Mail, Send, Zap, CheckCircle2, X
 } from 'lucide-react';
 import NewsletterForm from '../../components/shared/NewsletterForm';
 import NewsletterSectionWrapper from '../../components/shared/NewsletterSectionWrapper';
