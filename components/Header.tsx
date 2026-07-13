@@ -130,6 +130,7 @@ export default function Header() {
           </div>
           <Link href="/blog" className={`px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/blog') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/blog') ? { color: themeColor } : {}}>Blogs</Link>
           <Link href="/articles" className={`px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/articles') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/articles') ? { color: themeColor } : {}}>Articles</Link>
+          <Link href="/news" className={`px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/news') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/news') ? { color: themeColor } : {}}>News</Link>
           <Link href="/pricing" className={`px-3 py-1.5 rounded-full transition-colors ${isActive('/pricing') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActive('/pricing') ? { color: themeColor } : {}}>Pricing</Link>
           {!user && (
             <>
@@ -250,6 +251,10 @@ export default function Header() {
             <Link href="/articles" onClick={() => setMobileMenuOpen(false)}
               className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/articles') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
               📰 Articles
+            </Link>
+            <Link href="/news" onClick={() => setMobileMenuOpen(false)}
+              className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/news') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
+              🌍 News
             </Link>
             <Link href="/pricing" onClick={() => setMobileMenuOpen(false)}
               className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${isActive('/pricing') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
