@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Shield, Lock, FileKey, CheckCircle2 } from 'lucide-react';
+import { Shield, Lock, FileKey, CheckCircle2, User } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | QuickTools.ai',
