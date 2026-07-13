@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const desc = blog.metaDescription || blog.description || '';
 
   return {
-    title: blog.metaTitle || blog.title,
+    title: { absolute: blog.metaTitle || blog.title },
     description: desc.length > 145 ? desc.substring(0, 145) + '...' : desc,
     alternates: { canonical: `/blog/${blog.slug}` },
     openGraph: {

@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
       const news = json.data;
       const desc = news.metaDescription || news.summary || '';
       return {
-        title: news.metaTitle || news.title,
+        title: { absolute: news.metaTitle || news.title },
         description: desc.length > 145 ? desc.substring(0, 145) + '...' : desc,
         alternates: { canonical: `/news/${slug}` },
         openGraph: {
