@@ -27,12 +27,14 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
     if (res.ok) {
       const json = await res.json();
       const news = json.data;
+      const desc = news.metaDescription || news.summary || '';
       return {
-        title: news.metaTitle || `${news.title} | QuickTools News`,
-        description: news.metaDescription || news.summary,
+        title: news.metaTitle || news.title,
+        description: desc.length > 145 ? desc.substring(0, 145) + '...' : desc,
+        alternates: { canonical: `/news/${slug}` },
         openGraph: {
-          title: news.metaTitle,
-          description: news.metaDescription,
+          title: news.metaTitle || news.title,
+          description: desc,
           images: [news.heroImage],
           type: 'article',
         },

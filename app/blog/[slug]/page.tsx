@@ -25,13 +25,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const blog = json.data;
   if (!blog) return { title: 'Blog Not Found | QuickTools.ai' };
 
+  const desc = blog.metaDescription || blog.description || '';
+
   return {
-    title: `${blog.metaTitle || blog.title} | QuickTools.ai Blog`,
-    description: blog.metaDescription || blog.description,
+    title: blog.metaTitle || blog.title,
+    description: desc.length > 145 ? desc.substring(0, 145) + '...' : desc,
     alternates: { canonical: `/blog/${blog.slug}` },
     openGraph: {
-      title: blog.title,
-      description: blog.description,
+      title: blog.metaTitle || blog.title,
+      description: desc,
       type: 'article',
       url: `https://quicktools.ai/blog/${blog.slug}`,
       siteName: 'QuickTools.ai',
