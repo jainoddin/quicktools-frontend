@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { ChevronRight, ArrowRight, Check, Home } from 'lucide-react';
 import ShareButtons from '../../../components/blog/ShareButtons';
 import type { Metadata } from 'next';
+import { getEndpoint } from '../../../lib/api';
 
 // Simple markdown parser helper
 const parseMarkdown = (text: string) => {
@@ -20,7 +21,7 @@ const parseMarkdown = (text: string) => {
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const { slug } = await params;
   try {
-    const res = await fetch(`http://localhost:5000/api/news/${slug}`);
+    const res = await fetch(getEndpoint(`/api/news/${slug}`));
     if (res.ok) {
       const json = await res.json();
       const news = json.data;
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 export default async function NewsDetailPage({ params }: any) {
   const { slug } = await params;
 
-  const res = await fetch(`http://localhost:5000/api/news/${slug}`, {
+  const res = await fetch(getEndpoint(`/api/news/${slug}`), {
     next: { revalidate: 300 }
   });
 
@@ -56,7 +57,7 @@ export default async function NewsDetailPage({ params }: any) {
   // Fetch Top Tools
   let topTools = [];
   try {
-    const toolsRes = await fetch(`http://localhost:5000/api/tools?limit=4`, { next: { revalidate: 3600 } });
+    const toolsRes = await fetch(getEndpoint(`/api/tools?limit=4`), { next: { revalidate: 3600 } });
     if (toolsRes.ok) {
       const tData = await toolsRes.json();
       topTools = tData.data || [];

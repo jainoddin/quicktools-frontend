@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { ChevronRight, Home } from 'lucide-react';
 import BlogClient from '@/components/blog/BlogClient';
+import { getEndpoint } from '@/lib/api';
 
 export const metadata: Metadata = {
   title: 'Blog - QuickTools.ai',
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 
 async function getBlogs() {
   try {
-    const res = await fetch('http://localhost:5000/api/blogs', {
+    const res = await fetch(getEndpoint('/api/blogs'), {
       next: { revalidate: 3600 } // Revalidate every hour
     });
     if (!res.ok) return { data: [], pagination: {} };

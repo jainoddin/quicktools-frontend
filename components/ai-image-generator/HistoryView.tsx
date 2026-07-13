@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Search, Grid, List, Star, Filter, Trash2, Eye, Download, Heart, MoreVertical, ChevronLeft, ChevronRight, ChevronDown, Crown } from 'lucide-react';
 import DownloadModal from './DownloadModal';
 import { useAuth } from '@/contexts/AuthContext';
+import { getEndpoint } from '../../lib/api';
 
 interface HistoryViewProps {
   onClose: () => void;
@@ -44,7 +45,7 @@ export default function HistoryView({ onClose, isAuthenticated = false, onRequir
 
   useEffect(() => {
     if (isAuthenticated) {
-      fetch('http://localhost:5000/api/user/favorites', {
+      fetch(getEndpoint('/api/user/favorites'), {
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include'
       })
@@ -75,7 +76,7 @@ export default function HistoryView({ onClose, isAuthenticated = false, onRequir
 
     if (isAuthenticated) {
       try {
-        const res = await fetch('http://localhost:5000/api/user/favorites', {
+        const res = await fetch(getEndpoint('/api/user/favorites'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
@@ -129,7 +130,7 @@ export default function HistoryView({ onClose, isAuthenticated = false, onRequir
     // Delete from backend database
     if (isAuthenticated) {
       try {
-        await fetch('http://localhost:5000/api/user/usage', {
+        await fetch(getEndpoint('/api/user/usage'), {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',

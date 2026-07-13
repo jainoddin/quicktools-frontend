@@ -12,6 +12,7 @@ import {
   Check
 } from 'lucide-react';
 import ShareButtons from '@/components/blog/ShareButtons';
+import { getEndpoint } from '@/lib/api';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space';
 
@@ -21,7 +22,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { slug } = await params;
   try {
-    const res = await fetch(`http://localhost:5000/api/articles/${slug}`, {
+    const res = await fetch(getEndpoint(`/api/articles/${slug}`), {
       next: { revalidate: 3600 }
     });
     if (!res.ok) return { title: 'Article Not Found' };
@@ -60,13 +61,13 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
   // Next.js 15: await params before accessing properties
   const { slug } = await params;
 
-  const res = await fetch(`http://localhost:5000/api/articles/${slug}`, {
+  const res = await fetch(getEndpoint(`/api/articles/${slug}`), {
     next: { revalidate: 3600 }
   });
   
   let topTools = [];
   try {
-    const toolsRes = await fetch(`http://localhost:5000/api/tools?limit=4`, { next: { revalidate: 3600 } });
+    const toolsRes = await fetch(getEndpoint(`/api/tools?limit=4`), { next: { revalidate: 3600 } });
     if (toolsRes.ok) {
       const tData = await toolsRes.json();
       topTools = tData.data || [];

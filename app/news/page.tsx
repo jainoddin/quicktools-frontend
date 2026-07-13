@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import NewsClient from '../../components/news/NewsClient';
+import { getEndpoint } from '../../lib/api';
 
 export const metadata: Metadata = {
   title: 'AI News & Updates | QuickTools.ai',
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 
 async function getNews() {
   try {
-    const res = await fetch('http://localhost:5000/api/news?limit=12', {
+    const res = await fetch(getEndpoint('/api/news?limit=12'), {
       next: { revalidate: 300 } // Revalidate every 5 minutes for news
     });
     if (!res.ok) return { data: [], pagination: {} };

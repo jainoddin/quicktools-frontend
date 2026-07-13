@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import ArticlesClient from '../../components/articles/ArticlesClient';
+import { getEndpoint } from '../../lib/api';
 
 export const metadata: Metadata = {
   title: 'AI Articles & Tutorials | QuickTools.ai',
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 
 async function getArticles() {
   try {
-    const res = await fetch('http://localhost:5000/api/articles?limit=50', {
+    const res = await fetch(getEndpoint('/api/articles?limit=50'), {
       next: { revalidate: 3600 } // Revalidate every hour
     });
     if (!res.ok) return { data: [], pagination: {} };

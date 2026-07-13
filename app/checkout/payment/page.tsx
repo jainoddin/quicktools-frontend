@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { ShieldCheck, CreditCard, Smartphone, Loader2, Zap, Building2 } from 'lucide-react';
 import Stepper from '../../../components/checkout/Stepper';
 import { useAuth } from '@/contexts/AuthContext';
+import { getEndpoint } from '@/lib/api';
 
 /* ─── Brand Logo Images ─── */
 const VisaLogo       = () => <img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/visa.svg" alt="Visa" className="h-6 w-auto object-contain" />;
@@ -179,7 +180,7 @@ function PaymentContent() {
 
     try {
       // Step 1 — Backend lo Razorpay order create
-      const res = await fetch('http://localhost:5000/api/payment/create-order', {
+      const res = await fetch(getEndpoint('/api/payment/create-order'), {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -236,7 +237,7 @@ function PaymentContent() {
           razorpay_signature: string;
         }) => {
           // Step 4 — Backend lo signature verify
-          const verifyRes = await fetch('http://localhost:5000/api/payment/verify', {
+          const verifyRes = await fetch(getEndpoint('/api/payment/verify'), {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
