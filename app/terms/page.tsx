@@ -44,7 +44,7 @@ export default function TermsOfServicePage() {
       />
       
       {/* ── BREADCRUMB ── */}
-      <div className="bg-white pt-4 pb-2 border-b border-[#E5E7EB]">
+      <div className="bg-white pt-4 pb-2">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 text-sm text-[#6B7280]">
           <Link href="/" className="hover:text-[#111827] flex items-center gap-1 transition-colors">
             <Home className="w-3.5 h-3.5" /> Home
