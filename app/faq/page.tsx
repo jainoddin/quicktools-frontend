@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
+import Link from 'next/link';
+import { Home, ChevronRight } from 'lucide-react';
 import FaqClient from '../../components/faq/FaqClient';
 
 export const metadata: Metadata = {
@@ -42,14 +44,26 @@ export default function FaqPage() {
   };
 
   return (
-    <>
+    <div className="flex-grow bg-[#F8FAFC]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      
+      {/* ── BREADCRUMB ── */}
+      <div className="bg-white pt-4 pb-2 border-b border-[#E5E7EB]">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 text-sm text-[#6B7280]">
+          <Link href="/" className="hover:text-[#111827] flex items-center gap-1 transition-colors">
+            <Home className="w-3.5 h-3.5" /> Home
+          </Link>
+          <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
+          <span className="text-[#6D5EF8] font-semibold">FAQ</span>
+        </div>
+      </div>
+
       <Suspense fallback={<div className="min-h-screen bg-[#F8FAFC]"></div>}>
         <FaqClient />
       </Suspense>
-    </>
+    </div>
   );
 }
