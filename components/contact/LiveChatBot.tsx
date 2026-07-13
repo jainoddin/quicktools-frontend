@@ -5,15 +5,9 @@ import { MessageSquare, X, Send, Bot, User } from 'lucide-react';
 
 const QUESTIONS = [
   "Hi! I'm the QuickTools Bot. What's your name?",
-  "Nice to meet you! Are you currently using any AI tools?",
-  "What is your primary use case for AI? (e.g., coding, writing, images)",
-  "How often do you use AI tools in your daily workflow?",
-  "What's the biggest challenge you face with your current tools?",
-  "How did you hear about QuickTools.ai?",
-  "Are you looking for an enterprise solution or personal use?",
-  "Which specific tool are you most interested in?",
-  "Would you like to schedule a demo?",
-  "Finally, what is the best email to reach you at?"
+  "Nice to meet you! How can we help you today?",
+  "Are you currently using any AI tools?",
+  "Please provide your email ID so our team can connect with you."
 ];
 
 export default function LiveChatBot() {
@@ -56,8 +50,9 @@ export default function LiveChatBot() {
         setMessages(prev => [...prev, { text: QUESTIONS[nextIndex], sender: 'bot' }]);
         setCurrentQuestionIndex(nextIndex);
       } else {
-        setMessages(prev => [...prev, { text: "Thank you for the information! Our team will connect with you soon.", sender: 'bot' }]);
+        setMessages(prev => [...prev, { text: "Our team will connect with you. Thank you!", sender: 'bot' }]);
         setIsFinished(true);
+        setTimeout(() => setIsOpen(false), 3000);
       }
     }, 800);
   };
@@ -73,9 +68,9 @@ export default function LiveChatBot() {
           <MessageSquare className="w-5 h-5 text-[#6D5EF8]" />
         </div>
         <div>
-          <p className="font-bold text-[#111827] text-sm">Live Chat</p>
+          <p className="font-bold text-[#111827] text-sm">Chat Bot</p>
           <p className="text-xs text-[#6B7280] mb-1">Chat with our team</p>
-          <p className="text-xs font-bold text-[#6D5EF8]">Available 9AM - 9PM IST</p>
+          <p className="text-xs font-bold text-[#6D5EF8]">Available 24/7</p>
         </div>
       </div>
 
