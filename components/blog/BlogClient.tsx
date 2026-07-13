@@ -8,6 +8,7 @@ import {
   Menu, X
 } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import NewsletterForm from '../shared/NewsletterForm';
 import NewsletterSectionWrapper from '../shared/NewsletterSectionWrapper';
 import { useRouter } from 'next/navigation';
