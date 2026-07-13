@@ -59,6 +59,18 @@ export default function RootLayout({
         {/* Razorpay Checkout SDK */}
         <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
 
+        {/* Google Analytics */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-2TKCY5NQPG" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-2TKCY5NQPG');
+          `}
+        </Script>
+
         {/* Organization Schema */}
         <script
           type="application/ld+json"
