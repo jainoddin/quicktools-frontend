@@ -10,6 +10,7 @@ export default function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileCategoriesOpen, setMobileCategoriesOpen] = useState(false);
+  const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
 
   const themeColor = pathname.startsWith('/tools') ? '#6D5EF8' : '#4F46E5';
   const isActive = (path: string) => pathname === path;
@@ -141,14 +142,21 @@ export default function Header() {
               </div>
 
               {/* More dropdown for lg to xl */}
-              <div className="relative group xl:hidden">
-                <button className={`flex items-center gap-1 transition-colors px-3 py-1.5 rounded-full hover:bg-[#F3F4F6] ${(isActive('/about') || isActive('/contact')) ? 'text-[#111827] bg-[#F3F4F6]' : 'hover:text-[#111827]'}`}>
-                  More <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
+              <div 
+                className="relative group xl:hidden"
+                onMouseLeave={() => setMoreDropdownOpen(false)}
+              >
+                <button 
+                  onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
+                  onMouseEnter={() => setMoreDropdownOpen(true)}
+                  className={`flex items-center gap-1 transition-colors px-3 py-1.5 rounded-full hover:bg-[#F3F4F6] ${(isActive('/about') || isActive('/contact') || moreDropdownOpen) ? 'text-[#111827] bg-[#F3F4F6]' : 'hover:text-[#111827]'}`}
+                >
+                  More <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${moreDropdownOpen ? 'rotate-180' : 'group-hover:rotate-180'}`} />
                 </button>
-                <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className={`absolute top-full right-0 pt-2 transition-all duration-200 z-50 ${moreDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible'}`}>
                   <div className="bg-white border border-[#E5E7EB] rounded-2xl shadow-xl py-2 w-32 flex flex-col">
-                    <Link href="/about" className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActive('/about') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>About</Link>
-                    <Link href="/contact" className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActive('/contact') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>Contact</Link>
+                    <Link href="/about" onClick={() => setMoreDropdownOpen(false)} className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActive('/about') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>About</Link>
+                    <Link href="/contact" onClick={() => setMoreDropdownOpen(false)} className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActive('/contact') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>Contact</Link>
                   </div>
                 </div>
               </div>
