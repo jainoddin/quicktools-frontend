@@ -44,9 +44,10 @@ export default function Footer() {
               <ul className="space-y-3 text-sm text-[#6B7280]">
                 <li><Link href="/" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Home</Link></li>
                 <li><Link href="/tools" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>All Tools</Link></li>
-                <li><Link href="#" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Categories</Link></li>
                 <li><Link href="/pricing" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Pricing</Link></li>
                 <li><Link href="/blog" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Blog</Link></li>
+                <li><Link href="/news" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>News</Link></li>
+                <li><Link href="/articles" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Articles</Link></li>
                 <li><Link href="/about" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>About Us</Link></li>
                 <li><Link href="/contact" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Contact Us</Link></li>
               </ul>
@@ -55,21 +56,21 @@ export default function Footer() {
             <div className="col-span-1">
               <h4 className="font-bold text-sm mb-4 text-[#111827]">Categories</h4>
               <ul className="space-y-3 text-sm text-[#6B7280]">
-                <li><Link href="#" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Image Tools</Link></li>
-                <li><Link href="#" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Writing Tools</Link></li>
-                <li><Link href="#" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Video Tools</Link></li>
-                <li><Link href="#" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Code Tools</Link></li>
-                <li><Link href="#" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>SEO Tools</Link></li>
+                <li><Link href="/tools?category=image" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Image Tools</Link></li>
+                <li><Link href="/tools?category=writing" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Writing Tools</Link></li>
+                <li><Link href="/tools?category=video" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Video Tools</Link></li>
+                <li><Link href="/tools?category=code" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Code Tools</Link></li>
+                <li><Link href="/tools?category=seo" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>SEO Tools</Link></li>
               </ul>
             </div>
 
             <div className="col-span-2 md:col-span-1">
               <h4 className="font-bold text-sm mb-4 text-[#111827]">Support</h4>
               <ul className="space-y-3 text-sm text-[#6B7280]">
-                <li><Link href="#" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Help Center</Link></li>
-                <li><Link href="#" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>FAQs</Link></li>
-                <li><Link href="#" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Privacy Policy</Link></li>
-                <li><Link href="#" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Terms of Service</Link></li>
+                <li><Link href="/help" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Help Center</Link></li>
+                <li><Link href="/faq" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>FAQs</Link></li>
+                <li><Link href="/privacy" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Privacy Policy</Link></li>
+                <li><Link href="/terms" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Terms of Service</Link></li>
               </ul>
             </div>
 
@@ -77,7 +78,7 @@ export default function Footer() {
               <div className="col-span-2 md:col-span-1">
                 <h4 className="font-bold text-sm mb-4 text-[#111827]">Subscribe</h4>
                 <p className="text-xs text-[#6B7280] mb-4">Get the latest updates, new tools, tips, and offers.</p>
-                <NewsletterForm 
+                <NewsletterForm
                   className="flex flex-col gap-2"
                   inputClassName="w-full px-4 py-2.5 rounded-lg border border-[#E5E7EB] text-sm focus:outline-none focus:ring-1 transition-all bg-[#F8FAFC]"
                   inputStyle={{ '--tw-ring-color': themeColor, borderColor: themeColor } as any}
