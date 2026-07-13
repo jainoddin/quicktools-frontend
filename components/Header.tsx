@@ -96,11 +96,11 @@ export default function Header() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-[#6B7280]">
-          <Link href="/" className={`px-3 py-1.5 rounded-full transition-colors ${isActive('/') ? 'bg-[#F3F4F6]' : 'hover:text-[#111827]'}`} style={isActive('/') ? { color: themeColor } : {}}>Home</Link>
-          <Link href="/tools" className={`px-3 py-1.5 rounded-full transition-colors ${isActive('/tools') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActive('/tools') ? { color: themeColor } : {}}>All Tools</Link>
+        <div className="hidden lg:flex items-center gap-1 xl:gap-5 text-sm font-medium text-[#6B7280]">
+          <Link href="/" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActive('/') ? 'bg-[#F3F4F6]' : 'hover:text-[#111827]'}`} style={isActive('/') ? { color: themeColor } : {}}>Home</Link>
+          <Link href="/tools" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActive('/tools') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActive('/tools') ? { color: themeColor } : {}}>All Tools</Link>
           <div className="relative group">
-            <button className="flex items-center gap-1 hover:text-[#111827] transition-colors px-3 py-1.5 rounded-full hover:bg-[#F3F4F6]">
+            <button className="flex items-center gap-1 hover:text-[#111827] transition-colors px-2 xl:px-3 py-1.5 rounded-full hover:bg-[#F3F4F6]">
               Categories <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
             </button>
             <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -128,14 +128,30 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <Link href="/blog" className={`px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/blog') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/blog') ? { color: themeColor } : {}}>Blogs</Link>
-          <Link href="/articles" className={`px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/articles') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/articles') ? { color: themeColor } : {}}>Articles</Link>
-          <Link href="/news" className={`px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/news') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/news') ? { color: themeColor } : {}}>News</Link>
-          <Link href="/pricing" className={`px-3 py-1.5 rounded-full transition-colors ${isActive('/pricing') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActive('/pricing') ? { color: themeColor } : {}}>Pricing</Link>
+          <Link href="/blog" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/blog') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/blog') ? { color: themeColor } : {}}>Blogs</Link>
+          <Link href="/articles" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/articles') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/articles') ? { color: themeColor } : {}}>Articles</Link>
+          <Link href="/news" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/news') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/news') ? { color: themeColor } : {}}>News</Link>
+          <Link href="/pricing" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActive('/pricing') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActive('/pricing') ? { color: themeColor } : {}}>Pricing</Link>
           {!user && (
             <>
-              <Link href="/about" className={`px-3 py-1.5 rounded-full transition-colors ${isActive('/about') ? 'bg-[#F3F4F6]' : 'hover:text-[#111827]'}`} style={isActive('/about') ? { color: themeColor } : {}}>About</Link>
-              <Link href="/contact" className={`px-3 py-1.5 rounded-full transition-colors ${isActive('/contact') ? 'bg-[#F3F4F6]' : 'hover:text-[#111827]'}`} style={isActive('/contact') ? { color: themeColor } : {}}>Contact</Link>
+              {/* Direct links for xl and above */}
+              <div className="hidden xl:flex items-center gap-1 xl:gap-5">
+                <Link href="/about" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActive('/about') ? 'bg-[#F3F4F6]' : 'hover:text-[#111827]'}`} style={isActive('/about') ? { color: themeColor } : {}}>About</Link>
+                <Link href="/contact" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActive('/contact') ? 'bg-[#F3F4F6]' : 'hover:text-[#111827]'}`} style={isActive('/contact') ? { color: themeColor } : {}}>Contact</Link>
+              </div>
+
+              {/* More dropdown for lg to xl */}
+              <div className="relative group xl:hidden">
+                <button className={`flex items-center gap-1 transition-colors px-3 py-1.5 rounded-full hover:bg-[#F3F4F6] ${(isActive('/about') || isActive('/contact')) ? 'text-[#111827] bg-[#F3F4F6]' : 'hover:text-[#111827]'}`}>
+                  More <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
+                </button>
+                <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <div className="bg-white border border-[#E5E7EB] rounded-2xl shadow-xl py-2 w-32 flex flex-col">
+                    <Link href="/about" className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActive('/about') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>About</Link>
+                    <Link href="/contact" className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActive('/contact') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>Contact</Link>
+                  </div>
+                </div>
+              </div>
             </>
           )}
         </div>
