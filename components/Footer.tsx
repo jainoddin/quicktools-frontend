@@ -35,9 +35,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-white border-t border-[#E5E7EB] w-full">
+    <footer className="bg-white border-t border-[#E5E7EB] w-full mt-auto">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-
         {!isAuthenticated && (
           <div className="grid grid-cols-2 md:grid-cols-6 gap-8 pb-12 pt-8 mt-8">
             <div className="col-span-2 md:col-span-2">
@@ -96,25 +95,42 @@ export default function Footer() {
               </ul>
             </div>
 
-            {!isAuthenticated && (
-              <div className="col-span-2 md:col-span-1">
-                <h4 className="font-bold text-sm mb-4 text-[#111827]">Subscribe</h4>
-                <p className="text-xs text-[#6B7280] mb-4">Get the latest updates, new tools, tips, and offers.</p>
-                <NewsletterForm
-                  className="flex flex-col gap-2"
-                  inputClassName="w-full px-4 py-2.5 rounded-lg border border-[#E5E7EB] text-sm focus:outline-none focus:ring-1 transition-all bg-[#F8FAFC]"
-                  inputStyle={{ '--tw-ring-color': themeColor, borderColor: themeColor } as any}
-                  buttonClassName="text-white font-semibold py-2.5 rounded-lg text-sm shadow-sm w-full"
-                  buttonStyle={{ backgroundColor: themeColor }}
-                />
-              </div>
-            )}
+            <div className="col-span-2 md:col-span-1">
+              <h4 className="font-bold text-sm mb-4 text-[#111827]">Subscribe</h4>
+              <p className="text-xs text-[#6B7280] mb-4">Get the latest updates, new tools, tips, and offers.</p>
+              <NewsletterForm
+                className="flex flex-col gap-2"
+                inputClassName="w-full px-4 py-2.5 rounded-lg border border-[#E5E7EB] text-sm focus:outline-none focus:ring-1 transition-all bg-[#F8FAFC]"
+                inputStyle={{ '--tw-ring-color': themeColor, borderColor: themeColor } as any}
+                buttonClassName="text-white font-semibold py-2.5 rounded-lg text-sm shadow-sm w-full"
+                buttonStyle={{ backgroundColor: themeColor }}
+              />
+            </div>
           </div>
         )}
 
-        <div className="flex flex-col md:flex-row items-center justify-between text-xs text-[#6B7280] h-[70px] border-t border-[#E5E7EB]">
-          <div>© 2025 QuickTools.ai. All rights reserved.</div>
-          <div className="flex gap-6 mt-4 md:mt-0">
+        {/* Bottom Footer Area */}
+        <div className={`py-6 flex flex-col md:flex-row items-center justify-between text-xs text-[#6B7280] ${!isAuthenticated ? 'border-t border-[#E5E7EB]' : ''}`}>
+          
+          {/* Left: Logo */}
+          <div className="w-full md:w-1/3 flex justify-center md:justify-start mb-4 md:mb-0">
+            <Link href="/" className="flex items-center gap-2 group cursor-pointer">
+              <div className="relative flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-1">
+                <Zap className="w-5 h-5 text-[#6D5EF8]" style={{ fill: '#6D5EF8' }} />
+              </div>
+              <span className="text-lg font-black tracking-tighter text-[#111827]">
+                QuickTools<span className="text-[#6D5EF8]">.ai</span>
+              </span>
+            </Link>
+          </div>
+
+          {/* Middle: Copyright */}
+          <div className="w-full md:w-1/3 text-center mb-4 md:mb-0">
+            © {new Date().getFullYear()} QuickTools.ai. All rights reserved.
+          </div>
+          
+          {/* Right: Links */}
+          <div className="w-full md:w-1/3 flex justify-center md:justify-end gap-6">
             <Link href="/privacy" className="transition-colors hover:text-[#6D5EF8]">Privacy Policy</Link>
             <Link href="/terms" className="transition-colors hover:text-[#6D5EF8]">Terms of Service</Link>
             <Link href="/cookies" className="transition-colors hover:text-[#6D5EF8]">Cookies Policy</Link>
