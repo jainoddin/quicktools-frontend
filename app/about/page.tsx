@@ -73,8 +73,31 @@ export default async function AboutPage() {
     { icon: Shield, label: 'Uptime', value: backendStats.uptime + '%', color: 'text-[#0EA5E9]', bg: 'bg-sky-50' },
   ];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About QuickTools.ai",
+    "description": "Learn about QuickTools.ai — our mission to make AI simple, powerful and accessible for everyone.",
+    "url": "https://quicktool.space/about",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "QuickTools.ai",
+      "foundingDate": "2024",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Shaik Jainoddin"
+        }
+      ]
+    }
+  };
+
   return (
     <div className="flex-grow bg-[#F8FAFC] font-sans selection:bg-[#6D5EF8] selection:text-white overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       {/* Breadcrumb */}
       <div className="bg-transparent pt-[15px] pb-[25px]">

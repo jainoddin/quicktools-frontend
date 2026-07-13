@@ -10,8 +10,38 @@ export const metadata: Metadata = {
 };
 
 export default function CookiesPolicyPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Cookies Policy | QuickTools.ai",
+    "description": "Learn how QuickTools.ai uses cookies and tracking technologies.",
+    "url": "https://quicktool.space/cookies",
+    "mainEntity": {
+      "@type": "Article",
+      "headline": "Cookies Policy",
+      "author": {
+        "@type": "Organization",
+        "name": "QuickTools.ai"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "QuickTools.ai",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://quicktool.space/icon.svg"
+        }
+      },
+      "datePublished": "2026-07-13",
+      "dateModified": "2026-07-13"
+    }
+  };
+
   return (
     <div className="flex-grow bg-[#F8FAFC] font-sans selection:bg-[#6D5EF8] selection:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       
       {/* ── HERO SECTION ── */}
       <div className="relative pt-20 pb-12 px-4 overflow-hidden bg-white border-b border-[#E5E7EB]">

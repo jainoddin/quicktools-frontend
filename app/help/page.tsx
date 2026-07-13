@@ -46,8 +46,30 @@ const categories = [
 ];
 
 export default function HelpCenterPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Help Center | QuickTools.ai",
+    "description": "Find answers, tutorials and support to make the most of QuickTools.ai",
+    "url": "https://quicktool.space/help",
+    "specialty": "Customer Support",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": categories.map((cat, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": cat.title,
+        "description": cat.desc
+      }))
+    }
+  };
+
   return (
     <div className="flex-grow bg-[#F8FAFC] font-sans selection:bg-[#6D5EF8] selection:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       
       {/* ── HERO SECTION ── */}
       <div className="relative pt-20 pb-16 px-4 overflow-hidden border-b border-[#E5E7EB] bg-white">
