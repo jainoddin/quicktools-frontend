@@ -43,6 +43,17 @@ export default function LiveChatBot() {
     
     setMessages(prev => [...prev, { text: userMessage, sender: 'user' }]);
 
+    // Email validation for the final question
+    if (currentQuestionIndex === QUESTIONS.length - 1) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(userMessage)) {
+        setTimeout(() => {
+          setMessages(prev => [...prev, { text: "Oops! That looks like an invalid email address. Please provide a valid one.", sender: 'bot' }]);
+        }, 800);
+        return;
+      }
+    }
+
     // Bot response delay
     setTimeout(() => {
       const nextIndex = currentQuestionIndex + 1;
