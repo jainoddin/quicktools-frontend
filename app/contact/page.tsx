@@ -17,8 +17,33 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact QuickTools.ai",
+    "description": "Get in touch with the QuickTools.ai team. We are here to help you with any questions, feedback, or support requests regarding our AI tools.",
+    "url": "https://quicktool.space/contact",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "QuickTools.ai",
+      "email": "helloquicktool@gmail.com",
+      "url": "https://quicktool.space",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "helloquicktool@gmail.com",
+        "availableLanguage": ["English"]
+      }
+    }
+  };
+
   return (
     <div className="flex-grow bg-[#F8FAFC] font-sans selection:bg-[#6D5EF8] selection:text-white overflow-x-hidden pb-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       
       {/* CSS Animations */}
       <style dangerouslySetInnerHTML={{__html: `
