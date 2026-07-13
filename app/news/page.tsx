@@ -4,8 +4,11 @@ import NewsClient from '../../components/news/NewsClient';
 import { getEndpoint } from '../../lib/api';
 
 export const metadata: Metadata = {
-  title: 'AI News & Updates | QuickTools.ai',
+  title: 'AI News & Updates',
   description: 'Stay updated with the latest AI breakthroughs, product launches, research, and industry updates.',
+  alternates: {
+    canonical: '/news',
+  }
 };
 
 async function getNews() {

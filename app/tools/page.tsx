@@ -3,10 +3,10 @@ import { Metadata } from 'next';
 import ToolsClient from '@/components/tools/ToolsClient';
 
 export const metadata: Metadata = {
-  title: 'All AI Tools | QuickTools.ai',
+  title: 'All Premium AI Tools',
   description: 'Explore our curated collection of 5 premium AI tools including Image Generator, Writer, Code Generator, Background Remover, and Video Generator.',
   alternates: {
-    canonical: 'https://quicktools.ai/tools',
+    canonical: '/tools',
   },
 };
 

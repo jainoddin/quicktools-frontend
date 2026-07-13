@@ -4,10 +4,10 @@ import ArticlesClient from '../../components/articles/ArticlesClient';
 import { getEndpoint } from '../../lib/api';
 
 export const metadata: Metadata = {
-  title: 'AI Articles & Tutorials | QuickTools.ai',
+  title: 'AI Articles & Tutorials',
   description: 'Expert insights, tutorials, and in-depth guides about AI tools, productivity, and the future of work.',
   alternates: {
-    canonical: 'https://quicktools.ai/articles',
+    canonical: '/articles',
   }
 };
 
