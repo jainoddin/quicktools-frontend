@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import PricingClient from '@/components/pricing/PricingClient';
 
 export const metadata: Metadata = {
-  title: 'Simple & Transparent Pricing Plans',
+  title: 'Simple & Transparent AI Tools Pricing Plans',
   description: 'Simple, transparent pricing for everyone. Start free and upgrade anytime to access premium AI generation features.',
   alternates: {
     canonical: '/pricing',

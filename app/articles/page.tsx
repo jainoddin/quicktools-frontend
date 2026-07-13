@@ -4,7 +4,7 @@ import ArticlesClient from '../../components/articles/ArticlesClient';
 import { getEndpoint } from '../../lib/api';
 
 export const metadata: Metadata = {
-  title: 'AI Articles & Tutorials',
+  title: 'In-Depth AI Articles, Guides & Tutorials',
   description: 'Expert insights, tutorials, and in-depth guides about AI tools, productivity, and the future of work.',
   alternates: {
     canonical: '/articles',

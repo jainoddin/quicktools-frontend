@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import ToolsClient from '@/components/tools/ToolsClient';
 
 export const metadata: Metadata = {
-  title: 'All Premium AI Tools',
+  title: 'All Premium AI Tools - Image, Text & Code',
   description: 'Explore our curated collection of 5 premium AI tools including Image Generator, Writer, Code Generator, Background Remover, and Video Generator.',
   alternates: {
     canonical: '/tools',

@@ -4,7 +4,7 @@ import NewsClient from '../../components/news/NewsClient';
 import { getEndpoint } from '../../lib/api';
 
 export const metadata: Metadata = {
-  title: 'AI News & Updates',
+  title: 'Latest AI News, Updates & Breakthroughs',
   description: 'Stay updated with the latest AI breakthroughs, product launches, research, and industry updates.',
   alternates: {
     canonical: '/news',

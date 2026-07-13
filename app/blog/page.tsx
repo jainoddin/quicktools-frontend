@@ -6,7 +6,7 @@ import BlogClient from '@/components/blog/BlogClient';
 import { getEndpoint } from '@/lib/api';
 
 export const metadata: Metadata = {
-  title: 'AI Blog & Tutorials',
+  title: 'AI Blog: Expert Tips, Tutorials & Insights',
   description: 'Explore the QuickTools.ai blog for expert insights, detailed tutorials, and the latest news on AI tools. Learn how to boost your productivity.',
   alternates: {
     canonical: '/blog',
