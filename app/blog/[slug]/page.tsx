@@ -12,6 +12,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import GithubSlugger from 'github-slugger';
 import { getEndpoint } from '../../../lib/api';
+import NewsletterForm from '../../../components/shared/NewsletterForm';
 
 // ─── SEO Metadata ─────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -381,15 +382,11 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
               <h3 className="font-bold text-[#111827] mb-1">Subscribe to our newsletter</h3>
               <p className="text-xs text-[#6B7280] mb-4 leading-relaxed">
                 Get the latest AI tools, tutorials and productivity tips in your inbox.
-              </p>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full h-10 px-3 border border-[#E5E7EB] rounded-xl text-sm outline-none focus:border-[#6D5EF8] focus:ring-2 focus:ring-[#6D5EF8]/10 transition-all mb-3"
+              <NewsletterForm 
+                className="mt-4"
+                inputClassName="w-full h-10 px-3 border border-[#E5E7EB] rounded-xl text-sm outline-none focus:border-[#6D5EF8] focus:ring-2 focus:ring-[#6D5EF8]/10 transition-all mb-3"
+                buttonClassName="w-full h-10 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm rounded-xl transition-colors"
               />
-              <button className="w-full h-10 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm rounded-xl transition-colors">
-                Subscribe
-              </button>
             </div>
 
           </aside>

@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Search, Flame, Bookmark, ArrowRight, Eye, ChevronDown, Clock, ChevronRight, Home } from 'lucide-react';
+import NewsletterForm from '../shared/NewsletterForm';
 
 const CATEGORIES = ['All Articles', 'AI & Tools', 'Productivity', 'Marketing', 'Business', 'Development', 'Design'];
 const TABS = ['All', 'Latest', 'Popular', 'Trending'];
@@ -328,10 +329,11 @@ export default function ArticlesClient({ initialArticles = [] }: { initialArticl
             </div>
           </div>
           <div className="z-10 w-full md:w-auto">
-            <div className="flex flex-col sm:flex-row items-center gap-3">
-              <input type="email" placeholder="Enter your email" className="w-full sm:w-[300px] px-5 py-3.5 rounded-xl border border-[#D1D5DB] focus:ring-2 focus:ring-[#4F46E5] outline-none text-sm shadow-sm bg-white" />
-              <button className="w-full sm:w-auto bg-[#4F46E5] hover:bg-[#4338CA] text-white font-bold px-8 py-3.5 rounded-xl text-sm transition-colors shadow-sm whitespace-nowrap">Subscribe</button>
-            </div>
+            <NewsletterForm 
+              className="flex flex-col sm:flex-row items-center gap-3"
+              inputClassName="w-full sm:w-[300px] px-5 py-3.5 rounded-xl border border-[#D1D5DB] focus:ring-2 focus:ring-[#4F46E5] outline-none text-sm shadow-sm bg-white"
+              buttonClassName="w-full sm:w-auto bg-[#4F46E5] hover:bg-[#4338CA] text-white font-bold px-8 py-3.5 rounded-xl text-sm transition-colors shadow-sm whitespace-nowrap"
+            />
             <p className="text-[10px] text-[#6B7280] text-center sm:text-left mt-3 px-2">No spam. Unsubscribe anytime.</p>
           </div>
         </div>

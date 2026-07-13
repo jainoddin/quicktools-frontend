@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import ShareButtons from '@/components/blog/ShareButtons';
 import { getEndpoint } from '@/lib/api';
+import NewsletterForm from '@/components/shared/NewsletterForm';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space';
 
@@ -459,16 +460,11 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
               <p className="text-white/80 text-xs leading-relaxed mb-5 relative z-10">
                 Get the latest AI insights, tools and productivity tips delivered to your inbox.
               </p>
-              <div className="space-y-2 relative z-10">
-                <input 
-                  type="email" 
-                  placeholder="Enter your email" 
-                  className="w-full px-4 py-2.5 bg-white rounded-xl text-sm text-[#111827] focus:outline-none placeholder:text-gray-400 font-medium"
-                />
-                <button className="w-full py-2.5 bg-[#4338CA] border border-white/10 text-white rounded-xl text-sm font-bold hover:bg-[#3730A3] transition-colors">
-                  Subscribe
-                </button>
-              </div>
+              <NewsletterForm 
+                className="space-y-2 relative z-10"
+                inputClassName="w-full px-4 py-2.5 bg-white rounded-xl text-sm text-[#111827] focus:outline-none placeholder:text-gray-400 font-medium"
+                buttonClassName="w-full py-2.5 bg-[#4338CA] border border-white/10 text-white rounded-xl text-sm font-bold hover:bg-[#3730A3] transition-colors"
+              />
               <p className="text-[10px] text-white/50 text-center mt-3 relative z-10">
                 No spam. Unsubscribe anytime.
               </p>

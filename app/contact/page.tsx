@@ -6,6 +6,7 @@ import {
   Send, Hash, Briefcase, Heart, 
   CheckCircle2, X, PenLine, User, Zap, ArrowRight
 } from 'lucide-react';
+import NewsletterForm from '../../components/shared/NewsletterForm';
 
 export const metadata: Metadata = {
   title: 'Contact Us | QuickTools.ai',
@@ -272,16 +273,12 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="flex w-full xl:w-auto items-center gap-2">
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
-              className="w-full xl:w-64 bg-white border border-[#E5E7EB] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all"
-            />
-            <button className="whitespace-nowrap inline-flex items-center gap-2 px-6 py-2.5 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white text-sm font-bold rounded-lg transition-colors">
-              Subscribe <Send className="w-4 h-4" />
-            </button>
-          </div>
+          <NewsletterForm 
+            className="flex w-full xl:w-auto items-center gap-2"
+            inputClassName="w-full xl:w-64 bg-white border border-[#E5E7EB] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all"
+            buttonClassName="whitespace-nowrap inline-flex items-center gap-2 px-6 py-2.5 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white text-sm font-bold rounded-lg transition-colors"
+            buttonText={<>Subscribe <Send className="w-4 h-4" /></>}
+          />
 
           <div className="flex items-center gap-6 hidden md:flex">
             <div className="flex items-center gap-1.5 text-xs text-[#6B7280] font-medium">

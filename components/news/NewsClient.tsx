@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Search, ChevronLeft, ChevronRight, ArrowRight, Home, ChevronDown } from 'lucide-react';
+import NewsletterForm from '../shared/NewsletterForm';
 
 const CATEGORIES = ['All News', 'Product Launches', 'Research', 'Funding', 'Partnerships', 'Industry'];
 const SORT_OPTIONS = ['Latest', 'Popular'];
@@ -274,12 +275,11 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
               <p className="text-sm text-indigo-100 mb-5 relative z-10">
                 Get the latest AI news straight to your inbox.
               </p>
-              <form className="relative z-10 flex flex-col gap-3" onSubmit={(e) => e.preventDefault()}>
-                <input type="email" placeholder="Enter your email" className="w-full px-4 py-3 rounded-xl text-sm text-gray-900 border-0 focus:ring-2 focus:ring-white/50 bg-white/95" required />
-                <button type="submit" className="w-full bg-white text-[#4F46E5] font-bold text-sm px-4 py-3 rounded-xl hover:bg-indigo-50 transition-colors shadow-sm">
-                  Subscribe
-                </button>
-              </form>
+              <NewsletterForm 
+                className="relative z-10 flex flex-col gap-3"
+                inputClassName="w-full px-4 py-3 rounded-xl text-sm text-gray-900 border-0 focus:ring-2 focus:ring-white/50 bg-white/95"
+                buttonClassName="w-full bg-white text-[#4F46E5] font-bold text-sm px-4 py-3 rounded-xl hover:bg-indigo-50 transition-colors shadow-sm"
+              />
               <p className="text-[10px] text-indigo-200 mt-4 text-center relative z-10">
                 No spam. Unsubscribe anytime.
               </p>

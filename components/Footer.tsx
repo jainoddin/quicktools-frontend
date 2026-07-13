@@ -6,6 +6,7 @@ import { Zap, Globe, MessageCircle, Share2, Mail } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { getEndpoint } from '../lib/api';
 import { useAuth } from '../contexts/AuthContext';
+import NewsletterForm from './shared/NewsletterForm';
 
 export default function Footer() {
   const pathname = usePathname();
@@ -75,10 +76,13 @@ export default function Footer() {
             <div className="col-span-2 md:col-span-1">
               <h4 className="font-bold text-sm mb-4 text-[#111827]">Subscribe</h4>
               <p className="text-xs text-[#6B7280] mb-4">Get the latest updates, new tools, tips, and offers.</p>
-              <div className="flex flex-col gap-2">
-                <input type="email" placeholder="Enter your email" className="w-full px-4 py-2.5 rounded-lg border border-[#E5E7EB] text-sm focus:outline-none focus:ring-1 transition-all bg-[#F8FAFC]" style={{ '--tw-ring-color': themeColor, borderColor: themeColor } as any} />
-                <button className="text-white font-semibold py-2.5 rounded-lg text-sm shadow-sm w-full" style={{ backgroundColor: themeColor }}>Subscribe</button>
-              </div>
+              <NewsletterForm 
+                className="flex flex-col gap-2"
+                inputClassName="w-full px-4 py-2.5 rounded-lg border border-[#E5E7EB] text-sm focus:outline-none focus:ring-1 transition-all bg-[#F8FAFC]"
+                inputStyle={{ '--tw-ring-color': themeColor, borderColor: themeColor } as any}
+                buttonClassName="text-white font-semibold py-2.5 rounded-lg text-sm shadow-sm w-full"
+                buttonStyle={{ backgroundColor: themeColor }}
+              />
             </div>
           </div>
         )}
