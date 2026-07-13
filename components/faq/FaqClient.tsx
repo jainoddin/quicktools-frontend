@@ -5,15 +5,16 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Search, ChevronDown, Headphones, ArrowRight, BookOpen } from 'lucide-react';
 
-const FAQ_CATEGORIES = [
-  { name: 'All Questions', count: 67 },
-  { name: 'General', count: 12 },
-  { name: 'Account', count: 10 },
-  { name: 'Billing & Payments', count: 14 },
-  { name: 'AI Tools & Usage', count: 15 },
-  { name: 'API', count: 6 },
-  { name: 'Privacy & Security', count: 6 },
-  { name: 'Refunds', count: 4 },
+// We'll calculate counts dynamically
+const CATEGORY_NAMES = [
+  'All Questions',
+  'General',
+  'Account',
+  'Billing & Payments',
+  'AI Tools & Usage',
+  'API',
+  'Privacy & Security',
+  'Refunds',
 ];
 
 const FAQS = [
@@ -72,17 +73,22 @@ export default function FaqClient() {
     const category = searchParams.get('category');
     if (q) setSearchQuery(q);
     if (category) {
-      // Find matching category name, e.g. 'Getting Started' -> 'General' (just mapping or set directly)
-      // For now, let's just set it if it exists in FAQ_CATEGORIES
-      const matched = FAQ_CATEGORIES.find(c => c.name.toLowerCase() === category.toLowerCase());
+      const matched = CATEGORY_NAMES.find(c => c.toLowerCase() === category.toLowerCase());
       if (matched) {
-        setActiveCategory(matched.name);
+        setActiveCategory(matched);
       } else {
-        // Just map generic ones
         setActiveCategory('All Questions');
       }
     }
   }, [searchParams]);
+
+  // Calculate dynamic counts
+  const FAQ_CATEGORIES = CATEGORY_NAMES.map(name => {
+    if (name === 'All Questions') {
+      return { name, count: FAQS.length };
+    }
+    return { name, count: FAQS.filter(faq => faq.category === name).length };
+  });
 
   const filteredFaqs = FAQS.filter(faq => {
     const matchesCategory = activeCategory === 'All Questions' || faq.category === activeCategory;
