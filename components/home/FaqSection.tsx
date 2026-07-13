@@ -26,8 +26,25 @@ const faqs = [
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a
+      }
+    }))
+  };
+
   return (
     <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <h2 className="text-xl sm:text-2xl font-bold text-[#111827] mb-8 text-center sm:text-left">Frequently Asked Questions</h2>
       <div className="grid md:grid-cols-2 gap-4 mb-8 items-start">
         {faqs.map((faq, i) => (
@@ -49,7 +66,7 @@ export default function FaqSection() {
         ))}
       </div>
       <div className="text-center">
-        <Link href="/blog" className="text-sm font-semibold text-[#4F46E5] hover:text-[#4338CA] flex items-center justify-center gap-1 transition-colors">
+        <Link href="/faq" className="text-sm font-semibold text-[#4F46E5] hover:text-[#4338CA] flex items-center justify-center gap-1 transition-colors">
           View all FAQs <ArrowRight className="w-4 h-4"/>
         </Link>
       </div>
