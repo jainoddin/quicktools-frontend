@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const res = await fetch(getEndpoint(`/api/blogs/${slug}`), { cache: 'no-store' });
   if (!res.ok) return { title: 'Blog Not Found | QuickTools.ai' };
-  
+
   const json = await res.json();
   const blog = json.data;
   if (!blog) return { title: 'Blog Not Found | QuickTools.ai' };
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function BlogSlugPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const res = await fetch(getEndpoint(`/api/blogs/${slug}`), { cache: 'no-store' });
-  
+
   if (!res.ok) {
     return <div className="text-center py-20 text-2xl font-bold">Blog post not found</div>;
   }
@@ -151,20 +151,20 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
                     return blogPost.tableOfContents.map((label: string, i: number) => {
                       const sectionId = slugger.slug(label);
                       return (
-                      <a
-                        key={i}
-                        href={`#${sectionId}`}
-                        className={`flex items-center gap-2 py-1.5 px-2 rounded-lg text-sm transition-colors ${
-                        i === 0
-                          ? 'text-[#6D5EF8] font-semibold bg-[#EEF2FF]'
-                          : 'text-[#6B7280] hover:text-[#111827] hover:bg-[#F9FAFB]'
-                      }`}
-                    >
-                      {i === 0 && <span className="w-1.5 h-1.5 rounded-full bg-[#6D5EF8] shrink-0"></span>}
-                      {i !== 0 && <span className="w-1.5 h-1.5 rounded-full bg-transparent shrink-0"></span>}
-                        {label}
-                      </a>
-                    )});
+                        <a
+                          key={i}
+                          href={`#${sectionId}`}
+                          className={`flex items-center gap-2 py-1.5 px-2 rounded-lg text-sm transition-colors ${i === 0
+                              ? 'text-[#6D5EF8] font-semibold bg-[#EEF2FF]'
+                              : 'text-[#6B7280] hover:text-[#111827] hover:bg-[#F9FAFB]'
+                            }`}
+                        >
+                          {i === 0 && <span className="w-1.5 h-1.5 rounded-full bg-[#6D5EF8] shrink-0"></span>}
+                          {i !== 0 && <span className="w-1.5 h-1.5 rounded-full bg-transparent shrink-0"></span>}
+                          {label}
+                        </a>
+                      )
+                    });
                   })()}
                 </nav>
               </div>
@@ -256,7 +256,7 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
                 priority
               />
             </div>
-            
+
             {/* Mobile Table of Contents (Native Dropdown) */}
             {blogPost.tableOfContents && blogPost.tableOfContents.length > 0 && (
               <details className="lg:hidden bg-white border border-[#E5E7EB] rounded-2xl mb-8 shadow-sm group">
@@ -273,14 +273,15 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
                       return blogPost.tableOfContents.map((label: string, i: number) => {
                         const sectionId = slugger.slug(label);
                         return (
-                        <a
-                          key={i}
-                          href={`#${sectionId}`}
-                          className="block py-1.5 text-sm text-[#6B7280] hover:text-[#6D5EF8] transition-colors"
-                        >
-                          {label}
-                        </a>
-                      )});
+                          <a
+                            key={i}
+                            href={`#${sectionId}`}
+                            className="block py-1.5 text-sm text-[#6B7280] hover:text-[#6D5EF8] transition-colors"
+                          >
+                            {label}
+                          </a>
+                        )
+                      });
                     })()}
                   </nav>
                 </div>
@@ -313,7 +314,7 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
                 </div>
               </div>
             )}
-            
+
             {/* Conclusion Action */}
             <div className="mt-10 pt-4 border-t border-[#E5E7EB]">
               <Link href="/tools" className="inline-flex items-center gap-2 text-[#6D5EF8] font-semibold hover:underline text-sm">
@@ -382,7 +383,8 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
               <h3 className="font-bold text-[#111827] mb-1">Subscribe to our newsletter</h3>
               <p className="text-xs text-[#6B7280] mb-4 leading-relaxed">
                 Get the latest AI tools, tutorials and productivity tips in your inbox.
-              <NewsletterForm 
+              </p>
+              <NewsletterForm
                 className="mt-4"
                 inputClassName="w-full h-10 px-3 border border-[#E5E7EB] rounded-xl text-sm outline-none focus:border-[#6D5EF8] focus:ring-2 focus:ring-[#6D5EF8]/10 transition-all mb-3"
                 buttonClassName="w-full h-10 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm rounded-xl transition-colors"

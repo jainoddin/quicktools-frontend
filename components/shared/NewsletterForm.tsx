@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { getEndpoint } from '../../lib/api';
 
 interface NewsletterFormProps {
   className?: string;
@@ -30,17 +31,13 @@ export default function NewsletterForm({
 
     setStatus('loading');
     try {
-      const res = await fetch("https://formsubmit.co/ajax/helloquicktool@gmail.com", {
+      const res = await fetch(getEndpoint('/api/subscribe'), {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify({
-            email,
-            _subject: "New QuickTools Subscriber!",
-            _template: "table"
-        })
+        body: JSON.stringify({ email })
       });
       
       if (res.ok) {
