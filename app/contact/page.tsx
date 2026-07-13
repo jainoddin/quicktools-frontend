@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import NewsletterForm from '../../components/shared/NewsletterForm';
 import NewsletterSectionWrapper from '../../components/shared/NewsletterSectionWrapper';
+import LiveChatBot from '../../components/contact/LiveChatBot';
 
 export const metadata: Metadata = {
   title: 'Contact Us | QuickTools.ai',
@@ -107,45 +108,24 @@ export default function ContactPage() {
                   <div>
                     <p className="font-bold text-[#111827] text-sm">Email Us</p>
                     <p className="text-xs text-[#6B7280] mb-1">We're here to help</p>
-                    <a href="mailto:support@quicktools.ai" className="text-xs font-bold text-[#6D5EF8] hover:underline">
-                      support@quicktools.ai
+                    <a href="mailto:helloquicktool@gmail.com" className="text-xs font-bold text-[#6D5EF8] hover:underline">
+                      helloquicktool@gmail.com
                     </a>
                   </div>
                 </div>
 
-                {/* Live Chat */}
-                <div className="bg-white border border-[#E5E7EB] rounded-xl p-4 flex gap-4 hover:shadow-md transition-shadow">
-                  <div className="w-10 h-10 rounded-full bg-[#EEF2FF] flex items-center justify-center shrink-0">
-                    <MessageSquare className="w-5 h-5 text-[#6D5EF8]" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-[#111827] text-sm">Live Chat</p>
-                    <p className="text-xs text-[#6B7280] mb-1">Chat with our team</p>
-                    <p className="text-xs font-bold text-[#6D5EF8]">Available 9AM - 9PM IST</p>
-                  </div>
-                </div>
-
-                {/* Twitter */}
-                <div className="bg-white border border-[#E5E7EB] rounded-xl p-4 flex gap-4 hover:shadow-md transition-shadow">
-                  <div className="w-10 h-10 rounded-full bg-[#EEF2FF] flex items-center justify-center shrink-0">
-                    <Hash className="w-5 h-5 text-[#6D5EF8]" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-[#111827] text-sm">Twitter</p>
-                    <p className="text-xs text-[#6B7280] mb-1">Follow us for updates</p>
-                    <a href="#" className="text-xs font-bold text-[#6D5EF8] hover:underline">@quicktools_ai</a>
-                  </div>
-                </div>
+                {/* Live Chat Component */}
+                <LiveChatBot />
 
                 {/* LinkedIn */}
                 <div className="bg-white border border-[#E5E7EB] rounded-xl p-4 flex gap-4 hover:shadow-md transition-shadow">
                   <div className="w-10 h-10 rounded-full bg-[#EEF2FF] flex items-center justify-center shrink-0">
-                    <Briefcase className="w-5 h-5 text-[#6D5EF8]" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#6D5EF8]"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                   </div>
                   <div>
                     <p className="font-bold text-[#111827] text-sm">LinkedIn</p>
-                    <p className="text-xs text-[#6B7280] mb-1">Connect with us</p>
-                    <a href="#" className="text-xs font-bold text-[#6D5EF8] hover:underline">QuickTools.ai</a>
+                    <p className="text-xs text-[#6B7280] mb-1">hello quicktool</p>
+                    <a href="https://www.linkedin.com/in/hello-quicktool-4ba7b5421/" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-[#6D5EF8] hover:underline">Connect with us</a>
                   </div>
                 </div>
 
