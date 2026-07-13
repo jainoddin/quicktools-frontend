@@ -6,6 +6,7 @@ import { ChevronRight, ArrowRight, Check, Home, Mail } from 'lucide-react';
 import ShareButtons from '../../../components/blog/ShareButtons';
 import NewsletterForm from '../../../components/shared/NewsletterForm';
 import NewsletterSectionWrapper from '../../../components/shared/NewsletterSectionWrapper';
+import PremiumToolsWidget from '../../../components/shared/PremiumToolsWidget';
 import type { Metadata } from 'next';
 import { getEndpoint } from '../../../lib/api';
 
@@ -360,6 +361,8 @@ export default async function NewsDetailPage({ params }: any) {
                 </p>
               </div>
             </NewsletterSectionWrapper>
+            
+            <PremiumToolsWidget />
 
           </aside>
         </div>
