@@ -14,13 +14,20 @@ export const metadata: Metadata = {
   alternates: { canonical: '/about' },
 };
 
-const stats = [
-  { icon: Users, label: 'Happy Users', value: '1M+', color: 'text-[#6D5EF8]', bg: 'bg-[#EEF2FF]' },
-  { icon: LayoutGrid, label: 'AI Tools', value: '100+', color: 'text-[#F43F5E]', bg: 'bg-pink-50' },
-  { icon: Star, label: 'Tasks Completed', value: '50M+', color: 'text-[#F59E0B]', bg: 'bg-amber-50' },
-  { icon: Globe, label: 'Countries', value: '150+', color: 'text-[#10B981]', bg: 'bg-emerald-50' },
-  { icon: Shield, label: 'Uptime', value: '99.9%', color: 'text-[#0EA5E9]', bg: 'bg-sky-50' },
-];
+import { getEndpoint } from '../../lib/api';
+
+export const revalidate = 3600; // Revalidate every hour
+
+async function getStats() {
+  try {
+    const res = await fetch(getEndpoint('/api/stats'), { next: { revalidate: 3600 } });
+    const json = await res.json();
+    if (json.success) return json.data;
+  } catch (err) {
+    console.error("Failed to fetch stats", err);
+  }
+  return { users: 1000, tasks: 50000, tools: 100, countries: 150, uptime: 99.9 };
+}
 
 const values = [
   {
@@ -49,7 +56,23 @@ const values = [
   },
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const backendStats = await getStats();
+
+  const formatNumber = (num: number) => {
+    if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M+';
+    if (num >= 1000) return (num / 1000).toFixed(1) + 'K+';
+    return num + '+';
+  };
+
+  const stats = [
+    { icon: Users, label: 'Happy Users', value: formatNumber(backendStats.users), color: 'text-[#6D5EF8]', bg: 'bg-[#EEF2FF]' },
+    { icon: LayoutGrid, label: 'AI Tools', value: backendStats.tools + '+', color: 'text-[#F43F5E]', bg: 'bg-pink-50' },
+    { icon: Star, label: 'Tasks Completed', value: formatNumber(backendStats.tasks), color: 'text-[#F59E0B]', bg: 'bg-amber-50' },
+    { icon: Globe, label: 'Countries', value: backendStats.countries + '+', color: 'text-[#10B981]', bg: 'bg-emerald-50' },
+    { icon: Shield, label: 'Uptime', value: backendStats.uptime + '%', color: 'text-[#0EA5E9]', bg: 'bg-sky-50' },
+  ];
+
   return (
     <div className="flex-grow bg-[#F8FAFC] font-sans selection:bg-[#6D5EF8] selection:text-white overflow-x-hidden">
 
@@ -87,12 +110,6 @@ export default function AboutPage() {
                 className="inline-flex items-center gap-2 px-6 py-3 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20">
                 <Zap className="w-4 h-4 fill-white" /> Explore All Tools
               </Link>
-              <button className="inline-flex items-center gap-2 px-6 py-3 border border-[#E5E7EB] bg-white text-[#374151] font-semibold rounded-xl hover:bg-[#F9FAFB] transition-colors">
-                <div className="w-5 h-5 rounded-full bg-[#6D5EF8] flex items-center justify-center">
-                  <div className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[6px] border-l-white ml-0.5"></div>
-                </div>
-                Watch Video
-              </button>
             </div>
           </div>
 
