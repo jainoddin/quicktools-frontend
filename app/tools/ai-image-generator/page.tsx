@@ -12,6 +12,9 @@ import ImageGeneratorClient from '@/components/ai-image-generator/ImageGenerator
 export const metadata: Metadata = {
   title: 'AI Image Generator | QuickTools.ai',
   description: 'Create stunning images from text descriptions with the power of AI.',
+  alternates: {
+    canonical: '/tools/ai-image-generator'
+  }
 };
 
 export default function AIImageGeneratorPage() {

@@ -7,6 +7,9 @@ import AiWriterClient from '@/components/ai-writer/AiWriterClient';
 export const metadata: Metadata = {
   title: 'AI Writer - QuickTools.ai',
   description: 'Generate high-quality content instantly with AI. Write blogs, emails, social posts, and more.',
+  alternates: {
+    canonical: '/tools/ai-writer'
+  }
 };
 
 export default function AiWriterPage() {

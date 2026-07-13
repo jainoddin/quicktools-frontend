@@ -27,6 +27,7 @@ export const metadata: Metadata = {
   },
   description: "Generate stunning AI images, chat with AI, remove backgrounds, convert PDFs, and write code all in one powerful dashboard.",
   keywords: ["AI Tools", "Image Generator", "Background Remover", "AI Chat", "PDF Converter", "AI Code Writer", "QuickTools"],
+  publisher: "QuickTools.ai",
   openGraph: {
     type: "website",
     locale: "en_US",

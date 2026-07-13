@@ -7,6 +7,9 @@ import AiVideoClient from '@/components/ai-video-generator/AiVideoClient';
 export const metadata: Metadata = {
   title: 'AI Video Generator - QuickTools.ai',
   description: 'Turn your ideas into stunning videos with AI instantly.',
+  alternates: {
+    canonical: '/tools/ai-video-generator'
+  }
 };
 
 export default function AiVideoGeneratorPage() {

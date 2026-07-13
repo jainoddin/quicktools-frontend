@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'AI Background Remover | QuickTools.ai',
   description: 'Remove image backgrounds instantly with AI. Fast, accurate, and easy to use.',
   keywords: 'background remover, ai background removal, transparent background, image editing',
+  alternates: {
+    canonical: '/tools/background-remover'
+  }
 };
 
 export default function BackgroundRemoverPage() {

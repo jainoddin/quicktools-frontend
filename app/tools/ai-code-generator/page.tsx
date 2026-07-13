@@ -7,6 +7,9 @@ import AiCodeClient from '@/components/ai-code-generator/AiCodeClient';
 export const metadata: Metadata = {
   title: 'AI Code Generator - QuickTools.ai',
   description: 'Generate production-ready code in seconds with our advanced AI Code Generator.',
+  alternates: {
+    canonical: '/tools/ai-code-generator'
+  }
 };
 
 export default function AiCodeGeneratorPage() {
