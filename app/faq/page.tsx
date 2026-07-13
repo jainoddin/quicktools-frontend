@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 import FaqClient from '../../components/faq/FaqClient';
 
 export const metadata: Metadata = {
@@ -46,7 +47,9 @@ export default function FaqPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <FaqClient />
+      <Suspense fallback={<div className="min-h-screen bg-[#F8FAFC]"></div>}>
+        <FaqClient />
+      </Suspense>
     </>
   );
 }

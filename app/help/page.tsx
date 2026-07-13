@@ -5,7 +5,6 @@ import {
   Search, Rocket, CreditCard, Sparkles, 
   Code, User, ShieldCheck, ArrowRight, Home
 } from 'lucide-react';
-import HideWhenAuthenticated from '../../components/shared/HideWhenAuthenticated';
 
 export const metadata: Metadata = {
   title: 'Help Center | QuickTools.ai',
@@ -52,43 +51,41 @@ export default function HelpCenterPage() {
       
       {/* ── HERO SECTION ── */}
       <div className="relative pt-20 pb-16 px-4 overflow-hidden border-b border-[#E5E7EB] bg-white">
-        <HideWhenAuthenticated>
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-br from-[#EEF2FF] to-[#FAF5FF] blur-3xl opacity-60 rounded-full pointer-events-none -z-10"></div>
-          <div className="absolute top-10 left-10 w-32 h-32 bg-blue-100/50 rounded-full blur-2xl -z-10"></div>
-          <div className="absolute top-20 right-20 w-40 h-40 bg-purple-100/50 rounded-full blur-2xl -z-10"></div>
-        </HideWhenAuthenticated>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-br from-[#EEF2FF] to-[#FAF5FF] blur-3xl opacity-60 rounded-full pointer-events-none -z-10"></div>
+        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-100/50 rounded-full blur-2xl -z-10"></div>
+        <div className="absolute top-20 right-20 w-40 h-40 bg-purple-100/50 rounded-full blur-2xl -z-10"></div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <HideWhenAuthenticated>
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#FFFBEB] text-[#D97706] text-xs font-bold mb-6 border border-[#FEF3C7] shadow-sm">
-              <span className="mr-2">👋</span> How can we help?
-            </div>
-            <h1 className="text-4xl md:text-5xl font-black text-[#111827] mb-4 tracking-tight">
-              Help Center
-            </h1>
-            <p className="text-[#6B7280] text-sm md:text-base max-w-lg mx-auto mb-10 leading-relaxed">
-              Find answers, tutorials and support to make the most of QuickTools.ai
-            </p>
-          </HideWhenAuthenticated>
+          <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#FFFBEB] text-[#D97706] text-xs font-bold mb-6 border border-[#FEF3C7] shadow-sm">
+            <span className="mr-2">👋</span> How can we help?
+          </div>
+          <h1 className="text-4xl md:text-5xl font-black text-[#111827] mb-4 tracking-tight">
+            Help Center
+          </h1>
+          <p className="text-[#6B7280] text-sm md:text-base max-w-lg mx-auto mb-10 leading-relaxed">
+            Find answers, tutorials and support to make the most of QuickTools.ai
+          </p>
 
-          <div className="max-w-2xl mx-auto relative shadow-xl shadow-[#6D5EF8]/5 rounded-2xl">
+          <form action="/faq" method="GET" className="max-w-2xl mx-auto relative shadow-xl shadow-[#6D5EF8]/5 rounded-2xl">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             <input 
               type="text" 
+              name="q"
               placeholder="Search for articles, guides or topics..." 
               className="w-full pl-12 pr-32 py-4 rounded-2xl border border-[#E5E7EB] focus:outline-none focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all text-sm bg-white"
+              required
             />
-            <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-colors">
+            <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-colors">
               Search
             </button>
-          </div>
+          </form>
 
           <div className="mt-6 flex flex-wrap justify-center items-center gap-2 text-xs">
             <span className="text-[#6B7280] font-medium mr-2">Popular searches:</span>
             {['credits', 'billing', 'refund', 'api', 'usage'].map(tag => (
-              <span key={tag} className="px-3 py-1 bg-white border border-[#E5E7EB] rounded-full text-[#374151] hover:border-[#6D5EF8] hover:text-[#6D5EF8] cursor-pointer transition-colors shadow-sm">
+              <Link key={tag} href={`/faq?q=${tag}`} className="px-3 py-1 bg-white border border-[#E5E7EB] rounded-full text-[#374151] hover:border-[#6D5EF8] hover:text-[#6D5EF8] cursor-pointer transition-colors shadow-sm">
                 {tag}
-              </span>
+              </Link>
             ))}
           </div>
         </div>
@@ -99,14 +96,14 @@ export default function HelpCenterPage() {
         
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-xl font-bold text-[#111827]">Browse by category</h2>
-          <Link href="/help/categories" className="text-sm font-bold text-[#6D5EF8] hover:underline flex items-center gap-1">
-            View all categories <ArrowRight className="w-4 h-4" />
+          <Link href="/faq" className="text-sm font-bold text-[#6D5EF8] hover:underline flex items-center gap-1">
+            View all FAQs <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4 lg:gap-6 mb-16">
           {categories.map((cat, idx) => (
-            <Link key={idx} href="#" className="bg-white border border-[#E5E7EB] p-6 rounded-2xl hover:shadow-md hover:border-[#6D5EF8]/30 transition-all group flex gap-4 items-start cursor-pointer">
+            <Link key={idx} href={`/faq?category=${encodeURIComponent(cat.title)}`} className="bg-white border border-[#E5E7EB] p-6 rounded-2xl hover:shadow-md hover:border-[#6D5EF8]/30 transition-all group flex gap-4 items-start cursor-pointer">
               <div className="w-12 h-12 rounded-xl bg-[#F8FAFC] border border-[#E5E7EB] flex items-center justify-center shrink-0 group-hover:bg-[#EEF2FF] transition-colors">
                 {cat.icon}
               </div>
