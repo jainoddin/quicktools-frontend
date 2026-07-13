@@ -12,7 +12,23 @@ export const metadata: Metadata = {
   }
 };
 
-export default function BlogPage() {
+async function getBlogs() {
+  try {
+    const res = await fetch('http://localhost:5000/api/blogs', {
+      next: { revalidate: 3600 } // Revalidate every hour
+    });
+    if (!res.ok) return { data: [], pagination: {} };
+    return await res.json();
+  } catch (error) {
+    console.error('Failed to fetch blogs:', error);
+    return { data: [], pagination: {} };
+  }
+}
+
+export default async function BlogPage() {
+  const blogsResponse = await getBlogs();
+  const allBlogs = blogsResponse.data || [];
+
   return (
     <div className="flex-grow bg-[#F8FAFC] flex flex-col font-sans selection:bg-[#6D5EF8] selection:text-white relative">
       
@@ -38,8 +54,32 @@ export default function BlogPage() {
 
         </div>
 
+        {/* JSON-LD Schemas */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktool.space/" },
+                { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://quicktool.space/blog" }
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              "itemListElement": allBlogs.slice(0, 10).map((blog: any, index: number) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "url": `https://quicktool.space/blog/${blog.slug}`
+              }))
+            }
+          ])}}
+        />
+
         {/* Client Component */}
-        <BlogClient />
+        <BlogClient initialBlogs={allBlogs} />
 
       </div>
     </div>

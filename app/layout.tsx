@@ -99,6 +99,42 @@ export default function RootLayout({
             }
           })}}
         />
+        {/* WebPage and SiteNavigationElement Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebPage",
+                "@id": "https://quicktool.space/#webpage",
+                "url": "https://quicktool.space/",
+                "name": "QuickTools.ai - The Ultimate AI Toolkit for Creators",
+                "isPartOf": { "@id": "https://quicktool.space/#website" }
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "name": "Home",
+                "url": "https://quicktool.space/"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "name": "Articles",
+                "url": "https://quicktool.space/articles"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "name": "News",
+                "url": "https://quicktool.space/news"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "name": "Blog",
+                "url": "https://quicktool.space/blog"
+              }
+            ]
+          })}}
+        />
 
         <AuthProvider>
           <SplashScreen />

@@ -27,5 +27,31 @@ export default async function ArticlesDirectoryPage() {
   const articlesResponse = await getArticles();
   const allArticles = articlesResponse.data || [];
   
-  return <ArticlesClient initialArticles={allArticles} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktool.space/" },
+              { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://quicktool.space/articles" }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": allArticles.slice(0, 10).map((article: any, index: number) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "url": `https://quicktool.space/articles/${article.slug}`
+            }))
+          }
+        ])}}
+      />
+      <ArticlesClient initialArticles={allArticles} />
+    </>
+  );
 }

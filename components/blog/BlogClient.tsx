@@ -37,7 +37,7 @@ const CATEGORY_ICONS: Record<string, React.ReactNode> = {
   'News & Updates': <Newspaper className="w-4 h-4" />
 };
 
-export default function BlogClient() {
+export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[] }) {
   const router = useRouter();
   const [activeCategory, setActiveCategory] = useState('All Blogs');
   const [activeTab, setActiveTab] = useState('All');
@@ -45,8 +45,8 @@ export default function BlogClient() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showAllTags, setShowAllTags] = useState(false);
   const [isMobileCategoriesOpen, setIsMobileCategoriesOpen] = useState(false);
-  const [blogs, setBlogs] = useState<Blog[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [blogs, setBlogs] = useState<Blog[]>(initialBlogs);
+  const [loading, setLoading] = useState(initialBlogs.length === 0);
 
   useEffect(() => {
     fetch(getEndpoint('/api/blogs'))

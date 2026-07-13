@@ -24,5 +24,31 @@ export default async function NewsDirectoryPage() {
   const newsResponse = await getNews();
   const allNews = newsResponse.data || [];
   
-  return <NewsClient initialNews={allNews} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktool.space/" },
+              { "@type": "ListItem", "position": 2, "name": "News", "item": "https://quicktool.space/news" }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": allNews.slice(0, 10).map((newsItem: any, index: number) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "url": `https://quicktool.space/news/${newsItem.slug}`
+            }))
+          }
+        ])}}
+      />
+      <NewsClient initialNews={allNews} />
+    </>
+  );
 }
