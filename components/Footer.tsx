@@ -17,6 +17,23 @@ export default function Footer() {
   // Hide footer on login, signup, and dashboard (dashboard has its own layout)
   if (pathname === '/login' || pathname === '/signup' || pathname.startsWith('/dashboard')) return null;
 
+  const handleShare = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: 'QuickTools.ai',
+          text: 'Check out QuickTools.ai - The Ultimate AI Toolkit!',
+          url: window.location.origin
+        });
+      } else {
+        await navigator.clipboard.writeText(window.location.origin);
+        alert('Link copied to clipboard!');
+      }
+    } catch (err) {
+      console.log('Error sharing:', err);
+    }
+  };
+
   return (
     <footer className="bg-white border-t border-[#E5E7EB] w-full">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,10 +49,15 @@ export default function Footer() {
               </div>
               <p className="text-sm text-[#6B7280] mb-6 pr-4">All AI tools you need in one place. Save time, work smarter, and achieve more with AI.</p>
               <div className="flex items-center gap-4 text-gray-400">
-                <Globe className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
-                <MessageCircle className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
-                <Share2 className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
-                <Mail className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
+                <Link href="/" aria-label="Website">
+                  <Globe className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
+                </Link>
+                <button onClick={handleShare} aria-label="Share" className="focus:outline-none">
+                  <Share2 className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
+                </button>
+                <a href="mailto:helloquicktool@gmail.com" aria-label="Email">
+                  <Mail className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
+                </a>
               </div>
             </div>
 
