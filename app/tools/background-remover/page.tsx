@@ -4,8 +4,8 @@ import { ChevronRight, Home } from 'lucide-react';
 import BackgroundRemoverClient from '@/components/background-remover/BackgroundRemoverClient';
 
 export const metadata: Metadata = {
-  title: 'AI Background Remover | QuickTools.ai',
-  description: 'Remove image backgrounds instantly with AI. Fast, accurate, and easy to use.',
+  title: 'Free AI Background Remover - Erase Backgrounds Fast',
+  description: 'Remove image backgrounds instantly with our AI Background Remover. Fast, accurate, and perfectly cut out subjects in seconds for your design projects.',
   keywords: 'background remover, ai background removal, transparent background, image editing',
   alternates: {
     canonical: '/tools/background-remover'

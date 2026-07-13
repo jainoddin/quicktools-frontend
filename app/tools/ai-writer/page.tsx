@@ -5,8 +5,8 @@ import { ChevronRight, Home, History, LayoutGrid } from 'lucide-react';
 import AiWriterClient from '@/components/ai-writer/AiWriterClient';
 
 export const metadata: Metadata = {
-  title: 'AI Writer - QuickTools.ai',
-  description: 'Generate high-quality content instantly with AI. Write blogs, emails, social posts, and more.',
+  title: 'Advanced AI Writer & Content Generator for Creators',
+  description: 'Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blog posts, professional emails, and creative social media copy.',
   alternates: {
     canonical: '/tools/ai-writer'
   }

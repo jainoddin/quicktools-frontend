@@ -5,8 +5,8 @@ import { ChevronRight, Home } from 'lucide-react';
 import AiCodeClient from '@/components/ai-code-generator/AiCodeClient';
 
 export const metadata: Metadata = {
-  title: 'AI Code Generator - QuickTools.ai',
-  description: 'Generate production-ready code in seconds with our advanced AI Code Generator.',
+  title: 'Intelligent AI Code Generator & Programming Assistant',
+  description: 'Generate production-ready code in seconds with our advanced AI Code Generator. Boost your development speed and debug effortlessly with intelligent assistance.',
   alternates: {
     canonical: '/tools/ai-code-generator'
   }
