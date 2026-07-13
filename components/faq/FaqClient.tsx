@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Search, ChevronDown, Headphones, ArrowRight, BookOpen } from 'lucide-react';
+import HideWhenAuthenticated from '../shared/HideWhenAuthenticated';
 
 const FAQ_CATEGORIES = [
   { name: 'All Questions', count: 67 },
@@ -77,18 +78,22 @@ export default function FaqClient() {
       
       {/* ── HERO SECTION ── */}
       <div className="relative pt-20 pb-16 px-4 overflow-hidden bg-white border-b border-[#E5E7EB]">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-br from-[#FAF5FF] to-[#EEF2FF] blur-3xl opacity-70 rounded-full pointer-events-none -z-10"></div>
+        <HideWhenAuthenticated>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-br from-[#FAF5FF] to-[#EEF2FF] blur-3xl opacity-70 rounded-full pointer-events-none -z-10"></div>
+        </HideWhenAuthenticated>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#F3F4F6] text-[#4B5563] text-xs font-bold mb-6 border border-[#E5E7EB] shadow-sm">
-            <BookOpen className="w-3.5 h-3.5 mr-1.5 text-[#6D5EF8]" /> FAQs
-          </div>
-          <h1 className="text-4xl md:text-5xl font-black text-[#111827] mb-4 tracking-tight">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-[#6B7280] text-sm md:text-base max-w-lg mx-auto mb-10 leading-relaxed">
-            Find quick answers to the most common questions about QuickTools.ai
-          </p>
+          <HideWhenAuthenticated>
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#F3F4F6] text-[#4B5563] text-xs font-bold mb-6 border border-[#E5E7EB] shadow-sm">
+              <BookOpen className="w-3.5 h-3.5 mr-1.5 text-[#6D5EF8]" /> FAQs
+            </div>
+            <h1 className="text-4xl md:text-5xl font-black text-[#111827] mb-4 tracking-tight">
+              Frequently Asked Questions
+            </h1>
+            <p className="text-[#6B7280] text-sm md:text-base max-w-lg mx-auto mb-10 leading-relaxed">
+              Find quick answers to the most common questions about QuickTools.ai
+            </p>
+          </HideWhenAuthenticated>
 
           <div className="max-w-2xl mx-auto relative shadow-xl shadow-[#6D5EF8]/5 rounded-2xl">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />

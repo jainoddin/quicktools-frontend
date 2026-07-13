@@ -5,6 +5,7 @@ import {
   Search, Rocket, CreditCard, Sparkles, 
   Code, User, ShieldCheck, ArrowRight, Home
 } from 'lucide-react';
+import HideWhenAuthenticated from '../../components/shared/HideWhenAuthenticated';
 
 export const metadata: Metadata = {
   title: 'Help Center | QuickTools.ai',
@@ -51,20 +52,24 @@ export default function HelpCenterPage() {
       
       {/* ── HERO SECTION ── */}
       <div className="relative pt-20 pb-16 px-4 overflow-hidden border-b border-[#E5E7EB] bg-white">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-br from-[#EEF2FF] to-[#FAF5FF] blur-3xl opacity-60 rounded-full pointer-events-none -z-10"></div>
-        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-100/50 rounded-full blur-2xl -z-10"></div>
-        <div className="absolute top-20 right-20 w-40 h-40 bg-purple-100/50 rounded-full blur-2xl -z-10"></div>
+        <HideWhenAuthenticated>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-br from-[#EEF2FF] to-[#FAF5FF] blur-3xl opacity-60 rounded-full pointer-events-none -z-10"></div>
+          <div className="absolute top-10 left-10 w-32 h-32 bg-blue-100/50 rounded-full blur-2xl -z-10"></div>
+          <div className="absolute top-20 right-20 w-40 h-40 bg-purple-100/50 rounded-full blur-2xl -z-10"></div>
+        </HideWhenAuthenticated>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#FFFBEB] text-[#D97706] text-xs font-bold mb-6 border border-[#FEF3C7] shadow-sm">
-            <span className="mr-2">👋</span> How can we help?
-          </div>
-          <h1 className="text-4xl md:text-5xl font-black text-[#111827] mb-4 tracking-tight">
-            Help Center
-          </h1>
-          <p className="text-[#6B7280] text-sm md:text-base max-w-lg mx-auto mb-10 leading-relaxed">
-            Find answers, tutorials and support to make the most of QuickTools.ai
-          </p>
+          <HideWhenAuthenticated>
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#FFFBEB] text-[#D97706] text-xs font-bold mb-6 border border-[#FEF3C7] shadow-sm">
+              <span className="mr-2">👋</span> How can we help?
+            </div>
+            <h1 className="text-4xl md:text-5xl font-black text-[#111827] mb-4 tracking-tight">
+              Help Center
+            </h1>
+            <p className="text-[#6B7280] text-sm md:text-base max-w-lg mx-auto mb-10 leading-relaxed">
+              Find answers, tutorials and support to make the most of QuickTools.ai
+            </p>
+          </HideWhenAuthenticated>
 
           <div className="max-w-2xl mx-auto relative shadow-xl shadow-[#6D5EF8]/5 rounded-2xl">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
