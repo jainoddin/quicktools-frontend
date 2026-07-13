@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {
   Home, ChevronRight, Zap, Users, LayoutGrid, Star,
   Globe, Shield, Check, ArrowRight, Mail,
-  Sparkles, Lock, Lightbulb, Code2
+  Sparkles, Lock, Lightbulb, Code2, Linkedin, MessageCircle
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -203,11 +203,15 @@ export default async function AboutPage() {
               <h3 className="font-bold text-[#111827] text-base mb-0.5">Shaik Jainoddin</h3>
               <p className="text-xs text-[#6D5EF8] font-semibold mb-3">Founder & CEO</p>
               <div className="flex items-center gap-2">
-                <button className="w-8 h-8 rounded-full bg-[#EEF2FF] text-[#6D5EF8] flex items-center justify-center hover:bg-[#6D5EF8] hover:text-white transition-colors text-xs font-bold">in</button>
-                <button className="w-8 h-8 rounded-full bg-[#EEF2FF] text-[#6D5EF8] flex items-center justify-center hover:bg-[#6D5EF8] hover:text-white transition-colors text-xs font-bold">𝕏</button>
-                <button className="w-8 h-8 rounded-full bg-[#EEF2FF] text-[#6D5EF8] flex items-center justify-center hover:bg-[#6D5EF8] hover:text-white transition-colors">
-                  <Code2 className="w-4 h-4" />
-                </button>
+                <a href="https://www.linkedin.com/in/sk-jainoddin-699060250/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#EEF2FF] text-[#6D5EF8] flex items-center justify-center hover:bg-[#6D5EF8] hover:text-white transition-colors">
+                  <Linkedin className="w-4 h-4" />
+                </a>
+                <a href="https://wa.me/917989015462" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#EEF2FF] text-[#6D5EF8] flex items-center justify-center hover:bg-[#6D5EF8] hover:text-white transition-colors">
+                  <MessageCircle className="w-4 h-4" />
+                </a>
+                <a href="mailto:shaikjainoddin16@gmail.com" className="w-8 h-8 rounded-full bg-[#EEF2FF] text-[#6D5EF8] flex items-center justify-center hover:bg-[#6D5EF8] hover:text-white transition-colors">
+                  <Mail className="w-4 h-4" />
+                </a>
               </div>
             </div>
 
