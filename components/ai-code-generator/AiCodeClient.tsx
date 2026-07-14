@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Lightbulb, Clipboard, Sparkles, Info, History, LayoutGrid,
   Code2, Trash2, Edit2, Play, ChevronRight, CheckCircle2,
@@ -9,6 +9,9 @@ import {
 import AiCodeResult from './AiCodeResult';
 import AiCodeEmpty from './AiCodeEmpty';
 import AiCodeHistory from './AiCodeHistory';
+import { useAuth } from '@/contexts/AuthContext';
+import { getEndpoint } from '@/lib/api';
+import LoginPopup from '@/components/auth/LoginPopup';
 
 export default function AiCodeClient() {
   const [prompt, setPrompt] = useState('');
@@ -22,7 +25,82 @@ export default function AiCodeClient() {
   const [showHistory, setShowHistory] = useState(false);
   const [progress, setProgress] = useState(0);
 
+  const { isAuthenticated, user } = useAuth();
+  const [codeHistory, setCodeHistory] = useState<any[]>([]);
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
+  const [freeGenCount, setFreeGenCount] = useState(0);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      const savedHistory = localStorage.getItem('guestCodeHistory');
+      if (savedHistory) {
+        try {
+          setCodeHistory(JSON.parse(savedHistory));
+        } catch (e) {
+          console.error("Could not parse guest history", e);
+        }
+      }
+      const savedCount = localStorage.getItem('freeCodeCount');
+      if (savedCount) {
+        setFreeGenCount(parseInt(savedCount, 10));
+      }
+    } else {
+      fetch(getEndpoint('/api/user/usage'), {
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.data && data.data.history) {
+          const filteredHistory = data.data.history.filter((item: any) => 
+            item.toolSlug === '/tools/ai-code' || item.toolName === 'AI Code Generator'
+          );
+          setCodeHistory(filteredHistory);
+        }
+      })
+      .catch(console.error);
+    }
+  }, [isAuthenticated]);
+
+  const handleToggleFavorite = async (id: string) => {
+    setCodeHistory(prev => prev.map(item => item.id === id || item._id === id ? { ...item, isStarred: !item.isStarred } : item));
+    if (!isAuthenticated) {
+      const newHistory = codeHistory.map(item => item.id === id || item._id === id ? { ...item, isStarred: !item.isStarred } : item);
+      localStorage.setItem('guestCodeHistory', JSON.stringify(newHistory));
+    } else {
+      try {
+        await fetch(getEndpoint(`/api/user/usage/${id}/favorite`), { method: 'PATCH', credentials: 'include' });
+      } catch (err) {
+        console.error('Failed to toggle favorite', err);
+      }
+    }
+  };
+
+  const handleDeleteHistory = async (ids: string[]) => {
+    setCodeHistory(prev => prev.filter(item => !ids.includes(item.id as string) && !ids.includes(item._id as string)));
+    if (!isAuthenticated) {
+      const newHistory = codeHistory.filter(item => !ids.includes(item.id as string) && !ids.includes(item._id as string));
+      localStorage.setItem('guestCodeHistory', JSON.stringify(newHistory));
+    } else {
+      try {
+        await fetch(getEndpoint('/api/user/usage'), {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ ids })
+        });
+      } catch (err) {
+        console.error('Failed to delete history', err);
+      }
+    }
+  };
+
   const handleGenerate = () => {
+    if (!isAuthenticated && freeGenCount >= 1) {
+      setShowLoginPopup(true);
+      return;
+    }
+
     setIsProcessing(true);
     setProgress(0);
     setHasResult(false);
@@ -42,6 +120,12 @@ export default function AiCodeClient() {
       clearInterval(interval);
       setIsProcessing(false);
       setHasResult(true);
+
+      if (!isAuthenticated) {
+        const newCount = freeGenCount + 1;
+        setFreeGenCount(newCount);
+        localStorage.setItem('freeCodeCount', newCount.toString());
+      }
     }, 4000);
   };
 
@@ -52,7 +136,8 @@ export default function AiCodeClient() {
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 h-full">
-      
+      <LoginPopup isOpen={showLoginPopup} onClose={() => setShowLoginPopup(false)} />
+
       {/* Left Sidebar (Hidden in History View) */}
       {!showHistory && (
         <aside className="w-full lg:w-[340px] shrink-0 space-y-6">
@@ -261,9 +346,20 @@ export default function AiCodeClient() {
             <p className="text-[#6B7280]">Our AI is currently generating your files and formatting the code.</p>
           </div>
         ) : hasResult && !showHistory ? (
-          <AiCodeResult onHistoryClick={() => setShowHistory(true)} />
+          <AiCodeResult 
+            onHistoryClick={() => setShowHistory(true)} 
+            isAuthenticated={isAuthenticated}
+            onRequireLogin={() => setShowLoginPopup(true)}
+          />
         ) : showHistory ? (
-          <AiCodeHistory onClose={() => setShowHistory(false)} />
+          <AiCodeHistory 
+            history={codeHistory} 
+            onClose={() => setShowHistory(false)} 
+            onToggleFavorite={handleToggleFavorite}
+            onDelete={handleDeleteHistory}
+            isAuthenticated={isAuthenticated}
+            onRequireLogin={() => setShowLoginPopup(true)}
+          />
         ) : (
           <AiCodeEmpty 
             onSelectPrompt={(p, lang, frame) => {

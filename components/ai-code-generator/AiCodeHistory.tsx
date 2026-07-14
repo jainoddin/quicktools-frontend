@@ -1,371 +1,281 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
-  Search, Grid, List, Star, Filter, Trash2, Eye, Download, 
-  Copy, MoreVertical, Code2, Clock, Crown, Bookmark, 
-  ChevronLeft, ChevronRight, ChevronDown, CheckSquare, Calendar
+  Search, Star, Trash2, Download, Copy, Code2, 
+  Sparkles, File, FileCode2, X
 } from 'lucide-react';
 
 interface AiCodeHistoryProps {
+  history?: any[];
   onClose: () => void;
+  onToggleFavorite?: (id: string) => void;
+  onDelete?: (ids: string[]) => void;
+  isAuthenticated?: boolean;
+  onRequireLogin?: () => void;
 }
 
-export default function AiCodeHistory({ onClose }: AiCodeHistoryProps) {
-  const historyItems = [
-    {
-      id: 1,
-      title: 'E-commerce Shopping Cart',
-      isFavorite: true,
-      tags: 'JavaScript • React',
-      desc: 'Add a shopping cart functionality with add, remove and update quantity.',
-      type: 'Frontend (Web)',
-      typeColor: 'text-[#6D5EF8]',
-      date: 'Today, 2:30 PM',
-      lines: '1,248 lines',
-      iconText: 'JS',
-      iconBg: 'bg-[#F7DF1E]',
-      iconTextColor: 'text-black'
-    },
-    {
-      id: 2,
-      title: 'Todo App with React Hooks',
-      isFavorite: false,
-      tags: 'JavaScript • React',
-      desc: 'Build a todo app with add, edit, delete and filter using React Hooks.',
-      type: 'Frontend (Web)',
-      typeColor: 'text-[#6D5EF8]',
-      date: 'Today, 11:15 AM',
-      lines: '856 lines',
-      icon: 'react',
-      iconBg: 'bg-[#E0F2FE]',
-      iconTextColor: 'text-[#38BDF8]'
-    },
-    {
-      id: 3,
-      title: 'REST API with Node.js',
-      isFavorite: false,
-      tags: 'JavaScript • Node.js • Express',
-      desc: 'Create a REST API with authentication and CRUD operations.',
-      type: 'Backend (API)',
-      typeColor: 'text-[#22C55E]',
-      date: 'Yesterday, 6:45 PM',
-      lines: '1,532 lines',
-      iconText: 'JS',
-      iconBg: 'bg-[#DCFCE7]',
-      iconTextColor: 'text-[#22C55E]'
-    },
-    {
-      id: 4,
-      title: 'Data Analysis Script',
-      isFavorite: false,
-      tags: 'Python • Pandas',
-      desc: 'Analyze CSV data and generate summary reports and charts.',
-      type: 'Data Science',
-      typeColor: 'text-[#8B5CF6]',
-      date: 'May 15, 2024',
-      lines: '420 lines',
-      iconText: 'Py',
-      iconBg: 'bg-[#FEF08A]',
-      iconTextColor: 'text-[#1D4ED8]'
-    },
-    {
-      id: 5,
-      title: 'Responsive Landing Page',
-      isFavorite: false,
-      tags: 'HTML • CSS • JavaScript',
-      desc: 'Create a responsive landing page using HTML, Tailwind CSS and JS.',
-      type: 'Frontend (Web)',
-      typeColor: 'text-[#6D5EF8]',
-      date: 'May 14, 2024',
-      lines: '678 lines',
-      iconText: '5',
-      iconBg: 'bg-[#FFEDD5]',
-      iconTextColor: 'text-[#EA580C]'
-    },
-    {
-      id: 6,
-      title: 'User Authentication System',
-      isFavorite: false,
-      tags: 'TypeScript • Next.js • Prisma',
-      desc: 'Authentication system with login, register and JWT.',
-      type: 'Full Stack',
-      typeColor: 'text-[#8B5CF6]',
-      date: 'May 12, 2024',
-      lines: '1,102 lines',
-      iconText: 'TS',
-      iconBg: 'bg-[#DBEAFE]',
-      iconTextColor: 'text-[#1D4ED8]'
+export default function AiCodeHistory({ history = [], onClose, onToggleFavorite, onDelete, isAuthenticated = true, onRequireLogin }: AiCodeHistoryProps) {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterType, setFilterType] = useState('All');
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  
+  const [itemToDownload, setItemToDownload] = useState<any>(null);
+  const [downloadFormat, setDownloadFormat] = useState<'txt' | 'json' | 'js'>('js');
+
+  const now = new Date();
+  const counts = {
+    all: history.length,
+    favorites: history.filter(h => h.isStarred).length,
+    today: history.filter(h => new Date(h.createdAt).toDateString() === now.toDateString()).length,
+    thisWeek: history.filter(h => Math.ceil(Math.abs(now.getTime() - new Date(h.createdAt).getTime()) / (1000 * 60 * 60 * 24)) <= 7).length,
+    thisMonth: history.filter(h => new Date(h.createdAt).getMonth() === now.getMonth() && new Date(h.createdAt).getFullYear() === now.getFullYear()).length,
+  };
+
+  let displayHistory = [...history];
+
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    displayHistory = displayHistory.filter(item => 
+      (item.prompt && item.prompt.toLowerCase().includes(q)) ||
+      (item.result && item.result.toLowerCase().includes(q))
+    );
+  }
+
+  if (filterType === 'Favorites') {
+    displayHistory = displayHistory.filter(item => item.isStarred);
+  } else if (filterType === 'Today') {
+    displayHistory = displayHistory.filter(item => new Date(item.createdAt).toDateString() === now.toDateString());
+  } else if (filterType === 'This Week') {
+    displayHistory = displayHistory.filter(item => Math.ceil(Math.abs(now.getTime() - new Date(item.createdAt).getTime()) / (1000 * 60 * 60 * 24)) <= 7);
+  } else if (filterType === 'This Month') {
+    displayHistory = displayHistory.filter(item => new Date(item.createdAt).getMonth() === now.getMonth() && new Date(item.createdAt).getFullYear() === now.getFullYear());
+  }
+
+  const handleCopy = (text: string) => {
+    if (!isAuthenticated && onRequireLogin) {
+      onRequireLogin();
+      return;
     }
-  ];
+    const textToCopy = text || 'No code available.';
+    navigator.clipboard.writeText(textToCopy);
+  };
+
+  const handleDownloadClick = (item: any) => {
+    if (!isAuthenticated && onRequireLogin) {
+      onRequireLogin();
+      return;
+    }
+    setItemToDownload(item);
+  };
+
+  const executeDownload = () => {
+    if (!itemToDownload) return;
+    const textToDownload = itemToDownload.result || itemToDownload.preview || 'No code available.';
+    const blob = new Blob([textToDownload], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Generated_Code.${downloadFormat}`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    setItemToDownload(null);
+  };
+
+  const toggleSelect = (id: string) => {
+    const newSet = new Set(selectedIds);
+    if (newSet.has(id)) newSet.delete(id);
+    else newSet.add(id);
+    setSelectedIds(newSet);
+  };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 w-full animate-in fade-in slide-in-from-right-8 duration-500">
+    <div className="flex flex-col w-full h-full animate-in fade-in duration-300">
       
-      {/* Left Sidebar (Filters) */}
-      <aside className="w-full lg:w-[340px] shrink-0 space-y-6">
-        
-        {/* Tool Info Header */}
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#6D5EF8] rounded-xl flex items-center justify-center shrink-0 shadow-sm">
-              <Code2 className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <h2 className="text-sm font-bold text-[#111827]">AI Code Generator</h2>
-              <p className="text-[11px] text-[#6B7280]">Generate clean, efficient code in seconds.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Filters */}
-        <div className="space-y-5">
-          
-          <div>
-            <label className="block text-xs font-bold text-[#111827] mb-2">Search History</label>
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" />
-              <input 
-                type="text" 
-                placeholder="Search your code..." 
-                className="w-full pl-9 pr-3 py-2.5 bg-white border border-[#E5E7EB] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#6D5EF8] shadow-sm"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-xs font-bold text-[#111827] mb-2">Language</label>
-            <div className="relative">
-              <select className="w-full appearance-none bg-white border border-[#E5E7EB] rounded-xl px-3 py-2.5 text-xs text-[#4B5563] focus:outline-none focus:ring-2 focus:ring-[#6D5EF8] shadow-sm cursor-pointer">
-                <option>All Languages</option>
-                <option>JavaScript</option>
-                <option>Python</option>
-                <option>TypeScript</option>
-              </select>
-              <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-                <ChevronDown className="w-3.5 h-3.5 text-gray-400" />
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-xs font-bold text-[#111827] mb-2">Framework / Library</label>
-            <div className="relative">
-              <select className="w-full appearance-none bg-white border border-[#E5E7EB] rounded-xl px-3 py-2.5 text-xs text-[#4B5563] focus:outline-none focus:ring-2 focus:ring-[#6D5EF8] shadow-sm cursor-pointer">
-                <option>All Frameworks</option>
-                <option>React</option>
-                <option>Next.js</option>
-                <option>Node.js</option>
-              </select>
-              <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-                <ChevronDown className="w-3.5 h-3.5 text-gray-400" />
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-xs font-bold text-[#111827] mb-2">Code Type</label>
-            <div className="relative">
-              <select className="w-full appearance-none bg-white border border-[#E5E7EB] rounded-xl px-3 py-2.5 text-xs text-[#4B5563] focus:outline-none focus:ring-2 focus:ring-[#6D5EF8] shadow-sm cursor-pointer">
-                <option>All Types</option>
-                <option>Frontend (Web)</option>
-                <option>Backend (API)</option>
-              </select>
-              <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-                <ChevronDown className="w-3.5 h-3.5 text-gray-400" />
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-xs font-bold text-[#111827] mb-2">Date Range</label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                <Calendar className="w-3.5 h-3.5 text-gray-400" />
-              </div>
-              <select className="w-full appearance-none bg-white border border-[#E5E7EB] rounded-xl pl-9 pr-3 py-2.5 text-xs text-[#4B5563] focus:outline-none focus:ring-2 focus:ring-[#6D5EF8] shadow-sm cursor-pointer">
-                <option>All Time</option>
-                <option>Today</option>
-                <option>This Week</option>
-              </select>
-              <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-                <ChevronDown className="w-3.5 h-3.5 text-gray-400" />
-              </div>
-            </div>
-          </div>
-
-          <button className="w-full py-2.5 bg-white border border-[#E5E7EB] rounded-xl text-xs font-semibold text-[#4B5563] hover:bg-gray-50 transition-colors shadow-sm flex items-center justify-center gap-1.5">
-            <Filter className="w-3.5 h-3.5" /> Clear Filters
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div>
+          <button 
+            onClick={onClose} 
+            className="flex items-center gap-1.5 text-sm font-semibold text-[#6D5EF8] hover:text-[#5B4DF5] transition-colors mb-3"
+          >
+            &larr; Back to Tool
           </button>
-        </div>
-
-        {/* Upgrade Box */}
-        <div className="bg-[#F5F3FF] border border-[#EDE9FE] rounded-2xl p-5 mt-6">
           <div className="flex items-center gap-2 mb-2">
-            <Crown className="w-5 h-5 text-[#6D5EF8] fill-[#6D5EF8]" />
-            <h3 className="font-bold text-[#111827] text-sm">Upgrade to Pro</h3>
+            <h1 className="text-2xl md:text-3xl font-bold text-[#111827] flex items-center gap-2">
+              Code History <Sparkles className="w-6 h-6 text-[#F59E0B] fill-[#F59E0B]" />
+            </h1>
           </div>
-          <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
-            Unlock more credits, priority generation and code export.
-          </p>
-          <button className="w-full py-2 bg-white border border-[#6D5EF8] rounded-xl text-xs font-bold text-[#6D5EF8] hover:bg-[#EEF2FF] transition-colors">
-            Upgrade Now
+          <p className="text-[#6B7280] text-sm md:text-base">View and manage your previously generated code snippets.</p>
+        </div>
+        
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <input 
+              type="text" 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search your code..." 
+              className="pl-9 pr-4 py-2 border border-[#E5E7EB] rounded-xl text-sm w-full md:w-64 focus:outline-none focus:border-[#6D5EF8] focus:ring-1 focus:ring-[#6D5EF8]"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Filters Row */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        <div className="flex flex-wrap items-center gap-2">
+          <button onClick={() => setFilterType('All')} className={`px-5 py-2 text-sm font-semibold rounded-full flex items-center gap-2 shadow-sm transition-colors ${filterType === 'All' ? 'bg-[#6D5EF8] text-white' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+            All <span className="text-xs">({counts.all})</span>
+          </button>
+          <button onClick={() => setFilterType('Favorites')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'Favorites' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+            Favorites <span className={`text-xs ${filterType === 'Favorites' ? 'text-purple-200' : 'text-gray-400'}`}>({counts.favorites})</span>
+          </button>
+          <button onClick={() => setFilterType('Today')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'Today' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+            Today <span className={`text-xs ${filterType === 'Today' ? 'text-purple-200' : 'text-gray-400'}`}>({counts.today})</span>
+          </button>
+          <button onClick={() => setFilterType('This Week')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'This Week' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+            This Week <span className={`text-xs ${filterType === 'This Week' ? 'text-purple-200' : 'text-gray-400'}`}>({counts.thisWeek})</span>
           </button>
         </div>
-      </aside>
-
-      {/* Right Main Area */}
-      <main className="flex-grow flex flex-col min-w-0">
         
-        {/* Back Button */}
-        <button onClick={onClose} className="text-sm font-bold text-[#6D5EF8] hover:text-[#5B4DF5] transition-colors self-start flex items-center gap-1 mb-4">
-          &larr; Back to Generator
-        </button>
-
-        {/* Header row */}
-        <div className="flex flex-col md:flex-row md:items-start lg:items-center justify-between gap-4 mb-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-[#EEF2FF] rounded-xl flex items-center justify-center shrink-0">
-              <Clock className="w-6 h-6 text-[#6D5EF8]" />
-            </div>
-            <div>
-              <h1 className="text-3xl lg:text-4xl font-bold tracking-tight text-[#111827] flex items-center gap-2">History</h1>
-              <p className="text-sm text-[#6B7280] mt-1">View and manage all your previously generated code.</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <input 
-                type="text" 
-                placeholder="Search in results..." 
-                className="pl-9 pr-4 py-2 bg-white border border-[#E5E7EB] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#6D5EF8] shadow-sm w-48 sm:w-64"
-              />
-            </div>
-            <button className="p-2 bg-white border border-[#E5E7EB] rounded-xl text-gray-400 hover:text-gray-600 hover:bg-gray-50 shadow-sm">
-              <Bookmark className="w-5 h-5" />
+        <div className="flex items-center gap-3">
+          {selectedIds.size > 0 && (
+            <button 
+              onClick={() => {
+                if (onDelete) {
+                  onDelete(Array.from(selectedIds));
+                  setSelectedIds(new Set());
+                }
+              }}
+              className="px-4 py-2 bg-red-50 text-red-600 rounded-xl text-sm font-bold flex items-center gap-2 hover:bg-red-100 transition-colors"
+            >
+              <Trash2 className="w-4 h-4" /> Delete Selected ({selectedIds.size})
             </button>
-            <div className="flex bg-white border border-[#E5E7EB] rounded-xl shadow-sm p-0.5">
-              <button className="p-1.5 bg-[#EEF2FF] text-[#6D5EF8] rounded-lg">
-                <List className="w-4 h-4" />
-              </button>
-              <button className="p-1.5 text-gray-400 hover:text-gray-600 rounded-lg">
-                <Grid className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
+          )}
         </div>
+      </div>
 
-        {/* Tabs & Actions */}
-        <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 mb-6 border-b border-[#E5E7EB] pb-4">
-          <div className="flex overflow-x-auto custom-scrollbar gap-2 pb-2 xl:pb-0">
-            <button className="whitespace-nowrap px-4 py-2 rounded-xl text-sm font-bold bg-[#6D5EF8] text-white shadow-sm">All (48)</button>
-            <button className="whitespace-nowrap px-4 py-2 rounded-xl text-sm font-semibold bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50 transition-colors">Favorites (8)</button>
-            <button className="whitespace-nowrap px-4 py-2 rounded-xl text-sm font-semibold bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50 transition-colors">Today (6)</button>
-            <button className="whitespace-nowrap px-4 py-2 rounded-xl text-sm font-semibold bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50 transition-colors">This Week (12)</button>
-            <button className="whitespace-nowrap px-4 py-2 rounded-xl text-sm font-semibold bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50 transition-colors">This Month (20)</button>
-          </div>
-
-          <div className="flex items-center gap-3 shrink-0">
-            <button className="flex items-center gap-2 px-4 py-2 bg-white border border-[#E5E7EB] rounded-xl text-sm font-semibold text-[#4B5563] hover:bg-gray-50 shadow-sm transition-colors">
-              <Filter className="w-4 h-4" /> Filter
-            </button>
-            <button className="flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-200 rounded-xl text-sm font-semibold text-red-600 hover:bg-red-100 shadow-sm transition-colors">
-              <Trash2 className="w-4 h-4" /> Delete Selected
+      {/* Code List */}
+      <div className="flex flex-col gap-4">
+        {displayHistory.length === 0 ? (
+          <div className="bg-white rounded-3xl border border-[#E5E7EB] p-12 flex flex-col items-center justify-center text-center">
+            <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mb-4">
+              <Code2 className="w-8 h-8 text-gray-300" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">No code found</h3>
+            <p className="text-gray-500 max-w-md">You haven't generated any code yet, or no results match your current filters.</p>
+            <button onClick={onClose} className="mt-6 px-6 py-2.5 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold rounded-xl transition-colors">
+              Generate Now
             </button>
           </div>
-        </div>
-
-        {/* List View */}
-        <div className="bg-white border border-[#E5E7EB] rounded-2xl shadow-sm overflow-hidden flex flex-col mb-6">
-          {historyItems.map((item, idx) => (
-            <div key={item.id} className={`flex flex-col sm:flex-row sm:items-center gap-4 p-4 hover:bg-gray-50 transition-colors ${idx !== historyItems.length - 1 ? 'border-b border-[#E5E7EB]' : ''}`}>
-              
-              <div className="flex items-start gap-4 flex-grow min-w-0">
-                <div className="pt-1">
-                  <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#6D5EF8] focus:ring-[#6D5EF8] cursor-pointer" />
-                </div>
-                
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${item.iconBg}`}>
-                  {item.icon === 'react' ? (
-                    <svg className={`w-7 h-7 ${item.iconTextColor}`} viewBox="-11.5 -10.23174 23 20.46348" fill="currentColor">
-                      <circle cx="0" cy="0" r="2.05" fill="currentColor"/>
-                      <g stroke="currentColor" strokeWidth="1" fill="none">
-                        <ellipse rx="11" ry="4.2"/>
-                        <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
-                        <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
-                      </g>
-                    </svg>
-                  ) : (
-                    <span className={`text-[13px] font-bold ${item.iconTextColor}`}>{item.iconText}</span>
-                  )}
-                </div>
-
-                <div className="flex flex-col min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-sm font-bold text-[#111827] truncate">{item.title}</h3>
-                    {item.isFavorite && <Star className="w-3.5 h-3.5 text-[#F59E0B] fill-[#F59E0B] shrink-0" />}
-                  </div>
-                  <div className="text-[11px] font-semibold text-[#6B7280] mb-1.5">{item.tags}</div>
-                  <p className="text-[11px] text-[#4B5563] truncate">{item.desc}</p>
-                </div>
+        ) : (
+          displayHistory.map((item: any) => (
+            <div 
+              key={item.id || item._id} 
+              className={`flex items-center gap-4 bg-white border ${selectedIds.has(item.id || item._id) ? 'border-[#6D5EF8] bg-purple-50/20' : 'border-[#E5E7EB] hover:border-gray-300 hover:shadow-sm'} rounded-2xl p-4 transition-all`}
+            >
+              {/* Checkbox */}
+              <div 
+                onClick={() => toggleSelect(item.id || item._id)}
+                className={`w-5 h-5 rounded flex items-center justify-center border cursor-pointer transition-colors shrink-0 ${selectedIds.has(item.id || item._id) ? 'bg-[#6D5EF8] border-[#6D5EF8]' : 'border-gray-300 hover:border-gray-400'}`}
+              >
+                {selectedIds.has(item.id || item._id) && <div className="w-2.5 h-2.5 bg-white rounded-sm" />}
               </div>
 
-              {/* Meta and Actions */}
-              <div className="flex items-center justify-between sm:justify-end gap-6 sm:w-64 shrink-0 mt-3 sm:mt-0 pl-12 sm:pl-0">
-                <div className="flex flex-col items-start sm:items-end">
-                  <span className={`text-[11px] font-bold mb-1 ${item.typeColor}`}>{item.type}</span>
-                  <span className="text-[11px] font-medium text-[#6B7280] mb-0.5">{item.date}</span>
-                  <span className="text-[10px] text-[#9CA3AF]">{item.lines}</span>
+              {/* Icon */}
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-blue-50 text-blue-500`}>
+                <Code2 className="w-5 h-5" />
+              </div>
+              
+              {/* Main Content */}
+              <div 
+                className={`flex-grow min-w-0 pr-4 border-r border-gray-100 ${!isAuthenticated ? 'select-none' : ''}`}
+                onContextMenu={(e) => { if (!isAuthenticated) e.preventDefault(); }}
+              >
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="font-bold text-[#111827] text-base truncate">
+                    {item.prompt || 'Generated Code Snippet'}
+                  </h3>
+                  <button onClick={(e) => { e.stopPropagation(); onToggleFavorite && onToggleFavorite(item.id || item._id); }} className="hover:scale-110 transition-transform">
+                    <Star className={`w-4 h-4 ${item.isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300 hover:text-yellow-400'}`} />
+                  </button>
                 </div>
-                
-                <div className="flex items-center gap-1 shrink-0">
-                  <button className="p-1.5 text-gray-400 hover:text-[#6D5EF8] hover:bg-[#EEF2FF] rounded-lg transition-colors" title="View">
-                    <Eye className="w-4 h-4" />
-                  </button>
-                  <button className="p-1.5 text-gray-400 hover:text-[#6D5EF8] hover:bg-[#EEF2FF] rounded-lg transition-colors" title="Copy">
-                    <Copy className="w-4 h-4" />
-                  </button>
-                  <button className="p-1.5 text-gray-400 hover:text-[#6D5EF8] hover:bg-[#EEF2FF] rounded-lg transition-colors" title="Download">
-                    <Download className="w-4 h-4" />
-                  </button>
-                  <button className="p-1.5 text-gray-400 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors" title="More">
-                    <MoreVertical className="w-4 h-4" />
-                  </button>
+                <div className="text-xs text-[#6B7280]">{new Date(item.createdAt).toLocaleString()}</div>
+              </div>
+              
+              {/* Actions */}
+              <div className="flex items-center gap-1.5 pl-2 shrink-0">
+                <button onClick={() => handleCopy(item.result)} className="w-9 h-9 flex items-center justify-center text-gray-400 hover:text-[#111827] border border-gray-200 hover:bg-gray-50 rounded-full transition-colors">
+                  <Copy className="w-4 h-4" />
+                </button>
+                <button onClick={() => handleDownloadClick(item)} className="w-9 h-9 flex items-center justify-center text-gray-400 hover:text-[#111827] border border-gray-200 hover:bg-gray-50 rounded-full transition-colors">
+                  <Download className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+      
+      {/* Download Modal */}
+      {itemToDownload && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-200">
+            <div className="flex items-center justify-between p-5 border-b border-gray-100">
+              <h3 className="font-bold text-lg text-gray-900">Download Code</h3>
+              <button onClick={() => setItemToDownload(null)} className="text-gray-400 hover:text-gray-600 transition-colors">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div className="p-5 space-y-4">
+              <div 
+                onClick={() => setDownloadFormat('js')}
+                className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${downloadFormat === 'js' ? 'border-[#6D5EF8] bg-purple-50/50' : 'border-gray-100 hover:border-gray-200'}`}
+              >
+                <div className="w-10 h-10 rounded-lg bg-yellow-100 text-yellow-600 flex items-center justify-center shrink-0">
+                  <FileCode2 className="w-5 h-5" />
+                </div>
+                <div className="flex-grow">
+                  <h4 className="font-bold text-gray-900 text-sm">JavaScript (.js)</h4>
+                  <p className="text-xs text-gray-500">Standard JavaScript file</p>
+                </div>
+                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${downloadFormat === 'js' ? 'border-[#6D5EF8] bg-[#6D5EF8]' : 'border-gray-300'}`}>
+                  {downloadFormat === 'js' && <div className="w-2 h-2 rounded-full bg-white" />}
                 </div>
               </div>
               
+              <div 
+                onClick={() => setDownloadFormat('txt')}
+                className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${downloadFormat === 'txt' ? 'border-[#6D5EF8] bg-purple-50/50' : 'border-gray-100 hover:border-gray-200'}`}
+              >
+                <div className="w-10 h-10 rounded-lg bg-gray-100 text-gray-600 flex items-center justify-center shrink-0">
+                  <File className="w-5 h-5" />
+                </div>
+                <div className="flex-grow">
+                  <h4 className="font-bold text-gray-900 text-sm">Text File (.txt)</h4>
+                  <p className="text-xs text-gray-500">Plain text format</p>
+                </div>
+                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${downloadFormat === 'txt' ? 'border-[#6D5EF8] bg-[#6D5EF8]' : 'border-gray-300'}`}>
+                  {downloadFormat === 'txt' && <div className="w-2 h-2 rounded-full bg-white" />}
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
-
-        {/* Pagination */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-auto">
-          <span className="text-xs text-[#6B7280]">Showing 1 to 10 of 48 results</span>
-          
-          <div className="flex items-center gap-1">
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E5E7EB] bg-white text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-colors">
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#6D5EF8] text-white font-semibold text-xs transition-colors">1</button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E5E7EB] bg-white text-gray-600 font-semibold text-xs hover:bg-gray-50 transition-colors">2</button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E5E7EB] bg-white text-gray-600 font-semibold text-xs hover:bg-gray-50 transition-colors">3</button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E5E7EB] bg-white text-gray-600 font-semibold text-xs hover:bg-gray-50 transition-colors">4</button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E5E7EB] bg-white text-gray-600 font-semibold text-xs hover:bg-gray-50 transition-colors">5</button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E5E7EB] bg-white text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-colors">
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <select className="appearance-none bg-white border border-[#E5E7EB] rounded-lg pl-3 pr-8 py-1.5 text-xs text-[#4B5563] focus:outline-none focus:ring-2 focus:ring-[#6D5EF8] shadow-sm cursor-pointer">
-              <option>10 per page</option>
-              <option>20 per page</option>
-              <option>50 per page</option>
-            </select>
+            
+            <div className="p-5 border-t border-gray-100 bg-gray-50">
+              <button 
+                onClick={executeDownload}
+                className="w-full py-3 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold rounded-xl transition-colors shadow-lg shadow-[#6D5EF8]/20"
+              >
+                Download Code
+              </button>
+            </div>
           </div>
         </div>
+      )}
 
-      </main>
     </div>
   );
 }

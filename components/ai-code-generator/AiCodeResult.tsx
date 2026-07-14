@@ -9,9 +9,11 @@ import AiCodeDownloadModal from './AiCodeDownloadModal';
 
 interface AiCodeResultProps {
   onHistoryClick: () => void;
+  isAuthenticated?: boolean;
+  onRequireLogin?: () => void;
 }
 
-export default function AiCodeResult({ onHistoryClick }: AiCodeResultProps) {
+export default function AiCodeResult({ onHistoryClick, isAuthenticated = true, onRequireLogin }: AiCodeResultProps) {
   const [activeTab, setActiveTab] = useState('html');
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
@@ -111,11 +113,20 @@ export default function AiCodeResult({ onHistoryClick }: AiCodeResultProps) {
             <div className="bg-[#1e1e2e] relative overflow-hidden flex flex-col group min-h-[400px]">
               {/* Overlay Actions */}
               <div className="absolute top-4 right-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
-                <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-lg text-xs font-semibold backdrop-blur-md transition-colors">
+                <button 
+                  onClick={() => {
+                    if (!isAuthenticated && onRequireLogin) onRequireLogin();
+                    else navigator.clipboard.writeText(htmlCode);
+                  }}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-lg text-xs font-semibold backdrop-blur-md transition-colors"
+                >
                   <Copy className="w-3.5 h-3.5" /> Copy Code
                 </button>
                 <button 
-                  onClick={() => setIsDownloadModalOpen(true)}
+                  onClick={() => {
+                    if (!isAuthenticated && onRequireLogin) onRequireLogin();
+                    else setIsDownloadModalOpen(true);
+                  }}
                   className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-lg text-xs font-semibold backdrop-blur-md transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" /> Download
@@ -130,8 +141,10 @@ export default function AiCodeResult({ onHistoryClick }: AiCodeResultProps) {
                     <span key={i} className="leading-6">{i + 1}</span>
                   ))}
                 </div>
-                {/* Code Body */}
-                <div className="pl-4 text-[#cdd6f4] whitespace-pre min-w-max leading-6">
+                <div 
+                  className={`pl-4 text-[#cdd6f4] whitespace-pre min-w-max leading-6 ${!isAuthenticated ? 'select-none' : ''}`}
+                  onContextMenu={(e) => { if (!isAuthenticated) e.preventDefault(); }}
+                >
                   {htmlCode}
                 </div>
               </div>

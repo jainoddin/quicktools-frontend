@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Search, Grid, List, Filter, Trash2, Star, 
   FileText, Mail, MessageSquare, Tag, Eye, Copy, Download, MoreVertical,
-  ChevronLeft, ChevronRight, Clock, Sparkles
+  ChevronLeft, ChevronRight, Clock, Sparkles, File, X
 } from 'lucide-react';
 
 interface HistoryItem {
@@ -93,8 +93,104 @@ const mockHistory: HistoryItem[] = [
   }
 ];
 
-export default function AiWriterHistory({ onBack }: { onBack: () => void }) {
+export default function AiWriterHistory({ 
+  history = [], 
+  onBack,
+  onToggleFavorite,
+  onDelete,
+  isAuthenticated = true,
+  onRequireLogin
+}: { 
+  history?: any[], 
+  onBack: () => void,
+  onToggleFavorite?: (id: string) => void,
+  onDelete?: (ids: string[]) => void,
+  isAuthenticated?: boolean,
+  onRequireLogin?: () => void
+}) {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterType, setFilterType] = useState('All');
+  const [itemToDownload, setItemToDownload] = useState<any>(null);
+  const [downloadFormat, setDownloadFormat] = useState('pdf');
+
+  const rawHistory = history.length > 0 ? history.map((item: any) => ({
+    id: item.id || item._id,
+    title: item.contentType || 'Generated Content',
+    preview: item.prompt || 'No preview available',
+    date: item.date || (item.createdAt ? new Date(item.createdAt).toLocaleDateString() : 'Just now'),
+    createdAt: item.createdAt || new Date().toISOString(),
+    category: item.contentType || 'Tool',
+    icon: <FileText className="w-6 h-6" />,
+    iconBg: 'bg-purple-100',
+    iconColor: 'text-[#6D5EF8]',
+    isStarred: item.isStarred || false,
+    words: 'Generated',
+    result: item.result
+  })) : [];
+
+  const now = new Date();
+  
+  const counts = {
+    all: rawHistory.length,
+    favorites: rawHistory.filter((i: any) => i.isStarred).length,
+    today: rawHistory.filter((i: any) => new Date(i.createdAt).toDateString() === now.toDateString()).length,
+    thisWeek: rawHistory.filter((i: any) => Math.ceil(Math.abs(now.getTime() - new Date(i.createdAt).getTime()) / (1000 * 60 * 60 * 24)) <= 7).length,
+    thisMonth: rawHistory.filter((i: any) => new Date(i.createdAt).getMonth() === now.getMonth() && new Date(i.createdAt).getFullYear() === now.getFullYear()).length,
+  };
+
+  let displayHistory = rawHistory;
+
+  if (searchQuery) {
+    displayHistory = displayHistory.filter((item: any) => 
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      item.preview.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }
+
+  if (filterType === 'Favorites') {
+    displayHistory = displayHistory.filter((item: any) => item.isStarred);
+  } else if (filterType === 'Today') {
+    displayHistory = displayHistory.filter((item: any) => new Date(item.createdAt).toDateString() === now.toDateString());
+  } else if (filterType === 'This Week') {
+    displayHistory = displayHistory.filter((item: any) => Math.ceil(Math.abs(now.getTime() - new Date(item.createdAt).getTime()) / (1000 * 60 * 60 * 24)) <= 7);
+  } else if (filterType === 'This Month') {
+    displayHistory = displayHistory.filter((item: any) => new Date(item.createdAt).getMonth() === now.getMonth() && new Date(item.createdAt).getFullYear() === now.getFullYear());
+  }
+
+  const handleCopy = (text: string) => {
+    if (!isAuthenticated && onRequireLogin) {
+      onRequireLogin();
+      return;
+    }
+    const textToCopy = (text && text !== 'Generated content successfully') ? text : 'No content available.';
+    navigator.clipboard.writeText(textToCopy);
+  };
+
+  const handleDownloadClick = (item: any) => {
+    if (!isAuthenticated && onRequireLogin) {
+      onRequireLogin();
+      return;
+    }
+    setItemToDownload(item);
+  };
+
+  const executeDownload = () => {
+    if (!itemToDownload) return;
+    const textToDownload = (itemToDownload.result && itemToDownload.result !== 'Generated content successfully') 
+      ? itemToDownload.result 
+      : (itemToDownload.preview || 'No content available.');
+    const blob = new Blob([textToDownload], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${itemToDownload.title || 'Generated_Content'}.${downloadFormat === 'txt' ? 'txt' : (downloadFormat === 'pdf' ? 'pdf' : 'docx')}`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    setItemToDownload(null);
+  };
 
   const toggleSelect = (id: string) => {
     const newSet = new Set(selectedIds);
@@ -128,17 +224,11 @@ export default function AiWriterHistory({ onBack }: { onBack: () => void }) {
             <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input 
               type="text" 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search your content..." 
               className="pl-9 pr-4 py-2 border border-[#E5E7EB] rounded-xl text-sm w-full md:w-64 focus:outline-none focus:border-[#6D5EF8] focus:ring-1 focus:ring-[#6D5EF8]"
             />
-          </div>
-          <div className="flex bg-gray-100 p-1 rounded-xl">
-            <button className="p-1.5 bg-white shadow-sm rounded-lg text-[#6D5EF8]">
-              <Grid className="w-4 h-4" />
-            </button>
-            <button className="p-1.5 text-gray-500 hover:text-gray-700 rounded-lg transition-colors">
-              <List className="w-4 h-4" />
-            </button>
           </div>
         </div>
       </div>
@@ -146,29 +236,34 @@ export default function AiWriterHistory({ onBack }: { onBack: () => void }) {
       {/* Filters Row */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div className="flex flex-wrap items-center gap-2">
-          <button className="px-5 py-2 bg-[#6D5EF8] text-white text-sm font-semibold rounded-full flex items-center gap-2 shadow-sm">
-            All <span className="text-xs">({mockHistory.length})</span>
+          <button onClick={() => setFilterType('All')} className={`px-5 py-2 text-sm font-semibold rounded-full flex items-center gap-2 shadow-sm transition-colors ${filterType === 'All' ? 'bg-[#6D5EF8] text-white' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+            All <span className="text-xs">({counts.all})</span>
           </button>
-          <button className="px-4 py-2 bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm">
-            Favorites <span className="text-xs text-gray-400">(6)</span>
+          <button onClick={() => setFilterType('Favorites')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'Favorites' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+            Favorites <span className={`text-xs ${filterType === 'Favorites' ? 'text-purple-200' : 'text-gray-400'}`}>({counts.favorites})</span>
           </button>
-          <button className="px-4 py-2 bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm">
-            Today <span className="text-xs text-gray-400">(5)</span>
+          <button onClick={() => setFilterType('Today')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'Today' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+            Today <span className={`text-xs ${filterType === 'Today' ? 'text-purple-200' : 'text-gray-400'}`}>({counts.today})</span>
           </button>
-          <button className="px-4 py-2 bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm">
-            This Week <span className="text-xs text-gray-400">(9)</span>
+          <button onClick={() => setFilterType('This Week')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'This Week' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+            This Week <span className={`text-xs ${filterType === 'This Week' ? 'text-purple-200' : 'text-gray-400'}`}>({counts.thisWeek})</span>
           </button>
-          <button className="px-4 py-2 bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm hidden md:flex">
-            This Month <span className="text-xs text-gray-400">(24)</span>
+          <button onClick={() => setFilterType('This Month')} className={`hidden md:flex px-4 py-2 text-sm font-semibold rounded-full items-center gap-2 transition-colors shadow-sm ${filterType === 'This Month' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+            This Month <span className={`text-xs ${filterType === 'This Month' ? 'text-purple-200' : 'text-gray-400'}`}>({counts.thisMonth})</span>
           </button>
         </div>
         
         <div className="flex items-center gap-3">
-          <button className="px-4 py-2 bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50 text-sm font-semibold rounded-xl flex items-center gap-2 transition-colors shadow-sm">
-            <Filter className="w-4 h-4" /> Filter
-          </button>
           {selectedIds.size > 0 && (
-            <button className="px-4 py-2 bg-red-50 border border-red-100 text-red-600 hover:bg-red-100 text-sm font-semibold rounded-xl flex items-center gap-2 transition-colors shadow-sm animate-in fade-in">
+            <button 
+              onClick={() => {
+                if (onDelete) {
+                  onDelete(Array.from(selectedIds));
+                  setSelectedIds(new Set());
+                }
+              }}
+              className="px-4 py-2 bg-red-50 border border-red-100 text-red-600 hover:bg-red-100 text-sm font-semibold rounded-xl flex items-center gap-2 transition-colors shadow-sm animate-in fade-in"
+            >
               <Trash2 className="w-4 h-4" /> Delete Selected
             </button>
           )}
@@ -177,7 +272,11 @@ export default function AiWriterHistory({ onBack }: { onBack: () => void }) {
 
       {/* List View */}
       <div className="flex flex-col gap-4 mb-8">
-        {mockHistory.slice(0, 4).map((item) => (
+        {displayHistory.length === 0 ? (
+          <div className="text-center py-12 text-gray-500 bg-white border border-dashed border-gray-200 rounded-2xl">
+            No history found. Generate some content to see it here!
+          </div>
+        ) : displayHistory.map((item) => (
           <div key={item.id} className={`bg-white border rounded-2xl p-5 transition-all flex items-center gap-4 ${selectedIds.has(item.id) ? 'border-[#6D5EF8] ring-1 ring-[#6D5EF8]' : 'border-[#E5E7EB] hover:border-gray-300'}`}>
             
             {/* Checkbox */}
@@ -194,12 +293,17 @@ export default function AiWriterHistory({ onBack }: { onBack: () => void }) {
             </div>
             
             {/* Main Content (Title & Preview) */}
-            <div className="flex-grow min-w-0 pr-4 border-r border-gray-100">
+            <div 
+              className={`flex-grow min-w-0 pr-4 border-r border-gray-100 ${!isAuthenticated ? 'select-none' : ''}`}
+              onContextMenu={(e) => { if (!isAuthenticated) e.preventDefault(); }}
+            >
               <div className="flex items-center gap-2 mb-1.5">
                 <h3 className="font-bold text-[#111827] text-base truncate">
                   {item.title}
                 </h3>
-                {item.isStarred && <Star className="w-4 h-4 fill-yellow-400 text-yellow-400 shrink-0" />}
+                <button onClick={(e) => { e.stopPropagation(); onToggleFavorite && onToggleFavorite(item.id); }} className="hover:scale-110 transition-transform">
+                  <Star className={`w-4 h-4 ${item.isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300 hover:text-yellow-400'}`} />
+                </button>
               </div>
               <p className="text-sm text-[#6B7280] line-clamp-2 leading-relaxed">
                 {item.preview}
@@ -224,55 +328,89 @@ export default function AiWriterHistory({ onBack }: { onBack: () => void }) {
             
             {/* Actions */}
             <div className="flex items-center gap-1.5 pl-2 shrink-0">
-              <button className="w-9 h-9 flex items-center justify-center text-gray-400 hover:text-[#111827] border border-gray-200 hover:bg-gray-50 rounded-full transition-colors">
-                <Eye className="w-4 h-4" />
-              </button>
-              <button className="w-9 h-9 flex items-center justify-center text-gray-400 hover:text-[#111827] border border-gray-200 hover:bg-gray-50 rounded-full transition-colors">
+              <button onClick={() => handleCopy(item.result)} className="w-9 h-9 flex items-center justify-center text-gray-400 hover:text-[#111827] border border-gray-200 hover:bg-gray-50 rounded-full transition-colors">
                 <Copy className="w-4 h-4" />
               </button>
-              <button className="w-9 h-9 flex items-center justify-center text-gray-400 hover:text-[#111827] border border-gray-200 hover:bg-gray-50 rounded-full transition-colors">
+              <button onClick={() => handleDownloadClick(item)} className="w-9 h-9 flex items-center justify-center text-gray-400 hover:text-[#111827] border border-gray-200 hover:bg-gray-50 rounded-full transition-colors">
                 <Download className="w-4 h-4" />
-              </button>
-              <button className="w-9 h-9 flex items-center justify-center text-gray-400 hover:text-[#111827] border border-gray-200 hover:bg-gray-50 rounded-full transition-colors ml-1">
-                <MoreVertical className="w-4 h-4" />
               </button>
             </div>
           </div>
         ))}
       </div>
-
-      {/* Pagination */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[#E5E7EB]">
-        <div className="text-sm text-[#6B7280]">
-          Showing 1 to 8 of 24 results
+      
+      {/* Download Modal */}
+      {itemToDownload && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-200">
+            <div className="flex items-center justify-between p-5 border-b border-gray-100">
+              <h3 className="font-bold text-lg text-gray-900">Download Document</h3>
+              <button onClick={() => setItemToDownload(null)} className="text-gray-400 hover:text-gray-600 transition-colors">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div className="p-5 space-y-4">
+              <div 
+                onClick={() => setDownloadFormat('pdf')}
+                className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${downloadFormat === 'pdf' ? 'border-[#6D5EF8] bg-purple-50/50' : 'border-gray-100 hover:border-gray-200'}`}
+              >
+                <div className="w-10 h-10 rounded-lg bg-red-100 text-red-500 flex items-center justify-center shrink-0">
+                  <File className="w-5 h-5" />
+                </div>
+                <div className="flex-grow">
+                  <h4 className="font-bold text-gray-900 text-sm">PDF Document</h4>
+                  <p className="text-xs text-gray-500">Best for sharing securely (.pdf)</p>
+                </div>
+                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${downloadFormat === 'pdf' ? 'border-[#6D5EF8] bg-[#6D5EF8]' : 'border-gray-300'}`}>
+                  {downloadFormat === 'pdf' && <div className="w-2 h-2 rounded-full bg-white" />}
+                </div>
+              </div>
+              
+              <div 
+                onClick={() => setDownloadFormat('docx')}
+                className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${downloadFormat === 'docx' ? 'border-[#6D5EF8] bg-purple-50/50' : 'border-gray-100 hover:border-gray-200'}`}
+              >
+                <div className="w-10 h-10 rounded-lg bg-blue-100 text-blue-500 flex items-center justify-center shrink-0">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <div className="flex-grow">
+                  <h4 className="font-bold text-gray-900 text-sm">Word Document</h4>
+                  <p className="text-xs text-gray-500">Best for further editing (.docx)</p>
+                </div>
+                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${downloadFormat === 'docx' ? 'border-[#6D5EF8] bg-[#6D5EF8]' : 'border-gray-300'}`}>
+                  {downloadFormat === 'docx' && <div className="w-2 h-2 rounded-full bg-white" />}
+                </div>
+              </div>
+              
+              <div 
+                onClick={() => setDownloadFormat('txt')}
+                className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${downloadFormat === 'txt' ? 'border-[#6D5EF8] bg-purple-50/50' : 'border-gray-100 hover:border-gray-200'}`}
+              >
+                <div className="w-10 h-10 rounded-lg bg-gray-100 text-gray-600 flex items-center justify-center shrink-0">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <div className="flex-grow">
+                  <h4 className="font-bold text-gray-900 text-sm">Text File</h4>
+                  <p className="text-xs text-gray-500">Plain text format (.txt)</p>
+                </div>
+                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${downloadFormat === 'txt' ? 'border-[#6D5EF8] bg-[#6D5EF8]' : 'border-gray-300'}`}>
+                  {downloadFormat === 'txt' && <div className="w-2 h-2 rounded-full bg-white" />}
+                </div>
+              </div>
+            </div>
+            
+            <div className="p-5 border-t border-gray-100 bg-gray-50">
+              <button 
+                onClick={executeDownload}
+                className="w-full py-3 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold rounded-xl transition-colors shadow-lg shadow-[#6D5EF8]/20"
+              >
+                Download File
+              </button>
+            </div>
+          </div>
         </div>
-        
-        <div className="flex items-center gap-1">
-          <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E5E7EB] text-gray-500 hover:bg-gray-50 transition-colors">
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-          <button className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#6D5EF8] text-white font-semibold transition-colors">
-            1
-          </button>
-          <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50 font-semibold transition-colors">
-            2
-          </button>
-          <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50 font-semibold transition-colors">
-            3
-          </button>
-          <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-[#E5E7EB] text-gray-500 hover:bg-gray-50 transition-colors">
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
-        
-        <div className="hidden sm:flex items-center gap-2">
-          <select className="bg-white border border-[#E5E7EB] text-sm text-[#4B5563] rounded-lg px-3 py-1.5 focus:outline-none">
-            <option>12 per page</option>
-            <option>24 per page</option>
-            <option>48 per page</option>
-          </select>
-        </div>
-      </div>
+      )}
 
     </div>
   );

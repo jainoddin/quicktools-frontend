@@ -294,6 +294,39 @@ export default function BackgroundRemoverClient() {
     }
   };
 
+  const handleToggleFavorite = async (id: string) => {
+    setRecentImages(prev => prev.map(item => item.id === id || item._id === id ? { ...item, isStarred: !item.isStarred } : item));
+    if (!isAuthenticated) {
+      const newHistory = recentImages.map(item => item.id === id || item._id === id ? { ...item, isStarred: !item.isStarred } : item);
+      localStorage.setItem('guestBgHistory', JSON.stringify(newHistory));
+    } else {
+      try {
+        await fetch(getEndpoint(`/api/user/usage/${id}/favorite`), { method: 'PATCH', credentials: 'include' });
+      } catch (err) {
+        console.error('Failed to toggle favorite', err);
+      }
+    }
+  };
+
+  const handleDeleteHistory = async (ids: string[]) => {
+    setRecentImages(prev => prev.filter(item => !ids.includes(item.id as string) && !ids.includes(item._id as string)));
+    if (!isAuthenticated) {
+      const newHistory = recentImages.filter(item => !ids.includes(item.id as string) && !ids.includes(item._id as string));
+      localStorage.setItem('guestBgHistory', JSON.stringify(newHistory));
+    } else {
+      try {
+        await fetch(getEndpoint('/api/user/usage'), {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ ids })
+        });
+      } catch (err) {
+        console.error('Failed to delete history', err);
+      }
+    }
+  };
+
   const handleCancel = () => {
     setIsProcessing(false);
     setProgress(0);
@@ -514,6 +547,8 @@ export default function BackgroundRemoverClient() {
           isAuthenticated={isAuthenticated}
           onRequireLogin={() => setShowLoginPopup(true)}
           recentImages={recentImages}
+          onToggleFavorite={handleToggleFavorite}
+          onDelete={handleDeleteHistory}
         />
       ) : (
         <main className="flex-grow flex flex-col min-w-0 space-y-6">

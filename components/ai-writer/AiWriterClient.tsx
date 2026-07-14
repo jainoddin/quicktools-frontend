@@ -4,16 +4,19 @@ import React, { useState, useEffect } from 'react';
 import { 
   Lightbulb, Clipboard, FileText, Smile, Globe, Sparkles, Info,
   ShoppingBag, MessageSquare, Mail, ChevronDown, Type,
-  PenTool, History, LayoutGrid, Loader2
+  PenTool, History, LayoutGrid, Loader2, Crown
 } from 'lucide-react';
 import AiWriterResult from './AiWriterResult';
 import AiWriterHistory from './AiWriterHistory';
 import AiWriterProgress from './AiWriterProgress';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginPopup from '@/components/auth/LoginPopup';
+import { getEndpoint } from '@/lib/api';
 
 export default function AiWriterClient() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
+  const isPro = ['pro', 'premium'].includes((user?.plan || '').toLowerCase());
+
   const [prompt, setPrompt] = useState('');
   const [contentType, setContentType] = useState('Blog Post');
   const [tone, setTone] = useState('Friendly');
@@ -26,64 +29,122 @@ export default function AiWriterClient() {
   const [progress, setProgress] = useState(0);
 
   const [generatedText, setGeneratedText] = useState('');
+  const [writerHistory, setWriterHistory] = useState<any[]>([]);
   
   const [freeGenCount, setFreeGenCount] = useState(0);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
+  const [showPremiumPopup, setShowPremiumPopup] = useState(false);
 
+  // Load history from backend (authenticated) or localStorage (guest)
   useEffect(() => {
     if (!isAuthenticated) {
       const count = parseInt(localStorage.getItem('freeWriterCount') || '0', 10);
       setFreeGenCount(count);
+
+      const saved = localStorage.getItem('guestWriterHistory');
+      if (saved) {
+        try { setWriterHistory(JSON.parse(saved)); } catch {}
+      }
+    } else {
+      fetch(getEndpoint('/api/user/usage'), {
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success && data.data?.history) {
+            const writerItems = data.data.history
+              .filter((item: any) => item.toolSlug === '/tools/ai-writer')
+              .map((item: any) => ({
+                id: item._id || Date.now() + Math.random(),
+                prompt: item.prompt,
+                contentType: item.contentType || 'Blog Post',
+                date: new Date(item.createdAt).toLocaleDateString(),
+                createdAt: item.createdAt,
+              }));
+            setWriterHistory(writerItems);
+          }
+        })
+        .catch(console.error);
     }
   }, [isAuthenticated]);
 
   const handleGenerate = async () => {
-    if (!isAuthenticated && freeGenCount >= 2) {
+    if (!prompt.trim()) return;
+
+    // Auth check — guests get 1 free generation
+    if (!isAuthenticated && freeGenCount >= 1) {
       setShowLoginPopup(true);
       return;
     }
 
-    if (!prompt.trim()) return;
-    
+    // Credit check for logged-in free users
+    const creditsNeeded = 2;
+    if (isAuthenticated && !isPro && ((user as any)?.credits || 0) < creditsNeeded) {
+      setShowPremiumPopup(true);
+      return;
+    }
+
     setIsProcessing(true);
     setHasResult(false);
     setProgress(0);
     setGeneratedText('');
     
-    // Simulate progress bar while waiting for backend
     const interval = setInterval(() => {
       setProgress((prev) => Math.min(90, prev + Math.floor(Math.random() * 10) + 5));
     }, 500);
 
     try {
-      // Import getEndpoint dynamically or assume it's imported at the top. Let's just use the full URL via process.env fallback or we can import it.
-      // Wait, let's use the absolute path fallback for safety if getEndpoint is not imported.
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://quicktools-backend-wlm5.onrender.com';
-      
-      const res = await fetch(`${apiUrl}/api/tools/generate-text`, {
+      const res = await fetch(getEndpoint('/api/tools/generate-text'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          prompt,
-          contentType,
-          tone,
-          language,
-          creativity
-        }),
+        credentials: 'include',
+        body: JSON.stringify({ prompt, contentType, tone, language, creativity }),
       });
 
       const data = await res.json();
-      
       clearInterval(interval);
       setProgress(100);
-      
+
+      if (res.status === 401) {
+        setShowLoginPopup(true);
+        setIsProcessing(false);
+        return;
+      }
+
       if (data.success) {
         setGeneratedText(data.data);
         setHasResult(true);
+
+        // Save guest usage to localStorage
         if (!isAuthenticated) {
           const newCount = freeGenCount + 1;
           setFreeGenCount(newCount);
           localStorage.setItem('freeWriterCount', newCount.toString());
+
+          // Save to guest history
+          const historyItem = {
+            id: Date.now(),
+            prompt: prompt.substring(0, 80),
+            contentType,
+            date: new Date().toLocaleDateString(),
+            createdAt: new Date().toISOString(),
+            result: data.data,
+          };
+          const prevHistory = writerHistory;
+          const newHistory = [historyItem, ...prevHistory].slice(0, 20);
+          setWriterHistory(newHistory);
+          localStorage.setItem('guestWriterHistory', JSON.stringify(newHistory));
+        } else {
+          // Refresh history from backend
+          setWriterHistory(prev => [{
+            id: Date.now(),
+            prompt: prompt.substring(0, 80),
+            contentType,
+            date: new Date().toLocaleDateString(),
+            createdAt: new Date().toISOString(),
+            result: data.data,
+          }, ...prev].slice(0, 50));
         }
       } else {
         alert('Generation failed: ' + data.message);
@@ -102,13 +163,68 @@ export default function AiWriterClient() {
     setProgress(0);
   };
 
+  const handleToggleFavorite = async (id: string) => {
+    setWriterHistory(prev => prev.map(item => item.id === id || item._id === id ? { ...item, isStarred: !item.isStarred } : item));
+    
+    if (!isAuthenticated) {
+      const newHistory = writerHistory.map(item => item.id === id || item._id === id ? { ...item, isStarred: !item.isStarred } : item);
+      localStorage.setItem('guestWriterHistory', JSON.stringify(newHistory));
+    } else {
+      try {
+        await fetch(getEndpoint(`/api/user/usage/${id}/favorite`), { method: 'PATCH' });
+      } catch (err) {
+        console.error('Failed to toggle favorite', err);
+      }
+    }
+  };
+
+  const handleDeleteHistory = async (ids: string[]) => {
+    setWriterHistory(prev => prev.filter(item => !ids.includes(item.id as string) && !ids.includes(item._id as string)));
+    
+    if (!isAuthenticated) {
+      const newHistory = writerHistory.filter(item => !ids.includes(item.id as string) && !ids.includes(item._id as string));
+      localStorage.setItem('guestWriterHistory', JSON.stringify(newHistory));
+    } else {
+      try {
+        await fetch(getEndpoint('/api/user/usage'), {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ids })
+        });
+      } catch (err) {
+        console.error('Failed to delete history', err);
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col lg:flex-row gap-8 h-full">
       <LoginPopup isOpen={showLoginPopup} onClose={() => setShowLoginPopup(false)} />
-      
+
+      {/* Premium Popup */}
+      {showPremiumPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in p-4">
+          <div className="bg-white rounded-3xl p-8 max-w-md w-full border border-gray-100 shadow-2xl relative">
+            <button onClick={() => setShowPremiumPopup(false)} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold">✕</button>
+            <div className="w-16 h-16 bg-[#F5F3FF] rounded-2xl flex items-center justify-center mb-6">
+              <Crown className="w-8 h-8 text-[#6D5EF8]" />
+            </div>
+            <h3 className="text-2xl font-bold text-[#111827] mb-2">Out of Credits</h3>
+            <p className="text-[#6B7280] mb-6">You need <strong>2 credits</strong> to generate content. Upgrade to Premium for unlimited generations!</p>
+            <div className="bg-[#F5F3FF] rounded-2xl p-4 mb-6 text-sm text-[#6D5EF8] font-semibold">
+              💡 Current credits: <span className="text-[#111827]">{(user as any)?.credits || 0}</span>
+            </div>
+            <a href="/pricing" className="w-full flex items-center justify-center gap-2 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-3 rounded-xl transition-all shadow-lg">
+              <Crown className="w-4 h-4" /> Upgrade to Premium
+            </a>
+          </div>
+        </div>
+      )}
+
       {/* Left Sidebar Controls */}
-      <aside className="w-full lg:w-[340px] shrink-0 space-y-6">
+      <aside className="w-full lg:w-[340px] shrink-0 flex flex-col">
         
+        <div className={`space-y-6 transition-opacity ${hasResult || isProcessing ? 'opacity-50 pointer-events-none select-none' : ''}`}>
         {/* 1. Prompt */}
         <div>
           <label className="block text-sm font-bold text-[#111827] mb-2">1. What do you want to write?</label>
@@ -235,8 +351,10 @@ export default function AiWriterClient() {
           </div>
         </div>
 
+        </div>
+
         {/* Generate Button */}
-        <div className="pt-2">
+        <div className="pt-6 mt-auto">
           <button 
             disabled={isProcessing}
             onClick={hasResult ? () => setHasResult(false) : handleGenerate}
@@ -249,7 +367,7 @@ export default function AiWriterClient() {
             )}
           </button>
           <div className="flex items-center justify-center mt-3 text-xs text-[#9CA3AF]">
-            This will cost 1 credit <Info className="w-3.5 h-3.5 ml-1 cursor-pointer hover:text-[#6B7280]" />
+            This will cost 2 credits <Info className="w-3.5 h-3.5 ml-1 cursor-pointer hover:text-[#6B7280]" />
           </div>
         </div>
       </aside>
@@ -258,7 +376,12 @@ export default function AiWriterClient() {
       <main className="flex-grow flex flex-col min-w-0">
         
         {showHistory ? (
-          <AiWriterHistory onBack={() => setShowHistory(false)} />
+          <AiWriterHistory 
+            history={writerHistory} 
+            onBack={() => setShowHistory(false)} 
+            onToggleFavorite={handleToggleFavorite}
+            onDelete={handleDeleteHistory}
+          />
         ) : (
           <>
             {/* Right Header (Icon, Title, Actions) */}
@@ -292,7 +415,9 @@ export default function AiWriterClient() {
               <AiWriterResult 
                 content={generatedText}
                 isAuthenticated={isAuthenticated}
+                isPro={isPro}
                 onRequireLogin={() => setShowLoginPopup(true)} 
+                onReset={() => setHasResult(false)}
               />
             ) : (
           <div className="bg-white rounded-3xl border border-[#E5E7EB] p-8 lg:p-12 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden h-full min-h-[600px]">
