@@ -75,10 +75,6 @@ export default function BackgroundRemovalProgress({ progress, onCancel }: Backgr
         </div>
       </div>
 
-      <button onClick={onCancel} className="mt-auto px-6 py-2.5 border-2 border-[#E5E7EB] text-[#6D5EF8] font-semibold rounded-xl hover:bg-[#EEF2FF] hover:border-[#6D5EF8] transition-all text-sm">
-        Cancel Processing
-      </button>
-
     </div>
   );
 }

@@ -40,7 +40,11 @@ export default function BillingOverviewPage() {
   }, []);
 
   const isPro = usage.plan === 'pro' || usage.plan === 'premium' || usage.plan === 'business';
-  const percentage = usage.maxCredits > 0 ? Math.round((usage.creditsUsedThisPeriod / usage.maxCredits) * 100) : 0;
+  
+  const used = usage.creditsUsedThisPeriod;
+  const remaining = Math.max(0, usage.maxCredits - used);
+  const percentage = usage.maxCredits > 0 ? Math.min(100, Math.round((used / usage.maxCredits) * 100)) : 0;
+  
   const dashArray = `${percentage}, 100`;
 
   const handleCancelPlan = async () => {
@@ -176,11 +180,11 @@ export default function BillingOverviewPage() {
               <div className="flex-1 w-full space-y-4">
                 <div className="flex items-center justify-between border-b border-[#F3F4F6] pb-3">
                   <span className="text-sm font-medium text-[#6B7280]">Used</span>
-                  <span className="text-sm font-bold text-[#111827]">{usage.creditsUsedThisPeriod.toLocaleString()}</span>
+                  <span className="text-sm font-bold text-[#111827]">{used.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between border-b border-[#F3F4F6] pb-3">
                   <span className="text-sm font-medium text-[#6B7280]">Remaining</span>
-                  <span className="text-sm font-bold text-[#111827]">{(usage.maxCredits - usage.creditsUsedThisPeriod).toLocaleString()}</span>
+                  <span className="text-sm font-bold text-[#111827]">{remaining.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between pt-1">
                   <span className="text-sm font-bold text-[#111827]">Total Credits</span>

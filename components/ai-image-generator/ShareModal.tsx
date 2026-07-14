@@ -45,6 +45,7 @@ export default function ShareModal({
     }
   };
 
+  const isLocalImage = imageUrl.startsWith('blob:') || imageUrl.startsWith('data:');
   const displayUrl = isAuthenticated ? imageUrl : "https://quicktools.ai/image/xxxxxx";
 
   return (
@@ -62,77 +63,100 @@ export default function ShareModal({
         </div>
         <p className="text-sm text-[#6B7280] mb-4 sm:mb-6 shrink-0">Share this image with others</p>
         
-        {/* Scrollable Content */}
+          {/* Scrollable Content */}
         <div className="overflow-y-auto flex-grow pr-1 relative">
           
-          {/* Unauthenticated Overlay */}
-          {!isAuthenticated && (
-            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white/60 backdrop-blur-[2px] rounded-xl">
-              <div className="bg-white border border-[#E5E7EB] p-4 rounded-2xl shadow-xl text-center max-w-[80%]">
-                <Lock className="w-6 h-6 text-[#6D5EF8] mx-auto mb-2" />
-                <h4 className="text-sm font-bold text-[#111827] mb-1">Login Required</h4>
-                <p className="text-xs text-[#6B7280] mb-3">Please log in to share your generated images.</p>
-                <button onClick={onRequireLogin} className="w-full bg-[#6D5EF8] text-white text-xs font-bold py-2 rounded-lg">
-                  Login Now
-                </button>
+          {isLocalImage ? (
+            <div className="flex flex-col items-center justify-center p-6 text-center bg-gray-50 rounded-2xl border border-gray-100">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-4">
+                 <Lock className="w-8 h-8 text-[#6D5EF8]" />
               </div>
-            </div>
-          )}
-
-          <div className={`grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-3 mb-6 ${!isAuthenticated ? 'opacity-30 pointer-events-none' : ''}`}>
-            {socialLinks.map((social) => (
-              <div 
-                key={social.id}
-                onClick={() => handleAction(() => {
-                  const url = encodeURIComponent(imageUrl);
-                  const text = encodeURIComponent('Check out this AI Generated Image!');
-                  if (social.id === 'copy') {
-                    navigator.clipboard.writeText(imageUrl);
-                    alert("Link copied to clipboard!");
-                  } else if (social.id === 'facebook') {
-                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
-                  } else if (social.id === 'twitter') {
-                    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
-                  } else if (social.id === 'linkedin') {
-                    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
-                  } else if (social.id === 'whatsapp') {
-                    window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, '_blank');
-                  }
-                })}
-                className={`flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-2xl border-2 cursor-pointer transition-all ${social.active ? 'border-[#6D5EF8] bg-[#EEF2FF]' : 'border-[#E5E7EB] hover:border-gray-300 hover:bg-gray-50'}`}
-              >
-                <div className={`w-10 h-10 ${social.bg} rounded-full flex items-center justify-center ${social.color} mb-2 shadow-sm shrink-0`}>
-                  {social.icon}
-                </div>
-                <span className="text-[10px] sm:text-xs font-semibold text-[#4B5563] text-center line-clamp-1">{social.label}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Embed Code */}
-          <div className={`mb-6 ${!isAuthenticated ? 'opacity-30 pointer-events-none' : ''}`}>
-            <h3 className="text-sm font-bold text-[#111827] mb-2">Embed Code</h3>
-            <div className="flex bg-white rounded-xl border border-[#E5E7EB] p-1.5 focus-within:ring-2 focus-within:ring-[#6D5EF8] transition-all">
-              <input 
-                type="text" 
-                readOnly 
-                value={`<img src="${displayUrl}" alt="AI Image" />`}
-                className="flex-grow bg-transparent text-sm text-[#6B7280] px-3 outline-none min-w-0"
-              />
+              <h3 className="text-lg font-bold text-[#111827] mb-2">Locally Processed Image</h3>
+              <p className="text-sm text-[#6B7280] mb-4">
+                This image was processed securely on your device. We don't upload it to any servers, so there is no public link to share.
+              </p>
               <button 
-                onClick={() => handleAction(() => {})}
-                className="bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors shadow-sm shrink-0"
+                onClick={onClose}
+                className="bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-sm transition-colors"
               >
-                Copy
+                Download to Share
               </button>
             </div>
-          </div>
+          ) : (
+            <>
+              {/* Unauthenticated Overlay */}
+              {!isAuthenticated && (
+                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white/60 backdrop-blur-[2px] rounded-xl">
+                  <div className="bg-white border border-[#E5E7EB] p-4 rounded-2xl shadow-xl text-center max-w-[80%]">
+                    <Lock className="w-6 h-6 text-[#6D5EF8] mx-auto mb-2" />
+                    <h4 className="text-sm font-bold text-[#111827] mb-1">Login Required</h4>
+                    <p className="text-xs text-[#6B7280] mb-3">Please log in to share your generated images.</p>
+                    <button onClick={onRequireLogin} className="w-full bg-[#6D5EF8] text-white text-xs font-bold py-2 rounded-lg">
+                      Login Now
+                    </button>
+                  </div>
+                </div>
+              )}
 
-          {/* Access Banner */}
-          <div className="bg-[#F5F3FF] border border-[#EDE9FE] rounded-xl p-3 flex items-center gap-3">
-            <Lock className="w-4 h-4 text-[#6D5EF8] shrink-0" />
-            <p className="text-xs sm:text-sm text-[#6D5EF8] font-medium">Anyone with the link can view this image.</p>
-          </div>
+              <div className={`grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-3 mb-6 ${!isAuthenticated ? 'opacity-30 pointer-events-none' : ''}`}>
+                {socialLinks.map((social) => (
+                  <div 
+                    key={social.id}
+                    onClick={() => handleAction(() => {
+                      const url = encodeURIComponent(imageUrl);
+                      const text = encodeURIComponent('Check out this AI Generated Image!');
+                      if (social.id === 'copy') {
+                        navigator.clipboard.writeText(imageUrl);
+                        alert("Link copied to clipboard!");
+                      } else if (social.id === 'facebook') {
+                        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+                      } else if (social.id === 'twitter') {
+                        window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+                      } else if (social.id === 'linkedin') {
+                        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+                      } else if (social.id === 'whatsapp') {
+                        window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, '_blank');
+                      }
+                    })}
+                    className={`flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-2xl border-2 cursor-pointer transition-all ${social.active ? 'border-[#6D5EF8] bg-[#EEF2FF]' : 'border-[#E5E7EB] hover:border-gray-300 hover:bg-gray-50'}`}
+                  >
+                    <div className={`w-10 h-10 ${social.bg} rounded-full flex items-center justify-center ${social.color} mb-2 shadow-sm shrink-0`}>
+                      {social.icon}
+                    </div>
+                    <span className="text-[10px] sm:text-xs font-semibold text-[#4B5563] text-center line-clamp-1">{social.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Embed Code */}
+              <div className={`mb-6 ${!isAuthenticated ? 'opacity-30 pointer-events-none' : ''}`}>
+                <h3 className="text-sm font-bold text-[#111827] mb-2">Embed Code</h3>
+                <div className="flex bg-white rounded-xl border border-[#E5E7EB] p-1.5 focus-within:ring-2 focus-within:ring-[#6D5EF8] transition-all">
+                  <input 
+                    type="text" 
+                    readOnly 
+                    value={`<img src="${displayUrl}" alt="AI Image" />`}
+                    className="flex-grow bg-transparent text-sm text-[#6B7280] px-3 outline-none min-w-0"
+                  />
+                  <button 
+                    onClick={() => handleAction(() => {
+                      navigator.clipboard.writeText(`<img src="${displayUrl}" alt="AI Image" />`);
+                      alert("Embed code copied to clipboard!");
+                    })}
+                    className="bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors shadow-sm shrink-0"
+                  >
+                    Copy
+                  </button>
+                </div>
+              </div>
+
+              {/* Access Banner */}
+              <div className="bg-[#F5F3FF] border border-[#EDE9FE] rounded-xl p-3 flex items-center gap-3">
+                <Lock className="w-4 h-4 text-[#6D5EF8] shrink-0" />
+                <p className="text-xs sm:text-sm text-[#6D5EF8] font-medium">Anyone with the link can view this image.</p>
+              </div>
+            </>
+          )}
 
         </div>
       </div>
