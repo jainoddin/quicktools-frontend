@@ -201,7 +201,13 @@ export default function ArticlesClient({ initialArticles = [] }: { initialArticl
                   </div>
                 </Link>
               ))}
-              <button className="w-full mt-2 text-[#4F46E5] font-semibold text-sm py-2.5 rounded-full border border-[#E5E7EB] hover:border-[#4F46E5] hover:bg-indigo-50 transition-colors flex items-center justify-center gap-2">
+              <button 
+                onClick={() => {
+                  setActiveTab('Trending');
+                  document.getElementById('articles-grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className="w-full mt-2 text-[#4F46E5] font-semibold text-sm py-2.5 rounded-full border border-[#E5E7EB] hover:border-[#4F46E5] hover:bg-indigo-50 transition-colors flex items-center justify-center gap-2"
+              >
                 View all trending <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -210,7 +216,7 @@ export default function ArticlesClient({ initialArticles = [] }: { initialArticl
       </section>
 
       {/* 4. Tabs + Sort */}
-      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+      <section id="articles-grid" className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#E5E7EB] gap-4 mb-6">
           <div className="flex items-center gap-6 overflow-x-auto w-full pt-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {TABS.map((tab) => (
