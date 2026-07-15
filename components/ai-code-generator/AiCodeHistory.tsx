@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Search, Star, Trash2, Download, Copy, Code2, 
-  Sparkles, File, FileCode2, X
+  Sparkles, File, FileCode2, X, Crown
 } from 'lucide-react';
 
 interface AiCodeHistoryProps {
@@ -11,15 +11,24 @@ interface AiCodeHistoryProps {
   onDelete?: (ids: string[]) => void;
   isAuthenticated?: boolean;
   onRequireLogin?: () => void;
+  onRequirePremium?: () => void;
+  isPro?: boolean;
 }
 
-export default function AiCodeHistory({ history = [], onClose, onToggleFavorite, onDelete, isAuthenticated = true, onRequireLogin }: AiCodeHistoryProps) {
+export default function AiCodeHistory({ history = [], onClose, onToggleFavorite, onDelete, isAuthenticated = true, onRequireLogin, onRequirePremium, isPro = false }: AiCodeHistoryProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState('All');
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   
   const [itemToDownload, setItemToDownload] = useState<any>(null);
-  const [downloadFormat, setDownloadFormat] = useState<'txt' | 'json' | 'js'>('js');
+  const [downloadFormat, setDownloadFormat] = useState<'zip' | 'txt' | 'js'>(isPro ? 'zip' : 'txt');
+  const [showPremiumPopup, setShowPremiumPopup] = useState(false);
+
+  useEffect(() => {
+    if (!isPro && downloadFormat === 'zip') {
+      setDownloadFormat('txt');
+    }
+  }, [isPro, downloadFormat]);
 
   const now = new Date();
   const counts = {
@@ -64,21 +73,59 @@ export default function AiCodeHistory({ history = [], onClose, onToggleFavorite,
       onRequireLogin();
       return;
     }
+    if (!isPro && onRequirePremium) {
+      onRequirePremium();
+      return;
+    }
     setItemToDownload(item);
   };
 
-  const executeDownload = () => {
+  const executeDownload = async () => {
     if (!itemToDownload) return;
-    const textToDownload = itemToDownload.result || itemToDownload.preview || 'No code available.';
-    const blob = new Blob([textToDownload], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `Generated_Code.${downloadFormat}`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    
+    let parsedResult: any = {};
+    try {
+      parsedResult = JSON.parse(itemToDownload.result);
+    } catch(e) {
+      parsedResult = { html: itemToDownload.result || itemToDownload.preview || 'No code available.' };
+    }
+    
+    if (downloadFormat === 'zip') {
+      try {
+        const JSZip = (await import('jszip')).default;
+        const zip = new JSZip();
+        
+        if (parsedResult.html) zip.file("index.html", parsedResult.html);
+        if (parsedResult.css) zip.file("style.css", parsedResult.css);
+        if (parsedResult.js) zip.file("script.js", parsedResult.js);
+        
+        const blob = await zip.generateAsync({ type: "blob" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Generated_Code.zip`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch (e) {
+        console.error("ZIP generation failed in history", e);
+      }
+    } else {
+      let textToDownload = parsedResult.html || JSON.stringify(parsedResult);
+      if (downloadFormat === 'js') textToDownload = parsedResult.js || parsedResult.html;
+      
+      const blob = new Blob([textToDownload], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Generated_Code.${downloadFormat}`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+    
     setItemToDownload(null);
   };
 
@@ -92,6 +139,42 @@ export default function AiCodeHistory({ history = [], onClose, onToggleFavorite,
   return (
     <div className="flex flex-col w-full h-full animate-in fade-in duration-300">
       
+      {showPremiumPopup && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in p-4">
+          <div className="bg-white rounded-2xl w-full max-w-md p-6 sm:p-8 text-center shadow-2xl relative">
+            <button 
+              onClick={() => setShowPremiumPopup(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <div className="w-16 h-16 bg-[#F5F3FF] rounded-full flex items-center justify-center mx-auto mb-4">
+              <Crown className="w-8 h-8 text-[#F59E0B] fill-[#F59E0B]" />
+            </div>
+            <h3 className="text-2xl font-bold text-[#111827] mb-2">
+              Pro Feature
+            </h3>
+            <p className="text-[#6B7280] mb-6">
+              ZIP downloads are exclusively available to Pro users. Upgrade your plan to unlock this feature!
+            </p>
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => window.location.href = '/pricing'}
+                className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-3 rounded-xl transition-all shadow-md shadow-[#6D5EF8]/20"
+              >
+                Upgrade to Pro
+              </button>
+              <button
+                onClick={() => setShowPremiumPopup(false)}
+                className="w-full bg-white hover:bg-gray-50 text-gray-700 font-semibold py-3 rounded-xl transition-all border border-gray-200"
+              >
+                Maybe Later
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
         <div>
@@ -207,9 +290,6 @@ export default function AiCodeHistory({ history = [], onClose, onToggleFavorite,
               
               {/* Actions */}
               <div className="flex items-center gap-1.5 pl-2 shrink-0">
-                <button onClick={() => handleCopy(item.result)} className="w-9 h-9 flex items-center justify-center text-gray-400 hover:text-[#111827] border border-gray-200 hover:bg-gray-50 rounded-full transition-colors">
-                  <Copy className="w-4 h-4" />
-                </button>
                 <button onClick={() => handleDownloadClick(item)} className="w-9 h-9 flex items-center justify-center text-gray-400 hover:text-[#111827] border border-gray-200 hover:bg-gray-50 rounded-full transition-colors">
                   <Download className="w-4 h-4" />
                 </button>
@@ -231,6 +311,32 @@ export default function AiCodeHistory({ history = [], onClose, onToggleFavorite,
             </div>
             
             <div className="p-5 space-y-4">
+              <div 
+                onClick={() => {
+                  if (isPro) setDownloadFormat('zip');
+                  else setShowPremiumPopup(true);
+                }}
+                className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${downloadFormat === 'zip' ? 'border-[#6D5EF8] bg-purple-50/50' : 'border-gray-100 hover:border-gray-200'}`}
+              >
+                <div className="w-10 h-10 rounded-lg bg-indigo-100 text-[#6D5EF8] flex items-center justify-center shrink-0">
+                  <FileCode2 className="w-5 h-5" />
+                </div>
+                <div className="flex-grow">
+                  <div className="flex items-center gap-2">
+                    <h4 className="font-bold text-gray-900 text-sm">ZIP File (Full Project)</h4>
+                    {!isPro && (
+                      <span className="bg-gradient-to-r from-[#F59E0B] to-[#D97706] text-white text-[9px] font-bold px-1.5 py-0.5 rounded-sm flex items-center gap-0.5 shadow-sm uppercase tracking-wider">
+                        <Crown className="w-2.5 h-2.5" /> PRO
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-gray-500">Includes HTML, CSS, JS files</p>
+                </div>
+                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${downloadFormat === 'zip' ? 'border-[#6D5EF8] bg-[#6D5EF8]' : 'border-gray-300'}`}>
+                  {downloadFormat === 'zip' && <div className="w-2 h-2 rounded-full bg-white" />}
+                </div>
+              </div>
+
               <div 
                 onClick={() => setDownloadFormat('js')}
                 className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${downloadFormat === 'js' ? 'border-[#6D5EF8] bg-purple-50/50' : 'border-gray-100 hover:border-gray-200'}`}

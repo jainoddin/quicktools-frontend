@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Lightbulb, Clipboard, Sparkles, Info, History, LayoutGrid,
   Code2, Trash2, Edit2, Play, ChevronRight, CheckCircle2,
-  Terminal, FileCode2, Database, Layout, Smartphone, Cloud
+  Terminal, FileCode2, Database, Layout, Smartphone, Cloud, Crown
 } from 'lucide-react';
 import AiCodeResult from './AiCodeResult';
 import AiCodeEmpty from './AiCodeEmpty';
@@ -28,7 +28,12 @@ export default function AiCodeClient() {
   const { isAuthenticated, user } = useAuth();
   const [codeHistory, setCodeHistory] = useState<any[]>([]);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
+  const [showPremiumPopup, setShowPremiumPopup] = useState(false);
+  const [premiumReason, setPremiumReason] = useState<'credits' | 'download' | 'history'>('credits');
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [freeGenCount, setFreeGenCount] = useState(0);
+  const [generatedResult, setGeneratedResult] = useState<any>(null);
+  const isPro = user?.plan === 'pro' || user?.plan === 'premium' || user?.plan === 'business';
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -95,8 +100,25 @@ export default function AiCodeClient() {
     }
   };
 
-  const handleGenerate = () => {
-    if (!isAuthenticated && freeGenCount >= 1) {
+  const triggerErrorReport = async (errorDetails: any) => {
+    try {
+      await fetch(getEndpoint('/api/tools/report-error'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          toolName: 'AI Code Generator',
+          errorDetails: errorDetails,
+          userEmail: user?.email || 'Guest',
+          prompt: prompt
+        }),
+      });
+    } catch (e) {
+      console.error('Failed to send error report', e);
+    }
+  };
+
+  const handleGenerate = async () => {
+    if (!isAuthenticated) {
       setShowLoginPopup(true);
       return;
     }
@@ -105,28 +127,44 @@ export default function AiCodeClient() {
     setProgress(0);
     setHasResult(false);
 
-    // Simulate generation progress
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        return prev + Math.floor(Math.random() * 10) + 5;
+    try {
+      const fullPrompt = `${prompt} ${additionalReq ? '\\nAdditional Requirements: ' + additionalReq : ''}`;
+      const res = await fetch(getEndpoint('/api/tools/generate-code'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt: fullPrompt,
+          language,
+          framework,
+          codeType
+        }),
+        credentials: 'include'
       });
-    }, 400);
+      const data = await res.json();
+      
+      setProgress(100);
 
-    setTimeout(() => {
-      clearInterval(interval);
+      if (!data.success) {
+        if (data.errorType === 'INSUFFICIENT_CREDITS' || (data.message && data.message.includes('Not enough credits'))) {
+          setShowPremiumPopup(true);
+        } else {
+          await triggerErrorReport(data.message || 'Failed to generate code');
+          setShowErrorPopup(true);
+        }
+        setIsProcessing(false);
+        return;
+      }
+      
+      setGeneratedResult(data.data);
       setIsProcessing(false);
       setHasResult(true);
-
-      if (!isAuthenticated) {
-        const newCount = freeGenCount + 1;
-        setFreeGenCount(newCount);
-        localStorage.setItem('freeCodeCount', newCount.toString());
-      }
-    }, 4000);
+    } catch (error) {
+      console.error(error);
+      await triggerErrorReport(error instanceof Error ? error.message : 'Unknown error');
+      setShowErrorPopup(true);
+      setIsProcessing(false);
+      return;
+    }
   };
 
   const handleCancel = () => {
@@ -138,9 +176,66 @@ export default function AiCodeClient() {
     <div className="flex flex-col lg:flex-row gap-8 h-full">
       <LoginPopup isOpen={showLoginPopup} onClose={() => setShowLoginPopup(false)} />
 
-      {/* Left Sidebar (Hidden in History View) */}
-      {!showHistory && (
-        <aside className="w-full lg:w-[340px] shrink-0 space-y-6">
+      {showPremiumPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in p-4">
+          <div className="bg-white rounded-2xl w-full max-w-md p-6 sm:p-8 text-center shadow-2xl">
+            <div className="w-16 h-16 bg-[#F5F3FF] rounded-full flex items-center justify-center mx-auto mb-4">
+              <Crown className="w-8 h-8 text-[#F59E0B] fill-[#F59E0B]" />
+            </div>
+            <h3 className="text-2xl font-bold text-[#111827] mb-2">
+              {premiumReason === 'credits' ? 'Out of Credits' : premiumReason === 'download' ? 'Pro Feature' : 'Pro Feature'}
+            </h3>
+            <p className="text-[#6B7280] mb-6">
+              {premiumReason === 'credits'
+                ? <span>You need <strong>50 credits</strong> to generate code. Upgrade to Pro for unlimited generations!</span>
+                : premiumReason === 'download'
+                ? 'Downloading files is a Pro plan feature. Upgrade to Pro to download your generated code!'
+                : 'Code history is a Pro plan feature. Upgrade to Pro to access your previously generated code!'}
+            </p>
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => window.location.href = '/pricing'}
+                className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-3 rounded-xl transition-all shadow-md shadow-[#6D5EF8]/20"
+              >
+                View Plans
+              </button>
+              <button
+                onClick={() => setShowPremiumPopup(false)}
+                className="w-full bg-white hover:bg-gray-50 text-gray-700 font-semibold py-3 rounded-xl transition-all border border-gray-200"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showErrorPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in p-4">
+          <div className="bg-white rounded-2xl w-full max-w-md p-6 sm:p-8 text-center shadow-2xl">
+            <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-100">
+              <Info className="w-8 h-8 text-red-500" />
+            </div>
+            <h3 className="text-xl font-bold text-[#111827] mb-3">
+              Oops! Something went wrong
+            </h3>
+            <p className="text-[#6B7280] mb-6 text-sm leading-relaxed">
+              Our team has been automatically notified about this issue. We will respond and resolve it shortly. You will receive an email once it is resolved.
+            </p>
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => setShowErrorPopup(false)}
+                className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-3 rounded-xl transition-all shadow-md shadow-[#6D5EF8]/20"
+              >
+                Okay, I understand
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Left Sidebar */}
+      <aside className="w-full lg:w-[340px] shrink-0 space-y-6">
 
           {/* 1. Prompt */}
           <div>
@@ -160,11 +255,11 @@ export default function AiCodeClient() {
             <div className="bg-white rounded-2xl border border-[#E5E7EB] p-5 shadow-sm">
               {hasResult ? (
                 <div className="h-32 flex flex-col justify-between">
-                  <p className="text-sm text-[#4B5563] leading-relaxed">
+                  <p className="text-sm text-[#4B5563] leading-relaxed break-words overflow-y-auto pr-2">
                     {prompt}
                   </p>
                   <div className="text-[10px] text-gray-400 font-medium text-right mt-2">
-                    {prompt.length} / 2000
+                    {prompt.length} / 5000
                   </div>
                 </div>
               ) : (
@@ -174,6 +269,7 @@ export default function AiCodeClient() {
                     onChange={(e) => setPrompt(e.target.value)}
                     placeholder="Describe what you want to build..."
                     className="w-full h-32 p-3 bg-transparent resize-none text-sm text-[#4B5563] placeholder-gray-400 focus:outline-none"
+                    maxLength={5000}
                   />
                   <div className="flex items-center justify-between px-3 py-2 bg-white border-t border-[#E5E7EB]">
                     <div className="flex gap-2">
@@ -187,7 +283,7 @@ export default function AiCodeClient() {
                         <Trash2 className="w-3 h-3" /> Clear
                       </button>
                     </div>
-                    <span className="text-[10px] text-gray-400 font-medium">{prompt.length} / 2000</span>
+                    <span className="text-[10px] text-gray-400 font-medium">{prompt.length} / 5000</span>
                   </div>
                 </div>
               )}
@@ -195,7 +291,7 @@ export default function AiCodeClient() {
           </div>
 
           {/* 2. Language */}
-          <div>
+          <div className={hasResult || isProcessing ? "pointer-events-none opacity-50 transition-opacity" : "transition-opacity"}>
             <label className="flex items-center gap-2 text-sm font-bold text-[#111827] mb-3">
               2. Choose Language
             </label>
@@ -220,7 +316,7 @@ export default function AiCodeClient() {
           </div>
 
           {/* 3. Framework */}
-          <div>
+          <div className={hasResult || isProcessing ? "pointer-events-none opacity-50 transition-opacity" : "transition-opacity"}>
             <label className="flex items-center gap-2 text-sm font-bold text-[#111827] mb-3">
               3. Framework / Library (Optional)
             </label>
@@ -248,7 +344,7 @@ export default function AiCodeClient() {
           </div>
 
           {/* 4. Code Type */}
-          <div>
+          <div className={hasResult || isProcessing ? "pointer-events-none opacity-50 transition-opacity" : "transition-opacity"}>
             <label className="flex items-center gap-2 text-sm font-bold text-[#111827] mb-3">
               4. Code Type
             </label>
@@ -270,7 +366,7 @@ export default function AiCodeClient() {
           </div>
 
           {/* 5. Additional Requirements */}
-          <div>
+          <div className={hasResult || isProcessing ? "pointer-events-none opacity-50 transition-opacity" : "transition-opacity"}>
             <label className="flex items-center gap-2 text-sm font-bold text-[#111827] mb-3">
               5. Add Additional Requirements (Optional)
             </label>
@@ -296,11 +392,10 @@ export default function AiCodeClient() {
               <Sparkles className="w-5 h-5" /> {hasResult ? 'Regenerate Code' : 'Generate Code'}
             </button>
             <div className="flex items-center justify-center mt-3 text-xs text-[#9CA3AF]">
-              This will cost 2 credits <Info className="w-3.5 h-3.5 ml-1 cursor-pointer hover:text-[#6B7280]" />
+              This will cost 50 credits <Info className="w-3.5 h-3.5 ml-1 cursor-pointer hover:text-[#6B7280]" />
             </div>
           </div>
         </aside>
-      )}
 
       {/* Right Main Area */}
       <main className="flex-grow flex flex-col min-w-0">
@@ -327,7 +422,6 @@ export default function AiCodeClient() {
               >
                 <History className="w-4 h-4 text-[#6B7280]" /> History
               </button>
-
             </div>
           </div>
         )}
@@ -342,9 +436,15 @@ export default function AiCodeClient() {
           </div>
         ) : hasResult && !showHistory ? (
           <AiCodeResult
+            onBackClick={() => setHasResult(false)}
             onHistoryClick={() => setShowHistory(true)}
             isAuthenticated={isAuthenticated}
             onRequireLogin={() => setShowLoginPopup(true)}
+            onRequirePremium={() => { setPremiumReason('download'); setShowPremiumPopup(true); }}
+            isPro={isPro}
+            resultData={generatedResult}
+            language={language}
+            framework={framework}
           />
         ) : showHistory ? (
           <AiCodeHistory
@@ -354,6 +454,8 @@ export default function AiCodeClient() {
             onDelete={handleDeleteHistory}
             isAuthenticated={isAuthenticated}
             onRequireLogin={() => setShowLoginPopup(true)}
+            onRequirePremium={() => { setPremiumReason('download'); setShowPremiumPopup(true); setShowHistory(false); }}
+            isPro={isPro}
           />
         ) : (
           <AiCodeEmpty

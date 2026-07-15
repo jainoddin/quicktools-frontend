@@ -1,12 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { X, Code2, Crown, Download, ShieldCheck, Zap } from 'lucide-react';
+import { PDFDocument, rgb } from 'pdf-lib';
 
 interface AiCodeDownloadModalProps {
   isOpen: boolean;
   onClose: () => void;
+  htmlCode?: string;
+  cssCode?: string;
+  jsCode?: string;
+  htmlName?: string;
+  cssName?: string;
+  jsName?: string;
+  htmlExt?: string;
+  cssExt?: string;
+  jsExt?: string;
+  isPro?: boolean;
 }
 
-export default function AiCodeDownloadModal({ isOpen, onClose }: AiCodeDownloadModalProps) {
+export default function AiCodeDownloadModal({ 
+  isOpen, onClose, htmlCode, cssCode, jsCode, 
+  htmlName = 'index.html', cssName = 'style.css', jsName = 'script.js',
+  htmlExt = 'text/html', cssExt = 'text/css', jsExt = 'text/javascript',
+  isPro = false
+}: AiCodeDownloadModalProps) {
   const [isDownloading, setIsDownloading] = useState(false);
 
   // Prevent background scrolling when modal is open
@@ -23,12 +39,113 @@ export default function AiCodeDownloadModal({ isOpen, onClose }: AiCodeDownloadM
 
   if (!isOpen) return null;
 
-  const handleDownload = () => {
+  const triggerDownload = async (content: string, filename: string, type: string) => {
+    try {
+      const pdfDoc = await PDFDocument.create();
+      const page = pdfDoc.addPage([595, 842]);
+      
+      const lines = content.split('\n');
+      const fontSize = 10;
+      let y = 800;
+      
+      for (let i = 0; i < lines.length; i++) {
+        if (y < 40) {
+          pdfDoc.addPage([595, 842]);
+          y = 800;
+        }
+        try {
+          const lineText = lines[i].substring(0, 100); 
+          page.drawText(lineText, { x: 40, y: y, size: fontSize, color: rgb(0, 0, 0) });
+        } catch(err) {}
+        y -= 15;
+      }
+      
+      const pdfBytes = await pdfDoc.save();
+      const blob = new Blob([pdfBytes as any], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      const pdfFilename = filename.replace(/\.[^/.]+$/, "") + '.pdf';
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = pdfFilename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (e) {
+      console.error("PDF generation failed, falling back to direct download", e);
+      const blob = new Blob([content], { type });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  };
+
+  const handleDownload = async () => {
     setIsDownloading(true);
-    setTimeout(() => {
-      setIsDownloading(false);
-      onClose();
-    }, 2000);
+    try {
+      const { default: JSZip } = await import('jszip');
+      const zip = new JSZip();
+
+      const addPdfToZip = async (content: string, filename: string) => {
+        try {
+          const pdfDoc = await PDFDocument.create();
+          let page = pdfDoc.addPage([595, 842]);
+          const lines = content.split('\n');
+          const fontSize = 10;
+          let y = 800;
+          for (let i = 0; i < lines.length; i++) {
+            if (y < 40) {
+              page = pdfDoc.addPage([595, 842]);
+              y = 800;
+            }
+            try {
+              const lineText = lines[i].substring(0, 100); 
+              page.drawText(lineText, { x: 40, y: y, size: fontSize, color: rgb(0, 0, 0) });
+            } catch(err) {}
+            y -= 15;
+          }
+          const pdfBytes = await pdfDoc.save();
+          const pdfFilename = filename.replace(/\.[^/.]+$/, "") + '.pdf';
+          zip.file(pdfFilename, pdfBytes);
+        } catch (e) {
+          console.error("PDF generation for zip failed", e);
+          zip.file(filename, content);
+        }
+      };
+
+      if (htmlCode) {
+        if (isPro) await addPdfToZip(htmlCode, htmlName);
+        else zip.file(htmlName, htmlCode);
+      }
+      if (cssCode) {
+        if (isPro) await addPdfToZip(cssCode, cssName);
+        else zip.file(cssName, cssCode);
+      }
+      if (jsCode) {
+        if (isPro) await addPdfToZip(jsCode, jsName);
+        else zip.file(jsName, jsCode);
+      }
+
+      const zipBlob = await zip.generateAsync({ type: "blob" });
+      const url = URL.createObjectURL(zipBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'project_files.zip';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (e) {
+      console.error("Zip generation failed", e);
+    }
+    
+    setIsDownloading(false);
+    onClose();
   };
 
   return (
@@ -73,7 +190,7 @@ export default function AiCodeDownloadModal({ isOpen, onClose }: AiCodeDownloadM
                 
                 <ul className="space-y-2 mb-4">
                   <li className="flex items-center gap-2 text-sm text-[#786326]">
-                    <Code2 className="w-4 h-4 text-[#F59E0B]" /> All generated files (HTML, CSS, JS)
+                    <Code2 className="w-4 h-4 text-[#F59E0B]" /> All generated files ({[htmlCode && htmlName, cssCode && cssName, jsCode && jsName].filter(Boolean).join(', ')})
                   </li>
                   <li className="flex items-center gap-2 text-sm text-[#786326]">
                     <Zap className="w-4 h-4 text-[#F59E0B]" /> Un-minified & well-commented code

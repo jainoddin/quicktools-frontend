@@ -1,51 +1,155 @@
 "use client";
 
 import React, { useState } from 'react';
-import { 
-  Code2, History, LayoutGrid, Maximize, Copy, Download, Play, 
-  Box, ExternalLink, Lightbulb, Edit3, Headphones, Sparkles
+import {
+  Code2, History, LayoutGrid, Maximize, Copy, Download, Play,
+  Box, ExternalLink, Lightbulb, Edit3, Headphones, Sparkles, ArrowLeft, Crown
 } from 'lucide-react';
 import AiCodeDownloadModal from './AiCodeDownloadModal';
+import { PDFDocument, rgb } from 'pdf-lib';
 
 interface AiCodeResultProps {
   onHistoryClick: () => void;
+  onBackClick?: () => void;
   isAuthenticated?: boolean;
   onRequireLogin?: () => void;
+  onRequirePremium?: () => void;
+  resultData?: { html: string; css: string; js: string; explanation: string[] };
+  language?: string;
+  framework?: string;
+  isPro?: boolean;
 }
 
-export default function AiCodeResult({ onHistoryClick, isAuthenticated = true, onRequireLogin }: AiCodeResultProps) {
+export default function AiCodeResult({ onHistoryClick, onBackClick, isAuthenticated = true, onRequireLogin, onRequirePremium, resultData, language, framework, isPro = false }: AiCodeResultProps) {
   const [activeTab, setActiveTab] = useState('html');
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
-  const htmlCode = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SaaS Landing Page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="font-sans text-gray-800">
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  React.useEffect(() => { setActiveTab(defaultTab); }, [resultData]);
 
-    <!-- Navbar -->
-    <nav class="flex items-center justify-between px-6 py-4 bg-white shadow-sm">
-        <div class="text-2xl font-bold text-purple-600">SaaSify</div>
-        <div class="hidden md:flex space-x-6">
-            <a href="#" class="text-gray-600 hover:text-purple-600">Features</a>
-            <a href="#" class="text-gray-600 hover:text-purple-600">Pricing</a>
-            <a href="#" class="text-gray-600 hover:text-purple-600">About</a>
-        </div>
-        <a href="#" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">Get Started</a>
-    </nav>
+  const htmlCode = resultData?.html || '';
+  const cssCode = resultData?.css || '';
+  const jsCode = resultData?.js || '';
+  const explanation = resultData?.explanation || ['No explanation provided.'];
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-purple-50 to-white py-20">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 items-center gap-10">
-            <div>`;
+  let htmlName = 'index.html';
+  let cssName = 'style.css';
+  let jsName = 'script.js';
+  
+  let htmlExt = 'text/html';
+  let cssExt = 'text/css';
+  let jsExt = 'text/javascript';
+
+  const langLower = (language || '').toLowerCase();
+  const frameLower = (framework || '').toLowerCase();
+
+  if (langLower.includes('react')) {
+    htmlName = 'App.jsx';
+    htmlExt = 'text/javascript';
+    jsName = 'utils.js';
+  } else if (langLower.includes('python')) {
+    htmlName = 'main.py';
+    htmlExt = 'text/x-python';
+  } else if (langLower.includes('java') && !langLower.includes('javascript')) {
+    htmlName = 'Main.java';
+    htmlExt = 'text/x-java-source';
+  } else if (langLower.includes('c++') || langLower.includes('cpp')) {
+    htmlName = 'main.cpp';
+    htmlExt = 'text/x-c++src';
+  } else if (langLower.includes('typescript')) {
+    htmlName = frameLower.includes('react') || frameLower.includes('next') ? 'App.tsx' : 'index.ts';
+    htmlExt = 'text/typescript';
+  } else if (langLower.includes('vue')) {
+    htmlName = 'App.vue';
+    htmlExt = 'text/plain';
+  } else if (langLower.includes('node') || (langLower === 'javascript' && !frameLower.includes('react'))) {
+    htmlName = 'app.js';
+    htmlExt = 'text/javascript';
+  }
+
+  // Only show files that have meaningful content (more than just wrapper/boilerplate)
+  const hasContent = (code: string) => code && code.trim().length > 30;
+  const showHtml = hasContent(htmlCode);
+  const showCss = hasContent(cssCode);
+  const showJs = hasContent(jsCode);
+
+  // Default tab to first file with content
+  const defaultTab = showHtml ? 'html' : showCss ? 'css' : 'js';
+
+  const handleCopy = (code: string) => {
+    navigator.clipboard.writeText(code);
+    alert('Code copied to clipboard!');
+  };
+
+  const handleDirectDownload = async (content: string, filename: string, type: string) => {
+    if (!isPro && onRequirePremium) {
+      onRequirePremium();
+      return;
+    }
+    if (isPro) {
+      try {
+        const pdfDoc = await PDFDocument.create();
+        let page = pdfDoc.addPage([595, 842]);
+        
+        const lines = content.split('\n');
+        const fontSize = 10;
+        let y = 800;
+        
+        for (let i = 0; i < lines.length; i++) {
+          if (y < 40) {
+            page = pdfDoc.addPage([595, 842]);
+            y = 800;
+          }
+          
+          try {
+            // Truncate long lines to avoid them going off page (rudimentary wrapping)
+            const lineText = lines[i].substring(0, 100); 
+            page.drawText(lineText, { x: 40, y: y, size: fontSize, color: rgb(0, 0, 0) });
+          } catch(err) {
+            // Ignore invalid characters
+          }
+          y -= 15;
+        }
+        
+        const pdfBytes = await pdfDoc.save();
+        const blob = new Blob([pdfBytes as any], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+        const pdfFilename = filename.replace(/\.[^/.]+$/, "") + '.pdf';
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = pdfFilename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch (e) {
+        console.error("PDF generation failed, falling back to direct download", e);
+        const blob = new Blob([content], { type });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+    } else {
+      const blob = new Blob([content], { type });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  };
 
   return (
     <div className="flex flex-col animate-in fade-in duration-500 min-w-0">
-      
+
       {/* Top Header */}
       <div className="flex flex-col md:flex-row md:items-start lg:items-center justify-between gap-4 mb-6">
         <div className="flex items-center gap-4">
@@ -59,111 +163,83 @@ export default function AiCodeResult({ onHistoryClick, isAuthenticated = true, o
             <p className="text-sm text-[#6B7280] mt-0.5">Your AI-generated code is ready to use. You can copy, download or edit it.</p>
           </div>
         </div>
-        
+
         <div className="flex items-center gap-3 shrink-0">
+          {onBackClick && (
+            <button onClick={onBackClick} className="flex items-center gap-2 bg-white border border-[#E5E7EB] px-4 py-2.5 rounded-xl text-sm font-semibold text-[#111827] hover:bg-gray-50 transition-all shadow-sm">
+              <ArrowLeft className="w-4 h-4 text-[#6B7280]" /> Back
+            </button>
+          )}
           <button onClick={onHistoryClick} className="flex items-center gap-2 bg-white border border-[#E5E7EB] px-4 py-2.5 rounded-xl text-sm font-semibold text-[#111827] hover:bg-gray-50 transition-all shadow-sm">
             <History className="w-4 h-4 text-[#6B7280]" /> History
           </button>
-
         </div>
       </div>
 
       {/* Main Split Layout */}
       <div className="flex flex-col xl:flex-row gap-6 items-start min-w-0">
-        
+
         {/* Left Column (Code Editor & Actions) */}
         <div className="w-full flex-grow flex flex-col gap-6 min-w-0">
-          
+
           {/* Code Editor Block */}
           <div className="bg-white border border-[#E5E7EB] rounded-2xl shadow-sm overflow-hidden flex flex-col min-w-0">
-            
+
             {/* Tabs Header */}
             <div className="flex items-center justify-between border-b border-[#E5E7EB] px-2 py-2 bg-white overflow-x-auto custom-scrollbar">
               <div className="flex items-center gap-1">
-                <button 
-                  onClick={() => setActiveTab('html')}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-colors whitespace-nowrap ${activeTab === 'html' ? 'bg-[#EEF2FF] text-[#6D5EF8]' : 'text-[#6B7280] hover:bg-gray-50'}`}
-                >
-                  <div className="w-4 h-4 bg-[#E44D26] rounded-sm flex items-center justify-center text-[8px] font-bold text-white shrink-0">5</div>
-                  index.html
-                </button>
-                <button 
-                  onClick={() => setActiveTab('css')}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-colors whitespace-nowrap ${activeTab === 'css' ? 'bg-[#EEF2FF] text-[#6D5EF8]' : 'text-[#6B7280] hover:bg-gray-50'}`}
-                >
-                  <div className="w-4 h-4 bg-[#264DE4] rounded-sm flex items-center justify-center text-[8px] font-bold text-white shrink-0">3</div>
-                  style.css
-                </button>
-                <button 
-                  onClick={() => setActiveTab('js')}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-colors whitespace-nowrap ${activeTab === 'js' ? 'bg-[#EEF2FF] text-[#6D5EF8]' : 'text-[#6B7280] hover:bg-gray-50'}`}
-                >
-                  <div className="w-4 h-4 bg-[#F7DF1E] rounded-sm flex items-center justify-center text-[8px] font-bold text-black shrink-0">JS</div>
-                  script.js
-                </button>
+                {showHtml && (
+                  <button
+                    onClick={() => setActiveTab('html')}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-colors whitespace-nowrap ${activeTab === 'html' ? 'bg-[#EEF2FF] text-[#6D5EF8]' : 'text-[#6B7280] hover:bg-gray-50'}`}
+                  >
+                    <div className="w-4 h-4 bg-[#E44D26] rounded-sm flex items-center justify-center text-[8px] font-bold text-white shrink-0">5</div>
+                    {htmlName}
+                  </button>
+                )}
+                {showCss && (
+                  <button
+                    onClick={() => setActiveTab('css')}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-colors whitespace-nowrap ${activeTab === 'css' ? 'bg-[#EEF2FF] text-[#6D5EF8]' : 'text-[#6B7280] hover:bg-gray-50'}`}
+                  >
+                    <div className="w-4 h-4 bg-[#264DE4] rounded-sm flex items-center justify-center text-[8px] font-bold text-white shrink-0">3</div>
+                    {cssName}
+                  </button>
+                )}
+                {showJs && (
+                  <button
+                    onClick={() => setActiveTab('js')}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-colors whitespace-nowrap ${activeTab === 'js' ? 'bg-[#EEF2FF] text-[#6D5EF8]' : 'text-[#6B7280] hover:bg-gray-50'}`}
+                  >
+                    <div className="w-4 h-4 bg-[#F7DF1E] rounded-sm flex items-center justify-center text-[8px] font-bold text-black shrink-0">JS</div>
+                    {jsName}
+                  </button>
+                )}
               </div>
-              <button className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-[#6B7280] hover:bg-gray-50 hover:text-[#111827] transition-colors shrink-0">
-                <Maximize className="w-4 h-4" /> Fullscreen
-              </button>
             </div>
 
             {/* Code Content */}
-            <div className="bg-[#1e1e2e] relative overflow-hidden flex flex-col group min-h-[400px]">
-              {/* Overlay Actions */}
-              <div className="absolute top-4 right-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
-                <button 
-                  onClick={() => {
-                    if (!isAuthenticated && onRequireLogin) onRequireLogin();
-                    else navigator.clipboard.writeText(htmlCode);
-                  }}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-lg text-xs font-semibold backdrop-blur-md transition-colors"
-                >
-                  <Copy className="w-3.5 h-3.5" /> Copy Code
-                </button>
-                <button 
-                  onClick={() => {
-                    if (!isAuthenticated && onRequireLogin) onRequireLogin();
-                    else setIsDownloadModalOpen(true);
-                  }}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-lg text-xs font-semibold backdrop-blur-md transition-colors"
-                >
-                  <Download className="w-3.5 h-3.5" /> Download
-                </button>
-              </div>
+            <div className="bg-[#1e1e2e] relative overflow-hidden flex flex-col group min-h-[400px] max-h-[600px]">
 
               {/* Code Pre/Code block with line numbers */}
-              <div className="flex flex-grow text-sm font-mono overflow-auto custom-scrollbar relative p-4">
+              <div className="flex flex-grow text-sm font-mono overflow-auto custom-scrollbar relative p-4 min-w-0">
                 {/* Line Numbers */}
                 <div className="flex flex-col text-right pr-4 text-[#6e6e8e] select-none sticky left-0 bg-[#1e1e2e] border-r border-[#313244] shrink-0 min-h-full">
-                  {Array.from({length: 25}).map((_, i) => (
+                  {Array.from({ length: 25 }).map((_, i) => (
                     <span key={i} className="leading-6">{i + 1}</span>
                   ))}
                 </div>
-                <div 
-                  className={`pl-4 text-[#cdd6f4] whitespace-pre min-w-max leading-6 ${!isAuthenticated ? 'select-none' : ''}`}
-                  onContextMenu={(e) => { if (!isAuthenticated) e.preventDefault(); }}
+                <div
+                  className={`pl-4 text-[#cdd6f4] whitespace-pre min-w-max leading-6 select-none`}
+                  onContextMenu={(e) => { e.preventDefault(); }}
                 >
-                  {htmlCode}
+                  {activeTab === 'html' ? htmlCode : activeTab === 'css' ? cssCode : activeTab === 'js' ? jsCode : null}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Run Code Section */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-            <h3 className="text-sm font-bold text-[#111827] w-20">Run Code</h3>
-            <div className="flex flex-wrap items-center gap-3">
-              <button className="flex items-center gap-2 px-5 py-2.5 bg-white border border-[#6D5EF8] text-[#6D5EF8] rounded-xl text-sm font-bold hover:bg-blue-50 transition-colors shadow-sm">
-                <Play className="w-4 h-4" /> Live Preview
-              </button>
-              <button className="flex items-center gap-2 px-5 py-2.5 bg-white border border-[#E5E7EB] text-[#4B5563] rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors shadow-sm">
-                <Box className="w-4 h-4" /> Open in CodePen
-              </button>
-              <button className="flex items-center gap-2 px-5 py-2.5 bg-white border border-[#E5E7EB] text-[#4B5563] rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors shadow-sm">
-                <ExternalLink className="w-4 h-4" /> Open in JSFiddle
-              </button>
-            </div>
-          </div>
+
 
           {/* Tip Banner */}
           <div className="bg-[#F5F3FF] rounded-xl border border-[#EDE9FE] p-4 flex items-center justify-center gap-2 text-sm text-[#4B5563] shadow-sm mt-4">
@@ -175,74 +251,73 @@ export default function AiCodeResult({ onHistoryClick, isAuthenticated = true, o
 
         {/* Right Column (Sidebar Details) */}
         <div className="w-full xl:w-[320px] shrink-0 space-y-6">
-          
+
           {/* Code Explanation */}
           <div className="bg-white rounded-2xl border border-[#E5E7EB] p-5 shadow-sm">
-            <h3 className="text-sm font-bold text-[#111827] mb-4 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[#6D5EF8]" /> Code Explanation
+            <h3 className="font-bold text-[#111827] mb-3 text-sm flex items-center gap-2">
+              <Lightbulb className="w-4 h-4 text-[#F59E0B]" /> What this code does:
             </h3>
-            <ul className="space-y-3">
-              <li className="text-xs text-[#4B5563] flex items-start gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#6D5EF8] mt-1.5 shrink-0"></div>
-                <span>Creates a responsive SaaS landing page using HTML, Tailwind CSS and JavaScript.</span>
-              </li>
-              <li className="text-xs text-[#4B5563] flex items-start gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#6D5EF8] mt-1.5 shrink-0"></div>
-                <span>Includes a navigation bar, hero section, features, pricing and footer.</span>
-              </li>
-              <li className="text-xs text-[#4B5563] flex items-start gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#6D5EF8] mt-1.5 shrink-0"></div>
-                <span>Fully responsive and modern UI design.</span>
-              </li>
-              <li className="text-xs text-[#4B5563] flex items-start gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#6D5EF8] mt-1.5 shrink-0"></div>
-                <span>You can customize the content and styles easily.</span>
-              </li>
+            <ul className="space-y-2">
+              {explanation.map((line: string, idx: number) => (
+                <li key={idx} className="flex items-start gap-2 text-sm text-[#4B5563]">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#6D5EF8] mt-1.5 shrink-0"></div>
+                  <span className="leading-relaxed">{line}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Files Generated */}
           <div className="bg-white rounded-2xl border border-[#E5E7EB] p-5 shadow-sm">
-            <h3 className="text-sm font-bold text-[#111827] mb-4">Files Generated</h3>
+            <h3 className="text-sm font-bold text-[#111827] mb-4 flex items-center gap-2">
+              Files Generated
+              {!isPro && <Crown className="w-4 h-4 text-[#F59E0B]" />}
+            </h3>
             <div className="space-y-2 mb-4">
-              
-              <div 
-                onClick={() => setIsDownloadModalOpen(true)}
-                className="flex items-center justify-between p-3 rounded-xl border border-[#E5E7EB] hover:border-gray-300 transition-colors bg-[#FAFAFA] group cursor-pointer"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="w-5 h-5 bg-[#E44D26] rounded-sm flex items-center justify-center text-[9px] font-bold text-white shrink-0 shadow-sm">5</div>
-                  <span className="text-sm font-semibold text-[#111827]">index.html</span>
+
+              {showHtml && (
+                <div
+                  onClick={() => handleDirectDownload(htmlCode, htmlName, htmlExt)}
+                  className="flex items-center justify-between p-3 rounded-xl border border-[#E5E7EB] hover:border-gray-300 transition-colors bg-[#FAFAFA] group cursor-pointer"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-5 h-5 bg-[#E44D26] rounded-sm flex items-center justify-center text-[9px] font-bold text-white shrink-0 shadow-sm">5</div>
+                    <span className="text-sm font-semibold text-[#111827]">{htmlName}</span>
+                  </div>
+                  <Download className="w-4 h-4 text-gray-400 group-hover:text-[#6D5EF8] transition-colors" />
                 </div>
-                <Download className="w-4 h-4 text-gray-400 group-hover:text-[#6D5EF8] transition-colors" />
-              </div>
-              
-              <div 
-                onClick={() => setIsDownloadModalOpen(true)}
-                className="flex items-center justify-between p-3 rounded-xl border border-[#E5E7EB] hover:border-gray-300 transition-colors bg-[#FAFAFA] group cursor-pointer"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="w-5 h-5 bg-[#264DE4] rounded-sm flex items-center justify-center text-[9px] font-bold text-white shrink-0 shadow-sm">3</div>
-                  <span className="text-sm font-semibold text-[#111827]">style.css</span>
+              )}
+
+              {showCss && (
+                <div
+                  onClick={() => handleDirectDownload(cssCode, cssName, cssExt)}
+                  className="flex items-center justify-between p-3 rounded-xl border border-[#E5E7EB] hover:border-gray-300 transition-colors bg-[#FAFAFA] group cursor-pointer"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-5 h-5 bg-[#264DE4] rounded-sm flex items-center justify-center text-[9px] font-bold text-white shrink-0 shadow-sm">3</div>
+                    <span className="text-sm font-semibold text-[#111827]">{cssName}</span>
+                  </div>
+                  <Download className="w-4 h-4 text-gray-400 group-hover:text-[#6D5EF8] transition-colors" />
                 </div>
-                <Download className="w-4 h-4 text-gray-400 group-hover:text-[#6D5EF8] transition-colors" />
-              </div>
-              
-              <div 
-                onClick={() => setIsDownloadModalOpen(true)}
-                className="flex items-center justify-between p-3 rounded-xl border border-[#E5E7EB] hover:border-gray-300 transition-colors bg-[#FAFAFA] group cursor-pointer"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="w-5 h-5 bg-[#F7DF1E] rounded-sm flex items-center justify-center text-[9px] font-bold text-black shrink-0 shadow-sm">JS</div>
-                  <span className="text-sm font-semibold text-[#111827]">script.js</span>
+              )}
+
+              {showJs && (
+                <div
+                  onClick={() => handleDirectDownload(jsCode, jsName, jsExt)}
+                  className="flex items-center justify-between p-3 rounded-xl border border-[#E5E7EB] hover:border-gray-300 transition-colors bg-[#FAFAFA] group cursor-pointer"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-5 h-5 bg-[#F7DF1E] rounded-sm flex items-center justify-center text-[9px] font-bold text-black shrink-0 shadow-sm">JS</div>
+                    <span className="text-sm font-semibold text-[#111827]">{jsName}</span>
+                  </div>
+                  <Download className="w-4 h-4 text-gray-400 group-hover:text-[#6D5EF8] transition-colors" />
                 </div>
-                <Download className="w-4 h-4 text-gray-400 group-hover:text-[#6D5EF8] transition-colors" />
-              </div>
+              )}
 
             </div>
-            
-            <button 
-              onClick={() => setIsDownloadModalOpen(true)}
+
+            <button
+              onClick={() => isPro ? setIsDownloadModalOpen(true) : (onRequirePremium && onRequirePremium())}
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-[#6D5EF8] text-sm font-bold text-[#6D5EF8] hover:bg-[#F5F3FF] transition-colors"
             >
               <Download className="w-4 h-4" /> Download All Files
@@ -270,8 +345,21 @@ export default function AiCodeResult({ onHistoryClick, isAuthenticated = true, o
 
         </div>
       </div>
-      
-      <AiCodeDownloadModal isOpen={isDownloadModalOpen} onClose={() => setIsDownloadModalOpen(false)} />
+      {/* Modals */}
+      <AiCodeDownloadModal 
+        isOpen={isDownloadModalOpen} 
+        onClose={() => setIsDownloadModalOpen(false)} 
+        htmlCode={htmlCode}
+        cssCode={cssCode}
+        jsCode={jsCode}
+        htmlName={htmlName}
+        cssName={cssName}
+        jsName={jsName}
+        htmlExt={htmlExt}
+        cssExt={cssExt}
+        jsExt={jsExt}
+        isPro={isPro}
+      />
     </div>
   );
 }
