@@ -120,7 +120,7 @@ export default function BackgroundRemoverClient() {
             ctx.drawImage(img, 0, 0, width, height);
             ctx.drawImage(img, 0, 0, width, height);
             ctx.drawImage(img, 0, 0, width, height);
-            
+
             const dataUrl = canvas.toDataURL('image/png', 0.7);
             resolve(dataUrl);
           } else {
@@ -576,9 +576,7 @@ export default function BackgroundRemoverClient() {
               >
                 <History className="w-4 h-4 text-[#6B7280]" /> History
               </button>
-              <button className="flex items-center gap-2 bg-white border border-[#E5E7EB] px-4 py-2.5 rounded-xl text-sm font-semibold text-[#111827] hover:bg-gray-50 transition-all shadow-sm">
-                <LayoutGrid className="w-4 h-4 text-[#6B7280]" /> My Creations
-              </button>
+
             </div>
           </div>
 

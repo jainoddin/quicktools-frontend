@@ -29,6 +29,35 @@ export default function AiVideoShareModal({ isOpen, onClose, videoUrl = "https:/
     { id: 'whatsapp', label: 'WhatsApp', color: 'text-[#25D366]', bg: 'bg-[#25D366]/10', active: false, icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.013 2.015c-5.467 0-9.911 4.444-9.911 9.911 0 1.75.458 3.447 1.323 4.954L2.01 21.99l5.244-1.375a9.866 9.866 0 004.759 1.218c5.464 0 9.908-4.444 9.908-9.911s-4.444-9.907-9.908-9.907zm0 16.657c-1.468 0-2.903-.393-4.15-1.134l-.297-.176-3.09.81 .824-3.012-.193-.307a8.218 8.218 0 01-1.258-4.382c0-4.553 3.705-8.258 8.258-8.258 4.55 0 8.253 3.705 8.253 8.258s-3.703 8.258-8.253 8.258z"/></svg> },
   ];
 
+  const handleSocialClick = (id: string) => {
+    const text = encodeURIComponent("Check out this awesome AI generated video!");
+    const url = encodeURIComponent(videoUrl);
+    
+    switch (id) {
+      case 'copy':
+        navigator.clipboard.writeText(videoUrl);
+        alert('Link copied to clipboard!');
+        break;
+      case 'facebook':
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        break;
+      case 'twitter':
+        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        break;
+      case 'linkedin':
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        break;
+      case 'whatsapp':
+        window.open(`https://wa.me/?text=${text}&url=${url}`, '_blank');
+        break;
+    }
+  };
+
+  const handleCopyEmbed = () => {
+    navigator.clipboard.writeText(`<video controls src="${videoUrl}"></video>`);
+    alert('Embed code copied to clipboard!');
+  };
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
       <div className="absolute inset-0 bg-[#111827]/40 backdrop-blur-sm" onClick={onClose}></div>
@@ -52,6 +81,7 @@ export default function AiVideoShareModal({ isOpen, onClose, videoUrl = "https:/
             {socialLinks.map((social) => (
               <div 
                 key={social.id}
+                onClick={() => handleSocialClick(social.id)}
                 className={`flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-2xl border-2 cursor-pointer transition-all ${social.active ? 'border-[#6D5EF8] bg-[#EEF2FF]' : 'border-[#E5E7EB] hover:border-gray-300 hover:bg-gray-50'}`}
               >
                 <div className={`w-10 h-10 ${social.bg} rounded-full flex items-center justify-center ${social.color} mb-2 shadow-sm shrink-0`}>
@@ -72,7 +102,7 @@ export default function AiVideoShareModal({ isOpen, onClose, videoUrl = "https:/
                 value={`<video controls src="${videoUrl}"></video>`}
                 className="flex-grow bg-transparent text-sm text-[#6B7280] px-3 outline-none min-w-0"
               />
-              <button className="bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors shadow-sm shrink-0">
+              <button onClick={handleCopyEmbed} className="bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors shadow-sm shrink-0">
                 Copy
               </button>
             </div>

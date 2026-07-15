@@ -40,7 +40,7 @@ export default function ImageGeneratorClient() {
     if (!isAuthenticated) {
       const count = parseInt(localStorage.getItem('freeImageGenCount') || '0', 10);
       setFreeGenCount(count);
-      
+
       const savedHistory = localStorage.getItem('guestImageHistory');
       if (savedHistory) {
         try {
@@ -55,29 +55,29 @@ export default function ImageGeneratorClient() {
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include'
       })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success && data.data && data.data.history) {
-          // Filter only image generation history
-          const imageHistory = data.data.history.filter((item: any) => item.toolSlug === '/tools/ai-image-generator');
-          
-          const formattedHistory = imageHistory.map((item: any) => {
-            const dateObj = new Date(item.createdAt);
-            const isToday = dateObj.toLocaleDateString() === new Date().toLocaleDateString();
-            
-            return {
-              id: item._id || Date.now() + Math.random(),
-              src: item.result,
-              prompt: item.prompt.replace(/Model:.*?, Style:.*?, /, ''), // Clean up prompt
-              date: isToday ? 'Today' : dateObj.toLocaleDateString(),
-              model: 'DALL-E 3'
-            };
-          });
-          
-          setRecentImages(formattedHistory);
-        }
-      })
-      .catch(console.error);
+        .then(res => res.json())
+        .then(data => {
+          if (data.success && data.data && data.data.history) {
+            // Filter only image generation history
+            const imageHistory = data.data.history.filter((item: any) => item.toolSlug === '/tools/ai-image-generator');
+
+            const formattedHistory = imageHistory.map((item: any) => {
+              const dateObj = new Date(item.createdAt);
+              const isToday = dateObj.toLocaleDateString() === new Date().toLocaleDateString();
+
+              return {
+                id: item._id || Date.now() + Math.random(),
+                src: item.result,
+                prompt: item.prompt.replace(/Model:.*?, Style:.*?, /, ''), // Clean up prompt
+                date: isToday ? 'Today' : dateObj.toLocaleDateString(),
+                model: 'DALL-E 3'
+              };
+            });
+
+            setRecentImages(formattedHistory);
+          }
+        })
+        .catch(console.error);
     }
   }, [isAuthenticated]);
 
@@ -88,9 +88,9 @@ export default function ImageGeneratorClient() {
       interval = setInterval(() => {
         setProgress(prev => {
           if (prev >= 95) return 95; // Wait at 95% for the actual API call to finish
-          return prev + 2; 
+          return prev + 2;
         });
-      }, 100); 
+      }, 100);
     } else {
       if (progress !== 100) setProgress(0);
     }
@@ -103,13 +103,13 @@ export default function ImageGeneratorClient() {
     if (currentPrompt.trim() === '' || isGenerating) {
       return;
     }
-    
+
     // Guest users: allow 1 free generation, then require login
     if (!isAuthenticated && freeGenCount >= 1) {
       setShowLoginPopup(true);
       return;
     }
-    
+
     // Simulate error if prompt equals 'error'
     if (currentPrompt.toLowerCase().trim() === 'error') {
       setHasError(true);
@@ -120,7 +120,7 @@ export default function ImageGeneratorClient() {
     setGeneratedImage(null);
     setHasError(false);
     setProgress(0);
-    
+
     // Call the actual backend API to generate the image immediately
     fetch(getEndpoint('/api/tools/generate-image'), {
       method: 'POST',
@@ -134,53 +134,53 @@ export default function ImageGeneratorClient() {
         quality
       }),
     })
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        setGeneratedImage(data.data);
-        // Add to recent history
-        const newImage = {
-          id: Date.now(),
-          src: data.data,
-          prompt: currentPrompt,
-          date: 'Just now',
-          model: selectedModel
-        };
-        
-        setRecentImages(prev => {
-          const updated = [newImage, ...prev];
-          if (!isAuthenticated) {
-            localStorage.setItem('guestImageHistory', JSON.stringify(updated));
-          }
-          return updated;
-        });
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          setGeneratedImage(data.data);
+          // Add to recent history
+          const newImage = {
+            id: Date.now(),
+            src: data.data,
+            prompt: currentPrompt,
+            date: 'Just now',
+            model: selectedModel
+          };
 
-        if (!isAuthenticated) {
-          const newCount = freeGenCount + 1;
-          setFreeGenCount(newCount);
-          localStorage.setItem('freeImageGenCount', newCount.toString());
-        }
-      } else {
-        // Handle specific error types from backend
-        if (data.errorType === 'AUTH_REQUIRED') {
-          // Shouldn't happen for guest 1-gen, but handle gracefully
-          setShowLoginPopup(true);
-        } else if (data.errorType === 'INSUFFICIENT_CREDITS') {
-          setPopupType('credits');
-          setShowPremiumPopup(true);
+          setRecentImages(prev => {
+            const updated = [newImage, ...prev];
+            if (!isAuthenticated) {
+              localStorage.setItem('guestImageHistory', JSON.stringify(updated));
+            }
+            return updated;
+          });
+
+          if (!isAuthenticated) {
+            const newCount = freeGenCount + 1;
+            setFreeGenCount(newCount);
+            localStorage.setItem('freeImageGenCount', newCount.toString());
+          }
         } else {
-          setHasError(true);
+          // Handle specific error types from backend
+          if (data.errorType === 'AUTH_REQUIRED') {
+            // Shouldn't happen for guest 1-gen, but handle gracefully
+            setShowLoginPopup(true);
+          } else if (data.errorType === 'INSUFFICIENT_CREDITS') {
+            setPopupType('credits');
+            setShowPremiumPopup(true);
+          } else {
+            setHasError(true);
+          }
         }
-      }
-    })
-    .catch((err) => {
-      console.error("Backend generation error:", err);
-      setHasError(true);
-    })
-    .finally(() => {
-      setProgress(100);
-      setIsGenerating(false);
-    });
+      })
+      .catch((err) => {
+        console.error("Backend generation error:", err);
+        setHasError(true);
+      })
+      .finally(() => {
+        setProgress(100);
+        setIsGenerating(false);
+      });
   };
 
   const handleCancel = () => {
@@ -190,7 +190,7 @@ export default function ImageGeneratorClient() {
   return (
     <div className="flex flex-col lg:flex-row gap-8">
       <LoginPopup isOpen={showLoginPopup} onClose={() => setShowLoginPopup(false)} />
-      
+
       {/* Premium Popup */}
       {showPremiumPopup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in p-4">
@@ -202,18 +202,18 @@ export default function ImageGeneratorClient() {
               {popupType === 'hd' ? 'Premium Feature' : 'Out of Credits'}
             </h3>
             <p className="text-[#6B7280] mb-6">
-              {popupType === 'hd' 
-                ? 'HD image generation is only available for premium users. Upgrade your plan to unlock HD quality.' 
+              {popupType === 'hd'
+                ? 'HD image generation is only available for premium users. Upgrade your plan to unlock HD quality.'
                 : 'You have run out of credits to generate images. Please upgrade your plan to get more credits.'}
             </p>
             <div className="flex flex-col gap-3">
-              <button 
+              <button
                 onClick={() => window.location.href = '/pricing'}
                 className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-3 rounded-xl transition-all shadow-md shadow-[#6D5EF8]/20"
               >
                 View Plans
               </button>
-              <button 
+              <button
                 onClick={() => setShowPremiumPopup(false)}
                 className="w-full bg-white border border-[#E5E7EB] hover:bg-gray-50 text-[#111827] font-bold py-3 rounded-xl transition-all"
               >
@@ -226,148 +226,148 @@ export default function ImageGeneratorClient() {
 
       {/* Left Sidebar Controls */}
       <aside className="w-full lg:w-[320px] shrink-0 space-y-6">
-        
+
         {/* Settings Wrapper - Disabled when image is generated */}
         <div className={`space-y-6 transition-all duration-300 ${generatedImage ? 'pointer-events-none opacity-60 grayscale-[0.2]' : ''}`}>
-        {/* 1. Describe Your Image */}
-        <div>
-          <h3 className="text-sm font-bold text-[#111827] mb-3">
-            {generatedImage ? '1. Your Prompt' : '1. Describe Your Image'}
-          </h3>
-          <div className="bg-white rounded-2xl border border-[#E5E7EB] p-3 shadow-sm focus-within:ring-2 focus-within:ring-[#6D5EF8] focus-within:border-[#6D5EF8] transition-all">
-            {generatedImage ? (
-              <div className="w-full h-32 text-sm text-[#111827] bg-transparent overflow-y-auto pr-2">
-                {prompt}
-              </div>
-            ) : (
-              <textarea
-                value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
-                placeholder="Describe the image you want to generate..."
-                className="w-full h-32 resize-none outline-none text-sm text-[#111827] placeholder-[#9CA3AF] bg-transparent"
-              ></textarea>
-            )}
-            <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#F3F4F6]">
-              <div className="flex gap-2">
-                <button className="flex items-center gap-1.5 text-xs font-medium text-[#6B7280] hover:text-[#111827] bg-[#F8FAFC] px-2.5 py-1.5 rounded-lg border border-[#E5E7EB] transition-colors">
-                  <Wand2 className="w-3.5 h-3.5" /> Prompt Ideas
-                </button>
-                <button
-                  onClick={() => setPrompt('A futuristic city at sunset with flying cars, neon lights, and tall skyscrapers')}
-                  className="flex items-center gap-1.5 text-xs font-medium text-[#6B7280] hover:text-[#111827] bg-[#F8FAFC] px-2.5 py-1.5 rounded-lg border border-[#E5E7EB] transition-colors"
-                >
-                  <Shuffle className="w-3.5 h-3.5" /> Random
-                </button>
-              </div>
-              <span className="text-[10px] text-[#9CA3AF] font-medium">{prompt.length} / 1000</span>
-            </div>
-          </div>
-        </div>
-
-        {/* 2. Choose a Model */}
-        <div>
-          <h3 className="text-sm font-bold text-[#111827] mb-3">2. Choose a Model</h3>
-          <div className="relative">
-            <select 
-              value={selectedModel}
-              onChange={(e) => setSelectedModel(e.target.value)}
-              className="w-full appearance-none bg-white border border-[#E5E7EB] rounded-xl px-4 py-3 text-sm font-semibold text-[#111827] outline-none hover:border-gray-300 transition-colors focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8]"
-            >
-              <option value="dall-e-3">DALL-E 3</option>
-              <option value="dall-e-2">DALL-E 2</option>
-              <option value="midjourney">Midjourney v6</option>
-              <option value="stable-diffusion">Stable Diffusion XL</option>
-            </select>
-            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-              <div className="w-4 h-4 rounded-full border-4 border-t-red-500 border-r-blue-500 border-b-green-500 border-l-yellow-500 mr-2"></div>
-            </div>
-            <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-              <ChevronDown className="w-4 h-4 text-[#6B7280]" />
-            </div>
-            <style dangerouslySetInnerHTML={{ __html: `select { padding-left: 2.5rem !important; }` }} />
-          </div>
-        </div>
-
-        {/* 3. Choose a Style */}
-        <div>
-          <h3 className="text-sm font-bold text-[#111827] mb-3">3. Choose a Style</h3>
-          <div className="grid grid-cols-3 gap-3">
-            {[
-              { name: 'Realistic', img: 'https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=100&q=80' },
-              { name: 'Anime', img: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=100&q=80' },
-              { name: '3D Render', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=100&q=80' },
-              { name: 'Digital Art', img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=100&q=80' },
-              { name: 'Painting', img: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=100&q=80' },
-              { name: 'Cyberpunk', img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=100&q=80' },
-            ].map((style, i) => (
-              <div 
-                key={i} 
-                onClick={() => setSelectedStyle(style.name)}
-                className="flex flex-col items-center gap-1.5 cursor-pointer group"
-              >
-                <div className={`relative w-full aspect-square rounded-xl overflow-hidden transition-all duration-200 ${selectedStyle === style.name ? 'ring-2 ring-[#6D5EF8] ring-offset-2' : 'hover:ring-2 hover:ring-gray-300 hover:ring-offset-1'}`}>
-                  <Image src={style.img} fill alt={style.name} className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-                  {selectedStyle === style.name && (
-                    <div className="absolute top-1 right-1 w-4 h-4 bg-[#6D5EF8] rounded-full flex items-center justify-center shadow-sm">
-                      <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                    </div>
-                  )}
+          {/* 1. Describe Your Image */}
+          <div>
+            <h3 className="text-sm font-bold text-[#111827] mb-3">
+              {generatedImage ? '1. Your Prompt' : '1. Describe Your Image'}
+            </h3>
+            <div className="bg-white rounded-2xl border border-[#E5E7EB] p-3 shadow-sm focus-within:ring-2 focus-within:ring-[#6D5EF8] focus-within:border-[#6D5EF8] transition-all">
+              {generatedImage ? (
+                <div className="w-full h-32 text-sm text-[#111827] bg-transparent overflow-y-auto pr-2">
+                  {prompt}
                 </div>
-                <span className={`text-[10px] font-semibold ${selectedStyle === style.name ? 'text-[#6D5EF8]' : 'text-[#6B7280] group-hover:text-[#111827]'}`}>{style.name}</span>
+              ) : (
+                <textarea
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
+                  placeholder="Describe the image you want to generate..."
+                  className="w-full h-32 resize-none outline-none text-sm text-[#111827] placeholder-[#9CA3AF] bg-transparent"
+                ></textarea>
+              )}
+              <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#F3F4F6]">
+                <div className="flex gap-2">
+                  <button className="flex items-center gap-1.5 text-xs font-medium text-[#6B7280] hover:text-[#111827] bg-[#F8FAFC] px-2.5 py-1.5 rounded-lg border border-[#E5E7EB] transition-colors">
+                    <Wand2 className="w-3.5 h-3.5" /> Prompt Ideas
+                  </button>
+                  <button
+                    onClick={() => setPrompt('A futuristic city at sunset with flying cars, neon lights, and tall skyscrapers')}
+                    className="flex items-center gap-1.5 text-xs font-medium text-[#6B7280] hover:text-[#111827] bg-[#F8FAFC] px-2.5 py-1.5 rounded-lg border border-[#E5E7EB] transition-colors"
+                  >
+                    <Shuffle className="w-3.5 h-3.5" /> Random
+                  </button>
+                </div>
+                <span className="text-[10px] text-[#9CA3AF] font-medium">{prompt.length} / 1000</span>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
 
-        {/* 4. Aspect Ratio */}
-        <div>
-          <h3 className="text-sm font-bold text-[#111827] mb-3">4. Aspect Ratio</h3>
-          <div className="grid grid-cols-4 gap-2">
-            {[
-              { ratio: '1:1', label: 'Square' },
-              { ratio: '16:9', label: 'Landscape' },
-              { ratio: '9:16', label: 'Portrait' },
-              { ratio: '4:3', label: 'Standard' },
-            ].map((ar, i) => (
-              <div 
-                key={i} 
-                onClick={() => setSelectedRatio(ar.ratio)}
-                className={`flex flex-col items-center justify-center py-2 rounded-xl cursor-pointer transition-all border ${selectedRatio === ar.ratio ? 'bg-[#EEF2FF] border-[#6D5EF8] text-[#6D5EF8]' : 'bg-white border-[#E5E7EB] text-[#6B7280] hover:border-gray-300 hover:bg-gray-50'}`}
+          {/* 2. Choose a Model */}
+          <div>
+            <h3 className="text-sm font-bold text-[#111827] mb-3">2. Choose a Model</h3>
+            <div className="relative">
+              <select
+                value={selectedModel}
+                onChange={(e) => setSelectedModel(e.target.value)}
+                className="w-full appearance-none bg-white border border-[#E5E7EB] rounded-xl px-4 py-3 text-sm font-semibold text-[#111827] outline-none hover:border-gray-300 transition-colors focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8]"
               >
-                <span className="text-xs font-bold mb-0.5">{ar.ratio}</span>
-                <span className="text-[9px]">{ar.label}</span>
+                <option value="dall-e-3">DALL-E 3</option>
+                <option value="dall-e-2">DALL-E 2</option>
+                <option value="midjourney">Midjourney v6</option>
+                <option value="stable-diffusion">Stable Diffusion XL</option>
+              </select>
+              <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                <div className="w-4 h-4 rounded-full border-4 border-t-red-500 border-r-blue-500 border-b-green-500 border-l-yellow-500 mr-2"></div>
               </div>
-            ))}
+              <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                <ChevronDown className="w-4 h-4 text-[#6B7280]" />
+              </div>
+              <style dangerouslySetInnerHTML={{ __html: `select { padding-left: 2.5rem !important; }` }} />
+            </div>
           </div>
-        </div>
 
-        {/* 5. Image Quality */}
-        <div>
-          <h3 className="text-sm font-bold text-[#111827] mb-3">5. Image Quality</h3>
-          <div className="flex bg-white rounded-xl border border-[#E5E7EB] p-1 shadow-sm">
-            <button 
-              onClick={() => setQuality('standard')}
-              className={`flex-1 py-2 text-xs transition-all rounded-lg ${quality === 'standard' ? 'font-bold text-[#6D5EF8] bg-[#EEF2FF] border border-[#6D5EF8]/20 shadow-sm' : 'font-semibold text-[#6B7280] hover:text-[#111827]'}`}
-            >
-              Standard
-            </button>
-            <button 
-              onClick={() => {
-                const plan = (user?.plan || '').toLowerCase();
-                const isPro = plan === 'pro' || plan === 'premium';
-                if (isPro) {
-                  setQuality('hd');
-                } else {
-                  setPopupType('hd');
-                  setShowPremiumPopup(true);
-                }
-              }}
-              className={`flex-1 py-2 text-xs flex items-center justify-center gap-1.5 transition-all rounded-lg ${quality === 'hd' ? 'font-bold text-[#6D5EF8] bg-[#EEF2FF] border border-[#6D5EF8]/20 shadow-sm' : 'font-semibold text-[#6B7280] hover:text-[#111827]'}`}
-            >
-              HD <Crown className="w-3.5 h-3.5 text-[#F59E0B] fill-[#F59E0B]" />
-            </button>
+          {/* 3. Choose a Style */}
+          <div>
+            <h3 className="text-sm font-bold text-[#111827] mb-3">3. Choose a Style</h3>
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { name: 'Realistic', img: 'https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=100&q=80' },
+                { name: 'Anime', img: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=100&q=80' },
+                { name: '3D Render', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=100&q=80' },
+                { name: 'Digital Art', img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=100&q=80' },
+                { name: 'Painting', img: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=100&q=80' },
+                { name: 'Cyberpunk', img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=100&q=80' },
+              ].map((style, i) => (
+                <div
+                  key={i}
+                  onClick={() => setSelectedStyle(style.name)}
+                  className="flex flex-col items-center gap-1.5 cursor-pointer group"
+                >
+                  <div className={`relative w-full aspect-square rounded-xl overflow-hidden transition-all duration-200 ${selectedStyle === style.name ? 'ring-2 ring-[#6D5EF8] ring-offset-2' : 'hover:ring-2 hover:ring-gray-300 hover:ring-offset-1'}`}>
+                    <Image src={style.img} fill alt={style.name} className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+                    {selectedStyle === style.name && (
+                      <div className="absolute top-1 right-1 w-4 h-4 bg-[#6D5EF8] rounded-full flex items-center justify-center shadow-sm">
+                        <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      </div>
+                    )}
+                  </div>
+                  <span className={`text-[10px] font-semibold ${selectedStyle === style.name ? 'text-[#6D5EF8]' : 'text-[#6B7280] group-hover:text-[#111827]'}`}>{style.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+
+          {/* 4. Aspect Ratio */}
+          <div>
+            <h3 className="text-sm font-bold text-[#111827] mb-3">4. Aspect Ratio</h3>
+            <div className="grid grid-cols-4 gap-2">
+              {[
+                { ratio: '1:1', label: 'Square' },
+                { ratio: '16:9', label: 'Landscape' },
+                { ratio: '9:16', label: 'Portrait' },
+                { ratio: '4:3', label: 'Standard' },
+              ].map((ar, i) => (
+                <div
+                  key={i}
+                  onClick={() => setSelectedRatio(ar.ratio)}
+                  className={`flex flex-col items-center justify-center py-2 rounded-xl cursor-pointer transition-all border ${selectedRatio === ar.ratio ? 'bg-[#EEF2FF] border-[#6D5EF8] text-[#6D5EF8]' : 'bg-white border-[#E5E7EB] text-[#6B7280] hover:border-gray-300 hover:bg-gray-50'}`}
+                >
+                  <span className="text-xs font-bold mb-0.5">{ar.ratio}</span>
+                  <span className="text-[9px]">{ar.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 5. Image Quality */}
+          <div>
+            <h3 className="text-sm font-bold text-[#111827] mb-3">5. Image Quality</h3>
+            <div className="flex bg-white rounded-xl border border-[#E5E7EB] p-1 shadow-sm">
+              <button
+                onClick={() => setQuality('standard')}
+                className={`flex-1 py-2 text-xs transition-all rounded-lg ${quality === 'standard' ? 'font-bold text-[#6D5EF8] bg-[#EEF2FF] border border-[#6D5EF8]/20 shadow-sm' : 'font-semibold text-[#6B7280] hover:text-[#111827]'}`}
+              >
+                Standard
+              </button>
+              <button
+                onClick={() => {
+                  const plan = (user?.plan || '').toLowerCase();
+                  const isPro = plan === 'pro' || plan === 'premium';
+                  if (isPro) {
+                    setQuality('hd');
+                  } else {
+                    setPopupType('hd');
+                    setShowPremiumPopup(true);
+                  }
+                }}
+                className={`flex-1 py-2 text-xs flex items-center justify-center gap-1.5 transition-all rounded-lg ${quality === 'hd' ? 'font-bold text-[#6D5EF8] bg-[#EEF2FF] border border-[#6D5EF8]/20 shadow-sm' : 'font-semibold text-[#6B7280] hover:text-[#111827]'}`}
+              >
+                HD <Crown className="w-3.5 h-3.5 text-[#F59E0B] fill-[#F59E0B]" />
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Generate Button Area */}
@@ -388,8 +388,8 @@ export default function ImageGeneratorClient() {
 
       {/* Right Main Area */}
       {activeView === 'history' ? (
-        <HistoryView 
-          onClose={() => setActiveView('generate')} 
+        <HistoryView
+          onClose={() => setActiveView('generate')}
           isAuthenticated={isAuthenticated}
           onRequireLogin={() => setShowLoginPopup(true)}
           recentImages={recentImages}
@@ -429,9 +429,7 @@ export default function ImageGeneratorClient() {
                   >
                     <History className="w-4 h-4 text-[#6B7280]" /> History
                   </button>
-                  <button className="flex items-center gap-2 bg-white border border-[#E5E7EB] px-4 py-2.5 rounded-xl text-sm font-semibold text-[#111827] hover:bg-gray-50 transition-all shadow-sm">
-                    <LayoutGrid className="w-4 h-4 text-[#6B7280]" /> My Creations
-                  </button>
+
                 </>
               )}
             </div>

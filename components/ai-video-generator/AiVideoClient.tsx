@@ -4,45 +4,156 @@ import React, { useState } from 'react';
 import { 
   Lightbulb, Clipboard, Sparkles, Info, Video, History, LayoutGrid,
   Image as ImageIcon, UserCircle2, Box, Clapperboard, CheckCircle2,
-  Rocket, GraduationCap, Megaphone, Heart, Play, Edit2
+  Rocket, GraduationCap, Megaphone, Heart, Play, Edit2, Clock, Type, Wand2
 } from 'lucide-react';
 import AiVideoProgress from './AiVideoProgress';
 import AiVideoResult from './AiVideoResult';
 import AiVideoHistory from './AiVideoHistory';
+import { useAuth } from '@/contexts/AuthContext';
+import LoginPopup from '@/components/auth/LoginPopup';
+import { getEndpoint } from '@/lib/api';
+import { Crown } from 'lucide-react';
 
 export default function AiVideoClient() {
+  const { isAuthenticated, user } = useAuth();
+  const isPro = ['pro', 'premium'].includes((user?.plan || '').toLowerCase());
   const [prompt, setPrompt] = useState('');
-  const [videoType, setVideoType] = useState('Explainer Video');
-  const [style, setStyle] = useState('Realistic');
-  const [duration, setDuration] = useState('30 Sec');
-  const [aspectRatio, setAspectRatio] = useState('16:9');
-  const [language, setLanguage] = useState('English (US)');
 
   const [isProcessing, setIsProcessing] = useState(false);
   const [hasResult, setHasResult] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [videoResult, setVideoResult] = useState<any>(null);
+  const [videoHistory, setVideoHistory] = useState<any[]>([]);
 
-  const handleGenerate = () => {
+  const [freeGenCount, setFreeGenCount] = useState(0);
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
+  const [showPremiumPopup, setShowPremiumPopup] = useState(false);
+
+  React.useEffect(() => {
+    if (!isAuthenticated) {
+      const count = parseInt(localStorage.getItem('freeVideoCount') || '0', 10);
+      setFreeGenCount(count);
+      const saved = localStorage.getItem('guestVideoHistory');
+      if (saved) {
+        try { setVideoHistory(JSON.parse(saved)); } catch {}
+      }
+    } else {
+      fetch(getEndpoint('/api/user/usage'), {
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success && data.data?.history) {
+              const videoItems = data.data.history
+              .filter((item: any) => item.toolSlug === '/tools/ai-video-generator')
+              .map((item: any) => {
+                let parsedResult = item.result;
+                if (typeof item.result === 'string') {
+                  try { parsedResult = JSON.parse(item.result); } catch (e) {}
+                }
+                return {
+                  id: item._id || Date.now() + Math.random(),
+                  prompt: item.prompt,
+                  videoType: item.videoType || 'Explainer Video',
+                  date: new Date(item.createdAt).toLocaleDateString(),
+                  createdAt: item.createdAt,
+                  result: parsedResult
+                };
+              });
+            setVideoHistory(videoItems);
+          }
+        })
+        .catch(console.error);
+    }
+  }, [isAuthenticated]);
+
+  const handleGenerate = async () => {
+    if (!prompt.trim()) return;
+
+    if (!isAuthenticated && freeGenCount >= 1) {
+      setShowLoginPopup(true);
+      return;
+    }
+
+    const creditsNeeded = 10;
+    if (isAuthenticated && !isPro && ((user as any)?.credits || 0) < creditsNeeded) {
+      setShowPremiumPopup(true);
+      return;
+    }
+
     setIsProcessing(true);
     setProgress(0);
+    setHasResult(false);
     
     // Simulate generation progress
     const interval = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
+        if (prev >= 90) return 90;
         return prev + Math.floor(Math.random() * 10) + 5;
       });
     }, 400);
 
-    setTimeout(() => {
+    try {
+      const res = await fetch(getEndpoint('/api/tools/generate-video'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ prompt })
+      });
+
+      const data = await res.json();
+      clearInterval(interval);
+      setProgress(100);
+
+      if (res.status === 401) {
+        setShowLoginPopup(true);
+        setIsProcessing(false);
+        return;
+      }
+      if (res.status === 403) {
+        setShowPremiumPopup(true);
+        setIsProcessing(false);
+        return;
+      }
+
+      if (data.success) {
+        setVideoResult(data.data);
+        setHasResult(true);
+
+        const historyItem = {
+          id: Date.now(),
+          prompt: prompt.substring(0, 80),
+          videoType: 'Pixabay Video',
+          date: new Date().toLocaleDateString(),
+          createdAt: new Date().toISOString(),
+          result: data.data,
+        };
+
+        if (!isAuthenticated) {
+          const newCount = freeGenCount + 1;
+          setFreeGenCount(newCount);
+          localStorage.setItem('freeVideoCount', newCount.toString());
+
+          setVideoHistory(prev => {
+            const newHistory = [historyItem, ...prev].slice(0, 20);
+            localStorage.setItem('guestVideoHistory', JSON.stringify(newHistory));
+            return newHistory;
+          });
+        } else {
+          setVideoHistory(prev => [historyItem, ...prev].slice(0, 50));
+        }
+      } else {
+        alert('Generation failed: ' + data.message);
+      }
+    } catch (error) {
+      console.error("Generation error:", error);
+      alert('An error occurred during generation');
+    } finally {
       clearInterval(interval);
       setIsProcessing(false);
-      setHasResult(true);
-    }, 4000);
+    }
   };
 
   const handleCancel = () => {
@@ -105,118 +216,6 @@ export default function AiVideoClient() {
           </div>
         </div>
 
-        {/* 2. Video Type */}
-        <div>
-          <label className="block text-sm font-bold text-[#111827] mb-2">2. Choose Video Type</label>
-          <div className="relative">
-            <Video className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6D5EF8]" />
-            <select 
-              value={videoType}
-              onChange={(e) => setVideoType(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-white border border-[#E5E7EB] rounded-xl text-sm font-semibold text-[#4B5563] appearance-none focus:outline-none focus:border-[#6D5EF8] focus:ring-1 focus:ring-[#6D5EF8]"
-            >
-              <option>Explainer Video</option>
-              <option>Marketing Promo</option>
-              <option>Social Media Ad</option>
-              <option>Tutorial</option>
-            </select>
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        {/* 3. Style */}
-        <div>
-          <label className="block text-sm font-bold text-[#111827] mb-2">3. Choose Style</label>
-          <div className="grid grid-cols-4 gap-2">
-            {[
-              { id: 'Realistic', icon: ImageIcon, bg: 'bg-blue-50', color: 'text-blue-500' },
-              { id: 'Animation', icon: UserCircle2, bg: 'bg-orange-50', color: 'text-orange-500' },
-              { id: '3D Render', icon: Box, bg: 'bg-green-50', color: 'text-green-500' },
-              { id: 'Cinematic', icon: Clapperboard, bg: 'bg-gray-100', color: 'text-gray-700' }
-            ].map((s) => (
-              <button 
-                key={s.id}
-                onClick={() => setStyle(s.id)}
-                className={`relative flex flex-col items-center justify-center p-2 rounded-xl border-2 transition-all ${style === s.id ? 'border-[#6D5EF8] bg-white ring-2 ring-[#6D5EF8]/20' : 'border-[#E5E7EB] bg-white hover:border-gray-300'}`}
-              >
-                {style === s.id && (
-                  <div className="absolute -top-2 -right-2 bg-[#6D5EF8] rounded-full border-2 border-white">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-white" />
-                  </div>
-                )}
-                <div className={`w-10 h-10 ${s.bg} rounded-lg flex items-center justify-center mb-1.5`}>
-                  <s.icon className={`w-5 h-5 ${s.color}`} />
-                </div>
-                <span className={`text-[10px] font-semibold text-center ${style === s.id ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>{s.id}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* 4. Duration */}
-        <div>
-          <label className="block text-sm font-bold text-[#111827] mb-2">4. Duration</label>
-          <div className="flex gap-2">
-            {['15 Sec', '30 Sec', '60 Sec', '90 Sec'].map((d) => (
-              <button 
-                key={d}
-                onClick={() => setDuration(d)}
-                className={`flex-1 py-2 rounded-xl text-xs font-semibold border-2 transition-all ${duration === d ? 'border-[#6D5EF8] text-[#6D5EF8] bg-white' : 'border-[#E5E7EB] text-[#4B5563] bg-white hover:border-gray-300'}`}
-              >
-                {d}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* 5. Aspect Ratio */}
-        <div>
-          <label className="block text-sm font-bold text-[#111827] mb-2">5. Aspect Ratio</label>
-          <div className="flex gap-2">
-            {[
-              { id: '16:9', label: 'Landscape' },
-              { id: '9:16', label: 'Portrait' },
-              { id: '1:1', label: 'Square' }
-            ].map((ratio) => (
-              <button 
-                key={ratio.id}
-                onClick={() => setAspectRatio(ratio.id)}
-                className={`flex-1 flex flex-col items-center justify-center py-2 rounded-xl border-2 transition-all ${aspectRatio === ratio.id ? 'border-[#6D5EF8] bg-blue-50/50' : 'border-[#E5E7EB] bg-white hover:border-gray-300'}`}
-              >
-                <span className={`text-xs font-bold ${aspectRatio === ratio.id ? 'text-[#6D5EF8]' : 'text-[#111827]'}`}>{ratio.id}</span>
-                <span className={`text-[10px] ${aspectRatio === ratio.id ? 'text-[#6D5EF8]' : 'text-[#6B7280]'}`}>{ratio.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* 6. Language */}
-        <div>
-          <label className="block text-sm font-bold text-[#111827] mb-2">6. Language</label>
-          <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🌐</span>
-            <select 
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-              className="w-full pl-9 pr-4 py-2.5 bg-white border border-[#E5E7EB] rounded-xl text-sm font-semibold text-[#4B5563] appearance-none focus:outline-none focus:border-[#6D5EF8] focus:ring-1 focus:ring-[#6D5EF8]"
-            >
-              <option>English (US)</option>
-              <option>English (UK)</option>
-              <option>Spanish</option>
-              <option>French</option>
-            </select>
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
-        </div>
-
         <div className="pt-2">
           <button 
             disabled={isProcessing}
@@ -225,15 +224,82 @@ export default function AiVideoClient() {
           >
             <Sparkles className="w-5 h-5" /> {hasResult ? 'Regenerate Video' : 'Generate Video'}
           </button>
-          <div className="flex items-center justify-center mt-3 text-xs text-[#9CA3AF]">
-            This will cost 2 credits <Info className="w-3.5 h-3.5 ml-1 cursor-pointer hover:text-[#6B7280]" />
+            <div className="flex items-center justify-center mt-3 text-xs text-[#9CA3AF]">
+              This will cost 10 credits <Info className="w-3.5 h-3.5 ml-1 cursor-pointer hover:text-[#6B7280]" />
+            </div>
+        </div>
+
+        {/* Interlinks */}
+        <div className="mt-4 pt-4 border-t border-[#E5E7EB]">
+          <h3 className="text-xs font-bold text-[#111827] mb-3">Explore Other AI Tools</h3>
+          <div className="flex flex-col gap-2">
+            <a href="/tools/ai-writer" className="flex items-center gap-3 p-2.5 bg-[#F9FAFB] hover:bg-[#EEF2FF] rounded-xl transition-colors group">
+              <div className="w-8 h-8 shrink-0 rounded-lg bg-white border border-[#E5E7EB] flex items-center justify-center group-hover:border-[#6D5EF8]/30 group-hover:shadow-sm transition-all">
+                <Type className="w-4 h-4 text-[#6D5EF8]" />
+              </div>
+              <div>
+                <p className="text-[11px] font-bold text-[#111827] group-hover:text-[#6D5EF8] transition-colors">AI Writer</p>
+                <p className="text-[9px] text-[#6B7280]">Write blogs & articles</p>
+              </div>
+            </a>
+            <a href="/tools/ai-code-generator" className="flex items-center gap-3 p-2.5 bg-[#F9FAFB] hover:bg-[#EEF2FF] rounded-xl transition-colors group">
+              <div className="w-8 h-8 shrink-0 rounded-lg bg-white border border-[#E5E7EB] flex items-center justify-center group-hover:border-[#6D5EF8]/30 group-hover:shadow-sm transition-all">
+                <LayoutGrid className="w-4 h-4 text-[#6D5EF8]" />
+              </div>
+              <div>
+                <p className="text-[11px] font-bold text-[#111827] group-hover:text-[#6D5EF8] transition-colors">AI Code Generator</p>
+                <p className="text-[9px] text-[#6B7280]">Generate React components</p>
+              </div>
+            </a>
+            <a href="/tools/ai-image-generator" className="flex items-center gap-3 p-2.5 bg-[#F9FAFB] hover:bg-[#EEF2FF] rounded-xl transition-colors group">
+              <div className="w-8 h-8 shrink-0 rounded-lg bg-white border border-[#E5E7EB] flex items-center justify-center group-hover:border-[#6D5EF8]/30 group-hover:shadow-sm transition-all">
+                <Wand2 className="w-4 h-4 text-[#6D5EF8]" />
+              </div>
+              <div>
+                <p className="text-[11px] font-bold text-[#111827] group-hover:text-[#6D5EF8] transition-colors">AI Image Generator</p>
+                <p className="text-[9px] text-[#6B7280]">Generate stunning images</p>
+              </div>
+            </a>
+            <a href="/tools/background-remover" className="flex items-center gap-3 p-2.5 bg-[#F9FAFB] hover:bg-[#EEF2FF] rounded-xl transition-colors group">
+              <div className="w-8 h-8 shrink-0 rounded-lg bg-white border border-[#E5E7EB] flex items-center justify-center group-hover:border-[#6D5EF8]/30 group-hover:shadow-sm transition-all">
+                <ImageIcon className="w-4 h-4 text-[#6D5EF8]" />
+              </div>
+              <div>
+                <p className="text-[11px] font-bold text-[#111827] group-hover:text-[#6D5EF8] transition-colors">Background Remover</p>
+                <p className="text-[9px] text-[#6B7280]">Remove image backgrounds</p>
+              </div>
+            </a>
           </div>
         </div>
       </aside>
 
       {/* Right Main Area */}
       {showHistory ? (
-        <AiVideoHistory onClose={() => setShowHistory(false)} />
+        <AiVideoHistory 
+          onClose={() => setShowHistory(false)} 
+          isAuthenticated={isAuthenticated}
+          onRequireLogin={() => setShowLoginPopup(true)}
+          history={videoHistory}
+          onDelete={async (ids) => {
+            if (isAuthenticated) {
+              try {
+                await fetch(getEndpoint('/api/user/usage'), {
+                  method: 'DELETE',
+                  headers: { 'Content-Type': 'application/json' },
+                  credentials: 'include',
+                  body: JSON.stringify({ ids })
+                });
+              } catch (error) {
+                console.error("Failed to delete history:", error);
+              }
+            }
+            setVideoHistory(prev => {
+              const newHistory = prev.filter(vid => !ids.includes(vid.id));
+              if (!isAuthenticated) localStorage.setItem('guestVideoHistory', JSON.stringify(newHistory));
+              return newHistory;
+            });
+          }}
+        />
       ) : (
       <main className="flex-grow flex flex-col min-w-0">
         
@@ -260,12 +326,7 @@ export default function AiVideoClient() {
               >
                 <History className="w-4 h-4 text-[#6B7280]" /> History
               </button>
-              <button 
-                onClick={() => setShowHistory(true)}
-                className="flex items-center gap-2 bg-white border border-[#E5E7EB] px-4 py-2.5 rounded-xl text-sm font-semibold text-[#111827] hover:bg-gray-50 transition-all shadow-sm"
-              >
-                <LayoutGrid className="w-4 h-4 text-[#6B7280]" /> My Creations
-              </button>
+
             </div>
           </div>
         )}
@@ -273,7 +334,17 @@ export default function AiVideoClient() {
         {isProcessing ? (
           <AiVideoProgress progress={progress} onCancel={handleCancel} />
         ) : hasResult ? (
-          <AiVideoResult />
+          <AiVideoResult 
+            isAuthenticated={isAuthenticated}
+            isPro={isPro}
+            onRequireLogin={() => setShowLoginPopup(true)}
+            resultData={videoResult}
+            onShowHistory={() => setShowHistory(true)}
+            onCreateNew={() => {
+              setHasResult(false);
+              setPrompt('');
+            }}
+          />
         ) : (
           <div className="bg-white rounded-3xl border border-[#E5E7EB] p-8 lg:p-12 shadow-sm flex flex-col items-center justify-center text-center relative h-full min-h-[600px]">
             {/* Empty State */}
@@ -378,6 +449,38 @@ export default function AiVideoClient() {
           </div>
         )}
       </main>
+      )}
+
+      {showLoginPopup && <LoginPopup isOpen={true} onClose={() => setShowLoginPopup(false)} />}
+      
+      {showPremiumPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in p-4">
+          <div className="bg-white rounded-2xl w-full max-w-md p-6 sm:p-8 text-center shadow-2xl">
+            <div className="w-16 h-16 bg-[#F5F3FF] rounded-full flex items-center justify-center mx-auto mb-4">
+              <Crown className="w-8 h-8 text-[#F59E0B] fill-[#F59E0B]" />
+            </div>
+            <h3 className="text-2xl font-bold text-[#111827] mb-2">
+              Out of Credits
+            </h3>
+            <p className="text-[#6B7280] mb-6">
+              You have run out of credits to use this tool. Please upgrade your plan to get more credits.
+            </p>
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => window.location.href = '/pricing'}
+                className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-3 rounded-xl transition-all shadow-md shadow-[#6D5EF8]/20"
+              >
+                View Plans
+              </button>
+              <button
+                onClick={() => setShowPremiumPopup(false)}
+                className="w-full bg-white border border-[#E5E7EB] hover:bg-gray-50 text-[#111827] font-bold py-3 rounded-xl transition-all"
+              >
+                Maybe Later
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
