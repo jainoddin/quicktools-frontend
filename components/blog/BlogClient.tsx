@@ -13,6 +13,7 @@ import NewsletterForm from '../shared/NewsletterForm';
 import NewsletterSectionWrapper from '../shared/NewsletterSectionWrapper';
 import { useRouter } from 'next/navigation';
 import { getEndpoint } from '../../lib/api';
+import { useAuth } from '../../contexts/AuthContext';
 
 interface Blog {
   _id: string;
@@ -41,6 +42,7 @@ const CATEGORY_ICONS: Record<string, React.ReactNode> = {
 
 export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[] }) {
   const router = useRouter();
+  const { user, isAuthenticated } = useAuth();
   const [activeCategory, setActiveCategory] = useState('All Blogs');
   const [activeTab, setActiveTab] = useState('All');
   const [sortBy, setSortBy] = useState('Newest First');
@@ -49,6 +51,44 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
   const [isMobileCategoriesOpen, setIsMobileCategoriesOpen] = useState(false);
   const [blogs, setBlogs] = useState<Blog[]>(initialBlogs);
   const [loading, setLoading] = useState(initialBlogs.length === 0);
+  const [savedBlogs, setSavedBlogs] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (user?.savedBlogs) {
+      setSavedBlogs(user.savedBlogs);
+    }
+  }, [user?.savedBlogs]);
+
+  const handleToggleSave = async (e: React.MouseEvent, blogId: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!isAuthenticated) {
+      alert('Please log in to save blogs.');
+      router.push('/login');
+      return;
+    }
+
+    const isSaved = savedBlogs.includes(blogId);
+    
+    if (isSaved) {
+      setSavedBlogs(prev => prev.filter(id => id !== blogId));
+    } else {
+      setSavedBlogs(prev => [...prev, blogId]);
+    }
+
+    try {
+      const res = await fetch(getEndpoint(`/api/user/saved-blogs/${blogId}`), { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
+      });
+      const data = await res.json();
+      if (!data.success) setSavedBlogs(user?.savedBlogs || []);
+    } catch (err) {
+      setSavedBlogs(user?.savedBlogs || []);
+    }
+  };
 
   useEffect(() => {
     fetch(getEndpoint('/api/blogs'))
@@ -132,13 +172,15 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
     } else if (activeTab === 'Trending') {
        // sort by shortest title as a mock for trending
        result.sort((a, b) => a.title.length - b.title.length);
+    } else if (activeTab === 'Favorites') {
+       result = result.filter(b => savedBlogs.includes(b._id));
     }
 
     return result;
-  }, [blogs, searchQuery, activeCategory, activeTab, sortBy]);
+  }, [blogs, searchQuery, activeCategory, activeTab, sortBy, savedBlogs]);
 
-  // 4. Featured Post (first in filtered or original list)
-  const featuredPost = filteredBlogs.length > 0 ? filteredBlogs[0] : blogs[0];
+  // 4. Featured Post (always the first post from the total blogs)
+  const featuredPost = blogs.length > 0 ? blogs[0] : undefined;
   
   // Exclude featured from the list shown below it if possible
   const listBlogs = filteredBlogs.filter(b => featuredPost ? b._id !== featuredPost._id : true);
@@ -288,6 +330,12 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
                       <StarIcon className="w-3 h-3 fill-current" /> Featured
                     </span>
                     <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">{featuredPost.category}</span>
+                    <button 
+                      onClick={(e) => handleToggleSave(e, featuredPost._id)}
+                      className={`transition-colors p-1.5 rounded-full ${savedBlogs.includes(featuredPost._id) ? 'bg-[#F5F3FF] text-[#6D5EF8]' : 'bg-gray-100 text-gray-400 hover:text-[#6D5EF8]'}`}
+                    >
+                      <Bookmark className={`w-4 h-4 ${savedBlogs.includes(featuredPost._id) ? 'fill-current' : ''}`} />
+                    </button>
                   </div>
                   <h2 className="text-2xl lg:text-3xl font-bold text-[#111827] mb-4 leading-tight group-hover:text-[#6D5EF8] transition-colors line-clamp-3">
                     {featuredPost.title}
@@ -320,7 +368,7 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
             {/* Filters Row */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#E5E7EB] gap-4 mb-6">
               <div className="flex items-center gap-6 overflow-x-auto w-full sm:w-auto pt-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                {['All', 'Latest', 'Popular', 'Trending'].map(tab => (
+                {['All', 'Latest', 'Popular', 'Trending', 'Favorites'].map(tab => (
                   <button 
                     key={tab}
                     onClick={() => setActiveTab(tab)}
@@ -388,8 +436,11 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
                     <div className="flex-grow flex flex-col py-1">
                       <div className="flex justify-between items-start mb-2">
                         <span className="text-[11px] font-bold text-[#6D5EF8] uppercase tracking-wider">{post.category}</span>
-                        <button className="text-gray-400 hover:text-[#6D5EF8] transition-colors p-1">
-                          <Bookmark className="w-4 h-4" />
+                        <button 
+                          onClick={(e) => handleToggleSave(e, post._id)}
+                          className={`transition-colors p-1 ${savedBlogs.includes(post._id) ? 'text-[#6D5EF8]' : 'text-gray-400 hover:text-[#6D5EF8]'}`}
+                        >
+                          <Bookmark className={`w-4 h-4 ${savedBlogs.includes(post._id) ? 'fill-current' : ''}`} />
                         </button>
                       </div>
                       
@@ -442,6 +493,12 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
                     </h4>
                     <p className="text-[11px] text-[#6B7280]">{post.readTime}</p>
                   </div>
+                  <button 
+                    onClick={(e) => handleToggleSave(e, post._id)}
+                    className={`transition-colors p-1 ${savedBlogs.includes(post._id) ? 'text-[#6D5EF8]' : 'text-gray-400 hover:text-[#6D5EF8]'}`}
+                  >
+                    <Bookmark className={`w-4 h-4 ${savedBlogs.includes(post._id) ? 'fill-current' : ''}`} />
+                  </button>
                 </Link>
               ))}
             </div>

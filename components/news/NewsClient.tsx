@@ -1,28 +1,74 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Search, ChevronLeft, ChevronRight, ArrowRight, Home, ChevronDown } from 'lucide-react';
 import NewsletterForm from '../shared/NewsletterForm';
 import NewsletterSectionWrapper from '../shared/NewsletterSectionWrapper';
+import { useAuth } from '../../contexts/AuthContext';
+import { getEndpoint } from '../../lib/api';
+import { useRouter } from 'next/navigation';
+import { Bookmark } from 'lucide-react';
 
-const CATEGORIES = ['All News', 'Product Launches', 'Research', 'Funding', 'Partnerships', 'Industry'];
+const CATEGORIES = ['All News', 'Product Launches', 'Research', 'Funding', 'Partnerships', 'Industry', 'Favorites'];
 const SORT_OPTIONS = ['Latest', 'Popular'];
 
 export default function NewsClient({ initialNews }: { initialNews: any[] }) {
+  const router = useRouter();
+  const { user, isAuthenticated } = useAuth();
   const [activeCategory, setActiveCategory] = useState('All News');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOrder, setSortOrder] = useState('Latest');
   const [showSort, setShowSort] = useState(false);
   const [visibleCount, setVisibleCount] = useState(4); // Start with 4 items
+  const [savedNews, setSavedNews] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (user?.savedNews) {
+      setSavedNews(user.savedNews);
+    }
+  }, [user?.savedNews]);
+
+  const handleToggleSave = async (e: React.MouseEvent, newsId: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!isAuthenticated) {
+      alert('Please log in to save news.');
+      router.push('/login');
+      return;
+    }
+
+    const isSaved = savedNews.includes(newsId);
+    
+    if (isSaved) {
+      setSavedNews(prev => prev.filter(id => id !== newsId));
+    } else {
+      setSavedNews(prev => [...prev, newsId]);
+    }
+
+    try {
+      const res = await fetch(getEndpoint(`/api/user/saved-news/${newsId}`), { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
+      });
+      const data = await res.json();
+      if (!data.success) setSavedNews(user?.savedNews || []);
+    } catch (err) {
+      setSavedNews(user?.savedNews || []);
+    }
+  };
 
   // Filter and sort logic
   const filteredNews = useMemo(() => {
     let result = [...initialNews];
 
     // Category filter
-    if (activeCategory !== 'All News') {
+    if (activeCategory === 'Favorites') {
+      result = result.filter(n => savedNews.includes(n._id));
+    } else if (activeCategory !== 'All News') {
       result = result.filter(n => n.category === activeCategory);
     }
 
@@ -44,7 +90,7 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
     }
 
     return result;
-  }, [initialNews, activeCategory, searchQuery, sortOrder]);
+  }, [initialNews, activeCategory, searchQuery, sortOrder, savedNews]);
 
   const breakingNews = initialNews.find(n => n.isBreaking) || initialNews[0];
   const regularNews = filteredNews.filter(n => n._id !== breakingNews?._id);
@@ -134,7 +180,7 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
                 <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse"></span>
                 Breaking News
               </span>
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
                 <button className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#4F46E5] hover:border-[#4F46E5] transition-colors"><ChevronLeft className="w-4 h-4" /></button>
                 <button className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#4F46E5] hover:border-[#4F46E5] transition-colors"><ChevronRight className="w-4 h-4" /></button>
               </div>
@@ -143,6 +189,12 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
             <div className="bg-white rounded-3xl p-6 border border-[#E5E7EB] shadow-sm flex flex-col md:flex-row gap-8 items-center hover:border-[#4F46E5]/20 transition-colors group">
               <div className="w-full md:w-1/3 aspect-[4/3] relative rounded-2xl overflow-hidden shrink-0 bg-gray-100">
                 <Image src={breakingNews.heroImage} fill alt={breakingNews.title} className="object-cover group-hover:scale-105 transition-transform duration-500" unoptimized />
+                <button 
+                  onClick={(e) => handleToggleSave(e, breakingNews._id)}
+                  className={`absolute top-3 right-3 z-20 w-8 h-8 backdrop-blur-md rounded-full flex items-center justify-center transition-colors shadow-sm pointer-events-auto ${savedNews.includes(breakingNews._id) ? 'bg-white text-[#4F46E5]' : 'bg-black/30 text-white hover:bg-black/50'}`}
+                >
+                  <Bookmark className={`w-4 h-4 ${savedNews.includes(breakingNews._id) ? 'fill-current' : ''}`} />
+                </button>
               </div>
               <div className="flex-1">
                 <h2 className="text-2xl md:text-3xl font-bold text-[#111827] mb-4 leading-tight group-hover:text-[#4F46E5] transition-colors">
@@ -230,6 +282,12 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
                       <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-md text-[10px] font-bold text-[#4F46E5] uppercase tracking-wide">
                         {news.category}
                       </div>
+                      <button 
+                        onClick={(e) => handleToggleSave(e, news._id)}
+                        className={`absolute top-4 right-4 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors shadow-sm ${savedNews.includes(news._id) ? 'text-[#4F46E5]' : 'text-gray-400 hover:text-[#4F46E5]'}`}
+                      >
+                        <Bookmark className={`w-4 h-4 ${savedNews.includes(news._id) ? 'fill-current' : ''}`} />
+                      </button>
                     </div>
                     <div className="p-6 flex flex-col flex-1">
                       <div className="flex items-center justify-between mb-3 text-xs font-bold text-gray-400">
@@ -325,6 +383,12 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
                         {news.readTime}
                       </p>
                     </div>
+                    <button 
+                      onClick={(e) => handleToggleSave(e, news._id)}
+                      className={`transition-colors p-1 ${savedNews.includes(news._id) ? 'text-[#4F46E5]' : 'text-gray-400 hover:text-[#4F46E5]'}`}
+                    >
+                      <Bookmark className={`w-4 h-4 ${savedNews.includes(news._id) ? 'fill-current' : ''}`} />
+                    </button>
                   </Link>
                 ))}
               </div>

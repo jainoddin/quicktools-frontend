@@ -6,11 +6,16 @@ import Link from 'next/link';
 import { Search, Flame, Bookmark, ArrowRight, Eye, ChevronDown, Clock, ChevronRight, Home } from 'lucide-react';
 import NewsletterForm from '../shared/NewsletterForm';
 import NewsletterSectionWrapper from '../shared/NewsletterSectionWrapper';
+import { useAuth } from '../../contexts/AuthContext';
+import { getEndpoint } from '../../lib/api';
+import { useRouter } from 'next/navigation';
 
 const CATEGORIES = ['All Articles', 'AI & Tools', 'Productivity', 'Marketing', 'Business', 'Development', 'Design'];
-const TABS = ['All', 'Latest', 'Popular', 'Trending'];
+const TABS = ['All', 'Latest', 'Popular', 'Trending', 'Favorites'];
 
 export default function ArticlesClient({ initialArticles = [] }: { initialArticles?: any[] }) {
+  const router = useRouter();
+  const { user, isAuthenticated } = useAuth();
   const [articles, setArticles] = useState<any[]>(initialArticles);
   const [filtered, setFiltered] = useState<any[]>(initialArticles);
   const [loading, setLoading] = useState(false);
@@ -19,6 +24,44 @@ export default function ArticlesClient({ initialArticles = [] }: { initialArticl
   const [sortOrder, setSortOrder] = useState('Newest First');
   const [search, setSearch] = useState('');
   const [showSort, setShowSort] = useState(false);
+  const [savedArticles, setSavedArticles] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (user?.savedArticles) {
+      setSavedArticles(user.savedArticles);
+    }
+  }, [user?.savedArticles]);
+
+  const handleToggleSave = async (e: React.MouseEvent, articleId: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!isAuthenticated) {
+      alert('Please log in to save articles.');
+      router.push('/login');
+      return;
+    }
+
+    const isSaved = savedArticles.includes(articleId);
+    
+    if (isSaved) {
+      setSavedArticles(prev => prev.filter(id => id !== articleId));
+    } else {
+      setSavedArticles(prev => [...prev, articleId]);
+    }
+
+    try {
+      const res = await fetch(getEndpoint(`/api/user/saved-articles/${articleId}`), { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
+      });
+      const data = await res.json();
+      if (!data.success) setSavedArticles(user?.savedArticles || []);
+    } catch (err) {
+      setSavedArticles(user?.savedArticles || []);
+    }
+  };
 
   // Apply filters whenever state changes
   const applyFilters = useCallback(() => {
@@ -50,6 +93,8 @@ export default function ArticlesClient({ initialArticles = [] }: { initialArticl
       });
     } else if (activeTab === 'Trending') {
       result = result.slice(0, 6); // top 6 by default as trending
+    } else if (activeTab === 'Favorites') {
+      result = result.filter(a => savedArticles.includes(a._id));
     }
 
     // Sort order
@@ -60,18 +105,18 @@ export default function ArticlesClient({ initialArticles = [] }: { initialArticl
     }
 
     setFiltered(result);
-  }, [articles, activeCategory, search, activeTab, sortOrder]);
+  }, [articles, activeCategory, search, activeTab, sortOrder, savedArticles]);
 
   useEffect(() => { applyFilters(); }, [applyFilters]);
 
-  const featuredArticle = filtered.length > 0 ? filtered[0] : null;
+  const featuredArticle = articles.length > 0 ? articles[0] : null;
   // Trending is always global top 4 by views
   const trendingArticles = [...articles].sort((a, b) => {
     const va = parseInt((a.views || '0').replace(/[^0-9]/g, ''));
     const vb = parseInt((b.views || '0').replace(/[^0-9]/g, ''));
     return vb - va;
   }).slice(0, 4);
-  const gridArticles = filtered.slice(1);
+  const gridArticles = filtered.filter(a => featuredArticle ? a._id !== featuredArticle._id : true);
 
   return (
     <div className="flex-grow bg-white text-[#111827] font-sans selection:bg-[#4F46E5] selection:text-white pb-20">
@@ -180,6 +225,14 @@ export default function ArticlesClient({ initialArticles = [] }: { initialArticl
                   <div className="hidden md:block absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
                   <div className="block md:hidden absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white via-white/80 to-transparent z-10" />
                   <Image src={featuredArticle.coverImage} alt={featuredArticle.title} fill className="object-cover" unoptimized />
+                  
+                  {/* Bookmark Button over Image */}
+                  <button 
+                    onClick={(e) => handleToggleSave(e, featuredArticle._id)}
+                    className={`absolute top-4 right-4 z-20 w-10 h-10 backdrop-blur-md rounded-full flex items-center justify-center transition-colors shadow-sm pointer-events-auto ${savedArticles.includes(featuredArticle._id) ? 'bg-white text-[#4F46E5]' : 'bg-black/30 text-white hover:bg-black/50'}`}
+                  >
+                    <Bookmark className={`w-5 h-5 ${savedArticles.includes(featuredArticle._id) ? 'fill-current' : ''}`} />
+                  </button>
                 </div>
               </Link>
             )}
@@ -195,10 +248,16 @@ export default function ArticlesClient({ initialArticles = [] }: { initialArticl
                     <Image src={item.coverImage} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-300" unoptimized />
                     <div className="absolute -left-1 top-1 bg-white border border-[#E5E7EB] w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-[#111827] z-10 shadow-sm">{idx + 1}</div>
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col flex-grow">
                     <h4 className="text-sm font-bold text-[#111827] line-clamp-2 group-hover:text-[#4F46E5] transition-colors leading-tight mb-1">{item.title}</h4>
                     <p className="text-xs text-[#6B7280]">{item.readTime}</p>
                   </div>
+                  <button 
+                    onClick={(e) => handleToggleSave(e, item._id)}
+                    className={`transition-colors p-1 ${savedArticles.includes(item._id) ? 'text-[#4F46E5]' : 'text-gray-400 hover:text-[#4F46E5]'}`}
+                  >
+                    <Bookmark className={`w-4 h-4 ${savedArticles.includes(item._id) ? 'fill-current' : ''}`} />
+                  </button>
                 </Link>
               ))}
               <button 
@@ -289,8 +348,11 @@ export default function ArticlesClient({ initialArticles = [] }: { initialArticl
                   <div className="absolute top-3 left-3 bg-[#4F46E5] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full">
                     {article.category}
                   </div>
-                  <button className="absolute top-3 right-3 w-8 h-8 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-black/50 transition-colors">
-                    <Bookmark className="w-4 h-4" />
+                  <button 
+                    onClick={(e) => handleToggleSave(e, article._id)}
+                    className={`absolute top-3 right-3 w-8 h-8 backdrop-blur-md rounded-full flex items-center justify-center transition-colors ${savedArticles.includes(article._id) ? 'bg-white text-[#4F46E5]' : 'bg-black/30 text-white hover:bg-black/50'}`}
+                  >
+                    <Bookmark className={`w-4 h-4 ${savedArticles.includes(article._id) ? 'fill-current' : ''}`} />
                   </button>
                   <div className="absolute bottom-3 left-3 text-white text-xs font-medium flex items-center gap-1.5 bg-black/40 backdrop-blur-sm px-2 py-1 rounded-md">
                     <Clock className="w-3 h-3" /> {article.readTime}

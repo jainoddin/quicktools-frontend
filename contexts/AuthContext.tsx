@@ -11,6 +11,9 @@ interface User {
   role?: string;
   plan?: string;
   savedTools?: string[];
+  savedBlogs?: string[];
+  savedArticles?: string[];
+  savedNews?: string[];
 }
 
 interface AuthContextType {
