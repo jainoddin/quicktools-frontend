@@ -204,9 +204,9 @@ export default function DashboardPage() {
                 <div className="bg-white border border-[#E5E7EB] rounded-3xl p-6 shadow-sm">
                   <div className="flex items-center justify-between mb-6">
                     <h2 className="font-bold text-lg text-[#111827]">Recent Tools</h2>
-                    <button className="text-xs font-semibold text-[#4B5563] bg-[#F3F4F6] px-3 py-1.5 rounded-lg hover:bg-[#E5E7EB] transition-colors">
+                    <Link href="/dashboard/history" className="text-xs font-semibold text-[#4B5563] bg-[#F3F4F6] px-3 py-1.5 rounded-lg hover:bg-[#E5E7EB] transition-colors inline-block">
                       View all
-                    </button>
+                    </Link>
                   </div>
 
                   <div className="space-y-4">
@@ -216,7 +216,7 @@ export default function DashboardPage() {
                       usageData.history.slice(0, 3).map((item: any, i: number) => {
                         const tool = popularTools.find(t => t.name === item.toolName) || popularTools[0];
                         return (
-                          <div key={item._id} className="flex items-center justify-between p-4 border border-[#E5E7EB] rounded-2xl hover:bg-[#F9FAFB] transition-colors cursor-pointer group">
+                          <Link href={tool.slug} key={item._id} className="flex items-center justify-between p-4 border border-[#E5E7EB] rounded-2xl hover:bg-[#F9FAFB] transition-colors cursor-pointer group block">
                             <div className="flex items-center gap-4">
                               <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${tool.color}`}>
                                 <tool.icon className="w-5 h-5" />
@@ -232,7 +232,7 @@ export default function DashboardPage() {
                               </span>
                               <ChevronRight className="w-4 h-4 text-[#9CA3AF] group-hover:text-[#111827] transition-colors" />
                             </div>
-                          </div>
+                          </Link>
                         );
                       })
                     ) : (
@@ -243,9 +243,9 @@ export default function DashboardPage() {
                   </div>
                   
                   <div className="mt-4 pt-4 border-t border-[#F3F4F6] text-center">
-                    <button className="text-sm font-semibold text-[#6D5EF8] flex items-center justify-center gap-2 w-full hover:bg-[#EEF2FF] py-2 rounded-xl transition-colors">
+                    <Link href="/dashboard/history" className="text-sm font-semibold text-[#6D5EF8] flex items-center justify-center gap-2 w-full hover:bg-[#EEF2FF] py-2 rounded-xl transition-colors">
                       <Clock className="w-4 h-4" /> View full history
-                    </button>
+                    </Link>
                   </div>
                 </div>
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Lightbulb, Clipboard, FileText, Smile, Globe, Sparkles, Info,
   ShoppingBag, MessageSquare, Mail, ChevronDown, Type,
@@ -12,6 +12,61 @@ import AiWriterProgress from './AiWriterProgress';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginPopup from '@/components/auth/LoginPopup';
 import { getEndpoint } from '@/lib/api';
+
+const CustomSelect = ({ options, value, onChange, icon: Icon }: any) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="relative w-full" ref={dropdownRef}>
+      <div 
+        onClick={() => setIsOpen(!isOpen)}
+        className={`w-full flex items-center bg-white border ${isOpen ? 'border-[#6D5EF8] ring-2 ring-[#6D5EF8]/20' : 'border-[#E5E7EB] hover:border-[#D1D5DB]'} text-sm font-semibold text-[#111827] rounded-xl pl-11 pr-10 py-3.5 shadow-sm transition-all cursor-pointer`}
+      >
+        <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
+          <Icon className="w-4 h-4 text-[#6D5EF8]" />
+        </div>
+        <span className="truncate">{value}</span>
+        <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+          <ChevronDown className={`w-4 h-4 text-[#6B7280] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        </div>
+      </div>
+      
+      {isOpen && (
+        <div className="absolute z-50 w-full mt-2 bg-white border border-[#E5E7EB] rounded-2xl shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="max-h-60 overflow-y-auto p-2 space-y-1">
+            {options.map((option: string) => (
+              <div
+                key={option}
+                onClick={() => {
+                  onChange(option);
+                  setIsOpen(false);
+                }}
+                className={`w-full text-left px-4 py-2.5 text-sm font-semibold rounded-xl cursor-pointer transition-colors ${
+                  value === option 
+                    ? 'bg-[#6D5EF8] text-white' 
+                    : 'text-[#4B5563] hover:bg-gray-50 hover:text-[#111827]'
+                }`}
+              >
+                {option}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default function AiWriterClient() {
   const { isAuthenticated, user } = useAuth();
@@ -256,22 +311,12 @@ export default function AiWriterClient() {
           <div>
             <h3 className="text-sm font-bold text-[#111827] mb-2">2. Choose Content Type</h3>
             <div className="relative">
-              <div className="flex items-center gap-2 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <FileText className="w-4 h-4 text-[#6D5EF8]" />
-              </div>
-              <select
+              <CustomSelect
+                options={['Blog Post', 'Email', 'Social Media Post', 'Product Description']}
                 value={contentType}
-                onChange={(e) => setContentType(e.target.value)}
-                className="w-full appearance-none bg-white border border-[#E5E7EB] text-sm font-semibold text-[#111827] rounded-xl pl-11 pr-10 py-3.5 shadow-sm outline-none focus:ring-2 focus:ring-[#6D5EF8] focus:border-[#6D5EF8] transition-all cursor-pointer"
-              >
-                <option>Blog Post</option>
-                <option>Email</option>
-                <option>Social Media Post</option>
-                <option>Product Description</option>
-              </select>
-              <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-                <ChevronDown className="w-4 h-4 text-[#6B7280]" />
-              </div>
+                onChange={setContentType}
+                icon={FileText}
+              />
             </div>
           </div>
 
@@ -279,22 +324,12 @@ export default function AiWriterClient() {
           <div>
             <h3 className="text-sm font-bold text-[#111827] mb-2">3. Tone of Voice</h3>
             <div className="relative">
-              <div className="flex items-center gap-2 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <Smile className="w-4 h-4 text-[#6B7280]" />
-              </div>
-              <select
+              <CustomSelect
+                options={['Friendly', 'Professional', 'Persuasive', 'Casual']}
                 value={tone}
-                onChange={(e) => setTone(e.target.value)}
-                className="w-full appearance-none bg-white border border-[#E5E7EB] text-sm font-semibold text-[#111827] rounded-xl pl-11 pr-10 py-3.5 shadow-sm outline-none focus:ring-2 focus:ring-[#6D5EF8] focus:border-[#6D5EF8] transition-all cursor-pointer"
-              >
-                <option>Friendly</option>
-                <option>Professional</option>
-                <option>Persuasive</option>
-                <option>Casual</option>
-              </select>
-              <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-                <ChevronDown className="w-4 h-4 text-[#6B7280]" />
-              </div>
+                onChange={setTone}
+                icon={Smile}
+              />
             </div>
           </div>
 
@@ -302,22 +337,12 @@ export default function AiWriterClient() {
           <div>
             <h3 className="text-sm font-bold text-[#111827] mb-2">4. Language</h3>
             <div className="relative">
-              <div className="flex items-center gap-2 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <Globe className="w-4 h-4 text-[#6B7280]" />
-              </div>
-              <select
+              <CustomSelect
+                options={['English', 'Spanish', 'French', 'German']}
                 value={language}
-                onChange={(e) => setLanguage(e.target.value)}
-                className="w-full appearance-none bg-white border border-[#E5E7EB] text-sm font-semibold text-[#111827] rounded-xl pl-11 pr-10 py-3.5 shadow-sm outline-none focus:ring-2 focus:ring-[#6D5EF8] focus:border-[#6D5EF8] transition-all cursor-pointer"
-              >
-                <option>English</option>
-                <option>Spanish</option>
-                <option>French</option>
-                <option>German</option>
-              </select>
-              <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-                <ChevronDown className="w-4 h-4 text-[#6B7280]" />
-              </div>
+                onChange={setLanguage}
+                icon={Globe}
+              />
             </div>
           </div>
 

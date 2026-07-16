@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Zap, ChevronDown, Image as ImageIcon, PenTool, Video, Code, LayoutGrid, LogOut, Menu, X, LayoutDashboard, Settings } from 'lucide-react';
+import { Zap, ChevronDown, Image as ImageIcon, PenTool, Video, Code, LayoutGrid, LogOut, Menu, X, LayoutDashboard, Settings, Home, Wrench, FolderOpen, Newspaper, Globe, CreditCard, Info, Mail } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -230,15 +230,15 @@ export default function Header() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden mobile-menu-animate bg-white border-t border-[#E5E7EB] shadow-lg">
+        <div className="lg:hidden mobile-menu-animate bg-white border-t border-[#E5E7EB] shadow-lg max-h-[calc(100dvh-64px)] overflow-y-auto">
           <div className="px-4 py-3 flex flex-col gap-1">
             <Link href="/" onClick={() => setMobileMenuOpen(false)}
-              className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${isActive('/') ? 'text-[#4F46E5] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
-              🏠 Home
+              className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActive('/') ? 'text-[#4F46E5] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
+              <Home className="w-4 h-4" /> Home
             </Link>
             <Link href="/tools" onClick={() => setMobileMenuOpen(false)}
-              className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${isActive('/tools') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
-              🛠️ All Tools
+              className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActive('/tools') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
+              <Wrench className="w-4 h-4" /> All Tools
             </Link>
 
             {/* Categories Accordion */}
@@ -247,7 +247,9 @@ export default function Header() {
                 onClick={() => setMobileCategoriesOpen(!mobileCategoriesOpen)}
                 className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium text-[#374151] hover:bg-[#F9FAFB] transition-colors"
               >
-                <span>📂 Categories</span>
+                <div className="flex items-center gap-3">
+                  <FolderOpen className="w-4 h-4" /> <span>Categories</span>
+                </div>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileCategoriesOpen ? 'rotate-180' : ''}`} />
               </button>
               {mobileCategoriesOpen && (
@@ -269,30 +271,30 @@ export default function Header() {
             </div>
 
             <Link href="/blog" onClick={() => setMobileMenuOpen(false)}
-              className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/blog') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
-              📝 Blog
+              className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/blog') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
+              <PenTool className="w-4 h-4" /> Blog
             </Link>
             <Link href="/articles" onClick={() => setMobileMenuOpen(false)}
-              className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/articles') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
-              📰 Articles
+              className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/articles') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
+              <Newspaper className="w-4 h-4" /> Articles
             </Link>
             <Link href="/news" onClick={() => setMobileMenuOpen(false)}
-              className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/news') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
-              🌍 News
+              className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/news') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
+              <Globe className="w-4 h-4" /> News
             </Link>
             <Link href="/pricing" onClick={() => setMobileMenuOpen(false)}
-              className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${isActive('/pricing') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
-              💰 Pricing
+              className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActive('/pricing') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
+              <CreditCard className="w-4 h-4" /> Pricing
             </Link>
             {!user && (
               <>
                 <Link href="/about" onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${isActive('/about') ? 'text-[#4F46E5] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
-                  ℹ️ About
+                  className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActive('/about') ? 'text-[#4F46E5] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
+                  <Info className="w-4 h-4" /> About
                 </Link>
                 <Link href="/contact" onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${isActive('/contact') ? 'text-[#4F46E5] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
-                  📬 Contact
+                  className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActive('/contact') ? 'text-[#4F46E5] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
+                  <Mail className="w-4 h-4" /> Contact
                 </Link>
               </>
             )}
@@ -301,21 +303,7 @@ export default function Header() {
             <div className="border-t border-[#F3F4F6] mt-2 pt-3">
               {user ? (
                 <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-3 px-4 py-2">
-                    <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#E5E7EB] shrink-0">
-                      {user.avatar ? (
-                        <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
-                      ) : (
-                        <div className="w-full h-full bg-[#6D5EF8] text-white flex items-center justify-center font-bold">
-                          {user.name.charAt(0).toUpperCase()}
-                        </div>
-                      )}
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-[#111827]">{user.name}</p>
-                      <p className="text-xs text-[#6B7280]">{user.email}</p>
-                    </div>
-                  </div>
+
                   <div className="flex flex-col gap-1 mt-1">
                     <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}
                       className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-[#374151] hover:bg-[#F9FAFB] transition-colors">

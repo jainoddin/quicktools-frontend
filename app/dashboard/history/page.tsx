@@ -2,19 +2,18 @@
 import React, { useEffect, useState } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import { Search, Filter } from 'lucide-react';
-import { IconMap } from '../../../components/tools/ToolsClient';
+import { IconMap, allTools } from '../../../components/tools/ToolsClient';
 import { getEndpoint } from '../../../lib/api';
+import { useRouter } from 'next/navigation';
 
 function DynamicIcon({ name }: { name: string }) {
-  // Try to find the tool by name in allTools, but we can't easily import it here if it's not exported.
-  // We'll just use a generic icon mapping based on common names for now, or just fallback.
-  // Actually, wait, IconMap expects keys like 'PenTool', 'ImageIcon', etc. 
-  // We can just use a generic LayoutGrid if not matched.
-  const Icon = IconMap['LayoutGrid'];
+  const tool = allTools.find(t => t.name === name);
+  const Icon = tool ? IconMap[tool.iconName] : IconMap['LayoutGrid'];
   return <Icon className="w-4 h-4" />;
 }
 
 export default function HistoryPage() {
+  const router = useRouter();
   const [historyData, setHistoryData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -77,7 +76,14 @@ export default function HistoryPage() {
               </tr>
             ) : (
               historyData.map((item: any, i) => (
-                <tr key={i} className="hover:bg-[#F9FAFB] transition-colors cursor-pointer">
+                <tr 
+                  key={i} 
+                  onClick={() => {
+                    const tool = allTools.find(t => t.name === item.toolName);
+                    if (tool) router.push(tool.slug);
+                  }}
+                  className="hover:bg-[#F9FAFB] transition-colors cursor-pointer"
+                >
                   <td className="py-4 px-6">
                     <div className="flex items-center gap-3">
                       <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-[#EEF2FF] text-[#6D5EF8]`}>
@@ -90,10 +96,10 @@ export default function HistoryPage() {
                     <span className="text-sm text-[#4B5563] truncate block max-w-[250px]">{item.prompt}</span>
                   </td>
                   <td className="py-4 px-6">
-                    <span className="text-sm text-[#6B7280]">{item.result || 'Generated content'}</span>
+                    <span className="text-sm text-[#6B7280] truncate block max-w-[250px]">{item.result || 'Generated content'}</span>
                   </td>
                   <td className="py-4 px-6">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 whitespace-nowrap">
                       <span className="text-sm text-[#4B5563]">
                         {new Date(item.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                       </span>

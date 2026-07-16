@@ -57,7 +57,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="flex flex-col bg-[#F8FAFC] text-[#111827] selection:bg-[#4F46E5] selection:text-white">
+      <body className="flex flex-col min-h-[100dvh] bg-[#F8FAFC] text-[#111827] selection:bg-[#4F46E5] selection:text-white">
         {/* Razorpay Checkout SDK */}
         <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
 
@@ -141,7 +141,7 @@ export default function RootLayout({
         <AuthProvider>
           <SplashScreen />
           <Header />
-          <main className="flex flex-col">
+          <main className="flex flex-col flex-grow">
             {children}
           </main>
           <Footer />

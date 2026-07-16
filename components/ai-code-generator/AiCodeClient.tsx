@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Lightbulb, Clipboard, Sparkles, Info, History, LayoutGrid,
-  Code2, Trash2, Edit2, Play, ChevronRight, CheckCircle2,
+  Code2, Trash2, Edit2, Play, ChevronRight, ChevronDown, CheckCircle2,
   Terminal, FileCode2, Database, Layout, Smartphone, Cloud, Crown
 } from 'lucide-react';
 import AiCodeResult from './AiCodeResult';
@@ -12,6 +12,63 @@ import AiCodeHistory from './AiCodeHistory';
 import { useAuth } from '@/contexts/AuthContext';
 import { getEndpoint } from '@/lib/api';
 import LoginPopup from '@/components/auth/LoginPopup';
+
+const CustomSelect = ({ options, value, onChange, icon }: any) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="relative w-full" ref={dropdownRef}>
+      <div 
+        onClick={() => setIsOpen(!isOpen)}
+        className={`w-full flex items-center bg-white border ${isOpen ? 'border-[#6D5EF8] ring-2 ring-[#6D5EF8]/20' : 'border-[#E5E7EB] hover:border-[#D1D5DB]'} text-sm font-semibold text-[#111827] rounded-xl ${icon ? 'pl-11' : 'pl-4'} pr-10 py-3.5 shadow-sm transition-all cursor-pointer`}
+      >
+        {icon && (
+          <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
+            {icon}
+          </div>
+        )}
+        <span className="truncate">{value}</span>
+        <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+          <ChevronDown className={`w-4 h-4 text-[#6B7280] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        </div>
+      </div>
+      
+      {isOpen && (
+        <div className="absolute z-50 w-full mt-2 bg-white border border-[#E5E7EB] rounded-2xl shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="max-h-60 overflow-y-auto p-2 space-y-1">
+            {options.map((option: string) => (
+              <div
+                key={option}
+                onClick={() => {
+                  onChange(option);
+                  setIsOpen(false);
+                }}
+                className={`w-full text-left px-4 py-2.5 text-sm font-semibold rounded-xl cursor-pointer transition-colors ${
+                  value === option 
+                    ? 'bg-[#6D5EF8] text-white' 
+                    : 'text-[#4B5563] hover:bg-gray-50 hover:text-[#111827]'
+                }`}
+              >
+                {option}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default function AiCodeClient() {
   const [prompt, setPrompt] = useState('');
@@ -296,22 +353,12 @@ export default function AiCodeClient() {
               2. Choose Language
             </label>
             <div className="relative">
-              <select
+              <CustomSelect
+                options={['HTML', 'JavaScript', 'Python', 'React']}
                 value={language}
-                onChange={(e) => setLanguage(e.target.value)}
-                className="w-full appearance-none bg-white border border-[#E5E7EB] rounded-xl px-4 py-3 text-sm text-[#111827] font-semibold focus:outline-none focus:ring-2 focus:ring-[#6D5EF8] cursor-pointer shadow-sm pl-11"
-              >
-                <option>HTML</option>
-                <option>JavaScript</option>
-                <option>Python</option>
-                <option>React</option>
-              </select>
-              <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-gray-500">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-              </div>
-              <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
-                <div className="w-5 h-5 bg-[#E44D26] rounded-sm flex items-center justify-center text-[10px] font-bold text-white leading-none">5</div>
-              </div>
+                onChange={setLanguage}
+                icon={<div className="w-5 h-5 bg-[#E44D26] rounded-sm flex items-center justify-center text-[10px] font-bold text-white leading-none">5</div>}
+              />
             </div>
           </div>
 
@@ -321,25 +368,12 @@ export default function AiCodeClient() {
               3. Framework / Library (Optional)
             </label>
             <div className="relative">
-              <select
+              <CustomSelect
+                options={['Tailwind CSS', 'Bootstrap', 'Next.js', 'None']}
                 value={framework}
-                onChange={(e) => setFramework(e.target.value)}
-                className="w-full appearance-none bg-white border border-[#E5E7EB] rounded-xl px-4 py-3 text-sm text-[#111827] font-semibold focus:outline-none focus:ring-2 focus:ring-[#6D5EF8] cursor-pointer shadow-sm pl-11"
-              >
-                <option>Tailwind CSS</option>
-                <option>Bootstrap</option>
-                <option>Next.js</option>
-                <option>None</option>
-              </select>
-              <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-gray-500">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-              </div>
-              <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
-                {/* Simulated Tailwind icon */}
-                <svg className="w-5 h-5 text-[#38B2AC]" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" />
-                </svg>
-              </div>
+                onChange={setFramework}
+                icon={<svg className="w-5 h-5 text-[#38B2AC]" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" /></svg>}
+              />
             </div>
           </div>
 
@@ -349,19 +383,11 @@ export default function AiCodeClient() {
               4. Code Type
             </label>
             <div className="relative">
-              <select
+              <CustomSelect
+                options={['Frontend (Web)', 'Backend API', 'Database Schema', 'Script / Utility']}
                 value={codeType}
-                onChange={(e) => setCodeType(e.target.value)}
-                className="w-full appearance-none bg-white border border-[#E5E7EB] rounded-xl px-4 py-3 text-sm text-[#111827] font-semibold focus:outline-none focus:ring-2 focus:ring-[#6D5EF8] cursor-pointer shadow-sm"
-              >
-                <option>Frontend (Web)</option>
-                <option>Backend API</option>
-                <option>Database Schema</option>
-                <option>Script / Utility</option>
-              </select>
-              <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-gray-500">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-              </div>
+                onChange={setCodeType}
+              />
             </div>
           </div>
 
