@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# QuickTools.ai Frontend
 
-## Getting Started
+Next.js app for QuickTools.ai — AI tools, dashboard, pricing, content (blog/news/articles).
 
-First, run the development server:
+## Stack
+
+- Next.js (App Router) + React + TypeScript
+- Tailwind CSS
+- Google Analytics 4 (full journey events + User-ID, no PII)
+- Razorpay checkout (client SDK)
+
+## Setup
 
 ```bash
+npm install
+cp .env.example .env.local
+# set NEXT_PUBLIC_API_URL to your backend
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App: `http://localhost:3001`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Env
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Notes |
+|----------|--------|
+| `NEXT_PUBLIC_API_URL` | Backend base URL (local or Render) |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | GA4 Measurement ID |
 
-## Learn More
+Never commit `.env.local` — only `.env.example`.
 
-To learn more about Next.js, take a look at the following resources:
+## Analytics
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Events tracked end-to-end: page views, login/logout, tool generate/download/share, content opens, newsletter/contact leads, checkout/purchase.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Logged-in users are identified with MongoDB `user_id` (no name/email sent to GA).
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev    # next dev -p 3001
+npm run build
+npm start
+```
