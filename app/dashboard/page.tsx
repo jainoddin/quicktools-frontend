@@ -113,61 +113,6 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            {/* Quick Actions Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-              <button className="bg-white border border-[#E5E7EB] hover:border-[#3B82F6] hover:shadow-md transition-all rounded-2xl p-4 flex items-center justify-between group w-full text-left">
-                <div className="flex items-center gap-4 min-w-0">
-                  <div className="w-12 h-12 shrink-0 bg-[#EFF6FF] rounded-xl flex items-center justify-center text-[#3B82F6]">
-                    <MessageSquare className="w-6 h-6" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="font-bold text-[#111827] truncate">AI Chat</div>
-                    <div className="text-[11px] text-[#6B7280] truncate">Chat with AI assistant</div>
-                  </div>
-                </div>
-                <ChevronRight className="w-5 h-5 shrink-0 text-[#9CA3AF] group-hover:text-[#3B82F6] group-hover:translate-x-1 transition-all ml-2" />
-              </button>
-
-              <button className="bg-white border border-[#E5E7EB] hover:border-[#10B981] hover:shadow-md transition-all rounded-2xl p-4 flex items-center justify-between group w-full text-left">
-                <div className="flex items-center gap-4 min-w-0">
-                  <div className="w-12 h-12 shrink-0 bg-[#ECFDF5] rounded-xl flex items-center justify-center text-[#10B981]">
-                    <ImageIcon className="w-6 h-6" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="font-bold text-[#111827] truncate">Image Generator</div>
-                    <div className="text-[11px] text-[#6B7280] truncate">Create stunning images</div>
-                  </div>
-                </div>
-                <ChevronRight className="w-5 h-5 shrink-0 text-[#9CA3AF] group-hover:text-[#10B981] group-hover:translate-x-1 transition-all ml-2" />
-              </button>
-
-              <button className="bg-white border border-[#E5E7EB] hover:border-[#8B5CF6] hover:shadow-md transition-all rounded-2xl p-4 flex items-center justify-between group w-full text-left">
-                <div className="flex items-center gap-4 min-w-0">
-                  <div className="w-12 h-12 shrink-0 bg-[#F5F3FF] rounded-xl flex items-center justify-center text-[#8B5CF6]">
-                    <FileText className="w-6 h-6" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="font-bold text-[#111827] truncate">PDF Tools</div>
-                    <div className="text-[11px] text-[#6B7280] truncate">Edit and convert PDFs</div>
-                  </div>
-                </div>
-                <ChevronRight className="w-5 h-5 shrink-0 text-[#9CA3AF] group-hover:text-[#8B5CF6] group-hover:translate-x-1 transition-all ml-2" />
-              </button>
-
-              <button className="bg-gradient-to-br from-[#FFF7ED] to-[#FFEDD5] border border-[#FED7AA] hover:shadow-md transition-all rounded-2xl p-4 flex items-center justify-between group w-full text-left">
-                <div className="flex items-center gap-4 min-w-0">
-                  <div className="w-12 h-12 shrink-0 bg-[#F97316] rounded-xl flex items-center justify-center text-white shadow-sm">
-                    <LayoutGrid className="w-6 h-6" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="font-bold text-[#9A3412] truncate">Explore All</div>
-                    <div className="text-[11px] text-[#C2410C] truncate">Browse 100+ tools</div>
-                  </div>
-                </div>
-                <ChevronRight className="w-5 h-5 shrink-0 text-[#F97316] group-hover:translate-x-1 transition-all ml-2" />
-              </button>
-            </div>
-
             {/* Dashboard Grid (Left Column 2/3, Right Column 1/3) */}
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
               

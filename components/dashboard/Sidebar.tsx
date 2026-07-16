@@ -2,8 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { 
-  LayoutGrid, Shapes, FolderDot, Heart, Clock, 
+import {
+  LayoutGrid, Shapes, FolderDot, Heart, Clock,
   CreditCard, Settings, Key, Zap, Sun, ZapIcon, Crown, ChevronRight
 } from 'lucide-react';
 
@@ -23,14 +23,14 @@ const accountItems = [
 export default function Sidebar() {
   const pathname = usePathname();
   const { user } = useAuth();
-  
+
   const uniqueCategories = new Set(allTools.map(t => t.category)).size;
   const favoritesCount = user?.savedTools?.length || 0;
-  
+
   const generalItems = [
     { name: 'All Tools', icon: LayoutGrid, path: '/dashboard/all', count: allTools.length },
-    { name: 'Categories', icon: Shapes, path: '/dashboard/categories', count: uniqueCategories },
-    { name: 'My Tools', icon: FolderDot, path: '/dashboard/my-tools', count: 0 },
+    // { name: 'Categories', icon: Shapes, path: '/dashboard/categories', count: uniqueCategories },
+    // { name: 'My Tools', icon: FolderDot, path: '/dashboard/my-tools', count: 0 },
     { name: 'Favorites', icon: Heart, path: '/dashboard/favorites', count: favoritesCount },
   ];
 
@@ -42,7 +42,7 @@ export default function Sidebar() {
   return (
     <aside className="w-[260px] bg-transparent flex flex-col shrink-0 h-full">
       <div className="flex-1 overflow-y-auto overflow-x-hidden pr-3 pt-6 pb-6 space-y-6">
-        
+
         {/* Dashboard Link */}
         <div>
           {navItems.map((item, i) => {

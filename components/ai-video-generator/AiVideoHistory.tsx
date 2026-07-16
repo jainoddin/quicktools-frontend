@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Grid, List, Star, Filter, Trash2, Eye, Download, Heart, MoreVertical, Play, Video, Plus, Sparkles } from 'lucide-react';
+import { Search, Grid, List, Star, Filter, Trash2, Eye, Download, Heart, MoreVertical, Play, Video, Plus, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface AiVideoHistoryProps {
   onClose: () => void;
@@ -16,6 +16,8 @@ export default function AiVideoHistory({ onClose, history = [], isAuthenticated 
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   const handleAction = (e: React.MouseEvent) => {
     if (!isAuthenticated && onRequireLogin) {
@@ -62,6 +64,16 @@ export default function AiVideoHistory({ onClose, history = [], isAuthenticated 
     return true;
   });
 
+  const totalPages = Math.max(1, Math.ceil(filteredVideos.length / itemsPerPage));
+  const validCurrentPage = Math.min(Math.max(currentPage, 1), totalPages);
+  const startIndex = (validCurrentPage - 1) * itemsPerPage;
+  const paginatedVideos = filteredVideos.slice(startIndex, startIndex + itemsPerPage);
+
+  const setFilter = (type: string) => {
+    setFilterType(type);
+    setCurrentPage(1);
+  };
+
   const now = new Date();
   const counts = {
     all: history.length,
@@ -99,7 +111,10 @@ export default function AiVideoHistory({ onClose, history = [], isAuthenticated 
             <input 
               type="text" 
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setCurrentPage(1);
+              }}
               placeholder="Search your content..." 
               className="pl-9 pr-4 py-2 border border-[#E5E7EB] rounded-xl text-sm w-full md:w-64 focus:outline-none focus:border-[#6D5EF8] focus:ring-1 focus:ring-[#6D5EF8]"
             />
@@ -110,19 +125,19 @@ export default function AiVideoHistory({ onClose, history = [], isAuthenticated 
       {/* Filters Row */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div className="flex flex-wrap items-center gap-2">
-          <button onClick={() => setFilterType('All')} className={`px-5 py-2 text-sm font-semibold rounded-full flex items-center gap-2 shadow-sm transition-colors ${filterType === 'All' ? 'bg-[#6D5EF8] text-white' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+          <button onClick={() => setFilter('All')} className={`px-5 py-2 text-sm font-semibold rounded-full flex items-center gap-2 shadow-sm transition-colors ${filterType === 'All' ? 'bg-[#6D5EF8] text-white' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
             All <span className="text-xs">({counts.all})</span>
           </button>
-          <button onClick={() => setFilterType('Favorites')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'Favorites' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+          <button onClick={() => setFilter('Favorites')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'Favorites' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
             Favorites <span className={`text-xs ${filterType === 'Favorites' ? 'text-purple-200' : 'text-gray-400'}`}>({counts.favorites})</span>
           </button>
-          <button onClick={() => setFilterType('Today')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'Today' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+          <button onClick={() => setFilter('Today')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'Today' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
             Today <span className={`text-xs ${filterType === 'Today' ? 'text-purple-200' : 'text-gray-400'}`}>({counts.today})</span>
           </button>
-          <button onClick={() => setFilterType('This Week')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'This Week' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+          <button onClick={() => setFilter('This Week')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'This Week' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
             This Week <span className={`text-xs ${filterType === 'This Week' ? 'text-purple-200' : 'text-gray-400'}`}>({counts.thisWeek})</span>
           </button>
-          <button onClick={() => setFilterType('This Month')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'This Month' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+          <button onClick={() => setFilter('This Month')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'This Month' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
             This Month <span className={`text-xs ${filterType === 'This Month' ? 'text-purple-200' : 'text-gray-400'}`}>({counts.thisMonth})</span>
           </button>
         </div>
@@ -141,8 +156,9 @@ export default function AiVideoHistory({ onClose, history = [], isAuthenticated 
 
       {/* Video Grid */}
       {filteredVideos.length > 0 ? (
-        <div className={viewMode === 'grid' ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6 pb-12" : "flex flex-col gap-4 pb-12"}>
-          {filteredVideos.map((vid) => {
+        <>
+        <div className={viewMode === 'grid' ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6" : "flex flex-col gap-4"}>
+          {paginatedVideos.map((vid) => {
             const isFav = favorites.includes(vid.id);
             const videoUrl = vid.result?.videoUrl || vid.result?.url || vid.videoUrl || "https://www.w3schools.com/html/mov_bbb.mp4";
 
@@ -220,6 +236,40 @@ export default function AiVideoHistory({ onClose, history = [], isAuthenticated 
             );
           })}
         </div>
+
+        {totalPages > 1 && (
+          <div className="flex flex-col sm:flex-row items-center justify-between pt-2 pb-4 gap-4">
+            <p className="text-sm text-[#6B7280]">
+              Showing {startIndex + 1}–{Math.min(startIndex + itemsPerPage, filteredVideos.length)} of {filteredVideos.length}
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-1.5">
+              <button
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={validCurrentPage === 1}
+                className="w-9 h-9 flex items-center justify-center rounded-xl text-[#6D5EF8] bg-[#F5F3FF] hover:bg-[#EDE9FE] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i + 1)}
+                  className={`w-9 h-9 flex items-center justify-center rounded-xl font-semibold transition-colors ${validCurrentPage === i + 1 ? 'bg-[#6D5EF8] text-white shadow-sm' : 'text-[#4B5563] hover:bg-gray-100'}`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+              <button
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                disabled={validCurrentPage === totalPages}
+                className="w-9 h-9 flex items-center justify-center rounded-xl text-[#4B5563] border border-[#E5E7EB] hover:bg-gray-50 transition-colors bg-white shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        )}
+        </>
       ) : (
         <div className="flex flex-col items-center justify-center py-20 bg-white border border-[#E5E7EB] rounded-3xl shadow-sm text-center">
           <div className="w-16 h-16 bg-[#F5F3FF] rounded-2xl flex items-center justify-center mb-4">

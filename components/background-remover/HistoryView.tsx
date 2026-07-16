@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Star, Trash2, Download, Image as ImageIcon, Sparkles, X } from 'lucide-react';
+import { Search, Star, Trash2, Download, Image as ImageIcon, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface HistoryViewProps {
   onClose: () => void;
@@ -14,6 +14,8 @@ export default function HistoryView({ onClose, recentImages = [], onToggleFavori
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState('All');
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   const now = new Date();
   
@@ -47,6 +49,16 @@ export default function HistoryView({ onClose, recentImages = [], onToggleFavori
       return Math.ceil(Math.abs(now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24)) <= 7;
     });
   }
+
+  const totalPages = Math.max(1, Math.ceil(displayImages.length / itemsPerPage));
+  const validCurrentPage = Math.min(Math.max(currentPage, 1), totalPages);
+  const startIndex = (validCurrentPage - 1) * itemsPerPage;
+  const paginatedImages = displayImages.slice(startIndex, startIndex + itemsPerPage);
+
+  const setFilter = (type: string) => {
+    setFilterType(type);
+    setCurrentPage(1);
+  };
 
   const executeDownload = (item: any) => {
     if (!item || !item.src) return;
@@ -91,7 +103,10 @@ export default function HistoryView({ onClose, recentImages = [], onToggleFavori
             <input 
               type="text" 
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setCurrentPage(1);
+              }}
               placeholder="Search images..." 
               className="pl-9 pr-4 py-2 border border-[#E5E7EB] rounded-xl text-sm w-full md:w-64 focus:outline-none focus:border-[#6D5EF8] focus:ring-1 focus:ring-[#6D5EF8]"
             />
@@ -102,16 +117,16 @@ export default function HistoryView({ onClose, recentImages = [], onToggleFavori
       {/* Filters Row */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div className="flex flex-wrap items-center gap-2">
-          <button onClick={() => setFilterType('All')} className={`px-5 py-2 text-sm font-semibold rounded-full flex items-center gap-2 shadow-sm transition-colors ${filterType === 'All' ? 'bg-[#6D5EF8] text-white' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+          <button onClick={() => setFilter('All')} className={`px-5 py-2 text-sm font-semibold rounded-full flex items-center gap-2 shadow-sm transition-colors ${filterType === 'All' ? 'bg-[#6D5EF8] text-white' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
             All <span className="text-xs">({counts.all})</span>
           </button>
-          <button onClick={() => setFilterType('Favorites')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'Favorites' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+          <button onClick={() => setFilter('Favorites')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'Favorites' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
             Favorites <span className={`text-xs ${filterType === 'Favorites' ? 'text-purple-200' : 'text-gray-400'}`}>({counts.favorites})</span>
           </button>
-          <button onClick={() => setFilterType('Today')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'Today' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+          <button onClick={() => setFilter('Today')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'Today' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
             Today <span className={`text-xs ${filterType === 'Today' ? 'text-purple-200' : 'text-gray-400'}`}>({counts.today})</span>
           </button>
-          <button onClick={() => setFilterType('This Week')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'This Week' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+          <button onClick={() => setFilter('This Week')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'This Week' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
             This Week <span className={`text-xs ${filterType === 'This Week' ? 'text-purple-200' : 'text-gray-400'}`}>({counts.thisWeek})</span>
           </button>
         </div>
@@ -146,8 +161,9 @@ export default function HistoryView({ onClose, recentImages = [], onToggleFavori
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {displayImages.map((item: any) => (
+        <>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+          {paginatedImages.map((item: any) => (
             <div 
               key={item.id || item._id} 
               className={`relative flex flex-col bg-white border ${selectedIds.has(item.id || item._id) ? 'border-[#6D5EF8] bg-purple-50/20 shadow-md' : 'border-[#E5E7EB] hover:border-gray-300 hover:shadow-md'} rounded-2xl overflow-hidden transition-all group`}
@@ -199,6 +215,40 @@ export default function HistoryView({ onClose, recentImages = [], onToggleFavori
             </div>
           ))}
         </div>
+
+        {totalPages > 1 && (
+          <div className="flex flex-col sm:flex-row items-center justify-between pt-2 pb-4 gap-4">
+            <p className="text-sm text-[#6B7280]">
+              Showing {startIndex + 1}–{Math.min(startIndex + itemsPerPage, displayImages.length)} of {displayImages.length}
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-1.5">
+              <button
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={validCurrentPage === 1}
+                className="w-9 h-9 flex items-center justify-center rounded-xl text-[#6D5EF8] bg-[#F5F3FF] hover:bg-[#EDE9FE] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i + 1)}
+                  className={`w-9 h-9 flex items-center justify-center rounded-xl font-semibold transition-colors ${validCurrentPage === i + 1 ? 'bg-[#6D5EF8] text-white shadow-sm' : 'text-[#4B5563] hover:bg-gray-100'}`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+              <button
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                disabled={validCurrentPage === totalPages}
+                className="w-9 h-9 flex items-center justify-center rounded-xl text-[#4B5563] border border-[#E5E7EB] hover:bg-gray-50 transition-colors bg-white shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        )}
+        </>
       )}
     </div>
   );

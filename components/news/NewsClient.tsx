@@ -180,7 +180,7 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
                 <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse"></span>
                 Breaking News
               </span>
-              <div className="flex gap-2 items-center">
+              <div className="hidden md:flex gap-2 items-center">
                 <button className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#4F46E5] hover:border-[#4F46E5] transition-colors"><ChevronLeft className="w-4 h-4" /></button>
                 <button className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#4F46E5] hover:border-[#4F46E5] transition-colors"><ChevronRight className="w-4 h-4" /></button>
               </div>

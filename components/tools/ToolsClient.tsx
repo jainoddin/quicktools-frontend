@@ -5,7 +5,7 @@ import {
   Search, Zap, Image as ImageIcon, PenTool, Code, Video,
   ArrowRight, LayoutGrid, Moon, MessageCircle, Palette,
   Briefcase, TrendingUp, Crown, Flame, Sparkles, Star,
-  Clock, Filter, ChevronDown, Globe, Share2, Mail,
+  Clock, ChevronDown, Globe, Share2, Mail,
   Home, ChevronRight, LucideIcon, Menu, X
 } from 'lucide-react';
 import Link from 'next/link';
@@ -123,6 +123,7 @@ export default function ToolsClient() {
   const initialQuery = searchParams.get('q') || '';
 
   const { user, isAuthenticated, updateUser } = useAuth();
+  const showUpgradeCard = (user?.plan || 'free').toLowerCase() === 'free';
   
   const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [activeCategory, setActiveCategory] = useState('All Tools');
@@ -218,12 +219,12 @@ export default function ToolsClient() {
     <>
       <LoginPopup isOpen={showLoginPopup} onClose={() => setShowLoginPopup(false)} />
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-8 pt-[15px] relative w-full overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-8 pt-2 relative w-full">
         {/* Background Gradient */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-200/40 rounded-full blur-[100px] -z-10 pointer-events-none -translate-y-1/4"></div>
 
         {/* Top Navigation Row */}
-        <div className="mb-[25px] flex flex-col gap-4">
+        <div className="mb-[25px] flex flex-col gap-2">
           <nav className="flex items-center space-x-2 text-sm font-medium text-[#6B7280]">
             <Link href="/" className="hover:text-[#111827] transition-colors flex items-center gap-1.5">
               <Home className="w-4 h-4" /> Home
@@ -242,9 +243,9 @@ export default function ToolsClient() {
           </button>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* Left Sidebar (Desktop) */}
-          <aside className="hidden lg:block w-[260px] shrink-0 space-y-6 sticky top-24 self-start">
+          <aside className="hidden lg:block w-[260px] shrink-0 space-y-6 sticky top-20 self-start">
             <div>
               <h3 className="font-bold text-[#111827] mb-4 px-3">Categories</h3>
               <div className="space-y-1">
@@ -275,20 +276,22 @@ export default function ToolsClient() {
               </div>
             </div>
 
-            {/* Premium Card */}
-            <div className="bg-gradient-to-br from-white to-[#EEF2FF] border border-[#E5E7EB] rounded-2xl p-5 shadow-sm relative overflow-hidden">
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#6D5EF8]/5 rounded-full blur-xl"></div>
-              <div className="w-10 h-10 bg-[#EEF2FF] rounded-xl flex items-center justify-center mb-4 text-[#6D5EF8]">
-                <Crown className="w-5 h-5 fill-[#6D5EF8]" />
+            {/* Premium Card — hide for paid plans (starter / pro / business) */}
+            {showUpgradeCard && (
+              <div className="bg-gradient-to-br from-white to-[#EEF2FF] border border-[#E5E7EB] rounded-2xl p-5 shadow-sm relative overflow-hidden">
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#6D5EF8]/5 rounded-full blur-xl"></div>
+                <div className="w-10 h-10 bg-[#EEF2FF] rounded-xl flex items-center justify-center mb-4 text-[#6D5EF8]">
+                  <Crown className="w-5 h-5 fill-[#6D5EF8]" />
+                </div>
+                <h4 className="font-bold text-[#111827] mb-1">Unlock Premium</h4>
+                <p className="text-sm text-[#6B7280] mb-5 leading-relaxed">
+                  Get unlimited access to all tools and premium features.
+                </p>
+                <Link href="/pricing" className="w-full flex justify-center items-center bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm py-2.5 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20">
+                  Upgrade Now
+                </Link>
               </div>
-              <h4 className="font-bold text-[#111827] mb-1">Unlock Premium</h4>
-              <p className="text-sm text-[#6B7280] mb-5 leading-relaxed">
-                Get unlimited access to all tools and premium features.
-              </p>
-              <Link href="/pricing" className="w-full flex justify-center items-center bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm py-2.5 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20">
-                Upgrade Now
-              </Link>
-            </div>
+            )}
           </aside>
 
           {/* Main Content Area */}
@@ -300,9 +303,9 @@ export default function ToolsClient() {
               </div>
             </div>
 
-            {/* Search and Filters Bar */}
-            <div className="flex flex-col md:flex-row gap-4 mb-6 relative z-10">
-              <div className="relative flex-1 group">
+            {/* Search Bar */}
+            <div className="mb-6 relative z-10">
+              <div className="relative group">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#9CA3AF] group-focus-within:text-[#6D5EF8] transition-colors" />
                 <input
                   type="text"
@@ -311,11 +314,6 @@ export default function ToolsClient() {
                   placeholder="Search tools..."
                   className="w-full h-12 pl-11 pr-4 bg-white border border-[#E5E7EB] rounded-xl outline-none focus:border-[#6D5EF8] focus:ring-4 focus:ring-[#6D5EF8]/10 transition-all text-[15px] shadow-sm"
                 />
-              </div>
-              <div className="flex items-center gap-3 shrink-0">
-                <button className="h-12 px-4 bg-white border border-[#E5E7EB] rounded-xl flex items-center gap-2 hover:bg-[#F9FAFB] transition-colors text-[15px] font-medium text-[#4B5563] shadow-sm">
-                  <Filter className="w-4 h-4 text-[#6B7280]" /> Filters
-                </button>
               </div>
             </div>
 
@@ -457,22 +455,24 @@ export default function ToolsClient() {
                 })}
               </div>
 
-              {/* Premium Card Mobile - Pushed to bottom */}
-              <div className="mt-auto pt-6">
-                <div className="bg-gradient-to-br from-white to-[#EEF2FF] border border-[#E5E7EB] rounded-2xl p-5 shadow-sm relative overflow-hidden">
-                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#6D5EF8]/5 rounded-full blur-xl"></div>
-                  <div className="w-10 h-10 bg-[#EEF2FF] rounded-xl flex items-center justify-center mb-4 text-[#6D5EF8]">
-                    <Crown className="w-5 h-5 fill-[#6D5EF8]" />
+              {/* Premium Card Mobile — hide for paid plans */}
+              {showUpgradeCard && (
+                <div className="mt-auto pt-6">
+                  <div className="bg-gradient-to-br from-white to-[#EEF2FF] border border-[#E5E7EB] rounded-2xl p-5 shadow-sm relative overflow-hidden">
+                    <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#6D5EF8]/5 rounded-full blur-xl"></div>
+                    <div className="w-10 h-10 bg-[#EEF2FF] rounded-xl flex items-center justify-center mb-4 text-[#6D5EF8]">
+                      <Crown className="w-5 h-5 fill-[#6D5EF8]" />
+                    </div>
+                    <h4 className="font-bold text-[#111827] mb-1">Unlock Premium</h4>
+                    <p className="text-sm text-[#6B7280] mb-5 leading-relaxed">
+                      Get unlimited access to all tools and premium features.
+                    </p>
+                    <Link href="/pricing" className="w-full flex justify-center items-center bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm py-2.5 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20">
+                      Upgrade Now
+                    </Link>
                   </div>
-                  <h4 className="font-bold text-[#111827] mb-1">Unlock Premium</h4>
-                  <p className="text-sm text-[#6B7280] mb-5 leading-relaxed">
-                    Get unlimited access to all tools and premium features.
-                  </p>
-                  <Link href="/pricing" className="w-full flex justify-center items-center bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm py-2.5 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20">
-                    Upgrade Now
-                  </Link>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

@@ -253,7 +253,7 @@ export default function AiWriterClient() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 h-full">
+    <div className="flex flex-col lg:flex-row gap-8 h-full min-h-0">
       <LoginPopup isOpen={showLoginPopup} onClose={() => setShowLoginPopup(false)} />
 
       {/* Premium Popup */}
@@ -398,7 +398,7 @@ export default function AiWriterClient() {
       </aside>
 
       {/* Right Main Area */}
-      <main className="flex-grow flex flex-col min-w-0">
+      <main className="flex-grow flex flex-col min-w-0 min-h-0">
 
         {showHistory ? (
           <AiWriterHistory

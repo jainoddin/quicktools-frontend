@@ -1,51 +1,145 @@
 'use client';
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import { useAuth } from '../../../contexts/AuthContext';
 import { getEndpoint } from '../../../lib/api';
 import { 
-  User, Bell, Shield, Key, Trash2, Camera, Eye, EyeOff,
-  Plus, Copy, Trash, CheckCircle, AlertTriangle
+  User, Shield, Trash2, Camera,
+  CheckCircle, AlertTriangle
 } from 'lucide-react';
 
-type Tab = 'account' | 'notifications' | 'privacy' | 'api-keys' | 'delete-account';
-
-function Toggle({ enabled, onChange }: { enabled: boolean; onChange: () => void }) {
-  return (
-    <button
-      onClick={onChange}
-      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 focus:outline-none ${enabled ? 'bg-[#6D5EF8]' : 'bg-[#D1D5DB]'}`}
-    >
-      <span className={`inline-block h-4 w-4 transform rounded-full bg-white shadow-md transition-transform duration-200 ${enabled ? 'translate-x-6' : 'translate-x-1'}`} />
-    </button>
-  );
-}
+type Tab = 'account' | 'delete-account';
 
 export default function SettingsPage() {
-  const { user } = useAuth();
+  const { user, updateUser } = useAuth();
+  const router = useRouter();
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
   const [activeTab, setActiveTab] = useState<Tab>('account');
-  const [showPassword, setShowPassword] = useState(false);
   const [fullName, setFullName] = useState('');
   const [bio, setBio] = useState('');
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
+  const [photoStatus, setPhotoStatus] = useState<'idle' | 'uploading' | 'error'>('idle');
+  const [photoError, setPhotoError] = useState('');
   const [saveStatus, setSaveStatus] = useState<'idle'|'saving'|'saved'>('idle');
+  const [confirmText, setConfirmText] = useState('');
+  const [deactivateStatus, setDeactivateStatus] = useState<'idle'|'loading'|'error'>('idle');
+  const [deactivateError, setDeactivateError] = useState('');
 
   // Sync form fields when user data loads
   React.useEffect(() => {
     if (user) {
       setFullName(user.name || '');
-      setBio((user as any).bio || '');
+      setBio(user.bio || '');
+      setAvatarPreview(null);
     }
   }, [user]);
+
+  const compressImage = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = () => reject(new Error('Failed to read image'));
+      reader.onload = () => {
+        const img = new Image();
+        img.onerror = () => reject(new Error('Invalid image'));
+        img.onload = () => {
+          const maxSize = 400;
+          let { width, height } = img;
+          if (width > maxSize || height > maxSize) {
+            const ratio = Math.min(maxSize / width, maxSize / height);
+            width = Math.round(width * ratio);
+            height = Math.round(height * ratio);
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) {
+            reject(new Error('Canvas not supported'));
+            return;
+          }
+          ctx.drawImage(img, 0, 0, width, height);
+          resolve(canvas.toDataURL('image/jpeg', 0.85));
+        };
+        img.src = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handlePhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    e.target.value = '';
+
+    if (!file.type.startsWith('image/')) {
+      setPhotoError('Please select an image file');
+      setPhotoStatus('error');
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      setPhotoError('Image must be under 5MB');
+      setPhotoStatus('error');
+      return;
+    }
+
+    setPhotoStatus('uploading');
+    setPhotoError('');
+    try {
+      const dataUrl = await compressImage(file);
+      setAvatarPreview(dataUrl);
+
+      const res = await fetch(getEndpoint('/api/auth/profile'), {
+        method: 'PUT',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ avatar: dataUrl }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setPhotoError(data.message || 'Failed to upload photo');
+        setPhotoStatus('error');
+        setAvatarPreview(null);
+        return;
+      }
+      updateUser({
+        ...(user as any),
+        ...data.user,
+        id: data.user.id || (user as any)?.id,
+        avatar: data.user.avatar,
+      });
+      setAvatarPreview(null);
+      setPhotoStatus('idle');
+    } catch {
+      setPhotoError('Failed to upload photo. Try a smaller image.');
+      setPhotoStatus('error');
+      setAvatarPreview(null);
+    }
+  };
 
   const handleSaveProfile = async () => {
     setSaveStatus('saving');
     try {
-      await fetch(getEndpoint('/api/auth/profile'), {
+      const res = await fetch(getEndpoint('/api/auth/profile'), {
         method: 'PUT',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: fullName, bio }),
+        body: JSON.stringify({ name: fullName.trim(), bio: bio.slice(0, 100) }),
       });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setSaveStatus('idle');
+        return;
+      }
+      // Keep auth state in sync so name/bio persist in UI
+      updateUser({
+        ...(user as any),
+        ...data.user,
+        id: data.user.id || (user as any)?.id,
+        bio: data.user.bio ?? '',
+      });
+      setFullName(data.user.name || fullName);
+      setBio(data.user.bio || '');
       setSaveStatus('saved');
       setTimeout(() => setSaveStatus('idle'), 2000);
     } catch (e) {
@@ -53,43 +147,55 @@ export default function SettingsPage() {
     }
   };
 
-  // Notification toggles
-  const [notifs, setNotifs] = useState({
-    productUpdates: true,
-    marketingEmails: false,
-    securityAlerts: true,
-    toolUsage: true,
-    creditsUpdates: true,
-    newFeatures: false,
-  });
-
-  // Privacy toggles
-  const [privacy, setPrivacy] = useState({
-    publicProfile: true,
-    searchEngine: false,
-  });
+  const handleDeactivateAccount = async () => {
+    if (confirmText !== 'DEACTIVATE') {
+      setDeactivateError('Please type DEACTIVATE to confirm');
+      setDeactivateStatus('error');
+      return;
+    }
+    setDeactivateStatus('loading');
+    setDeactivateError('');
+    try {
+      const res = await fetch(getEndpoint('/api/auth/deactivate-account'), {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ confirmation: confirmText }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setDeactivateError(data.message || 'Failed to deactivate account');
+        setDeactivateStatus('error');
+        return;
+      }
+      updateUser(null);
+      window.location.href = '/login?deactivated=1';
+    } catch (e) {
+      setDeactivateError('Something went wrong. Please try again.');
+      setDeactivateStatus('error');
+    }
+  };
 
   const tabs = [
     { id: 'account' as Tab, label: 'Account Details', icon: User },
-    { id: 'notifications' as Tab, label: 'Notification Settings', icon: Bell },
-    { id: 'privacy' as Tab, label: 'Privacy', icon: Shield },
-    { id: 'api-keys' as Tab, label: 'API Keys', icon: Key },
+    // { id: 'notifications' as Tab, label: 'Notification Settings', icon: Bell }, // hidden for now
+    { id: 'privacy' as const, label: 'Privacy', icon: Shield, href: '/privacy' },
+    // { id: 'api-keys' as const, label: 'API Keys', icon: Key, href: '/privacy' }, // hidden for now
     { id: 'delete-account' as Tab, label: 'Delete Account', icon: Trash2, danger: true },
   ];
 
   const tabLabels: Record<Tab, string> = {
     'account': 'Account Details',
-    'notifications': 'Notification Settings',
-    'privacy': 'Privacy',
-    'api-keys': 'API Keys',
     'delete-account': 'Delete Account',
   };
 
-  const apiKeys = [
-    { name: 'Development Key', key: '••••••••••••••••••ts3', created: 'May 12, 2024', lastUsed: '2 days ago' },
-    { name: 'Production Key', key: '••••••••••••••••••d11', created: 'May 12, 2024', lastUsed: '5 days ago' },
-    { name: 'Test Key', key: '••••••••••••••••••3b8', created: 'Apr 28, 2024', lastUsed: 'Never' },
-  ];
+  const handleTabClick = (tab: typeof tabs[number]) => {
+    if ('href' in tab && tab.href) {
+      router.push(tab.href);
+      return;
+    }
+    setActiveTab(tab.id as Tab);
+  };
 
   return (
     <DashboardLayout>
@@ -102,10 +208,7 @@ export default function SettingsPage() {
         </div>
         <p className="text-sm text-[#6B7280] mt-0.5">
           {activeTab === 'account' && 'Manage your personal information'}
-          {activeTab === 'notifications' && 'Manage your notification preferences'}
-          {activeTab === 'privacy' && 'Manage your privacy and data settings'}
-          {activeTab === 'api-keys' && 'Manage your API keys to access QuickTools API'}
-          {activeTab === 'delete-account' && 'Permanently delete your account and all data'}
+          {activeTab === 'delete-account' && 'Deactivate your account (15-day recovery window)'}
         </p>
       </div>
 
@@ -121,18 +224,41 @@ export default function SettingsPage() {
 
               {/* Avatar */}
               <div className="flex items-center gap-5 mb-8">
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp,image/gif"
+                  className="hidden"
+                  onChange={handlePhotoChange}
+                />
                 <div className="relative">
                   <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-[#6D5EF8] to-purple-400 flex items-center justify-center text-white text-2xl font-bold shadow-lg overflow-hidden">
-                    {user?.avatar 
-                      ? <img src={user.avatar} alt="User" className="w-full h-full object-cover" />
+                    {(avatarPreview || user?.avatar)
+                      ? <img src={avatarPreview || user?.avatar} alt="User" className="w-full h-full object-cover" />
                       : (user?.name?.charAt(0)?.toUpperCase() || 'U')
                     }
                   </div>
-                  <button className="absolute bottom-0 right-0 w-7 h-7 bg-[#6D5EF8] text-white rounded-full flex items-center justify-center shadow-md hover:bg-[#5B4DF5] transition-colors">
+                  <button
+                    type="button"
+                    disabled={photoStatus === 'uploading'}
+                    onClick={() => fileInputRef.current?.click()}
+                    className="absolute bottom-0 right-0 w-7 h-7 bg-[#6D5EF8] text-white rounded-full flex items-center justify-center shadow-md hover:bg-[#5B4DF5] transition-colors disabled:opacity-60"
+                  >
                     <Camera className="w-3.5 h-3.5" />
                   </button>
                 </div>
-                <button className="text-sm font-semibold text-[#6D5EF8] hover:underline">Change Photo</button>
+                <div>
+                  <button
+                    type="button"
+                    disabled={photoStatus === 'uploading'}
+                    onClick={() => fileInputRef.current?.click()}
+                    className="text-sm font-semibold text-[#6D5EF8] hover:underline disabled:opacity-60"
+                  >
+                    {photoStatus === 'uploading' ? 'Uploading...' : 'Change Photo'}
+                  </button>
+                  {photoError && <p className="text-xs text-red-500 mt-1">{photoError}</p>}
+                  <p className="text-xs text-[#9CA3AF] mt-1">JPG, PNG or WebP. Max 5MB.</p>
+                </div>
               </div>
 
               <div className="space-y-5">
@@ -156,7 +282,7 @@ export default function SettingsPage() {
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-[#374151] mb-1.5">Bio</label>
-                  <textarea rows={3} value={bio} onChange={e => setBio(e.target.value)} className="w-full px-4 py-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl text-sm outline-none focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all resize-none" />
+                  <textarea rows={3} value={bio} onChange={e => setBio(e.target.value.slice(0, 100))} maxLength={100} className="w-full px-4 py-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl text-sm outline-none focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all resize-none" />
                   <p className="text-xs text-[#9CA3AF] mt-1 text-right">{bio.length}/100</p>
                 </div>
               </div>
@@ -167,187 +293,38 @@ export default function SettingsPage() {
             </div>
           )}
 
-          {/* ── NOTIFICATION SETTINGS ── */}
+          {/* ── NOTIFICATION SETTINGS (hidden from menu; kept for later) ── */}
+          {/*
           {activeTab === 'notifications' && (
             <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 lg:p-8 space-y-8">
-              <div>
-                <h2 className="text-base font-bold text-[#111827] mb-1">Email Notifications</h2>
-                <p className="text-sm text-[#6B7280] mb-5">Choose what type of emails you want to receive.</p>
-                <div className="space-y-4">
-                  {[
-                    { key: 'productUpdates', label: 'Product Updates', desc: 'Receive details about new features and updates' },
-                    { key: 'marketingEmails', label: 'Marketing Emails', desc: 'Receive emails about tips, offers and more' },
-                    { key: 'securityAlerts', label: 'Security Alerts', desc: 'Important security notifications about your account' },
-                  ].map(item => (
-                    <div key={item.key} className="flex items-center justify-between py-3 border-b border-[#F3F4F6] last:border-0">
-                      <div>
-                        <p className="text-sm font-semibold text-[#111827]">{item.label}</p>
-                        <p className="text-xs text-[#6B7280] mt-0.5">{item.desc}</p>
-                      </div>
-                      <Toggle enabled={(notifs as any)[item.key]} onChange={() => setNotifs(p => ({ ...p, [item.key]: !(p as any)[item.key] }))} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-base font-bold text-[#111827] mb-1">In-App Notifications</h2>
-                <p className="text-sm text-[#6B7280] mb-5">Control your in-app notification preferences.</p>
-                <div className="space-y-4">
-                  {[
-                    { key: 'toolUsage', label: 'Tool Usage Completed', desc: 'Notify me when my tools are ready' },
-                    { key: 'creditsUpdates', label: 'Credits and Billing Updates', desc: 'Notify me about credits and billing' },
-                    { key: 'newFeatures', label: 'New Features', desc: 'Notify me about new tools and features' },
-                  ].map(item => (
-                    <div key={item.key} className="flex items-center justify-between py-3 border-b border-[#F3F4F6] last:border-0">
-                      <div>
-                        <p className="text-sm font-semibold text-[#111827]">{item.label}</p>
-                        <p className="text-xs text-[#6B7280] mt-0.5">{item.desc}</p>
-                      </div>
-                      <Toggle enabled={(notifs as any)[item.key]} onChange={() => setNotifs(p => ({ ...p, [item.key]: !(p as any)[item.key] }))} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <button className="bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold py-2.5 px-6 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20">
-                Save Preferences
-              </button>
+              ... notification UI ...
             </div>
           )}
+          */}
 
-          {/* ── PRIVACY ── */}
-          {activeTab === 'privacy' && (
-            <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 lg:p-8 space-y-8">
-              <div>
-                <h2 className="text-base font-bold text-[#111827] mb-5">Privacy Settings</h2>
-                <div className="space-y-4">
-                  {[
-                    { key: 'publicProfile', label: 'Public Profile', desc: 'Allow others to see your profile and tools' },
-                    { key: 'searchEngine', label: 'Search Engine Visibility', desc: 'Allow search engines to index your profile' },
-                  ].map(item => (
-                    <div key={item.key} className="flex items-center justify-between py-3 border-b border-[#F3F4F6] last:border-0">
-                      <div>
-                        <p className="text-sm font-semibold text-[#111827]">{item.label}</p>
-                        <p className="text-xs text-[#6B7280] mt-0.5">{item.desc}</p>
-                      </div>
-                      <Toggle enabled={(privacy as any)[item.key]} onChange={() => setPrivacy(p => ({ ...p, [item.key]: !(p as any)[item.key] }))} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-base font-bold text-[#111827] mb-5">Data &amp; Security</h2>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between py-3 border-b border-[#F3F4F6]">
-                    <div>
-                      <p className="text-sm font-semibold text-[#111827]">Export My Data</p>
-                      <p className="text-xs text-[#6B7280] mt-0.5">Download a copy of all your data</p>
-                    </div>
-                    <button className="text-sm font-semibold text-[#6D5EF8] bg-[#EEF2FF] hover:bg-[#E0E7FF] px-4 py-2 rounded-xl transition-colors">
-                      Export Data
-                    </button>
-                  </div>
-                  <div className="flex items-center justify-between py-3">
-                    <div>
-                      <p className="text-sm font-semibold text-[#111827]">Two-Factor Authentication</p>
-                      <p className="text-xs text-[#6B7280] mt-0.5">Add an extra layer of security</p>
-                    </div>
-                    <button className="text-sm font-semibold text-[#6D5EF8] bg-[#EEF2FF] hover:bg-[#E0E7FF] px-4 py-2 rounded-xl transition-colors">
-                      Enable 2FA
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <button className="bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold py-2.5 px-6 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20">
-                Save Privacy Settings
-              </button>
-            </div>
-          )}
-
-          {/* ── API KEYS ── */}
-          {activeTab === 'api-keys' && (
-            <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 lg:p-8">
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h2 className="text-base font-bold text-[#111827]">Your API Keys</h2>
-                  <p className="text-xs text-[#6B7280] mt-0.5">Create and manage your API keys. Keep your keys secure.</p>
-                </div>
-                <button className="flex items-center gap-2 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm py-2.5 px-4 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20">
-                  <Plus className="w-4 h-4" /> Create New API Key
-                </button>
-              </div>
-
-              <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse min-w-[560px]">
-                  <thead>
-                    <tr className="border-b border-[#E5E7EB]">
-                      <th className="pb-3 px-2 text-xs font-bold text-[#6B7280] uppercase tracking-wider">Key Name</th>
-                      <th className="pb-3 px-2 text-xs font-bold text-[#6B7280] uppercase tracking-wider">API Key</th>
-                      <th className="pb-3 px-2 text-xs font-bold text-[#6B7280] uppercase tracking-wider">Created At</th>
-                      <th className="pb-3 px-2 text-xs font-bold text-[#6B7280] uppercase tracking-wider">Last Used</th>
-                      <th className="pb-3 px-2 text-xs font-bold text-[#6B7280] uppercase tracking-wider">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[#F3F4F6]">
-                    {apiKeys.map((k, i) => (
-                      <tr key={i} className="hover:bg-[#F9FAFB] transition-colors">
-                        <td className="py-4 px-2 text-sm font-semibold text-[#111827]">{k.name}</td>
-                        <td className="py-4 px-2">
-                          <code className="text-xs bg-[#F9FAFB] border border-[#E5E7EB] px-2 py-1 rounded-lg text-[#4B5563] font-mono">{k.key}</code>
-                        </td>
-                        <td className="py-4 px-2 text-sm text-[#6B7280]">{k.created}</td>
-                        <td className="py-4 px-2 text-sm text-[#6B7280]">{k.lastUsed}</td>
-                        <td className="py-4 px-2">
-                          <div className="flex items-center gap-2">
-                            <button className="p-1.5 text-[#9CA3AF] hover:text-[#6D5EF8] hover:bg-[#EEF2FF] rounded-lg transition-colors"><Eye className="w-4 h-4" /></button>
-                            <button className="p-1.5 text-[#9CA3AF] hover:text-[#6D5EF8] hover:bg-[#EEF2FF] rounded-lg transition-colors"><Copy className="w-4 h-4" /></button>
-                            <button className="p-1.5 text-[#9CA3AF] hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"><Trash className="w-4 h-4" /></button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="mt-6 flex items-start gap-3 p-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl">
-                <div className="w-8 h-8 rounded-lg bg-[#EEF2FF] flex items-center justify-center shrink-0">
-                  <Key className="w-4 h-4 text-[#6D5EF8]" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[#111827]">Keep your API keys secure</p>
-                  <p className="text-xs text-[#6B7280] mt-0.5">Do not share your API keys with anyone. QuickTools will never ask for your API key.</p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* ── DELETE ACCOUNT ── */}
+          {/* ── DELETE / DEACTIVATE ACCOUNT ── */}
           {activeTab === 'delete-account' && (
             <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 lg:p-8">
-              {/* Warning Banner */}
-              <div className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
-                <AlertTriangle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+              <div className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8">
+                <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-sm font-bold text-red-700">Delete Account</p>
-                  <p className="text-sm text-red-600 mt-0.5">This action cannot be undone. All your data will be permanently deleted.</p>
+                  <p className="text-sm font-bold text-amber-800">Deactivate Account</p>
+                  <p className="text-sm text-amber-700 mt-0.5">
+                    Your account will be deactivated for <strong>15 days</strong>. If you log in again within 15 days, it will be reactivated. After 15 days with no login, your account and data will be permanently deleted.
+                  </p>
                 </div>
               </div>
 
-              <h2 className="text-base font-bold text-[#111827] mb-4">What will be deleted:</h2>
+              <h2 className="text-base font-bold text-[#111827] mb-4">What happens:</h2>
               <div className="space-y-2 mb-8">
                 {[
-                  'Your profile and account information',
-                  'All your tools and generated results',
-                  'History and usage data',
-                  'API keys and integrations',
-                  'Billing and payment information',
+                  'Your account is deactivated immediately and you will be logged out',
+                  'Log in within 15 days to reactivate your account',
+                  'After 15 days without login, all data is permanently deleted',
+                  'Profile, tools history, and billing data will be removed after permanent deletion',
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm text-[#4B5563]">
-                    <CheckCircle className="w-4 h-4 text-red-400 shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-amber-500 shrink-0" />
                     {item}
                   </div>
                 ))}
@@ -356,20 +333,31 @@ export default function SettingsPage() {
               <div className="space-y-4 mb-6">
                 <div>
                   <label className="block text-sm font-semibold text-[#374151] mb-1.5">
-                    To confirm, please type <code className="bg-[#FEF2F2] text-red-600 px-1.5 py-0.5 rounded text-xs font-bold">DELETE</code> in the box below and enter your password.
+                    To confirm, type <code className="bg-amber-50 text-amber-700 px-1.5 py-0.5 rounded text-xs font-bold">DEACTIVATE</code> below.
                   </label>
-                  <input type="text" placeholder="Type DELETE to confirm" className="w-full h-11 px-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl text-sm outline-none focus:ring-2 focus:ring-red-200 focus:border-red-400 transition-all" />
+                  <input
+                    type="text"
+                    value={confirmText}
+                    onChange={(e) => {
+                      setConfirmText(e.target.value);
+                      setDeactivateError('');
+                      setDeactivateStatus('idle');
+                    }}
+                    placeholder="Type DEACTIVATE to confirm"
+                    className="w-full h-11 px-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl text-sm outline-none focus:ring-2 focus:ring-amber-200 focus:border-amber-400 transition-all"
+                  />
                 </div>
-                <div className="relative">
-                  <input type={showPassword ? 'text' : 'password'} placeholder="Enter your password" className="w-full h-11 px-4 pr-11 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl text-sm outline-none focus:ring-2 focus:ring-red-200 focus:border-red-400 transition-all" />
-                  <button onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#9CA3AF] hover:text-[#6B7280]">
-                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                  </button>
-                </div>
+                {deactivateError && (
+                  <p className="text-sm text-red-600 font-medium">{deactivateError}</p>
+                )}
               </div>
 
-              <button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition-colors shadow-md shadow-red-600/20">
-                Delete Account Permanently
+              <button
+                onClick={handleDeactivateAccount}
+                disabled={deactivateStatus === 'loading' || confirmText !== 'DEACTIVATE'}
+                className="w-full bg-red-600 hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-3 rounded-xl transition-colors shadow-md shadow-red-600/20"
+              >
+                {deactivateStatus === 'loading' ? 'Deactivating...' : 'Deactivate Account'}
               </button>
             </div>
           )}
@@ -382,14 +370,14 @@ export default function SettingsPage() {
             {tabs.map(tab => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => handleTabClick(tab)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors text-left ${
-                  activeTab === tab.id 
+                  activeTab === tab.id && !tab.href
                     ? tab.danger ? 'bg-red-50 text-red-600' : 'bg-[#EEF2FF] text-[#6D5EF8]'
                     : tab.danger ? 'text-red-500 hover:bg-red-50' : 'text-[#4B5563] hover:bg-[#F9FAFB] hover:text-[#111827]'
                 }`}
               >
-                <tab.icon className={`w-4 h-4 ${activeTab === tab.id ? (tab.danger ? 'text-red-600' : 'text-[#6D5EF8]') : (tab.danger ? 'text-red-400' : 'text-[#6B7280]')}`} />
+                <tab.icon className={`w-4 h-4 ${activeTab === tab.id && !tab.href ? (tab.danger ? 'text-red-600' : 'text-[#6D5EF8]') : (tab.danger ? 'text-red-400' : 'text-[#6B7280]')}`} />
                 {tab.label}
               </button>
             ))}

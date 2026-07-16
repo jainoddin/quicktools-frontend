@@ -51,16 +51,17 @@ export default function HistoryPage() {
         </div>
       </div>
 
-      <div className="bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden shadow-sm overflow-x-auto">
-        <table className="w-full text-left border-collapse min-w-[800px]">
-          <thead>
-            <tr className="border-b border-[#E5E7EB]">
-              <th className="py-4 px-6 text-xs font-semibold text-[#6B7280] uppercase tracking-wider w-[25%]">Tool Used</th>
-              <th className="py-4 px-6 text-xs font-semibold text-[#6B7280] uppercase tracking-wider w-[35%]">Input / Title</th>
-              <th className="py-4 px-6 text-xs font-semibold text-[#6B7280] uppercase tracking-wider w-[20%]">Result</th>
-              <th className="py-4 px-6 text-xs font-semibold text-[#6B7280] uppercase tracking-wider w-[20%]">Date & Time</th>
-            </tr>
-          </thead>
+      <div className="bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden shadow-sm flex flex-col max-h-[calc(100vh-220px)]">
+        <div className="overflow-x-auto overflow-y-auto custom-scrollbar flex-1">
+          <table className="w-full text-left border-collapse min-w-[800px]">
+            <thead className="sticky top-0 bg-white z-10 shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+              <tr className="border-b border-[#E5E7EB]">
+                <th className="py-4 px-6 text-xs font-semibold text-[#6B7280] uppercase tracking-wider w-[25%]">Tool Used</th>
+                <th className="py-4 px-6 text-xs font-semibold text-[#6B7280] uppercase tracking-wider w-[35%]">Input / Title</th>
+                <th className="py-4 px-6 text-xs font-semibold text-[#6B7280] uppercase tracking-wider w-[20%]">Result</th>
+                <th className="py-4 px-6 text-xs font-semibold text-[#6B7280] uppercase tracking-wider w-[20%]">Date & Time</th>
+              </tr>
+            </thead>
           <tbody className="divide-y divide-[#E5E7EB]">
             {loading ? (
               <tr>
@@ -113,6 +114,7 @@ export default function HistoryPage() {
             )}
           </tbody>
         </table>
+        </div>
       </div>
     </DashboardLayout>
   );
