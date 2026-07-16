@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import { useAuth } from '../../../contexts/AuthContext';
 import { getEndpoint } from '../../../lib/api';
+import { trackSettingsSave, trackDeactivateAccount, trackAvatarChange } from '@/lib/analytics';
 import { 
   User, Shield, Trash2, Camera,
   CheckCircle, AlertTriangle
@@ -110,6 +111,7 @@ export default function SettingsPage() {
       });
       setAvatarPreview(null);
       setPhotoStatus('idle');
+      trackAvatarChange();
     } catch {
       setPhotoError('Failed to upload photo. Try a smaller image.');
       setPhotoStatus('error');
@@ -141,6 +143,7 @@ export default function SettingsPage() {
       setFullName(data.user.name || fullName);
       setBio(data.user.bio || '');
       setSaveStatus('saved');
+      trackSettingsSave('profile');
       setTimeout(() => setSaveStatus('idle'), 2000);
     } catch (e) {
       setSaveStatus('idle');
@@ -169,6 +172,7 @@ export default function SettingsPage() {
         return;
       }
       updateUser(null);
+      trackDeactivateAccount();
       window.location.href = '/login?deactivated=1';
     } catch (e) {
       setDeactivateError('Something went wrong. Please try again.');

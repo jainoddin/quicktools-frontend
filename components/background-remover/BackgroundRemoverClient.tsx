@@ -12,6 +12,7 @@ import BackgroundRemovalProgress from './BackgroundRemovalProgress';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginPopup from '@/components/auth/LoginPopup';
 import { getEndpoint } from '@/lib/api';
+import { trackToolGenerate } from '@/lib/analytics';
 // We will dynamically import @imgly/background-removal inside the handler to prevent SSR issues
 
 export default function BackgroundRemoverClient() {
@@ -221,6 +222,7 @@ export default function BackgroundRemoverClient() {
 
       const url = URL.createObjectURL(blob);
       setResultImage(url);
+      trackToolGenerate('background-remover', { quality, bg_option: bgOption });
 
       const newImage = {
         id: Date.now(),

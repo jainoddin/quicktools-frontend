@@ -13,6 +13,7 @@ import ErrorModal from './ErrorModal';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginPopup from '@/components/auth/LoginPopup';
 import { getEndpoint } from '@/lib/api';
+import { trackToolGenerate } from '@/lib/analytics';
 import { useRouter } from 'next/navigation';
 
 export default function ImageGeneratorClient() {
@@ -138,6 +139,7 @@ export default function ImageGeneratorClient() {
       .then(data => {
         if (data.success) {
           setGeneratedImage(data.data);
+          trackToolGenerate('ai-image-generator', { model: selectedModel, quality });
           // Add to recent history
           const newImage = {
             id: Date.now(),

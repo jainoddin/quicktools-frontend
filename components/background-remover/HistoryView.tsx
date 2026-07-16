@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Search, Star, Trash2, Download, Image as ImageIcon, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { trackFileDownload } from '@/lib/analytics';
 
 interface HistoryViewProps {
   onClose: () => void;
@@ -68,6 +69,7 @@ export default function HistoryView({ onClose, recentImages = [], onToggleFavori
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    trackFileDownload('background-remover', 'png', 'history');
   };
 
   const toggleSelect = (id: string) => {

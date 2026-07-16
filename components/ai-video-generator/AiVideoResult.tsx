@@ -4,6 +4,7 @@ import {
 } from 'lucide-react';
 import AiVideoDownloadModal from './AiVideoDownloadModal';
 import AiVideoShareModal from './AiVideoShareModal';
+import { trackFileDownload } from '@/lib/analytics';
 
 interface AiVideoResultProps {
   isAuthenticated?: boolean;
@@ -43,6 +44,7 @@ export default function AiVideoResult({ isAuthenticated = true, isPro = false, o
         link.click();
         document.body.removeChild(link);
         window.URL.revokeObjectURL(blobUrl);
+        trackFileDownload('ai-video-generator', 'mp4', 'result');
       } catch (error) {
         console.error("Download failed:", error);
         alert("Failed to download video. Please try again.");
@@ -75,6 +77,7 @@ export default function AiVideoResult({ isAuthenticated = true, isPro = false, o
         link.click();
         document.body.removeChild(link);
         window.URL.revokeObjectURL(blobUrl);
+        trackFileDownload('ai-video-generator', 'mp4_hd', 'result');
       } catch (error) {
         console.error("HD Download failed:", error);
         alert("Failed to download HD video. Please try again.");

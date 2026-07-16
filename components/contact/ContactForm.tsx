@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { User, Mail, MessageSquare, PenLine, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { getEndpoint } from '../../lib/api';
+import { trackContactSubmit } from '@/lib/analytics';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -36,6 +37,7 @@ export default function ContactForm() {
       const data = await res.json();
       if (res.ok && data.success) {
         setStatus('success');
+        trackContactSubmit(formData.subject);
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
         throw new Error(data.message || 'Something went wrong');

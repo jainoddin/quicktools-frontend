@@ -4,6 +4,7 @@ import React, { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Zap, Clock, ShieldCheck, Building2 } from 'lucide-react';
 import Stepper from '../../components/checkout/Stepper';
+import { trackCheckoutContinue } from '@/lib/analytics';
 
 function CheckoutContent() {
   const router = useRouter();
@@ -22,6 +23,7 @@ function CheckoutContent() {
   const total = isBusiness ? 116.82 : 57.82;
 
   const handleContinue = () => {
+    trackCheckoutContinue(planId, total);
     router.push(`/checkout/payment?plan=${planId}`);
   };
 

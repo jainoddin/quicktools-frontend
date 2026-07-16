@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Download, Share2, PenTool, Crown } from 'lucide-react';
 import DownloadModal from '../ai-image-generator/DownloadModal';
 import ShareModal from '../ai-image-generator/ShareModal';
+import { trackFileDownload } from '@/lib/analytics';
 
 export default function BackgroundRemoverResult({
   isAuthenticated = true,
@@ -80,6 +81,7 @@ export default function BackgroundRemoverResult({
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
+      trackFileDownload('background-remover', isHD ? `${format}_hd` : format, 'result');
     } catch (err) {
       console.error("Download failed", err);
     }

@@ -12,6 +12,7 @@ import AiVideoHistory from './AiVideoHistory';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginPopup from '@/components/auth/LoginPopup';
 import { getEndpoint } from '@/lib/api';
+import { trackToolGenerate } from '@/lib/analytics';
 import { Crown } from 'lucide-react';
 
 export default function AiVideoClient() {
@@ -121,6 +122,7 @@ export default function AiVideoClient() {
       if (data.success) {
         setVideoResult(data.data);
         setHasResult(true);
+        trackToolGenerate('ai-video-generator');
 
         const historyItem = {
           id: Date.now(),

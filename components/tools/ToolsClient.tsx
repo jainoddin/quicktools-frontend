@@ -13,6 +13,7 @@ import { useSearchParams } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { getEndpoint } from '@/lib/api';
 import LoginPopup from '@/components/auth/LoginPopup';
+import { trackToolFilter, trackFavorite } from '@/lib/analytics';
 
 // ✅ Static icon map — RSC bundler idi safely handle cheyagaladu
 export const IconMap: Record<string, LucideIcon> = {
@@ -196,6 +197,7 @@ export default function ToolsClient() {
       : [...starredTools, slug];
     
     setStarredTools(updatedStarred);
+    trackFavorite('tool', isStarred ? 'remove' : 'add', slug);
 
     try {
       const res = await fetch(getEndpoint(`/api/auth/tools/${encodeURIComponent(slug)}/star`), {
@@ -254,7 +256,10 @@ export default function ToolsClient() {
                   return (
                     <button
                       key={index}
-                      onClick={() => setActiveCategory(category.name)}
+                      onClick={() => {
+                        setActiveCategory(category.name);
+                        trackToolFilter('category', category.name);
+                      }}
                       className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all ${isActive
                         ? 'bg-[#EEF2FF] text-[#6D5EF8] font-semibold'
                         : 'text-[#4B5563] hover:bg-white hover:text-[#111827] font-medium'
@@ -327,7 +332,10 @@ export default function ToolsClient() {
                 return (
                   <button
                     key={idx}
-                    onClick={() => setActiveFilter(filter.name)}
+                    onClick={() => {
+                      setActiveFilter(filter.name);
+                      trackToolFilter('type', filter.name);
+                    }}
                     className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[14px] font-semibold transition-all shadow-sm ${isActive
                       ? 'bg-[#6D5EF8] text-white shadow-md shadow-[#6D5EF8]/20'
                       : 'bg-white text-[#4B5563] border border-[#E5E7EB] hover:bg-[#F9FAFB]'
@@ -433,6 +441,7 @@ export default function ToolsClient() {
                       key={index}
                       onClick={() => {
                         setActiveCategory(category.name);
+                        trackToolFilter('category', category.name);
                         setIsMobileCategoriesOpen(false); // Close on select
                       }}
                       className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all ${isActive

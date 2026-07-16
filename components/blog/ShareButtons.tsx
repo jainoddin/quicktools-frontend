@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Link as LinkIcon, Check } from 'lucide-react';
+import { trackShare } from '@/lib/analytics';
 
 interface ShareButtonsProps {
   url: string;
@@ -14,6 +15,7 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
   const handleCopy = () => {
     if (typeof window !== 'undefined') {
       navigator.clipboard.writeText(url);
+      trackShare('content', 'copy');
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
@@ -21,12 +23,14 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
 
   const shareToTwitter = () => {
     if (typeof window !== 'undefined') {
+      trackShare('content', 'twitter');
       window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`, '_blank');
     }
   };
 
   const shareToLinkedIn = () => {
     if (typeof window !== 'undefined') {
+      trackShare('content', 'linkedin');
       window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
     }
   };

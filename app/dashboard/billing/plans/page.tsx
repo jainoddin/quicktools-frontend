@@ -5,6 +5,7 @@ import { CheckCircle2, ShieldCheck, XCircle, Gift, Crown, Building2, X } from 'l
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
+import { trackBeginCheckout } from '@/lib/analytics';
 
 const plans = [
   {
@@ -78,6 +79,7 @@ export default function BillingPlansPage() {
     if (planId === 'free') {
       router.push('/dashboard');
     } else {
+      trackBeginCheckout(planId);
       router.push(`/checkout?plan=${planId}`);
     }
   };

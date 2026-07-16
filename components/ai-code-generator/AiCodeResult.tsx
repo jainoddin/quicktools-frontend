@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import AiCodeDownloadModal from './AiCodeDownloadModal';
 import { PDFDocument, rgb } from 'pdf-lib';
+import { trackFileDownload } from '@/lib/analytics';
 
 interface AiCodeResultProps {
   onHistoryClick: () => void;
@@ -145,6 +146,7 @@ export default function AiCodeResult({ onHistoryClick, onBackClick, isAuthentica
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     }
+    trackFileDownload('ai-code-generator', 'file', 'result');
   };
 
   return (

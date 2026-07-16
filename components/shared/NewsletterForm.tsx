@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { getEndpoint } from '../../lib/api';
+import { trackNewsletterSubscribe } from '@/lib/analytics';
 
 interface NewsletterFormProps {
   className?: string;
@@ -42,6 +43,7 @@ export default function NewsletterForm({
       
       if (res.ok) {
         setStatus('success');
+        trackNewsletterSubscribe('newsletter_form');
       } else {
         setStatus('error');
       }

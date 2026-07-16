@@ -7,6 +7,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SplashScreen from "@/components/SplashScreen";
 import CookieBanner from "@/components/shared/CookieBanner";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import AnalyticsIdentity from "@/components/analytics/AnalyticsIdentity";
+import AnalyticsClickTracker from "@/components/analytics/AnalyticsClickTracker";
 import { AuthProvider } from "@/contexts/AuthContext";
 
 const geistSans = Geist({
@@ -61,17 +64,7 @@ export default function RootLayout({
         {/* Razorpay Checkout SDK */}
         <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
 
-        {/* Google Analytics */}
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-2TKCY5NQPG" strategy="afterInteractive" />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-2TKCY5NQPG');
-          `}
-        </Script>
+        <GoogleAnalytics />
 
         {/* Organization Schema */}
         <script
@@ -139,6 +132,8 @@ export default function RootLayout({
         />
 
         <AuthProvider>
+          <AnalyticsIdentity />
+          <AnalyticsClickTracker />
           <SplashScreen />
           <Header />
           <main className="flex flex-col flex-grow">

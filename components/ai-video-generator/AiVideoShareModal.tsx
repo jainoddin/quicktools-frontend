@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { X, Link2, Copy, Lock } from 'lucide-react';
+import { trackShare } from '@/lib/analytics';
 
 interface AiVideoShareModalProps {
   isOpen: boolean;
@@ -32,6 +33,7 @@ export default function AiVideoShareModal({ isOpen, onClose, videoUrl = "https:/
   const handleSocialClick = (id: string) => {
     const text = encodeURIComponent("Check out this awesome AI generated video!");
     const url = encodeURIComponent(videoUrl);
+    trackShare('ai-video', id);
     
     switch (id) {
       case 'copy':

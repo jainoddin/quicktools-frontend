@@ -9,6 +9,7 @@ import NewsletterSectionWrapper from '../shared/NewsletterSectionWrapper';
 import { useAuth } from '../../contexts/AuthContext';
 import { getEndpoint } from '../../lib/api';
 import { useRouter } from 'next/navigation';
+import { trackFavorite } from '@/lib/analytics';
 
 const CATEGORIES = ['All Articles', 'AI & Tools', 'Productivity', 'Marketing', 'Business', 'Development', 'Design'];
 const TABS = ['All', 'Latest', 'Popular', 'Trending', 'Favorites'];
@@ -49,6 +50,7 @@ export default function ArticlesClient({ initialArticles = [] }: { initialArticl
     } else {
       setSavedArticles(prev => [...prev, articleId]);
     }
+    trackFavorite('article', isSaved ? 'remove' : 'add', articleId);
 
     try {
       const res = await fetch(getEndpoint(`/api/user/saved-articles/${articleId}`), { 

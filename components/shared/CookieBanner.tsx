@@ -3,15 +3,20 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Cookie, X } from 'lucide-react';
+import { updateAnalyticsConsent } from '@/lib/analytics';
 
 export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if the user has already accepted cookies
     const consent = localStorage.getItem('quicktools_cookie_consent');
+    if (consent === 'declined') {
+      updateAnalyticsConsent(false);
+    } else if (consent === 'true') {
+      updateAnalyticsConsent(true);
+    }
+
     if (!consent) {
-      // Small delay for smooth entrance
       const timer = setTimeout(() => setIsVisible(true), 1500);
       return () => clearTimeout(timer);
     }
@@ -19,12 +24,13 @@ export default function CookieBanner() {
 
   const acceptCookies = () => {
     localStorage.setItem('quicktools_cookie_consent', 'true');
+    updateAnalyticsConsent(true);
     setIsVisible(false);
   };
 
   const declineCookies = () => {
-    // You can also track decline if necessary, but we'll just dismiss for now
     localStorage.setItem('quicktools_cookie_consent', 'declined');
+    updateAnalyticsConsent(false);
     setIsVisible(false);
   };
 

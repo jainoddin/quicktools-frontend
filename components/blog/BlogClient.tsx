@@ -14,6 +14,7 @@ import NewsletterSectionWrapper from '../shared/NewsletterSectionWrapper';
 import { useRouter } from 'next/navigation';
 import { getEndpoint } from '../../lib/api';
 import { useAuth } from '../../contexts/AuthContext';
+import { trackFavorite, trackContentFilter } from '@/lib/analytics';
 
 interface Blog {
   _id: string;
@@ -76,6 +77,7 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
     } else {
       setSavedBlogs(prev => [...prev, blogId]);
     }
+    trackFavorite('blog', isSaved ? 'remove' : 'add', blogId);
 
     try {
       const res = await fetch(getEndpoint(`/api/user/saved-blogs/${blogId}`), { 
@@ -206,7 +208,10 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
             {categories.map((cat) => (
               <li key={cat.name}>
                 <button 
-                  onClick={() => setActiveCategory(cat.name)}
+                  onClick={() => {
+                    setActiveCategory(cat.name);
+                    trackContentFilter('blog', cat.name);
+                  }}
                   className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
                     activeCategory === cat.name 
                       ? 'bg-[#F5F3FF] text-[#6D5EF8]' 
@@ -566,6 +571,7 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
                     <button 
                       onClick={() => {
                         setActiveCategory(cat.name);
+                        trackContentFilter('blog', cat.name);
                         setIsMobileCategoriesOpen(false);
                       }}
                       className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors ${

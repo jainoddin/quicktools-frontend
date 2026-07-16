@@ -12,6 +12,7 @@ import AiWriterProgress from './AiWriterProgress';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginPopup from '@/components/auth/LoginPopup';
 import { getEndpoint } from '@/lib/api';
+import { trackToolGenerate } from '@/lib/analytics';
 
 const CustomSelect = ({ options, value, onChange, icon: Icon }: any) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -170,6 +171,7 @@ export default function AiWriterClient() {
       if (data.success) {
         setGeneratedText(data.data);
         setHasResult(true);
+        trackToolGenerate('ai-writer', { content_type: contentType, tone, language });
 
         // Save guest usage to localStorage
         if (!isAuthenticated) {

@@ -11,6 +11,7 @@ import AiCodeEmpty from './AiCodeEmpty';
 import AiCodeHistory from './AiCodeHistory';
 import { useAuth } from '@/contexts/AuthContext';
 import { getEndpoint } from '@/lib/api';
+import { trackToolGenerate } from '@/lib/analytics';
 import LoginPopup from '@/components/auth/LoginPopup';
 
 const CustomSelect = ({ options, value, onChange, icon }: any) => {
@@ -215,6 +216,7 @@ export default function AiCodeClient() {
       setGeneratedResult(data.data);
       setIsProcessing(false);
       setHasResult(true);
+      trackToolGenerate('ai-code-generator', { language, framework, code_type: codeType });
     } catch (error) {
       console.error(error);
       await triggerErrorReport(error instanceof Error ? error.message : 'Unknown error');

@@ -10,6 +10,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { getEndpoint } from '../../lib/api';
 import { useRouter } from 'next/navigation';
 import { Bookmark } from 'lucide-react';
+import { trackFavorite, trackContentFilter } from '@/lib/analytics';
 
 const CATEGORIES = ['All News', 'Product Launches', 'Research', 'Funding', 'Partnerships', 'Industry', 'Favorites'];
 const SORT_OPTIONS = ['Latest', 'Popular'];
@@ -47,6 +48,7 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
     } else {
       setSavedNews(prev => [...prev, newsId]);
     }
+    trackFavorite('news', isSaved ? 'remove' : 'add', newsId);
 
     try {
       const res = await fetch(getEndpoint(`/api/user/saved-news/${newsId}`), { 
@@ -256,7 +258,10 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
               {CATEGORIES.map((cat, idx) => (
                 <button 
                   key={idx}
-                  onClick={() => setActiveCategory(cat)}
+                  onClick={() => {
+                    setActiveCategory(cat);
+                    trackContentFilter('news', cat);
+                  }}
                   className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${activeCategory === cat ? 'bg-[#4F46E5] text-white border-transparent shadow-sm' : 'bg-white text-[#4B5563] border-gray-200 hover:border-[#4F46E5] hover:text-[#4F46E5]'}`}
                 >
                   {cat}
@@ -353,7 +358,10 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
                 {CATEGORIES.map((cat, idx) => (
                   <li key={idx}>
                     <button 
-                      onClick={() => setActiveCategory(cat)}
+                      onClick={() => {
+                    setActiveCategory(cat);
+                    trackContentFilter('news', cat);
+                  }}
                       className="w-full flex items-center justify-between text-sm text-[#4B5563] hover:text-[#4F46E5] group"
                     >
                       <span className={`font-medium ${activeCategory === cat ? 'text-[#4F46E5]' : ''}`}>{cat}</span>

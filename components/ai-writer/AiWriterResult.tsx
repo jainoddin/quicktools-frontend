@@ -3,6 +3,7 @@ import { Copy, Download, Edit2, RefreshCw, Maximize2, Minimize2, Trash2, CheckCi
 
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { trackFileDownload, trackShare } from '@/lib/analytics';
 
 export default function AiWriterResult({ 
   content = '', 
@@ -49,6 +50,7 @@ export default function AiWriterResult({
 
   const handleSocialShare = (id: string) => {
     setActiveShareNode(id);
+    trackShare('ai-writer', id);
     if (id === 'copy') return;
     
     let url = '';
@@ -86,6 +88,7 @@ export default function AiWriterResult({
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+    trackFileDownload('ai-writer', downloadFormat, 'result');
     setShowDownloadModal(false);
   };
 

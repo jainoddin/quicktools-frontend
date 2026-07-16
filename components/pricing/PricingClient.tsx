@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Gift, Crown, Building2, CheckCircle2, X, HelpCircle, ArrowRight, Zap, ChevronDown, ChevronUp, Home, ChevronRight } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { trackBeginCheckout, trackBillingPeriodToggle } from '@/lib/analytics';
 
 const plans = [
   {
@@ -104,6 +105,7 @@ export default function PricingClient() {
     if (planId === 'free') {
       router.push('/dashboard'); // Go directly to the user dashboard
     } else {
+      trackBeginCheckout(planId);
       router.push(`/checkout?plan=${planId}`);
     }
   };
@@ -136,13 +138,19 @@ export default function PricingClient() {
         {/* Toggle */}
         <div className="inline-flex items-center p-1.5 bg-white border border-[#E5E7EB] rounded-full shadow-sm">
           <button 
-            onClick={() => setIsYearly(false)}
+            onClick={() => {
+              setIsYearly(false);
+              trackBillingPeriodToggle('monthly');
+            }}
             className={`px-6 py-2 rounded-full text-sm font-bold transition-colors ${!isYearly ? 'bg-white text-[#6D5EF8] shadow-sm' : 'text-[#6B7280] hover:text-[#111827]'}`}
           >
             Monthly
           </button>
           <button 
-            onClick={() => setIsYearly(true)}
+            onClick={() => {
+              setIsYearly(true);
+              trackBillingPeriodToggle('yearly');
+            }}
             className={`flex items-center gap-2 px-6 py-2 rounded-full text-sm font-bold transition-colors ${isYearly ? 'bg-white text-[#6D5EF8] shadow-sm' : 'text-[#6B7280] hover:text-[#111827]'}`}
           >
             Yearly <span className="px-2 py-0.5 rounded-full bg-[#6D5EF8] text-white text-[10px]">Save 20%</span>

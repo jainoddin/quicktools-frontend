@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { X, Code2, Crown, Download, ShieldCheck, Zap } from 'lucide-react';
 import { PDFDocument, rgb } from 'pdf-lib';
+import { trackFileDownload } from '@/lib/analytics';
 
 interface AiCodeDownloadModalProps {
   isOpen: boolean;
@@ -140,6 +141,7 @@ export default function AiCodeDownloadModal({
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
+      trackFileDownload('ai-code-generator', 'zip', 'download_modal');
     } catch (e) {
       console.error("Zip generation failed", e);
     }

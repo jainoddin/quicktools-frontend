@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { X, Link2, Copy, Lock } from 'lucide-react';
+import { trackShare } from '@/lib/analytics';
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -105,6 +106,7 @@ export default function ShareModal({
                     onClick={() => handleAction(() => {
                       const url = encodeURIComponent(imageUrl);
                       const text = encodeURIComponent('Check out this AI Generated Image!');
+                      trackShare('ai-image', social.id);
                       if (social.id === 'copy') {
                         navigator.clipboard.writeText(imageUrl);
                         alert("Link copied to clipboard!");

@@ -3,6 +3,7 @@ import {
   Search, Star, Trash2, Download, Copy, Code2, 
   Sparkles, File, FileCode2, X, Crown, ChevronLeft, ChevronRight
 } from 'lucide-react';
+import { trackFileDownload } from '@/lib/analytics';
 
 interface AiCodeHistoryProps {
   history?: any[];
@@ -138,6 +139,7 @@ export default function AiCodeHistory({ history = [], onClose, onToggleFavorite,
       URL.revokeObjectURL(url);
     }
     
+    trackFileDownload('ai-code-generator', downloadFormat, 'history');
     setItemToDownload(null);
   };
 

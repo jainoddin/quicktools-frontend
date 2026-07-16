@@ -6,6 +6,7 @@ import { ShieldCheck, CreditCard, Smartphone, Loader2, Zap, Building2 } from 'lu
 import Stepper from '../../../components/checkout/Stepper';
 import { useAuth } from '@/contexts/AuthContext';
 import { getEndpoint } from '@/lib/api';
+import { trackBeginCheckout, trackPurchase, trackAddPaymentInfo } from '@/lib/analytics';
 
 /* ─── Brand Logo Images ─── */
 const VisaLogo       = () => <img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/visa.svg" alt="Visa" className="h-6 w-auto object-contain" />;
@@ -179,6 +180,8 @@ function PaymentContent() {
     setError('');
 
     try {
+      trackBeginCheckout(planId, Number(totalAmount));
+
       // Step 1 — Backend lo Razorpay order create
       const res = await fetch(getEndpoint('/api/payment/create-order'), {
         method:  'POST',
@@ -249,6 +252,11 @@ function PaymentContent() {
           const verifyData = await verifyRes.json();
 
           if (verifyData.success) {
+            trackPurchase({
+              plan: planId,
+              value: Number(totalAmount),
+              transactionId: response.razorpay_payment_id,
+            });
             router.replace('/checkout/success');
           } else {
             router.replace('/checkout/failed');
@@ -289,7 +297,10 @@ function PaymentContent() {
                 <input
                   type="radio" name="payment_method" value={method.id}
                   checked={selectedMethod === method.id}
-                  onChange={() => setSelectedMethod(method.id)}
+                  onChange={() => {
+                    setSelectedMethod(method.id);
+                    trackAddPaymentInfo(method.id, planId);
+                  }}
                   className="w-5 h-5 text-[#6D5EF8] border-[#D1D5DB] focus:ring-[#6D5EF8] shrink-0"
                 />
                 <div className="ml-4 flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-2">

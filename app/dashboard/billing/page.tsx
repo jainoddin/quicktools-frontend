@@ -7,6 +7,7 @@ import {
   CheckCircle2, CreditCard, Receipt, History, Zap, AlertTriangle, X, Loader2
 } from 'lucide-react';
 import { getEndpoint } from '../../../lib/api';
+import { trackCancelPlan } from '@/lib/analytics';
 
 export default function BillingOverviewPage() {
   const router = useRouter();
@@ -58,6 +59,7 @@ export default function BillingOverviewPage() {
       });
       const data = await res.json();
       if (data.success) {
+        trackCancelPlan(usage.plan);
         setShowCancelModal(false);
         // Refresh usage data
         fetchUsage();

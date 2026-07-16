@@ -4,6 +4,7 @@ import React from 'react';
 import { X, Lock } from 'lucide-react';
 import Image from 'next/image';
 import { getEndpoint } from '../../lib/api';
+import { trackLoginStart } from '@/lib/analytics';
 
 interface LoginPopupProps {
   isOpen: boolean;
@@ -14,6 +15,7 @@ export default function LoginPopup({ isOpen, onClose }: LoginPopupProps) {
   if (!isOpen) return null;
 
   const handleGoogleLogin = () => {
+    trackLoginStart('google');
     window.location.href = getEndpoint('/api/auth/google');
   };
 

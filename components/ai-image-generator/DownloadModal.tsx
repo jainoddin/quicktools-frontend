@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, Image as ImageIcon, FileImage, Layers, Monitor, Maximize, Download, Crown } from 'lucide-react';
+import { trackFileDownload } from '@/lib/analytics';
 
 interface DownloadModalProps {
   isOpen: boolean;
@@ -97,6 +98,8 @@ export default function DownloadModal({ isOpen, onClose, imageUrl, isPro = false
         }
         URL.revokeObjectURL(url);
       }
+
+      trackFileDownload('ai-image-generator', selectedFormat, 'download_modal');
       
       setTimeout(() => {
         onClose();

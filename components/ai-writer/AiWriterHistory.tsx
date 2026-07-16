@@ -4,6 +4,7 @@ import {
   FileText, Mail, MessageSquare, Tag, Eye, Copy, Download, MoreVertical,
   ChevronLeft, ChevronRight, Clock, Sparkles, File, X
 } from 'lucide-react';
+import { trackFileDownload } from '@/lib/analytics';
 
 interface HistoryItem {
   id: string;
@@ -201,6 +202,7 @@ export default function AiWriterHistory({
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+    trackFileDownload('ai-writer', downloadFormat, 'history');
     setItemToDownload(null);
   };
 

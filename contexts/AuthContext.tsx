@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { getEndpoint } from '../lib/api';
+import { clearAnalyticsUser, trackLogout } from '../lib/analytics';
 
 interface User {
   id: string;
@@ -120,6 +121,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = async () => {
     try {
+      trackLogout();
+      clearAnalyticsUser();
       await fetch(getEndpoint('/api/auth/logout'), {
         method: 'POST',
         credentials: 'include',

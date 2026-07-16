@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { trackSearch } from '@/lib/analytics';
 
 export default function HomeSearch() {
   const [query, setQuery] = useState('');
@@ -11,6 +12,7 @@ export default function HomeSearch() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
+      trackSearch(query.trim(), 'home');
       router.push(`/tools?q=${encodeURIComponent(query.trim())}`);
     } else {
       router.push('/tools');
