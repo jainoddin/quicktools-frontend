@@ -27,7 +27,7 @@ export default function UrlShortenerClient() {
         // Assume backend is on localhost:5000 in dev, or quicktools.ai in prod. 
         // We will just use the current window location origin to build the link
         const domain = process.env.NEXT_PUBLIC_API_URL?.includes('localhost') ? 'http://localhost:5000' : 'https://api.quicktool.space';
-        setShortUrl(\`\${domain}/s/\${data.shortCode}\`);
+        setShortUrl(`${domain}/s/${data.shortCode}`);
       } else {
         alert('Failed: ' + data.message);
       }
