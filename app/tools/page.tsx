@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Metadata } from 'next';
 import ToolsClient from '@/components/tools/ToolsClient';
 
-import toolsData from '../../../tools_data.json';
+import toolsData from '../../tools_data.json';
 
 export const metadata: Metadata = {
   title: 'All 100+ Premium & Free AI Tools - Image, Text, Code & More',
