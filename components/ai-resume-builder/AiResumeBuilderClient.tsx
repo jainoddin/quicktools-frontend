@@ -2,10 +2,8 @@
 
 import { useToast } from '@/contexts/ToastContext';
 import React, { useState, useEffect } from 'react';
-import { 
-  FileUser, ArrowRight, Loader2, Copy, CheckCircle2, History,
-  Sparkles, Info, Type, LayoutGrid, Wand2, Image as ImageIcon, Sparkle, Download
-} from 'lucide-react';
+import { FileUser, ArrowRight, Loader2, Copy, CheckCircle2, History, Sparkles, Info, Type, LayoutGrid, Wand2, Image as ImageIcon, Sparkle, Download, Share2, RefreshCw } from 'lucide-react';
+import TextDownloadModal from '@/components/shared/TextDownloadModal';
 import { getEndpoint } from '@/lib/api';
 import { downloadAsPDF } from '@/lib/pdfUtils';
 import ReactMarkdown from 'react-markdown';
@@ -13,6 +11,7 @@ import remarkGfm from 'remark-gfm';
 import ToolHistorySidebar from '../tools/ToolHistorySidebar';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginPopup from '@/components/auth/LoginPopup';
+import TextGenerationProgress from '@/components/shared/TextGenerationProgress';
 
 export default function AiResumeBuilderClient() {
   const { error, success } = useToast();
@@ -21,6 +20,7 @@ export default function AiResumeBuilderClient() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [result, setResult] = useState('');
   const [copied, setCopied] = useState(false);
+  const [showDownloadModal, setShowDownloadModal] = useState(false);
   
   const [showHistory, setShowHistory] = useState(false);
   const [toolHistory, setToolHistory] = useState<any[]>([]);
@@ -245,20 +245,16 @@ export default function AiResumeBuilderClient() {
         <main className="flex-grow flex flex-col min-w-0">
           
           {/* Header */}
-          {!result && !isProcessing && (
-            <div className="flex flex-col md:flex-row md:items-start lg:items-center justify-between gap-4 mb-6 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both delay-100">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#6D5EF8] rounded-xl flex items-center justify-center shadow-sm shrink-0">
-                  <FileUser className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold text-[#111827] flex items-center gap-2">
-                    AI Resume Builder <Sparkle className="w-5 h-5 text-[#6D5EF8]" />
-                  </h1>
-                  <p className="text-sm text-[#6B7280]">Generate a professional, ATS-friendly resume in seconds.</p>
-                </div>
-              </div>
-              
+            
+          {/* Header Area */}
+          <div className="flex flex-col md:flex-row md:items-start lg:items-center justify-between gap-4 mb-6">
+            <div>
+              <h1 className="text-3xl lg:text-4xl font-bold tracking-tight text-[#111827] flex items-center gap-2">AI Resume Builder <Sparkles className="w-6 h-6" style={{ color: '#8B5CF6' }} /></h1>
+              <p className="text-[#6B7280] text-sm lg:text-base mt-2">
+                Generate a professional ATS-friendly resume from your details in seconds.
+              </p>
+            </div>
+            
               <div className="flex items-center gap-3 shrink-0">
                 <button 
                   onClick={() => setShowHistory(true)}
@@ -267,120 +263,100 @@ export default function AiResumeBuilderClient() {
                   <History className="w-4 h-4 text-[#6B7280]" /> History
                 </button>
               </div>
+  
+          </div>
+
+
+          {/* Generated Result Header */}
+          {result && !isProcessing && (
+            <div className="flex items-center justify-between mb-4 mt-2">
+              <h2 className="text-xl font-extrabold text-[#111827] flex items-center gap-2">
+                <Sparkles className="w-6 h-6" style={{ color: '#8B5CF6' }} />
+                Generated Result
+              </h2>
+              <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-[#EEF2FF] text-[#6366F1] rounded-lg text-sm font-medium border border-[#6366F1]/20">
+                <History className="w-4 h-4" /> Your creations are saved in history
+              </div>
             </div>
           )}
 
-          {isProcessing ? (
-            <div className="flex-grow bg-white rounded-3xl border border-[#E5E7EB] p-8 flex flex-col items-center justify-center shadow-sm animate-in fade-in duration-500 h-[600px]">
-              <Loader2 className="w-12 h-12 text-[#6D5EF8] animate-spin mb-4" />
-              <h2 className="text-xl font-bold text-[#111827]">Building your resume...</h2>
-              <p className="text-[#6B7280] mt-2">This will just take a moment.</p>
-            </div>
-          ) : result ? (
-            <div className="flex-grow flex flex-col bg-white border border-[#E5E7EB] rounded-3xl p-6 shadow-sm animate-in zoom-in-95 duration-500 h-[600px]">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-bold text-[#111827]">Generated Resume</h2>
-                <div className="flex items-center gap-2">
-                  <button 
-                    onClick={() => setShowHistory(true)}
-                    className="flex items-center gap-2 px-4 py-2 border border-[#E5E7EB] text-[#4B5563] rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors"
+          <div className="flex-grow bg-white border border-[#E5E7EB] rounded-3xl p-6 lg:p-8 shadow-sm flex flex-col h-[600px] animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both delay-150">
+            {isProcessing ? (
+              <TextGenerationProgress title="Building your resume..." description="This will just take a moment." />
+            ) : result ? (
+              <>
+                <div className="flex-grow overflow-y-auto custom-scrollbar pr-2 min-h-0 mb-6">
+                  <div id="result-content" className="prose prose-sm md:prose-base max-w-none prose-p:text-[#4B5563] prose-headings:text-[#111827] prose-strong:text-[#111827] prose-li:text-[#4B5563]">
+                    <ReactMarkdown>{result}</ReactMarkdown>
+                  </div>
+                </div>
+                <div className="flex flex-wrap items-center gap-3 pt-6 border-t border-[#E5E7EB] shrink-0">
+                  <button
+                    onClick={() => setShowDownloadModal(true)}
+                    className="flex items-center gap-2 px-5 py-2.5 text-white font-semibold rounded-xl transition-all shadow-sm text-sm hover:opacity-90"
+                    style={{ backgroundColor: '#8B5CF6' }}
                   >
-                    <History className="w-4 h-4 text-[#6B7280]" /> History
+                    <Download className="w-4 h-4" />
+                    <span>Download</span>
                   </button>
-                  <button 
+                  <button
+                    onClick={async () => {
+                      if (navigator.share) {
+                        try {
+                          await navigator.share({ title: 'Document.pdf', text: result });
+                        } catch (err) {
+                          console.error('Share failed:', err);
+                        }
+                      } else {
+                        copyToClipboard();
+                      }
+                    }}
+                    className="flex items-center gap-2 px-5 py-2.5 bg-white border border-[#E5E7EB] text-[#4B5563] font-semibold rounded-xl hover:bg-[#F3F4F6] transition-all shadow-sm text-sm"
+                  >
+                    <Share2 className="w-4 h-4" />
+                    <span>Share</span>
+                  </button>
+                  <button
+                    onClick={() => { setResult(''); }}
+                    className="flex items-center gap-2 px-5 py-2.5 bg-white border border-[#E5E7EB] text-[#4B5563] font-semibold rounded-xl hover:bg-[#F3F4F6] transition-all shadow-sm text-sm"
+                  >
+                    <RefreshCw className="w-4 h-4" />
+                    <span>Regenerate</span>
+                  </button>
+                  <button
                     onClick={copyToClipboard}
-                    className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 hover:bg-gray-100 text-gray-700 rounded-lg text-sm font-semibold transition-colors"
+                    className="flex items-center gap-2 px-5 py-2.5 bg-white border border-[#E5E7EB] text-[#4B5563] font-semibold rounded-xl hover:bg-[#F3F4F6] transition-all shadow-sm text-sm"
                   >
                     {copied ? <CheckCircle2 className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
-                    {copied ? 'Copied' : 'Copy'}
-                  </button>
-                  <button 
-                    onClick={() => downloadAsPDF('result-content', 'Document.pdf')}
-                    className="flex items-center gap-2 px-4 py-2 bg-[#F0FDF4] text-[#16A34A] rounded-xl text-sm font-bold hover:bg-[#DCFCE7] transition-colors"
-                  >
-                    <Download className="w-4 h-4" /> PDF
-                  </button>
-                  <button 
-                    onClick={() => window.print()}
-                    className="flex items-center gap-2 px-3 py-1.5 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white rounded-lg text-sm font-semibold transition-colors print:hidden"
-                  >
-                    <FileUser className="w-4 h-4" />
-                    Download PDF
+                    <span>{copied ? 'Copied' : 'Copy'}</span>
                   </button>
                 </div>
-              </div>
-              
-              <div className="flex-1 overflow-y-auto pr-2">
-                <div id="result-content" className="prose prose-purple bg-white p-4 rounded-xl max-w-none text-gray-800">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{result}</ReactMarkdown>
+              </>
+            ) : (
+              <div className="h-full flex flex-col items-center justify-center text-center px-4">
+                <div className="w-16 h-16 bg-[#F9FAFB] rounded-2xl flex items-center justify-center mb-4 border border-[#E5E7EB]">
+                  <Sparkles className="w-8 h-8 text-[#9CA3AF]" />
                 </div>
+                <h3 className="text-lg font-bold text-[#111827] mb-2">Ready to generate</h3>
+                <p className="text-[#6B7280] max-w-sm">
+                  Fill in the details on the left and click generate to see the magic happen.
+                </p>
               </div>
-            </div>
-          ) : (
-            <div className="flex-grow bg-white rounded-3xl border border-[#E5E7EB] p-8 lg:p-12 shadow-sm flex flex-col items-center justify-center text-center relative animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both delay-200 h-[600px]">
-              
-              {/* Animated Graphic */}
-              <div className="relative w-72 h-64 mb-10 flex items-center justify-center mt-4">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 bg-[#F5F3FF] rounded-full blur-2xl opacity-80"></div>
-                
-                {/* Central Resume Graphic */}
-                <div className="relative z-10 w-40 h-52 bg-[#E0E7FF] rounded-xl shadow-[0_10px_30px_-10px_rgba(109,94,248,0.3)] border-4 border-[#B4C6FC] overflow-hidden flex flex-col p-3 transform hover:scale-105 transition-transform duration-500">
-                  {/* Header/Photo block */}
-                  <div className="flex gap-3 mb-4 items-center">
-                    <div className="w-10 h-10 bg-[#6D5EF8] rounded-full shrink-0 flex items-center justify-center text-white">
-                      <FileUser className="w-5 h-5" />
-                    </div>
-                    <div className="flex-grow">
-                      <div className="w-full h-2 bg-[#6D5EF8] rounded-full mb-2 opacity-80"></div>
-                      <div className="w-2/3 h-2 bg-[#B4C6FC] rounded-full"></div>
-                    </div>
-                  </div>
-                  
-                  {/* Body lines */}
-                  <div className="space-y-3">
-                    <div>
-                      <div className="w-1/3 h-2 bg-[#B4C6FC] rounded-full mb-1 opacity-70"></div>
-                      <div className="w-full h-1.5 bg-white rounded-full mb-1"></div>
-                      <div className="w-full h-1.5 bg-white rounded-full mb-1"></div>
-                      <div className="w-4/5 h-1.5 bg-white rounded-full"></div>
-                    </div>
-                    <div>
-                      <div className="w-1/3 h-2 bg-[#B4C6FC] rounded-full mb-1 opacity-70"></div>
-                      <div className="w-full h-1.5 bg-white rounded-full mb-1"></div>
-                      <div className="w-5/6 h-1.5 bg-white rounded-full"></div>
-                    </div>
-                  </div>
-                </div>
+            )}
+          </div>
 
-                {/* Floating Elements */}
-                <div className="absolute top-4 left-4 w-12 h-12 bg-white rounded-lg shadow-lg border border-[#E5E7EB] flex items-center justify-center animate-[bounce_4s_infinite]">
-                  <div className="w-6 h-6 bg-green-100 text-green-600 rounded flex items-center justify-center font-bold text-xs">HTML</div>
-                </div>
-                
-                <div className="absolute bottom-10 -right-2 w-12 h-12 bg-white rounded-lg shadow-lg border border-[#E5E7EB] flex items-center justify-center animate-[bounce_4s_infinite_1s]">
-                  <div className="w-6 h-6 bg-blue-100 text-blue-600 rounded flex items-center justify-center font-bold text-xs">JS</div>
-                </div>
-
-                {/* Floating Sparkles */}
-                <Sparkles className="absolute top-1/2 left-0 w-5 h-5 text-[#A5B4FC] animate-pulse" />
-                <Sparkles className="absolute -top-4 right-8 w-6 h-6 text-[#A5B4FC] animate-pulse" style={{ animationDelay: '500ms' }} />
-              </div>
-
-              <h2 className="text-2xl lg:text-3xl font-bold text-[#111827] mb-3">
-                Ready to build <span className="text-[#6D5EF8]">your resume?</span>
-              </h2>
-              <p className="text-[#6B7280] max-w-sm mx-auto mb-8">
-                Provide your details on the left and click <span className="text-[#6D5EF8] font-semibold">"Generate Resume"</span> to get an ATS-friendly format.
-              </p>
-              
-              <div className="w-full bg-[#F5F3FF] border border-[#EDE9FE] rounded-xl p-4 flex items-center justify-center gap-2 text-sm text-[#4B5563] shadow-sm mt-auto max-w-md">
-                <Info className="w-4 h-4 text-[#6D5EF8]" />
-                <span className="font-bold text-[#111827]">Tip:</span> The more skills you list, the better the AI can tailor it!
-              </div>
-            </div>
-          )}
+          
         </main>
       )}
+    
+      <TextDownloadModal 
+        isOpen={showDownloadModal} 
+        onClose={() => setShowDownloadModal(false)} 
+        content={result} 
+        filename="Document.pdf" 
+        toolSlug="ai-resume-builder" 
+        elementId="result-content" 
+      />
     </div>
   );
 }

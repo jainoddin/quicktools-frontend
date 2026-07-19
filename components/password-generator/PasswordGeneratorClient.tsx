@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { 
-  KeyRound, Copy, CheckCircle2, RefreshCw, ShieldCheck
-} from 'lucide-react';
+import { KeyRound, Copy, CheckCircle2, RefreshCw, ShieldCheck } from 'lucide-react';
 
 export default function PasswordGeneratorClient() {
   const [password, setPassword] = useState('');

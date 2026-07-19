@@ -2,10 +2,7 @@
 
 import { useToast } from '@/contexts/ToastContext';
 import React, { useState } from 'react';
-import { 
-  QrCode, Loader2, Download,
-  Sparkles, Link2, FileText, Image as ImageIcon
-} from 'lucide-react';
+import { QrCode, Loader2, Download, Sparkles, Link2, FileText, Image as ImageIcon } from 'lucide-react';
 
 export default function QrCodeClient() {
   const { error, success } = useToast();

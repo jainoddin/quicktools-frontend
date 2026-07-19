@@ -9,8 +9,12 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import HomeSearch from '../components/home/HomeSearch';
 import LatestBlogs from '../components/home/LatestBlogs';
+import LatestArticles from '../components/home/LatestArticles';
+import LatestNews from '../components/home/LatestNews';
 import FaqSection from '../components/home/FaqSection';
 import { Metadata } from 'next';
+
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   alternates: {
@@ -31,11 +35,11 @@ export default function HomePage() {
         
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="max-w-xl">
+          <div className="max-w-xl relative z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-[#4F46E5] text-xs font-semibold mb-6">
               <Zap className="w-4 h-4" /> 100+ AI Tools in One Place
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-bold leading-tight mb-6 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-bold leading-tight mb-6 tracking-tight text-gray-900">
               All AI Tools You Need,<br/>
               All in <span className="text-[#4F46E5]">One Place</span>
             </h1>
@@ -57,21 +61,21 @@ export default function HomePage() {
             </div>
             
             {/* Stats */}
-            <div className="grid grid-cols-2 sm:flex sm:items-center gap-6 sm:gap-8 border-t border-[#E5E7EB] pt-8">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-6 sm:gap-8 border-t border-[#E5E7EB] pt-8">
               <div>
-                <div className="flex items-center gap-2 font-bold text-lg sm:text-xl"><LayoutGrid className="w-5 h-5 text-[#4F46E5]"/> 5</div>
-                <div className="text-xs sm:text-sm text-[#6B7280]">Premium AI Tools</div>
+                <div className="flex items-center gap-2 font-bold text-lg sm:text-xl text-gray-900"><LayoutGrid className="w-5 h-5 text-[#4F46E5]"/> 100+</div>
+                <div className="text-xs sm:text-sm text-[#6B7280]">Total Tools</div>
               </div>
               <div>
-                <div className="flex items-center gap-2 font-bold text-lg sm:text-xl"><Zap className="w-5 h-5 text-[#4F46E5]"/> Fast</div>
-                <div className="text-xs sm:text-sm text-[#6B7280]">Processing Speed</div>
+                <div className="flex items-center gap-2 font-bold text-lg sm:text-xl text-gray-900"><Zap className="w-5 h-5 text-[#4F46E5]"/> 50</div>
+                <div className="text-xs sm:text-sm text-[#6B7280]">Premium Tools</div>
               </div>
               <div>
-                <div className="flex items-center gap-2 font-bold text-lg sm:text-xl"><Check className="w-5 h-5 text-[#4F46E5]"/> Limitless</div>
-                <div className="text-xs sm:text-sm text-[#6B7280]">Creativity</div>
+                <div className="flex items-center gap-2 font-bold text-lg sm:text-xl text-gray-900"><Check className="w-5 h-5 text-[#4F46E5]"/> 56</div>
+                <div className="text-xs sm:text-sm text-[#6B7280]">Free Tools</div>
               </div>
               <div>
-                <div className="flex items-center gap-2 font-bold text-lg sm:text-xl"><Star className="w-5 h-5 text-[#F59E0B] fill-[#F59E0B]"/> 5.0/5</div>
+                <div className="flex items-center gap-2 font-bold text-lg sm:text-xl text-gray-900"><Star className="w-5 h-5 text-[#F59E0B] fill-[#F59E0B]"/> 5.0/5</div>
                 <div className="text-xs sm:text-sm text-[#6B7280]">User Rating</div>
               </div>
             </div>
@@ -192,7 +196,7 @@ export default function HomePage() {
         <h2 className="text-xl sm:text-2xl font-bold text-[#111827] mb-8 sm:mb-10">Why Choose QuickTools.ai?</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
           {[
-            { icon: LayoutGrid, title: '5 Premium Tools', desc: 'The most powerful AI tools in one platform', color: 'text-indigo-600', bg: 'bg-indigo-100' },
+            { icon: LayoutGrid, title: '100+ Total Tools', desc: 'The most powerful AI tools in one platform', color: 'text-indigo-600', bg: 'bg-indigo-100' },
             { icon: Zap, title: 'Easy to Use', desc: 'Simple interface, powerful results', color: 'text-emerald-600', bg: 'bg-emerald-100' },
             { icon: Check, title: 'Save Time', desc: 'Complete tasks in seconds, not hours', color: 'text-blue-600', bg: 'bg-blue-100' },
             { icon: Briefcase, title: 'Secure & Private', desc: 'Your data is safe and encrypted', color: 'text-orange-600', bg: 'bg-orange-100' },
@@ -210,9 +214,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. Latest Blogs */}
-      <Suspense fallback={<div className="max-w-[1440px] mx-auto px-4 py-12 text-center text-[#6B7280]">Loading latest blogs...</div>}>
+      {/* 5. Latest Blogs, Articles & News */}
+      <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading content...</div>}>
         <LatestBlogs />
+        <LatestArticles />
+        <LatestNews />
       </Suspense>
 
       {/* 7. CTA Section */}

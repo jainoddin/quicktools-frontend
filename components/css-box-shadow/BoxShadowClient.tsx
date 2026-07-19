@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { 
-  Box, Copy, CheckCircle2, SlidersHorizontal, Square
-} from 'lucide-react';
+import { Box, Copy, CheckCircle2, SlidersHorizontal, Square } from 'lucide-react';
 
 export default function BoxShadowClient() {
   const [offsetX, setOffsetX] = useState(10);

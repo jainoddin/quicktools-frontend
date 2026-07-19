@@ -2,12 +2,7 @@
 
 import { useToast } from '@/contexts/ToastContext';
 import React, { useState, useEffect, useMemo } from 'react';
-import { 
-  Search, Grid, List, Bookmark, ChevronDown, LayoutGrid, 
-  Sparkles, CheckCircle2, Play, Code2, PenTool, TrendingUp,
-  Briefcase, GraduationCap, Newspaper, ArrowRight, Zap, Send, SearchX, Loader2,
-  Menu, X
-} from 'lucide-react';
+import { Search, Grid, List, Bookmark, ChevronDown, LayoutGrid, Sparkles, CheckCircle2, Play, Code2, PenTool, TrendingUp, Briefcase, GraduationCap, Newspaper, ArrowRight, Zap, Send, SearchX, Loader2, Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import NewsletterForm from '../shared/NewsletterForm';

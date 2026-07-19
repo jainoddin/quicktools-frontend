@@ -2,11 +2,7 @@
 
 import { useToast } from '@/contexts/ToastContext';
 import React, { useState, useEffect, useRef } from 'react';
-import {
-  Lightbulb, Clipboard, FileText, SmilePlus, Globe, Sparkles, Info,
-  ShoppingBag, MessageSquare, Mail, ChevronDown, Type,
-  PenTool, History, LayoutGrid, Loader2, Crown
-} from 'lucide-react';
+import { Lightbulb, Clipboard, FileText, SmilePlus, Globe, Sparkles, Info, ShoppingBag, MessageSquare, Mail, ChevronDown, Type, PenTool, History, LayoutGrid, Loader2, Crown } from 'lucide-react';
 import AiWriterResult from './AiWriterResult';
 import AiWriterHistory from './AiWriterHistory';
 import AiWriterProgress from './AiWriterProgress';

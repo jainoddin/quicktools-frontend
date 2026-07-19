@@ -13,13 +13,27 @@ export const metadata: Metadata = {
   title: 'Powerful AI Image Generator - Create Stunning AI Art',
   description: 'Create stunning, high-resolution images from text descriptions. Unleash your creativity with our powerful AI Image Generator and models.',
   alternates: {
-    canonical: '/tools/ai-image-generator'
+    canonical: 'https://quicktool.space/tools/ai-image-generator'
   }
 };
 
 export default function AIImageGeneratorPage() {
   return (
     <div className="flex-grow bg-[#F8FAFC] flex flex-col font-sans selection:bg-[#6D5EF8] selection:text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Powerful AI Image Generator - Create Stunning AI Art",
+      "operatingSystem": "Web",
+      "applicationCategory": "WebApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Create stunning, high-resolution images from text descriptions. Unleash your creativity with our powerful AI Image Generator and models.",
+      "url": "https://quicktool.space/tools/ai-image-generator"
+    }) }} />
       
       {/* Breadcrumb Navigation */}
       <div className="bg-transparent pt-[15px] pb-[25px]">

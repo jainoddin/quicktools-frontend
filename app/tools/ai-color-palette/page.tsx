@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Free AI Color Palette Generator',
   description: 'Generate beautiful color palettes from a brand name or mood description with our free AI Color Palette Generator.',
   alternates: {
-    canonical: '/tools/ai-color-palette'
+    canonical: 'https://quicktool.space/tools/ai-color-palette'
   }
 };
 

@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Download, 
-  Code2, Copy, CheckCircle2, Trash2, FileJson, Sparkles
-} from 'lucide-react';
+import { Download, Code2, Copy, CheckCircle2, Trash2, FileJson, Sparkles } from 'lucide-react';
 import { downloadAsPDF } from '@/lib/pdfUtils';
 import ReactMarkdown from 'react-markdown';
 

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Free URL Shortener - Create Short Links',
   description: 'Shorten any long URL into a clean, shareable link in one click with our free URL Shortener.',
   alternates: {
-    canonical: '/tools/url-shortener'
+    canonical: 'https://quicktool.space/tools/url-shortener'
   }
 };
 

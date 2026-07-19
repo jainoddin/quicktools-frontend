@@ -5,6 +5,8 @@ import { ChevronRight, Home } from 'lucide-react';
 import BlogClient from '@/components/blog/BlogClient';
 import { getEndpoint } from '@/lib/api';
 
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'AI Blog: Expert Tips, Tutorials & Insights',
   description: 'Explore the QuickTools.ai blog for expert insights, detailed tutorials, and the latest news on AI tools. Learn how to boost your productivity.',

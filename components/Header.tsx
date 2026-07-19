@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Zap, ChevronDown, Image as ImageIcon, PenTool, Video, Code, LayoutGrid, LogOut, Menu, X, LayoutDashboard, Settings, Home, Wrench, FolderOpen, Newspaper, Globe, CreditCard, Info, Mail } from 'lucide-react';
+import { Zap, ChevronDown, Image as ImageIcon, PenTool, Video, Code, LayoutGrid, LogOut, Menu, X, LayoutDashboard, Settings, Home, Wrench, FolderOpen, Newspaper, Globe, CreditCard, Info, Mail, Coins } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -11,6 +11,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileCategoriesOpen, setMobileCategoriesOpen] = useState(false);
   const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState('Writing');
 
   const themeColor = pathname.startsWith('/tools') ? '#6D5EF8' : '#4F46E5';
   const isActive = (path: string) => pathname === path;
@@ -31,13 +32,92 @@ export default function Header() {
   // Hide header on login, signup, and dashboard pages
   if (pathname === '/login' || pathname === '/signup' || pathname.startsWith('/dashboard')) return null;
 
-  const tools = [
-    { name: 'AI Image Generator', href: '/tools/ai-image-generator', icon: ImageIcon, color: 'bg-[#6D5EF8] text-white' },
-    { name: 'AI Writer', href: '/tools/ai-writer', icon: PenTool, color: 'bg-[#F43F5E] text-white' },
-    { name: 'AI Video Generator', href: '/tools/ai-video-generator', icon: Video, color: 'bg-[#8B5CF6] text-white' },
-    { name: 'AI Code Generator', href: '/tools/ai-code-generator', icon: Code, color: 'bg-[#0EA5E9] text-white' },
-    { name: 'Background Remover', href: '/tools/background-remover', icon: LayoutGrid, color: 'bg-[#10B981] text-white' },
-  ];
+  const categoryTools: Record<string, { name: string; href: string }[]> = {
+    'Writing': [
+      { name: 'AI Writer', href: '/tools/ai-writer' },
+      { name: 'AI Blog Ideas', href: '/tools/ai-blog-idea-generator' },
+      { name: 'AI Paraphraser', href: '/tools/ai-paraphraser' },
+      { name: 'AI Grammar Checker', href: '/tools/ai-grammar-checker' },
+      { name: 'AI Story Generator', href: '/tools/ai-story-generator' },
+      { name: 'AI Poem Generator', href: '/tools/ai-poem-generator' },
+      { name: 'AI Summarizer', href: '/tools/ai-summarizer' },
+      { name: 'AI eBook Writer', href: '/tools/ai-ebook-writer' },
+      { name: 'AI Hook Generator', href: '/tools/ai-hook-generator' },
+      { name: 'AI Article Outline', href: '/tools/ai-article-outline-generator' },
+      { name: 'AI Whitepaper', href: '/tools/ai-whitepaper-outline' },
+      { name: 'AI Quote Generator', href: '/tools/ai-quote-generator' },
+    ],
+    'Marketing': [
+      { name: 'AI Ad Copy', href: '/tools/ai-ad-copy' },
+      { name: 'AI Email Generator', href: '/tools/ai-email-generator' },
+      { name: 'AI Cold Email', href: '/tools/ai-cold-email' },
+      { name: 'AI Sales Script', href: '/tools/ai-sales-script' },
+      { name: 'AI Landing Page', href: '/tools/ai-landing-page-copy' },
+      { name: 'AI Hashtag Generator', href: '/tools/ai-hashtag-generator' },
+      { name: 'AI Tweet Thread', href: '/tools/ai-tweet-thread' },
+      { name: 'AI Caption Generator', href: '/tools/ai-caption-generator' },
+      { name: 'AI PR Pitch', href: '/tools/ai-pr-pitch' },
+      { name: 'AI Newsletter', href: '/tools/ai-newsletter-content' },
+      { name: 'AI Press Release', href: '/tools/ai-press-release' },
+      { name: 'AI Slogan Generator', href: '/tools/ai-slogan-generator' },
+    ],
+    'Code & Tech': [
+      { name: 'AI Code Generator', href: '/tools/ai-code-generator' },
+      { name: 'AI Code Explainer', href: '/tools/ai-code-explainer' },
+      { name: 'AI SQL Generator', href: '/tools/ai-sql-generator' },
+      { name: 'AI Git Command', href: '/tools/ai-git-command' },
+      { name: 'AI Regex Generator', href: '/tools/ai-regex-generator' },
+      { name: 'AI App Architecture', href: '/tools/ai-app-architecture' },
+      { name: 'JSON Formatter', href: '/tools/json-formatter' },
+      { name: 'CSS Box Shadow', href: '/tools/css-box-shadow-generator' },
+      { name: 'Password Generator', href: '/tools/password-generator' },
+      { name: 'QR Code Generator', href: '/tools/qr-code-generator' },
+      { name: 'Lorem Ipsum', href: '/tools/lorem-ipsum' },
+      { name: 'URL Shortener', href: '/tools/url-shortener' },
+    ],
+    'Business': [
+      { name: 'AI Business Plan', href: '/tools/ai-business-plan' },
+      { name: 'AI Pitch Deck', href: '/tools/ai-pitch-deck' },
+      { name: 'AI SWOT Analysis', href: '/tools/ai-swot-analysis' },
+      { name: 'AI OKR Generator', href: '/tools/ai-okr-generator' },
+      { name: 'AI Startup Ideas', href: '/tools/ai-startup-ideas' },
+      { name: 'AI Competitor Analysis', href: '/tools/ai-competitor-analysis' },
+      { name: 'AI Risk Assessment', href: '/tools/ai-risk-assessment' },
+      { name: 'AI Investor Update', href: '/tools/ai-investor-update' },
+      { name: 'AI Marketing Plan', href: '/tools/ai-marketing-plan' },
+      { name: 'AI Pricing Strategy', href: '/tools/ai-pricing-strategy' },
+      { name: 'AI Value Proposition', href: '/tools/ai-value-proposition' },
+      { name: 'AI Business Name', href: '/tools/ai-business-name-generator' },
+    ],
+    'Creative': [
+      { name: 'AI Image Generator', href: '/tools/ai-image-generator' },
+      { name: 'AI Video Generator', href: '/tools/ai-video-generator' },
+      { name: 'AI Color Palette', href: '/tools/ai-color-palette' },
+      { name: 'Background Remover', href: '/tools/background-remover' },
+      { name: 'AI Video Script', href: '/tools/ai-video-script' },
+      { name: 'AI Podcast Script', href: '/tools/ai-podcast-script' },
+      { name: 'AI Storyboard', href: '/tools/ai-video-storyboard' },
+      { name: 'AI YouTube Tags', href: '/tools/ai-youtube-tags' },
+      { name: 'AI YouTube Title', href: '/tools/ai-youtube-title' },
+      { name: 'AI Emoji Translator', href: '/tools/ai-emoji-translator' },
+      { name: 'AI Brand Guidelines', href: '/tools/ai-brand-guidelines' },
+      { name: 'AI Social Calendar', href: '/tools/ai-social-calendar' },
+    ],
+    'Career & HR': [
+      { name: 'AI Resume Builder', href: '/tools/ai-resume-builder' },
+      { name: 'AI Cover Letter', href: '/tools/ai-cover-letter' },
+      { name: 'AI Job Description', href: '/tools/ai-job-description' },
+      { name: 'AI Interview Questions', href: '/tools/ai-interview-questions' },
+      { name: 'AI LinkedIn Bio', href: '/tools/ai-linkedin-bio' },
+      { name: 'AI Employee Review', href: '/tools/ai-employee-review' },
+      { name: 'AI Resignation Letter', href: '/tools/ai-resignation-letter' },
+      { name: 'AI Onboarding Plan', href: '/tools/ai-onboarding-plan' },
+      { name: 'AI Training Module', href: '/tools/ai-training-module' },
+      { name: 'AI Elevator Pitch', href: '/tools/ai-elevator-pitch' },
+      { name: 'AI Apology Letter', href: '/tools/ai-apology-letter' },
+      { name: 'AI User Persona', href: '/tools/ai-user-persona' },
+    ],
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#E5E7EB]">
@@ -105,33 +185,57 @@ export default function Header() {
               Categories <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
             </button>
             <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-              <div className="bg-white border border-[#E5E7EB] rounded-2xl shadow-xl p-2 w-[240px]">
-                <p className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest px-3 pt-2 pb-1">AI Tools</p>
-                {tools.map((tool) => {
-                  const Icon = tool.icon;
-                  return (
-                    <Link key={tool.name} href={tool.href} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#F9FAFB] transition-colors group/item">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${tool.color}`}>
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <span className="text-sm font-medium text-[#374151] group-hover/item:text-[#111827]">{tool.name}</span>
+              <div className="bg-white border border-[#E5E7EB] rounded-2xl shadow-2xl overflow-hidden flex" style={{ width: '620px' }}>
+                {/* Left - Category Sidebar */}
+                <div className="w-[180px] shrink-0 bg-[#F8F9FF] border-r border-gray-100 py-3">
+                  <p className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest px-4 pb-3">100+ AI Tools</p>
+                  {Object.keys(categoryTools).map((cat) => (
+                    <button
+                      key={cat}
+                      onMouseEnter={() => setActiveCategory(cat)}
+                      className={`w-full text-left px-4 py-2.5 text-sm font-medium transition-colors flex items-center justify-between group/cat ${
+                        activeCategory === cat
+                          ? 'bg-white text-[#6D5EF8] border-r-2 border-[#6D5EF8]'
+                          : 'text-[#6B7280] hover:text-[#111827] hover:bg-white/70'
+                      }`}
+                    >
+                      {cat}
+                      <ChevronDown className="w-3 h-3 -rotate-90 opacity-40" />
+                    </button>
+                  ))}
+                  <div className="mt-3 px-3 pt-3 border-t border-gray-200">
+                    <Link href="/tools" className="flex items-center gap-1.5 text-xs font-semibold text-[#6D5EF8] hover:underline px-1">
+                      <LayoutGrid className="w-3 h-3" /> All Tools →
                     </Link>
-                  );
-                })}
-                <div className="border-t border-[#F3F4F6] mt-1 pt-1">
-                  <Link href="/tools" className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#EEF2FF] transition-colors group/item">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-[#EEF2FF]">
-                      <LayoutGrid className="w-4 h-4 text-[#6D5EF8]" />
-                    </div>
-                    <span className="text-sm font-semibold text-[#6D5EF8]">View All Tools →</span>
-                  </Link>
+                  </div>
+                </div>
+
+                {/* Right - Tools Grid */}
+                <div className="flex-1 p-5">
+                  <p className="text-[10px] font-bold text-[#6D5EF8] uppercase tracking-wider mb-3">{activeCategory}</p>
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                    {(categoryTools[activeCategory] || []).map(t => (
+                      <Link
+                        key={t.href}
+                        href={t.href}
+                        className="text-sm text-[#4B5563] hover:text-[#6D5EF8] hover:bg-[#F5F3FF] px-2 py-1.5 rounded-lg transition-colors truncate"
+                      >
+                        {t.name}
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="mt-4 pt-3 border-t border-gray-100">
+                    <Link href="/tools" className="flex items-center justify-center gap-2 w-full py-2 rounded-xl bg-[#6D5EF8] text-white text-xs font-semibold hover:bg-[#5b4dd4] transition-colors">
+                      <LayoutGrid className="w-3.5 h-3.5" /> Browse All 100+ AI Tools
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <Link href="/blog" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/blog') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/blog') ? { color: themeColor } : {}}>Blogs</Link>
-          <Link href="/articles" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/articles') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/articles') ? { color: themeColor } : {}}>Articles</Link>
-          <Link href="/news" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/news') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/news') ? { color: themeColor } : {}}>News</Link>
+          <Link prefetch={false} href="/blog" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/blog') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/blog') ? { color: themeColor } : {}}>Blogs</Link>
+          <Link prefetch={false} href="/articles" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/articles') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/articles') ? { color: themeColor } : {}}>Articles</Link>
+          <Link prefetch={false} href="/news" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/news') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/news') ? { color: themeColor } : {}}>News</Link>
           <Link href="/pricing" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActive('/pricing') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActive('/pricing') ? { color: themeColor } : {}}>Pricing</Link>
           {!user && (
             <>
@@ -169,6 +273,11 @@ export default function Header() {
           {loadingUser ? (
             <div className="w-8 h-8 rounded-full border-2 border-[#6D5EF8] border-t-transparent animate-spin"></div>
           ) : user ? (
+            <div className="flex items-center gap-2">
+              <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-[#FEF3C7] text-[#D97706] rounded-xl text-sm font-bold border border-[#FDE68A] shadow-sm mr-2">
+                <Coins className="w-4 h-4" />
+                {user.credits || 0}
+              </div>
             <div className="relative group hidden lg:block">
               <button className="flex items-center gap-2 focus:outline-none">
                 <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0">
@@ -204,6 +313,7 @@ export default function Header() {
                   </button>
                 </div>
               </div>
+            </div>
             </div>
           ) : (
             <div className="hidden lg:flex items-center gap-2">
@@ -254,31 +364,34 @@ export default function Header() {
               </button>
               {mobileCategoriesOpen && (
                 <div className="ml-4 mt-1 flex flex-col gap-1 border-l-2 border-[#EEF2FF] pl-3">
-                  {tools.map((tool) => {
-                    const Icon = tool.icon;
-                    return (
-                      <Link key={tool.name} href={tool.href} onClick={() => setMobileMenuOpen(false)}
-                        className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#F9FAFB] transition-colors">
-                        <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${tool.color}`}>
-                          <Icon className="w-3.5 h-3.5" />
-                        </div>
-                        <span className="text-sm text-[#374151]">{tool.name}</span>
-                      </Link>
-                    );
-                  })}
+                  {Object.entries(categoryTools).map(([cat, catTools]) => (
+                    <div key={cat}>
+                      <p className="text-[10px] font-bold text-[#6D5EF8] uppercase tracking-wider px-3 pt-2 pb-1">{cat}</p>
+                      {catTools.slice(0, 4).map((t) => (
+                        <Link key={t.href} href={t.href} onClick={() => setMobileMenuOpen(false)}
+                          className="flex items-center px-3 py-2 rounded-xl hover:bg-[#F9FAFB] transition-colors text-sm text-[#374151] hover:text-[#6D5EF8]">
+                          {t.name}
+                        </Link>
+                      ))}
+                    </div>
+                  ))}
+                  <Link href="/tools" onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2 px-3 py-2.5 mt-1 rounded-xl bg-[#6D5EF8] text-white text-sm font-semibold">
+                    <LayoutGrid className="w-4 h-4" /> Browse All 100+ Tools
+                  </Link>
                 </div>
               )}
             </div>
 
-            <Link href="/blog" onClick={() => setMobileMenuOpen(false)}
+            <Link prefetch={false} href="/blog" onClick={() => setMobileMenuOpen(false)}
               className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/blog') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
               <PenTool className="w-4 h-4" /> Blog
             </Link>
-            <Link href="/articles" onClick={() => setMobileMenuOpen(false)}
+            <Link prefetch={false} href="/articles" onClick={() => setMobileMenuOpen(false)}
               className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/articles') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
               <Newspaper className="w-4 h-4" /> Articles
             </Link>
-            <Link href="/news" onClick={() => setMobileMenuOpen(false)}
+            <Link prefetch={false} href="/news" onClick={() => setMobileMenuOpen(false)}
               className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/news') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
               <Globe className="w-4 h-4" /> News
             </Link>

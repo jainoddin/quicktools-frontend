@@ -26,32 +26,99 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://quicktool.space'),
   title: {
-    default: "QuickTools.ai - The Ultimate AI Toolkit for Creators",
+    default: "QuickTools.ai - The Ultimate AI Toolkit with 100+ Premium AI Tools",
     template: "%s | QuickTools.ai"
   },
-  description: "Generate stunning AI images, chat with AI, remove backgrounds, convert PDFs, and write code all in one powerful dashboard.",
-  keywords: ["AI Tools", "Image Generator", "Background Remover", "AI Chat", "PDF Converter", "AI Code Writer", "QuickTools"],
+  description: "QuickTools.ai is the ultimate AI toolkit offering 100+ premium AI tools for content creators, marketers, developers, HR, and businesses. Generate stunning AI images, write code, craft marketing plans, chat with AI, remove backgrounds, convert PDFs, and more—all in one powerful, free-to-try dashboard.",
+  keywords: [
+    "AI Tools", "Free AI Tools", "Premium AI Tools", "QuickTools", "AI Toolkit", "Image Generator", 
+    "Background Remover", "AI Chat", "PDF Converter", "AI Code Writer", "Code Explainer", "AI Code Generator", 
+    "Marketing AI", "AI Marketing Plan", "AI Business Plan", "SEO Topical Map Generator", "AI Sales Funnel",
+    "AI Ebook Writer", "AI Grant Proposal", "AI Social Media Calendar", "AI Copywriting", "AI Content Creator",
+    "AI Essay Writer", "AI Blog Generator", "AI Video Script", "AI Podcast Script", "AI Brand Guidelines",
+    "Startup Ideas AI", "AI Competitor Analysis", "AI SWOT Analysis", "AI Product Launch", "AI Value Proposition",
+    "AI OKR Generator", "AI Pitch Deck", "AI Business Model Canvas", "AI Pricing Strategy", "AI Training Module",
+    "AI Job Description", "AI Employee Review", "AI Cover Letter", "AI Resume Builder", "AI Interview Questions",
+    "AI Sales Script", "AI Cold Email", "AI Lead Magnet", "AI Objection Handling", "AI Course Creator",
+    "AI Grammar Checker", "AI Translator", "AI Text Summarizer", "AI Story Generator", "AI Poem Generator",
+    "AI Apology Letter", "AI Resignation Letter", "AI Travel Planner", "AI Meal Planner", "AI Workout Plan",
+    "AI Dream Interpreter", "AI App Architecture", "AI SQL Generator", "AI Regex Generator", "AI Git Command",
+    "CSS Box Shadow Generator", "Password Generator", "QR Code Generator", "URL Shortener", "JSON Formatter",
+    "Best AI Tools 2026", "AI Productivity Suite", "AI Platform", "Generative AI", "AI for Business", "AI for Marketing",
+    "Free AI Generator", "AI Content Strategy", "AI SEO Tools", "AI Workflow Automation"
+  ],
+  authors: [{ name: "QuickTools.ai Team", url: "https://quicktool.space/about" }],
+  creator: "QuickTools.ai",
   publisher: "QuickTools.ai",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  applicationName: "QuickTools.ai",
+  generator: "Next.js",
+  category: "technology",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://quicktool.space",
-    title: "QuickTools.ai - The Ultimate AI Toolkit",
-    description: "Generate stunning AI images, chat with AI, remove backgrounds, convert PDFs, and write code all in one powerful dashboard.",
+    title: "QuickTools.ai - The Ultimate AI Toolkit with 100+ Premium AI Tools",
+    description: "Generate stunning AI images, craft business plans, write code, chat with AI, remove backgrounds, and more with 100+ premium AI tools. Try for free today!",
     siteName: "QuickTools.ai",
+    images: [
+      {
+        url: "/icon.svg",
+        width: 1200,
+        height: 630,
+        alt: "QuickTools.ai - The Ultimate AI Toolkit",
+      }
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "QuickTools.ai - The Ultimate AI Toolkit",
-    description: "Generate stunning AI images, chat with AI, remove backgrounds, convert PDFs, and write code all in one powerful dashboard.",
+    title: "QuickTools.ai - 100+ Premium AI Tools in One Place",
+    description: "The ultimate AI toolkit for creators, marketers, developers, and businesses. Generate content, code, images, and strategy instantly.",
+    creator: "@quicktoolsai",
+    images: ["/icon.svg"],
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' }
+    ],
+    shortcut: ['/icon.svg'],
+    apple: [
+      { url: '/icon.svg', type: 'image/svg+xml' }
+    ],
+  },
+  alternates: {
+    canonical: 'https://quicktool.space',
+    languages: {
+      'en-US': 'https://quicktool.space/en-US',
+    },
   },
   verification: {
     google: "u2eV2y9kS-0GuLrl16lDMrGz6k_HoCb5jIZieWTTiic",
-  }
+    yandex: "yandex_verification_code", // Placeholder for future
+    yahoo: "yahoo_verification_code",   // Placeholder for future
+  },
+  appleWebApp: {
+    capable: true,
+    title: "QuickTools.ai",
+    statusBarStyle: "black-translucent",
+  },
 };
 
 export default function RootLayout({

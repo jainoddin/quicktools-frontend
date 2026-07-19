@@ -2,11 +2,7 @@
 
 import { useToast } from '@/contexts/ToastContext';
 import React, { useState } from 'react';
-import { 
-  Lightbulb, Clipboard, Sparkles, Info, Video, History, LayoutGrid,
-  Image as ImageIcon, UserCircle2, Box, Clapperboard, CheckCircle2,
-  Rocket, GraduationCap, Megaphone, Heart, Play, Edit2, Clock, Type, Wand2
-} from 'lucide-react';
+import { Lightbulb, Clipboard, Sparkles, Info, Video, History, LayoutGrid, Image as ImageIcon, UserCircle2, Box, Clapperboard, CheckCircle2, Rocket, GraduationCap, Megaphone, Heart, Play, Edit2, Clock, Type, Wand2, Crown } from 'lucide-react';
 import AiVideoProgress from './AiVideoProgress';
 import AiVideoResult from './AiVideoResult';
 import AiVideoHistory from './AiVideoHistory';
@@ -14,7 +10,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import LoginPopup from '@/components/auth/LoginPopup';
 import { getEndpoint } from '@/lib/api';
 import { trackToolGenerate } from '@/lib/analytics';
-import { Crown } from 'lucide-react';
+
 
 export default function AiVideoClient() {
   const { error, success } = useToast();

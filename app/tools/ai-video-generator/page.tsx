@@ -8,13 +8,27 @@ export const metadata: Metadata = {
   title: 'Professional AI Video Generator - Text to Video Creator',
   description: 'Turn your ideas into high-quality videos instantly. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.',
   alternates: {
-    canonical: '/tools/ai-video-generator'
+    canonical: 'https://quicktool.space/tools/ai-video-generator'
   }
 };
 
 export default function AiVideoGeneratorPage() {
   return (
     <div className="flex-grow bg-[#F8FAFC] flex flex-col font-sans selection:bg-[#6D5EF8] selection:text-white relative">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Professional AI Video Generator - Text to Video Creator",
+      "operatingSystem": "Web",
+      "applicationCategory": "WebApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Turn your ideas into high-quality videos instantly. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.",
+      "url": "https://quicktool.space/tools/ai-video-generator"
+    }) }} />
       
       {/* Background Gradients */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">

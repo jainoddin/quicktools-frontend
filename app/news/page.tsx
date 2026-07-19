@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import NewsClient from '../../components/news/NewsClient';
 import { getEndpoint } from '../../lib/api';
 
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Latest AI News, Updates & Breakthroughs',
   description: 'Stay updated with the latest AI breakthroughs, product launches, research, and industry updates.',

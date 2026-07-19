@@ -2,10 +2,7 @@
 
 import { useToast } from '@/contexts/ToastContext';
 import React, { useState, useEffect } from 'react';
-import { 
-  Link2, ArrowRight, Loader2, Copy, CheckCircle2, History,
-  Sparkles, Info, Type, LayoutGrid, Wand2, Image as ImageIcon, Sparkle
-} from 'lucide-react';
+import { Link2, ArrowRight, Loader2, Copy, CheckCircle2, History, Sparkles, Info, Type, LayoutGrid, Wand2, Image as ImageIcon, Sparkle } from 'lucide-react';
 import { getEndpoint } from '@/lib/api';
 import ToolHistorySidebar from '../tools/ToolHistorySidebar';
 import { useAuth } from '@/contexts/AuthContext';

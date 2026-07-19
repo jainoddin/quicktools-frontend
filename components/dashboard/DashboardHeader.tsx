@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Search, Gift, Bell, ChevronDown, ZapIcon } from 'lucide-react';
+import { Search, Gift, Bell, ChevronDown, ZapIcon, Coins } from 'lucide-react';
 import { getEndpoint } from '../../lib/api';
 import Link from 'next/link';
 
@@ -57,6 +57,12 @@ export default function DashboardHeader({ user, onMenuClick }: { user: any, onMe
 
       {/* Right: Actions & Profile */}
       <div className="flex items-center gap-4 md:gap-6 ml-auto">
+        {user && (
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#FEF3C7] text-[#D97706] rounded-xl text-sm font-bold border border-[#FDE68A] shadow-sm">
+            <Coins className="w-4 h-4" />
+            {user.credits || 0}
+          </div>
+        )}
         <div className="h-6 w-[1px] bg-[#E5E7EB] mx-1 hidden sm:block"></div>
 
         <div className="relative group cursor-pointer">

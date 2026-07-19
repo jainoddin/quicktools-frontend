@@ -3,10 +3,7 @@
 import { useToast } from '@/contexts/ToastContext';
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import {
-  Upload, Image as ImageIcon, CheckCircle2,
-  Crown, Info, Sparkles, History, LayoutGrid, Trash2, Loader2
-} from 'lucide-react';
+import { Upload, Image as ImageIcon, CheckCircle2, Crown, Info, Sparkles, History, LayoutGrid, Trash2, Loader2 } from 'lucide-react';
 import BackgroundRemoverResult from './BackgroundRemoverResult';
 import HistoryView from './HistoryView';
 import BackgroundRemovalProgress from './BackgroundRemovalProgress';

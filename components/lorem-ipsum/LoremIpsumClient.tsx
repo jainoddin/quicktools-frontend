@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { 
-  AlignLeft, Copy, CheckCircle2, Type
-} from 'lucide-react';
+import { AlignLeft, Copy, CheckCircle2, Type } from 'lucide-react';
 
 export default function LoremIpsumClient() {
   const [count, setCount] = useState(3);

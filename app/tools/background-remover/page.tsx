@@ -8,13 +8,27 @@ export const metadata: Metadata = {
   description: 'Remove image backgrounds instantly with our AI Background Remover. Fast, accurate, and perfectly cut out subjects in seconds for design projects.',
   keywords: 'background remover, ai background removal, transparent background, image editing',
   alternates: {
-    canonical: '/tools/background-remover'
+    canonical: 'https://quicktool.space/tools/background-remover'
   }
 };
 
 export default function BackgroundRemoverPage() {
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex flex-col font-sans selection:bg-[#6D5EF8] selection:text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Free AI Background Remover - Erase Backgrounds Fast",
+      "operatingSystem": "Web",
+      "applicationCategory": "WebApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Remove image backgrounds instantly with our AI Background Remover. Fast, accurate, and perfectly cut out subjects in seconds for design projects.",
+      "url": "https://quicktool.space/tools/background-remover"
+    }) }} />
       {/* Breadcrumb Navigation */}
       <div className="bg-transparent pt-[15px] pb-[25px]">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center text-sm">

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Free AI Language Translator - Translate 50+ Languages',
   description: 'Translate text into 50+ languages instantly with AI-powered accuracy using our free AI Translator.',
   alternates: {
-    canonical: '/tools/ai-translator'
+    canonical: 'https://quicktool.space/tools/ai-translator'
   }
 };
 

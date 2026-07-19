@@ -8,13 +8,27 @@ export const metadata: Metadata = {
   title: 'Advanced AI Writer & Content Generator for Creators',
   description: 'Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.',
   alternates: {
-    canonical: '/tools/ai-writer'
+    canonical: 'https://quicktool.space/tools/ai-writer'
   }
 };
 
 export default function AiWriterPage() {
   return (
     <div className="flex-grow bg-[#F8FAFC] flex flex-col font-sans selection:bg-[#6D5EF8] selection:text-white relative">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Advanced AI Writer & Content Generator for Creators",
+      "operatingSystem": "Web",
+      "applicationCategory": "WebApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
+      "url": "https://quicktool.space/tools/ai-writer"
+    }) }} />
       
       {/* Background Gradients */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">

@@ -25,7 +25,8 @@ export default function ToolHistorySidebar({
   isAuthenticated = true,
   onRequireLogin,
   toolType = 'text',
-  toolName = 'Tool'
+  toolName = 'Tool',
+  onSelect
 }: { 
   history?: any[], 
   onBack: () => void,
@@ -34,7 +35,8 @@ export default function ToolHistorySidebar({
   isAuthenticated?: boolean,
   onRequireLogin?: () => void,
   toolType?: 'text' | 'image' | 'url',
-  toolName?: string
+  toolName?: string,
+  onSelect?: (item: any) => void
 }) {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [searchQuery, setSearchQuery] = useState('');
@@ -282,8 +284,8 @@ export default function ToolHistorySidebar({
               <div 
                 className={`flex-grow min-w-0 pr-4 border-r border-gray-100 ${!isAuthenticated ? 'select-none' : ''}`}
               >
-                <div className="flex items-center gap-2 mb-1.5">
-                  <h3 className="font-bold text-[#111827] text-base truncate">
+                <div className="flex items-center gap-2 mb-1.5 cursor-pointer hover:text-[#6D5EF8]" onClick={() => onSelect && onSelect(item)}>
+                  <h3 className="font-bold text-inherit text-base truncate">
                     {item.title}
                   </h3>
                   <button onClick={(e) => { e.stopPropagation(); onToggleFavorite && onToggleFavorite(item.id); }} className="hover:scale-110 transition-transform">

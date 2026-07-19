@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Free AI Text Summarizer - Summarize Articles Instantly',
   description: 'Summarize long articles, PDFs, or any text into clear bullet points instantly with our free AI Summarizer.',
   alternates: {
-    canonical: '/tools/ai-summarizer'
+    canonical: 'https://quicktool.space/tools/ai-summarizer'
   }
 };
 

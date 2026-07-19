@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Free AI Resume Builder - ATS Friendly Resumes',
   description: 'Generate a professional, ATS-friendly resume from your details in seconds using our free AI Resume Builder.',
   alternates: {
-    canonical: '/tools/ai-resume-builder'
+    canonical: 'https://quicktool.space/tools/ai-resume-builder'
   }
 };
 

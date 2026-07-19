@@ -11,6 +11,7 @@ interface User {
   avatar?: string;
   role?: string;
   plan?: string;
+  credits?: number;
   bio?: string;
   savedTools?: string[];
   savedBlogs?: string[];
@@ -30,8 +31,8 @@ const AuthContext = createContext<AuthContextType>({
   user: null,
   isAuthenticated: false,
   isLoading: true,
-  logout: async () => {},
-  updateUser: () => {},
+  logout: async () => { },
+  updateUser: () => { },
 });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -52,7 +53,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // 1. Synchronous Optimistic Check
     // Instantly check for the non-httpOnly user_data cookie
     const userDataCookie = getCookie('user_data');
-    
+
     if (userDataCookie) {
       try {
         let decodedStr = decodeURIComponent(userDataCookie);
@@ -73,7 +74,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         console.error('Failed to parse user_data cookie:', e);
       }
     }
-    
+
     // 2. Background Verification (Silently verify the secure httpOnly token)
     const verifyAuth = async () => {
       try {
@@ -83,7 +84,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           if (data.authenticated) {
             setUser(data.user);
             setIsAuthenticated(true);
-            
+
             // Re-sync cookie just in case it was modified
             const newUserData = JSON.stringify({
               id: data.user.id || data.user._id,

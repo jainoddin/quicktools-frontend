@@ -8,13 +8,27 @@ export const metadata: Metadata = {
   title: 'Intelligent AI Code Generator & Programming Assistant',
   description: 'Generate production-ready code in seconds with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.',
   alternates: {
-    canonical: '/tools/ai-code-generator'
+    canonical: 'https://quicktool.space/tools/ai-code-generator'
   }
 };
 
 export default function AiCodeGeneratorPage() {
   return (
     <div className="flex-grow bg-[#F8FAFC] flex flex-col font-sans selection:bg-[#6D5EF8] selection:text-white relative">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Intelligent AI Code Generator & Programming Assistant",
+      "operatingSystem": "Web",
+      "applicationCategory": "WebApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Generate production-ready code in seconds with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.",
+      "url": "https://quicktool.space/tools/ai-code-generator"
+    }) }} />
       
       {/* Background Gradients */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">

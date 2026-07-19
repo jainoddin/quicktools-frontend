@@ -1,5 +1,8 @@
 import { MetadataRoute } from 'next';
 import { getEndpoint } from '../lib/api';
+import toolsData from '../../tools_data.json';
+
+
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space'; 
@@ -56,6 +59,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Static routes
+  const toolRoutes = toolsData.map((tool: any) => ({
+    url: `${baseUrl}/tools/${tool.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: tool.isPremium ? 0.9 : 0.8,
+  }));
+
   const routes = [
     '', '/blog', '/articles', '/news', '/about', '/contact', '/pricing', '/login', '/signup',
     '/tools/ai-image-generator', '/tools/background-remover',
@@ -67,6 +77,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === '' ? 1 : route.startsWith('/articles') || route.startsWith('/blog') || route.startsWith('/news') ? 0.9 : 0.7,
   }));
 
-  return [...routes, ...blogUrls, ...articleUrls, ...newsUrls];
+  return [...routes, ...toolRoutes, ...blogUrls, ...articleUrls, ...newsUrls];
 }
 

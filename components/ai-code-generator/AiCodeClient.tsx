@@ -1,11 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import {
-  Lightbulb, Clipboard, Sparkles, Info, History, LayoutGrid,
-  Code2, Trash2, Edit2, Play, ChevronRight, ChevronDown, CheckCircle2,
-  Terminal, FileCode2, Database, Layout, Smartphone, CloudSun, Crown
-} from 'lucide-react';
+import { Lightbulb, Clipboard, Sparkles, Info, History, LayoutGrid, Code2, Trash2, Edit2, Play, ChevronRight, ChevronDown, CheckCircle2, Terminal, FileCode2, Database, Layout, Smartphone, CloudSun, Crown } from 'lucide-react';
 import AiCodeResult from './AiCodeResult';
 import AiCodeEmpty from './AiCodeEmpty';
 import AiCodeHistory from './AiCodeHistory';
@@ -426,7 +422,7 @@ export default function AiCodeClient() {
         </aside>
 
       {/* Right Main Area */}
-      <main className="flex-grow flex flex-col min-w-0">
+        <main className="flex-grow flex flex-col min-w-0">
 
         {/* Header Logic: Show Empty State Header OR nothing if Result handles it. */}
         {!hasResult && !isProcessing && !showHistory && (

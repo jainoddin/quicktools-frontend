@@ -3,7 +3,8 @@
 import { useToast } from '@/contexts/ToastContext';
 
 import React, { useState, useEffect } from 'react';
-import { Download, Hash, History, Loader2, Copy, CheckCircle2, Sparkles, Target } from 'lucide-react';
+import { Download, Hash, History, Loader2, Copy, CheckCircle2, Sparkles, Target, RefreshCw, Share2, MessageSquare, Video } from 'lucide-react';
+import TextDownloadModal from '@/components/shared/TextDownloadModal';
 
 
 import { getEndpoint } from '@/lib/api';
@@ -12,6 +13,7 @@ import ToolHistorySidebar from '../tools/ToolHistorySidebar';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginPopup from '@/components/auth/LoginPopup';
 import ReactMarkdown from 'react-markdown';
+import TextGenerationProgress from '../shared/TextGenerationProgress';
 
 export default function AiHashtagGeneratorClient() {
   const { error, success } = useToast();
@@ -20,6 +22,7 @@ export default function AiHashtagGeneratorClient() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [result, setResult] = useState('');
   const [copied, setCopied] = useState(false);
+  const [showDownloadModal, setShowDownloadModal] = useState(false);
   
   const [showHistory, setShowHistory] = useState(false);
   const [toolHistory, setToolHistory] = useState<any[]>([]);
@@ -177,6 +180,31 @@ export default function AiHashtagGeneratorClient() {
             )}
           </button>
         </div>
+      
+        {/* Interlinks */}
+        <div className="mt-4 pt-4 border-t border-[#E5E7EB]">
+          <h3 className="text-xs font-bold text-[#111827] mb-3">Explore Other Free Tools</h3>
+          <div className="flex flex-col gap-2">
+            <a href="/tools/ai-caption-generator" className="flex items-center gap-3 p-2.5 bg-[#F9FAFB] hover:bg-[#EC4899]/5 rounded-xl transition-colors group">
+              <div className="w-8 h-8 shrink-0 rounded-lg bg-white border border-[#E5E7EB] flex items-center justify-center group-hover:border-[#EC4899]/30 group-hover:shadow-sm transition-all">
+                <MessageSquare className="w-4 h-4" style={{color:'#EC4899'}} />
+              </div>
+              <div>
+                <p className="text-[11px] font-bold text-[#111827] group-hover:text-[#EC4899] transition-colors">AI Caption Generator</p>
+                <p className="text-[9px] text-[#6B7280]">Generate viral social captions</p>
+              </div>
+            </a>
+            <a href="/tools/ai-youtube-title" className="flex items-center gap-3 p-2.5 bg-[#F9FAFB] hover:bg-[#EF4444]/5 rounded-xl transition-colors group">
+              <div className="w-8 h-8 shrink-0 rounded-lg bg-white border border-[#E5E7EB] flex items-center justify-center group-hover:border-[#EF4444]/30 group-hover:shadow-sm transition-all">
+                <Video className="w-4 h-4" style={{color:'#EF4444'}} />
+              </div>
+              <div>
+                <p className="text-[11px] font-bold text-[#111827] group-hover:text-[#EF4444] transition-colors">AI YouTube Title</p>
+                <p className="text-[9px] text-[#6B7280]">Write click-worthy video titles</p>
+              </div>
+            </a>
+          </div>
+        </div>
       </aside>
 
       {/* Right Main Area */}
@@ -192,23 +220,20 @@ export default function AiHashtagGeneratorClient() {
           />
         </div>
       ) : (
-        <main className="flex-grow bg-white border border-[#E5E7EB] rounded-3xl p-6 lg:p-8 shadow-sm flex flex-col h-[600px] animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both delay-150">
+        <main className="flex-grow flex flex-col min-w-0">
           {/* Header when no result */}
-          {!result && !isProcessing && (
-            <div className="flex flex-col md:flex-row md:items-start lg:items-center justify-between gap-4 mb-6 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both delay-100">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#EC4899] rounded-xl flex items-center justify-center shadow-sm shrink-0">
-                  <Hash className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold text-[#111827] flex items-center gap-2">
-                    AI Instagram Hashtag Generator <Sparkles className="w-5 h-5 text-[#EC4899]" />
-                  </h1>
-                  <p className="text-sm text-[#6B7280]">Generate viral, relevant hashtags for your social media posts.</p>
-                </div>
-              </div>
-              <div className="flex gap-2">
-                <button
+                      
+          {/* Header Area */}
+          <div className="flex flex-col md:flex-row md:items-start lg:items-center justify-between gap-4 mb-6">
+            <div>
+              <h1 className="text-3xl lg:text-4xl font-bold tracking-tight text-[#111827] flex items-center gap-2">AI Instagram Hashtag Generator <Sparkles className="w-6 h-6" style={{ color: '#EC4899' }} /></h1>
+              <p className="text-[#6B7280] text-sm lg:text-base mt-2">
+                Generate viral, relevant hashtags for your social media posts.
+              </p>
+            </div>
+            
+              <div className="flex items-center gap-3 shrink-0">
+                <button 
                   onClick={() => {
                     if (!isAuthenticated && toolHistory.length >= 3) {
                       setShowLoginPopup(true);
@@ -216,63 +241,80 @@ export default function AiHashtagGeneratorClient() {
                       setShowHistory(true);
                     }
                   }}
-                  className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-[#F3F4F6] text-[#4B5563] font-bold rounded-xl transition-colors border border-[#E5E7EB]"
+                  className="flex items-center gap-2 bg-white border border-[#E5E7EB] px-4 py-2.5 rounded-xl text-sm font-semibold text-[#111827] hover:bg-gray-50 transition-all shadow-sm"
                 >
-                  <History className="w-4 h-4" />
-                  <span className="hidden sm:inline">History</span>
+                  <History className="w-4 h-4 text-[#6B7280]" /> History
                 </button>
               </div>
-            </div>
-          )}
-          
-          {/* Result Header */}
-          {(result || isProcessing) && (
-            <div className="flex items-center justify-between mb-6 pb-6 border-b border-[#E5E7EB]">
-            <h2 className="text-xl font-extrabold text-[#111827] flex items-center gap-2">
-              <Sparkles className="w-6 h-6 text-[#F97316]" />
-              Result
-            </h2>
-            <div className="flex gap-2">
-              {result && (
-                <>
-                  <button
-                    onClick={copyToClipboard}
-                    className="flex items-center gap-2 px-4 py-2 bg-[#EFF6FF] text-[#2563EB] hover:bg-[#DBEAFE] font-bold rounded-xl transition-colors"
-                  >
-                    {copied ? <CheckCircle2 className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                    <span className="hidden sm:inline">{copied ? 'Copied' : 'Copy'}</span>
-                  </button>
-                  <button
-                    onClick={() => downloadAsPDF(result, 'A I  Hashtag Generator')}
-                    className="flex items-center gap-2 px-4 py-2 bg-[#F0FDF4] text-[#16A34A] hover:bg-[#DCFCE7] font-bold rounded-xl transition-colors"
-                  >
-                    <Download className="w-4 h-4" />
-                    <span className="hidden sm:inline">PDF</span>
-                  </button>
-                </>
-              )}
-              <button
-                onClick={() => {
-                  if (!isAuthenticated && toolHistory.length >= 3) {
-                    setShowLoginPopup(true);
-                  } else {
-                    setShowHistory(true);
-                  }
-                }}
-                className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-[#F3F4F6] text-[#4B5563] font-bold rounded-xl transition-colors border border-[#E5E7EB]"
-              >
-                <History className="w-4 h-4" />
-                <span className="hidden sm:inline">History</span>
-              </button>
-            </div>
+    
           </div>
+
+
+          {/* Generated Result Header */}
+          {result && !isProcessing && (
+            <div className="flex items-center justify-between mb-4 mt-2">
+              <h2 className="text-xl font-extrabold text-[#111827] flex items-center gap-2">
+                <Sparkles className="w-6 h-6" style={{ color: '#EC4899' }} />
+                Generated Result
+              </h2>
+              <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-[#EEF2FF] text-[#6366F1] rounded-lg text-sm font-medium border border-[#6366F1]/20">
+                <History className="w-4 h-4" /> Your creations are saved in history
+              </div>
+            </div>
           )}
 
-          <div className="flex-grow overflow-y-auto custom-scrollbar pr-2">
-            {result ? (
-              <div className="prose prose-sm md:prose-base max-w-none prose-p:text-[#4B5563] prose-headings:text-[#111827] prose-strong:text-[#111827] prose-li:text-[#4B5563]">
-                <ReactMarkdown>{result}</ReactMarkdown>
-              </div>
+          <div className="flex-grow bg-white border border-[#E5E7EB] rounded-3xl p-6 lg:p-8 shadow-sm flex flex-col h-[600px] animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both delay-150">
+            {isProcessing ? (
+              <TextGenerationProgress title="Generating Hashtags..." description="Finding the most effective hashtags for you." />
+            ) : result ? (
+              <>
+                <div className="flex-grow overflow-y-auto custom-scrollbar pr-2 min-h-0 mb-6">
+                  <div id="result-content" className="prose prose-sm md:prose-base max-w-none prose-p:text-[#4B5563] prose-headings:text-[#111827] prose-strong:text-[#111827] prose-li:text-[#4B5563]">
+                    <ReactMarkdown>{result}</ReactMarkdown>
+                  </div>
+                </div>
+                <div className="flex flex-wrap items-center gap-3 pt-6 border-t border-[#E5E7EB] shrink-0">
+                  <button
+                    onClick={() => setShowDownloadModal(true)}
+                    className="flex items-center gap-2 px-5 py-2.5 text-white font-semibold rounded-xl transition-all shadow-sm text-sm hover:opacity-90"
+                    style={{ backgroundColor: '#EC4899' }}
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download</span>
+                  </button>
+                  <button
+                    onClick={async () => {
+                      if (navigator.share) {
+                        try {
+                          await navigator.share({ title: 'A I  Hashtag Generator', text: result });
+                        } catch (err) {
+                          console.error('Share failed:', err);
+                        }
+                      } else {
+                        copyToClipboard();
+                      }
+                    }}
+                    className="flex items-center gap-2 px-5 py-2.5 bg-white border border-[#E5E7EB] text-[#4B5563] font-semibold rounded-xl hover:bg-[#F3F4F6] transition-all shadow-sm text-sm"
+                  >
+                    <Share2 className="w-4 h-4" />
+                    <span>Share</span>
+                  </button>
+                  <button
+                    onClick={() => { setResult(''); }}
+                    className="flex items-center gap-2 px-5 py-2.5 bg-white border border-[#E5E7EB] text-[#4B5563] font-semibold rounded-xl hover:bg-[#F3F4F6] transition-all shadow-sm text-sm"
+                  >
+                    <RefreshCw className="w-4 h-4" />
+                    <span>Regenerate</span>
+                  </button>
+                  <button
+                    onClick={copyToClipboard}
+                    className="flex items-center gap-2 px-5 py-2.5 bg-white border border-[#E5E7EB] text-[#4B5563] font-semibold rounded-xl hover:bg-[#F3F4F6] transition-all shadow-sm text-sm"
+                  >
+                    {copied ? <CheckCircle2 className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+                    <span>{copied ? 'Copied' : 'Copy'}</span>
+                  </button>
+                </div>
+              </>
             ) : (
               <div className="h-full flex flex-col items-center justify-center text-center px-4">
                 <div className="w-16 h-16 bg-[#F9FAFB] rounded-2xl flex items-center justify-center mb-4 border border-[#E5E7EB]">
@@ -285,8 +327,19 @@ export default function AiHashtagGeneratorClient() {
               </div>
             )}
           </div>
+
+          
         </main>
       )}
+    
+      <TextDownloadModal 
+        isOpen={showDownloadModal} 
+        onClose={() => setShowDownloadModal(false)} 
+        content={result} 
+        filename="A I  Hashtag Generator" 
+        toolSlug="ai-hashtag-generator" 
+        elementId="result-content" 
+      />
     </div>
   );
 }

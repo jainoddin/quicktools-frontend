@@ -1,17 +1,17 @@
 'use client';
 
 import { useToast } from '@/contexts/ToastContext';
-import { Download } from 'lucide-react';
+import { Download, Share2, RefreshCw, Hash, MessageCircle, History, Loader2, Copy, CheckCircle2, Sparkles } from 'lucide-react';
+import TextDownloadModal from '@/components/shared/TextDownloadModal';
 import React, { useState, useEffect } from 'react';
-import { 
-  MessageCircle, History, Loader2, Copy, CheckCircle2,
-  Sparkles, Hash } from 'lucide-react';
+
 import { getEndpoint } from '@/lib/api';
 import { downloadAsPDF } from '@/lib/pdfUtils';
 import ToolHistorySidebar from '../tools/ToolHistorySidebar';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginPopup from '@/components/auth/LoginPopup';
 import ReactMarkdown from 'react-markdown';
+import TextGenerationProgress from '@/components/shared/TextGenerationProgress';
 
 export default function AiTweetThreadClient() {
   const { error, success } = useToast();
@@ -20,6 +20,7 @@ export default function AiTweetThreadClient() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [result, setResult] = useState('');
   const [copied, setCopied] = useState(false);
+  const [showDownloadModal, setShowDownloadModal] = useState(false);
   
   const [showHistory, setShowHistory] = useState(false);
   const [toolHistory, setToolHistory] = useState<any[]>([]);
@@ -210,20 +211,16 @@ export default function AiTweetThreadClient() {
         <main className="flex-grow flex flex-col min-w-0">
           
           {/* Header */}
-          {!result && !isProcessing && (
-            <div className="flex flex-col md:flex-row md:items-start lg:items-center justify-between gap-4 mb-6 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both delay-100">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#0EA5E9] rounded-xl flex items-center justify-center shadow-sm shrink-0">
-                  <MessageCircle className="w-6 h-6 text-white fill-current" />
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold text-[#111827] flex items-center gap-2">
-                    AI Tweet Thread Generator <Sparkles className="w-5 h-5 text-[#0EA5E9]" />
-                  </h1>
-                  <p className="text-sm text-[#6B7280]">Write highly engaging, viral Twitter threads with perfect hooks instantly.</p>
-                </div>
-              </div>
-              
+            
+          {/* Header Area */}
+          <div className="flex flex-col md:flex-row md:items-start lg:items-center justify-between gap-4 mb-6">
+            <div>
+              <h1 className="text-3xl lg:text-4xl font-bold tracking-tight text-[#111827] flex items-center gap-2">AI Tweet Thread Generator <Sparkles className="w-6 h-6" style={{ color: '#0EA5E9' }} /></h1>
+              <p className="text-[#6B7280] text-sm lg:text-base mt-2">
+                Write highly engaging, viral Twitter threads with perfect hooks.
+              </p>
+            </div>
+            
               <div className="flex items-center gap-3 shrink-0">
                 <button 
                   onClick={() => setShowHistory(true)}
@@ -232,85 +229,100 @@ export default function AiTweetThreadClient() {
                   <History className="w-4 h-4 text-[#6B7280]" /> History
                 </button>
               </div>
-            </div>
-          )}
+  
+          </div>
 
-          {isProcessing ? (
-            <div className="flex-grow bg-white rounded-3xl border border-[#E5E7EB] p-8 flex flex-col items-center justify-center shadow-sm animate-in fade-in duration-500 h-[600px]">
-              <Loader2 className="w-12 h-12 text-[#0EA5E9] animate-spin mb-4" />
-              <h2 className="text-xl font-bold text-[#111827]">Drafting Thread...</h2>
-              <p className="text-[#6B7280] mt-2">Writing a strong hook and engaging sequence.</p>
-            </div>
-          ) : result ? (
-            <div className="flex-grow flex flex-col bg-white border border-[#E5E7EB] rounded-3xl p-6 shadow-sm animate-in zoom-in-95 duration-500 h-[600px]">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-bold text-[#111827]">Generated Thread</h2>
-                <div className="flex items-center gap-2">
-                  <button 
-                    onClick={copyToClipboard}
-                    className="flex items-center gap-2 px-4 py-2 bg-[#F0F9FF] text-[#0284C7] rounded-xl text-sm font-bold hover:bg-[#E0F2FE] transition-colors"
-                  >
-                    {copied ? <CheckCircle2 className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                    {copied ? 'Copied' : 'Copy'}
-                  </button>
-                  <button 
-                    onClick={() => downloadAsPDF('result-content', 'Document.pdf')}
-                    className="flex items-center gap-2 px-4 py-2 bg-[#F0FDF4] text-[#16A34A] rounded-xl text-sm font-bold hover:bg-[#DCFCE7] transition-colors"
-                  >
-                    <Download className="w-4 h-4" /> PDF
-                  </button>
-                  <button 
-                    onClick={() => setShowHistory(true)}
-                    className="flex items-center gap-2 px-4 py-2 border border-[#E5E7EB] text-[#4B5563] rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors"
-                  >
-                    <History className="w-4 h-4 text-[#6B7280]" /> History
-                  </button>
-                </div>
-              </div>
-              
-              <div className="flex-1 bg-[#FAFAFA] p-8 rounded-2xl border border-[#E5E7EB] overflow-y-auto max-h-[600px] custom-scrollbar">
-                <div className="prose prose-sky max-w-none text-sm text-[#374151]">
-                  <ReactMarkdown>{result}</ReactMarkdown>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="flex-grow bg-white rounded-3xl border border-[#E5E7EB] p-8 lg:p-12 shadow-sm flex flex-col items-center justify-center text-center relative animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both delay-200 h-[600px]">
-              
-              {/* Animated Graphic */}
-              <div className="relative w-72 h-64 mb-10 flex items-center justify-center mt-4">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 bg-sky-50 rounded-full blur-2xl opacity-80"></div>
-                
-                <div className="relative z-10 w-44 h-44 bg-white rounded-2xl shadow-[0_10px_30px_-10px_rgba(14,165,233,0.3)] border-4 border-sky-200 overflow-hidden flex flex-col p-4 animate-[bounce_4s_infinite]">
-                  <div className="flex items-center gap-2 mb-4 border-b border-gray-100 pb-2">
-                    <div className="w-6 h-6 bg-sky-100 rounded-full flex items-center justify-center">
-                      <MessageCircle className="w-3 h-3 text-sky-500 fill-current" />
-                    </div>
-                    <div className="w-16 h-2 bg-gray-200 rounded-full"></div>
-                  </div>
-                  
-                  <div className="w-full h-2 bg-gray-200 rounded-full mb-3"></div>
-                  <div className="w-full h-2 bg-gray-200 rounded-full mb-3"></div>
-                  <div className="w-2/3 h-2 bg-gray-200 rounded-full mb-6"></div>
 
-                  <div className="flex items-center gap-2 border-t border-gray-100 pt-2 mt-auto">
-                    <div className="w-16 h-2 bg-sky-200 rounded-full"></div>
-                  </div>
-                </div>
-
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-52 h-52 border-2 border-dashed border-sky-200 rounded-full animate-[spin_12s_linear_infinite]"></div>
-              </div>
-
-              <h2 className="text-2xl lg:text-3xl font-bold text-[#111827] mb-3">
-                Need a <span className="text-[#0EA5E9]">thread?</span>
+          {/* Generated Result Header */}
+          {result && !isProcessing && (
+            <div className="flex items-center justify-between mb-4 mt-2">
+              <h2 className="text-xl font-extrabold text-[#111827] flex items-center gap-2">
+                <Sparkles className="w-6 h-6" style={{ color: '#0EA5E9' }} />
+                Generated Result
               </h2>
-              <p className="text-[#6B7280] max-w-sm mx-auto mb-8">
-                Enter your topic on the left and click <span className="text-[#0EA5E9] font-semibold">"Generate Thread"</span>.
-              </p>
+              <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-[#EEF2FF] text-[#6366F1] rounded-lg text-sm font-medium border border-[#6366F1]/20">
+                <History className="w-4 h-4" /> Your creations are saved in history
+              </div>
             </div>
           )}
+
+          <div className="flex-grow bg-white border border-[#E5E7EB] rounded-3xl p-6 lg:p-8 shadow-sm flex flex-col h-[600px] animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both delay-150">
+            {isProcessing ? (
+              <TextGenerationProgress title="Drafting Thread..." description="Writing a strong hook and engaging sequence." />
+            ) : result ? (
+              <>
+                <div className="flex-grow overflow-y-auto custom-scrollbar pr-2 min-h-0 mb-6">
+                  <div id="result-content" className="prose prose-sm md:prose-base max-w-none prose-p:text-[#4B5563] prose-headings:text-[#111827] prose-strong:text-[#111827] prose-li:text-[#4B5563]">
+                    <ReactMarkdown>{result}</ReactMarkdown>
+                  </div>
+                </div>
+                <div className="flex flex-wrap items-center gap-3 pt-6 border-t border-[#E5E7EB] shrink-0">
+                  <button
+                    onClick={() => setShowDownloadModal(true)}
+                    className="flex items-center gap-2 px-5 py-2.5 text-white font-semibold rounded-xl transition-all shadow-sm text-sm hover:opacity-90"
+                    style={{ backgroundColor: '#0EA5E9' }}
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download</span>
+                  </button>
+                  <button
+                    onClick={async () => {
+                      if (navigator.share) {
+                        try {
+                          await navigator.share({ title: 'Document.pdf', text: result });
+                        } catch (err) {
+                          console.error('Share failed:', err);
+                        }
+                      } else {
+                        copyToClipboard();
+                      }
+                    }}
+                    className="flex items-center gap-2 px-5 py-2.5 bg-white border border-[#E5E7EB] text-[#4B5563] font-semibold rounded-xl hover:bg-[#F3F4F6] transition-all shadow-sm text-sm"
+                  >
+                    <Share2 className="w-4 h-4" />
+                    <span>Share</span>
+                  </button>
+                  <button
+                    onClick={() => { setResult(''); }}
+                    className="flex items-center gap-2 px-5 py-2.5 bg-white border border-[#E5E7EB] text-[#4B5563] font-semibold rounded-xl hover:bg-[#F3F4F6] transition-all shadow-sm text-sm"
+                  >
+                    <RefreshCw className="w-4 h-4" />
+                    <span>Regenerate</span>
+                  </button>
+                  <button
+                    onClick={copyToClipboard}
+                    className="flex items-center gap-2 px-5 py-2.5 bg-white border border-[#E5E7EB] text-[#4B5563] font-semibold rounded-xl hover:bg-[#F3F4F6] transition-all shadow-sm text-sm"
+                  >
+                    {copied ? <CheckCircle2 className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+                    <span>{copied ? 'Copied' : 'Copy'}</span>
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="h-full flex flex-col items-center justify-center text-center px-4">
+                <div className="w-16 h-16 bg-[#F9FAFB] rounded-2xl flex items-center justify-center mb-4 border border-[#E5E7EB]">
+                  <Sparkles className="w-8 h-8 text-[#9CA3AF]" />
+                </div>
+                <h3 className="text-lg font-bold text-[#111827] mb-2">Ready to generate</h3>
+                <p className="text-[#6B7280] max-w-sm">
+                  Fill in the details on the left and click generate to see the magic happen.
+                </p>
+              </div>
+            )}
+          </div>
+
+          
         </main>
       )}
+    
+      <TextDownloadModal 
+        isOpen={showDownloadModal} 
+        onClose={() => setShowDownloadModal(false)} 
+        content={result} 
+        filename="Document.pdf" 
+        toolSlug="ai-tweet-thread" 
+        elementId="result-content" 
+      />
     </div>
   );
 }

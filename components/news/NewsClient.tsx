@@ -4,13 +4,13 @@ import { useToast } from '@/contexts/ToastContext';
 import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, ChevronLeft, ChevronRight, ArrowRight, Home, ChevronDown } from 'lucide-react';
+import { Search, ChevronLeft, ChevronRight, ArrowRight, Home, ChevronDown, Bookmark } from 'lucide-react';
 import NewsletterForm from '../shared/NewsletterForm';
 import NewsletterSectionWrapper from '../shared/NewsletterSectionWrapper';
 import { useAuth } from '../../contexts/AuthContext';
 import { getEndpoint } from '../../lib/api';
 import { useRouter } from 'next/navigation';
-import { Bookmark } from 'lucide-react';
+
 import { trackFavorite, trackContentFilter } from '@/lib/analytics';
 
 const CATEGORIES = ['All News', 'Product Launches', 'Research', 'Funding', 'Partnerships', 'Industry', 'Favorites'];

@@ -2,10 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import {
-  Wand2, Shuffle, Image as ImageIcon,
-  History, LayoutGrid, Crown, Info, Sparkles, ChevronDown, Star, ArrowLeft
-} from 'lucide-react';
+import { Wand2, Shuffle, Image as ImageIcon, History, LayoutGrid, Crown, Info, Sparkles, ChevronDown, Star, ArrowLeft } from 'lucide-react';
 import GenerationProgress from './GenerationProgress';
 import GeneratedResult from './GeneratedResult';
 import HistoryView from './HistoryView';
