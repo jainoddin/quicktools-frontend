@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 
 export default function AiTranslatorPage() {
   return (
-    <div className="flex-grow bg-[#F8FAFC] flex flex-col font-sans selection:bg-[#06B6D4] selection:text-white relative">
+    <div className="flex-grow bg-[#F8FAFC] flex flex-col font-sans selection:bg-[#6D5EF8] selection:text-white relative">
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-200/30 rounded-full blur-[120px] -translate-y-1/4"></div>
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-200/30 rounded-full blur-[120px] -translate-y-1/4"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-100/30 rounded-full blur-[120px] -translate-x-1/4 translate-y-1/4"></div>
       </div>
       
@@ -31,7 +31,7 @@ export default function AiTranslatorPage() {
               All Tools
             </Link>
             <ChevronRight className="w-4 h-4 text-gray-400" />
-            <span className="text-[#06B6D4] font-bold">AI Language Translator</span>
+            <span className="text-[#6D5EF8] font-bold">AI Language Translator</span>
           </nav>
         </div>
         <AiTranslatorClient />

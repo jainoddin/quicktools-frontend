@@ -54,7 +54,7 @@ export default function AiTranslatorClient() {
       <div className="w-full lg:w-1/2 flex flex-col gap-5">
         <div className="bg-white border border-[#E5E7EB] rounded-3xl p-6 shadow-sm">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-cyan-100 flex items-center justify-center text-[#06B6D4]">
+            <div className="w-10 h-10 rounded-xl bg-[#F5F3FF] flex items-center justify-center text-[#6D5EF8]">
               <Languages className="w-5 h-5" />
             </div>
             <h2 className="text-lg font-bold text-[#111827]">Text to Translate</h2>
@@ -65,7 +65,7 @@ export default function AiTranslatorClient() {
             <select 
               value={targetLanguage} 
               onChange={e => setTargetLanguage(e.target.value)}
-              className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl px-4 py-3 outline-none focus:border-[#06B6D4]"
+              className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl px-4 py-3 outline-none focus:border-[#6D5EF8]"
             >
               {LANGUAGES.map(lang => <option key={lang} value={lang}>{lang}</option>)}
             </select>
@@ -75,12 +75,12 @@ export default function AiTranslatorClient() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Type or paste text here..."
-            className="w-full h-48 p-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl focus:border-[#06B6D4] focus:ring-4 focus:ring-[#06B6D4]/10 transition-all outline-none resize-none text-[15px]"
+            className="w-full h-48 p-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl focus:border-[#6D5EF8] focus:ring-4 focus:ring-[#6D5EF8]/10 transition-all outline-none resize-none text-[15px]"
           />
           <button
             onClick={handleGenerate}
             disabled={isProcessing || !text.trim()}
-            className="w-full mt-4 bg-[#06B6D4] hover:bg-cyan-600 text-white font-bold py-4 rounded-2xl shadow-md shadow-[#06B6D4]/20 transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full mt-4 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-4 rounded-2xl shadow-md shadow-[#6D5EF8]/20 transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isProcessing ? (
               <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Translating...</>
@@ -107,9 +107,9 @@ export default function AiTranslatorClient() {
             )}
           </div>
           
-          <div className="flex-1 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-5 overflow-y-auto">
+          <div className="flex-1 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-5 overflow-y-auto h-[500px] max-h-[500px]">
             {result ? (
-              <div className="prose prose-cyan max-w-none text-lg">
+              <div className="prose prose-purple max-w-none text-lg">
                 {result.split('\n').map((line, i) => (
                   <p key={i} className="mb-2 text-[#4B5563]">{line}</p>
                 ))}

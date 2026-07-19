@@ -49,7 +49,7 @@ export default function UrlShortenerClient() {
       <div className="w-full lg:w-1/2 flex flex-col gap-5">
         <div className="bg-white border border-[#E5E7EB] rounded-3xl p-6 shadow-sm">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center text-[#14B8A6]">
+            <div className="w-10 h-10 rounded-xl bg-[#F5F3FF] flex items-center justify-center text-[#6D5EF8]">
               <Link2 className="w-5 h-5" />
             </div>
             <h2 className="text-lg font-bold text-[#111827]">Enter Long URL</h2>
@@ -59,12 +59,12 @@ export default function UrlShortenerClient() {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="https://example.com/very/long/url..."
-            className="w-full p-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl focus:border-[#14B8A6] outline-none text-[15px]"
+            className="w-full p-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl focus:border-[#6D5EF8] outline-none text-[15px]"
           />
           <button
             onClick={handleGenerate}
             disabled={isProcessing || !url.trim()}
-            className="w-full mt-4 bg-[#14B8A6] hover:bg-teal-600 text-white font-bold py-4 rounded-2xl shadow-md transition-all flex items-center justify-center disabled:opacity-50"
+            className="w-full mt-4 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-4 rounded-2xl shadow-md transition-all flex items-center justify-center disabled:opacity-50"
           >
             {isProcessing ? (
               <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Shortening...</>
@@ -81,8 +81,8 @@ export default function UrlShortenerClient() {
           
           <div className="flex-1 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-5 flex flex-col items-center justify-center">
             {shortUrl ? (
-              <div className="w-full bg-white p-4 rounded-xl border border-teal-100 shadow-sm text-center">
-                <a href={shortUrl} target="_blank" rel="noreferrer" className="text-xl font-bold text-teal-600 hover:underline break-all">
+              <div className="w-full bg-white p-4 rounded-xl border border-[#E5E7EB] shadow-sm text-center">
+                <a href={shortUrl} target="_blank" rel="noreferrer" className="text-xl font-bold text-[#6D5EF8] hover:underline break-all">
                   {shortUrl}
                 </a>
                 <button 

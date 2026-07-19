@@ -46,7 +46,7 @@ export default function AiColorPaletteClient() {
       <div className="w-full lg:w-1/2 flex flex-col gap-5">
         <div className="bg-white border border-[#E5E7EB] rounded-3xl p-6 shadow-sm">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-pink-100 flex items-center justify-center text-[#EC4899]">
+            <div className="w-10 h-10 rounded-xl bg-[#F5F3FF] flex items-center justify-center text-[#6D5EF8]">
               <Palette className="w-5 h-5" />
             </div>
             <h2 className="text-lg font-bold text-[#111827]">Describe your Brand/Mood</h2>
@@ -55,12 +55,12 @@ export default function AiColorPaletteClient() {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="E.g. A modern tech startup with a futuristic vibe, using dark blues and neon purple..."
-            className="w-full h-40 p-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl focus:border-[#EC4899] outline-none resize-none text-[15px]"
+            className="w-full h-40 p-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl focus:border-[#6D5EF8] outline-none resize-none text-[15px]"
           />
           <button
             onClick={handleGenerate}
             disabled={isProcessing || !description.trim()}
-            className="w-full mt-4 bg-[#EC4899] hover:bg-pink-600 text-white font-bold py-4 rounded-2xl shadow-md transition-all flex items-center justify-center disabled:opacity-50"
+            className="w-full mt-4 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-4 rounded-2xl shadow-md transition-all flex items-center justify-center disabled:opacity-50"
           >
             {isProcessing ? (
               <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Generating...</>
