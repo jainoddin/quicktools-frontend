@@ -15,7 +15,12 @@ const popularTools = [
   { name: 'AI Chat Assistant', icon: MessageSquare, color: 'bg-[#8B5CF6] text-white', lightColor: 'bg-[#F5F3FF] text-[#8B5CF6]', slug: '/tools/ai-chat-assistant' },
   { name: 'Background Remover', icon: LayoutGrid, color: 'bg-[#10B981] text-white', lightColor: 'bg-[#ECFDF5] text-[#10B981]', slug: '/tools/background-remover' },
   { name: 'PDF Converter', icon: FileText, color: 'bg-[#EF4444] text-white', lightColor: 'bg-[#FEF2F2] text-[#EF4444]', slug: '/tools/pdf-converter' },
-  { name: 'AI Writer', icon: PenTool, color: 'bg-[#3B82F6] text-white', lightColor: 'bg-[#EFF6FF] text-[#3B82F6]', slug: '/tools/ai-writer' }
+  { name: 'AI Writer', icon: PenTool, color: 'bg-[#3B82F6] text-white', lightColor: 'bg-[#EFF6FF] text-[#3B82F6]', slug: '/tools/ai-writer' },
+  { name: 'AI Text Summarizer', icon: FileText, color: 'bg-[#F97316] text-white', lightColor: 'bg-[#FFF7ED] text-[#F97316]', slug: '/tools/ai-summarizer' },
+  { name: 'AI Translator', icon: FileText, color: 'bg-[#06B6D4] text-white', lightColor: 'bg-[#ECFEFF] text-[#06B6D4]', slug: '/tools/ai-translator' },
+  { name: 'AI Resume Builder', icon: FileText, color: 'bg-[#8B5CF6] text-white', lightColor: 'bg-[#F3E8FF] text-[#8B5CF6]', slug: '/tools/ai-resume-builder' },
+  { name: 'Color Palette', icon: LayoutGrid, color: 'bg-[#EC4899] text-white', lightColor: 'bg-[#FDF2F8] text-[#EC4899]', slug: '/tools/ai-color-palette' },
+  { name: 'URL Shortener', icon: LayoutGrid, color: 'bg-[#14B8A6] text-white', lightColor: 'bg-[#F0FDFA] text-[#14B8A6]', slug: '/tools/url-shortener' }
 ];
 
 const recentTools = [

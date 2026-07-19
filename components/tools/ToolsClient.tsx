@@ -6,7 +6,8 @@ import {
   ArrowRight, LayoutGrid, Moon, MessageCircle, Palette,
   Briefcase, TrendingUp, Crown, Flame, Sparkles, Star,
   Clock, ChevronDown, Globe, Share2, Mail,
-  Home, ChevronRight, LucideIcon, Menu, X
+  Home, ChevronRight, LucideIcon, Menu, X,
+  FileText, Languages, FileUser, Link2, Gift
 } from 'lucide-react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -31,6 +32,11 @@ export const IconMap: Record<string, LucideIcon> = {
   Sparkles,
   Star,
   Clock,
+  FileText,
+  Languages,
+  FileUser,
+  Link2,
+  Gift,
 };
 
 function DynamicIcon({ name, className }: { name: string; className?: string }) {
@@ -48,6 +54,7 @@ export const categoriesList = [
   { name: 'AI Chat', iconName: 'MessageCircle' },
   { name: 'Design', iconName: 'Palette' },
   { name: 'Productivity', iconName: 'Briefcase' },
+  { name: 'Utilities', iconName: 'Link2' },
   { name: 'SEO', iconName: 'Search' },
   { name: 'Business', iconName: 'TrendingUp' },
 ];
@@ -106,7 +113,7 @@ export const allTools = [
     color: 'bg-[#8B5CF6] text-white',
     slug: '/tools/ai-video-generator',
     category: 'AI Video',
-    createdAt: '2026-07-10', // 2 days ago
+    createdAt: '2026-07-10',
   },
   {
     name: 'AI Code Generator',
@@ -115,8 +122,59 @@ export const allTools = [
     color: 'bg-[#0EA5E9] text-white',
     slug: '/tools/ai-code-generator',
     category: 'AI Code',
-    createdAt: '2026-07-05', // 7 days ago
-  }
+    createdAt: '2026-07-05',
+  },
+  // ✅ 5 NEW FREE TOOLS
+  {
+    name: 'AI Text Summarizer',
+    description: 'Summarize long articles, PDFs, or any text into clear bullet points instantly.',
+    iconName: 'FileText',
+    color: 'bg-[#F97316] text-white',
+    slug: '/tools/ai-summarizer',
+    category: 'Productivity',
+    createdAt: '2026-07-19',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Language Translator',
+    description: 'Translate text into 50+ languages instantly with AI-powered accuracy.',
+    iconName: 'Languages',
+    color: 'bg-[#06B6D4] text-white',
+    slug: '/tools/ai-translator',
+    category: 'Productivity',
+    createdAt: '2026-07-19',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Resume Builder',
+    description: 'Generate a professional ATS-friendly resume from your details in seconds.',
+    iconName: 'FileUser',
+    color: 'bg-[#8B5CF6] text-white',
+    slug: '/tools/ai-resume-builder',
+    category: 'Productivity',
+    createdAt: '2026-07-19',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Color Palette',
+    description: 'Generate beautiful color palettes from a brand name or mood description.',
+    iconName: 'Palette',
+    color: 'bg-[#EC4899] text-white',
+    slug: '/tools/ai-color-palette',
+    category: 'Design',
+    createdAt: '2026-07-19',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'URL Shortener',
+    description: 'Shorten any long URL into a clean, shareable link in one click.',
+    iconName: 'Link2',
+    color: 'bg-[#14B8A6] text-white',
+    slug: '/tools/url-shortener',
+    category: 'Utilities',
+    createdAt: '2026-07-19',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
 ];
 
 export default function ToolsClient() {
@@ -226,7 +284,7 @@ export default function ToolsClient() {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-200/40 rounded-full blur-[100px] -z-10 pointer-events-none -translate-y-1/4"></div>
 
         {/* Top Navigation Row */}
-        <div className="mb-[25px] flex flex-col gap-2">
+        <div className="mb-4 flex flex-col gap-2">
           <nav className="flex items-center space-x-2 text-sm font-medium text-[#6B7280]">
             <Link href="/" className="hover:text-[#111827] transition-colors flex items-center gap-1.5">
               <Home className="w-4 h-4" /> Home
@@ -361,14 +419,23 @@ export default function ToolsClient() {
                             <DynamicIcon name={tool.iconName} className="w-7 h-7" />
                           </div>
 
-                          <div className="flex gap-2 items-center">
-                            {tool.tag && !isNewTool(tool.createdAt) && (
+                          <div className="flex gap-1.5 items-center flex-wrap justify-end">
+                            {/* Free Badge */}
+                            {tool.tag?.type === 'free' && (
+                              <div className="flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-bold bg-teal-50 text-teal-600">
+                                <DynamicIcon name="Gift" className="w-3 h-3" />
+                                Free
+                              </div>
+                            )}
+                            {/* Popular Badge */}
+                            {tool.tag?.type === 'popular' && !isNewTool(tool.createdAt) && (
                               <div className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-bold bg-red-50 text-red-500`}>
                                 <DynamicIcon name={tool.tag.iconName} className="w-3 h-3" />
                                 {tool.tag.label}
                               </div>
                             )}
-                            {isNewTool(tool.createdAt) && (
+                            {/* New Badge */}
+                            {isNewTool(tool.createdAt) && tool.tag?.type !== 'free' && (
                               <div className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-bold bg-green-50 text-green-600`}>
                                 <Sparkles className="w-3 h-3" />
                                 New
