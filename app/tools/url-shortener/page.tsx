@@ -34,6 +34,24 @@ export default function UrlShortenerPage() {
             <span className="text-[#6D5EF8] font-bold">URL Shortener</span>
           </nav>
         </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "URL Shortener",
+              "description": "Shorten any long URL into a clean, shareable link in one click with our free URL Shortener.",
+              "applicationCategory": "UtilitiesApplication",
+              "operatingSystem": "All",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            })
+          }}
+        />
         <UrlShortenerClient />
       </div>
     </div>

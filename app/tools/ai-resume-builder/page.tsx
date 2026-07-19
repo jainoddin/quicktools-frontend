@@ -34,6 +34,24 @@ export default function AiResumeBuilderPage() {
             <span className="text-[#6D5EF8] font-bold">AI Resume Builder</span>
           </nav>
         </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "AI Resume Builder",
+              "description": "Generate a professional, ATS-friendly resume from your details in seconds using our free AI Resume Builder.",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "All",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            })
+          }}
+        />
         <AiResumeBuilderClient />
       </div>
     </div>

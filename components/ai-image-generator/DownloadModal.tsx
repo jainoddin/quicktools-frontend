@@ -104,8 +104,8 @@ export default function DownloadModal({ isOpen, onClose, imageUrl, isPro = false
       setTimeout(() => {
         onClose();
       }, 500);
-    } catch (error) {
-      console.error("Error downloading image:", error);
+    } catch (err) {
+      console.error("Error downloading image:", err);
       alert("Failed to download image. Please try again.");
     } finally {
       setIsDownloading(false);

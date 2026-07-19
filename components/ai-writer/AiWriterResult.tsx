@@ -4,6 +4,7 @@ import { Copy, Download, Edit2, RefreshCw, Maximize2, Minimize2, Trash2, CheckCi
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { trackFileDownload, trackShare } from '@/lib/analytics';
+import { downloadAsPDF } from '@/lib/pdfUtils';
 
 export default function AiWriterResult({ 
   content = '', 
@@ -79,11 +80,18 @@ export default function AiWriterResult({
   };
 
   const handleDownload = () => {
+    if (downloadFormat === 'pdf') {
+      downloadAsPDF('writer-result-content', 'Generated_Content.pdf');
+      trackFileDownload('ai-writer', 'pdf', 'result');
+      setShowDownloadModal(false);
+      return;
+    }
+    
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `Generated_Content.${downloadFormat === 'txt' ? 'txt' : (downloadFormat === 'pdf' ? 'pdf' : 'docx')}`;
+    a.download = `Generated_Content.${downloadFormat === 'txt' ? 'txt' : 'docx'}`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -132,6 +140,7 @@ export default function AiWriterResult({
         </div>
 
         <div 
+          id="writer-result-content"
           className={`prose prose-sm md:prose-base prose-gray max-w-none text-[#4B5563] space-y-5 leading-relaxed prose-headings:text-[#111827] max-h-[500px] overflow-y-auto custom-scrollbar pr-2 ${!isAuthenticated ? 'select-none' : ''}`}
           onContextMenu={(e) => { if (!isAuthenticated) e.preventDefault(); }}
         >

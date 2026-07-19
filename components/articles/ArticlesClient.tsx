@@ -1,5 +1,6 @@
 "use client";
 
+import { useToast } from '@/contexts/ToastContext';
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,6 +16,7 @@ const CATEGORIES = ['All Articles', 'AI & Tools', 'Productivity', 'Marketing', '
 const TABS = ['All', 'Latest', 'Popular', 'Trending', 'Favorites'];
 
 export default function ArticlesClient({ initialArticles = [] }: { initialArticles?: any[] }) {
+  const { error, success } = useToast();
   const router = useRouter();
   const { user, isAuthenticated } = useAuth();
   const [articles, setArticles] = useState<any[]>(initialArticles);
@@ -38,7 +40,7 @@ export default function ArticlesClient({ initialArticles = [] }: { initialArticl
     e.stopPropagation();
 
     if (!isAuthenticated) {
-      alert('Please log in to save articles.');
+      error('Please log in to save articles.');
       router.push('/login');
       return;
     }

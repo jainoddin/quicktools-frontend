@@ -45,8 +45,8 @@ export default function AiVideoResult({ isAuthenticated = true, isPro = false, o
         document.body.removeChild(link);
         window.URL.revokeObjectURL(blobUrl);
         trackFileDownload('ai-video-generator', 'mp4', 'result');
-      } catch (error) {
-        console.error("Download failed:", error);
+      } catch (err) {
+        console.error("Download failed:", err);
         alert("Failed to download video. Please try again.");
       } finally {
         setIsDownloading(false);
@@ -78,8 +78,8 @@ export default function AiVideoResult({ isAuthenticated = true, isPro = false, o
         document.body.removeChild(link);
         window.URL.revokeObjectURL(blobUrl);
         trackFileDownload('ai-video-generator', 'mp4_hd', 'result');
-      } catch (error) {
-        console.error("HD Download failed:", error);
+      } catch (err) {
+        console.error("HD Download failed:", err);
         alert("Failed to download HD video. Please try again.");
       } finally {
         setIsDownloading(false);

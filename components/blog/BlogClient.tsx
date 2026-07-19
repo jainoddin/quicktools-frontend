@@ -1,5 +1,6 @@
 "use client";
 
+import { useToast } from '@/contexts/ToastContext';
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Search, Grid, List, Bookmark, ChevronDown, LayoutGrid, 
@@ -42,6 +43,7 @@ const CATEGORY_ICONS: Record<string, React.ReactNode> = {
 };
 
 export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[] }) {
+  const { error, success } = useToast();
   const router = useRouter();
   const { user, isAuthenticated } = useAuth();
   const [activeCategory, setActiveCategory] = useState('All Blogs');
@@ -65,7 +67,7 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
     e.stopPropagation();
 
     if (!isAuthenticated) {
-      alert('Please log in to save blogs.');
+      error('Please log in to save blogs.');
       router.push('/login');
       return;
     }
@@ -510,9 +512,9 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
           </div>
         )}
 
-        {/* Tags Cloud */}
+        {/* Tags CloudSun */}
         <div className="bg-white border border-[#E5E7EB] rounded-2xl p-5 shadow-sm">
-          <h3 className="font-bold text-[#111827] mb-4 text-sm">Tags Cloud</h3>
+          <h3 className="font-bold text-[#111827] mb-4 text-sm">Tags CloudSun</h3>
           <div className="flex flex-wrap gap-2">
             {popularTags.map(tag => (
               <button 

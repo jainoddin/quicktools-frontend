@@ -1,5 +1,6 @@
 'use client';
 
+import { useToast } from '@/contexts/ToastContext';
 import React, { useState } from 'react';
 import { 
   Lightbulb, Clipboard, Sparkles, Info, Video, History, LayoutGrid,
@@ -16,6 +17,7 @@ import { trackToolGenerate } from '@/lib/analytics';
 import { Crown } from 'lucide-react';
 
 export default function AiVideoClient() {
+  const { error, success } = useToast();
   const { isAuthenticated, user } = useAuth();
   const isPro = ['pro', 'premium'].includes((user?.plan || '').toLowerCase());
   const [prompt, setPrompt] = useState('');
@@ -149,9 +151,9 @@ export default function AiVideoClient() {
       } else {
         alert('Generation failed: ' + data.message);
       }
-    } catch (error) {
-      console.error("Generation error:", error);
-      alert('An error occurred during generation');
+    } catch (err) {
+      console.error("Generation err:", error);
+      error('An error occurred during generation');
     } finally {
       clearInterval(interval);
       setIsProcessing(false);
@@ -291,8 +293,8 @@ export default function AiVideoClient() {
                   credentials: 'include',
                   body: JSON.stringify({ ids })
                 });
-              } catch (error) {
-                console.error("Failed to delete history:", error);
+              } catch (err) {
+                console.error("Failed to delete history:", err);
               }
             }
             setVideoHistory(prev => {

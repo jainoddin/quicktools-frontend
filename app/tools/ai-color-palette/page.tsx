@@ -34,6 +34,24 @@ export default function AiColorPalettePage() {
             <span className="text-[#6D5EF8] font-bold">AI Color Palette</span>
           </nav>
         </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "AI Color Palette",
+              "description": "Generate beautiful color palettes from a brand name or mood description with our free AI Color Palette Generator.",
+              "applicationCategory": "DesignApplication",
+              "operatingSystem": "All",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            })
+          }}
+        />
         <AiColorPaletteClient />
       </div>
     </div>

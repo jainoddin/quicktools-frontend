@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   Lightbulb, Clipboard, Sparkles, Info, History, LayoutGrid,
   Code2, Trash2, Edit2, Play, ChevronRight, ChevronDown, CheckCircle2,
-  Terminal, FileCode2, Database, Layout, Smartphone, Cloud, Crown
+  Terminal, FileCode2, Database, Layout, Smartphone, CloudSun, Crown
 } from 'lucide-react';
 import AiCodeResult from './AiCodeResult';
 import AiCodeEmpty from './AiCodeEmpty';
@@ -217,9 +217,9 @@ export default function AiCodeClient() {
       setIsProcessing(false);
       setHasResult(true);
       trackToolGenerate('ai-code-generator', { language, framework, code_type: codeType });
-    } catch (error) {
-      console.error(error);
-      await triggerErrorReport(error instanceof Error ? error.message : 'Unknown error');
+    } catch (err) {
+      console.error(err);
+      await triggerErrorReport(err instanceof Error ? err.message : 'Unknown error');
       setShowErrorPopup(true);
       setIsProcessing(false);
       return;

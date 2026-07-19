@@ -26,8 +26,8 @@ export default async function LatestBlogs() {
       // The backend returns data.data for blogs!
       blogs = data.data || [];
     }
-  } catch (error) {
-    console.error('Failed to fetch latest blogs:', error);
+  } catch (err) {
+    console.error('Failed to fetch latest blogs:', err);
   }
 
   // Slice to only show latest 3 in case API didn't limit properly

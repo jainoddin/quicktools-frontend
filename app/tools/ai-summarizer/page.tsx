@@ -34,6 +34,24 @@ export default function AiSummarizerPage() {
             <span className="text-[#6D5EF8] font-bold">AI Text Summarizer</span>
           </nav>
         </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "AI Text Summarizer",
+              "description": "Summarize long articles, PDFs, or any text into clear bullet points instantly with our free AI Summarizer.",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "All",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            })
+          }}
+        />
         <AiSummarizerClient />
       </div>
     </div>

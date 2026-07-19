@@ -1,5 +1,6 @@
 'use client';
 
+import { useToast } from '@/contexts/ToastContext';
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import {
@@ -16,6 +17,7 @@ import { trackToolGenerate } from '@/lib/analytics';
 // We will dynamically import @imgly/background-removal inside the handler to prevent SSR issues
 
 export default function BackgroundRemoverClient() {
+  const { error, success } = useToast();
   const { isAuthenticated, user } = useAuth();
   const isPro = ['pro', 'premium'].includes((user?.plan || '').toLowerCase());
   const [activeView, setActiveView] = useState<'generate' | 'history'>('generate');
@@ -142,7 +144,7 @@ export default function BackgroundRemoverClient() {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       if (file.size > 10 * 1024 * 1024) {
-        alert("File size must be under 10MB");
+        error("File size must be under 10MB");
         return;
       }
       setImageFile(file);
@@ -263,8 +265,8 @@ export default function BackgroundRemoverClient() {
             }
           }
         } catch (err) {
-          console.error("Credit deduction error", err);
-          alert("Something went wrong with credit deduction.");
+          console.error("Credit deduction err", err);
+          error("Something went wrong with credit deduction.");
           setIsProcessing(false);
           return;
         }
@@ -284,9 +286,9 @@ export default function BackgroundRemoverClient() {
         setFreeGenCount(newCount);
         localStorage.setItem('freeBgRemoverCount', newCount.toString());
       }
-    } catch (error) {
-      console.error("Background removal failed:", error);
-      alert("Failed to remove background. Please try again with a different image.");
+    } catch (err) {
+      console.error("Background removal failed:", err);
+      error("Failed to remove background. Please try again with a different image.");
     } finally {
       if (progressInterval) {
         clearInterval(progressInterval);

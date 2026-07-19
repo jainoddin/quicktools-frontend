@@ -1,8 +1,9 @@
 'use client';
 
+import { useToast } from '@/contexts/ToastContext';
 import React, { useState, useEffect, useRef } from 'react';
 import {
-  Lightbulb, Clipboard, FileText, Smile, Globe, Sparkles, Info,
+  Lightbulb, Clipboard, FileText, SmilePlus, Globe, Sparkles, Info,
   ShoppingBag, MessageSquare, Mail, ChevronDown, Type,
   PenTool, History, LayoutGrid, Loader2, Crown
 } from 'lucide-react';
@@ -70,6 +71,7 @@ const CustomSelect = ({ options, value, onChange, icon: Icon }: any) => {
 };
 
 export default function AiWriterClient() {
+  const { error, success } = useToast();
   const { isAuthenticated, user } = useAuth();
   const isPro = ['pro', 'premium'].includes((user?.plan || '').toLowerCase());
 
@@ -206,10 +208,10 @@ export default function AiWriterClient() {
       } else {
         alert('Generation failed: ' + data.message);
       }
-    } catch (error) {
+    } catch (err) {
       clearInterval(interval);
-      alert('Error connecting to backend');
-      console.error(error);
+      error('Error connecting to backend');
+      console.error(err);
     } finally {
       setIsProcessing(false);
     }
@@ -330,7 +332,7 @@ export default function AiWriterClient() {
                 options={['Friendly', 'Professional', 'Persuasive', 'Casual']}
                 value={tone}
                 onChange={setTone}
-                icon={Smile}
+                icon={SmilePlus}
               />
             </div>
           </div>

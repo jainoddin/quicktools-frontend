@@ -1,5 +1,6 @@
 "use client";
 
+import { useToast } from '@/contexts/ToastContext';
 import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -16,6 +17,7 @@ const CATEGORIES = ['All News', 'Product Launches', 'Research', 'Funding', 'Part
 const SORT_OPTIONS = ['Latest', 'Popular'];
 
 export default function NewsClient({ initialNews }: { initialNews: any[] }) {
+  const { error, success } = useToast();
   const router = useRouter();
   const { user, isAuthenticated } = useAuth();
   const [activeCategory, setActiveCategory] = useState('All News');
@@ -36,7 +38,7 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
     e.stopPropagation();
 
     if (!isAuthenticated) {
-      alert('Please log in to save news.');
+      error('Please log in to save news.');
       router.push('/login');
       return;
     }

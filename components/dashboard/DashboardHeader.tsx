@@ -12,8 +12,8 @@ export default function DashboardHeader({ user, onMenuClick }: { user: any, onMe
         credentials: 'include',
       });
       window.location.reload();
-    } catch (error) {
-      console.error('Logout failed:', error);
+    } catch (err) {
+      console.error('Logout failed:', err);
     }
   };
 

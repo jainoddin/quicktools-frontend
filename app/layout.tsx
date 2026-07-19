@@ -11,6 +11,7 @@ import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import AnalyticsIdentity from "@/components/analytics/AnalyticsIdentity";
 import AnalyticsClickTracker from "@/components/analytics/AnalyticsClickTracker";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { ToastProvider } from "@/contexts/ToastContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -145,17 +146,19 @@ export default function RootLayout({
           })}}
         />
 
-        <AuthProvider>
-          <AnalyticsIdentity />
-          <AnalyticsClickTracker />
-          <SplashScreen />
-          <Header />
-          <main className="flex flex-col flex-grow">
-            {children}
-          </main>
-          <Footer />
-          <CookieBanner />
-        </AuthProvider>
+        <ToastProvider>
+          <AuthProvider>
+            <AnalyticsIdentity />
+            <AnalyticsClickTracker />
+            <SplashScreen />
+            <Header />
+            <main className="flex flex-col flex-grow">
+              {children}
+            </main>
+            <Footer />
+            <CookieBanner />
+          </AuthProvider>
+        </ToastProvider>
       </body>
     </html>
   );

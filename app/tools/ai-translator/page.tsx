@@ -34,6 +34,24 @@ export default function AiTranslatorPage() {
             <span className="text-[#6D5EF8] font-bold">AI Language Translator</span>
           </nav>
         </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "AI Language Translator",
+              "description": "Translate text into 50+ languages instantly with AI-powered accuracy using our free AI Translator.",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "All",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            })
+          }}
+        />
         <AiTranslatorClient />
       </div>
     </div>

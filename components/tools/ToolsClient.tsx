@@ -1,13 +1,20 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import {
   Search, Zap, Image as ImageIcon, PenTool, Code, Video,
   ArrowRight, LayoutGrid, Moon, MessageCircle, Palette,
   Briefcase, TrendingUp, Crown, Flame, Sparkles, Star,
   Clock, ChevronDown, Globe, Share2, Mail,
   Home, ChevronRight, LucideIcon, Menu, X,
-  FileText, Languages, FileUser, Link2, Gift
+  FileText, Languages, FileUser, Link2, Gift,
+  SpellCheck, QrCode, Hash,
+  Lightbulb, List, RefreshCw, ShoppingBag, Magnet, 
+  Megaphone, Key, Code2, Terminal, Braces, Type, Utensils, 
+  Dumbbell, QuoteIcon,
+  Users, Database, Mic2, BookOpen, Map, CalendarDays, Calendar,
+  PlaySquare, Wind, GitBranch, FileX, SmilePlus, CloudSun,
+  MessageSquare, Home as HomeIcon
 } from 'lucide-react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -37,6 +44,39 @@ export const IconMap: Record<string, LucideIcon> = {
   FileUser,
   Link2,
   Gift,
+  SpellCheck,
+  QrCode,
+  Hash,
+  Mail,
+  Lightbulb,
+  List,
+  RefreshCw,
+  ShoppingBag,
+  Magnet,
+  Megaphone,
+  Key,
+  Code2,
+  Terminal,
+  Braces,
+  Type,
+  Utensils,
+  Dumbbell,
+  QuoteIcon,
+  Users,
+  Database,
+  Mic2,
+  BookOpen,
+  Map,
+  CalendarDays,
+  Calendar,
+  PlaySquare,
+  Wind,
+  GitBranch,
+  FileX,
+  SmilePlus,
+  CloudSun,
+  MessageSquare,
+  Home: HomeIcon,
 };
 
 function DynamicIcon({ name, className }: { name: string; className?: string }) {
@@ -124,6 +164,218 @@ export const allTools = [
     category: 'AI Code',
     createdAt: '2026-07-05',
   },
+  // ✅ NEW TOOLS ADDED
+  {
+    name: 'CSS Box Shadow Generator',
+    description: 'Design beautiful, customized CSS box shadows instantly with visual preview.',
+    iconName: 'Code2',
+    color: 'bg-[#EC4899] text-white',
+    slug: '/tools/css-box-shadow-generator',
+    category: 'Developer Tools',
+    createdAt: '2026-07-19',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' }
+  },
+  // ✅ 20 NEW BATCH TOOLS
+  {
+    name: 'AI Interview Questions Generator',
+    description: 'Generate tailored, role-specific interview questions instantly.',
+    iconName: 'Users',
+    color: 'bg-[#3B82F6] text-white',
+    slug: '/tools/ai-interview-questions',
+    category: 'Business',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI SQL Query Generator',
+    description: 'Translate plain English text into complex SQL queries.',
+    iconName: 'Database',
+    color: 'bg-[#6366F1] text-white',
+    slug: '/tools/ai-sql-generator',
+    category: 'Developer Tools',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Slogan Generator',
+    description: 'Create catchy and memorable slogans for your brand or campaign.',
+    iconName: 'Megaphone',
+    color: 'bg-[#F43F5E] text-white',
+    slug: '/tools/ai-slogan-generator',
+    category: 'Business',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Elevator Pitch Generator',
+    description: 'Craft persuasive elevator pitches based on your role or product.',
+    iconName: 'Mic2',
+    color: 'bg-[#10B981] text-white',
+    slug: '/tools/ai-elevator-pitch',
+    category: 'Business',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Video Script Generator',
+    description: 'Write engaging scripts for YouTube, TikTok, or Instagram Reels.',
+    iconName: 'Video',
+    color: 'bg-[#8B5CF6] text-white',
+    slug: '/tools/ai-video-script',
+    category: 'Social Media',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Job Description Generator',
+    description: 'Create comprehensive and professional job descriptions for hiring.',
+    iconName: 'Briefcase',
+    color: 'bg-[#F59E0B] text-white',
+    slug: '/tools/ai-job-description',
+    category: 'Business',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Instagram Hashtag Generator',
+    description: 'Generate viral, relevant hashtags for your social media posts.',
+    iconName: 'Hash',
+    color: 'bg-[#EC4899] text-white',
+    slug: '/tools/ai-hashtag-generator',
+    category: 'Social Media',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Story Generator',
+    description: 'Write creative short stories based on a prompt and genre.',
+    iconName: 'BookOpen',
+    color: 'bg-[#6D5EF8] text-white',
+    slug: '/tools/ai-story-generator',
+    category: 'Writing',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Travel Itinerary Planner',
+    description: 'Create detailed daily travel plans for any destination.',
+    iconName: 'Map',
+    color: 'bg-[#14B8A6] text-white',
+    slug: '/tools/ai-travel-planner',
+    category: 'Utilities',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Meal Planner',
+    description: 'Generate weekly meal plans with specific dietary constraints.',
+    iconName: 'Utensils',
+    color: 'bg-[#F97316] text-white',
+    slug: '/tools/ai-meal-planner',
+    category: 'Utilities',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Poem Generator',
+    description: 'Generate beautiful poems in various styles and formats.',
+    iconName: 'Wind',
+    color: 'bg-[#A855F7] text-white',
+    slug: '/tools/ai-poem-generator',
+    category: 'Writing',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Review Responder',
+    description: 'Generate professional replies to customer reviews or feedback.',
+    iconName: 'MessageSquare',
+    color: 'bg-[#06B6D4] text-white',
+    slug: '/tools/ai-review-responder',
+    category: 'Business',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Event Planner',
+    description: 'Generate a step-by-step plan and schedule for any event or party.',
+    iconName: 'Calendar',
+    color: 'bg-[#84CC16] text-white',
+    slug: '/tools/ai-event-planner',
+    category: 'Utilities',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI YouTube Tags Generator',
+    description: 'Generate optimized SEO tags and keywords for a YouTube video.',
+    iconName: 'PlaySquare',
+    color: 'bg-[#EF4444] text-white',
+    slug: '/tools/ai-youtube-tags',
+    category: 'Social Media',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Apology Letter Generator',
+    description: 'Write sincere, professional, or personal apology letters.',
+    iconName: 'PenTool',
+    color: 'bg-[#64748B] text-white',
+    slug: '/tools/ai-apology-letter',
+    category: 'Writing',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Dream Interpreter',
+    description: 'Analyzes your dreams and provides interesting psychological interpretations.',
+    iconName: 'CloudSun',
+    color: 'bg-[#38BDF8] text-white',
+    slug: '/tools/ai-dream-interpreter',
+    category: 'Utilities',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Git Command Generator',
+    description: 'Generates exact git commands based on plain English descriptions.',
+    iconName: 'GitBranch',
+    color: 'bg-[#F97316] text-white',
+    slug: '/tools/ai-git-command',
+    category: 'Developer Tools',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Real Estate Listing Generator',
+    description: 'Creates engaging property descriptions for real estate agents.',
+    iconName: 'Home',
+    color: 'bg-[#10B981] text-white',
+    slug: '/tools/ai-real-estate-listing',
+    category: 'Business',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Resignation Letter Generator',
+    description: 'Generates professional resignation letters tailored to your situation.',
+    iconName: 'FileX',
+    color: 'bg-[#64748B] text-white',
+    slug: '/tools/ai-resignation-letter',
+    category: 'Writing',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
+  {
+    name: 'AI Emoji Translator',
+    description: 'Translates plain English text into creative emoji sequences.',
+    iconName: 'SmilePlus',
+    color: 'bg-[#FBBF24] text-white',
+    slug: '/tools/ai-emoji-translator',
+    category: 'Social Media',
+    createdAt: '2026-07-19',
+    tag: { label: 'New', type: 'free', iconName: 'Sparkles' }
+  },
   // ✅ 5 NEW FREE TOOLS
   {
     name: 'AI Text Summarizer',
@@ -175,9 +427,260 @@ export const allTools = [
     createdAt: '2026-07-19',
     tag: { label: 'Free', type: 'free', iconName: 'Gift' },
   },
+  {
+    name: 'AI Grammar Checker',
+    description: 'Fix grammar, spelling, and phrasing instantly with AI.',
+    iconName: 'SpellCheck',
+    color: 'bg-[#EF4444] text-white',
+    slug: '/tools/ai-grammar-checker',
+    category: 'Productivity',
+    createdAt: '2026-07-19',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'QR Code Generator',
+    description: 'Generate high-quality QR codes for any URL or text instantly.',
+    iconName: 'QrCode',
+    color: 'bg-[#3B82F6] text-white',
+    slug: '/tools/qr-code-generator',
+    category: 'Utilities',
+    createdAt: '2026-07-19',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Caption Generator',
+    description: 'Generate engaging social media captions with emojis and trending hashtags.',
+    iconName: 'Hash',
+    color: 'bg-[#8B5CF6] text-white',
+    slug: '/tools/ai-caption-generator',
+    category: 'Business',
+    createdAt: '2026-07-19',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Email Generator',
+    description: 'Draft professional and polite email replies in seconds based on your tone.',
+    iconName: 'Mail',
+    color: 'bg-[#10B981] text-white',
+    slug: '/tools/ai-email-generator',
+    category: 'Productivity',
+    createdAt: '2026-07-19',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Business Name Generator',
+    description: 'Discover catchy, memorable names and taglines for your next startup.',
+    iconName: 'Briefcase',
+    color: 'bg-[#F59E0B] text-white',
+    slug: '/tools/ai-business-name-generator',
+    category: 'Business',
+    createdAt: '2026-07-19',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Blog Idea Generator',
+    description: 'Generate 10 highly engaging and viral blog post ideas instantly.',
+    iconName: 'Lightbulb',
+    color: 'bg-[#F59E0B] text-white',
+    slug: '/tools/ai-blog-idea-generator',
+    category: 'AI Writer',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Article Outline Generator',
+    description: 'Create a comprehensive, SEO-optimized article outline with headers.',
+    iconName: 'List',
+    color: 'bg-[#3B82F6] text-white',
+    slug: '/tools/ai-article-outline-generator',
+    category: 'AI Writer',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Paraphrasing Tool',
+    description: 'Rewrite text completely uniquely while retaining the original meaning.',
+    iconName: 'RefreshCw',
+    color: 'bg-[#10B981] text-white',
+    slug: '/tools/ai-paraphraser',
+    category: 'Productivity',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Product Description Generator',
+    description: 'Write compelling, conversion-focused product descriptions instantly.',
+    iconName: 'ShoppingBag',
+    color: 'bg-[#EC4899] text-white',
+    slug: '/tools/ai-product-description',
+    category: 'Business',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Cover Letter Generator',
+    description: 'Write a professional, standout cover letter for any job application.',
+    iconName: 'FileText',
+    color: 'bg-[#6D5EF8] text-white',
+    slug: '/tools/ai-cover-letter',
+    category: 'Business',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI SEO Title & Meta Generator',
+    description: 'Generate SEO-optimized Page Titles and Meta Descriptions.',
+    iconName: 'Search',
+    color: 'bg-[#F43F5E] text-white',
+    slug: '/tools/ai-seo-meta-generator',
+    category: 'SEO',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI YouTube Title Generator',
+    description: 'Generate highly clickable, viral YouTube video titles for your next video.',
+    iconName: 'Video',
+    color: 'bg-[#EF4444] text-white',
+    slug: '/tools/ai-youtube-title',
+    category: 'Social Media',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Tweet Thread Generator',
+    description: 'Write highly engaging, viral Twitter threads with perfect hooks.',
+    iconName: 'MessageCircle',
+    color: 'bg-[#0EA5E9] text-white',
+    slug: '/tools/ai-tweet-thread',
+    category: 'Social Media',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Hook Generator',
+    description: 'Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts.',
+    iconName: 'Magnet',
+    color: 'bg-[#8B5CF6] text-white',
+    slug: '/tools/ai-hook-generator',
+    category: 'Social Media',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Ad Copy Generator',
+    description: 'Write highly converting ad copy variations for Facebook or Google Ads.',
+    iconName: 'Megaphone',
+    color: 'bg-[#14B8A6] text-white',
+    slug: '/tools/ai-ad-copy',
+    category: 'Marketing',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI LinkedIn Bio Generator',
+    description: 'Write an optimized, professional LinkedIn About section.',
+    iconName: 'Briefcase',
+    color: 'bg-[#0A66C2] text-white',
+    slug: '/tools/ai-linkedin-bio',
+    category: 'Social Media',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'Strong Password Generator',
+    description: 'Generate ultra-secure, random passwords directly in your browser.',
+    iconName: 'Key',
+    color: 'bg-[#10B981] text-white',
+    slug: '/tools/password-generator',
+    category: 'Utilities',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'Regex Generator',
+    description: 'Describe what you want to match, and AI will generate the Regex pattern.',
+    iconName: 'Code2',
+    color: 'bg-[#3B82F6] text-white',
+    slug: '/tools/ai-regex-generator',
+    category: 'Utilities',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Code Explainer',
+    description: 'Paste any complex code and AI will explain it in simple language.',
+    iconName: 'Terminal',
+    color: 'bg-[#8B5CF6] text-white',
+    slug: '/tools/ai-code-explainer',
+    category: 'Utilities',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'JSON Formatter & Validator',
+    description: 'Instantly format and validate messy JSON data in your browser.',
+    iconName: 'Braces',
+    color: 'bg-[#F97316] text-white',
+    slug: '/tools/json-formatter',
+    category: 'Utilities',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'Lorem Ipsum Generator',
+    description: 'Generate custom amounts of dummy text for your designs instantly.',
+    iconName: 'Type',
+    color: 'bg-[#6B7280] text-white',
+    slug: '/tools/lorem-ipsum',
+    category: 'Utilities',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Recipe Generator',
+    description: 'Enter your available ingredients and get a delicious custom recipe.',
+    iconName: 'Utensils',
+    color: 'bg-[#EF4444] text-white',
+    slug: '/tools/ai-recipe-generator',
+    category: 'Lifestyle',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Workout Plan Generator',
+    description: 'Get a custom workout plan based on your goals and schedule.',
+    iconName: 'Dumbbell',
+    color: 'bg-[#06B6D4] text-white',
+    slug: '/tools/ai-workout-plan',
+    category: 'Lifestyle',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Motivational Quote Generator',
+    description: 'Generate profound, original motivational quotes on any topic.',
+    iconName: 'QuoteIcon',
+    color: 'bg-[#8B5CF6] text-white',
+    slug: '/tools/ai-quote-generator',
+    category: 'Lifestyle',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
+  {
+    name: 'AI Gift Idea Generator',
+    description: 'Find the perfect, thoughtful gift based on age and interests.',
+    iconName: 'Gift',
+    color: 'bg-[#EC4899] text-white',
+    slug: '/tools/ai-gift-idea',
+    category: 'Lifestyle',
+    createdAt: '2026-07-20',
+    tag: { label: 'Free', type: 'free', iconName: 'Gift' },
+  },
 ];
 
-export default function ToolsClient() {
+
+function ToolsClientInner() {
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get('q') || '';
 
@@ -554,5 +1057,20 @@ export default function ToolsClient() {
         </div>
       )}
     </>
+  );
+}
+
+export default function ToolsClient() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-[#6D5EF8] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[#6B7280] font-medium">Loading tools...</p>
+        </div>
+      </div>
+    }>
+      <ToolsClientInner />
+    </Suspense>
   );
 }

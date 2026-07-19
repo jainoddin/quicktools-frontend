@@ -1,0 +1,435 @@
+import React, { useState } from 'react';
+import { 
+  Search, Trash2, Star, 
+  FileText, Copy, Download,
+  ChevronLeft, ChevronRight, Sparkles, File, X, Image as ImageIcon
+} from 'lucide-react';
+
+export interface ToolHistoryItem {
+  id: string;
+  title: string;
+  preview: string;
+  date: string;
+  createdAt: string;
+  category: string;
+  isStarred: boolean;
+  result: string;
+  type?: 'text' | 'image' | 'url';
+}
+
+export default function ToolHistorySidebar({ 
+  history = [], 
+  onBack,
+  onToggleFavorite,
+  onDelete,
+  isAuthenticated = true,
+  onRequireLogin,
+  toolType = 'text',
+  toolName = 'Tool'
+}: { 
+  history?: any[], 
+  onBack: () => void,
+  onToggleFavorite?: (id: string) => void,
+  onDelete?: (ids: string[]) => void,
+  isAuthenticated?: boolean,
+  onRequireLogin?: () => void,
+  toolType?: 'text' | 'image' | 'url',
+  toolName?: string
+}) {
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterType, setFilterType] = useState('All');
+  const [itemToDownload, setItemToDownload] = useState<any>(null);
+  const [downloadFormat, setDownloadFormat] = useState('txt');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = toolType === 'image' ? 6 : 5;
+
+  const rawHistory: ToolHistoryItem[] = history.length > 0 ? history.map((item: any) => ({
+    id: item.id || item._id,
+    title: item.toolName || item.contentType || 'Generated Content',
+    preview: item.prompt || 'No preview available',
+    date: item.date || (item.createdAt ? new Date(item.createdAt).toLocaleDateString() : 'Just now'),
+    createdAt: item.createdAt || new Date().toISOString(),
+    category: item.toolName || item.contentType || 'Tool',
+    isStarred: item.isStarred || false,
+    result: item.result,
+    type: toolType
+  })) : [];
+
+  const now = new Date();
+  
+  const counts = {
+    all: rawHistory.length,
+    favorites: rawHistory.filter((i: any) => i.isStarred).length,
+    today: rawHistory.filter((i: any) => new Date(i.createdAt).toDateString() === now.toDateString()).length,
+    thisWeek: rawHistory.filter((i: any) => Math.ceil(Math.abs(now.getTime() - new Date(i.createdAt).getTime()) / (1000 * 60 * 60 * 24)) <= 7).length,
+    thisMonth: rawHistory.filter((i: any) => new Date(i.createdAt).getMonth() === now.getMonth() && new Date(i.createdAt).getFullYear() === now.getFullYear()).length,
+  };
+
+  let displayHistory = rawHistory;
+
+  if (searchQuery) {
+    displayHistory = displayHistory.filter((item: any) => 
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      item.preview.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }
+
+  if (filterType === 'Favorites') {
+    displayHistory = displayHistory.filter((item: any) => item.isStarred);
+  } else if (filterType === 'Today') {
+    displayHistory = displayHistory.filter((item: any) => new Date(item.createdAt).toDateString() === now.toDateString());
+  } else if (filterType === 'This Week') {
+    displayHistory = displayHistory.filter((item: any) => Math.ceil(Math.abs(now.getTime() - new Date(item.createdAt).getTime()) / (1000 * 60 * 60 * 24)) <= 7);
+  } else if (filterType === 'This Month') {
+    displayHistory = displayHistory.filter((item: any) => new Date(item.createdAt).getMonth() === now.getMonth() && new Date(item.createdAt).getFullYear() === now.getFullYear());
+  }
+
+  const totalPages = Math.max(1, Math.ceil(displayHistory.length / itemsPerPage));
+  const validCurrentPage = Math.min(Math.max(currentPage, 1), totalPages);
+  const startIndex = (validCurrentPage - 1) * itemsPerPage;
+  const paginatedHistory = displayHistory.slice(startIndex, startIndex + itemsPerPage);
+
+  const setFilter = (type: string) => {
+    setFilterType(type);
+    setCurrentPage(1);
+  };
+
+  const handleCopy = (text: string) => {
+    if (!isAuthenticated && onRequireLogin) {
+      onRequireLogin();
+      return;
+    }
+    const textToCopy = text ? text : 'No content available.';
+    navigator.clipboard.writeText(textToCopy);
+  };
+
+  const handleDownloadClick = (item: any) => {
+    if (!isAuthenticated && onRequireLogin) {
+      onRequireLogin();
+      return;
+    }
+    if (toolType === 'image') {
+      const a = document.createElement('a');
+      a.href = item.result;
+      a.download = `generated_image_${Date.now()}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } else {
+      setItemToDownload(item);
+    }
+  };
+
+  const executeDownload = () => {
+    if (!itemToDownload) return;
+    const textToDownload = itemToDownload.result || itemToDownload.preview || 'No content available.';
+    const blob = new Blob([textToDownload], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${itemToDownload.title || 'Generated_Content'}.${downloadFormat}`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    setItemToDownload(null);
+  };
+
+  const toggleSelect = (id: string) => {
+    const newSet = new Set(selectedIds);
+    if (newSet.has(id)) newSet.delete(id);
+    else newSet.add(id);
+    setSelectedIds(newSet);
+  };
+
+  return (
+    <div className="flex flex-col w-full animate-in fade-in duration-300">
+      
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div>
+          <button 
+            onClick={onBack} 
+            className="flex items-center gap-1.5 text-sm font-semibold text-[#6D5EF8] hover:text-[#5B4DF5] transition-colors mb-3"
+          >
+            &larr; Back to Generator
+          </button>
+          <div className="flex items-center gap-2 mb-2">
+            <h1 className="text-2xl md:text-3xl font-bold text-[#111827] flex items-center gap-2">
+              History <Sparkles className="w-6 h-6 text-[#F59E0B] fill-[#F59E0B]" />
+            </h1>
+          </div>
+          <p className="text-[#6B7280] text-sm md:text-base">View and manage all your previously generated content.</p>
+        </div>
+        
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <input 
+              type="text" 
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setCurrentPage(1);
+              }}
+              placeholder="Search..." 
+              className="pl-9 pr-4 py-2 border border-[#E5E7EB] rounded-xl text-sm w-full md:w-64 focus:outline-none focus:border-[#6D5EF8] focus:ring-1 focus:ring-[#6D5EF8]"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Filters Row */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        <div className="flex flex-wrap items-center gap-2">
+          <button onClick={() => setFilter('All')} className={`px-5 py-2 text-sm font-semibold rounded-full flex items-center gap-2 shadow-sm transition-colors ${filterType === 'All' ? 'bg-[#6D5EF8] text-white' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+            {toolType === 'image' ? 'All Images' : 'All'} <span className="text-xs">({counts.all})</span>
+          </button>
+          <button onClick={() => setFilter('Favorites')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'Favorites' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+            <Star className={`w-4 h-4 ${filterType === 'Favorites' ? 'text-white' : 'text-gray-400'}`} /> Favorites
+          </button>
+          <button onClick={() => setFilter('Today')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'Today' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+            Today
+          </button>
+          <button onClick={() => setFilter('This Week')} className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 transition-colors shadow-sm ${filterType === 'This Week' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+            This Week
+          </button>
+          <button onClick={() => setFilter('This Month')} className={`hidden md:flex px-4 py-2 text-sm font-semibold rounded-full items-center gap-2 transition-colors shadow-sm ${filterType === 'This Month' ? 'bg-[#6D5EF8] text-white border-transparent' : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:bg-gray-50'}`}>
+            This Month
+          </button>
+        </div>
+        
+        <div className="flex items-center gap-3">
+          {selectedIds.size > 0 && (
+            <button 
+              onClick={() => {
+                if (onDelete) {
+                  onDelete(Array.from(selectedIds));
+                  setSelectedIds(new Set());
+                }
+              }}
+              className="px-4 py-2 bg-red-50 border border-red-100 text-red-600 hover:bg-red-100 text-sm font-semibold rounded-xl flex items-center gap-2 transition-colors shadow-sm animate-in fade-in"
+            >
+              <Trash2 className="w-4 h-4" /> Delete Selected
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Grid or List View */}
+      {toolType === 'image' ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6">
+          {paginatedHistory.length === 0 ? (
+            <div className="col-span-full text-center py-12 text-gray-500 bg-white border border-dashed border-gray-200 rounded-2xl">
+              No images found.
+            </div>
+          ) : paginatedHistory.map((item) => (
+            <div key={item.id} className={`bg-white border rounded-2xl overflow-hidden transition-all flex flex-col ${selectedIds.has(item.id) ? 'border-[#6D5EF8] ring-2 ring-[#6D5EF8]' : 'border-[#E5E7EB] hover:border-gray-300'}`}>
+              <div className="relative aspect-square w-full bg-gray-100 group">
+                <img src={item.result} alt={item.preview} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                   <button onClick={() => handleDownloadClick(item)} className="p-2 bg-white/20 hover:bg-white/40 rounded-lg backdrop-blur-sm text-white transition-colors">
+                     <Download className="w-5 h-5" />
+                   </button>
+                </div>
+                <div 
+                  onClick={() => toggleSelect(item.id)}
+                  className={`absolute top-3 left-3 w-6 h-6 rounded flex items-center justify-center border-2 cursor-pointer transition-colors z-10 ${selectedIds.has(item.id) ? 'bg-[#6D5EF8] border-[#6D5EF8]' : 'bg-black/20 border-white hover:border-gray-200 backdrop-blur-sm'}`}
+                >
+                  {selectedIds.has(item.id) && <div className="w-3 h-3 bg-white rounded-sm" />}
+                </div>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); onToggleFavorite && onToggleFavorite(item.id); }} 
+                  className="absolute top-3 right-3 z-10 p-1.5 rounded-lg bg-black/20 backdrop-blur-sm hover:bg-black/40 transition-colors"
+                >
+                  <Star className={`w-5 h-5 ${item.isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-white'}`} />
+                </button>
+              </div>
+              <div className="p-4 flex flex-col flex-grow">
+                <h3 className="font-bold text-[#111827] text-sm truncate mb-1" title={item.preview}>{item.preview}</h3>
+                <div className="text-xs text-[#6B7280] mb-3">{item.date}</div>
+                <button onClick={() => handleDownloadClick(item)} className="mt-auto w-full flex items-center justify-center gap-2 py-2 text-sm font-semibold text-[#6D5EF8] bg-purple-50 hover:bg-purple-100 rounded-xl transition-colors">
+                  <Download className="w-4 h-4" /> Download
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col gap-4 mb-6">
+          {paginatedHistory.length === 0 ? (
+            <div className="text-center py-12 text-gray-500 bg-white border border-dashed border-gray-200 rounded-2xl">
+              No history found. Generate some content to see it here!
+            </div>
+          ) : paginatedHistory.map((item) => (
+            <div key={item.id} className={`bg-white border rounded-2xl p-5 transition-all flex items-center gap-4 ${selectedIds.has(item.id) ? 'border-[#6D5EF8] ring-1 ring-[#6D5EF8]' : 'border-[#E5E7EB] hover:border-gray-300'}`}>
+              
+              {/* Checkbox */}
+              <div 
+                onClick={() => toggleSelect(item.id)}
+                className={`w-5 h-5 rounded flex items-center justify-center border cursor-pointer transition-colors shrink-0 ${selectedIds.has(item.id) ? 'bg-[#6D5EF8] border-[#6D5EF8]' : 'border-gray-300 hover:border-gray-400'}`}
+              >
+                {selectedIds.has(item.id) && <div className="w-2.5 h-2.5 bg-white rounded-sm" />}
+              </div>
+
+              {/* Icon */}
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 bg-purple-100 text-[#6D5EF8]`}>
+                {toolType === 'url' ? <Search className="w-6 h-6" /> : <FileText className="w-6 h-6" />}
+              </div>
+              
+              {/* Main Content (Title & Preview) */}
+              <div 
+                className={`flex-grow min-w-0 pr-4 border-r border-gray-100 ${!isAuthenticated ? 'select-none' : ''}`}
+              >
+                <div className="flex items-center gap-2 mb-1.5">
+                  <h3 className="font-bold text-[#111827] text-base truncate">
+                    {item.title}
+                  </h3>
+                  <button onClick={(e) => { e.stopPropagation(); onToggleFavorite && onToggleFavorite(item.id); }} className="hover:scale-110 transition-transform">
+                    <Star className={`w-4 h-4 ${item.isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300 hover:text-yellow-400'}`} />
+                  </button>
+                </div>
+                <p className="text-sm text-[#6B7280] line-clamp-2 leading-relaxed truncate">
+                  {item.preview}
+                </p>
+              </div>
+              
+              {/* Meta Data */}
+              <div className="w-40 shrink-0 flex flex-col gap-1.5 pl-2">
+                <div>
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md bg-purple-100 text-purple-600`}>
+                    {item.category}
+                  </span>
+                </div>
+                <div className="text-xs text-[#6B7280] mt-1">{item.date}</div>
+              </div>
+              
+              {/* Actions */}
+              <div className="flex items-center gap-1.5 pl-2 shrink-0">
+                <button onClick={() => handleCopy(item.result)} className="w-9 h-9 flex items-center justify-center text-gray-400 hover:text-[#111827] border border-gray-200 hover:bg-gray-50 rounded-full transition-colors">
+                  <Copy className="w-4 h-4" />
+                </button>
+                {toolType !== 'url' && (
+                  <button onClick={() => handleDownloadClick(item)} className="w-9 h-9 flex items-center justify-center text-gray-400 hover:text-[#111827] border border-gray-200 hover:bg-gray-50 rounded-full transition-colors">
+                    <Download className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Pagination */}
+      {displayHistory.length > 0 && totalPages > 1 && (
+        <div className="flex flex-col sm:flex-row items-center justify-between pt-2 pb-4 gap-4">
+          <p className="text-sm text-[#6B7280]">
+            Showing {startIndex + 1}–{Math.min(startIndex + itemsPerPage, displayHistory.length)} of {displayHistory.length}
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-1.5">
+            <button
+              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              disabled={validCurrentPage === 1}
+              className="w-9 h-9 flex items-center justify-center rounded-xl text-[#6D5EF8] bg-[#F5F3FF] hover:bg-[#EDE9FE] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentPage(i + 1)}
+                className={`w-9 h-9 flex items-center justify-center rounded-xl font-semibold transition-colors ${validCurrentPage === i + 1 ? 'bg-[#6D5EF8] text-white shadow-sm' : 'text-[#4B5563] hover:bg-gray-100'}`}
+              >
+                {i + 1}
+              </button>
+            ))}
+
+            <button
+              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+              disabled={validCurrentPage === totalPages}
+              className="w-9 h-9 flex items-center justify-center rounded-xl text-[#4B5563] border border-[#E5E7EB] hover:bg-gray-50 transition-colors bg-white shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      )}
+      
+      {/* Download Modal (for text) */}
+      {itemToDownload && toolType === 'text' && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-200">
+            <div className="flex items-center justify-between p-5 border-b border-gray-100">
+              <h3 className="font-bold text-lg text-gray-900">Download Document</h3>
+              <button onClick={() => setItemToDownload(null)} className="text-gray-400 hover:text-gray-600 transition-colors">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div className="p-5 space-y-4">
+              <div 
+                onClick={() => setDownloadFormat('pdf')}
+                className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${downloadFormat === 'pdf' ? 'border-[#6D5EF8] bg-purple-50/50' : 'border-gray-100 hover:border-gray-200'}`}
+              >
+                <div className="w-10 h-10 rounded-lg bg-red-100 text-red-500 flex items-center justify-center shrink-0">
+                  <File className="w-5 h-5" />
+                </div>
+                <div className="flex-grow">
+                  <h4 className="font-bold text-gray-900 text-sm">PDF Document</h4>
+                  <p className="text-xs text-gray-500">Best for sharing securely (.pdf)</p>
+                </div>
+                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${downloadFormat === 'pdf' ? 'border-[#6D5EF8] bg-[#6D5EF8]' : 'border-gray-300'}`}>
+                  {downloadFormat === 'pdf' && <div className="w-2 h-2 rounded-full bg-white" />}
+                </div>
+              </div>
+              
+              <div 
+                onClick={() => setDownloadFormat('docx')}
+                className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${downloadFormat === 'docx' ? 'border-[#6D5EF8] bg-purple-50/50' : 'border-gray-100 hover:border-gray-200'}`}
+              >
+                <div className="w-10 h-10 rounded-lg bg-blue-100 text-blue-500 flex items-center justify-center shrink-0">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <div className="flex-grow">
+                  <h4 className="font-bold text-gray-900 text-sm">Word Document</h4>
+                  <p className="text-xs text-gray-500">Best for further editing (.docx)</p>
+                </div>
+                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${downloadFormat === 'docx' ? 'border-[#6D5EF8] bg-[#6D5EF8]' : 'border-gray-300'}`}>
+                  {downloadFormat === 'docx' && <div className="w-2 h-2 rounded-full bg-white" />}
+                </div>
+              </div>
+              
+              <div 
+                onClick={() => setDownloadFormat('txt')}
+                className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${downloadFormat === 'txt' ? 'border-[#6D5EF8] bg-purple-50/50' : 'border-gray-100 hover:border-gray-200'}`}
+              >
+                <div className="w-10 h-10 rounded-lg bg-gray-100 text-gray-600 flex items-center justify-center shrink-0">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <div className="flex-grow">
+                  <h4 className="font-bold text-gray-900 text-sm">Text File</h4>
+                  <p className="text-xs text-gray-500">Plain text format (.txt)</p>
+                </div>
+                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${downloadFormat === 'txt' ? 'border-[#6D5EF8] bg-[#6D5EF8]' : 'border-gray-300'}`}>
+                  {downloadFormat === 'txt' && <div className="w-2 h-2 rounded-full bg-white" />}
+                </div>
+              </div>
+            </div>
+            
+            <div className="p-5 border-t border-gray-100 bg-gray-50">
+              <button 
+                onClick={executeDownload}
+                className="w-full py-3 bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold rounded-xl transition-colors shadow-lg shadow-[#6D5EF8]/20"
+              >
+                Download File
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+    </div>
+  );
+}
