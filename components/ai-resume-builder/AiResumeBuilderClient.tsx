@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { FileUser, ArrowRight, Loader2, Copy, CheckCircle2 } from 'lucide-react';
 import { getEndpoint } from '@/lib/api';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export default function AiResumeBuilderClient() {
   const [details, setDetails] = useState('');
@@ -87,8 +89,12 @@ export default function AiResumeBuilderClient() {
             )}
           </div>
           
-          <div className="flex-1 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-5 overflow-y-auto h-[500px] max-h-[500px] whitespace-pre-wrap font-mono text-sm text-gray-800">
-            {result || (
+          <div className="flex-1 bg-white border border-[#E5E7EB] rounded-2xl p-6 overflow-y-auto h-[500px] max-h-[500px]">
+            {result ? (
+              <div className="prose prose-purple max-w-none text-gray-800">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{result}</ReactMarkdown>
+              </div>
+            ) : (
               <div className="h-full flex flex-col items-center justify-center text-[#9CA3AF] font-sans">
                 <FileUser className="w-12 h-12 mb-3 text-gray-300" />
                 <p>Your resume will appear here.</p>
