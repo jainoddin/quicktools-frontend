@@ -20,6 +20,7 @@ function PageViewTracker() {
 }
 
 export default function GoogleAnalytics() {
+  if (process.env.NODE_ENV !== 'production') return null;
   if (!GA_MEASUREMENT_ID) return null;
 
   return (

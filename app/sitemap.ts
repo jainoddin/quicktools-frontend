@@ -1,11 +1,11 @@
 import { MetadataRoute } from 'next';
 import { getEndpoint } from '../lib/api';
-import toolsData from '../tools_data.json';
+import toolsData from '../../tools_data.json';
 
 
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space'; 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space';
 
   // Fetch blogs
   let blogs: any[] = [];
