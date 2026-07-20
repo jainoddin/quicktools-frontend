@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Premium AI Social Media Calendar | QuickTools',
   description: 'Generate a 30-day multi-channel marketing calendar with specific daily posts.',
+    keywords: ['Premium AI Social Media Calendar', 'Free Premium AI Social Media Calendar', 'AI Premium AI Social Media Calendar', 'QuickTools', 'Online Premium AI Social Media Calendar', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-social-calendar' },
+    openGraph: {
+            title: "Premium AI Social Media Calendar | QuickTools",
+            description: "Generate a 30-day multi-channel marketing calendar with specific daily posts.",
+            url: 'https://quicktool.space/tools/ai-social-calendar',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Premium AI Social Media Calendar' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Premium AI Social Media Calendar | QuickTools",
+            description: "Generate a 30-day multi-channel marketing calendar with specific daily posts.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiSocialCalendarPage() {

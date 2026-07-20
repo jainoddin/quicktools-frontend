@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Webinar Script Generator | Premium Tools',
   description: 'Generate engaging scripts for your webinars.',
+    keywords: ['AI Webinar Script Generator', 'Free AI Webinar Script Generator', 'AI AI Webinar Script Generator', 'QuickTools', 'Online AI Webinar Script Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-webinar-script' },
+    openGraph: {
+            title: "AI Webinar Script Generator | Premium Tools",
+            description: "Generate engaging scripts for your webinars.",
+            url: 'https://quicktool.space/tools/ai-webinar-script',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Webinar Script Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Webinar Script Generator | Premium Tools",
+            description: "Generate engaging scripts for your webinars.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

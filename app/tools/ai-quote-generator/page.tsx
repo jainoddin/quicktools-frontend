@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Motivational Quote Generator | QuickTools',
   description: 'Generate highly inspiring, completely original motivational quotes on any topic instantly with our AI Motivational Quote Generator.',
+    keywords: ['Free AI Motivational Quote Generator', 'Free Free AI Motivational Quote Generator', 'AI Free AI Motivational Quote Generator', 'QuickTools', 'Online Free AI Motivational Quote Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-quote-generator' },
+    openGraph: {
+            title: "Free AI Motivational Quote Generator | QuickTools",
+            description: "Generate highly inspiring, completely original motivational quotes on any topic instantly with our AI Motivational Quote Generator.",
+            url: 'https://quicktool.space/tools/ai-quote-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Motivational Quote Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Motivational Quote Generator | QuickTools",
+            description: "Generate highly inspiring, completely original motivational quotes on any topic instantly with our AI Motivational Quote Generator.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiQuotePage() {

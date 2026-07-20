@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI ESG / Sustainability Plan | Premium Tools',
   description: 'Generate corporate sustainability and ESG plans.',
+    keywords: ['AI ESG / Sustainability Plan', 'Free AI ESG / Sustainability Plan', 'AI AI ESG / Sustainability Plan', 'QuickTools', 'Online AI ESG / Sustainability Plan', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-sustainability-plan' },
+    openGraph: {
+            title: "AI ESG / Sustainability Plan | Premium Tools",
+            description: "Generate corporate sustainability and ESG plans.",
+            url: 'https://quicktool.space/tools/ai-sustainability-plan',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI ESG / Sustainability Plan' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI ESG / Sustainability Plan | Premium Tools",
+            description: "Generate corporate sustainability and ESG plans.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Story Generator | QuickTools',
   description: 'Unleash your creativity. Generate engaging, unique short stories based on any prompt or genre.',
+    keywords: ['Free AI Story Generator', 'Free Free AI Story Generator', 'AI Free AI Story Generator', 'QuickTools', 'Online Free AI Story Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-story-generator' },
+    openGraph: {
+            title: "Free AI Story Generator | QuickTools",
+            description: "Unleash your creativity. Generate engaging, unique short stories based on any prompt or genre.",
+            url: 'https://quicktool.space/tools/ai-story-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Story Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Story Generator | QuickTools",
+            description: "Unleash your creativity. Generate engaging, unique short stories based on any prompt or genre.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiStoryGeneratorPage() {

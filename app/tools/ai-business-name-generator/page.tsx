@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Business Name Generator | QuickTools',
   description: 'Generate catchy, memorable business names and taglines for your startup or company instantly with AI.',
+    keywords: ['Free AI Business Name Generator', 'Free Free AI Business Name Generator', 'AI Free AI Business Name Generator', 'QuickTools', 'Online Free AI Business Name Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-business-name-generator' },
+    openGraph: {
+            title: "Free AI Business Name Generator | QuickTools",
+            description: "Generate catchy, memorable business names and taglines for your startup or company instantly with AI.",
+            url: 'https://quicktool.space/tools/ai-business-name-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Business Name Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Business Name Generator | QuickTools",
+            description: "Generate catchy, memorable business names and taglines for your startup or company instantly with AI.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiBusinessNameGeneratorPage() {

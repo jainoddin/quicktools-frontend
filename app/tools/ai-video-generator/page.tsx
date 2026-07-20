@@ -9,7 +9,23 @@ export const metadata: Metadata = {
   description: 'Turn your ideas into high-quality videos instantly. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.',
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-video-generator'
-  }
+  },
+    keywords: ['Professional AI Video Generator - Text to Video Creator', 'Free Professional AI Video Generator - Text to Video Creator', 'AI Professional AI Video Generator - Text to Video Creator', 'QuickTools', 'Online Professional AI Video Generator - Text to Video Creator', 'AI Tool'],
+    openGraph: {
+            title: "Professional AI Video Generator - Text to Video Creator",
+            description: "Turn your ideas into high-quality videos instantly. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.",
+            url: 'https://quicktool.space/tools/ai-video-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Professional AI Video Generator - Text to Video Creator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Professional AI Video Generator - Text to Video Creator",
+            description: "Turn your ideas into high-quality videos instantly. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiVideoGeneratorPage() {

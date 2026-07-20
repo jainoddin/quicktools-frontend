@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Hook Generator | QuickTools',
   description: 'Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts instantly with our AI Hook Generator.',
+    keywords: ['Free AI Hook Generator', 'Free Free AI Hook Generator', 'AI Free AI Hook Generator', 'QuickTools', 'Online Free AI Hook Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-hook-generator' },
+    openGraph: {
+            title: "Free AI Hook Generator | QuickTools",
+            description: "Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts instantly with our AI Hook Generator.",
+            url: 'https://quicktool.space/tools/ai-hook-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Hook Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Hook Generator | QuickTools",
+            description: "Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts instantly with our AI Hook Generator.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiHookPage() {

@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI User Persona Creator | Premium Tools',
   description: 'Generate detailed buyer and user personas.',
+    keywords: ['AI User Persona Creator', 'Free AI User Persona Creator', 'AI AI User Persona Creator', 'QuickTools', 'Online AI User Persona Creator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-user-persona' },
+    openGraph: {
+            title: "AI User Persona Creator | Premium Tools",
+            description: "Generate detailed buyer and user personas.",
+            url: 'https://quicktool.space/tools/ai-user-persona',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI User Persona Creator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI User Persona Creator | Premium Tools",
+            description: "Generate detailed buyer and user personas.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Product Description Generator | QuickTools',
   description: 'Write compelling, conversion-focused product descriptions for your e-commerce store instantly with AI.',
+    keywords: ['Free AI Product Description Generator', 'Free Free AI Product Description Generator', 'AI Free AI Product Description Generator', 'QuickTools', 'Online Free AI Product Description Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-product-description' },
+    openGraph: {
+            title: "Free AI Product Description Generator | QuickTools",
+            description: "Write compelling, conversion-focused product descriptions for your e-commerce store instantly with AI.",
+            url: 'https://quicktool.space/tools/ai-product-description',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Product Description Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Product Description Generator | QuickTools",
+            description: "Write compelling, conversion-focused product descriptions for your e-commerce store instantly with AI.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiProductDescPage() {

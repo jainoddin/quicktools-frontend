@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Social Media Caption Generator | QuickTools',
   description: 'Generate engaging, viral social media captions with emojis and trending hashtags for Instagram, TikTok, and Twitter.',
+    keywords: ['Free AI Social Media Caption Generator', 'Free Free AI Social Media Caption Generator', 'AI Free AI Social Media Caption Generator', 'QuickTools', 'Online Free AI Social Media Caption Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-caption-generator' },
+    openGraph: {
+            title: "Free AI Social Media Caption Generator | QuickTools",
+            description: "Generate engaging, viral social media captions with emojis and trending hashtags for Instagram, TikTok, and Twitter.",
+            url: 'https://quicktool.space/tools/ai-caption-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Social Media Caption Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Social Media Caption Generator | QuickTools",
+            description: "Generate engaging, viral social media captions with emojis and trending hashtags for Instagram, TikTok, and Twitter.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiCaptionGeneratorPage() {

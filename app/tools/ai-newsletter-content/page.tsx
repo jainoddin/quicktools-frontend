@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Newsletter Content Generator | Premium Tools',
   description: 'Generate engaging content for email newsletters.',
+    keywords: ['AI Newsletter Content Generator', 'Free AI Newsletter Content Generator', 'AI AI Newsletter Content Generator', 'QuickTools', 'Online AI Newsletter Content Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-newsletter-content' },
+    openGraph: {
+            title: "AI Newsletter Content Generator | Premium Tools",
+            description: "Generate engaging content for email newsletters.",
+            url: 'https://quicktool.space/tools/ai-newsletter-content',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Newsletter Content Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Newsletter Content Generator | Premium Tools",
+            description: "Generate engaging content for email newsletters.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

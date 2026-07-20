@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Event Sponsorship Deck | Premium Tools',
   description: 'Generate sponsorship proposal decks for events.',
+    keywords: ['AI Event Sponsorship Deck', 'Free AI Event Sponsorship Deck', 'AI AI Event Sponsorship Deck', 'QuickTools', 'Online AI Event Sponsorship Deck', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-event-sponsorship' },
+    openGraph: {
+            title: "AI Event Sponsorship Deck | Premium Tools",
+            description: "Generate sponsorship proposal decks for events.",
+            url: 'https://quicktool.space/tools/ai-event-sponsorship',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Event Sponsorship Deck' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Event Sponsorship Deck | Premium Tools",
+            description: "Generate sponsorship proposal decks for events.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

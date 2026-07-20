@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Video Storyboard Generator | Premium Tools',
   description: 'Generate detailed scene-by-scene video storyboards.',
+    keywords: ['AI Video Storyboard Generator', 'Free AI Video Storyboard Generator', 'AI AI Video Storyboard Generator', 'QuickTools', 'Online AI Video Storyboard Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-video-storyboard' },
+    openGraph: {
+            title: "AI Video Storyboard Generator | Premium Tools",
+            description: "Generate detailed scene-by-scene video storyboards.",
+            url: 'https://quicktool.space/tools/ai-video-storyboard',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Video Storyboard Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Video Storyboard Generator | Premium Tools",
+            description: "Generate detailed scene-by-scene video storyboards.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

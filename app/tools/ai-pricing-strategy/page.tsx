@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Pricing Strategy Generator | Premium Tools',
   description: 'Generate optimized pricing strategies and tiers.',
+    keywords: ['AI Pricing Strategy Generator', 'Free AI Pricing Strategy Generator', 'AI AI Pricing Strategy Generator', 'QuickTools', 'Online AI Pricing Strategy Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-pricing-strategy' },
+    openGraph: {
+            title: "AI Pricing Strategy Generator | Premium Tools",
+            description: "Generate optimized pricing strategies and tiers.",
+            url: 'https://quicktool.space/tools/ai-pricing-strategy',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Pricing Strategy Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Pricing Strategy Generator | Premium Tools",
+            description: "Generate optimized pricing strategies and tiers.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

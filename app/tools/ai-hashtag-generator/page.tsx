@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Instagram Hashtag Generator | QuickTools',
   description: 'Boost your reach and engagement with AI-generated, highly relevant hashtags for Instagram, TikTok, and Twitter.',
+    keywords: ['Free AI Instagram Hashtag Generator', 'Free Free AI Instagram Hashtag Generator', 'AI Free AI Instagram Hashtag Generator', 'QuickTools', 'Online Free AI Instagram Hashtag Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-hashtag-generator' },
+    openGraph: {
+            title: "Free AI Instagram Hashtag Generator | QuickTools",
+            description: "Boost your reach and engagement with AI-generated, highly relevant hashtags for Instagram, TikTok, and Twitter.",
+            url: 'https://quicktool.space/tools/ai-hashtag-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Instagram Hashtag Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Instagram Hashtag Generator | QuickTools",
+            description: "Boost your reach and engagement with AI-generated, highly relevant hashtags for Instagram, TikTok, and Twitter.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiHashtagGeneratorPage() {

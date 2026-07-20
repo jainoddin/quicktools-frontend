@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Interview Scoring Rubric | Premium Tools',
   description: 'Generate standardized interview scoring rubrics.',
+    keywords: ['AI Interview Scoring Rubric', 'Free AI Interview Scoring Rubric', 'AI AI Interview Scoring Rubric', 'QuickTools', 'Online AI Interview Scoring Rubric', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-job-interview-rubric' },
+    openGraph: {
+            title: "AI Interview Scoring Rubric | Premium Tools",
+            description: "Generate standardized interview scoring rubrics.",
+            url: 'https://quicktool.space/tools/ai-job-interview-rubric',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Interview Scoring Rubric' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Interview Scoring Rubric | Premium Tools",
+            description: "Generate standardized interview scoring rubrics.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

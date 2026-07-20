@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Masterclass Course Outline | Premium Tools',
   description: 'Generate detailed course outlines and curriculum.',
+    keywords: ['AI Masterclass Course Outline', 'Free AI Masterclass Course Outline', 'AI AI Masterclass Course Outline', 'QuickTools', 'Online AI Masterclass Course Outline', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-course-outline' },
+    openGraph: {
+            title: "AI Masterclass Course Outline | Premium Tools",
+            description: "Generate detailed course outlines and curriculum.",
+            url: 'https://quicktool.space/tools/ai-course-outline',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Masterclass Course Outline' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Masterclass Course Outline | Premium Tools",
+            description: "Generate detailed course outlines and curriculum.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

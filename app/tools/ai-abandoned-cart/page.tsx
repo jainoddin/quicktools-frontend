@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Abandoned Cart Email Series | Premium Tools',
   description: 'Generate email sequences to recover lost sales.',
+    keywords: ['AI Abandoned Cart Email Series', 'Free AI Abandoned Cart Email Series', 'AI AI Abandoned Cart Email Series', 'QuickTools', 'Online AI Abandoned Cart Email Series', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-abandoned-cart' },
+    openGraph: {
+            title: "AI Abandoned Cart Email Series | Premium Tools",
+            description: "Generate email sequences to recover lost sales.",
+            url: 'https://quicktool.space/tools/ai-abandoned-cart',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Abandoned Cart Email Series' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Abandoned Cart Email Series | Premium Tools",
+            description: "Generate email sequences to recover lost sales.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Lead Magnet Idea Generator | Premium Tools',
   description: 'Generate compelling lead magnet ideas to grow your list.',
+    keywords: ['AI Lead Magnet Idea Generator', 'Free AI Lead Magnet Idea Generator', 'AI AI Lead Magnet Idea Generator', 'QuickTools', 'Online AI Lead Magnet Idea Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-lead-magnet' },
+    openGraph: {
+            title: "AI Lead Magnet Idea Generator | Premium Tools",
+            description: "Generate compelling lead magnet ideas to grow your list.",
+            url: 'https://quicktool.space/tools/ai-lead-magnet',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Lead Magnet Idea Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Lead Magnet Idea Generator | Premium Tools",
+            description: "Generate compelling lead magnet ideas to grow your list.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

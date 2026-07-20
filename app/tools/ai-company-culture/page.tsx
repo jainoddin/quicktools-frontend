@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Company Culture Guide | Premium Tools',
   description: 'Generate company culture and values handbooks.',
+    keywords: ['AI Company Culture Guide', 'Free AI Company Culture Guide', 'AI AI Company Culture Guide', 'QuickTools', 'Online AI Company Culture Guide', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-company-culture' },
+    openGraph: {
+            title: "AI Company Culture Guide | Premium Tools",
+            description: "Generate company culture and values handbooks.",
+            url: 'https://quicktool.space/tools/ai-company-culture',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Company Culture Guide' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Company Culture Guide | Premium Tools",
+            description: "Generate company culture and values handbooks.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

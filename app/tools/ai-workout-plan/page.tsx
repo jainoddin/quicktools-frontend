@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Workout Plan Generator | QuickTools',
   description: 'Generate custom, highly effective workout plans instantly based on your fitness goals and available time with our AI Workout Plan Generator.',
+    keywords: ['Free AI Workout Plan Generator', 'Free Free AI Workout Plan Generator', 'AI Free AI Workout Plan Generator', 'QuickTools', 'Online Free AI Workout Plan Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-workout-plan' },
+    openGraph: {
+            title: "Free AI Workout Plan Generator | QuickTools",
+            description: "Generate custom, highly effective workout plans instantly based on your fitness goals and available time with our AI Workout Plan Generator.",
+            url: 'https://quicktool.space/tools/ai-workout-plan',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Workout Plan Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Workout Plan Generator | QuickTools",
+            description: "Generate custom, highly effective workout plans instantly based on your fitness goals and available time with our AI Workout Plan Generator.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiWorkoutPage() {

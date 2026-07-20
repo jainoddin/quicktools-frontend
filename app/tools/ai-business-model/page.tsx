@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Business Model Canvas | Premium Tools',
   description: 'Generate a complete Business Model Canvas.',
+    keywords: ['AI Business Model Canvas', 'Free AI Business Model Canvas', 'AI AI Business Model Canvas', 'QuickTools', 'Online AI Business Model Canvas', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-business-model' },
+    openGraph: {
+            title: "AI Business Model Canvas | Premium Tools",
+            description: "Generate a complete Business Model Canvas.",
+            url: 'https://quicktool.space/tools/ai-business-model',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Business Model Canvas' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Business Model Canvas | Premium Tools",
+            description: "Generate a complete Business Model Canvas.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

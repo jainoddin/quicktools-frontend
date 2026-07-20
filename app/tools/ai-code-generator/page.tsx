@@ -9,7 +9,23 @@ export const metadata: Metadata = {
   description: 'Generate production-ready code in seconds with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.',
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-code-generator'
-  }
+  },
+    keywords: ['Intelligent AI Code Generator & Programming Assistant', 'Free Intelligent AI Code Generator & Programming Assistant', 'AI Intelligent AI Code Generator & Programming Assistant', 'QuickTools', 'Online Intelligent AI Code Generator & Programming Assistant', 'AI Tool'],
+    openGraph: {
+            title: "Intelligent AI Code Generator & Programming Assistant",
+            description: "Generate production-ready code in seconds with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.",
+            url: 'https://quicktool.space/tools/ai-code-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Intelligent AI Code Generator & Programming Assistant' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Intelligent AI Code Generator & Programming Assistant",
+            description: "Generate production-ready code in seconds with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiCodeGeneratorPage() {

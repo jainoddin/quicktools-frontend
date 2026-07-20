@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI YouTube Title Generator | QuickTools',
   description: 'Generate highly clickable, viral, and engaging YouTube video titles instantly with our AI YouTube Title Generator.',
+    keywords: ['Free AI YouTube Title Generator', 'Free Free AI YouTube Title Generator', 'AI Free AI YouTube Title Generator', 'QuickTools', 'Online Free AI YouTube Title Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-youtube-title' },
+    openGraph: {
+            title: "Free AI YouTube Title Generator | QuickTools",
+            description: "Generate highly clickable, viral, and engaging YouTube video titles instantly with our AI YouTube Title Generator.",
+            url: 'https://quicktool.space/tools/ai-youtube-title',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI YouTube Title Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI YouTube Title Generator | QuickTools",
+            description: "Generate highly clickable, viral, and engaging YouTube video titles instantly with our AI YouTube Title Generator.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiYoutubeTitlePage() {

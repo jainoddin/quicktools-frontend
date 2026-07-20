@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Product Launch Strategy | Premium Tools',
   description: 'Generate a comprehensive product launch plan.',
+    keywords: ['AI Product Launch Strategy', 'Free AI Product Launch Strategy', 'AI AI Product Launch Strategy', 'QuickTools', 'Online AI Product Launch Strategy', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-product-launch' },
+    openGraph: {
+            title: "AI Product Launch Strategy | Premium Tools",
+            description: "Generate a comprehensive product launch plan.",
+            url: 'https://quicktool.space/tools/ai-product-launch',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Product Launch Strategy' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Product Launch Strategy | Premium Tools",
+            description: "Generate a comprehensive product launch plan.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

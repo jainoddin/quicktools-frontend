@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Premium AI Sales Funnel Copywriter | QuickTools',
   description: 'Write landing page copy, email sequences, and ad copy all at once.',
+    keywords: ['Premium AI Sales Funnel Copywriter', 'Free Premium AI Sales Funnel Copywriter', 'AI Premium AI Sales Funnel Copywriter', 'QuickTools', 'Online Premium AI Sales Funnel Copywriter', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-sales-funnel' },
+    openGraph: {
+            title: "Premium AI Sales Funnel Copywriter | QuickTools",
+            description: "Write landing page copy, email sequences, and ad copy all at once.",
+            url: 'https://quicktool.space/tools/ai-sales-funnel',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Premium AI Sales Funnel Copywriter' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Premium AI Sales Funnel Copywriter | QuickTools",
+            description: "Write landing page copy, email sequences, and ad copy all at once.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiSalesFunnelPage() {

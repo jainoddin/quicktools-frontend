@@ -9,7 +9,23 @@ export const metadata: Metadata = {
   description: 'Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.',
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-writer'
-  }
+  },
+    keywords: ['Advanced AI Writer & Content Generator for Creators', 'Free Advanced AI Writer & Content Generator for Creators', 'AI Advanced AI Writer & Content Generator for Creators', 'QuickTools', 'Online Advanced AI Writer & Content Generator for Creators', 'AI Tool'],
+    openGraph: {
+            title: "Advanced AI Writer & Content Generator for Creators",
+            description: "Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
+            url: 'https://quicktool.space/tools/ai-writer',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Advanced AI Writer & Content Generator for Creators' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Advanced AI Writer & Content Generator for Creators",
+            description: "Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiWriterPage() {

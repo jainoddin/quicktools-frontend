@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Value Proposition Generator | Premium Tools',
   description: 'Generate unique value propositions for your products.',
+    keywords: ['AI Value Proposition Generator', 'Free AI Value Proposition Generator', 'AI AI Value Proposition Generator', 'QuickTools', 'Online AI Value Proposition Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-value-proposition' },
+    openGraph: {
+            title: "AI Value Proposition Generator | Premium Tools",
+            description: "Generate unique value propositions for your products.",
+            url: 'https://quicktool.space/tools/ai-value-proposition',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Value Proposition Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Value Proposition Generator | Premium Tools",
+            description: "Generate unique value propositions for your products.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

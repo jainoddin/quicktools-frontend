@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Article Outline Generator | QuickTools',
   description: 'Generate comprehensive, SEO-optimized article and blog outlines instantly. Save hours of planning and structure your content perfectly.',
+    keywords: ['Free AI Article Outline Generator', 'Free Free AI Article Outline Generator', 'AI Free AI Article Outline Generator', 'QuickTools', 'Online Free AI Article Outline Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-article-outline-generator' },
+    openGraph: {
+            title: "Free AI Article Outline Generator | QuickTools",
+            description: "Generate comprehensive, SEO-optimized article and blog outlines instantly. Save hours of planning and structure your content perfectly.",
+            url: 'https://quicktool.space/tools/ai-article-outline-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Article Outline Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Article Outline Generator | QuickTools",
+            description: "Generate comprehensive, SEO-optimized article and blog outlines instantly. Save hours of planning and structure your content perfectly.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiOutlineGeneratorPage() {

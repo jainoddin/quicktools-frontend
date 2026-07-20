@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Whitepaper Outline | Premium Tools',
   description: 'Generate structured outlines for B2B whitepapers.',
+    keywords: ['AI Whitepaper Outline', 'Free AI Whitepaper Outline', 'AI AI Whitepaper Outline', 'QuickTools', 'Online AI Whitepaper Outline', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-whitepaper-outline' },
+    openGraph: {
+            title: "AI Whitepaper Outline | Premium Tools",
+            description: "Generate structured outlines for B2B whitepapers.",
+            url: 'https://quicktool.space/tools/ai-whitepaper-outline',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Whitepaper Outline' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Whitepaper Outline | Premium Tools",
+            description: "Generate structured outlines for B2B whitepapers.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

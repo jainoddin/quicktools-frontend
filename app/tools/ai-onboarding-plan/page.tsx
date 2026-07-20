@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Employee Onboarding Plan | Premium Tools',
   description: 'Generate structured 30-60-90 day onboarding plans.',
+    keywords: ['AI Employee Onboarding Plan', 'Free AI Employee Onboarding Plan', 'AI AI Employee Onboarding Plan', 'QuickTools', 'Online AI Employee Onboarding Plan', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-onboarding-plan' },
+    openGraph: {
+            title: "AI Employee Onboarding Plan | Premium Tools",
+            description: "Generate structured 30-60-90 day onboarding plans.",
+            url: 'https://quicktool.space/tools/ai-onboarding-plan',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Employee Onboarding Plan' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Employee Onboarding Plan | Premium Tools",
+            description: "Generate structured 30-60-90 day onboarding plans.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free JSON Formatter & Validator | QuickTools',
   description: 'Format, validate, and beautify your JSON data instantly with our free online JSON Formatter tool.',
+    keywords: ['Free JSON Formatter & Validator', 'Free Free JSON Formatter & Validator', 'AI Free JSON Formatter & Validator', 'QuickTools', 'Online Free JSON Formatter & Validator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/json-formatter' },
+    openGraph: {
+            title: "Free JSON Formatter & Validator | QuickTools",
+            description: "Format, validate, and beautify your JSON data instantly with our free online JSON Formatter tool.",
+            url: 'https://quicktool.space/tools/json-formatter',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free JSON Formatter & Validator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free JSON Formatter & Validator | QuickTools",
+            description: "Format, validate, and beautify your JSON data instantly with our free online JSON Formatter tool.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function JsonFormatterPage() {

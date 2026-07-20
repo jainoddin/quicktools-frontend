@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Customer Journey Mapper | Premium Tools',
   description: 'Map out the end-to-end customer journey.',
+    keywords: ['AI Customer Journey Mapper', 'Free AI Customer Journey Mapper', 'AI AI Customer Journey Mapper', 'QuickTools', 'Online AI Customer Journey Mapper', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-customer-journey' },
+    openGraph: {
+            title: "AI Customer Journey Mapper | Premium Tools",
+            description: "Map out the end-to-end customer journey.",
+            url: 'https://quicktool.space/tools/ai-customer-journey',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Customer Journey Mapper' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Customer Journey Mapper | Premium Tools",
+            description: "Map out the end-to-end customer journey.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

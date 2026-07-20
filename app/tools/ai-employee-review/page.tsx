@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Employee Performance Review | Premium Tools',
   description: 'Write constructive employee performance reviews.',
+    keywords: ['AI Employee Performance Review', 'Free AI Employee Performance Review', 'AI AI Employee Performance Review', 'QuickTools', 'Online AI Employee Performance Review', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-employee-review' },
+    openGraph: {
+            title: "AI Employee Performance Review | Premium Tools",
+            description: "Write constructive employee performance reviews.",
+            url: 'https://quicktool.space/tools/ai-employee-review',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Employee Performance Review' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Employee Performance Review | Premium Tools",
+            description: "Write constructive employee performance reviews.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

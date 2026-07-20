@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Apology Letter Generator | QuickTools',
   description: 'Draft sincere, well-worded, and appropriate apology letters for professional or personal situations instantly.',
+    keywords: ['Free AI Apology Letter Generator', 'Free Free AI Apology Letter Generator', 'AI Free AI Apology Letter Generator', 'QuickTools', 'Online Free AI Apology Letter Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-apology-letter' },
+    openGraph: {
+            title: "Free AI Apology Letter Generator | QuickTools",
+            description: "Draft sincere, well-worded, and appropriate apology letters for professional or personal situations instantly.",
+            url: 'https://quicktool.space/tools/ai-apology-letter',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Apology Letter Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Apology Letter Generator | QuickTools",
+            description: "Draft sincere, well-worded, and appropriate apology letters for professional or personal situations instantly.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiApologyLetterPage() {

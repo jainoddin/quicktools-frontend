@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free Lorem Ipsum Generator | QuickTools',
   description: 'Generate placeholder text (Lorem Ipsum) instantly for your designs, websites, and mockups with our free Lorem Ipsum Generator.',
+    keywords: ['Free Lorem Ipsum Generator', 'Free Free Lorem Ipsum Generator', 'AI Free Lorem Ipsum Generator', 'QuickTools', 'Online Free Lorem Ipsum Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/lorem-ipsum' },
+    openGraph: {
+            title: "Free Lorem Ipsum Generator | QuickTools",
+            description: "Generate placeholder text (Lorem Ipsum) instantly for your designs, websites, and mockups with our free Lorem Ipsum Generator.",
+            url: 'https://quicktool.space/tools/lorem-ipsum',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free Lorem Ipsum Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free Lorem Ipsum Generator | QuickTools",
+            description: "Generate placeholder text (Lorem Ipsum) instantly for your designs, websites, and mockups with our free Lorem Ipsum Generator.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function LoremIpsumPage() {

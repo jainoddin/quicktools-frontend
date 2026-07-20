@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Premium AI E-Book Writer | QuickTools',
   description: 'Generate chapter-by-chapter outlines and content for an entire e-book.',
+    keywords: ['Premium AI E-Book Writer', 'Free Premium AI E-Book Writer', 'AI Premium AI E-Book Writer', 'QuickTools', 'Online Premium AI E-Book Writer', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-ebook-writer' },
+    openGraph: {
+            title: "Premium AI E-Book Writer | QuickTools",
+            description: "Generate chapter-by-chapter outlines and content for an entire e-book.",
+            url: 'https://quicktool.space/tools/ai-ebook-writer',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Premium AI E-Book Writer' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Premium AI E-Book Writer | QuickTools",
+            description: "Generate chapter-by-chapter outlines and content for an entire e-book.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiEbookWriterPage() {

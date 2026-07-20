@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Case Study Writer | Premium Tools',
   description: 'Write professional business case studies.',
+    keywords: ['AI Case Study Writer', 'Free AI Case Study Writer', 'AI AI Case Study Writer', 'QuickTools', 'Online AI Case Study Writer', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-case-study' },
+    openGraph: {
+            title: "AI Case Study Writer | Premium Tools",
+            description: "Write professional business case studies.",
+            url: 'https://quicktool.space/tools/ai-case-study',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Case Study Writer' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Case Study Writer | Premium Tools",
+            description: "Write professional business case studies.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

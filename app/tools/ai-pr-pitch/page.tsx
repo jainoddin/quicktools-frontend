@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI PR Media Pitch Generator | Premium Tools',
   description: 'Generate compelling media pitches for journalists.',
+    keywords: ['AI PR Media Pitch Generator', 'Free AI PR Media Pitch Generator', 'AI AI PR Media Pitch Generator', 'QuickTools', 'Online AI PR Media Pitch Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-pr-pitch' },
+    openGraph: {
+            title: "AI PR Media Pitch Generator | Premium Tools",
+            description: "Generate compelling media pitches for journalists.",
+            url: 'https://quicktool.space/tools/ai-pr-pitch',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI PR Media Pitch Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI PR Media Pitch Generator | Premium Tools",
+            description: "Generate compelling media pitches for journalists.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI YouTube Tags Generator | QuickTools',
   description: 'Boost your video views and SEO ranking with AI-generated, highly optimized tags for YouTube.',
+    keywords: ['Free AI YouTube Tags Generator', 'Free Free AI YouTube Tags Generator', 'AI Free AI YouTube Tags Generator', 'QuickTools', 'Online Free AI YouTube Tags Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-youtube-tags' },
+    openGraph: {
+            title: "Free AI YouTube Tags Generator | QuickTools",
+            description: "Boost your video views and SEO ranking with AI-generated, highly optimized tags for YouTube.",
+            url: 'https://quicktool.space/tools/ai-youtube-tags',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI YouTube Tags Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI YouTube Tags Generator | QuickTools",
+            description: "Boost your video views and SEO ranking with AI-generated, highly optimized tags for YouTube.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiYoutubeTagsPage() {

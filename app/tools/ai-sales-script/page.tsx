@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Sales Cold Call Script | Premium Tools',
   description: 'Generate effective scripts for sales calls.',
+    keywords: ['AI Sales Cold Call Script', 'Free AI Sales Cold Call Script', 'AI AI Sales Cold Call Script', 'QuickTools', 'Online AI Sales Cold Call Script', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-sales-script' },
+    openGraph: {
+            title: "AI Sales Cold Call Script | Premium Tools",
+            description: "Generate effective scripts for sales calls.",
+            url: 'https://quicktool.space/tools/ai-sales-script',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Sales Cold Call Script' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Sales Cold Call Script | Premium Tools",
+            description: "Generate effective scripts for sales calls.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

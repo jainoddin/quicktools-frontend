@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Paraphrasing Tool | QuickTools',
   description: 'Rewrite and paraphrase text completely uniquely while retaining the original meaning with our advanced AI paraphraser.',
+    keywords: ['Free AI Paraphrasing Tool', 'Free Free AI Paraphrasing Tool', 'AI Free AI Paraphrasing Tool', 'QuickTools', 'Online Free AI Paraphrasing Tool', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-paraphraser' },
+    openGraph: {
+            title: "Free AI Paraphrasing Tool | QuickTools",
+            description: "Rewrite and paraphrase text completely uniquely while retaining the original meaning with our advanced AI paraphraser.",
+            url: 'https://quicktool.space/tools/ai-paraphraser',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Paraphrasing Tool' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Paraphrasing Tool | QuickTools",
+            description: "Rewrite and paraphrase text completely uniquely while retaining the original meaning with our advanced AI paraphraser.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiParaphraserPage() {

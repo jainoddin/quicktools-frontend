@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Grant Progress Report | Premium Tools',
   description: 'Write professional progress reports for grants.',
+    keywords: ['AI Grant Progress Report', 'Free AI Grant Progress Report', 'AI AI Grant Progress Report', 'QuickTools', 'Online AI Grant Progress Report', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-grant-report' },
+    openGraph: {
+            title: "AI Grant Progress Report | Premium Tools",
+            description: "Write professional progress reports for grants.",
+            url: 'https://quicktool.space/tools/ai-grant-report',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Grant Progress Report' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Grant Progress Report | Premium Tools",
+            description: "Write professional progress reports for grants.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

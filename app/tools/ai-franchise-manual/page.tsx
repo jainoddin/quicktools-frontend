@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Franchise Operations Manual | Premium Tools',
   description: 'Generate standard operating procedures for franchises.',
+    keywords: ['AI Franchise Operations Manual', 'Free AI Franchise Operations Manual', 'AI AI Franchise Operations Manual', 'QuickTools', 'Online AI Franchise Operations Manual', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-franchise-manual' },
+    openGraph: {
+            title: "AI Franchise Operations Manual | Premium Tools",
+            description: "Generate standard operating procedures for franchises.",
+            url: 'https://quicktool.space/tools/ai-franchise-manual',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Franchise Operations Manual' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Franchise Operations Manual | Premium Tools",
+            description: "Generate standard operating procedures for franchises.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

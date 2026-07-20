@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Podcast Episode Script | Premium Tools',
   description: 'Generate structured scripts for podcast episodes.',
+    keywords: ['AI Podcast Episode Script', 'Free AI Podcast Episode Script', 'AI AI Podcast Episode Script', 'QuickTools', 'Online AI Podcast Episode Script', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-podcast-script' },
+    openGraph: {
+            title: "AI Podcast Episode Script | Premium Tools",
+            description: "Generate structured scripts for podcast episodes.",
+            url: 'https://quicktool.space/tools/ai-podcast-script',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Podcast Episode Script' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Podcast Episode Script | Premium Tools",
+            description: "Generate structured scripts for podcast episodes.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

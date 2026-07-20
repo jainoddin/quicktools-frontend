@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Event Planner | QuickTools',
   description: 'Plan your events effortlessly. Get a comprehensive checklist, timeline, and ideas for your next party or corporate event.',
+    keywords: ['Free AI Event Planner', 'Free Free AI Event Planner', 'AI Free AI Event Planner', 'QuickTools', 'Online Free AI Event Planner', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-event-planner' },
+    openGraph: {
+            title: "Free AI Event Planner | QuickTools",
+            description: "Plan your events effortlessly. Get a comprehensive checklist, timeline, and ideas for your next party or corporate event.",
+            url: 'https://quicktool.space/tools/ai-event-planner',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Event Planner' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Event Planner | QuickTools",
+            description: "Plan your events effortlessly. Get a comprehensive checklist, timeline, and ideas for your next party or corporate event.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiEventPlannerPage() {

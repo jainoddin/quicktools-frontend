@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Review Responder | QuickTools',
   description: 'Save time and maintain a great reputation by generating professional, empathetic replies to customer reviews.',
+    keywords: ['Free AI Review Responder', 'Free Free AI Review Responder', 'AI Free AI Review Responder', 'QuickTools', 'Online Free AI Review Responder', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-review-responder' },
+    openGraph: {
+            title: "Free AI Review Responder | QuickTools",
+            description: "Save time and maintain a great reputation by generating professional, empathetic replies to customer reviews.",
+            url: 'https://quicktool.space/tools/ai-review-responder',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Review Responder' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Review Responder | QuickTools",
+            description: "Save time and maintain a great reputation by generating professional, empathetic replies to customer reviews.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiReviewResponderPage() {

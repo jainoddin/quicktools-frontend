@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI OKR Generator | Premium Tools',
   description: 'Generate Objectives and Key Results for your teams.',
+    keywords: ['AI OKR Generator', 'Free AI OKR Generator', 'AI AI OKR Generator', 'QuickTools', 'Online AI OKR Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-okr-generator' },
+    openGraph: {
+            title: "AI OKR Generator | Premium Tools",
+            description: "Generate Objectives and Key Results for your teams.",
+            url: 'https://quicktool.space/tools/ai-okr-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI OKR Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI OKR Generator | Premium Tools",
+            description: "Generate Objectives and Key Results for your teams.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

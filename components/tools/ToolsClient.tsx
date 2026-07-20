@@ -93,7 +93,8 @@ import {
   Award,
   FileCheck,
   Handshake,
-  Settings
+  Settings,
+  Volume2
 } from 'lucide-react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -184,6 +185,7 @@ export const IconMap: Record<string, LucideIcon> = {
   FileCheck,
   Handshake,
   Settings,
+  Volume2
 };
 
 function DynamicIcon({ name, className }: { name: string; className?: string }) {

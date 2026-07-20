@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Real Estate Listing Generator | QuickTools',
   description: 'Write captivating, conversion-optimized property descriptions that sell homes faster.',
+    keywords: ['Free AI Real Estate Listing Generator', 'Free Free AI Real Estate Listing Generator', 'AI Free AI Real Estate Listing Generator', 'QuickTools', 'Online Free AI Real Estate Listing Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-real-estate-listing' },
+    openGraph: {
+            title: "Free AI Real Estate Listing Generator | QuickTools",
+            description: "Write captivating, conversion-optimized property descriptions that sell homes faster.",
+            url: 'https://quicktool.space/tools/ai-real-estate-listing',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Real Estate Listing Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Real Estate Listing Generator | QuickTools",
+            description: "Write captivating, conversion-optimized property descriptions that sell homes faster.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiRealEstateListingPage() {

@@ -9,7 +9,23 @@ export const metadata: Metadata = {
   description: 'Generate a professional, ATS-friendly resume from your details in seconds using our free AI Resume Builder.',
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-resume-builder'
-  }
+  },
+    keywords: ['Free AI Resume Builder - ATS Friendly Resumes', 'Free Free AI Resume Builder - ATS Friendly Resumes', 'AI Free AI Resume Builder - ATS Friendly Resumes', 'QuickTools', 'Online Free AI Resume Builder - ATS Friendly Resumes', 'AI Tool'],
+    openGraph: {
+            title: "Free AI Resume Builder - ATS Friendly Resumes",
+            description: "Generate a professional, ATS-friendly resume from your details in seconds using our free AI Resume Builder.",
+            url: 'https://quicktool.space/tools/ai-resume-builder',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Resume Builder - ATS Friendly Resumes' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Resume Builder - ATS Friendly Resumes",
+            description: "Generate a professional, ATS-friendly resume from your details in seconds using our free AI Resume Builder.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiResumeBuilderPage() {

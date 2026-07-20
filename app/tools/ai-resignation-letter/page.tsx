@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Resignation Letter Generator | QuickTools',
   description: 'Leave on good terms. Generate a polite, professional, and appropriately toned resignation letter instantly.',
+    keywords: ['Free AI Resignation Letter Generator', 'Free Free AI Resignation Letter Generator', 'AI Free AI Resignation Letter Generator', 'QuickTools', 'Online Free AI Resignation Letter Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-resignation-letter' },
+    openGraph: {
+            title: "Free AI Resignation Letter Generator | QuickTools",
+            description: "Leave on good terms. Generate a polite, professional, and appropriately toned resignation letter instantly.",
+            url: 'https://quicktool.space/tools/ai-resignation-letter',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Resignation Letter Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Resignation Letter Generator | QuickTools",
+            description: "Leave on good terms. Generate a polite, professional, and appropriately toned resignation letter instantly.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiResignationLetterPage() {

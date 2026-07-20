@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Startup Idea Generator | Premium Tools',
   description: 'Generate validated startup ideas based on market trends.',
+    keywords: ['AI Startup Idea Generator', 'Free AI Startup Idea Generator', 'AI AI Startup Idea Generator', 'QuickTools', 'Online AI Startup Idea Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-startup-ideas' },
+    openGraph: {
+            title: "AI Startup Idea Generator | Premium Tools",
+            description: "Generate validated startup ideas based on market trends.",
+            url: 'https://quicktool.space/tools/ai-startup-ideas',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Startup Idea Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Startup Idea Generator | Premium Tools",
+            description: "Generate validated startup ideas based on market trends.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

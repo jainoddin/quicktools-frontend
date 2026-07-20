@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI SEO Title & Meta Generator | QuickTools',
   description: 'Generate high-ranking, SEO-optimized Page Titles and Meta Descriptions instantly with AI.',
+    keywords: ['Free AI SEO Title & Meta Generator', 'Free Free AI SEO Title & Meta Generator', 'AI Free AI SEO Title & Meta Generator', 'QuickTools', 'Online Free AI SEO Title & Meta Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-seo-meta-generator' },
+    openGraph: {
+            title: "Free AI SEO Title & Meta Generator | QuickTools",
+            description: "Generate high-ranking, SEO-optimized Page Titles and Meta Descriptions instantly with AI.",
+            url: 'https://quicktool.space/tools/ai-seo-meta-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI SEO Title & Meta Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI SEO Title & Meta Generator | QuickTools",
+            description: "Generate high-ranking, SEO-optimized Page Titles and Meta Descriptions instantly with AI.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiSeoMetaPage() {

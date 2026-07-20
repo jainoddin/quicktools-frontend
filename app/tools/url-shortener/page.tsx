@@ -9,7 +9,23 @@ export const metadata: Metadata = {
   description: 'Shorten any long URL into a clean, shareable link in one click with our free URL Shortener.',
   alternates: {
     canonical: 'https://quicktool.space/tools/url-shortener'
-  }
+  },
+    keywords: ['Free URL Shortener - Create Short Links', 'Free Free URL Shortener - Create Short Links', 'AI Free URL Shortener - Create Short Links', 'QuickTools', 'Online Free URL Shortener - Create Short Links', 'AI Tool'],
+    openGraph: {
+            title: "Free URL Shortener - Create Short Links",
+            description: "Shorten any long URL into a clean, shareable link in one click with our free URL Shortener.",
+            url: 'https://quicktool.space/tools/url-shortener',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free URL Shortener - Create Short Links' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free URL Shortener - Create Short Links",
+            description: "Shorten any long URL into a clean, shareable link in one click with our free URL Shortener.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function UrlShortenerPage() {

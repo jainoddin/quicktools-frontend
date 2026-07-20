@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Gift Idea Generator | QuickTools',
   description: 'Find the perfect, thoughtful gift for anyone instantly based on their age, interests, and your budget with our AI Gift Idea Generator.',
+    keywords: ['Free AI Gift Idea Generator', 'Free Free AI Gift Idea Generator', 'AI Free AI Gift Idea Generator', 'QuickTools', 'Online Free AI Gift Idea Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-gift-idea' },
+    openGraph: {
+            title: "Free AI Gift Idea Generator | QuickTools",
+            description: "Find the perfect, thoughtful gift for anyone instantly based on their age, interests, and your budget with our AI Gift Idea Generator.",
+            url: 'https://quicktool.space/tools/ai-gift-idea',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Gift Idea Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Gift Idea Generator | QuickTools",
+            description: "Find the perfect, thoughtful gift for anyone instantly based on their age, interests, and your budget with our AI Gift Idea Generator.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiGiftIdeaPage() {

@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Slogan Generator | QuickTools',
   description: 'Instantly brainstorm catchy, memorable, and high-converting slogans for your business, brand, or marketing campaign.',
+    keywords: ['Free AI Slogan Generator', 'Free Free AI Slogan Generator', 'AI Free AI Slogan Generator', 'QuickTools', 'Online Free AI Slogan Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-slogan-generator' },
+    openGraph: {
+            title: "Free AI Slogan Generator | QuickTools",
+            description: "Instantly brainstorm catchy, memorable, and high-converting slogans for your business, brand, or marketing campaign.",
+            url: 'https://quicktool.space/tools/ai-slogan-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Slogan Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Slogan Generator | QuickTools",
+            description: "Instantly brainstorm catchy, memorable, and high-converting slogans for your business, brand, or marketing campaign.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiSloganGeneratorPage() {

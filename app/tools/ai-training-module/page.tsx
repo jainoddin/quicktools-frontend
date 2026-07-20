@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Training Module Generator | Premium Tools',
   description: 'Generate corporate training modules and quizzes.',
+    keywords: ['AI Training Module Generator', 'Free AI Training Module Generator', 'AI AI Training Module Generator', 'QuickTools', 'Online AI Training Module Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-training-module' },
+    openGraph: {
+            title: "AI Training Module Generator | Premium Tools",
+            description: "Generate corporate training modules and quizzes.",
+            url: 'https://quicktool.space/tools/ai-training-module',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Training Module Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Training Module Generator | Premium Tools",
+            description: "Generate corporate training modules and quizzes.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

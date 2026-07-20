@@ -9,7 +9,23 @@ export const metadata: Metadata = {
   description: 'Translate text into 50+ languages instantly with AI-powered accuracy using our free AI Translator.',
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-translator'
-  }
+  },
+    keywords: ['Free AI Language Translator - Translate 50+ Languages', 'Free Free AI Language Translator - Translate 50+ Languages', 'AI Free AI Language Translator - Translate 50+ Languages', 'QuickTools', 'Online Free AI Language Translator - Translate 50+ Languages', 'AI Tool'],
+    openGraph: {
+            title: "Free AI Language Translator - Translate 50+ Languages",
+            description: "Translate text into 50+ languages instantly with AI-powered accuracy using our free AI Translator.",
+            url: 'https://quicktool.space/tools/ai-translator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Language Translator - Translate 50+ Languages' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Language Translator - Translate 50+ Languages",
+            description: "Translate text into 50+ languages instantly with AI-powered accuracy using our free AI Translator.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiTranslatorPage() {

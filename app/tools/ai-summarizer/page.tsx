@@ -9,7 +9,23 @@ export const metadata: Metadata = {
   description: 'Summarize long articles, PDFs, or any text into clear bullet points instantly with our free AI Summarizer.',
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-summarizer'
-  }
+  },
+    keywords: ['Free AI Text Summarizer - Summarize Articles Instantly', 'Free Free AI Text Summarizer - Summarize Articles Instantly', 'AI Free AI Text Summarizer - Summarize Articles Instantly', 'QuickTools', 'Online Free AI Text Summarizer - Summarize Articles Instantly', 'AI Tool'],
+    openGraph: {
+            title: "Free AI Text Summarizer - Summarize Articles Instantly",
+            description: "Summarize long articles, PDFs, or any text into clear bullet points instantly with our free AI Summarizer.",
+            url: 'https://quicktool.space/tools/ai-summarizer',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Text Summarizer - Summarize Articles Instantly' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Text Summarizer - Summarize Articles Instantly",
+            description: "Summarize long articles, PDFs, or any text into clear bullet points instantly with our free AI Summarizer.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiSummarizerPage() {

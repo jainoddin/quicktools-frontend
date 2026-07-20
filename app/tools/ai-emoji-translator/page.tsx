@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Emoji Translator | QuickTools',
   description: 'Turn any text, quote, or sentence into a fun sequence of emojis instantly.',
+    keywords: ['Free AI Emoji Translator', 'Free Free AI Emoji Translator', 'AI Free AI Emoji Translator', 'QuickTools', 'Online Free AI Emoji Translator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-emoji-translator' },
+    openGraph: {
+            title: "Free AI Emoji Translator | QuickTools",
+            description: "Turn any text, quote, or sentence into a fun sequence of emojis instantly.",
+            url: 'https://quicktool.space/tools/ai-emoji-translator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Emoji Translator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Emoji Translator | QuickTools",
+            description: "Turn any text, quote, or sentence into a fun sequence of emojis instantly.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiEmojiTranslatorPage() {

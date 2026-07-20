@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Meal Planner | QuickTools',
   description: 'Generate healthy, customized weekly meal plans based on your dietary preferences and goals.',
+    keywords: ['Free AI Meal Planner', 'Free Free AI Meal Planner', 'AI Free AI Meal Planner', 'QuickTools', 'Online Free AI Meal Planner', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-meal-planner' },
+    openGraph: {
+            title: "Free AI Meal Planner | QuickTools",
+            description: "Generate healthy, customized weekly meal plans based on your dietary preferences and goals.",
+            url: 'https://quicktool.space/tools/ai-meal-planner',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Meal Planner' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Meal Planner | QuickTools",
+            description: "Generate healthy, customized weekly meal plans based on your dietary preferences and goals.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiMealPlannerPage() {

@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Video Script Generator | QuickTools',
   description: 'Write highly engaging, viral-worthy scripts for YouTube, TikTok, and Instagram Reels in seconds.',
+    keywords: ['Free AI Video Script Generator', 'Free Free AI Video Script Generator', 'AI Free AI Video Script Generator', 'QuickTools', 'Online Free AI Video Script Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-video-script' },
+    openGraph: {
+            title: "Free AI Video Script Generator | QuickTools",
+            description: "Write highly engaging, viral-worthy scripts for YouTube, TikTok, and Instagram Reels in seconds.",
+            url: 'https://quicktool.space/tools/ai-video-script',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Video Script Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Video Script Generator | QuickTools",
+            description: "Write highly engaging, viral-worthy scripts for YouTube, TikTok, and Instagram Reels in seconds.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiVideoScriptPage() {

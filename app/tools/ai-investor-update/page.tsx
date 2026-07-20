@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Investor Update Generator | Premium Tools',
   description: 'Write professional updates for your startup investors.',
+    keywords: ['AI Investor Update Generator', 'Free AI Investor Update Generator', 'AI AI Investor Update Generator', 'QuickTools', 'Online AI Investor Update Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-investor-update' },
+    openGraph: {
+            title: "AI Investor Update Generator | Premium Tools",
+            description: "Write professional updates for your startup investors.",
+            url: 'https://quicktool.space/tools/ai-investor-update',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Investor Update Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Investor Update Generator | Premium Tools",
+            description: "Write professional updates for your startup investors.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

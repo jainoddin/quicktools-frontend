@@ -14,7 +14,23 @@ export const metadata: Metadata = {
   description: 'Create stunning, high-resolution images from text descriptions. Unleash your creativity with our powerful AI Image Generator and models.',
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-image-generator'
-  }
+  },
+    keywords: ['Powerful AI Image Generator - Create Stunning AI Art', 'Free Powerful AI Image Generator - Create Stunning AI Art', 'AI Powerful AI Image Generator - Create Stunning AI Art', 'QuickTools', 'Online Powerful AI Image Generator - Create Stunning AI Art', 'AI Tool'],
+    openGraph: {
+            title: "Powerful AI Image Generator - Create Stunning AI Art",
+            description: "Create stunning, high-resolution images from text descriptions. Unleash your creativity with our powerful AI Image Generator and models.",
+            url: 'https://quicktool.space/tools/ai-image-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Powerful AI Image Generator - Create Stunning AI Art' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Powerful AI Image Generator - Create Stunning AI Art",
+            description: "Create stunning, high-resolution images from text descriptions. Unleash your creativity with our powerful AI Image Generator and models.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AIImageGeneratorPage() {

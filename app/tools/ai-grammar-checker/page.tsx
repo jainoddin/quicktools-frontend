@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Grammar & Spell Checker | QuickTools',
   description: 'Instantly check your text for grammar, spelling, and punctuation errors. Rewrites sentences for better flow and professional tone.',
+    keywords: ['Free AI Grammar & Spell Checker', 'Free Free AI Grammar & Spell Checker', 'AI Free AI Grammar & Spell Checker', 'QuickTools', 'Online Free AI Grammar & Spell Checker', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-grammar-checker' },
+    openGraph: {
+            title: "Free AI Grammar & Spell Checker | QuickTools",
+            description: "Instantly check your text for grammar, spelling, and punctuation errors. Rewrites sentences for better flow and professional tone.",
+            url: 'https://quicktool.space/tools/ai-grammar-checker',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Grammar & Spell Checker' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Grammar & Spell Checker | QuickTools",
+            description: "Instantly check your text for grammar, spelling, and punctuation errors. Rewrites sentences for better flow and professional tone.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiGrammarCheckerPage() {

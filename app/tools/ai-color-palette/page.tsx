@@ -9,7 +9,23 @@ export const metadata: Metadata = {
   description: 'Generate beautiful color palettes from a brand name or mood description with our free AI Color Palette Generator.',
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-color-palette'
-  }
+  },
+    keywords: ['Free AI Color Palette Generator', 'Free Free AI Color Palette Generator', 'AI Free AI Color Palette Generator', 'QuickTools', 'Online Free AI Color Palette Generator', 'AI Tool'],
+    openGraph: {
+            title: "Free AI Color Palette Generator",
+            description: "Generate beautiful color palettes from a brand name or mood description with our free AI Color Palette Generator.",
+            url: 'https://quicktool.space/tools/ai-color-palette',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Color Palette Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Color Palette Generator",
+            description: "Generate beautiful color palettes from a brand name or mood description with our free AI Color Palette Generator.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiColorPalettePage() {

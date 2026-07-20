@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Marketing Plan Generator | Premium Tools',
   description: 'Generate a comprehensive marketing plan and strategy.',
+    keywords: ['AI Marketing Plan Generator', 'Free AI Marketing Plan Generator', 'AI AI Marketing Plan Generator', 'QuickTools', 'Online AI Marketing Plan Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-marketing-plan' },
+    openGraph: {
+            title: "AI Marketing Plan Generator | Premium Tools",
+            description: "Generate a comprehensive marketing plan and strategy.",
+            url: 'https://quicktool.space/tools/ai-marketing-plan',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Marketing Plan Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Marketing Plan Generator | Premium Tools",
+            description: "Generate a comprehensive marketing plan and strategy.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {

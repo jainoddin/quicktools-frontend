@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI SQL Query Generator | QuickTools',
   description: 'Generate optimized SQL queries from plain English descriptions instantly.',
+    keywords: ['Free AI SQL Query Generator', 'Free Free AI SQL Query Generator', 'AI Free AI SQL Query Generator', 'QuickTools', 'Online Free AI SQL Query Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-sql-generator' },
+    openGraph: {
+            title: "Free AI SQL Query Generator | QuickTools",
+            description: "Generate optimized SQL queries from plain English descriptions instantly.",
+            url: 'https://quicktool.space/tools/ai-sql-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI SQL Query Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI SQL Query Generator | QuickTools",
+            description: "Generate optimized SQL queries from plain English descriptions instantly.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiSqlGeneratorPage() {

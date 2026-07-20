@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free QR Code Generator | QuickTools',
   description: 'Generate high-quality QR codes for URLs, text, or emails instantly. 100% free with no limits.',
+    keywords: ['Free QR Code Generator', 'Free Free QR Code Generator', 'AI Free QR Code Generator', 'QuickTools', 'Online Free QR Code Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/qr-code-generator' },
+    openGraph: {
+            title: "Free QR Code Generator | QuickTools",
+            description: "Generate high-quality QR codes for URLs, text, or emails instantly. 100% free with no limits.",
+            url: 'https://quicktool.space/tools/qr-code-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free QR Code Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free QR Code Generator | QuickTools",
+            description: "Generate high-quality QR codes for URLs, text, or emails instantly. 100% free with no limits.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function QrCodeGeneratorPage() {

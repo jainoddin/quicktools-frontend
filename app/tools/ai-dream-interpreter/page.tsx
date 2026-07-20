@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Dream Interpreter | QuickTools',
   description: 'Discover the hidden meaning behind your dreams with our AI-powered psychological and symbolic dream interpreter.',
+    keywords: ['Free AI Dream Interpreter', 'Free Free AI Dream Interpreter', 'AI Free AI Dream Interpreter', 'QuickTools', 'Online Free AI Dream Interpreter', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-dream-interpreter' },
+    openGraph: {
+            title: "Free AI Dream Interpreter | QuickTools",
+            description: "Discover the hidden meaning behind your dreams with our AI-powered psychological and symbolic dream interpreter.",
+            url: 'https://quicktool.space/tools/ai-dream-interpreter',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Dream Interpreter' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Dream Interpreter | QuickTools",
+            description: "Discover the hidden meaning behind your dreams with our AI-powered psychological and symbolic dream interpreter.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiDreamInterpreterPage() {

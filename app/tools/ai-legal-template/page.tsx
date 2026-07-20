@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Premium AI Legal Template Drafter | QuickTools',
   description: 'Generate standard boilerplate templates for NDAs, Freelance agreements, etc.',
+    keywords: ['Premium AI Legal Template Drafter', 'Free Premium AI Legal Template Drafter', 'AI Premium AI Legal Template Drafter', 'QuickTools', 'Online Premium AI Legal Template Drafter', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-legal-template' },
+    openGraph: {
+            title: "Premium AI Legal Template Drafter | QuickTools",
+            description: "Generate standard boilerplate templates for NDAs, Freelance agreements, etc.",
+            url: 'https://quicktool.space/tools/ai-legal-template',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Premium AI Legal Template Drafter' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Premium AI Legal Template Drafter | QuickTools",
+            description: "Generate standard boilerplate templates for NDAs, Freelance agreements, etc.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function AiLegalTemplatePage() {

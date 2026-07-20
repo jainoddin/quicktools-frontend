@@ -7,6 +7,23 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free CSS Box Shadow Generator | QuickTools',
   description: 'Visually generate perfect CSS box shadows and copy the CSS code instantly with our free visual CSS Box Shadow Generator.',
+    keywords: ['Free CSS Box Shadow Generator', 'Free Free CSS Box Shadow Generator', 'AI Free CSS Box Shadow Generator', 'QuickTools', 'Online Free CSS Box Shadow Generator', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/css-box-shadow-generator' },
+    openGraph: {
+            title: "Free CSS Box Shadow Generator | QuickTools",
+            description: "Visually generate perfect CSS box shadows and copy the CSS code instantly with our free visual CSS Box Shadow Generator.",
+            url: 'https://quicktool.space/tools/css-box-shadow-generator',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free CSS Box Shadow Generator' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free CSS Box Shadow Generator | QuickTools",
+            description: "Visually generate perfect CSS box shadows and copy the CSS code instantly with our free visual CSS Box Shadow Generator.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function BoxShadowPage() {

@@ -9,7 +9,22 @@ export const metadata: Metadata = {
   keywords: 'background remover, ai background removal, transparent background, image editing',
   alternates: {
     canonical: 'https://quicktool.space/tools/background-remover'
-  }
+  },
+    openGraph: {
+            title: "Free AI Background Remover - Erase Backgrounds Fast",
+            description: "Remove image backgrounds instantly with our AI Background Remover. Fast, accurate, and perfectly cut out subjects in seconds for design projects.",
+            url: 'https://quicktool.space/tools/background-remover',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Background Remover - Erase Backgrounds Fast' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "Free AI Background Remover - Erase Backgrounds Fast",
+            description: "Remove image backgrounds instantly with our AI Background Remover. Fast, accurate, and perfectly cut out subjects in seconds for design projects.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function BackgroundRemoverPage() {

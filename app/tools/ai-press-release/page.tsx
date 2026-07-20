@@ -6,6 +6,23 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Press Release Writer | Premium Tools',
   description: 'Write compelling press releases for your announcements.',
+    keywords: ['AI Press Release Writer', 'Free AI Press Release Writer', 'AI AI Press Release Writer', 'QuickTools', 'Online AI Press Release Writer', 'AI Tool'],
+    alternates: { canonical: 'https://quicktool.space/tools/ai-press-release' },
+    openGraph: {
+            title: "AI Press Release Writer | Premium Tools",
+            description: "Write compelling press releases for your announcements.",
+            url: 'https://quicktool.space/tools/ai-press-release',
+            siteName: 'QuickTools.ai',
+            type: 'website',
+            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Press Release Writer' }]
+          },
+    twitter: {
+            card: 'summary_large_image',
+            title: "AI Press Release Writer | Premium Tools",
+            description: "Write compelling press releases for your announcements.",
+            creator: '@quicktoolsai',
+            images: ['https://quicktool.space/icon.svg']
+          }
 };
 
 export default function Page() {
