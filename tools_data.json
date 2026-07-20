@@ -1,5 +1,15 @@
 [
   {
+    "name": "AI Text to Speech",
+    "description": "Convert any text into natural-sounding speech instantly using browser AI.",
+    "iconName": "Volume2",
+    "color": "bg-[#0EA5E9] text-white",
+    "slug": "ai-text-to-speech",
+    "category": "Utilities",
+    "isPremium": false,
+    "createdAt": "2026-07-20"
+  },
+  {
     "name": "AI Image Generator",
     "description": "Generate stunning images from text using advanced AI models.",
     "iconName": "ImageIcon",
@@ -567,7 +577,7 @@
     "slug": "ai-business-plan",
     "category": "Business",
     "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.484Z"
+    "createdAt": "2026-07-19T18:20:54.025Z"
   },
   {
     "name": "AI Sales Funnel Copywriter",
@@ -577,7 +587,7 @@
     "slug": "ai-sales-funnel",
     "category": "Marketing",
     "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
     "name": "AI E-Book Writer",
@@ -587,7 +597,7 @@
     "slug": "ai-ebook-writer",
     "category": "Writing",
     "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
     "name": "AI Course Curriculum Creator",
@@ -597,7 +607,7 @@
     "slug": "ai-course-creator",
     "category": "Education",
     "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
     "name": "AI SEO Topical Map Builder",
@@ -607,7 +617,7 @@
     "slug": "ai-seo-topical-map",
     "category": "SEO",
     "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
     "name": "AI Pitch Deck Generator",
@@ -617,7 +627,7 @@
     "slug": "ai-pitch-deck",
     "category": "Business",
     "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
     "name": "AI App Architecture Planner",
@@ -627,7 +637,7 @@
     "slug": "ai-app-architecture",
     "category": "Development",
     "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
     "name": "AI Grant Proposal Writer",
@@ -637,7 +647,7 @@
     "slug": "ai-grant-proposal",
     "category": "Writing",
     "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
     "name": "AI Legal Template Drafter",
@@ -647,7 +657,7 @@
     "slug": "ai-legal-template",
     "category": "Business",
     "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
     "name": "AI Social Media Calendar",
@@ -657,406 +667,246 @@
     "slug": "ai-social-calendar",
     "category": "Marketing",
     "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
-    "name": "AI Marketing Plan Generator",
-    "description": "Generate a comprehensive marketing plan and strategy.",
-    "iconName": "Target",
-    "color": "bg-[#EC4899]",
+    "title": "AI Marketing Plan Generator",
     "slug": "ai-marketing-plan",
     "category": "Marketing",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Startup Idea Generator",
-    "description": "Generate validated startup ideas based on market trends.",
-    "iconName": "Lightbulb",
-    "color": "bg-[#F59E0B]",
+    "title": "AI Startup Idea Generator",
     "slug": "ai-startup-ideas",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI SWOT Analysis Generator",
-    "description": "Generate a detailed SWOT analysis for your business.",
-    "iconName": "BarChart2",
-    "color": "bg-[#3B82F6]",
+    "title": "AI SWOT Analysis Generator",
     "slug": "ai-swot-analysis",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Investor Update Generator",
-    "description": "Write professional updates for your startup investors.",
-    "iconName": "Briefcase",
-    "color": "bg-[#8B5CF6]",
+    "title": "AI Investor Update Generator",
     "slug": "ai-investor-update",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Press Release Writer",
-    "description": "Write compelling press releases for your announcements.",
-    "iconName": "Megaphone",
-    "color": "bg-[#EF4444]",
+    "title": "AI Press Release Writer",
     "slug": "ai-press-release",
     "category": "Marketing",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI OKR Generator",
-    "description": "Generate Objectives and Key Results for your teams.",
-    "iconName": "Target",
-    "color": "bg-[#10B981]",
+    "title": "AI OKR Generator",
     "slug": "ai-okr-generator",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Employee Performance Review",
-    "description": "Write constructive employee performance reviews.",
-    "iconName": "Users",
-    "color": "bg-[#6366F1]",
+    "title": "AI Employee Performance Review",
     "slug": "ai-employee-review",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Brand Guidelines Generator",
-    "description": "Create comprehensive brand identity guidelines.",
-    "iconName": "Palette",
-    "color": "bg-[#EC4899]",
+    "title": "AI Brand Guidelines Generator",
     "slug": "ai-brand-guidelines",
     "category": "Design",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI User Persona Creator",
-    "description": "Generate detailed buyer and user personas.",
-    "iconName": "Users",
-    "color": "bg-[#F59E0B]",
+    "title": "AI User Persona Creator",
     "slug": "ai-user-persona",
     "category": "Marketing",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Customer Journey Mapper",
-    "description": "Map out the end-to-end customer journey.",
-    "iconName": "Map",
-    "color": "bg-[#3B82F6]",
+    "title": "AI Customer Journey Mapper",
     "slug": "ai-customer-journey",
     "category": "Marketing",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI B2B Cold Email Sequence",
-    "description": "Generate high-converting B2B cold email sequences.",
-    "iconName": "Mail",
-    "color": "bg-[#8B5CF6]",
+    "title": "AI B2B Cold Email Sequence",
     "slug": "ai-cold-email",
     "category": "Sales",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Sales Cold Call Script",
-    "description": "Generate effective scripts for sales calls.",
-    "iconName": "PhoneCall",
-    "color": "bg-[#10B981]",
+    "title": "AI Sales Cold Call Script",
     "slug": "ai-sales-script",
     "category": "Sales",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Sales Objection Handler",
-    "description": "Generate responses to common sales objections.",
-    "iconName": "Shield",
-    "color": "bg-[#EF4444]",
+    "title": "AI Sales Objection Handler",
     "slug": "ai-objection-handling",
     "category": "Sales",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Lead Magnet Idea Generator",
-    "description": "Generate compelling lead magnet ideas to grow your list.",
-    "iconName": "Magnet",
-    "color": "bg-[#F59E0B]",
+    "title": "AI Lead Magnet Idea Generator",
     "slug": "ai-lead-magnet",
     "category": "Marketing",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Webinar Script Generator",
-    "description": "Generate engaging scripts for your webinars.",
-    "iconName": "Video",
-    "color": "bg-[#3B82F6]",
+    "title": "AI Webinar Script Generator",
     "slug": "ai-webinar-script",
     "category": "Marketing",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Masterclass Course Outline",
-    "description": "Generate detailed course outlines and curriculum.",
-    "iconName": "GraduationCap",
-    "color": "bg-[#8B5CF6]",
+    "title": "AI Masterclass Course Outline",
     "slug": "ai-course-outline",
     "category": "Education",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Podcast Episode Script",
-    "description": "Generate structured scripts for podcast episodes.",
-    "iconName": "Mic",
-    "color": "bg-[#EC4899]",
+    "title": "AI Podcast Episode Script",
     "slug": "ai-podcast-script",
     "category": "Media",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Video Storyboard Generator",
-    "description": "Generate detailed scene-by-scene video storyboards.",
-    "iconName": "Film",
-    "color": "bg-[#10B981]",
+    "title": "AI Video Storyboard Generator",
     "slug": "ai-video-storyboard",
     "category": "Media",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Newsletter Content Generator",
-    "description": "Generate engaging content for email newsletters.",
-    "iconName": "MailOpen",
-    "color": "bg-[#F59E0B]",
+    "title": "AI Newsletter Content Generator",
     "slug": "ai-newsletter-content",
     "category": "Marketing",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Case Study Writer",
-    "description": "Write professional business case studies.",
-    "iconName": "FileText",
-    "color": "bg-[#3B82F6]",
+    "title": "AI Case Study Writer",
     "slug": "ai-case-study",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Whitepaper Outline",
-    "description": "Generate structured outlines for B2B whitepapers.",
-    "iconName": "BookOpen",
-    "color": "bg-[#8B5CF6]",
+    "title": "AI Whitepaper Outline",
     "slug": "ai-whitepaper-outline",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Landing Page Copywriter",
-    "description": "Generate high-converting copy for landing pages.",
-    "iconName": "Layout",
-    "color": "bg-[#EC4899]",
+    "title": "AI Landing Page Copywriter",
     "slug": "ai-landing-page-copy",
     "category": "Marketing",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Abandoned Cart Email Series",
-    "description": "Generate email sequences to recover lost sales.",
-    "iconName": "ShoppingCart",
-    "color": "bg-[#EF4444]",
+    "title": "AI Abandoned Cart Email Series",
     "slug": "ai-abandoned-cart",
     "category": "Marketing",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Product Launch Strategy",
-    "description": "Generate a comprehensive product launch plan.",
-    "iconName": "Rocket",
-    "color": "bg-[#3B82F6]",
+    "title": "AI Product Launch Strategy",
     "slug": "ai-product-launch",
     "category": "Marketing",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Value Proposition Generator",
-    "description": "Generate unique value propositions for your products.",
-    "iconName": "Star",
-    "color": "bg-[#F59E0B]",
+    "title": "AI Value Proposition Generator",
     "slug": "ai-value-proposition",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Competitor Analysis",
-    "description": "Generate detailed competitor analysis reports.",
-    "iconName": "TrendingUp",
-    "color": "bg-[#10B981]",
+    "title": "AI Competitor Analysis",
     "slug": "ai-competitor-analysis",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Pricing Strategy Generator",
-    "description": "Generate optimized pricing strategies and tiers.",
-    "iconName": "DollarSign",
-    "color": "bg-[#8B5CF6]",
+    "title": "AI Pricing Strategy Generator",
     "slug": "ai-pricing-strategy",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Business Model Canvas",
-    "description": "Generate a complete Business Model Canvas.",
-    "iconName": "Grid",
-    "color": "bg-[#3B82F6]",
+    "title": "AI Business Model Canvas",
     "slug": "ai-business-model",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Risk Assessment Report",
-    "description": "Generate detailed business risk assessments.",
-    "iconName": "AlertTriangle",
-    "color": "bg-[#EF4444]",
+    "title": "AI Risk Assessment Report",
     "slug": "ai-risk-assessment",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI ESG / Sustainability Plan",
-    "description": "Generate corporate sustainability and ESG plans.",
-    "iconName": "Leaf",
-    "color": "bg-[#10B981]",
+    "title": "AI ESG / Sustainability Plan",
     "slug": "ai-sustainability-plan",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Employee Onboarding Plan",
-    "description": "Generate structured 30-60-90 day onboarding plans.",
-    "iconName": "UserPlus",
-    "color": "bg-[#3B82F6]",
+    "title": "AI Employee Onboarding Plan",
     "slug": "ai-onboarding-plan",
     "category": "HR",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Training Module Generator",
-    "description": "Generate corporate training modules and quizzes.",
-    "iconName": "Book",
-    "color": "bg-[#8B5CF6]",
+    "title": "AI Training Module Generator",
     "slug": "ai-training-module",
     "category": "HR",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Company Culture Guide",
-    "description": "Generate company culture and values handbooks.",
-    "iconName": "Heart",
-    "color": "bg-[#EC4899]",
+    "title": "AI Company Culture Guide",
     "slug": "ai-company-culture",
     "category": "HR",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Interview Scoring Rubric",
-    "description": "Generate standardized interview scoring rubrics.",
-    "iconName": "CheckSquare",
-    "color": "bg-[#F59E0B]",
+    "title": "AI Interview Scoring Rubric",
     "slug": "ai-job-interview-rubric",
     "category": "HR",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Crisis Management Plan",
-    "description": "Generate step-by-step crisis communication plans.",
-    "iconName": "LifeBuoy",
-    "color": "bg-[#EF4444]",
+    "title": "AI Crisis Management Plan",
     "slug": "ai-crisis-management",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI PR Media Pitch Generator",
-    "description": "Generate compelling media pitches for journalists.",
-    "iconName": "Send",
-    "color": "bg-[#3B82F6]",
+    "title": "AI PR Media Pitch Generator",
     "slug": "ai-pr-pitch",
     "category": "Marketing",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Event Sponsorship Deck",
-    "description": "Generate sponsorship proposal decks for events.",
-    "iconName": "Award",
-    "color": "bg-[#8B5CF6]",
+    "title": "AI Event Sponsorship Deck",
     "slug": "ai-event-sponsorship",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Grant Progress Report",
-    "description": "Write professional progress reports for grants.",
-    "iconName": "FileCheck",
-    "color": "bg-[#10B981]",
+    "title": "AI Grant Progress Report",
     "slug": "ai-grant-report",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Partnership Proposal",
-    "description": "Generate B2B strategic partnership proposals.",
-    "iconName": "Handshake",
-    "color": "bg-[#F59E0B]",
+    "title": "AI Partnership Proposal",
     "slug": "ai-partnership-proposal",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   },
   {
-    "name": "AI Franchise Operations Manual",
-    "description": "Generate standard operating procedures for franchises.",
-    "iconName": "Settings",
-    "color": "bg-[#6366F1]",
+    "title": "AI Franchise Operations Manual",
     "slug": "ai-franchise-manual",
     "category": "Business",
-    "isPremium": false,
-    "createdAt": "2026-07-19T21:23:15.488Z"
+    "isPremium": true
   }
 ]

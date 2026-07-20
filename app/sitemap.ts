@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getEndpoint } from '../lib/api';
-import toolsData from '../../tools_data.json';
+import toolsData from '../tools_data.json';
 
 
 
