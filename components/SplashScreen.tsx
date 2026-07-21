@@ -14,7 +14,7 @@ export default function SplashScreen() {
     // However, the user requested it to mask loading. We'll show it 
     // once per session (sessionStorage) or always depending on preference.
     // For now, always show on hard refresh as it masks the initial load nicely.
-    
+
     // Simulate progress bar
     const progressInterval = setInterval(() => {
       setProgress(prev => {
@@ -46,7 +46,7 @@ export default function SplashScreen() {
   if (!show) return null;
 
   return (
-    <div 
+    <div
       className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#0B0F19] transition-opacity duration-500 ease-in-out ${fade ? 'opacity-0' : 'opacity-100'}`}
     >
       {/* Central Content */}
@@ -54,13 +54,13 @@ export default function SplashScreen() {
         {/* Glowing Logo */}
         <div className="relative mb-6">
           <div className="absolute inset-0 bg-[#6D5EF8] blur-xl opacity-50 rounded-full animate-pulse"></div>
-          <Zap 
-            className="w-16 h-16 relative z-10" 
-            style={{ 
-              color: '#8B5CF6', 
+          <Zap
+            className="w-16 h-16 relative z-10"
+            style={{
+              color: '#8B5CF6',
               fill: 'url(#gradient-bolt)',
-              strokeWidth: 1.5 
-            }} 
+              strokeWidth: 1.5
+            }}
           />
           {/* SVG Gradient definition for the Zap icon fill */}
           <svg width="0" height="0">
@@ -70,12 +70,12 @@ export default function SplashScreen() {
             </linearGradient>
           </svg>
         </div>
-        
+
         {/* Title */}
         <h1 className="text-3xl font-black tracking-tight text-white mb-2">
           QuickTools.ai
         </h1>
-        
+
         {/* Subtitle */}
         <p className="text-sm font-medium text-[#9CA3AF]">
           All-in-One AI Tools Platform
@@ -90,7 +90,7 @@ export default function SplashScreen() {
         {/* Progress Bar Track */}
         <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
           {/* Progress Bar Fill */}
-          <div 
+          <div
             className="h-full bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] rounded-full transition-all duration-75 ease-out"
             style={{ width: `${progress}%` }}
           ></div>

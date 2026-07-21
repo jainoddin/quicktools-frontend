@@ -193,11 +193,10 @@ export default function Header() {
                     <button
                       key={cat}
                       onMouseEnter={() => setActiveCategory(cat)}
-                      className={`w-full text-left px-4 py-2.5 text-sm font-medium transition-colors flex items-center justify-between group/cat ${
-                        activeCategory === cat
-                          ? 'bg-white text-[#6D5EF8] border-r-2 border-[#6D5EF8]'
-                          : 'text-[#6B7280] hover:text-[#111827] hover:bg-white/70'
-                      }`}
+                      className={`w-full text-left px-4 py-2.5 text-sm font-medium transition-colors flex items-center justify-between group/cat ${activeCategory === cat
+                        ? 'bg-white text-[#6D5EF8] border-r-2 border-[#6D5EF8]'
+                        : 'text-[#6B7280] hover:text-[#111827] hover:bg-white/70'
+                        }`}
                     >
                       {cat}
                       <ChevronDown className="w-3 h-3 -rotate-90 opacity-40" />
@@ -246,11 +245,11 @@ export default function Header() {
               </div>
 
               {/* More dropdown for lg to xl */}
-              <div 
+              <div
                 className="relative group xl:hidden"
                 onMouseLeave={() => setMoreDropdownOpen(false)}
               >
-                <button 
+                <button
                   onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
                   onMouseEnter={() => setMoreDropdownOpen(true)}
                   className={`flex items-center gap-1 transition-colors px-3 py-1.5 rounded-full hover:bg-[#F3F4F6] ${(isActive('/about') || isActive('/contact') || moreDropdownOpen) ? 'text-[#111827] bg-[#F3F4F6]' : 'hover:text-[#111827]'}`}
@@ -278,42 +277,42 @@ export default function Header() {
                 <Coins className="w-4 h-4" />
                 {user.credits || 0}
               </div>
-            <div className="relative group hidden lg:block">
-              <button className="flex items-center gap-2 focus:outline-none">
-                <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0">
-                  {user.avatar ? (
-                    <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
-                  ) : (
-                    <div className="w-full h-full bg-[#6D5EF8] text-white flex items-center justify-center font-bold text-sm">
-                      {user.name.charAt(0).toUpperCase()}
-                    </div>
-                  )}
-                </div>
-                <span className="text-sm font-semibold text-[#111827]">{user.name.split(' ')[0]}</span>
-                <ChevronDown className="w-4 h-4 text-[#6B7280] group-hover:rotate-180 transition-transform duration-200 shrink-0" />
-              </button>
-              <div className="absolute top-full right-0 mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="bg-white border border-[#E5E7EB] rounded-2xl shadow-xl py-2 w-48 overflow-hidden">
-                  <div className="px-4 py-2 border-b border-[#F3F4F6] mb-1">
-                    <p className="text-sm font-bold text-[#111827] truncate">{user.name}</p>
-                    <p className="text-xs text-[#6B7280] truncate">{user.email}</p>
+              <div className="relative group hidden lg:block">
+                <button className="flex items-center gap-2 focus:outline-none">
+                  <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0">
+                    {user.avatar ? (
+                      <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full bg-[#6D5EF8] text-white flex items-center justify-center font-bold text-sm">
+                        {user.name.charAt(0).toUpperCase()}
+                      </div>
+                    )}
                   </div>
-                  <Link href="/dashboard" className="w-full text-left px-4 py-2 text-sm font-medium text-[#4B5563] hover:bg-[#F9FAFB] hover:text-[#111827] transition-colors flex items-center gap-2">
-                    <LayoutDashboard className="w-4 h-4" />
-                    Dashboard
-                  </Link>
-                  <Link href="/dashboard/settings" className="w-full text-left px-4 py-2 text-sm font-medium text-[#4B5563] hover:bg-[#F9FAFB] hover:text-[#111827] transition-colors flex items-center gap-2 mb-1">
-                    <Settings className="w-4 h-4" />
-                    Settings
-                  </Link>
-                  <div className="border-t border-[#F3F4F6]"></div>
-                  <button onClick={handleLogout} className="w-full text-left px-4 py-2 mt-1 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors flex items-center gap-2">
-                    <LogOut className="w-4 h-4" />
-                    Log Out
-                  </button>
+                  <span className="text-sm font-semibold text-[#111827]">{user.name.split(' ')[0]}</span>
+                  <ChevronDown className="w-4 h-4 text-[#6B7280] group-hover:rotate-180 transition-transform duration-200 shrink-0" />
+                </button>
+                <div className="absolute top-full right-0 mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <div className="bg-white border border-[#E5E7EB] rounded-2xl shadow-xl py-2 w-48 overflow-hidden">
+                    <div className="px-4 py-2 border-b border-[#F3F4F6] mb-1">
+                      <p className="text-sm font-bold text-[#111827] truncate">{user.name}</p>
+                      <p className="text-xs text-[#6B7280] truncate">{user.email}</p>
+                    </div>
+                    <Link href="/dashboard" className="w-full text-left px-4 py-2 text-sm font-medium text-[#4B5563] hover:bg-[#F9FAFB] hover:text-[#111827] transition-colors flex items-center gap-2">
+                      <LayoutDashboard className="w-4 h-4" />
+                      Dashboard
+                    </Link>
+                    <Link href="/dashboard/settings" className="w-full text-left px-4 py-2 text-sm font-medium text-[#4B5563] hover:bg-[#F9FAFB] hover:text-[#111827] transition-colors flex items-center gap-2 mb-1">
+                      <Settings className="w-4 h-4" />
+                      Settings
+                    </Link>
+                    <div className="border-t border-[#F3F4F6]"></div>
+                    <button onClick={handleLogout} className="w-full text-left px-4 py-2 mt-1 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors flex items-center gap-2">
+                      <LogOut className="w-4 h-4" />
+                      Log Out
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
             </div>
           ) : (
             <div className="hidden lg:flex items-center gap-2">
@@ -454,4 +453,7 @@ export default function Header() {
       )}
     </nav>
   );
+
+
+
 }

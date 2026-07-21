@@ -55,10 +55,10 @@ export default function Stepper({ currentStep }: StepperProps) {
                   onClick={() => handleStepClick(step.number)}
                   title={isClickable ? `Go back to ${step.label}` : undefined}
                   className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold z-10 transition-all ${isActive
-                      ? 'bg-[#6D5EF8] text-white border-2 border-[#6D5EF8] shadow-md shadow-[#6D5EF8]/30'
-                      : isCompleted
-                        ? 'bg-[#6D5EF8] text-white border-2 border-[#6D5EF8] cursor-pointer hover:bg-[#5A4DE0] hover:scale-110 hover:shadow-md hover:shadow-[#6D5EF8]/30'
-                        : 'bg-white text-[#9CA3AF] border-2 border-[#E5E7EB] cursor-not-allowed'
+                    ? 'bg-[#6D5EF8] text-white border-2 border-[#6D5EF8] shadow-md shadow-[#6D5EF8]/30'
+                    : isCompleted
+                      ? 'bg-[#6D5EF8] text-white border-2 border-[#6D5EF8] cursor-pointer hover:bg-[#5A4DE0] hover:scale-110 hover:shadow-md hover:shadow-[#6D5EF8]/30'
+                      : 'bg-white text-[#9CA3AF] border-2 border-[#E5E7EB] cursor-not-allowed'
                     }`}
                 >
                   {step.number}

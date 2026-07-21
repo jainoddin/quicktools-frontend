@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     siteName: "QuickTools.ai",
     images: [
       {
-        url: "/icon.svg",
+        url: "https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png",
         width: 1200,
         height: 630,
         alt: "QuickTools.ai - The Ultimate AI Toolkit",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     title: "QuickTools.ai - 100+ Premium AI Tools in One Place",
     description: "The ultimate AI toolkit for creators, marketers, developers, and businesses. Generate content, code, images, and strategy instantly.",
     creator: "@quicktoolsai",
-    images: ["/icon.svg"],
+    images: ["https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png"],
   },
   robots: {
     index: true,
