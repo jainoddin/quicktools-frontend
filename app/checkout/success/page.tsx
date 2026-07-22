@@ -54,7 +54,7 @@ function SuccessContent() {
         </div>
       `;
 
-      const opt = {
+      const opt: any = {
         margin: 0.5,
         filename: `QuickTools_Invoice_${paymentId}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
