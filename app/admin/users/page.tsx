@@ -5,7 +5,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 import { Users, UserPlus, Calendar, Activity, ShieldCheck, ChevronLeft, Download, Crown, Search } from 'lucide-react';
 import Link from 'next/link';
-import { toast } from 'react-hot-toast';
+import { useToast } from '@/contexts/ToastContext';
 
 interface AdminStats {
   totalUsers: number;
@@ -24,6 +24,7 @@ interface UserData {
 
 export default function AdminUsersPage() {
   const { user, isLoading } = useAuth();
+  const { error } = useToast();
   const router = useRouter();
   
   const [stats, setStats] = useState<AdminStats | null>(null);
@@ -37,7 +38,7 @@ export default function AdminUsersPage() {
       if (!user) {
         router.replace('/');
       } else if (user.email !== 'skjainoddin39854@gmail.com') {
-        toast.error('Unauthorized access');
+        error('Unauthorized access');
         router.replace('/dashboard');
       }
     }
@@ -63,11 +64,11 @@ export default function AdminUsersPage() {
         setStats(data.stats);
         setUsers(data.users);
       } else {
-        toast.error('Failed to load admin data');
+        error('Failed to load admin data');
       }
-    } catch (error) {
-      console.error('Error fetching admin data:', error);
-      toast.error('Server error');
+    } catch (err) {
+      console.error('Error fetching admin data:', err);
+      error('Server error');
     } finally {
       setLoadingData(false);
     }

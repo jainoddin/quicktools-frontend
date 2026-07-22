@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Zap, ChevronDown, Image as ImageIcon, PenTool, Video, Code, LayoutGrid, LogOut, Menu, X, LayoutDashboard, Settings, Home, Wrench, FolderOpen, Newspaper, Globe, CreditCard, Info, Mail, Coins } from 'lucide-react';
+import { Zap, ChevronDown, Image as ImageIcon, PenTool, Video, Code, LayoutGrid, LogOut, Menu, X, LayoutDashboard, Settings, Home, Wrench, FolderOpen, Newspaper, Globe, CreditCard, Info, Mail, Coins, Crown } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '../contexts/AuthContext';
 
