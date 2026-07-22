@@ -305,6 +305,12 @@ export default function Header() {
                       <Settings className="w-4 h-4" />
                       Settings
                     </Link>
+                    {user.email === 'skjainoddin39854@gmail.com' && (
+                      <Link href="/admin/users" className="w-full text-left px-4 py-2 text-sm font-bold text-fuchsia-600 hover:bg-fuchsia-50 transition-colors flex items-center gap-2 mb-1">
+                        <Crown className="w-4 h-4" />
+                        Admin Panel
+                      </Link>
+                    )}
                     <div className="border-t border-[#F3F4F6]"></div>
                     <button onClick={handleLogout} className="w-full text-left px-4 py-2 mt-1 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors flex items-center gap-2">
                       <LogOut className="w-4 h-4" />
@@ -427,6 +433,13 @@ export default function Header() {
                       <Settings className="w-4 h-4 text-[#6B7280]" />
                       Settings
                     </Link>
+                    {user.email === 'skjainoddin39854@gmail.com' && (
+                      <Link href="/admin/users" onClick={() => setMobileMenuOpen(false)}
+                        className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-bold text-fuchsia-600 hover:bg-fuchsia-50 transition-colors">
+                        <Crown className="w-4 h-4" />
+                        Admin Panel
+                      </Link>
+                    )}
                     <button onClick={handleLogout}
                       className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 transition-colors mt-2 border-t border-[#F3F4F6]">
                       <LogOut className="w-4 h-4" />
