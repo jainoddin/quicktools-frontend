@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Users, UserPlus, Calendar, Activity, ShieldCheck, ChevronLeft, Download, Crown, Search } from 'lucide-react';
 import Link from 'next/link';
 import { useToast } from '@/contexts/ToastContext';
+import { getEndpoint } from '@/lib/api';
 
 interface AdminStats {
   totalUsers: number;
@@ -20,6 +21,7 @@ interface UserData {
   plan: string;
   credits: number;
   createdAt: string;
+  updatedAt?: string;
 }
 
 export default function AdminUsersPage() {
@@ -53,9 +55,9 @@ export default function AdminUsersPage() {
 
   const fetchAdminData = async () => {
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
-      const res = await fetch(`${apiUrl}/admin/users`, {
+      const res = await fetch(getEndpoint('/api/admin/users'), {
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
       });
       
       const data = await res.json();
@@ -205,16 +207,23 @@ export default function AdminUsersPage() {
                       </div>
                     </td>
 
-                    {/* Plan Badge */}
-                    <td className="px-6 py-4 text-center">
-                      <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
-                        u.plan === 'pro' ? 'bg-[#FFFBEB] text-[#D97706] border border-[#FDE68A]' :
-                        u.plan === 'business' ? 'bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0]' :
-                        u.plan === 'starter' ? 'bg-[#EEF2FF] text-[#4F46E5] border border-[#C7D2FE]' :
-                        'bg-[#F3F4F6] text-[#4B5563] border border-[#E5E7EB]'
-                      }`}>
-                        {u.plan === 'pro' || u.plan === 'business' ? <Crown className="w-3.5 h-3.5" /> : null}
-                        {u.plan}
+                    {/* Plan */}
+                    <td className="px-6 py-4">
+                      <div className="flex flex-col items-start gap-1.5">
+                        <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+                          u.plan === 'pro' ? 'bg-[#FFFBEB] text-[#D97706] border border-[#FDE68A]' :
+                          u.plan === 'business' ? 'bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0]' :
+                          u.plan === 'starter' ? 'bg-[#EEF2FF] text-[#4F46E5] border border-[#C7D2FE]' :
+                          'bg-[#F3F4F6] text-[#4B5563] border border-[#E5E7EB]'
+                        }`}>
+                          {u.plan === 'pro' || u.plan === 'business' ? <Crown className="w-3.5 h-3.5" /> : null}
+                          {u.plan}
+                        </div>
+                        {u.plan !== 'free' && u.updatedAt && (
+                          <div className="text-[10px] text-[#9CA3AF] font-semibold uppercase tracking-wide">
+                            Since {new Date(u.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                          </div>
+                        )}
                       </div>
                     </td>
 
