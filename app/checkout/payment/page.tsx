@@ -195,6 +195,7 @@ function PaymentContent() {
       const res = await fetch(getEndpoint('/api/payment/create-order'), {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ 
           plan: planId, 
           email: user?.email || 'guest@example.com',
