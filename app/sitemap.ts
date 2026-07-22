@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getEndpoint } from '../lib/api';
-import toolsData from '../tools_data.json';
+import { allTools } from '../lib/toolsData';
 
 
 
@@ -59,17 +59,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Static routes
-  const toolRoutes = toolsData.map((tool: any) => ({
-    url: `${baseUrl}/tools/${tool.slug}`,
-    lastModified: new Date(),
+  const toolRoutes = allTools.map((tool) => ({
+    url: `${baseUrl}${tool.slug}`,
+    lastModified: new Date(tool.createdAt || new Date()),
     changeFrequency: 'weekly' as const,
-    priority: tool.isPremium ? 0.9 : 0.8,
+    priority: tool.tag?.type === 'premium' ? 0.9 : 0.8,
   }));
 
   const routes = [
-    '', '/tools', '/blog', '/articles', '/news', '/about', '/contact', '/pricing', '/login', '/signup',
-    '/tools/ai-image-generator', '/tools/background-remover',
-    '/tools/ai-chat-assistant', '/tools/pdf-converter', '/tools/ai-writer'
+    '', '/tools', '/blog', '/articles', '/news', '/about', '/contact', '/pricing', '/login', '/signup'
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

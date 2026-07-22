@@ -44,7 +44,7 @@ export default function AiResumeBuilderClient() {
                 date: new Date(item.createdAt).toLocaleDateString(),
                 createdAt: item.createdAt,
                 result: item.result,
-                isStarred: item.isStarred
+              isStarred: item.isStarred
               }));
             setToolHistory(items);
           }
@@ -103,11 +103,14 @@ export default function AiResumeBuilderClient() {
   };
 
   const handleToggleFavorite = async (id: string) => {
-    setToolHistory(prev => prev.map(item => item.id === id || item._id === id ? { ...item, isStarred: !item.isStarred } : item));
-    if (!isAuthenticated) {
-      const newHistory = toolHistory.map(item => item.id === id || item._id === id ? { ...item, isStarred: !item.isStarred } : item);
-      localStorage.setItem('guestResumeHistory', JSON.stringify(newHistory));
-    } else {
+    setToolHistory(prev => {
+      const updated = prev.map(item => String(item.id) === String(id) || String(item._id) === String(id) ? { ...item, isStarred: !item.isStarred } : item);
+      if (!isAuthenticated) {
+        localStorage.setItem('guestResumeHistory', JSON.stringify(updated));
+      }
+      return updated;
+    });
+    if (isAuthenticated) {
       try {
         await fetch(getEndpoint(`/api/user/usage/${id}/favorite`), { method: 'PATCH', credentials: 'include' });
       } catch (err) {

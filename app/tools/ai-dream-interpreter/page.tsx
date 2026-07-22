@@ -1,54 +1,33 @@
+
 import React from 'react';
-import Link from 'next/link';
-import { Home, ChevronRight } from 'lucide-react';
-import AiDreamInterpreterClient from '@/components/ai-dream-interpreter/AiDreamInterpreterClient';
 import { Metadata } from 'next';
+import Link from 'next/link';
+import { ChevronRight, Home } from 'lucide-react';
+import DreamInterpreterClient from '@/components/ai-dream-interpreter/DreamInterpreterClient';
 
 export const metadata: Metadata = {
-  title: 'Free AI Dream Interpreter | QuickTools',
-  description: 'Discover the hidden meaning behind your dreams with our AI-powered psychological and symbolic dream interpreter.',
-    keywords: ['Free AI Dream Interpreter', 'Free Free AI Dream Interpreter', 'AI Free AI Dream Interpreter', 'QuickTools', 'Online Free AI Dream Interpreter', 'AI Tool'],
-    alternates: { canonical: 'https://quicktool.space/tools/ai-dream-interpreter' },
-    openGraph: {
-            title: "Free AI Dream Interpreter | QuickTools",
-            description: "Discover the hidden meaning behind your dreams with our AI-powered psychological and symbolic dream interpreter.",
-            url: 'https://quicktool.space/tools/ai-dream-interpreter',
-            siteName: 'QuickTools.ai',
-            type: 'website',
-            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Dream Interpreter' }]
-          },
-    twitter: {
-            card: 'summary_large_image',
-            title: "Free AI Dream Interpreter | QuickTools",
-            description: "Discover the hidden meaning behind your dreams with our AI-powered psychological and symbolic dream interpreter.",
-            creator: '@quicktoolsai',
-            images: ['https://quicktool.space/icon.svg']
-          }
+  title: 'AI Dream Interpreter - QuickTools.ai',
+  description: 'Analyze your dreams for psychological meaning and hidden messages.',
+  alternates: {
+    canonical: 'https://quicktool.space/tools/ai-dream-interpreter'
+  }
 };
 
-export default function AiDreamInterpreterPage() {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: 'AI Dream Interpreter',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    description: 'Discover the hidden meaning behind your dreams with our AI-powered psychological and symbolic dream interpreter.',
-  };
-
+export default function Page() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <div className="flex-1 w-full max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 py-6 h-[calc(100vh-80px)]">
-
+    <div className="flex-grow bg-[#F8FAFC] flex flex-col font-sans relative">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "AI Dream Interpreter",
+        "operatingSystem": "Web",
+        "applicationCategory": "WebApplication",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Analyze your dreams for psychological meaning and hidden messages.",
+        "url": "https://quicktool.space/tools/ai-dream-interpreter"
+      }) }} />
+      
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 pb-8 pt-[15px] flex-grow flex flex-col relative z-10">
         <div className="flex items-center mb-[25px]">
           <nav className="flex items-center space-x-2 text-sm font-medium text-[#6B7280]">
             <Link href="/" className="hover:text-[#111827] transition-colors flex items-center gap-1.5">
@@ -59,12 +38,13 @@ export default function AiDreamInterpreterPage() {
               All Tools
             </Link>
             <ChevronRight className="w-4 h-4 text-gray-400" />
-            <span className="text-[#6D5EF8] font-bold">AI Dream Interpreter</span>
+            <span className="text-[#8B5CF6] font-bold">AI Dream Interpreter</span>
           </nav>
         </div>
-        
-        <AiDreamInterpreterClient />
+        <div className="flex-1 w-full max-w-[1600px] mx-auto py-2 h-[calc(100vh-80px)]">
+          <DreamInterpreterClient />
+        </div>
       </div>
-    </>
+    </div>
   );
 }

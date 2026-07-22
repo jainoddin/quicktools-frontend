@@ -53,6 +53,7 @@ export default function AiAppArchitectureClient() {
               prompt: item.prompt,
               result: item.result,
               date: new Date(item.createdAt).toLocaleDateString(),
+              isStarred: item.isStarred
             }));
           setToolHistory(items);
         }

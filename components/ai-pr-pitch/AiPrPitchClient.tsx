@@ -51,6 +51,7 @@ export default function AiPrPitchClient() {
               prompt: item.prompt,
               result: item.result,
               date: new Date(item.createdAt).toLocaleDateString(),
+              isStarred: item.isStarred
             }));
           setToolHistory(items);
         }
@@ -186,7 +187,7 @@ const handleDeleteHistory = async (ids: string[]) => {
                 Describe your requirement
               </label>
               <textarea
-                value={input}
+                value={input || ''}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="E.g., I need..."
                 className="w-full h-32 px-4 py-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all resize-none text-sm text-[#111827] placeholder:text-[#9CA3AF]"
@@ -195,7 +196,7 @@ const handleDeleteHistory = async (ids: string[]) => {
 
             <button
               onClick={handleGenerate}
-              disabled={isProcessing || !input.trim()}
+              disabled={isProcessing || !(input || '').trim()}
               className="w-full h-14 bg-[#111827] hover:bg-[#1F2937] text-white font-bold rounded-2xl transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isProcessing ? <Loader2 className="w-5 h-5 animate-spin" /> : <Sparkles className="w-5 h-5" />}

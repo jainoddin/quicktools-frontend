@@ -10,8 +10,8 @@ import CookieBanner from "@/components/shared/CookieBanner";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import AnalyticsIdentity from "@/components/analytics/AnalyticsIdentity";
 import AnalyticsClickTracker from "@/components/analytics/AnalyticsClickTracker";
-import { AuthProvider } from "@/contexts/AuthContext";
-import { ToastProvider } from "@/contexts/ToastContext";
+import { AuthProvider } from "../contexts/AuthContext";
+import { ToastProvider } from "../contexts/ToastContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
