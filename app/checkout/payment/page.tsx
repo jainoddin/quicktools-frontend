@@ -266,7 +266,7 @@ function PaymentContent() {
               value: Number(totalAmount),
               transactionId: response.razorpay_payment_id,
             });
-            router.replace('/checkout/success');
+            window.location.href = `/checkout/success?plan=${planId}&amount=${totalAmount}&paymentId=${response.razorpay_payment_id}`;
           } else {
             router.replace('/checkout/failed');
           }
