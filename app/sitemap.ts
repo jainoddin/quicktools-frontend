@@ -67,7 +67,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const routes = [
-    '', '/blog', '/articles', '/news', '/about', '/contact', '/pricing', '/login', '/signup',
+    '', '/tools', '/blog', '/articles', '/news', '/about', '/contact', '/pricing', '/login', '/signup',
     '/tools/ai-image-generator', '/tools/background-remover',
     '/tools/ai-chat-assistant', '/tools/pdf-converter', '/tools/ai-writer'
   ].map((route) => ({
