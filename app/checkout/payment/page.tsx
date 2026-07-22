@@ -162,15 +162,15 @@ function PaymentContent() {
   
   let planName = 'Pro Plan';
   let planIcon = <Zap className="w-5 h-5 text-[#6D5EF8]" />;
-  let totalAmount = '23.60';
+  let totalAmount = '43.20';
 
   if (planId === 'starter') {
     planName = 'Starter Plan';
-    totalAmount = '5.90';
+    totalAmount = '3.60';
   } else if (planId === 'business') {
     planName = 'Business Plan';
     planIcon = <Building2 className="w-5 h-5 text-[#6D5EF8]" />;
-    totalAmount = '59.00';
+    totalAmount = '72.00';
   }
 
   const [selectedMethod, setSelectedMethod] = useState('card');
