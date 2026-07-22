@@ -20,6 +20,55 @@ function SuccessContent() {
     setMounted(true);
   }, []);
 
+  const handleDownloadInvoice = async () => {
+    try {
+      const html2pdf = (await import('html2pdf.js')).default;
+      
+      const element = document.createElement('div');
+      element.innerHTML = `
+        <div style="padding: 40px; font-family: sans-serif; color: #111827;">
+          <h1 style="color: #6D5EF8; font-size: 28px; font-weight: 900; margin-bottom: 10px;">QuickTools.ai</h1>
+          <h2 style="font-size: 20px; font-weight: bold; margin-bottom: 5px;">Payment Invoice</h2>
+          <p style="color: #6B7280; font-size: 14px; margin-bottom: 30px;">Date: ${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
+          
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+            <tr style="border-bottom: 2px solid #E5E7EB;">
+              <th style="text-align: left; padding: 10px 0; color: #6B7280; font-size: 14px;">Description</th>
+              <th style="text-align: right; padding: 10px 0; color: #6B7280; font-size: 14px;">Amount</th>
+            </tr>
+            <tr style="border-bottom: 1px solid #E5E7EB;">
+              <td style="padding: 20px 0; font-weight: 600; font-size: 16px;">${planName} Subscription</td>
+              <td style="text-align: right; padding: 20px 0; font-weight: bold; font-size: 16px;">$${amount}</td>
+            </tr>
+          </table>
+          
+          <div style="display: flex; justify-content: space-between; border-top: 2px solid #111827; padding-top: 15px; margin-top: 15px;">
+            <span style="font-weight: bold; font-size: 16px;">Total Paid</span>
+            <span style="font-weight: 900; font-size: 20px;">$${amount}</span>
+          </div>
+          
+          <div style="margin-top: 60px; font-size: 12px; color: #9CA3AF; border-top: 1px solid #E5E7EB; padding-top: 20px;">
+            <p style="margin: 0 0 5px 0;"><strong>Payment ID:</strong> ${paymentId}</p>
+            <p style="margin: 0;">Thank you for your business! For support, contact support@quicktools.ai</p>
+          </div>
+        </div>
+      `;
+
+      const opt = {
+        margin: 0.5,
+        filename: `QuickTools_Invoice_${paymentId}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+
+      html2pdf().set(opt).from(element).save();
+    } catch (err) {
+      console.error('Failed to generate PDF invoice', err);
+      alert('Could not download invoice. Please try again.');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#F8FAFC] py-8 px-4 sm:px-6">
       <div className="max-w-[800px] mx-auto bg-white rounded-3xl border border-[#E5E7EB] shadow-sm p-6 sm:p-10 flex flex-col items-center">
@@ -78,6 +127,7 @@ function SuccessContent() {
 
           <div className="flex flex-col gap-3 w-full">
             <button 
+              onClick={handleDownloadInvoice}
               className="w-full bg-white hover:bg-[#F9FAFB] text-[#6D5EF8] font-bold py-3.5 rounded-xl border-2 border-[#EEF2FF] flex items-center justify-center gap-2 transition-colors shadow-sm"
             >
               <Download className="w-4 h-4" />
