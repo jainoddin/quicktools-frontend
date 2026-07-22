@@ -14,13 +14,27 @@ function CheckoutContent() {
   const planId = searchParams.get('plan') || 'pro';
   
   // Dynamic Pricing Logic
-  const isBusiness = planId === 'business';
-  const planName = isBusiness ? 'Business Plan' : 'Pro Plan';
-  const planIcon = isBusiness ? <Building2 className="w-6 h-6 text-[#6D5EF8]" /> : <Zap className="w-6 h-6 text-[#6D5EF8]" />;
-  const monthlyPrice = isBusiness ? 99 : 49;
-  const subtotal = isBusiness ? 99.00 : 49.00;
-  const gst = isBusiness ? 17.82 : 8.82;
-  const total = isBusiness ? 116.82 : 57.82;
+  let planName = 'Pro Plan';
+  let planIcon = <Zap className="w-6 h-6 text-[#6D5EF8]" />;
+  let monthlyPrice = 20;
+  let subtotal = 20.00;
+  let gst = 3.60;
+  let total = 23.60;
+
+  if (planId === 'starter') {
+    planName = 'Starter Plan';
+    monthlyPrice = 5;
+    subtotal = 5.00;
+    gst = 0.90;
+    total = 5.90;
+  } else if (planId === 'business') {
+    planName = 'Business Plan';
+    planIcon = <Building2 className="w-6 h-6 text-[#6D5EF8]" />;
+    monthlyPrice = 50;
+    subtotal = 50.00;
+    gst = 9.00;
+    total = 59.00;
+  }
 
   const handleContinue = () => {
     trackCheckoutContinue(planId, total);
