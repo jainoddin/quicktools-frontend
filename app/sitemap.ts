@@ -5,7 +5,7 @@ import { allTools } from '../lib/toolsData';
 
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space';
+  const baseUrl = 'https://quicktool.space';
 
   // Fetch blogs
   let blogs: any[] = [];

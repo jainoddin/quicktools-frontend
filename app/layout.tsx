@@ -104,9 +104,9 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://quicktool.space',
+    canonical: '/',
     languages: {
-      'en-US': 'https://quicktool.space/en-US',
+      'en-US': '/en-US',
     },
   },
   verification: {
