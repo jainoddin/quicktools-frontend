@@ -170,7 +170,7 @@ export default function HomePage() {
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="flex justify-between items-end mb-8 sm:mb-10">
           <h2 className="text-xl sm:text-2xl font-bold text-[#111827]">Latest AI Tools</h2>
-          <a href="#" className="text-sm font-semibold text-[#4F46E5] hover:text-[#4338CA] flex items-center gap-1">View All Tools <ArrowRight className="w-4 h-4" /></a>
+          <Link href="/tools" className="text-sm font-semibold text-[#4F46E5] hover:text-[#4338CA] flex items-center gap-1">View All Tools <ArrowRight className="w-4 h-4" /></Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
@@ -219,7 +219,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. Latest Blogs, Articles & News */}
-      <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading content...</div>}>
+      <Suspense fallback={<div className="h-96 flex items-center justify-center animate-pulse bg-gray-100 rounded-xl"></div>}>
         <LatestBlogs />
         <LatestArticles />
         <LatestNews />

@@ -110,8 +110,6 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "u2eV2y9kS-0GuLrl16lDMrGz6k_HoCb5jIZieWTTiic",
-    yandex: "yandex_verification_code", // Placeholder for future
-    yahoo: "yahoo_verification_code",   // Placeholder for future
   },
   appleWebApp: {
     capable: true,

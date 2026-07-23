@@ -84,9 +84,6 @@ export default function SplashScreen() {
 
       {/* Bottom Progress Bar Area */}
       <div className="w-full max-w-xs mb-16 px-4 flex flex-col items-center">
-        <p className="text-xs text-[#9CA3AF] mb-3 font-medium">
-          Loading amazing tools...
-        </p>
         {/* Progress Bar Track */}
         <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
           {/* Progress Bar Fill */}
