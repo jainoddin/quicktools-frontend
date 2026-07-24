@@ -47,13 +47,13 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
   const [searchQuery, setSearchQuery] = useState('');
   const [showAllTags, setShowAllTags] = useState(false);
   const [isMobileCategoriesOpen, setIsMobileCategoriesOpen] = useState(false);
-  
+
   const [blogs, setBlogs] = useState<Blog[]>(initialBlogs);
   const [page, setPage] = useState(initialPagination?.page || 1);
   const [hasMore, setHasMore] = useState((initialPagination?.page || 1) < (initialPagination?.pages || 1));
   const [loading, setLoading] = useState(false);
   const observerTarget = React.useRef<HTMLDivElement>(null);
-  
+
   const [savedBlogs, setSavedBlogs] = useState<string[]>([]);
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
     }
 
     const isSaved = savedBlogs.includes(blogId);
-    
+
     if (isSaved) {
       setSavedBlogs(prev => prev.filter(id => id !== blogId));
     } else {
@@ -82,8 +82,8 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
     trackFavorite('blog', isSaved ? 'remove' : 'add', blogId);
 
     try {
-      const res = await fetch(getEndpoint(`/api/user/saved-blogs/${blogId}`), { 
-        method: 'POST', 
+      const res = await fetch(getEndpoint(`/api/user/saved-blogs/${blogId}`), {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include'
       });
@@ -94,13 +94,13 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
     }
   };
 
-  
+
 
   // 1. Dynamic Categories
   const categories = useMemo(() => {
     // If backend provided category counts, use them; otherwise fallback to counting current blogs
     const counts: Record<string, number> = initialCategoryCounts || { 'All Blogs': blogs.length };
-    
+
     if (!initialCategoryCounts) {
       blogs.forEach(b => {
         counts[b.category] = (counts[b.category] || 0) + 1;
@@ -136,7 +136,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
       .map(entry => entry[0]);
   }, [blogs]);
 
-    // 3. Server-side Filtering & Pagination
+  // 3. Server-side Filtering & Pagination
   useEffect(() => {
     const fetchFilteredBlogs = async () => {
       setLoading(true);
@@ -148,11 +148,11 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
 
         const res = await fetch(getEndpoint(url));
         const data = await res.json();
-        
+
         if (data.success) {
           let results = data.data;
           if (activeTab === 'Favorites') {
-             results = results.filter((b: any) => savedBlogs.includes(b._id));
+            results = results.filter((b: any) => savedBlogs.includes(b._id));
           }
           setBlogs(results);
           setPage(data.pagination.page);
@@ -164,7 +164,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
         setLoading(false);
       }
     };
-    
+
     const timeoutId = setTimeout(() => {
       fetchFilteredBlogs();
     }, 300);
@@ -182,16 +182,20 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
 
       const res = await fetch(getEndpoint(url));
       const data = await res.json();
-      
+
       if (data.success) {
         let results = data.data;
         if (activeTab === 'Favorites') {
-           results = results.filter((b: any) => savedBlogs.includes(b._id));
+          results = results.filter((b: any) => savedBlogs.includes(b._id));
         }
-        setBlogs(prev => [...prev, ...results]);
+        setBlogs(prev => {
+          const existingIds = new Set(prev.map((p: any) => p._id));
+          const uniqueResults = results.filter((r: any) => !existingIds.has(r._id));
+          return [...prev, ...uniqueResults];
+        });
         setPage(data.pagination.page);
         setHasMore(data.pagination.page < data.pagination.pages);
-        
+
         // Scroll to the first new item
         setTimeout(() => {
           if (results.length > 0) {
@@ -214,7 +218,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
 
   // 4. Featured Post (always the first post from the total blogs)
   const featuredPost = blogs.length > 0 ? blogs[0] : undefined;
-  
+
   // Exclude featured from the list shown below it if possible
   const listBlogs = blogs.filter(b => featuredPost ? b._id !== featuredPost._id : true);
 
@@ -228,26 +232,25 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 w-full">
-      
+
       {/* Left Sidebar */}
       <aside className="hidden lg:block w-[250px] shrink-0 space-y-8 sticky top-24 self-start pb-4">
-        
+
         {/* Categories */}
         <div>
           <h3 className="font-bold text-[#111827] mb-4">Explore Blogs</h3>
           <ul className="space-y-1">
             {categories.map((cat) => (
               <li key={cat.name}>
-                <button 
+                <button
                   onClick={() => {
                     setActiveCategory(cat.name);
                     trackContentFilter('blog', cat.name);
                   }}
-                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
-                    activeCategory === cat.name 
-                      ? 'bg-[#F5F3FF] text-[#6D5EF8]' 
+                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors ${activeCategory === cat.name
+                      ? 'bg-[#F5F3FF] text-[#6D5EF8]'
                       : 'text-[#4B5563] hover:bg-gray-50'
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center gap-3">
                     <span className={`${activeCategory === cat.name ? 'text-[#6D5EF8]' : 'text-gray-400'}`}>
@@ -271,7 +274,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
             <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
               Subscribe to get the latest updates and amazing tips delivered to your inbox.
             </p>
-            <NewsletterForm 
+            <NewsletterForm
               className="space-y-2"
               inputClassName="w-full px-3 py-2 bg-white border border-[#E5E7EB] rounded-lg text-xs focus:outline-none focus:border-[#6D5EF8]"
               buttonClassName="w-full py-2 bg-[#6D5EF8] text-white rounded-lg text-xs font-bold hover:bg-[#5B4DF5] transition-colors flex items-center justify-center gap-2"
@@ -285,8 +288,8 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
           <h3 className="font-bold text-[#111827] mb-4 text-sm">Popular Tags</h3>
           <div className="flex flex-wrap gap-2 mb-3">
             {popularTags.slice(0, showAllTags ? popularTags.length : 8).map(tag => (
-              <button 
-                key={tag} 
+              <button
+                key={tag}
                 onClick={() => setSearchQuery(tag)}
                 className="px-3 py-1.5 bg-white border border-[#E5E7EB] rounded-lg text-[11px] font-semibold text-[#4B5563] hover:border-[#6D5EF8] hover:text-[#6D5EF8] transition-colors"
               >
@@ -295,11 +298,11 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
             ))}
           </div>
           {popularTags.length > 8 && (
-            <button 
+            <button
               onClick={() => setShowAllTags(!showAllTags)}
               className="text-[11px] font-bold text-[#6D5EF8] hover:text-[#5B4DF5] transition-colors flex items-center gap-1"
             >
-              {showAllTags ? 'Show less tags' : 'View all tags'} 
+              {showAllTags ? 'Show less tags' : 'View all tags'}
               <ArrowRight className={`w-3 h-3 transition-transform ${showAllTags ? '-scale-x-100' : ''}`} />
             </button>
           )}
@@ -309,10 +312,10 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
 
       {/* Main Content */}
       <main className="flex-grow min-w-0" style={{ overflowAnchor: 'none' }}>
-        
+
         {/* Mobile Categories Toggle */}
         <div className="mb-4 lg:hidden">
-          <button 
+          <button
             onClick={() => setIsMobileCategoriesOpen(true)}
             className="flex items-center gap-2 w-fit px-4 py-2.5 bg-white border border-[#E5E7EB] rounded-xl hover:bg-[#F9FAFB] transition-colors shadow-sm text-[#111827] font-semibold"
           >
@@ -329,15 +332,15 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
             </h1>
             <p className="text-[#6B7280] text-sm">Insights, tutorials and updates to help you work smarter with AI.</p>
           </div>
-          
+
           <div className="flex items-center gap-2 shrink-0">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search blogs..." 
+                placeholder="Search blogs..."
                 className="pl-9 pr-4 py-2 bg-white border border-[#E5E7EB] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#6D5EF8] shadow-sm w-full md:w-56"
               />
             </div>
@@ -345,12 +348,28 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
         </div>
 
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-32 space-y-4">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-full blur-md bg-[#6D5EF8]/30 animate-pulse"></div>
-              <Loader2 className="w-10 h-10 text-[#6D5EF8] animate-spin relative z-10" />
+          <div className="space-y-8 animate-pulse mt-4">
+            {/* Featured Post Skeleton */}
+            <div className="w-full h-[320px] bg-white border border-[#E5E7EB] rounded-3xl hidden md:block"></div>
+            
+            {/* List Skeleton */}
+            <div className="space-y-4">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div key={`shimmer-main-${i}`} className="bg-white border border-[#E5E7EB] rounded-2xl p-4 flex flex-col sm:flex-row gap-5">
+                  <div className="w-full sm:w-48 h-48 sm:h-auto rounded-xl bg-gray-200 shrink-0"></div>
+                  <div className="flex-grow flex flex-col py-1">
+                    <div className="w-16 h-4 bg-gray-200 rounded mb-2"></div>
+                    <div className="w-3/4 h-6 bg-gray-200 rounded mb-4"></div>
+                    <div className="w-full h-4 bg-gray-200 rounded mb-2"></div>
+                    <div className="w-5/6 h-4 bg-gray-200 rounded mb-4"></div>
+                    <div className="mt-auto flex gap-3">
+                      <div className="w-6 h-6 bg-gray-200 rounded-full"></div>
+                      <div className="w-32 h-4 bg-gray-200 rounded"></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <p className="text-[#6B7280] font-medium animate-pulse">Generating fresh AI news...</p>
           </div>
         ) : blogs.length === 0 ? (
           <div className="text-center py-20 text-gray-500">No blogs generated yet. Check the backend.</div>
@@ -366,7 +385,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
                       <StarIcon className="w-3 h-3 fill-current" /> Featured
                     </span>
                     <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">{featuredPost.category}</span>
-                    <button 
+                    <button
                       onClick={(e) => handleToggleSave(e, featuredPost._id)}
                       className={`transition-colors p-1.5 rounded-full ${savedBlogs.includes(featuredPost._id) ? 'bg-[#F5F3FF] text-[#6D5EF8]' : 'bg-gray-100 text-gray-400 hover:text-[#6D5EF8]'}`}
                     >
@@ -392,7 +411,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Image Side */}
                 <div className="md:w-1/2 h-64 md:h-auto relative overflow-hidden flex items-center justify-center">
                   <Image src={featuredPost.coverImage} fill alt={featuredPost.title} className="object-cover" />
@@ -405,7 +424,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
             <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#E5E7EB] gap-4 mb-6">
               <div className="flex items-center gap-6 overflow-x-auto w-full sm:w-auto pt-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 {['All', 'Latest', 'Popular', 'Trending', 'Favorites'].map(tab => (
-                  <button 
+                  <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
                     className={`whitespace-nowrap px-1 text-sm font-bold pb-3 border-b-2 transition-colors ${activeTab === tab ? 'border-[#6D5EF8] text-[#6D5EF8]' : 'border-transparent text-[#6B7280] hover:text-[#111827]'}`}
@@ -423,13 +442,13 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
                 <div className="absolute right-0 top-full mt-1 w-[140px] bg-white border border-gray-400 shadow-lg hidden group-hover:block z-50 rounded-sm overflow-hidden">
                   <div className="flex flex-col">
                     {['Newest First', 'Oldest First'].map(option => (
-                       <button 
-                         key={option}
-                         onClick={() => setSortBy(option)}
-                         className={`text-left px-4 py-2 text-sm font-medium ${sortBy === option ? 'bg-[#1877F2] text-white' : 'text-[#111827] hover:bg-gray-100'}`}
-                       >
-                         {option}
-                       </button>
+                      <button
+                        key={option}
+                        onClick={() => setSortBy(option)}
+                        className={`text-left px-4 py-2 text-sm font-medium ${sortBy === option ? 'bg-[#1877F2] text-white' : 'text-[#111827] hover:bg-gray-100'}`}
+                      >
+                        {option}
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -448,7 +467,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
                   <p className="text-[#6B7280] text-sm max-w-sm mb-6">
                     It looks like you've reached the end of this category or search criteria.
                   </p>
-                  <button 
+                  <button
                     onClick={() => {
                       setSearchQuery('');
                       setActiveCategory('All Blogs');
@@ -462,7 +481,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
               ) : (
                 listBlogs.map((post) => (
                   <Link href={`/blog/${post.slug}`} id={`blog-${post._id}`} key={post._id} className="block bg-white border border-[#E5E7EB] rounded-2xl p-4 flex flex-col sm:flex-row gap-5 hover:border-[#6D5EF8] hover:shadow-md transition-all group cursor-pointer">
-                    
+
                     {/* Thumbnail */}
                     <div className={`w-full sm:w-48 h-48 sm:h-auto rounded-xl shrink-0 overflow-hidden relative`}>
                       <Image src={post.coverImage} fill alt={post.title} className="object-cover transition-transform group-hover:scale-105 duration-500" />
@@ -472,22 +491,22 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
                     <div className="flex-grow flex flex-col py-1">
                       <div className="flex justify-between items-start mb-2">
                         <span className="text-[11px] font-bold text-[#6D5EF8] uppercase tracking-wider">{post.category}</span>
-                        <button 
+                        <button
                           onClick={(e) => handleToggleSave(e, post._id)}
                           className={`transition-colors p-1 ${savedBlogs.includes(post._id) ? 'text-[#6D5EF8]' : 'text-gray-400 hover:text-[#6D5EF8]'}`}
                         >
                           <Bookmark className={`w-4 h-4 ${savedBlogs.includes(post._id) ? 'fill-current' : ''}`} />
                         </button>
                       </div>
-                      
+
                       <h3 className="text-lg font-bold text-[#111827] mb-2 leading-tight group-hover:text-[#6D5EF8] transition-colors">
                         {post.title}
                       </h3>
-                      
+
                       <p className="text-[#6B7280] text-sm mb-4 line-clamp-2">
                         {post.description}
                       </p>
-                      
+
                       <div className="flex items-center gap-3 mt-auto">
                         <div className="w-6 h-6 bg-gray-200 rounded-full overflow-hidden shrink-0 border border-gray-100 flex items-center justify-center">
                           <Image src={post.author.avatar} width={24} height={24} alt={post.author.name} className="object-cover" />
@@ -527,7 +546,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
             )}
             {!loading && hasMore && (
               <div className="flex justify-center mt-10 mb-4">
-                <button 
+                <button
                   onClick={loadMore}
                   className="group relative px-8 py-3.5 bg-white border-2 border-[#E5E7EB] rounded-xl font-bold text-[#4B5563] hover:text-[#4F46E5] hover:border-[#4F46E5] transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden"
                 >
@@ -547,7 +566,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
 
       {/* Right Sidebar */}
       <aside className="w-full lg:w-[280px] xl:w-[300px] shrink-0 space-y-8 hidden lg:block lg:sticky lg:top-24 lg:self-start pb-4">
-        
+
         {/* Popular Posts */}
         {popularPostsSide.length > 0 && (
           <div>
@@ -564,7 +583,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
                     </h4>
                     <p className="text-[11px] text-[#6B7280]">{post.readTime}</p>
                   </div>
-                  <button 
+                  <button
                     onClick={(e) => handleToggleSave(e, post._id)}
                     className={`transition-colors p-1 ${savedBlogs.includes(post._id) ? 'text-[#6D5EF8]' : 'text-gray-400 hover:text-[#6D5EF8]'}`}
                   >
@@ -581,8 +600,8 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
           <h3 className="font-bold text-[#111827] mb-4 text-sm">Tags CloudSun</h3>
           <div className="flex flex-wrap gap-2">
             {popularTags.map(tag => (
-              <button 
-                key={`cloud-${tag}`} 
+              <button
+                key={`cloud-${tag}`}
                 onClick={() => setSearchQuery(tag)}
                 className="px-3 py-1.5 bg-gray-50 border border-[#E5E7EB] rounded-lg text-[11px] font-semibold text-[#4B5563] hover:bg-white hover:border-[#6D5EF8] hover:text-[#6D5EF8] transition-all shadow-sm"
               >
@@ -613,38 +632,37 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
       {isMobileCategoriesOpen && (
         <div className="fixed inset-0 z-[100] lg:hidden flex">
           {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-[#111827]/40 backdrop-blur-sm transition-opacity" 
+          <div
+            className="absolute inset-0 bg-[#111827]/40 backdrop-blur-sm transition-opacity"
             onClick={() => setIsMobileCategoriesOpen(false)}
           ></div>
-          
+
           {/* Drawer */}
           <div className="relative w-[280px] max-w-[80%] h-full bg-[#F8FAFC] shadow-2xl flex flex-col overflow-y-auto animate-[textSlideIn_0.3s_ease_forwards]">
             <div className="sticky top-0 z-10 flex items-center justify-between p-4 bg-white border-b border-[#E5E7EB]">
               <h3 className="font-bold text-[#111827] text-lg">Categories</h3>
-              <button 
+              <button
                 onClick={() => setIsMobileCategoriesOpen(false)}
                 className="p-2 bg-gray-100 text-gray-500 hover:text-gray-900 rounded-xl transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
-            
+
             <div className="p-4 flex flex-col flex-1 h-full overflow-y-auto space-y-6">
               <ul className="space-y-1">
                 {categories.map((cat) => (
                   <li key={cat.name}>
-                    <button 
+                    <button
                       onClick={() => {
                         setActiveCategory(cat.name);
                         trackContentFilter('blog', cat.name);
                         setIsMobileCategoriesOpen(false);
                       }}
-                      className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
-                        activeCategory === cat.name 
-                          ? 'bg-[#F5F3FF] text-[#6D5EF8]' 
+                      className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors ${activeCategory === cat.name
+                          ? 'bg-[#F5F3FF] text-[#6D5EF8]'
                           : 'text-[#4B5563] hover:bg-white'
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center gap-3">
                         <span className={`${activeCategory === cat.name ? 'text-[#6D5EF8]' : 'text-gray-400'}`}>

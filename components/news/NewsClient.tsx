@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 
 import { trackFavorite, trackContentFilter } from '@/lib/analytics';
 
-const CATEGORIES = ['All News', 'Product Launches', 'Research', 'Funding', 'Partnerships', 'Industry', 'Favorites'];
+const CATEGORIES = ['All News', 'AI News', 'Product Launches', 'Research', 'Funding', 'Partnerships', 'Industry', 'Regulation', 'Other', 'Favorites'];
 const SORT_OPTIONS = ['Latest', 'Popular'];
 
 export default function NewsClient({ initialNews, initialPagination, initialCategoryCounts }: { initialNews: any[], initialPagination?: any, initialCategoryCounts?: Record<string, number> }) {
@@ -24,7 +24,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOrder, setSortOrder] = useState('Latest');
   const [showSort, setShowSort] = useState(false);
-  
+
   const [newsList, setNewsList] = useState<any[]>(initialNews);
   const [page, setPage] = useState(initialPagination?.page || 1);
   const [hasMore, setHasMore] = useState((initialPagination?.page || 1) < (initialPagination?.pages || 1));
@@ -50,7 +50,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
     }
 
     const isSaved = savedNews.includes(newsId);
-    
+
     if (isSaved) {
       setSavedNews(prev => prev.filter(id => id !== newsId));
     } else {
@@ -59,8 +59,8 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
     trackFavorite('news', isSaved ? 'remove' : 'add', newsId);
 
     try {
-      const res = await fetch(getEndpoint(`/api/user/saved-news/${newsId}`), { 
-        method: 'POST', 
+      const res = await fetch(getEndpoint(`/api/user/saved-news/${newsId}`), {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include'
       });
@@ -88,12 +88,12 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
 
         const res = await fetch(getEndpoint(url));
         const data = await res.json();
-        
+
         if (data.success) {
           let results = data.data;
           if (activeCategory === 'Favorites') {
-             // For favorites, since backend doesn't support it yet, filter locally from the results
-             results = results.filter((n: any) => savedNews.includes(n._id));
+            // For favorites, since backend doesn't support it yet, filter locally from the results
+            results = results.filter((n: any) => savedNews.includes(n._id));
           }
           setNewsList(results);
           setPage(data.pagination.page);
@@ -105,7 +105,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
         setIsLoading(false);
       }
     };
-    
+
     // Debounce search
     const timeoutId = setTimeout(() => {
       fetchFilteredNews();
@@ -124,13 +124,17 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
 
       const res = await fetch(getEndpoint(url));
       const data = await res.json();
-      
+
       if (data.success) {
         let results = data.data;
         if (activeCategory === 'Favorites') {
-           results = results.filter((n: any) => savedNews.includes(n._id));
+          results = results.filter((n: any) => savedNews.includes(n._id));
         }
-        setNewsList(prev => [...prev, ...results]);
+        setNewsList(prev => {
+          const existingIds = new Set(prev.map((p: any) => p._id));
+          const uniqueResults = results.filter((r: any) => !existingIds.has(r._id));
+          return [...prev, ...uniqueResults];
+        });
         setPage(data.pagination.page);
         setHasMore(data.pagination.page < data.pagination.pages);
       }
@@ -150,17 +154,17 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
       },
       { threshold: 0.1 }
     );
-    
+
     if (observerTarget.current) {
       observer.observe(observerTarget.current);
     }
-    
+
     return () => observer.disconnect();
   }, [hasMore, isLoading, page, activeCategory, searchQuery, sortOrder, savedNews]);
 
   const breakingNews = newsList.find(n => n.isBreaking) || newsList[0];
   const regularNews = newsList.filter(n => n._id !== breakingNews?._id);
-  
+
   // Get counts for sidebar
   const getCategoryCount = (cat: string) => {
     if (initialCategoryCounts) {
@@ -174,8 +178,9 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
 
   return (
     <div className="min-h-screen bg-[#F9FAFB]">
-      
-      <style dangerouslySetInnerHTML={{__html: `
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes float {
           0% { transform: translateY(0px); }
           50% { transform: translateY(-15px); }
@@ -211,7 +216,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
             <p className="text-lg sm:text-xl text-[#4B5563] leading-relaxed mb-8 max-w-xl">
               Stay updated with the latest AI breakthroughs, product launches, research, and industry updates.
             </p>
-            
+
             <div className="relative max-w-md">
               <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
                 <Search className="h-5 w-5 text-gray-400" />
@@ -225,12 +230,12 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
               />
             </div>
           </div>
-          
+
           <div className="hidden md:block relative w-[450px] h-[250px] lg:w-[550px] lg:h-[300px] animate-float-slow">
-            <Image 
-              src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/91999519-de24-44de-8f76-cbbb8d0d5727.png" 
-              alt="AI News Bot" 
-              fill 
+            <Image
+              src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/91999519-de24-44de-8f76-cbbb8d0d5727.png"
+              alt="AI News Bot"
+              fill
               className="object-contain"
               priority
             />
@@ -240,7 +245,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
 
       {/* Main Content */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        
+
         {/* Breaking News Featured */}
         {breakingNews && (
           <div className="mb-16">
@@ -254,11 +259,11 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
                 <button className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#4F46E5] hover:border-[#4F46E5] transition-colors"><ChevronRight className="w-4 h-4" /></button>
               </div>
             </div>
-            
+
             <div className="bg-white rounded-3xl p-6 border border-[#E5E7EB] shadow-sm flex flex-col md:flex-row gap-8 items-center hover:border-[#4F46E5]/20 transition-colors group">
               <div className="w-full md:w-1/3 aspect-[4/3] relative rounded-2xl overflow-hidden shrink-0 bg-gray-100">
                 <Image src={breakingNews.heroImage} fill alt={breakingNews.title} className="object-cover group-hover:scale-105 transition-transform duration-500" unoptimized />
-                <button 
+                <button
                   onClick={(e) => handleToggleSave(e, breakingNews._id)}
                   className={`absolute top-3 right-3 z-20 w-8 h-8 backdrop-blur-md rounded-full flex items-center justify-center transition-colors shadow-sm pointer-events-auto ${savedNews.includes(breakingNews._id) ? 'bg-white text-[#4F46E5]' : 'bg-black/30 text-white hover:bg-black/50'}`}
                 >
@@ -286,14 +291,14 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
         )}
 
         <div className="flex flex-col lg:flex-row gap-12">
-          
+
           {/* Main Grid */}
           <div className="flex-1" style={{ overflowAnchor: 'none' }}>
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
               <h2 className="text-2xl font-bold text-[#111827]">Latest AI News</h2>
               <div className="flex items-center gap-2 text-sm relative">
                 <span className="text-gray-500 font-medium">Sort by:</span>
-                
+
                 {/* Custom Styled Dropdown matching Blog */}
                 <div className="relative shrink-0 z-20">
                   <button
@@ -323,7 +328,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
             {/* Category Pills */}
             <div className="flex flex-wrap gap-2 mb-8">
               {CATEGORIES.map((cat, idx) => (
-                <button 
+                <button
                   key={idx}
                   onClick={() => {
                     setActiveCategory(cat);
@@ -354,7 +359,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
                       <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-md text-[10px] font-bold text-[#4F46E5] uppercase tracking-wide">
                         {news.category}
                       </div>
-                      <button 
+                      <button
                         onClick={(e) => handleToggleSave(e, news._id)}
                         className={`absolute top-4 right-4 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors shadow-sm ${savedNews.includes(news._id) ? 'text-[#4F46E5]' : 'text-gray-400 hover:text-[#4F46E5]'}`}
                       >
@@ -380,7 +385,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
                 ))}
               </div>
             )}
-            
+
             {isLoading && (
               <div className="space-y-6 mt-8">
                 {Array.from({ length: 2 }).map((_, i) => (
@@ -399,13 +404,13 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
                 ))}
               </div>
             )}
-            
+
             <div ref={observerTarget} className="h-10 mt-8" />
           </div>
 
           {/* Right Sidebar */}
           <aside className="w-full lg:w-[320px] shrink-0 space-y-8">
-            
+
             {/* Newsletter */}
             <NewsletterSectionWrapper>
               <div className="bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] rounded-2xl p-6 text-white shadow-md relative overflow-hidden">
@@ -417,7 +422,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
                 <p className="text-sm text-indigo-100 mb-5 relative z-10">
                   Get the latest AI news straight to your inbox.
                 </p>
-                <NewsletterForm 
+                <NewsletterForm
                   className="relative z-10 flex flex-col gap-3"
                   inputClassName="w-full px-4 py-3 rounded-xl text-sm text-gray-900 border-0 focus:ring-2 focus:ring-white/50 bg-white/95"
                   buttonClassName="w-full bg-white text-[#4F46E5] font-bold text-sm px-4 py-3 rounded-xl hover:bg-indigo-50 transition-colors shadow-sm"
@@ -434,11 +439,11 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
               <ul className="space-y-3">
                 {CATEGORIES.map((cat, idx) => (
                   <li key={idx}>
-                    <button 
+                    <button
                       onClick={() => {
-                    setActiveCategory(cat);
-                    trackContentFilter('news', cat);
-                  }}
+                        setActiveCategory(cat);
+                        trackContentFilter('news', cat);
+                      }}
                       className="w-full flex items-center justify-between text-sm text-[#4B5563] hover:text-[#4F46E5] group"
                     >
                       <span className={`font-medium ${activeCategory === cat ? 'text-[#4F46E5]' : ''}`}>{cat}</span>
@@ -468,7 +473,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
                         {news.readTime}
                       </p>
                     </div>
-                    <button 
+                    <button
                       onClick={(e) => handleToggleSave(e, news._id)}
                       className={`transition-colors p-1 ${savedNews.includes(news._id) ? 'text-[#4F46E5]' : 'text-gray-400 hover:text-[#4F46E5]'}`}
                     >
@@ -478,7 +483,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
                 ))}
               </div>
             </div>
-            
+
           </aside>
         </div>
       </section>

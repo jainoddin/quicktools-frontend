@@ -14,7 +14,7 @@ interface NewsItem {
 export default async function LatestNews() {
   let news: NewsItem[] = [];
   try {
-    const res = await fetch(getEndpoint('/api/news?limit=4'), { next: { revalidate: 3600 } });
+    const res = await fetch(getEndpoint('/api/news?limit=4'), { next: { revalidate: 300 } });
     if (res.ok) {
       const data = await res.json();
       news = data.data || [];

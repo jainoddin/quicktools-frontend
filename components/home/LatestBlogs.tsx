@@ -20,7 +20,7 @@ interface Blog {
 export default async function LatestBlogs() {
   let blogs: Blog[] = [];
   try {
-    const res = await fetch(getEndpoint('/api/blogs?limit=3'), { next: { revalidate: 3600 } });
+    const res = await fetch(getEndpoint('/api/blogs?limit=3'), { next: { revalidate: 300 } });
     if (res.ok) {
       const data = await res.json();
       blogs = data.data || [];

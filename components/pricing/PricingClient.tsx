@@ -179,11 +179,11 @@ export default function PricingClient() {
       </div>
 
       {/* ── PRICING CARDS ── */}
-      <div className="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto mb-20 relative">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 max-w-7xl mx-auto mb-20 relative px-4">
         {plans.map((plan) => (
           <div 
             key={plan.id} 
-            className={`relative flex flex-col bg-white rounded-3xl p-8 ${plan.popular ? `border-2 ${plan.color === 'gold' ? 'border-[#F59E0B] shadow-[#F59E0B]/10' : 'border-[#6D5EF8] shadow-[#6D5EF8]/10'} shadow-xl scale-105 z-10` : 'border border-[#E5E7EB] shadow-sm mt-4 mb-4'}`}
+            className={`relative flex flex-col bg-white rounded-3xl p-8 h-full transition-transform hover:scale-105 ${plan.popular ? `border-2 ${plan.color === 'gold' ? 'border-[#F59E0B] shadow-[#F59E0B]/10' : 'border-[#6D5EF8] shadow-[#6D5EF8]/10'} shadow-xl z-10` : 'border border-[#E5E7EB] shadow-sm'}`}
           >
             {plan.popular && (
               <div className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 ${plan.color === 'gold' ? 'bg-[#F59E0B]' : 'bg-[#6D5EF8]'} text-white text-[10px] font-bold uppercase tracking-wider py-1 px-4 rounded-full flex items-center gap-1`}>

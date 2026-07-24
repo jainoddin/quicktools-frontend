@@ -77,15 +77,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  icons: {
-    icon: [
-      { url: '/icon.svg', type: 'image/svg+xml' }
-    ],
-    shortcut: ['/icon.svg'],
-    apple: [
-      { url: '/icon.svg', type: 'image/svg+xml' }
-    ],
-  },
+
   alternates: {
     languages: {
       'en-US': '/en-US',

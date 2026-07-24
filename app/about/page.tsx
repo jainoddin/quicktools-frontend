@@ -66,7 +66,7 @@ export default async function AboutPage() {
   };
 
   const stats = [
-    { icon: Users, label: 'Happy Users', value: formatNumber(backendStats.users), color: 'text-[#6D5EF8]', bg: 'bg-[#EEF2FF]' },
+    { icon: Users, label: 'Happy Users', value: '10,000+', color: 'text-[#6D5EF8]', bg: 'bg-[#EEF2FF]' },
     { icon: LayoutGrid, label: 'AI Tools', value: backendStats.tools + '+', color: 'text-[#F43F5E]', bg: 'bg-pink-50' },
     { icon: Star, label: 'Tasks Completed', value: formatNumber(backendStats.tasks), color: 'text-[#F59E0B]', bg: 'bg-amber-50' },
     { icon: Globe, label: 'Countries', value: backendStats.countries + '+', color: 'text-[#10B981]', bg: 'bg-emerald-50' },
@@ -269,7 +269,7 @@ export default async function AboutPage() {
           <div className="lg:col-span-1">
             <div className="bg-[#6D5EF8] rounded-2xl p-6 text-white h-full flex flex-col relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
-              <h2 className="text-2xl font-black mb-2 relative z-10">Join {formatNumber(backendStats.users)} Happy Users</h2>
+              <h2 className="text-2xl font-black mb-2 relative z-10">Join 10,000+ Happy Users</h2>
               <p className="text-white/80 text-sm leading-relaxed mb-6 relative z-10">
                 Start using our AI tools today and experience the future of productivity.
               </p>
@@ -290,9 +290,9 @@ export default async function AboutPage() {
                     <Image key={img} src={`https://i.pravatar.cc/150?img=${img}`} width={28} height={28}
                       alt="User" className="w-7 h-7 rounded-full border-2 border-[#6D5EF8] object-cover" />
                   ))}
-                  <div className="w-7 h-7 rounded-full border-2 border-[#6D5EF8] bg-white/20 flex items-center justify-center text-[9px] font-bold text-white">{formatNumber(backendStats.users)}</div>
+                  <div className="w-7 h-7 rounded-full border-2 border-[#6D5EF8] bg-white/20 flex items-center justify-center text-[9px] font-bold text-white">10K+</div>
                 </div>
-                <p className="text-xs text-white/80 ml-1">Trusted by {formatNumber(backendStats.users)} users worldwide</p>
+                <p className="text-xs text-white/80 ml-1">Trusted by 10,000+ users worldwide</p>
               </div>
             </div>
           </div>

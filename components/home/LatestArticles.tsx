@@ -16,7 +16,7 @@ interface Article {
 export default async function LatestArticles() {
   let articles: Article[] = [];
   try {
-    const res = await fetch(getEndpoint('/api/articles?limit=2'), { next: { revalidate: 3600 } });
+    const res = await fetch(getEndpoint('/api/articles?limit=2'), { next: { revalidate: 300 } });
     if (res.ok) {
       const data = await res.json();
       articles = data.data || [];
