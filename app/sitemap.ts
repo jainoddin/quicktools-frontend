@@ -10,7 +10,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch blogs
   let blogs: any[] = [];
   try {
-    const res = await fetch(getEndpoint('/api/blogs'), { next: { revalidate: 3600 } });
+    const res = await fetch(getEndpoint('/api/blogs'), {
+      next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(10000),
+    });
     const data = await res.json();
     if (data.success) blogs = data.data;
   } catch (e) {
@@ -20,7 +23,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch articles
   let articles: any[] = [];
   try {
-    const res = await fetch(getEndpoint('/api/articles?limit=500'), { next: { revalidate: 3600 } });
+    const res = await fetch(getEndpoint('/api/articles?limit=500'), {
+      next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(10000),
+    });
     const data = await res.json();
     if (data.success) articles = data.data;
   } catch (e) {
@@ -30,7 +36,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch news
   let news: any[] = [];
   try {
-    const res = await fetch(getEndpoint('/api/news?limit=500'), { next: { revalidate: 3600 } });
+    const res = await fetch(getEndpoint('/api/news?limit=500'), {
+      next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(10000),
+    });
     const data = await res.json();
     if (data.success) news = data.data;
   } catch (e) {
