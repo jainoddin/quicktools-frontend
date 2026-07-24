@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 async function getArticles() {
   try {
-    const res = await fetch(getEndpoint('/api/articles?limit=50'), {
+    const res = await fetch(getEndpoint('/api/articles?limit=100'), {
       next: { revalidate: 3600 } // Revalidate every hour
     });
     if (!res.ok) return { data: [], pagination: {} };
