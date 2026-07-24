@@ -1760,15 +1760,6 @@ function ToolsClientInner() {
 
 export default function ToolsClient() {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-12 h-12 border-4 border-[#6D5EF8] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-[#6B7280] font-medium">Loading tools...</p>
-        </div>
-      </div>
-    }>
-      <ToolsClientInner />
-    </Suspense>
+    <ToolsClientInner />
   );
 }

@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const dynamic = 'force-dynamic';
+
 export default function AllToolsPage() {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -36,9 +38,7 @@ export default function AllToolsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Suspense fallback={<div className="p-8 text-center">Loading tools...</div>}>
-        <ToolsClient />
-      </Suspense>
+      <ToolsClient />
     </div>
   );
 }
