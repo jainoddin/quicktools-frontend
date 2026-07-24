@@ -20,7 +20,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "AI Employee Onboarding Plan | Premium Tools",
             description: "Generate structured 30-60-90 day onboarding plans.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

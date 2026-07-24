@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free CSS Box Shadow Generator | QuickTools",
             description: "Visually generate perfect CSS box shadows and copy the CSS code instantly with our free visual CSS Box Shadow Generator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Product Description Generator | QuickTools",
             description: "Write compelling, conversion-focused product descriptions for your e-commerce store instantly with AI.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

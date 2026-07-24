@@ -20,7 +20,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "AI Partnership Proposal | Premium Tools",
             description: "Generate B2B strategic partnership proposals.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

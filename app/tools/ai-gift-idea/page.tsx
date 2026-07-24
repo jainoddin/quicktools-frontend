@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Gift Idea Generator | QuickTools",
             description: "Find the perfect, thoughtful gift for anyone instantly based on their age, interests, and your budget with our AI Gift Idea Generator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

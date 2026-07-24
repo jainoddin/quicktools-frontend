@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Business Name Generator | QuickTools",
             description: "Generate catchy, memorable business names and taglines for your startup or company instantly with AI.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

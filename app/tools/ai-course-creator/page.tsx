@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Premium AI Course Curriculum Creator | QuickTools",
             description: "Generate a full 4-week course syllabus, lesson plans, and quizzes.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

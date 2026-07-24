@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Premium AI SEO Topical Map Builder | QuickTools",
             description: "Generate a full SEO content cluster map for an entire month for a niche.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

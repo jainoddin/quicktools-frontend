@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Workout Plan Generator | QuickTools",
             description: "Generate custom, highly effective workout plans instantly based on your fitness goals and available time with our AI Workout Plan Generator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

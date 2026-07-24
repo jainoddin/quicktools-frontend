@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI LinkedIn Bio Generator | QuickTools",
             description: "Create a professional, highly optimized LinkedIn summary and bio in seconds with our AI LinkedIn Bio Generator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

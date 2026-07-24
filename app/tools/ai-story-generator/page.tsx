@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Story Generator | QuickTools",
             description: "Unleash your creativity. Generate engaging, unique short stories based on any prompt or genre.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

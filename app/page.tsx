@@ -3,7 +3,8 @@ import Image from 'next/image';
 import {
   Search, Moon, Zap, Image as ImageIcon, PenTool, Video, Code,
   Briefcase, Palette, Mic, LayoutGrid, Star, Check, ArrowRight,
-  RefreshCcw, ChevronDown, Globe, Mail, MessageCircle, Share2
+  RefreshCcw, ChevronDown, Globe, Mail, MessageCircle, Share2,
+  Shield, Users
 } from 'lucide-react';
 import Link from 'next/link';
 import { Suspense } from 'react';
@@ -67,7 +68,7 @@ export default function HomePage() {
                 </span>
               </h1>
               <p className="text-lg sm:text-xl text-gray-300 mb-10 leading-relaxed font-medium">
-                Generate investor-ready business plans, financial projections, and Udyam-compliant documents in seconds. Stop paying consultants ₹5000+ for what AI can do instantly.
+                Generate investor-ready business plans, financial projections, and professional pitch decks in seconds. Stop paying consultants ₹5000+ for what AI can do instantly.
               </p>
 
               {/* CTA Buttons */}
@@ -97,12 +98,12 @@ export default function HomePage() {
                   <div className="text-sm font-medium text-gray-400 mt-1">Total Tools</div>
                 </div>
                 <div>
-                  <div className="flex items-center gap-2 font-black text-2xl text-white"><Check className="w-5 h-5 text-indigo-400" /> 3 Days</div>
-                  <div className="text-sm font-medium text-gray-400 mt-1">Free Trial</div>
+                  <div className="flex items-center gap-2 font-black text-2xl text-white"><Shield className="w-5 h-5 text-indigo-400" /> Secure</div>
+                  <div className="text-sm font-medium text-gray-400 mt-1">No Card Required</div>
                 </div>
                 <div>
-                  <div className="flex items-center gap-2 font-black text-2xl text-white"><Star className="w-5 h-5 text-[#F59E0B] fill-[#F59E0B]" /> 5.0/5</div>
-                  <div className="text-sm font-medium text-gray-400 mt-1">User Rating</div>
+                  <div className="flex items-center gap-2 font-black text-2xl text-white"><Users className="w-5 h-5 text-indigo-400" /> 10,000+</div>
+                  <div className="text-sm font-medium text-gray-400 mt-1">Active Users</div>
                 </div>
               </div>
             </div>

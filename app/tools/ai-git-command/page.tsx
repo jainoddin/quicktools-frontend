@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Git Command Generator | QuickTools",
             description: "Forget complex git syntax. Describe what you want to do in plain English, and get the exact git commands instantly.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

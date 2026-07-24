@@ -20,7 +20,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "AI Pricing Strategy Generator | Premium Tools",
             description: "Generate optimized pricing strategies and tiers.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

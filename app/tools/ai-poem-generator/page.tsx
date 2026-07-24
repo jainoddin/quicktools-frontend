@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Poem Generator | QuickTools",
             description: "Compose beautiful, rhyming, or free-verse poetry instantly based on your chosen topic and emotion.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

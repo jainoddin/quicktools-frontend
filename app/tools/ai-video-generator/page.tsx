@@ -23,7 +23,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Professional AI Video Generator - Text to Video Creator",
             description: "Turn your ideas into high-quality videos instantly. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

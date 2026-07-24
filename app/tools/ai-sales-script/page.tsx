@@ -20,7 +20,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "AI Sales Cold Call Script | Premium Tools",
             description: "Generate effective scripts for sales calls.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

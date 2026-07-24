@@ -20,7 +20,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "AI Case Study Writer | Premium Tools",
             description: "Write professional business case studies.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

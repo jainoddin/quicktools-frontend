@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Emoji Translator | QuickTools",
             description: "Turn any text, quote, or sentence into a fun sequence of emojis instantly.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

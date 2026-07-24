@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free JSON Formatter & Validator | QuickTools",
             description: "Format, validate, and beautify your JSON data instantly with our free online JSON Formatter tool.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

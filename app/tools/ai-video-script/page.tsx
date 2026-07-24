@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Video Script Generator | QuickTools",
             description: "Write highly engaging, viral-worthy scripts for YouTube, TikTok, and Instagram Reels in seconds.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

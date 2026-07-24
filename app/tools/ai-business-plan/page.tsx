@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Premium AI Business Plan Generator | QuickTools",
             description: "Generate a complete 10-page business plan with executive summary, market analysis, and financial projections.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

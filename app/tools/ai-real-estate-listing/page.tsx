@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Real Estate Listing Generator | QuickTools",
             description: "Write captivating, conversion-optimized property descriptions that sell homes faster.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

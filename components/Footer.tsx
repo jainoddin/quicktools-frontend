@@ -77,11 +77,11 @@ export default function Footer() {
             <div className="col-span-1">
               <h4 className="font-bold text-sm mb-4 text-[#111827]">Categories</h4>
               <ul className="space-y-3 text-sm text-[#6B7280]">
-                <li><Link href="/tools?category=image" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Image Tools</Link></li>
-                <li><Link href="/tools?category=writing" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Writing Tools</Link></li>
-                <li><Link href="/tools?category=video" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Video Tools</Link></li>
-                <li><Link href="/tools?category=code" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Code Tools</Link></li>
-                <li><Link href="/tools?category=seo" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>SEO Tools</Link></li>
+                <li><Link href="/tools?c=AI Image" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Image Tools</Link></li>
+                <li><Link href="/tools?c=AI Writer" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Writing Tools</Link></li>
+                <li><Link href="/tools?c=AI Video" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Video Tools</Link></li>
+                <li><Link href="/tools?c=AI Code" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Code Tools</Link></li>
+                <li><Link href="/tools?c=SEO" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>SEO Tools</Link></li>
               </ul>
             </div>
 

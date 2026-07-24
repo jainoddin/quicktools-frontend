@@ -20,7 +20,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "AI SWOT Analysis Generator | Premium Tools",
             description: "Generate a detailed SWOT analysis for your business.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

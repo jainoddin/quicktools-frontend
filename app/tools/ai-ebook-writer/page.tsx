@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Premium AI E-Book Writer | QuickTools",
             description: "Generate chapter-by-chapter outlines and content for an entire e-book.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

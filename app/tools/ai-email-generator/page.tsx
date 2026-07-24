@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Email Reply Generator | QuickTools",
             description: "Instantly generate professional, polite, or casual email replies with AI. Save time and communicate better.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

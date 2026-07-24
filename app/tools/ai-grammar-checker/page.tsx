@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Grammar & Spell Checker | QuickTools",
             description: "Instantly check your text for grammar, spelling, and punctuation errors. Rewrites sentences for better flow and professional tone.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

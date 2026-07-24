@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Event Planner | QuickTools",
             description: "Plan your events effortlessly. Get a comprehensive checklist, timeline, and ideas for your next party or corporate event.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

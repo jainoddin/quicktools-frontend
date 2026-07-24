@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Premium AI Sales Funnel Copywriter | QuickTools",
             description: "Write landing page copy, email sequences, and ad copy all at once.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Cover Letter Generator | QuickTools",
             description: "Write a professional, standout cover letter for any job application in seconds based on your skills and the job title.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

@@ -20,7 +20,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "AI ESG / Sustainability Plan | Premium Tools",
             description: "Generate corporate sustainability and ESG plans.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

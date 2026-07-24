@@ -23,7 +23,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Intelligent AI Code Generator & Programming Assistant",
             description: "Generate production-ready code in seconds with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

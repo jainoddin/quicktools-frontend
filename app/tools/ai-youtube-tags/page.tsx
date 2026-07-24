@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI YouTube Tags Generator | QuickTools",
             description: "Boost your video views and SEO ranking with AI-generated, highly optimized tags for YouTube.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

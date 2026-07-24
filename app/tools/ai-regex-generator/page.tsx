@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Regex Generator | QuickTools",
             description: "Generate complex Regular Expressions easily from plain English descriptions instantly with our free AI Regex Generator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

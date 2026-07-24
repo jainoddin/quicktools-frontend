@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Code Explainer | QuickTools",
             description: "Understand any snippet of code easily. Our free AI Code Explainer translates complex code into simple, plain English explanations instantly.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

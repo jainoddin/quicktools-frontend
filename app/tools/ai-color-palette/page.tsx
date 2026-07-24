@@ -23,7 +23,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Color Palette Generator",
             description: "Generate beautiful color palettes from a brand name or mood description with our free AI Color Palette Generator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

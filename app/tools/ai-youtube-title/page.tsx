@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI YouTube Title Generator | QuickTools",
             description: "Generate highly clickable, viral, and engaging YouTube video titles instantly with our AI YouTube Title Generator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

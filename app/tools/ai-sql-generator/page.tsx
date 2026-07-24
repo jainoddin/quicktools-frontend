@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI SQL Query Generator | QuickTools",
             description: "Generate optimized SQL queries from plain English descriptions instantly.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

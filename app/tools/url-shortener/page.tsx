@@ -23,7 +23,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free URL Shortener - Create Short Links",
             description: "Shorten any long URL into a clean, shareable link in one click with our free URL Shortener.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

@@ -1348,12 +1348,13 @@ export const allTools = [
 function ToolsClientInner() {
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get('q') || '';
+  const initialCategory = searchParams.get('c') || 'All Tools';
 
   const { user, isAuthenticated, updateUser } = useAuth();
   const showUpgradeCard = (user?.plan || 'free').toLowerCase() === 'free';
 
   const [searchQuery, setSearchQuery] = useState(initialQuery);
-  const [activeCategory, setActiveCategory] = useState('All Tools');
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [activeFilter, setActiveFilter] = useState('Popular');
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [isMobileCategoriesOpen, setIsMobileCategoriesOpen] = useState(false);
@@ -1382,6 +1383,7 @@ function ToolsClientInner() {
 
   useEffect(() => {
     setSearchQuery(searchParams.get('q') || '');
+    setActiveCategory(searchParams.get('c') || 'All Tools');
   }, [searchParams]);
 
   useEffect(() => {

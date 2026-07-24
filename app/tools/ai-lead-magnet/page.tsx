@@ -20,7 +20,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "AI Lead Magnet Idea Generator | Premium Tools",
             description: "Generate compelling lead magnet ideas to grow your list.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

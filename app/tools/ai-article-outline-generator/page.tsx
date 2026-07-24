@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Article Outline Generator | QuickTools",
             description: "Generate comprehensive, SEO-optimized article and blog outlines instantly. Save hours of planning and structure your content perfectly.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

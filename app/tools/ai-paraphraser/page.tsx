@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Paraphrasing Tool | QuickTools",
             description: "Rewrite and paraphrase text completely uniquely while retaining the original meaning with our advanced AI paraphraser.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

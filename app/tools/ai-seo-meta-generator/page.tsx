@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI SEO Title & Meta Generator | QuickTools",
             description: "Generate high-ranking, SEO-optimized Page Titles and Meta Descriptions instantly with AI.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

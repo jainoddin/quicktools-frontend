@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Premium AI Pitch Deck Generator | QuickTools",
             description: "Generate slide-by-slide text, data points, and script for a startup pitch deck.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

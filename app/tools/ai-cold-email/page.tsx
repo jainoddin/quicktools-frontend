@@ -20,7 +20,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "AI B2B Cold Email Sequence | Premium Tools",
             description: "Generate high-converting B2B cold email sequences.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

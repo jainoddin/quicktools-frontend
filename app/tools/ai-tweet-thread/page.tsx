@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Tweet Thread Generator | QuickTools",
             description: "Write highly engaging, viral Twitter threads with perfect hooks instantly using our AI Tweet Thread Generator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

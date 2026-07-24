@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Job Description Generator | QuickTools",
             description: "Generate professional, comprehensive, and attractive job descriptions to attract top talent.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Travel Itinerary Planner | QuickTools",
             description: "Plan your perfect trip instantly. Generate day-by-day travel itineraries customized to your destination and duration.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

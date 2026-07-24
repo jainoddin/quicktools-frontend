@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Meal Planner | QuickTools",
             description: "Generate healthy, customized weekly meal plans based on your dietary preferences and goals.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free Lorem Ipsum Generator | QuickTools",
             description: "Generate placeholder text (Lorem Ipsum) instantly for your designs, websites, and mockups with our free Lorem Ipsum Generator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

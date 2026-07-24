@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Resignation Letter Generator | QuickTools",
             description: "Leave on good terms. Generate a polite, professional, and appropriately toned resignation letter instantly.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

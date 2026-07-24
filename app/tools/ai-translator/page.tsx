@@ -23,7 +23,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Language Translator - Translate 50+ Languages",
             description: "Translate text into 50+ languages instantly with AI-powered accuracy using our free AI Translator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

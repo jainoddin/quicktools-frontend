@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Interview Questions Generator | QuickTools",
             description: "Prepare for any interview by generating targeted, role-specific questions for candidates or for your own practice.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

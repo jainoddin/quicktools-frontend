@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Premium AI App Architecture Planner | QuickTools",
             description: "Generate the full tech stack, database schema, and API endpoints documentation for a new app.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

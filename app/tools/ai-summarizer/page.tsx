@@ -23,7 +23,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Text Summarizer - Summarize Articles Instantly",
             description: "Summarize long articles, PDFs, or any text into clear bullet points instantly with our free AI Summarizer.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

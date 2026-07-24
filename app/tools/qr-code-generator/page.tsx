@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free QR Code Generator | QuickTools",
             description: "Generate high-quality QR codes for URLs, text, or emails instantly. 100% free with no limits.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

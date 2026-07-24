@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Elevator Pitch Generator | QuickTools",
             description: "Craft a compelling and persuasive 30-second elevator pitch for yourself or your business instantly.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

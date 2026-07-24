@@ -23,7 +23,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Advanced AI Writer & Content Generator for Creators",
             description: "Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

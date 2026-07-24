@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Hook Generator | QuickTools",
             description: "Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts instantly with our AI Hook Generator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

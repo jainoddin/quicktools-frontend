@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Instagram Hashtag Generator | QuickTools",
             description: "Boost your reach and engagement with AI-generated, highly relevant hashtags for Instagram, TikTok, and Twitter.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

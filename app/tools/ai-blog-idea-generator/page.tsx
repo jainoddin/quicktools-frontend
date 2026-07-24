@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Blog Idea Generator | QuickTools",
             description: "Generate highly engaging, viral blog post ideas and titles instantly with AI. Overcome writer's block forever.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

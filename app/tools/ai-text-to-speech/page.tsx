@@ -21,7 +21,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AI Text to Speech Generator | QuickTools',
     description: 'Convert any text into natural-sounding speech instantly using advanced browser AI.',
-    creator: '@quicktoolsai',
     images: ['https://quicktool.space/icon.svg']
   }
 };

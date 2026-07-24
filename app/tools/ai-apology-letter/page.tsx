@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Apology Letter Generator | QuickTools",
             description: "Draft sincere, well-worded, and appropriate apology letters for professional or personal situations instantly.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

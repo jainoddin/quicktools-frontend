@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Recipe Generator | QuickTools",
             description: "Generate delicious recipes based on the ingredients you have in your fridge instantly with our AI Recipe Generator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

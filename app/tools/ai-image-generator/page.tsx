@@ -28,7 +28,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Powerful AI Image Generator - Create Stunning AI Art",
             description: "Create stunning, high-resolution images from text descriptions. Unleash your creativity with our powerful AI Image Generator and models.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

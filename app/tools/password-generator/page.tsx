@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free Strong Password Generator | QuickTools",
             description: "Generate secure, highly randomized, and unbreakable passwords instantly with our free Strong Password Generator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

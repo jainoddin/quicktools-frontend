@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Motivational Quote Generator | QuickTools",
             description: "Generate highly inspiring, completely original motivational quotes on any topic instantly with our AI Motivational Quote Generator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

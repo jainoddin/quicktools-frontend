@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Review Responder | QuickTools",
             description: "Save time and maintain a great reputation by generating professional, empathetic replies to customer reviews.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

@@ -23,7 +23,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Resume Builder - ATS Friendly Resumes",
             description: "Generate a professional, ATS-friendly resume from your details in seconds using our free AI Resume Builder.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

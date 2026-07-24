@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Premium AI Legal Template Drafter | QuickTools",
             description: "Generate standard boilerplate templates for NDAs, Freelance agreements, etc.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

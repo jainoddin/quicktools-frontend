@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Premium AI Social Media Calendar | QuickTools",
             description: "Generate a 30-day multi-channel marketing calendar with specific daily posts.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

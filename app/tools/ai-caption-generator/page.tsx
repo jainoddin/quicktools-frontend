@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Social Media Caption Generator | QuickTools",
             description: "Generate engaging, viral social media captions with emojis and trending hashtags for Instagram, TikTok, and Twitter.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

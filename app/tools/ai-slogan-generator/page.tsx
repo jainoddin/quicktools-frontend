@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Slogan Generator | QuickTools",
             description: "Instantly brainstorm catchy, memorable, and high-converting slogans for your business, brand, or marketing campaign.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

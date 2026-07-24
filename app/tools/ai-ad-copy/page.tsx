@@ -21,7 +21,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Ad Copy Generator | QuickTools",
             description: "Write highly converting ad copy variations for Facebook or Google Ads instantly with our AI Ad Copy Generator.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };

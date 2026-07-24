@@ -22,7 +22,6 @@ export const metadata: Metadata = {
             card: 'summary_large_image',
             title: "Free AI Background Remover - Erase Backgrounds Fast",
             description: "Remove image backgrounds instantly with our AI Background Remover. Fast, accurate, and perfectly cut out subjects in seconds for design projects.",
-            creator: '@quicktoolsai',
             images: ['https://quicktool.space/icon.svg']
           }
 };
