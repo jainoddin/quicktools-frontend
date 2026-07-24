@@ -15,13 +15,15 @@ import { trackFavorite } from '@/lib/analytics';
 const CATEGORIES = ['All Articles', 'AI & Tools', 'Productivity', 'Marketing', 'Business', 'Development', 'Design'];
 const TABS = ['All', 'Latest', 'Popular', 'Trending', 'Favorites'];
 
-export default function ArticlesClient({ initialArticles = [] }: { initialArticles?: any[] }) {
+export default function ArticlesClient({ initialArticles = [], initialPagination }: { initialArticles?: any[], initialPagination?: any }) {
   const { error, success } = useToast();
   const router = useRouter();
   const { user, isAuthenticated } = useAuth();
   const [articles, setArticles] = useState<any[]>(initialArticles);
-  const [filtered, setFiltered] = useState<any[]>(initialArticles);
+  const [page, setPage] = useState(initialPagination?.page || 1);
+  const [hasMore, setHasMore] = useState((initialPagination?.page || 1) < (initialPagination?.pages || 1));
   const [loading, setLoading] = useState(false);
+  const observerTarget = React.useRef<HTMLDivElement>(null);
   const [activeCategory, setActiveCategory] = useState('All Articles');
   const [activeTab, setActiveTab] = useState('All');
   const [sortOrder, setSortOrder] = useState('Newest First');
@@ -67,51 +69,85 @@ export default function ArticlesClient({ initialArticles = [] }: { initialArticl
     }
   };
 
-  // Apply filters whenever state changes
-  const applyFilters = useCallback(() => {
-    let result = [...articles];
+    // Apply filters via API
+  useEffect(() => {
+    const fetchFiltered = async () => {
+      setLoading(true);
+      try {
+        let url = `/api/articles?page=1&limit=12`;
+        if (activeCategory !== 'All Articles') url += `&category=${encodeURIComponent(activeCategory)}`;
+        if (search.trim()) url += `&search=${encodeURIComponent(search.trim())}`;
+        if (sortOrder !== 'Newest First') url += `&sort=${encodeURIComponent(sortOrder)}`;
 
-    // Category filter
-    if (activeCategory !== 'All Articles') {
-      result = result.filter(a => a.category === activeCategory);
+        const res = await fetch(getEndpoint(url));
+        const data = await res.json();
+        
+        if (data.success) {
+          let results = data.data;
+          if (activeTab === 'Favorites') {
+             results = results.filter((a: any) => savedArticles.includes(a._id));
+          }
+          setArticles(results);
+          setPage(data.pagination.page);
+          setHasMore(data.pagination.page < data.pagination.pages);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    const timeoutId = setTimeout(() => {
+      fetchFiltered();
+    }, 300);
+    return () => clearTimeout(timeoutId);
+  }, [activeCategory, search, sortOrder, activeTab, savedArticles]);
+
+  const loadMore = async () => {
+    if (loading || !hasMore) return;
+    setLoading(true);
+    try {
+      let url = `/api/articles?page=${page + 1}&limit=12`;
+      if (activeCategory !== 'All Articles') url += `&category=${encodeURIComponent(activeCategory)}`;
+      if (search.trim()) url += `&search=${encodeURIComponent(search.trim())}`;
+      if (sortOrder !== 'Newest First') url += `&sort=${encodeURIComponent(sortOrder)}`;
+
+      const res = await fetch(getEndpoint(url));
+      const data = await res.json();
+      
+      if (data.success) {
+        let results = data.data;
+        if (activeTab === 'Favorites') {
+           results = results.filter((a: any) => savedArticles.includes(a._id));
+        }
+        setArticles(prev => [...prev, ...results]);
+        setPage(data.pagination.page);
+        setHasMore(data.pagination.page < data.pagination.pages);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
+  };
 
-    // Search filter
-    if (search.trim()) {
-      const q = search.toLowerCase();
-      result = result.filter(a =>
-        a.title?.toLowerCase().includes(q) ||
-        a.description?.toLowerCase().includes(q) ||
-        a.tags?.some((t: string) => t.toLowerCase().includes(q))
-      );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting && hasMore && !loading) {
+          loadMore();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
     }
-
-    // Tab filter
-    if (activeTab === 'Latest') {
-      result = result.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-    } else if (activeTab === 'Popular') {
-      result = result.sort((a, b) => {
-        const va = parseInt((a.views || '0').replace(/[^0-9]/g, ''));
-        const vb = parseInt((b.views || '0').replace(/[^0-9]/g, ''));
-        return vb - va;
-      });
-    } else if (activeTab === 'Trending') {
-      result = result.slice(0, 6); // top 6 by default as trending
-    } else if (activeTab === 'Favorites') {
-      result = result.filter(a => savedArticles.includes(a._id));
-    }
-
-    // Sort order
-    if (sortOrder === 'Newest First') {
-      result = result.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-    } else {
-      result = result.sort((a, b) => new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime());
-    }
-
-    setFiltered(result);
-  }, [articles, activeCategory, search, activeTab, sortOrder, savedArticles]);
-
-  useEffect(() => { applyFilters(); }, [applyFilters]);
+    
+    return () => observer.disconnect();
+  }, [hasMore, loading, page, activeCategory, search, sortOrder, activeTab, savedArticles]);
 
   const featuredArticle = articles.length > 0 ? articles[0] : null;
   // Trending is always global top 4 by views

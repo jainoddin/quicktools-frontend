@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 async function getBlogs() {
   try {
-    const res = await fetch(getEndpoint('/api/blogs?limit=100'), {
+    const res = await fetch(getEndpoint('/api/blogs?limit=12'), {
       next: { revalidate: 3600 } // Revalidate every hour
     });
     if (!res.ok) return { data: [], pagination: {} };
@@ -82,7 +82,7 @@ export default async function BlogPage() {
         />
 
         {/* Client Component */}
-        <BlogClient initialBlogs={allBlogs} />
+        <BlogClient initialBlogs={allBlogs} initialPagination={blogsResponse.pagination} />
 
       </div>
     </div>

@@ -37,7 +37,7 @@ const CATEGORY_ICONS: Record<string, React.ReactNode> = {
   'News & Updates': <Newspaper className="w-4 h-4" />
 };
 
-export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[] }) {
+export default function BlogClient({ initialBlogs = [], initialPagination }: { initialBlogs?: Blog[], initialPagination?: any }) {
   const { error, success } = useToast();
   const router = useRouter();
   const { user, isAuthenticated } = useAuth();
@@ -47,8 +47,13 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
   const [searchQuery, setSearchQuery] = useState('');
   const [showAllTags, setShowAllTags] = useState(false);
   const [isMobileCategoriesOpen, setIsMobileCategoriesOpen] = useState(false);
+  
   const [blogs, setBlogs] = useState<Blog[]>(initialBlogs);
-  const [loading, setLoading] = useState(initialBlogs.length === 0);
+  const [page, setPage] = useState(initialPagination?.page || 1);
+  const [hasMore, setHasMore] = useState((initialPagination?.page || 1) < (initialPagination?.pages || 1));
+  const [loading, setLoading] = useState(false);
+  const observerTarget = React.useRef<HTMLDivElement>(null);
+  
   const [savedBlogs, setSavedBlogs] = useState<string[]>([]);
 
   useEffect(() => {
@@ -89,18 +94,7 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
     }
   };
 
-  useEffect(() => {
-    fetch(getEndpoint('/api/blogs'))
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) setBlogs(data.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error('Failed to fetch blogs:', err);
-        setLoading(false);
-      });
-  }, []);
+  
 
   // 1. Dynamic Categories
   const categories = useMemo(() => {
@@ -138,51 +132,91 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
       .map(entry => entry[0]);
   }, [blogs]);
 
-  // 3. Filtering & Sorting
-  const filteredBlogs = useMemo(() => {
-    let result = [...blogs];
+    // 3. Server-side Filtering & Pagination
+  useEffect(() => {
+    const fetchFilteredBlogs = async () => {
+      setLoading(true);
+      try {
+        let url = `/api/blogs?page=1&limit=12`;
+        if (activeCategory !== 'All Blogs') url += `&category=${encodeURIComponent(activeCategory)}`;
+        if (searchQuery.trim()) url += `&search=${encodeURIComponent(searchQuery.trim())}`;
+        if (sortBy !== 'Newest First') url += `&sort=${encodeURIComponent(sortBy)}`;
 
-    // Search
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
-      result = result.filter(b => 
-        b.title.toLowerCase().includes(q) || 
-        b.description.toLowerCase().includes(q) ||
-        b.category.toLowerCase().includes(q)
-      );
+        const res = await fetch(getEndpoint(url));
+        const data = await res.json();
+        
+        if (data.success) {
+          let results = data.data;
+          if (activeTab === 'Favorites') {
+             results = results.filter((b: any) => savedBlogs.includes(b._id));
+          }
+          setBlogs(results);
+          setPage(data.pagination.page);
+          setHasMore(data.pagination.page < data.pagination.pages);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    const timeoutId = setTimeout(() => {
+      fetchFilteredBlogs();
+    }, 300);
+    return () => clearTimeout(timeoutId);
+  }, [activeCategory, searchQuery, sortBy, activeTab, savedBlogs]);
+
+  const loadMore = async () => {
+    if (loading || !hasMore) return;
+    setLoading(true);
+    try {
+      let url = `/api/blogs?page=${page + 1}&limit=12`;
+      if (activeCategory !== 'All Blogs') url += `&category=${encodeURIComponent(activeCategory)}`;
+      if (searchQuery.trim()) url += `&search=${encodeURIComponent(searchQuery.trim())}`;
+      if (sortBy !== 'Newest First') url += `&sort=${encodeURIComponent(sortBy)}`;
+
+      const res = await fetch(getEndpoint(url));
+      const data = await res.json();
+      
+      if (data.success) {
+        let results = data.data;
+        if (activeTab === 'Favorites') {
+           results = results.filter((b: any) => savedBlogs.includes(b._id));
+        }
+        setBlogs(prev => [...prev, ...results]);
+        setPage(data.pagination.page);
+        setHasMore(data.pagination.page < data.pagination.pages);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
+  };
 
-    // Category
-    if (activeCategory !== 'All Blogs') {
-      result = result.filter(b => b.category === activeCategory);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting && hasMore && !loading) {
+          loadMore();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
     }
-
-    // Sort
-    if (sortBy === 'Newest First' || activeTab === 'Latest') {
-      result.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-    } else if (sortBy === 'Oldest First') {
-      result.sort((a, b) => new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime());
-    }
-
-    // Tabs logic (mock popular/trending)
-    if (activeTab === 'Popular') {
-       // just reverse for variation
-       result.reverse();
-    } else if (activeTab === 'Trending') {
-       // sort by shortest title as a mock for trending
-       result.sort((a, b) => a.title.length - b.title.length);
-    } else if (activeTab === 'Favorites') {
-       result = result.filter(b => savedBlogs.includes(b._id));
-    }
-
-    return result;
-  }, [blogs, searchQuery, activeCategory, activeTab, sortBy, savedBlogs]);
+    
+    return () => observer.disconnect();
+  }, [hasMore, loading, page, activeCategory, searchQuery, sortBy, activeTab, savedBlogs]);
 
   // 4. Featured Post (always the first post from the total blogs)
   const featuredPost = blogs.length > 0 ? blogs[0] : undefined;
   
   // Exclude featured from the list shown below it if possible
-  const listBlogs = filteredBlogs.filter(b => featuredPost ? b._id !== featuredPost._id : true);
+  const listBlogs = blogs.filter(b => featuredPost ? b._id !== featuredPost._id : true);
 
   // 5. Popular Posts (Side bar)
   const popularPostsSide = useMemo(() => {
@@ -471,6 +505,13 @@ export default function BlogClient({ initialBlogs = [] }: { initialBlogs?: Blog[
                 ))
               )}
             </div>
+
+            {loading && (
+              <div className="flex justify-center mt-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#4F46E5]"></div>
+              </div>
+            )}
+            <div ref={observerTarget} className="h-10 mt-8" />
           </>
         )}
 

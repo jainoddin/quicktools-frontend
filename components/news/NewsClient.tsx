@@ -16,7 +16,7 @@ import { trackFavorite, trackContentFilter } from '@/lib/analytics';
 const CATEGORIES = ['All News', 'Product Launches', 'Research', 'Funding', 'Partnerships', 'Industry', 'Favorites'];
 const SORT_OPTIONS = ['Latest', 'Popular'];
 
-export default function NewsClient({ initialNews }: { initialNews: any[] }) {
+export default function NewsClient({ initialNews, initialPagination }: { initialNews: any[], initialPagination?: any }) {
   const { error, success } = useToast();
   const router = useRouter();
   const { user, isAuthenticated } = useAuth();
@@ -24,7 +24,13 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOrder, setSortOrder] = useState('Latest');
   const [showSort, setShowSort] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(4); // Start with 4 items
+  
+  const [newsList, setNewsList] = useState<any[]>(initialNews);
+  const [page, setPage] = useState(initialPagination?.page || 1);
+  const [hasMore, setHasMore] = useState((initialPagination?.page || 1) < (initialPagination?.pages || 1));
+  const [isLoading, setIsLoading] = useState(false);
+  const observerTarget = React.useRef<HTMLDivElement>(null);
+
   const [savedNews, setSavedNews] = useState<string[]>([]);
 
   useEffect(() => {
@@ -65,39 +71,95 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
     }
   };
 
-  // Filter and sort logic
-  const filteredNews = useMemo(() => {
-    let result = [...initialNews];
+  // Fetch when filters change
+  useEffect(() => {
+    const fetchFilteredNews = async () => {
+      setIsLoading(true);
+      try {
+        let url = `/api/news?page=1&limit=12`;
+        if (activeCategory !== 'All News' && activeCategory !== 'Favorites') url += `&category=${encodeURIComponent(activeCategory)}`;
+        if (searchQuery.trim()) url += `&search=${encodeURIComponent(searchQuery.trim())}`;
+        if (sortOrder !== 'Latest') url += `&sort=${encodeURIComponent(sortOrder)}`;
 
-    // Category filter
-    if (activeCategory === 'Favorites') {
-      result = result.filter(n => savedNews.includes(n._id));
-    } else if (activeCategory !== 'All News') {
-      result = result.filter(n => n.category === activeCategory);
+        // If Favorites, and we have saved news, we ideally should fetch them specifically.
+        // For now, if activeCategory === 'Favorites', we rely on client side filtering of the fetched items if backend doesn't support ?ids.
+        // But backend just returns all news if category is not passed. 
+        // A better approach for Favorites is filtering client side from initialNews, but for now we just fetch.
+
+        const res = await fetch(getEndpoint(url));
+        const data = await res.json();
+        
+        if (data.success) {
+          let results = data.data;
+          if (activeCategory === 'Favorites') {
+             // For favorites, since backend doesn't support it yet, filter locally from the results
+             results = results.filter((n: any) => savedNews.includes(n._id));
+          }
+          setNewsList(results);
+          setPage(data.pagination.page);
+          setHasMore(data.pagination.page < data.pagination.pages);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    // Debounce search
+    const timeoutId = setTimeout(() => {
+      fetchFilteredNews();
+    }, 300);
+    return () => clearTimeout(timeoutId);
+  }, [activeCategory, searchQuery, sortOrder, savedNews]);
+
+  const loadMore = async () => {
+    if (isLoading || !hasMore) return;
+    setIsLoading(true);
+    try {
+      let url = `/api/news?page=${page + 1}&limit=12`;
+      if (activeCategory !== 'All News' && activeCategory !== 'Favorites') url += `&category=${encodeURIComponent(activeCategory)}`;
+      if (searchQuery.trim()) url += `&search=${encodeURIComponent(searchQuery.trim())}`;
+      if (sortOrder !== 'Latest') url += `&sort=${encodeURIComponent(sortOrder)}`;
+
+      const res = await fetch(getEndpoint(url));
+      const data = await res.json();
+      
+      if (data.success) {
+        let results = data.data;
+        if (activeCategory === 'Favorites') {
+           results = results.filter((n: any) => savedNews.includes(n._id));
+        }
+        setNewsList(prev => [...prev, ...results]);
+        setPage(data.pagination.page);
+        setHasMore(data.pagination.page < data.pagination.pages);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsLoading(false);
     }
+  };
 
-    // Search filter
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
-      result = result.filter(n => 
-        n.title?.toLowerCase().includes(q) || 
-        n.summary?.toLowerCase().includes(q)
-      );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting && hasMore && !isLoading) {
+          loadMore();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
     }
+    
+    return () => observer.disconnect();
+  }, [hasMore, isLoading, page, activeCategory, searchQuery, sortOrder, savedNews]);
 
-    // Sort order
-    if (sortOrder === 'Latest') {
-      result.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-    } else if (sortOrder === 'Popular') {
-      // Temporary popular sort (older first for variety)
-      result.sort((a, b) => new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime());
-    }
-
-    return result;
-  }, [initialNews, activeCategory, searchQuery, sortOrder, savedNews]);
-
-  const breakingNews = initialNews.find(n => n.isBreaking) || initialNews[0];
-  const regularNews = filteredNews.filter(n => n._id !== breakingNews?._id);
+  const breakingNews = newsList.find(n => n.isBreaking) || newsList[0];
+  const regularNews = newsList.filter(n => n._id !== breakingNews?._id);
   
   // Get counts for sidebar
   const getCategoryCount = (cat: string) => {
@@ -282,8 +344,8 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {regularNews.slice(0, visibleCount).map((news: any, idx: number) => (
-                  <Link href={`/news/${news.slug}`} key={idx} className="bg-white rounded-2xl border border-[#E5E7EB] overflow-hidden group hover:border-[#4F46E5]/30 hover:shadow-md transition-all flex flex-col">
+                {regularNews.map((news: any, idx: number) => (
+                  <Link href={`/news/${news.slug}`} key={news._id || idx} className="bg-white rounded-2xl border border-[#E5E7EB] overflow-hidden group hover:border-[#4F46E5]/30 hover:shadow-md transition-all flex flex-col">
                     <div className="aspect-[16/9] relative bg-gray-100 overflow-hidden">
                       <Image src={news.heroImage} fill alt={news.title} className="object-cover group-hover:scale-105 transition-transform duration-500" unoptimized />
                       <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-md text-[10px] font-bold text-[#4F46E5] uppercase tracking-wide">
@@ -316,16 +378,13 @@ export default function NewsClient({ initialNews }: { initialNews: any[] }) {
               </div>
             )}
             
-            {visibleCount < regularNews.length && (
-              <div className="mt-12 flex justify-center">
-                <button 
-                  onClick={() => setVisibleCount(prev => prev + 10)}
-                  className="border border-gray-300 text-[#4B5563] font-bold text-sm px-6 py-3 rounded-full hover:border-[#4F46E5] hover:text-[#4F46E5] transition-colors"
-                >
-                  Load More News ↓
-                </button>
+            {isLoading && (
+              <div className="flex justify-center mt-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#4F46E5]"></div>
               </div>
             )}
+            
+            <div ref={observerTarget} className="h-10 mt-8" />
           </div>
 
           {/* Right Sidebar */}

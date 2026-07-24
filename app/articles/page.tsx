@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 async function getArticles() {
   try {
-    const res = await fetch(getEndpoint('/api/articles?limit=100'), {
+    const res = await fetch(getEndpoint('/api/articles?limit=12'), {
       next: { revalidate: 3600 } // Revalidate every hour
     });
     if (!res.ok) return { data: [], pagination: {} };
@@ -54,7 +54,7 @@ export default async function ArticlesDirectoryPage() {
           }
         ])}}
       />
-      <ArticlesClient initialArticles={allArticles} />
+      <ArticlesClient initialArticles={allArticles} initialPagination={articlesResponse.pagination} />
     </>
   );
 }

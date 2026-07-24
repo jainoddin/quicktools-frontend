@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 async function getNews() {
   try {
-    const res = await fetch(getEndpoint('/api/news?limit=100'), {
+    const res = await fetch(getEndpoint('/api/news?limit=12'), {
       next: { revalidate: 300 } // Revalidate every 5 minutes for news
     });
     if (!res.ok) return { data: [], pagination: {} };
@@ -54,7 +54,7 @@ export default async function NewsDirectoryPage() {
           }
         ])}}
       />
-      <NewsClient initialNews={allNews} />
+      <NewsClient initialNews={allNews} initialPagination={newsResponse.pagination} />
     </>
   );
 }
