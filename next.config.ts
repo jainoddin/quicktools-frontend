@@ -63,6 +63,11 @@ const nextConfig: NextConfig = {
         destination: '/blog/unlock-growth-essential-ai-tools-for-small-businesses-in-2026',
         permanent: true,
       },
+      {
+        source: '/blog/mastering-the-ai-logo-generator-the-ultimate-guide-to-instant-branding-in-2025',
+        destination: '/blog/mastering-the-ai-logo-generator-the-ultimate-guide-to-instant-branding-in-2026',
+        permanent: true,
+      },
       // Redirect NVIDIA Rubin duplicate to the main article
       {
         source: '/news/nvidia-unveils-rubin-the-next-generation-ai-chip-powering-the-future',
