@@ -100,7 +100,7 @@ export default function Footer() {
               <p className="text-xs text-[#6B7280] mb-4">Get the latest updates, new tools, tips, and offers.</p>
               <NewsletterForm
                 className="flex flex-col gap-2"
-                inputClassName="w-full px-4 py-2.5 rounded-lg border border-[#E5E7EB] text-sm focus:outline-none focus:ring-1 transition-all bg-[#F8FAFC]"
+                inputClassName="w-full px-4 py-2.5 rounded-lg border border-[#E5E7EB] text-[#111827] placeholder-gray-400 text-sm focus:outline-none focus:ring-1 transition-all bg-[#F8FAFC]"
                 inputStyle={{ '--tw-ring-color': themeColor, borderColor: themeColor } as any}
                 buttonClassName="text-white font-semibold py-2.5 rounded-lg text-sm shadow-sm w-full"
                 buttonStyle={{ backgroundColor: themeColor }}
