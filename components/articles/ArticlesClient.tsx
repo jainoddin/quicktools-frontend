@@ -15,7 +15,7 @@ import { trackFavorite } from '@/lib/analytics';
 const CATEGORIES = ['All Articles', 'AI & Tools', 'Productivity', 'Marketing', 'Business', 'Development', 'Design'];
 const TABS = ['All', 'Latest', 'Popular', 'Trending', 'Favorites'];
 
-export default function ArticlesClient({ initialArticles = [], initialPagination }: { initialArticles?: any[], initialPagination?: any }) {
+export default function ArticlesClient({ initialArticles = [], initialPagination, initialCategoryCounts }: { initialArticles?: any[], initialPagination?: any, initialCategoryCounts?: Record<string, number> }) {
   const { error, success } = useToast();
   const router = useRouter();
   const { user, isAuthenticated } = useAuth();
@@ -156,7 +156,7 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
     const vb = parseInt((b.views || '0').replace(/[^0-9]/g, ''));
     return vb - va;
   }).slice(0, 4);
-  const gridArticles = filtered.filter(a => featuredArticle ? a._id !== featuredArticle._id : true);
+  const gridArticles = articles.filter(a => featuredArticle ? a._id !== featuredArticle._id : true);
 
   return (
     <div className="flex-grow bg-white text-[#111827] font-sans selection:bg-[#4F46E5] selection:text-white pb-20">
@@ -355,12 +355,12 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
 
         {/* Results count */}
         <p className="text-sm text-[#6B7280] mb-6">
-          {loading ? 'Loading...' : `${gridArticles.length} article${gridArticles.length !== 1 ? 's' : ''} found${activeCategory !== 'All Articles' ? ` in "${activeCategory}"` : ''}`}
+          {loading ? 'Loading...' : `${initialCategoryCounts ? (initialCategoryCounts[activeCategory] || 0) : gridArticles.length} article${(initialCategoryCounts ? (initialCategoryCounts[activeCategory] || 0) : gridArticles.length) !== 1 ? 's' : ''} found${activeCategory !== 'All Articles' ? ` in "${activeCategory}"` : ''}`}
         </p>
       </section>
 
       {/* 5. Articles Grid — Real API data */}
-      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-20" style={{ overflowAnchor: 'none' }}>
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {Array.from({ length: 8 }).map((_, i) => (
@@ -422,6 +422,31 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
             ))}
           </div>
         )}
+        
+        {loading && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-12 mb-8">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div key={`shimmer-${i}`} className="flex flex-col group h-full animate-pulse">
+                <div className="relative w-full aspect-[4/3] rounded-2xl bg-gray-200 mb-4 shadow-sm border border-[#F3F4F6]"></div>
+                <div className="flex flex-col flex-grow">
+                  <div className="h-5 bg-gray-200 rounded w-3/4 mb-2"></div>
+                  <div className="h-4 bg-gray-200 rounded w-full mb-4"></div>
+                  <div className="h-4 bg-gray-200 rounded w-5/6 mb-4"></div>
+                  <div className="mt-auto pt-4 border-t border-[#F3F4F6] flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 bg-gray-200 rounded-full"></div>
+                      <div>
+                        <div className="h-3 bg-gray-200 rounded w-16 mb-1"></div>
+                        <div className="h-2 bg-gray-200 rounded w-12"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        <div ref={observerTarget} className="h-10 mt-8" />
       </section>
 
       {/* 6. Newsletter */}

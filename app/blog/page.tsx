@@ -82,7 +82,7 @@ export default async function BlogPage() {
         />
 
         {/* Client Component */}
-        <BlogClient initialBlogs={allBlogs} initialPagination={blogsResponse.pagination} />
+        <BlogClient initialBlogs={allBlogs} initialPagination={blogsResponse.pagination} initialCategoryCounts={blogsResponse.categoryCounts} />
 
       </div>
     </div>

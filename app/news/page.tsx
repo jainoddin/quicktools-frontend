@@ -54,7 +54,7 @@ export default async function NewsDirectoryPage() {
           }
         ])}}
       />
-      <NewsClient initialNews={allNews} initialPagination={newsResponse.pagination} />
+      <NewsClient initialNews={allNews} initialPagination={newsResponse.pagination} initialCategoryCounts={newsResponse.categoryCounts} />
     </>
   );
 }

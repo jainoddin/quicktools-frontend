@@ -54,7 +54,7 @@ export default async function ArticlesDirectoryPage() {
           }
         ])}}
       />
-      <ArticlesClient initialArticles={allArticles} initialPagination={articlesResponse.pagination} />
+      <ArticlesClient initialArticles={allArticles} initialPagination={articlesResponse.pagination} initialCategoryCounts={articlesResponse.categoryCounts} />
     </>
   );
 }

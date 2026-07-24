@@ -37,7 +37,7 @@ const CATEGORY_ICONS: Record<string, React.ReactNode> = {
   'News & Updates': <Newspaper className="w-4 h-4" />
 };
 
-export default function BlogClient({ initialBlogs = [], initialPagination }: { initialBlogs?: Blog[], initialPagination?: any }) {
+export default function BlogClient({ initialBlogs = [], initialPagination, initialCategoryCounts }: { initialBlogs?: Blog[], initialPagination?: any, initialCategoryCounts?: Record<string, number> }) {
   const { error, success } = useToast();
   const router = useRouter();
   const { user, isAuthenticated } = useAuth();
@@ -98,10 +98,14 @@ export default function BlogClient({ initialBlogs = [], initialPagination }: { i
 
   // 1. Dynamic Categories
   const categories = useMemo(() => {
-    const counts: Record<string, number> = { 'All Blogs': blogs.length };
-    blogs.forEach(b => {
-      counts[b.category] = (counts[b.category] || 0) + 1;
-    });
+    // If backend provided category counts, use them; otherwise fallback to counting current blogs
+    const counts: Record<string, number> = initialCategoryCounts || { 'All Blogs': blogs.length };
+    
+    if (!initialCategoryCounts) {
+      blogs.forEach(b => {
+        counts[b.category] = (counts[b.category] || 0) + 1;
+      });
+    }
 
     const catNames = ['All Blogs', 'AI & Tools', 'Productivity', 'Development', 'Design', 'Marketing', 'Business', 'Tutorials', 'News & Updates'];
     return catNames.map(name => ({
@@ -109,7 +113,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination }: { i
       icon: CATEGORY_ICONS[name] || <Sparkles className="w-4 h-4" />,
       count: counts[name] || 0
     })).filter(cat => cat.count > 0 || cat.name === 'All Blogs');
-  }, [blogs]);
+  }, [blogs, initialCategoryCounts]);
 
   // 2. Dynamic Tags
   const popularTags = useMemo(() => {
@@ -187,6 +191,17 @@ export default function BlogClient({ initialBlogs = [], initialPagination }: { i
         setBlogs(prev => [...prev, ...results]);
         setPage(data.pagination.page);
         setHasMore(data.pagination.page < data.pagination.pages);
+        
+        // Scroll to the first new item
+        setTimeout(() => {
+          if (results.length > 0) {
+            const firstNewItem = document.getElementById(`blog-${results[0]._id}`);
+            if (firstNewItem) {
+              const y = firstNewItem.getBoundingClientRect().top + window.scrollY - 120;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }
+        }, 100);
       }
     } catch (err) {
       console.error(err);
@@ -195,22 +210,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination }: { i
     }
   };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        if (entries[0].isIntersecting && hasMore && !loading) {
-          loadMore();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    
-    if (observerTarget.current) {
-      observer.observe(observerTarget.current);
-    }
-    
-    return () => observer.disconnect();
-  }, [hasMore, loading, page, activeCategory, searchQuery, sortBy, activeTab, savedBlogs]);
+  // Infinite scroll observer removed in favor of Load More button
 
   // 4. Featured Post (always the first post from the total blogs)
   const featuredPost = blogs.length > 0 ? blogs[0] : undefined;
@@ -308,7 +308,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination }: { i
       </aside>
 
       {/* Main Content */}
-      <main className="flex-grow min-w-0">
+      <main className="flex-grow min-w-0" style={{ overflowAnchor: 'none' }}>
         
         {/* Mobile Categories Toggle */}
         <div className="mb-4 lg:hidden">
@@ -461,7 +461,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination }: { i
                 </div>
               ) : (
                 listBlogs.map((post) => (
-                  <Link href={`/blog/${post.slug}`} key={post._id} className="block bg-white border border-[#E5E7EB] rounded-2xl p-4 flex flex-col sm:flex-row gap-5 hover:border-[#6D5EF8] hover:shadow-md transition-all group cursor-pointer">
+                  <Link href={`/blog/${post.slug}`} id={`blog-${post._id}`} key={post._id} className="block bg-white border border-[#E5E7EB] rounded-2xl p-4 flex flex-col sm:flex-row gap-5 hover:border-[#6D5EF8] hover:shadow-md transition-all group cursor-pointer">
                     
                     {/* Thumbnail */}
                     <div className={`w-full sm:w-48 h-48 sm:h-auto rounded-xl shrink-0 overflow-hidden relative`}>
@@ -507,11 +507,39 @@ export default function BlogClient({ initialBlogs = [], initialPagination }: { i
             </div>
 
             {loading && (
-              <div className="flex justify-center mt-8">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#4F46E5]"></div>
+              <div className="space-y-4 mt-8">
+                {Array.from({ length: 2 }).map((_, i) => (
+                  <div key={`shimmer-${i}`} className="bg-white border border-[#E5E7EB] rounded-2xl p-4 flex flex-col sm:flex-row gap-5 animate-pulse">
+                    <div className="w-full sm:w-48 h-48 sm:h-auto rounded-xl bg-gray-200 shrink-0"></div>
+                    <div className="flex-grow flex flex-col py-1">
+                      <div className="w-16 h-4 bg-gray-200 rounded mb-2"></div>
+                      <div className="w-3/4 h-6 bg-gray-200 rounded mb-4"></div>
+                      <div className="w-full h-4 bg-gray-200 rounded mb-2"></div>
+                      <div className="w-5/6 h-4 bg-gray-200 rounded mb-4"></div>
+                      <div className="mt-auto flex gap-3">
+                        <div className="w-6 h-6 bg-gray-200 rounded-full"></div>
+                        <div className="w-32 h-4 bg-gray-200 rounded"></div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
-            <div ref={observerTarget} className="h-10 mt-8" />
+            {!loading && hasMore && (
+              <div className="flex justify-center mt-10 mb-4">
+                <button 
+                  onClick={loadMore}
+                  className="group relative px-8 py-3.5 bg-white border-2 border-[#E5E7EB] rounded-xl font-bold text-[#4B5563] hover:text-[#4F46E5] hover:border-[#4F46E5] transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    Load More Blogs
+                    <ChevronDown className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" />
+                  </span>
+                  <div className="absolute inset-0 bg-[#F5F3FF] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                </button>
+              </div>
+            )}
+            {/* observerTarget removed */}
           </>
         )}
 
