@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     default: "QuickTools.ai | Best Affordable AI Tools for Indian Freelancers & Students",
     template: "%s | QuickTools.ai"
   },
-  description: "Replace 10 expensive subscriptions with QuickTools.ai. Generate resumes, business plans, marketing copy, and stunning AI images—all in one affordable platform for Indian creators and students.",
+  description: "Replace 10 expensive subscriptions with QuickTools.ai. Generate resumes, business plans, marketing copy & AI images—all in one platform.",
   authors: [{ name: "QuickTools.ai Team", url: "https://quicktool.space/about" }],
   creator: "QuickTools.ai",
   publisher: "QuickTools.ai",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://quicktool.space",
     title: "QuickTools.ai | Best Affordable AI Tools for Indian Freelancers & Students",
-    description: "Replace 10 expensive subscriptions with QuickTools.ai. Generate resumes, business plans, marketing copy, and stunning AI images—all in one affordable platform for Indian creators and students.",
+    description: "Replace 10 expensive subscriptions with QuickTools.ai. Generate resumes, business plans, marketing copy & AI images—all in one platform.",
     siteName: "QuickTools.ai",
     images: [
       {
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "QuickTools.ai | Best Affordable AI Tools for Indian Freelancers & Students",
-    description: "Replace 10 expensive subscriptions with QuickTools.ai. Generate resumes, business plans, marketing copy, and stunning AI images—all in one affordable platform for Indian creators and students.",
+    description: "Replace 10 expensive subscriptions with QuickTools.ai. Generate resumes, business plans, marketing copy & AI images—all in one platform.",
     creator: "@quicktoolsai",
     images: ["https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png"],
   },
