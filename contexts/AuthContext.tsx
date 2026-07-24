@@ -17,6 +17,9 @@ interface User {
   savedBlogs?: string[];
   savedArticles?: string[];
   savedNews?: string[];
+  createdAt?: string;
+  freeGenerationsCount?: number;
+  lastGenerationDate?: string;
 }
 
 interface AuthContextType {
@@ -135,8 +138,31 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const updateUser = (newUser: User | null) => {
+    setUser(newUser);
+    if (newUser) {
+      // Background sync to ensure counts are accurate after generation
+      fetch(getEndpoint('/api/auth/me'), { credentials: 'include' })
+        .then(res => res.json())
+        .then(data => {
+          if (data.authenticated) {
+            setUser(data.user);
+            const newUserData = JSON.stringify({
+              id: data.user.id || data.user._id,
+              name: data.user.name,
+              email: data.user.email,
+              avatar: data.user.avatar,
+              bio: data.user.bio || '',
+              plan: data.user.plan || 'Free'
+            });
+            document.cookie = `user_data=${encodeURIComponent(newUserData)}; path=/; max-age=${7 * 24 * 60 * 60}`;
+          }
+        }).catch(() => {});
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, isLoading, logout, updateUser: setUser }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, isLoading, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

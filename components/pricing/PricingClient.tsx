@@ -9,24 +9,44 @@ import { trackBeginCheckout, trackBillingPeriodToggle } from '@/lib/analytics';
 
 const plans = [
   {
-    id: 'starter',
-    name: 'Starter',
+    id: 'free',
+    name: 'Free Starter',
     icon: Gift,
-    description: 'Perfect for getting started',
+    description: 'Try QuickTools completely free',
+    originalPrice: 0,
+    monthlyPrice: 0,
+    yearlyPrice: 0,
+    features: [
+      { name: '3 Free Generations / day', included: true },
+      { name: 'Standard Tools Access', included: true },
+      { name: 'Basic AI Background Remover', included: true },
+      { name: 'HD Image Generation', included: false },
+      { name: 'Priority Support', included: false },
+      { name: 'API Access', included: false },
+    ],
+    buttonText: 'Start for Free',
+    popular: false,
+    color: 'blue'
+  },
+  {
+    id: 'starter',
+    name: 'Pro Monthly',
+    icon: Zap,
+    description: 'Perfect for regular users',
     originalPrice: 10,
     monthlyPrice: 3.60,
     yearlyPrice: 43.20,
     features: [
       { name: '500 Credits / month', included: true },
-      { name: 'Standard Image Generation', included: true },
-      { name: 'AI Background Remover', included: true },
-      { name: 'AI Text Summarizer', included: true },
-      { name: 'AI Code Writer', included: true },
-      { name: 'HD Image Generation', included: false },
+      { name: 'HD Image Generation', included: true },
+      { name: 'All Premium Tools Access', included: true },
+      { name: 'Faster Processing', included: true },
+      { name: 'Standard Support', included: true },
+      { name: 'API Access', included: false },
     ],
-    buttonText: 'Get Starter',
+    buttonText: 'Get Pro Monthly',
     popular: false,
-    color: 'blue'
+    color: 'purple'
   },
   {
     id: 'pro',
@@ -71,14 +91,14 @@ const plans = [
 ];
 
 const compareFeatures = [
-  { name: 'Access Limit', starter: '100 / month', pro: 'Unlimited', business: 'Unlimited' },
-  { name: 'HD Image Generation', starter: false, pro: true, business: true },
-  { name: 'AI Background Remover', starter: true, pro: true, business: true },
-  { name: 'AI Text Summarizer', starter: true, pro: true, business: true },
-  { name: 'AI Code Writer', starter: true, pro: true, business: true },
-  { name: 'API Access', starter: false, pro: false, business: true },
-  { name: 'Team Management', starter: false, pro: false, business: true },
-  { name: 'Support', starter: 'Community', pro: 'Priority Email', business: 'Dedicated Account Manager' },
+  { name: 'Access Limit', free: '3 Generations / day', starter: '100 / month', pro: 'Unlimited', business: 'Unlimited' },
+  { name: 'HD Image Generation', free: false, starter: false, pro: true, business: true },
+  { name: 'AI Background Remover', free: 'Basic', starter: true, pro: true, business: true },
+  { name: 'AI Text Summarizer', free: true, starter: true, pro: true, business: true },
+  { name: 'AI Code Writer', free: true, starter: true, pro: true, business: true },
+  { name: 'API Access', free: false, starter: false, pro: false, business: true },
+  { name: 'Team Management', free: false, starter: false, pro: false, business: true },
+  { name: 'Support', free: 'None', starter: 'Community', pro: 'Priority Email', business: 'Dedicated Account Manager' },
 ];
 
 const faqs = [
@@ -239,10 +259,11 @@ export default function PricingClient() {
               <thead>
                 <tr className="bg-[#F9FAFB] border-b border-[#E5E7EB]">
                   <th className="px-6 py-4 text-left text-sm font-bold text-[#111827]">Features</th>
-                  <th className="px-6 py-4 text-center text-sm font-bold text-[#6D5EF8]">Starter</th>
+                  <th className="px-6 py-4 text-center text-sm font-bold text-gray-500">Free Starter</th>
+                  <th className="px-6 py-4 text-center text-sm font-bold text-[#6D5EF8]">Pro Monthly</th>
                   <th className="px-6 py-4 text-center text-sm font-bold text-[#F59E0B]">
                     <div className="flex items-center justify-center gap-1">
-                      Pro <Crown className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]" />
+                      Pro Yearly <Crown className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]" />
                     </div>
                   </th>
                   <th className="px-6 py-4 text-center text-sm font-bold text-[#111827]">Business</th>
@@ -253,6 +274,14 @@ export default function PricingClient() {
                   <tr key={i} className="hover:bg-[#F9FAFB]/50 transition-colors">
                     <td className="px-6 py-4 text-sm font-medium text-[#374151]">{row.name}</td>
                     
+                    <td className="px-6 py-4 text-center">
+                      {typeof row.free === 'boolean' ? (
+                        row.free ? <CheckCircle2 className="w-5 h-5 mx-auto text-white fill-[#6D5EF8]" /> : <X className="w-4 h-4 mx-auto text-[#D1D5DB]" />
+                      ) : (
+                        <span className="text-sm font-medium text-[#374151]">{row.free}</span>
+                      )}
+                    </td>
+
                     <td className="px-6 py-4 text-center">
                       {typeof row.starter === 'boolean' ? (
                         row.starter ? <CheckCircle2 className="w-5 h-5 mx-auto text-white fill-[#6D5EF8]" /> : <X className="w-4 h-4 mx-auto text-[#D1D5DB]" />

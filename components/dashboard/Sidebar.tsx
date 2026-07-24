@@ -54,7 +54,7 @@ export default function Sidebar() {
               </Link>
             );
           })}
-          
+
           {user?.email === 'skjainoddin39854@gmail.com' && (
             <Link href="/admin/users" className={`flex items-center gap-3 px-3 py-2.5 mt-1 rounded-xl font-medium transition-all ${pathname.startsWith('/admin') ? 'bg-fuchsia-50 text-fuchsia-700 font-semibold' : 'text-fuchsia-600 hover:bg-fuchsia-50 hover:text-fuchsia-800'}`}>
               <ShieldCheck className={`w-5 h-5 ${pathname.startsWith('/admin') ? 'text-fuchsia-700' : 'text-fuchsia-600'}`} />

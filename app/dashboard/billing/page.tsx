@@ -4,14 +4,25 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import {
-  CheckCircle2, CreditCard, Receipt, History, Zap, AlertTriangle, X, Loader2
+  CheckCircle2, CreditCard, Receipt, History, Zap, AlertTriangle, X, Loader2, Gift
 } from 'lucide-react';
 import { getEndpoint } from '../../../lib/api';
 import { trackCancelPlan } from '@/lib/analytics';
+import { useAuth } from '../../../contexts/AuthContext';
 
 export default function BillingOverviewPage() {
+  const isSameDay = (d1: string | Date | undefined | null, d2: Date) => {
+    if (!d1 || !d2) return false;
+    const dt1 = new Date(d1);
+    const dt2 = new Date(d2);
+    return dt1.getUTCFullYear() === dt2.getUTCFullYear() && 
+           dt1.getUTCMonth() === dt2.getUTCMonth() && 
+           dt1.getUTCDate() === dt2.getUTCDate();
+  };
+
   const router = useRouter();
-  const [usage, setUsage] = useState({ credits: 0, creditsUsedThisPeriod: 0, maxCredits: 15, plan: 'free' });
+  const { user } = useAuth();
+  const [usage, setUsage] = useState({ credits: 0, creditsUsedThisPeriod: 0, maxCredits: 15, plan: 'free', freeGenerationsCount: 0, lastGenerationDate: null });
   const [loading, setLoading] = useState(true);
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [cancelling, setCancelling] = useState(false);
@@ -28,7 +39,9 @@ export default function BillingOverviewPage() {
             credits: apiUsage.credits || 0,
             creditsUsedThisPeriod: apiUsage.creditsUsedThisPeriod || 0,
             maxCredits: apiUsage.maxCredits || 15,
-            plan: apiUsage.plan || 'free'
+            plan: apiUsage.plan || 'free',
+            freeGenerationsCount: apiUsage.freeGenerationsCount || 0,
+            lastGenerationDate: apiUsage.lastGenerationDate
           });
         }
         setLoading(false);
@@ -75,6 +88,14 @@ export default function BillingOverviewPage() {
     }
   };
 
+  const [isTrialActive, setIsTrialActive] = useState(false);
+  useEffect(() => {
+    if (user?.createdAt) {
+      const active = (Date.now() - new Date(user.createdAt).getTime()) <= (3 * 24 * 60 * 60 * 1000);
+      setIsTrialActive(active);
+    }
+  }, [user]);
+
   return (
     <DashboardLayout>
       <div className="mb-8">
@@ -86,6 +107,23 @@ export default function BillingOverviewPage() {
         </div>
       </div>
 
+      {isTrialActive && (
+        <div className="mb-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+          <div className="relative z-10">
+            <h2 className="text-xl font-bold mb-2">🚀 Your 3-Day Free Trial is Active!</h2>
+            <p className="text-blue-100 mb-4 max-w-2xl">
+              You can test out our premium tools without spending your credits. You have a daily limit of 5 free premium generations.
+            </p>
+            <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/10">
+              <span className="font-semibold">{(isSameDay(usage.lastGenerationDate, new Date()) ? usage.freeGenerationsCount : 0)} / 5</span>
+              <span className="text-sm text-blue-50">Free generations used today</span>
+            </div>
+          </div>
+          <div className="absolute right-0 top-0 w-64 h-full bg-white/10 skew-x-12 translate-x-16"></div>
+          <div className="absolute right-12 bottom-0 w-32 h-32 bg-blue-400/30 blur-2xl rounded-full"></div>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         {/* Current Plan Card */}
         <div className="bg-white border border-[#E5E7EB] rounded-[24px] p-6 lg:p-8 flex flex-col shadow-sm">
@@ -95,12 +133,12 @@ export default function BillingOverviewPage() {
                 ? 'text-[#D97706] bg-[#FFFBEB] border border-[#F59E0B]/20'
                 : 'text-[#6D5EF8] bg-[#EEF2FF]'
               }`}>
-              {usage.plan} Plan
+              {isTrialActive ? 'Free Trial Plan' : `${usage.plan} Plan`}
             </span>
           </div>
 
           <div className="mb-8 flex-grow">
-            <h3 className="text-3xl font-extrabold text-[#111827] mb-2 capitalize">{usage.plan}</h3>
+            <h3 className="text-3xl font-extrabold text-[#111827] mb-2 capitalize">{isTrialActive ? 'Free Trial' : usage.plan}</h3>
             <p className="text-sm text-[#6B7280] mb-6">
               {isPro
                 ? 'Premium tools for professionals and creators.'
@@ -109,7 +147,7 @@ export default function BillingOverviewPage() {
 
             <div className="space-y-3">
               {[
-                isPro ? '10,000 credits every month' : 'Free credits every month',
+                isPro ? 'Premium credits' : 'Free credits',
                 isPro ? 'HD & Original image quality' : 'Standard processing',
                 isPro ? 'Priority support' : 'Community support',
                 'Access to all tools'
@@ -150,8 +188,24 @@ export default function BillingOverviewPage() {
           </div>
 
           {loading ? (
-            <div className="flex items-center justify-center flex-grow">
+            <div className="flex items-center justify-center flex-grow py-10">
               <div className="w-8 h-8 border-4 border-[#6D5EF8]/30 border-t-[#6D5EF8] rounded-full animate-spin"></div>
+            </div>
+          ) : usage.plan === 'free' ? (
+            <div className="flex flex-col items-center justify-center text-center space-y-4 py-8 flex-grow">
+              <div className="w-16 h-16 bg-[#EEF2FF] text-[#6D5EF8] rounded-full flex items-center justify-center mb-2">
+                <Gift className="w-8 h-8" />
+              </div>
+              <div>
+                <h3 className="font-bold text-[#111827] text-xl">
+                  {isTrialActive ? 'Free Trial Plan' : 'Free Plan'}
+                </h3>
+                <p className="text-sm text-[#6B7280] mt-1 max-w-sm mx-auto">
+                  {isTrialActive 
+                    ? 'Enjoy 5 free premium generations daily!' 
+                    : 'Upgrade to a premium plan to unlock credits and advanced features.'}
+                </p>
+              </div>
             </div>
           ) : (
             <div className="flex flex-col sm:flex-row items-center gap-8 mb-8 flex-grow">

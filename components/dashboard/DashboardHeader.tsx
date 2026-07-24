@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Search, Gift, Bell, ChevronDown, ZapIcon, Coins } from 'lucide-react';
+import { Search, Gift, Bell, ChevronDown, ZapIcon, Coins, Crown } from 'lucide-react';
 import { getEndpoint } from '../../lib/api';
 import Link from 'next/link';
 
@@ -18,7 +18,7 @@ export default function DashboardHeader({ user, onMenuClick }: { user: any, onMe
   };
 
   return (
-    <header className="h-16 border-b border-[#E5E7EB] bg-white z-40">
+    <header className="sticky top-0 h-16 shrink-0 border-b border-[#E5E7EB] bg-white z-50 w-full">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
 
         {/* Left: Logo & Mobile Menu */}
@@ -50,18 +50,43 @@ export default function DashboardHeader({ user, onMenuClick }: { user: any, onMe
             placeholder="Search tools..."
             className="w-full h-9 pl-9 pr-10 bg-[#F9FAFB] border-none rounded-lg text-sm outline-none focus:ring-2 focus:ring-[#6D5EF8]/20 transition-all placeholder:text-[#9CA3AF] text-[#111827]"
           />
-          <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-[#9CA3AF] hover:text-[#6D5EF8] transition-colors rounded-md hover:bg-indigo-50">
-            <Search className="w-3.5 h-3.5" />
-          </button>
         </form>
 
         {/* Right: Actions & Profile */}
         <div className="flex items-center gap-4 md:gap-6 ml-auto">
           {user && (
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#FEF3C7] text-[#D97706] rounded-xl text-sm font-bold border border-[#FDE68A] shadow-sm">
-              <Coins className="w-4 h-4" />
-              {user.credits || 0}
-            </div>
+            (() => {
+              const now = new Date();
+              const accountAgeDays = user.createdAt ? (now.getTime() - new Date(user.createdAt).getTime()) / (1000 * 3600 * 24) : 999;
+              const isTrialActive = accountAgeDays <= 3;
+
+              const isSameDay = (d1: string | Date | undefined, d2: Date) => {
+                if (!d1 || !d2) return false;
+                const dt1 = new Date(d1);
+                const dt2 = new Date(d2);
+                return dt1.getUTCFullYear() === dt2.getUTCFullYear() &&
+                  dt1.getUTCMonth() === dt2.getUTCMonth() &&
+                  dt1.getUTCDate() === dt2.getUTCDate();
+              };
+
+              const freeGensUsedToday = isSameDay(user.lastGenerationDate, now) ? (user.freeGenerationsCount || 0) : 0;
+
+              if (isTrialActive && freeGensUsedToday < 5) {
+                return (
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#ECFDF5] text-[#059669] rounded-xl text-sm font-bold border border-[#A7F3D0] shadow-sm">
+                    <Crown className="w-4 h-4 fill-[#059669]" />
+                    {freeGensUsedToday} / 5 Free
+                  </div>
+                );
+              } else {
+                return (
+                  <Link href="/dashboard/billing" className="flex items-center gap-1.5 px-3 py-1.5 bg-[#FEF3C7] text-[#D97706] rounded-xl text-sm font-bold border border-[#FDE68A] shadow-sm hover:bg-[#FDE68A]/80 transition-colors">
+                    <Coins className="w-4 h-4" />
+                    {user.credits || 0}
+                  </Link>
+                );
+              }
+            })()
           )}
           <div className="h-6 w-[1px] bg-[#E5E7EB] mx-1 hidden sm:block"></div>
 

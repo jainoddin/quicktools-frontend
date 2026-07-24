@@ -269,7 +269,7 @@ export default async function AboutPage() {
           <div className="lg:col-span-1">
             <div className="bg-[#6D5EF8] rounded-2xl p-6 text-white h-full flex flex-col relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
-              <h2 className="text-2xl font-black mb-2 relative z-10">Join Millions of Happy Users</h2>
+              <h2 className="text-2xl font-black mb-2 relative z-10">Join {formatNumber(backendStats.users)} Happy Users</h2>
               <p className="text-white/80 text-sm leading-relaxed mb-6 relative z-10">
                 Start using our AI tools today and experience the future of productivity.
               </p>
@@ -277,7 +277,7 @@ export default async function AboutPage() {
                 <Zap className="w-4 h-4 fill-[#6D5EF8]" /> Sign Up for Free
               </button>
               <ul className="space-y-2 mb-6 relative z-10">
-                {['Free to get started', 'No credit card required', 'Access to 100+ AI tools'].map((item) => (
+                {['Free to get started', 'No credit card required', `Access to ${backendStats.tools}+ AI tools`].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-white/90">
                     <Check className="w-4 h-4 text-white shrink-0" /> {item}
                   </li>
@@ -290,9 +290,9 @@ export default async function AboutPage() {
                     <Image key={img} src={`https://i.pravatar.cc/150?img=${img}`} width={28} height={28}
                       alt="User" className="w-7 h-7 rounded-full border-2 border-[#6D5EF8] object-cover" />
                   ))}
-                  <div className="w-7 h-7 rounded-full border-2 border-[#6D5EF8] bg-white/20 flex items-center justify-center text-[9px] font-bold text-white">+1M</div>
+                  <div className="w-7 h-7 rounded-full border-2 border-[#6D5EF8] bg-white/20 flex items-center justify-center text-[9px] font-bold text-white">{formatNumber(backendStats.users)}</div>
                 </div>
-                <p className="text-xs text-white/80 ml-1">Trusted by 1M+ users worldwide</p>
+                <p className="text-xs text-white/80 ml-1">Trusted by {formatNumber(backendStats.users)} users worldwide</p>
               </div>
             </div>
           </div>

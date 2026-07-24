@@ -58,7 +58,7 @@ const FAQS = [
     id: 7,
     category: 'General',
     question: 'How can I contact support?',
-    answer: 'You can reach out to our support team 24/7 by clicking the "Contact Support" button on the Help Center page, or by emailing us directly at helloquicktool@gmail.com. We usually respond within 24 hours.'
+    answer: 'You can reach out to our support team 24/7 by clicking the "Contact Support" button on the Help Center page, or by emailing us directly at hello@quicktool.space. We usually respond within 24 hours.'
   }
 ];
 
@@ -207,7 +207,7 @@ export default function FaqClient() {
               <Link href="/contact" className="flex-1 md:flex-none text-center bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-sm">
                 Contact Support
               </Link>
-              <a href="mailto:helloquicktool@gmail.com" className="flex-1 md:flex-none text-center bg-white border border-[#E5E7EB] hover:bg-[#F9FAFB] text-[#374151] font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-sm">
+              <a href="mailto:hello@quicktool.space" className="flex-1 md:flex-none text-center bg-white border border-[#E5E7EB] hover:bg-[#F9FAFB] text-[#374151] font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-sm">
                 Email Us
               </a>
             </div>

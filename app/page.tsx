@@ -29,118 +29,143 @@ export default function HomePage() {
 
   return (
     <div className="flex-grow bg-[#F8FAFC] text-[#111827] font-sans selection:bg-[#4F46E5] selection:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "QuickTools.ai",
+            "url": "https://quicktool.space",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://quicktool.space/tools?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          })
+        }}
+      />
 
+      {/* 2. Hero Section (WOW FACTOR - DARK/NEON) */}
+      <header className="relative w-full bg-[#0B0F19] pt-16 pb-20 lg:pt-24 lg:pb-32 overflow-hidden border-b border-indigo-500/20 shadow-[0_20px_50px_rgba(79,70,229,0.15)]">
+        {/* Background Glows */}
+        <div className="absolute top-0 right-1/4 -z-10 w-[400px] lg:w-[600px] h-[400px] lg:h-[600px] bg-[#6D5EF8]/30 rounded-full blur-[100px] opacity-60"></div>
+        <div className="absolute bottom-0 left-0 -z-10 w-[500px] lg:w-[800px] h-[500px] lg:h-[800px] bg-[#3B82F6]/20 rounded-full blur-[120px] opacity-40 translate-y-1/2"></div>
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
 
-
-      {/* 2. Hero Section */}
-      <header className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 lg:pt-12 lg:pb-20 overflow-hidden">
-        {/* Background Glow */}
-        <div className="absolute top-0 right-0 -z-10 w-[600px] lg:w-[800px] h-[600px] lg:h-[800px] bg-[#7C3AED]/20 rounded-full blur-3xl opacity-50 -translate-y-1/4"></div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="max-w-xl relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-[#4F46E5] text-xs font-semibold mb-6">
-              <Zap className="w-4 h-4" /> {allTools.length}+ AI Tools in One Place
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-bold leading-tight mb-6 tracking-tight text-gray-900">
-              All AI Tools You Need,<br />
-              All in <span className="text-[#4F46E5]">One Place</span>
-            </h1>
-            <p className="text-base sm:text-lg text-[#6B7280] mb-8 leading-relaxed">
-              QuickTools.ai offers the best collection of AI tools for content creation, image editing, code generation, voice, SEO, and more. Save time, work smarter, and boost productivity.
-            </p>
-
-            {/* Search Box */}
-            <HomeSearch />
-
-            {/* Popular Searches */}
-            <div className="flex flex-wrap items-center gap-2 mb-12 text-xs sm:text-sm">
-              <span className="text-[#6B7280] font-medium mr-1">Popular searches:</span>
-              {['Image Generator', 'ChatGPT', 'AI Writer', 'Logo Maker', 'Video Generator'].map(tag => (
-                <span key={tag} className="px-3 py-1 bg-white border border-[#E5E7EB] text-[#6B7280] rounded-full cursor-pointer hover:border-[#4F46E5] hover:text-[#4F46E5] transition-colors shadow-sm">
-                  {tag}
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="max-w-2xl relative z-10">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-400/30 text-indigo-300 text-sm font-semibold mb-8 backdrop-blur-sm shadow-[0_0_15px_rgba(79,70,229,0.3)]">
+                <Zap className="w-4 h-4 fill-indigo-400 text-indigo-400" /> 🏆 The #1 AI Business Planner for India
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-[64px] font-black leading-[1.1] mb-6 tracking-tight text-white drop-shadow-lg">
+                AI Business Plan Generator <br className="hidden lg:block"/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6D5EF8] to-[#3B82F6] animate-pulse">
+                  For Indian Startups.
                 </span>
-              ))}
-            </div>
+              </h1>
+              <p className="text-lg sm:text-xl text-gray-300 mb-10 leading-relaxed font-medium">
+                Generate investor-ready business plans, financial projections, and Udyam-compliant documents in seconds. Stop paying consultants ₹5000+ for what AI can do instantly.
+              </p>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-6 sm:gap-8 border-t border-[#E5E7EB] pt-8">
-              <div>
-                <div className="flex items-center gap-2 font-bold text-lg sm:text-xl text-gray-900"><LayoutGrid className="w-5 h-5 text-[#4F46E5]"/> {allTools.length}+</div>
-                <div className="text-xs sm:text-sm text-[#6B7280]">Total Tools</div>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 relative z-50">
+                <Link href="/tools/ai-business-plan" className="bg-gradient-to-r from-[#6D5EF8] to-[#3B82F6] hover:from-[#5B4DF5] hover:to-[#2563EB] text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-indigo-500/25 transition-all text-center">
+                  Create Free Business Plan
+                </Link>
+                <Link href="/tools" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-8 py-4 rounded-xl backdrop-blur-md transition-all text-center">
+                  Explore 100+ Free Tools
+                </Link>
               </div>
-              <div>
-                <div className="flex items-center gap-2 font-bold text-lg sm:text-xl text-gray-900"><Zap className="w-5 h-5 text-[#4F46E5]" /> {premiumToolsCount}</div>
-                <div className="text-xs sm:text-sm text-[#6B7280]">Premium Tools</div>
-              </div>
-              <div>
-                <div className="flex items-center gap-2 font-bold text-lg sm:text-xl text-gray-900"><Check className="w-5 h-5 text-[#4F46E5]" /> {freeToolsCount}</div>
-                <div className="text-xs sm:text-sm text-[#6B7280]">Free Tools</div>
-              </div>
-              <div>
-                <div className="flex items-center gap-2 font-bold text-lg sm:text-xl text-gray-900"><Star className="w-5 h-5 text-[#F59E0B] fill-[#F59E0B]" /> 5.0/5</div>
-                <div className="text-xs sm:text-sm text-[#6B7280]">User Rating</div>
-              </div>
-            </div>
-          </div>
 
-          {/* Right Robot Image & Floating Cards */}
-          <div className="relative h-[400px] lg:h-[600px] hidden md:block">
-            {/* Perfect Gradient Circle Background */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] lg:w-[550px] lg:h-[550px] bg-gradient-to-tr from-indigo-100/70 via-purple-100/60 to-blue-50/50 rounded-full z-0 pointer-events-none blur-xl"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] bg-gradient-to-br from-purple-200/50 to-indigo-200/50 rounded-full z-0 pointer-events-none blur-md"></div>
-
-            {/* User's uploaded robot image from public folder */}
-            <Image src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png" width={450} height={450} alt="AI Robot" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] lg:w-[450px] z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500" priority />
-
-            {/* Floating Card 1 - Top Left */}
-            <div className="absolute top-[12%] left-[8%] z-20 bg-white/90 backdrop-blur-md p-3 rounded-xl shadow-lg border border-white flex items-center gap-3 animate-bounce" style={{ animationDuration: '3s' }}>
-              <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600"><ImageIcon className="w-5 h-5" /></div>
-              <div>
-                <div className="text-sm font-bold text-gray-900">AI Image</div>
-                <div className="text-xs text-gray-500">Generator</div>
+              {/* Popular Searches */}
+              <div className="flex flex-wrap items-center gap-3 mt-8 text-xs sm:text-sm">
+                <span className="text-gray-400 font-medium mr-1">Trending:</span>
+                {['Pitch Deck', 'Financial Projections', 'SWOT Analysis', 'Competitor Analysis'].map(tag => (
+                  <span key={tag} className="px-4 py-1.5 bg-white/5 border border-white/10 text-gray-300 rounded-full cursor-pointer hover:bg-white/10 hover:border-indigo-500/50 hover:text-white transition-all backdrop-blur-md">
+                    {tag}
+                  </span>
+                ))}
               </div>
-            </div>
 
-            {/* Floating Card 2 - Top Right */}
-            <div className="absolute top-[12%] right-[8%] z-20 bg-white/90 backdrop-blur-md p-3 rounded-xl shadow-lg border border-white flex items-center gap-3 animate-bounce" style={{ animationDuration: '4s', animationDelay: '1s' }}>
-              <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600"><PenTool className="w-5 h-5" /></div>
-              <div>
-                <div className="text-sm font-bold text-gray-900">AI Writer</div>
-                <div className="text-xs text-gray-500">Generate Content</div>
+              {/* Stats */}
+              <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-6 sm:gap-10 border-t border-white/10 pt-10 mt-12">
+                <div>
+                  <div className="flex items-center gap-2 font-black text-2xl text-white"><LayoutGrid className="w-5 h-5 text-indigo-400"/> {allTools.length}+</div>
+                  <div className="text-sm font-medium text-gray-400 mt-1">Total Tools</div>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 font-black text-2xl text-white"><Check className="w-5 h-5 text-indigo-400" /> 3 Days</div>
+                  <div className="text-sm font-medium text-gray-400 mt-1">Free Trial</div>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 font-black text-2xl text-white"><Star className="w-5 h-5 text-[#F59E0B] fill-[#F59E0B]" /> 5.0/5</div>
+                  <div className="text-sm font-medium text-gray-400 mt-1">User Rating</div>
+                </div>
               </div>
             </div>
 
-            {/* Floating Card 3 - Middle Right */}
-            <div className="absolute top-[43%] right-[5%] z-20 bg-white/90 backdrop-blur-md p-3 rounded-xl shadow-lg border border-white flex items-center gap-3 animate-bounce" style={{ animationDuration: '3.5s', animationDelay: '0.5s' }}>
-              <div className="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center text-violet-600"><Video className="w-5 h-5" /></div>
-              <div>
-                <div className="text-sm font-bold text-gray-900">AI Video</div>
-                <div className="text-xs text-gray-500">Generator</div>
-              </div>
-            </div>
+            {/* Right Robot Image & Floating Cards (Dark Theme) */}
+            <div className="relative h-[400px] lg:h-[600px] hidden md:block">
+              {/* Glowing Rings */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] lg:w-[500px] lg:h-[500px] rounded-full border border-indigo-500/20 z-0"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] lg:w-[350px] lg:h-[350px] rounded-full border border-blue-500/30 z-0"></div>
 
-            {/* Floating Card 4 - Bottom Right */}
-            <div className="absolute bottom-[12%] right-[8%] z-20 bg-white/90 backdrop-blur-md p-3 rounded-xl shadow-lg border border-white flex items-center gap-3 animate-bounce" style={{ animationDuration: '5s', animationDelay: '1.5s' }}>
-              <div className="w-10 h-10 rounded-lg bg-pink-100 flex items-center justify-center text-pink-600"><LayoutGrid className="w-5 h-5" /></div>
-              <div>
-                <div className="text-sm font-bold text-gray-900">Background</div>
-                <div className="text-xs text-gray-500">Remover</div>
-              </div>
-            </div>
+              {/* Robot */}
+              <Image src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png" width={450} height={450} alt="AI Robot" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] lg:w-[450px] z-10 drop-shadow-[0_0_30px_rgba(79,70,229,0.5)] hover:scale-105 transition-transform duration-500" priority />
 
-            {/* Floating Card 5 - Bottom Left */}
-            <div className="absolute bottom-[12%] left-[8%] z-20 bg-white/90 backdrop-blur-md p-3 rounded-xl shadow-lg border border-white flex items-center gap-3 animate-bounce" style={{ animationDuration: '4.5s', animationDelay: '2s' }}>
-              <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600"><Code className="w-5 h-5" /></div>
-              <div>
-                <div className="text-sm font-bold text-gray-900">AI Code</div>
-                <div className="text-xs text-gray-500">Generator</div>
+              {/* Floating Card 1 */}
+              <div className="absolute top-[12%] left-[5%] z-20 bg-[#0B0F19]/80 backdrop-blur-xl p-3 rounded-2xl shadow-2xl border border-white/10 flex items-center gap-3 animate-bounce" style={{ animationDuration: '3s' }}>
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white"><Briefcase className="w-5 h-5" /></div>
+                <div>
+                  <div className="text-sm font-bold text-white">AI Pitch</div>
+                  <div className="text-xs text-gray-400">Deck</div>
+                </div>
+              </div>
+
+              {/* Floating Card 2 */}
+              <div className="absolute bottom-[20%] right-[5%] z-20 bg-[#0B0F19]/80 backdrop-blur-xl p-3 rounded-2xl shadow-2xl border border-white/10 flex items-center gap-3 animate-bounce" style={{ animationDuration: '4s', animationDelay: '1s' }}>
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white"><Globe className="w-5 h-5" /></div>
+                <div>
+                  <div className="text-sm font-bold text-white">Financial</div>
+                  <div className="text-xs text-gray-400">Projections</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </header>
+
+      {/* 2.5 Top 5 Flagship Tools */}
+      <section className="relative w-full bg-[#0B0F19] py-16 border-b border-[#1F2937]">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Your Startup Ecosystem</h2>
+            <p className="text-gray-400">The most powerful AI utilities to build, pitch, and grow your business.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {[
+              { id: 'ai-pitch-deck', name: 'AI Pitch Deck', icon: Briefcase, desc: 'Win investors over', color: 'from-blue-500 to-indigo-500' },
+              { id: 'ai-swot-analysis', name: 'SWOT Analysis', icon: Check, desc: 'Know your strengths', color: 'from-purple-500 to-pink-500' },
+              { id: 'ai-competitor-analysis', name: 'Competitor Intel', icon: Search, desc: 'Beat the market', color: 'from-orange-400 to-red-500' },
+              { id: 'ai-business-model', name: 'Business Model', icon: LayoutGrid, desc: 'Map your strategy', color: 'from-green-400 to-emerald-600' },
+              { id: 'ai-sales-funnel', name: 'Sales Funnel', icon: Zap, desc: 'Convert more leads', color: 'from-cyan-400 to-blue-500' },
+            ].map((tool, i) => (
+              <Link href={`/tools/${tool.id}`} key={i} className="group relative bg-[#111827] rounded-2xl p-6 border border-white/5 hover:border-white/20 transition-all hover:-translate-y-2 overflow-hidden shadow-xl">
+                <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${tool.color} flex items-center justify-center text-white mb-4 shadow-lg`}>
+                  <tool.icon className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-1">{tool.name}</h3>
+                <p className="text-sm text-gray-400">{tool.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* 3. Secondary Nav / Category Icons */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -219,11 +244,9 @@ export default function HomePage() {
       </section>
 
       {/* 5. Latest Blogs, Articles & News */}
-      <Suspense fallback={<div className="h-96 flex items-center justify-center animate-pulse bg-gray-100 rounded-xl"></div>}>
-        <LatestBlogs />
-        <LatestArticles />
-        <LatestNews />
-      </Suspense>
+      <LatestBlogs />
+      <LatestArticles />
+      <LatestNews />
 
       {/* 7. CTA Section */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
@@ -235,7 +258,7 @@ export default function HomePage() {
             </div>
             <div>
               <h2 className="text-2xl lg:text-3xl font-bold mb-2">Ready to Supercharge Your Productivity?</h2>
-              <p className="text-indigo-100 text-sm sm:text-base">Join millions of users who are already creating amazing results with QuickTools.ai</p>
+              <p className="text-indigo-100 text-sm sm:text-base">Join thousands of creators who are already getting amazing results with QuickTools.ai</p>
             </div>
           </div>
           <Link href="/tools" className="bg-white text-[#4F46E5] font-bold px-6 py-3.5 rounded-xl hover:bg-gray-50 transition-colors z-10 flex items-center justify-center gap-2 whitespace-nowrap shadow-md w-full md:w-auto">

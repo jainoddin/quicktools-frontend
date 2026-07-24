@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { 
   Search, MessageSquare, Image as ImageIcon, FileText, LayoutGrid, 
   ChevronRight, Mic, PenTool, LayoutTemplate, QrCode, PlaySquare, 
-  MoreVertical, Star, TrendingUp, CheckCircle2, Code, Clock, ChevronDown
+  MoreVertical, Star, TrendingUp, CheckCircle2, Code, Clock, ChevronDown, Sparkles, Gift
 } from 'lucide-react';
 import Sidebar from '../../components/dashboard/Sidebar';
 import DashboardHeader from '../../components/dashboard/DashboardHeader';
@@ -34,6 +34,15 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useContext } from 'react';
 
 export default function DashboardPage() {
+  const isSameDay = (d1: string | Date | undefined, d2: Date) => {
+    if (!d1 || !d2) return false;
+    const dt1 = new Date(d1);
+    const dt2 = new Date(d2);
+    return dt1.getUTCFullYear() === dt2.getUTCFullYear() && 
+           dt1.getUTCMonth() === dt2.getUTCMonth() && 
+           dt1.getUTCDate() === dt2.getUTCDate();
+  };
+
   const { user } = useAuth();
   const firstName = user?.name?.split(' ')[0] || 'Guest';
   const plan = (user?.plan || 'free').toLowerCase();
@@ -70,8 +79,33 @@ export default function DashboardPage() {
     tool.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const [isTrialActive, setIsTrialActive] = useState(false);
+  useEffect(() => {
+    if (user?.createdAt) {
+      const active = (Date.now() - new Date(user.createdAt).getTime()) <= (3 * 24 * 60 * 60 * 1000);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setIsTrialActive(active);
+    }
+  }, [user]);
+
   return (
     <DashboardLayout>
+      {isTrialActive && (
+        <div className="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl p-4 mb-6 flex items-center justify-between shadow-lg border border-blue-400">
+          <div className="flex items-center gap-4 text-white">
+            <div className="bg-white/20 p-2 rounded-xl border border-white/20">
+              <Sparkles className="w-6 h-6 text-yellow-300" />
+            </div>
+            <div>
+              <h3 className="font-bold text-lg">🚀 Your 3-Day Free Trial is Active!</h3>
+              <p className="text-blue-100 text-sm">You can use all Premium Tools up to 5 times a day for free.</p>
+            </div>
+          </div>
+          <Link href="/pricing" className="hidden sm:block bg-white text-indigo-600 px-4 py-2 rounded-xl font-bold text-sm shadow hover:bg-gray-50 transition">
+            View Plans
+          </Link>
+        </div>
+      )}
       {/* Hero Banner */}
             <div className="bg-gradient-to-r from-[#F5F3FF] to-[#EEF2FF] rounded-3xl p-6 md:p-10 relative overflow-hidden flex flex-col md:flex-row items-center border border-[#E5E7EB]/50 shadow-sm w-full">
               {/* Background Shapes */}
@@ -118,6 +152,70 @@ export default function DashboardPage() {
               </div>
             </div>
 
+            {/* Usage Status (Free & Premium) */}
+            {usageData && (
+              <div className="mt-8 mb-4 bg-white rounded-2xl p-6 border border-[#E5E7EB] shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                    <TrendingUp className="w-5 h-5 text-indigo-500" /> Your Usage Limits
+                  </h3>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {plan === 'free' 
+                      ? "You are on the Free Plan. Upgrade for unlimited access."
+                      : "You are on a Premium plan. Check your remaining credits below."}
+                  </p>
+                </div>
+                
+                <div className="flex-1 max-w-md w-full bg-gray-50 p-4 rounded-xl border border-gray-100">
+                  {isTrialActive && (plan === 'free' || (isSameDay(usageData.lastGenerationDate, new Date()) ? usageData.freeGenerationsCount : 0) < 5) ? (
+                    <>
+                      <div className="flex justify-between text-sm font-semibold text-gray-700 mb-2">
+                        <span>Daily Free Generations</span>
+                        <span className={(isSameDay(usageData.lastGenerationDate, new Date()) ? usageData.freeGenerationsCount : 0) >= 5 ? "text-red-500" : "text-indigo-600"}>
+                          {Math.min((isSameDay(usageData.lastGenerationDate, new Date()) ? usageData.freeGenerationsCount : 0), 5)} / 5 Used
+                        </span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
+                        <div 
+                          className={`h-2.5 rounded-full transition-all duration-500 ${(isSameDay(usageData.lastGenerationDate, new Date()) ? usageData.freeGenerationsCount : 0) >= 5 ? 'bg-red-500' : 'bg-indigo-500'}`}
+                          style={{ width: `${Math.min(((isSameDay(usageData.lastGenerationDate, new Date()) ? usageData.freeGenerationsCount : 0) / 5) * 100, 100)}%` }}
+                        ></div>
+                      </div>
+                      {(isSameDay(usageData.lastGenerationDate, new Date()) ? usageData.freeGenerationsCount : 0) >= 5 && plan === 'free' && (
+                        <p className="text-xs text-red-500 mt-2 font-medium">Daily limit reached. Resets at midnight, or upgrade to Pro!</p>
+                      )}
+                    </>
+                  ) : plan === 'free' ? (
+                    <div className="text-center">
+                      <p className="text-sm text-gray-700 font-medium mb-2">Your Free Trial has expired.</p>
+                      <Link href="/dashboard/billing/plans" className="text-xs font-bold text-white bg-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors inline-block">
+                        Upgrade Now
+                      </Link>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="flex justify-between text-sm font-semibold text-gray-700 mb-2">
+                        <span>Remaining Credits</span>
+                        <span className="text-indigo-600">{usageData.credits}</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
+                        <div 
+                          className="bg-indigo-500 h-2.5 rounded-full transition-all duration-500"
+                          style={{ width: `${Math.min((usageData.credits / usageData.maxCredits) * 100, 100)}%` }}
+                        ></div>
+                      </div>
+                    </>
+                  )}
+                </div>
+                
+                {plan === 'free' && (
+                  <Link href="/pricing" className="px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-bold rounded-xl hover:shadow-lg transition-all whitespace-nowrap">
+                    Upgrade to Pro
+                  </Link>
+                )}
+              </div>
+            )}
+
             {/* Dashboard Grid (Left Column 2/3, Right Column 1/3) */}
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
               
@@ -144,7 +242,7 @@ export default function DashboardPage() {
                     ))}
                     {filteredTools.length === 0 && (
                       <div className="col-span-full text-center text-sm text-[#6B7280] py-8">
-                        No tools found matching "{searchQuery}"
+                        No tools found matching &quot;{searchQuery}&quot;
                       </div>
                     )}
                   </div>
@@ -220,7 +318,28 @@ export default function DashboardPage() {
                     </select>
                   </div>
                   
-                  {isLoadingUsage ? (
+                  {plan === 'free' ? (
+                    <div className="flex flex-col items-center justify-center text-center space-y-3 py-6">
+                      <div className="w-16 h-16 bg-[#EEF2FF] text-[#6D5EF8] rounded-full flex items-center justify-center mb-1">
+                        <Gift className="w-8 h-8" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-[#111827] text-lg">
+                          {isTrialActive ? 'Free Trial Plan' : 'Free Plan'}
+                        </h3>
+                        <p className="text-sm text-[#6B7280]">
+                          {isTrialActive 
+                            ? 'Enjoy 5 free premium generations daily!' 
+                            : 'Upgrade to a premium plan for credits.'}
+                        </p>
+                      </div>
+                      {!isTrialActive && (
+                        <Link href="/dashboard/billing/plans" className="text-xs font-bold text-white bg-[#6D5EF8] px-5 py-2 rounded-xl hover:bg-[#5B4DF5] transition-colors mt-2">
+                          Upgrade Plan
+                        </Link>
+                      )}
+                    </div>
+                  ) : isLoadingUsage ? (
                     <div className="flex justify-center items-center py-10">
                       <div className="w-6 h-6 border-2 border-[#6D5EF8] border-t-transparent rounded-full animate-spin"></div>
                     </div>
@@ -239,13 +358,13 @@ export default function DashboardPage() {
                             fill="none"
                             stroke="#6D5EF8"
                             strokeWidth="3.5"
-                            strokeDasharray={`${usageData ? Math.min((usageData.creditsUsedThisPeriod / usageData.maxCredits) * 100, 100) : 0}, 100`}
+                            strokeDasharray={`${usageData && usageData.maxCredits > 0 ? Math.min((usageData.creditsUsedThisPeriod / usageData.maxCredits) * 100, 100) : 0}, 100`}
                             strokeLinecap="round"
                           />
                         </svg>
                         <div className="absolute flex flex-col items-center justify-center text-center">
                           <span className="text-2xl font-black text-[#111827]">
-                            {usageData ? Math.round((usageData.creditsUsedThisPeriod / usageData.maxCredits) * 100) : 0}%
+                            {usageData && usageData.maxCredits > 0 ? Math.round((usageData.creditsUsedThisPeriod / usageData.maxCredits) * 100) : 0}%
                           </span>
                           <span className="text-[8px] text-[#6B7280] uppercase tracking-wide">used</span>
                         </div>
@@ -276,13 +395,13 @@ export default function DashboardPage() {
                     <span className={`text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider ${
                       isPro ? 'text-[#D97706] bg-[#FFFBEB]' : 'text-[#6D5EF8] bg-[#EEF2FF]'
                     }`}>
-                      {plan} Plan
+                      {isTrialActive ? 'Free Trial Plan' : `${plan} Plan`}
                     </span>
                   </div>
                   
                   <div className="space-y-3 mb-6">
                     {[
-                      isPro ? '10,000 credits / month' : 'Free credits / month',
+                      isPro ? 'Premium credits' : 'Free credits',
                       isPro ? 'HD & Original image quality' : 'Standard processing',
                       isPro ? 'Priority support' : 'Community support',
                       'Access to all tools'

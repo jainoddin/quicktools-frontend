@@ -14,7 +14,14 @@ import { downloadAsPDF } from '@/lib/pdfUtils';
 import TextGenerationProgress from '@/components/shared/TextGenerationProgress';
 
 export default function AiBusinessPlanClient() {
-  const [input, setInput] = useState('');
+  const [formData, setFormData] = useState({
+    businessName: '',
+    industry: '',
+    targetAudience: '',
+    coreProducts: '',
+    usp: '',
+    context: 'General Business Plan'
+  });
   const [result, setResult] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -63,7 +70,19 @@ export default function AiBusinessPlanClient() {
   }, [isAuthenticated]);
 
   const handleGenerate = async () => {
-    if (!input.trim()) return;
+    if (!formData.businessName.trim() || !formData.industry.trim() || !formData.coreProducts.trim()) {
+      error('Please fill in the required fields (Business Name, Industry, and Core Products).');
+      return;
+    }
+
+    const compiledInput = `Create a comprehensive 10-page business plan with the following details:
+Business Name: ${formData.businessName}
+Industry/Niche: ${formData.industry}
+Target Audience: ${formData.targetAudience || 'Not specified'}
+Core Products/Services: ${formData.coreProducts}
+Unique Selling Proposition (USP): ${formData.usp || 'Not specified'}
+Context/Goal: ${formData.context}`;
+
 
     // Guest users get 1 free trial for premium tools
     if (!isAuthenticated && freeGenCount >= 1) {
@@ -79,7 +98,7 @@ export default function AiBusinessPlanClient() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify({ input }),
+        body: JSON.stringify({ input: compiledInput }),
       });
 
       const data = await res.json();
@@ -109,13 +128,13 @@ export default function AiBusinessPlanClient() {
           setFreeGenCount(newCount);
           localStorage.setItem('premium_ai-business-plan_count', newCount.toString());
           
-          const newItem = { id: Date.now().toString(), prompt: input, result: data.text, date: new Date().toLocaleDateString(), createdAt: new Date().toISOString(), isStarred: false };
+          const newItem = { id: Date.now().toString(), prompt: compiledInput, result: data.text, date: new Date().toLocaleDateString(), createdAt: new Date().toISOString(), isStarred: false };
           const newHistory = [newItem, ...toolHistory];
           setToolHistory(newHistory);
           localStorage.setItem('ai-business-plan_history', JSON.stringify(newHistory));
         } else {
           // Add to local state for immediate feedback
-          setToolHistory([{ id: data.usageId || Date.now().toString(), prompt: input, result: data.text, date: new Date().toLocaleDateString(), createdAt: new Date().toISOString(), isStarred: false }, ...toolHistory]);
+          setToolHistory([{ id: data.usageId || Date.now().toString(), prompt: compiledInput, result: data.text, date: new Date().toLocaleDateString(), createdAt: new Date().toISOString(), isStarred: false }, ...toolHistory]);
         }
       } else {
         error(data.message || 'Failed to generate content');
@@ -186,23 +205,80 @@ const handleDeleteHistory = async (ids: string[]) => {
             </p>
           </div>
 
-          <div className="space-y-5">
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-[#111827] mb-1.5">Business Name <span className="text-red-500">*</span></label>
+                <input
+                  type="text"
+                  value={formData.businessName}
+                  onChange={(e) => setFormData({...formData, businessName: e.target.value})}
+                  placeholder="e.g. Acme Corp"
+                  className="w-full px-3 py-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all text-sm text-[#111827] placeholder:text-[#9CA3AF]"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#111827] mb-1.5">Industry / Niche <span className="text-red-500">*</span></label>
+                <input
+                  type="text"
+                  value={formData.industry}
+                  onChange={(e) => setFormData({...formData, industry: e.target.value})}
+                  placeholder="e.g. EdTech, SaaS, Cafe"
+                  className="w-full px-3 py-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all text-sm text-[#111827] placeholder:text-[#9CA3AF]"
+                />
+              </div>
+            </div>
+
             <div>
-              <label className="block text-sm font-semibold text-[#111827] mb-2">
-                Describe your requirement
-              </label>
-              <textarea
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="E.g., I need a business plan for a vegan coffee shop..."
-                className="w-full h-32 px-4 py-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all resize-none text-sm text-[#111827] placeholder:text-[#9CA3AF]"
+              <label className="block text-xs font-semibold text-[#111827] mb-1.5">Target Audience</label>
+              <input
+                type="text"
+                value={formData.targetAudience}
+                onChange={(e) => setFormData({...formData, targetAudience: e.target.value})}
+                placeholder="e.g. College students in Tier 1 cities"
+                className="w-full px-3 py-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all text-sm text-[#111827] placeholder:text-[#9CA3AF]"
               />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#111827] mb-1.5">Core Products / Services <span className="text-red-500">*</span></label>
+              <textarea
+                value={formData.coreProducts}
+                onChange={(e) => setFormData({...formData, coreProducts: e.target.value})}
+                placeholder="Describe what you sell or offer..."
+                className="w-full h-20 px-3 py-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all resize-none text-sm text-[#111827] placeholder:text-[#9CA3AF]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#111827] mb-1.5">Unique Selling Proposition (USP)</label>
+              <textarea
+                value={formData.usp}
+                onChange={(e) => setFormData({...formData, usp: e.target.value})}
+                placeholder="Why should customers choose you over competitors?"
+                className="w-full h-16 px-3 py-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all resize-none text-sm text-[#111827] placeholder:text-[#9CA3AF]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#111827] mb-1.5">Registration Context / Goal</label>
+              <select
+                value={formData.context}
+                onChange={(e) => setFormData({...formData, context: e.target.value})}
+                className="w-full px-3 py-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] transition-all text-sm text-[#111827]"
+              >
+                <option value="General Business Plan">General Business Plan</option>
+                <option value="Startup India Registration">Startup India Registration</option>
+                <option value="MSME / Udyam Registration">MSME / Udyam Registration</option>
+                <option value="Investor Pitch Deck Document">Investor Pitch Deck Document</option>
+                <option value="Bank Loan Application">Bank Loan Application</option>
+              </select>
             </div>
 
             <button
               onClick={handleGenerate}
-              disabled={isProcessing || !input.trim()}
-              className="w-full h-14 bg-[#111827] hover:bg-[#1F2937] text-white font-bold rounded-2xl transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              disabled={isProcessing || !formData.businessName.trim() || !formData.industry.trim() || !formData.coreProducts.trim()}
+              className="w-full h-14 bg-[#111827] hover:bg-[#1F2937] text-white font-bold rounded-2xl transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-4"
             >
               {isProcessing ? <Loader2 className="w-5 h-5 animate-spin" /> : <Sparkles className="w-5 h-5" />}
               {isProcessing ? 'Generating...' : 'Generate Now (5 Credits)'}
@@ -220,7 +296,7 @@ const handleDeleteHistory = async (ids: string[]) => {
             onBack={() => setShowHistory(false)}
             onToggleFavorite={handleToggleFavorite}
             onDelete={handleDeleteHistory}
-            onSelect={(item) => { setResult(item.result); setInput(item.prompt); setShowHistory(false); }}
+            onSelect={(item) => { setResult(item.result); setShowHistory(false); }}
           />
         </div>
       ) : (

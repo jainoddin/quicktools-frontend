@@ -26,12 +26,13 @@ export default function ContactPage() {
     "mainEntity": {
       "@type": "Organization",
       "name": "QuickTools.ai",
-      "email": "helloquicktool@gmail.com",
+      "email": "hello@quicktool.space",
       "url": "https://quicktool.space",
       "contactPoint": {
         "@type": "ContactPoint",
-        "contactType": "customer support",
-        "email": "helloquicktool@gmail.com",
+        "telephone": "",
+        "contactType": "customer service",
+        "email": "hello@quicktool.space",
         "availableLanguage": ["English"]
       }
     }
@@ -133,8 +134,8 @@ export default function ContactPage() {
                   <div>
                     <p className="font-bold text-[#111827] text-sm">Email Us</p>
                     <p className="text-xs text-[#6B7280] mb-1">We're here to help</p>
-                    <a href="mailto:helloquicktool@gmail.com" className="text-xs font-bold text-[#6D5EF8] hover:underline">
-                      helloquicktool@gmail.com
+                    <a href="mailto:hello@quicktool.space" className="text-xs font-bold text-[#6D5EF8] hover:underline">
+                      hello@quicktool.space
                     </a>
                   </div>
                 </div>

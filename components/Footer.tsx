@@ -54,7 +54,7 @@ export default function Footer() {
                 <button onClick={handleShare} aria-label="Share" className="focus:outline-none">
                   <Share2 className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
                 </button>
-                <a href="mailto:helloquicktool@gmail.com" aria-label="Email">
+                <a href="mailto:hello@quicktool.space" aria-label="Email">
                   <Mail className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
                 </a>
               </div>

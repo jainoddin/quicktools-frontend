@@ -219,8 +219,9 @@ const filtersList = [
   { name: 'Popular', iconName: 'Flame' },
   { name: 'New', iconName: 'LayoutGrid' },
   { name: 'Free', iconName: 'Gift' },
+  { name: 'Premium', iconName: 'Crown' },
   { name: 'Trending', iconName: 'TrendingUp' },
-  { name: 'Most Used', iconName: 'Star' },
+  { name: 'Favorite', iconName: 'Star' },
   { name: 'Recent', iconName: 'Clock' },
 ];
 
@@ -1357,6 +1358,7 @@ function ToolsClientInner() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [isMobileCategoriesOpen, setIsMobileCategoriesOpen] = useState(false);
   const [starredTools, setStarredTools] = useState<string[]>([]);
+  const [recentTools, setRecentTools] = useState<string[]>([]);
 
   useEffect(() => {
     if (user?.savedTools) {
@@ -1365,11 +1367,25 @@ function ToolsClientInner() {
   }, [user]);
 
   useEffect(() => {
+    if (isAuthenticated) {
+      fetch(getEndpoint('/api/user/usage'), { credentials: 'include' })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success && data.data?.history) {
+            const slugs = Array.from(new Set(data.data.history.map((h: any) => h.toolSlug)));
+            setRecentTools(slugs as string[]);
+          }
+        })
+        .catch(console.error);
+    }
+  }, [isAuthenticated]);
+
+  useEffect(() => {
     setSearchQuery(searchParams.get('q') || '');
   }, [searchParams]);
 
   useEffect(() => {
-    if (!isAuthenticated && (activeFilter === 'Most Used' || activeFilter === 'Recent')) {
+    if (!isAuthenticated && (activeFilter === 'Favorite' || activeFilter === 'Recent')) {
       setActiveFilter('Popular');
     }
   }, [isAuthenticated, activeFilter]);
@@ -1402,8 +1418,12 @@ function ToolsClientInner() {
       result = result.filter(t => isNewTool(t.createdAt));
     } else if (activeFilter === 'Free') {
       result = result.filter(t => !t.isPremium);
-    } else if (activeFilter === 'Most Used' || activeFilter === 'Recent') {
+    } else if (activeFilter === 'Premium') {
+      result = result.filter(t => t.isPremium);
+    } else if (activeFilter === 'Favorite') {
       result = result.filter(t => starredTools.includes(t.slug));
+    } else if (activeFilter === 'Recent') {
+      result = result.filter(t => recentTools.includes(t.slug));
     }
 
     // Interleave free and premium tools so they mix together
@@ -1562,7 +1582,7 @@ function ToolsClientInner() {
             {/* Filter Chips */}
             <div className="flex flex-wrap items-center gap-2.5 mb-8">
               {filtersList.map((filter, idx) => {
-                if (!isAuthenticated && (filter.name === 'Most Used' || filter.name === 'Recent')) {
+                if (!isAuthenticated && (filter.name === 'Favorite' || filter.name === 'Recent')) {
                   return null;
                 }
                 const isActive = activeFilter === filter.name;

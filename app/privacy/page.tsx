@@ -151,7 +151,7 @@ export default function PrivacyPolicyPage() {
                 If you have any questions about this Privacy Policy, please contact us at:
               </p>
               <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl p-6 mt-4">
-                <strong>Email:</strong> <a href="mailto:helloquicktool@gmail.com">helloquicktool@gmail.com</a><br />
+                <strong>Email:</strong> <a href="mailto:hello@quicktool.space">hello@quicktool.space</a><br />
                 <strong>Address:</strong> QuickTools AI Inc., 123 Innovation Way, Tech City
               </div>
             </section>

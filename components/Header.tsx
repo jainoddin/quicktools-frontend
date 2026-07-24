@@ -273,10 +273,38 @@ export default function Header() {
             <div className="w-8 h-8 rounded-full border-2 border-[#6D5EF8] border-t-transparent animate-spin"></div>
           ) : user ? (
             <div className="flex items-center gap-2">
-              <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-[#FEF3C7] text-[#D97706] rounded-xl text-sm font-bold border border-[#FDE68A] shadow-sm mr-2">
-                <Coins className="w-4 h-4" />
-                {user.credits || 0}
-              </div>
+              {(() => {
+                const now = new Date();
+                const accountAgeDays = user.createdAt ? (now.getTime() - new Date(user.createdAt).getTime()) / (1000 * 3600 * 24) : 999;
+                const isTrialActive = accountAgeDays <= 3;
+                
+                const isSameDay = (d1: string | Date | undefined, d2: Date) => {
+                  if (!d1 || !d2) return false;
+                  const dt1 = new Date(d1);
+                  const dt2 = new Date(d2);
+                  return dt1.getUTCFullYear() === dt2.getUTCFullYear() && 
+                         dt1.getUTCMonth() === dt2.getUTCMonth() && 
+                         dt1.getUTCDate() === dt2.getUTCDate();
+                };
+                
+                const freeGensUsedToday = isSameDay(user.lastGenerationDate, now) ? (user.freeGenerationsCount || 0) : 0;
+                
+                if (isTrialActive && freeGensUsedToday < 5) {
+                  return (
+                    <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-[#ECFDF5] text-[#059669] rounded-xl text-sm font-bold border border-[#A7F3D0] shadow-sm mr-2">
+                      <Crown className="w-4 h-4 fill-[#059669]" />
+                      {freeGensUsedToday} / 5 Free
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-[#FEF3C7] text-[#D97706] rounded-xl text-sm font-bold border border-[#FDE68A] shadow-sm mr-2">
+                      <Coins className="w-4 h-4" />
+                      {user.credits || 0}
+                    </div>
+                  );
+                }
+              })()}
               <div className="relative group hidden lg:block">
                 <button className="flex items-center gap-2 focus:outline-none">
                   <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0">
