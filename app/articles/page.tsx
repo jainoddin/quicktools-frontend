@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import ArticlesClient from '../../components/articles/ArticlesClient';
 import { getEndpoint } from '../../lib/api';
 
-export const revalidate = 0;
+
 
 export const metadata: Metadata = {
   title: 'In-Depth AI Articles, Guides & Tutorials',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 async function getArticles() {
   try {
     const res = await fetch(getEndpoint('/api/articles?limit=12'), {
-      next: { revalidate: 3600 } // Revalidate every hour
+      cache: 'no-store' // Always fetch fresh articles
     });
     if (!res.ok) return { data: [], pagination: {} };
     return await res.json();

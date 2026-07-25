@@ -5,7 +5,7 @@ import { ChevronRight, Home } from 'lucide-react';
 import BlogClient from '@/components/blog/BlogClient';
 import { getEndpoint } from '@/lib/api';
 
-export const revalidate = 0;
+
 
 export const metadata: Metadata = {
   title: 'AI Blog: Expert Tips, Tutorials & Insights',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 async function getBlogs() {
   try {
     const res = await fetch(getEndpoint('/api/blogs?limit=12'), {
-      next: { revalidate: 3600 } // Revalidate every hour
+      cache: 'no-store' // Always fetch fresh blogs
     });
     if (!res.ok) return { data: [], pagination: {} };
     return await res.json();

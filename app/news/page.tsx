@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import NewsClient from '../../components/news/NewsClient';
 import { getEndpoint } from '../../lib/api';
 
-export const revalidate = 0;
+
 
 export const metadata: Metadata = {
   title: 'Latest AI News, Updates & Breakthroughs',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 async function getNews() {
   try {
     const res = await fetch(getEndpoint('/api/news?limit=12'), {
-      next: { revalidate: 300 } // Revalidate every 5 minutes for news
+      cache: 'no-store' // Always fetch fresh news
     });
     if (!res.ok) return { data: [], pagination: {} };
     return await res.json();
