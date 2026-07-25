@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Redirect favicon.ico to new icon to prevent 404
+      {
+        source: '/favicon.ico',
+        destination: '/icon',
+        permanent: true,
+      },
       // Redirect specific 2024 blogs/articles to 2026
       {
         source: '/blog/best-free-ai-tools-the-ultimate-guide-to-boosting-productivity-in-2024',
