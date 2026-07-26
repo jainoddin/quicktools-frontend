@@ -4,7 +4,7 @@ import { useToast } from '@/contexts/ToastContext';
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Search, Flame, Bookmark, ArrowRight, Eye, ChevronDown, Clock, ChevronRight, Home } from 'lucide-react';
+import { Search, Flame, Bookmark, ArrowRight, ChevronDown, Clock, ChevronRight, Home } from 'lucide-react';
 import NewsletterForm from '../shared/NewsletterForm';
 import NewsletterSectionWrapper from '../shared/NewsletterSectionWrapper';
 import { useAuth } from '../../contexts/AuthContext';
@@ -413,9 +413,7 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
                         <p className="text-[10px] text-[#9CA3AF]">{new Date(article.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 text-xs text-[#9CA3AF]">
-                      <div className="flex items-center gap-1"><Eye className="w-3.5 h-3.5"/>{article.views || '0'}</div>
-                    </div>
+
                   </div>
                 </div>
               </Link>
