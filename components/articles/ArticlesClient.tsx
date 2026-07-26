@@ -249,8 +249,14 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
                     <p className="text-[#6B7280] text-sm md:text-base leading-relaxed max-w-sm line-clamp-2">{featuredArticle.description}</p>
                   </div>
                   <div className="flex items-center gap-3 mt-4">
-                    <div className="w-9 h-9 bg-gray-100 rounded-full overflow-hidden border border-[#E5E7EB] flex items-center justify-center">
-                      <Image src="/icon.svg" width={20} height={20} alt="QuickTools AI" />
+                    <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-[#4F46E5]/20 shrink-0 bg-[#EEF2FF]">
+                      <Image
+                        src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
+                        width={36} height={36}
+                        alt="QuickTools AI"
+                        className="w-full h-full object-cover"
+                        unoptimized
+                      />
                     </div>
                     <p className="font-bold text-sm text-[#111827] flex items-center gap-2">
                       {featuredArticle.author?.name || 'QuickTools AI'}
@@ -405,8 +411,14 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
                   <p className="text-sm text-[#6B7280] mb-4 line-clamp-2">{article.description}</p>
                   <div className="mt-auto pt-4 border-t border-[#F3F4F6] flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 bg-gray-100 rounded-full overflow-hidden border border-indigo-100 flex items-center justify-center">
-                        <Image src="/icon.svg" width={16} height={16} alt="QuickTools AI" />
+                      <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-[#4F46E5]/20 shrink-0 bg-[#EEF2FF]">
+                        <Image
+                          src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
+                          width={32} height={32}
+                          alt="QuickTools AI"
+                          className="w-full h-full object-cover"
+                          unoptimized
+                        />
                       </div>
                       <div>
                         <p className="text-xs font-semibold text-[#111827]">{article.author?.name || 'QuickTools AI'}</p>
