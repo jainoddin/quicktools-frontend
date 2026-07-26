@@ -25,7 +25,7 @@ export async function generateMetadata(
   const { slug } = await params;
   try {
     const res = await fetch(getEndpoint(`/api/articles/${slug}`), {
-      next: { revalidate: 3600 }
+      next: { revalidate: 300 }
     });
     if (!res.ok) return { title: 'Article Not Found' };
     const data = await res.json();
@@ -64,7 +64,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
   const { slug } = await params;
 
   const res = await fetch(getEndpoint(`/api/articles/${slug}`), {
-    next: { revalidate: 3600 }
+    next: { revalidate: 300 }
   });
   
   let topTools = [];
