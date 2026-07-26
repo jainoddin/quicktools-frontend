@@ -264,8 +264,14 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                 
                 {/* Author Info */}
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 border border-[#E5E7EB] bg-gray-100 flex items-center justify-center">
-                    <Image src="/icon.svg" width={22} height={22} alt={article.author.name} />
+                  <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 border-2 border-[#4F46E5]/20 bg-[#EEF2FF]">
+                    <Image
+                      src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
+                      width={40} height={40}
+                      alt={article.author.name}
+                      className="w-full h-full object-cover"
+                      unoptimized
+                    />
                   </div>
                   <div>
                     <div className="flex items-center gap-1">
@@ -276,8 +282,6 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                       <span>{new Date(article.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                       <span>•</span>
                       <span>{article.readTime}</span>
-                      <span>•</span>
-                      <span>{article.views || '1.2K views'}</span>
                     </div>
                   </div>
                 </div>
