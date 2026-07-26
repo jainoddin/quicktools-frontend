@@ -436,8 +436,14 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
             {/* About the Author */}
             <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-sm">
               <h3 className="font-bold text-[#111827] mb-5 text-sm">About the Author</h3>
-              <div className="w-16 h-16 rounded-full overflow-hidden border border-[#E5E7EB] mb-4 bg-gray-100 flex items-center justify-center">
-                <Image src="/icon.svg" width={32} height={32} alt={article.author.name} />
+              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#4F46E5]/20 mb-4 bg-[#EEF2FF] flex items-center justify-center">
+                <Image
+                  src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
+                  width={64} height={64}
+                  alt={article.author.name}
+                  className="w-full h-full object-cover"
+                  unoptimized
+                />
               </div>
               <div className="flex items-center gap-1 mb-2">
                 <span className="font-bold text-[#111827]">{article.author.name}</span>
