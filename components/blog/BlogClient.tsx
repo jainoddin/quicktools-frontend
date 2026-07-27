@@ -75,7 +75,12 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
     const isSaved = savedBlogs.includes(blogId);
 
     if (isSaved) {
-      setSavedBlogs(prev => prev.filter(id => id !== blogId));
+      const newSaved = savedBlogs.filter(id => id !== blogId);
+      setSavedBlogs(newSaved);
+      // Auto-switch to All if last favorite removed while in Favorites tab
+      if (activeTab === 'Favorites' && newSaved.length === 0) {
+        setActiveTab('All');
+      }
     } else {
       setSavedBlogs(prev => [...prev, blogId]);
     }
@@ -93,6 +98,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
       setSavedBlogs(user?.savedBlogs || []);
     }
   };
+
 
 
 

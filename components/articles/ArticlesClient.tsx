@@ -50,7 +50,12 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
     const isSaved = savedArticles.includes(articleId);
     
     if (isSaved) {
-      setSavedArticles(prev => prev.filter(id => id !== articleId));
+      const newSaved = savedArticles.filter(id => id !== articleId);
+      setSavedArticles(newSaved);
+      // Auto-switch to All if last favorite removed while in Favorites tab
+      if (activeTab === 'Favorites' && newSaved.length === 0) {
+        setActiveTab('All');
+      }
     } else {
       setSavedArticles(prev => [...prev, articleId]);
     }
@@ -68,6 +73,7 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
       setSavedArticles(user?.savedArticles || []);
     }
   };
+
 
     // Apply filters via API
   useEffect(() => {

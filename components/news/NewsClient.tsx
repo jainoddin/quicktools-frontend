@@ -52,7 +52,12 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
     const isSaved = savedNews.includes(newsId);
 
     if (isSaved) {
-      setSavedNews(prev => prev.filter(id => id !== newsId));
+      const newSaved = savedNews.filter(id => id !== newsId);
+      setSavedNews(newSaved);
+      // Auto-switch to All News if last favorite removed while in Favorites category
+      if (activeCategory === 'Favorites' && newSaved.length === 0) {
+        setActiveCategory('All News');
+      }
     } else {
       setSavedNews(prev => [...prev, newsId]);
     }
@@ -70,6 +75,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
       setSavedNews(user?.savedNews || []);
     }
   };
+
 
   // Fetch when filters change
   useEffect(() => {
