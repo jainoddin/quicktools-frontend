@@ -360,13 +360,20 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
                 </div>
               ) : activeCategory !== 'Favorites' ? (
               <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
+                <div className="w-16 h-16 bg-[#F3F4F6] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Search className="w-8 h-8 text-[#9CA3AF]" />
+                </div>
                 <p className="text-xl font-bold text-[#111827] mb-2">No news found</p>
-                <p className="text-[#6B7280] text-sm">Try a different category or search term.</p>
-                <button onClick={() => { setActiveCategory('All News'); setSearchQuery(''); }} className="mt-4 text-[#4F46E5] font-bold text-sm hover:underline">
+                <p className="text-[#6B7280] text-sm mb-5">Try a different category or search term.</p>
+                <button
+                  onClick={() => { setActiveCategory('All News'); setSearchQuery(''); }}
+                  className="px-6 py-2.5 bg-[#4F46E5] text-white text-sm font-bold rounded-full hover:bg-[#4338CA] transition-colors"
+                >
                   Clear Filters
                 </button>
               </div>
               ) : null
+
 
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
