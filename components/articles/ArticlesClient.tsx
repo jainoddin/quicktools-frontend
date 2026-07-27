@@ -236,19 +236,23 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
       {/* 2. Category Pills */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center gap-2 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
-                activeCategory === cat
-                  ? 'bg-[#4F46E5] text-white shadow-sm'
-                  : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:border-[#4F46E5] hover:text-[#4F46E5]'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+          {CATEGORIES.map((cat) => {
+            const count = initialCategoryCounts?.[cat] || 0;
+            if (cat !== 'All Articles' && count === 0) return null;
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
+                  activeCategory === cat
+                    ? 'bg-[#4F46E5] text-white shadow-sm'
+                    : 'bg-white border border-[#E5E7EB] text-[#4B5563] hover:border-[#4F46E5] hover:text-[#4F46E5]'
+                }`}
+              >
+                {cat}
+              </button>
+            );
+          })}
         </div>
       </section>
 
@@ -403,33 +407,33 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
             ))}
           </div>
         ) : gridArticles.length === 0 ? (
-          activeTab === 'Favorites' ? (
-            // If featured card is shown (1 saved article), hide the empty state
-            featuredArticle ? null : (
-            <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
-              <div className="w-16 h-16 bg-[#EEF2FF] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Bookmark className="w-8 h-8 text-[#4F46E5]" />
+          // If featured card is shown (1 article total), hide the empty state entirely
+          featuredArticle ? null : (
+            activeTab === 'Favorites' ? (
+              <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
+                <div className="w-16 h-16 bg-[#EEF2FF] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Bookmark className="w-8 h-8 text-[#4F46E5]" />
+                </div>
+                <p className="text-xl font-bold text-[#111827] mb-2">No saved articles yet</p>
+                <p className="text-[#6B7280] text-sm mb-5">Browse articles and click the bookmark icon to save your favorites.</p>
+                <button onClick={() => setActiveTab('All')} className="px-6 py-2.5 bg-[#4F46E5] text-white text-sm font-bold rounded-full hover:bg-[#4338CA] transition-colors">
+                  Browse All Articles
+                </button>
               </div>
-              <p className="text-xl font-bold text-[#111827] mb-2">No saved articles yet</p>
-              <p className="text-[#6B7280] text-sm mb-5">Browse articles and click the bookmark icon to save your favorites.</p>
-              <button onClick={() => setActiveTab('All')} className="px-6 py-2.5 bg-[#4F46E5] text-white text-sm font-bold rounded-full hover:bg-[#4338CA] transition-colors">
-                Browse All Articles
-              </button>
-            </div>
+            ) : (
+              <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
+                <div className="w-16 h-16 bg-[#F3F4F6] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Search className="w-8 h-8 text-[#9CA3AF]" />
+                </div>
+                <p className="text-xl font-bold text-[#111827] mb-2">No articles found</p>
+                <p className="text-[#6B7280] text-sm mb-5">Try a different category or search term.</p>
+                <button onClick={() => { setActiveCategory('All Articles'); setSearch(''); setActiveTab('All'); }} className="px-6 py-2.5 bg-[#4F46E5] text-white text-sm font-bold rounded-full hover:bg-[#4338CA] transition-colors">
+                  Show All Articles
+                </button>
+              </div>
             )
-          ) : (
-
-          <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
-            <div className="w-16 h-16 bg-[#F3F4F6] rounded-full flex items-center justify-center mx-auto mb-4">
-              <Search className="w-8 h-8 text-[#9CA3AF]" />
-            </div>
-            <p className="text-xl font-bold text-[#111827] mb-2">No articles found</p>
-            <p className="text-[#6B7280] text-sm mb-5">Try a different category or search term.</p>
-            <button onClick={() => { setActiveCategory('All Articles'); setSearch(''); setActiveTab('All'); }} className="px-6 py-2.5 bg-[#4F46E5] text-white text-sm font-bold rounded-full hover:bg-[#4338CA] transition-colors">
-              Show All Articles
-            </button>
-          </div>
           )
+
 
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">

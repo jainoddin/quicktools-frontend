@@ -334,52 +334,58 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
 
             {/* Category Pills */}
             <div className="flex flex-wrap gap-2 mb-8">
-              {CATEGORIES.filter(cat => cat !== 'Favorites' || savedNews.length > 0).map((cat, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => {
-                    setActiveCategory(cat);
-                    trackContentFilter('news', cat);
-                  }}
-                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${activeCategory === cat ? 'bg-[#4F46E5] text-white border-transparent shadow-sm' : 'bg-white text-[#4B5563] border-gray-200 hover:border-[#4F46E5] hover:text-[#4F46E5]'}`}
-                >
-                  {cat}
-                </button>
-              ))}
+              {CATEGORIES.filter(cat => cat !== 'Favorites' || savedNews.length > 0).map((cat, idx) => {
+                const count = getCategoryCount(cat);
+                if (cat !== 'All News' && cat !== 'Favorites' && count === 0) return null;
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      setActiveCategory(cat);
+                      trackContentFilter('news', cat);
+                    }}
+                    className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${activeCategory === cat ? 'bg-[#4F46E5] text-white border-transparent shadow-sm' : 'bg-white text-[#4B5563] border-gray-200 hover:border-[#4F46E5] hover:text-[#4F46E5]'}`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
             </div>
 
 
             {/* Grid */}
             {regularNews.length === 0 ? (
-              activeCategory === 'Favorites' && newsList.length === 0 ? (
-                <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
-                  <div className="w-16 h-16 bg-[#EEF2FF] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Bookmark className="w-8 h-8 text-[#4F46E5]" />
+              breakingNews ? null : (
+                activeCategory === 'Favorites' ? (
+                  <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
+                    <div className="w-16 h-16 bg-[#EEF2FF] rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Bookmark className="w-8 h-8 text-[#4F46E5]" />
+                    </div>
+                    <p className="text-xl font-bold text-[#111827] mb-2">No saved news yet</p>
+                    <p className="text-[#6B7280] text-sm mb-5">Browse news and click the bookmark icon to save articles you like.</p>
+                    <button
+                      onClick={() => setActiveCategory('All News')}
+                      className="px-6 py-2.5 bg-[#4F46E5] text-white text-sm font-bold rounded-full hover:bg-[#4338CA] transition-colors"
+                    >
+                      Browse All News
+                    </button>
                   </div>
-                  <p className="text-xl font-bold text-[#111827] mb-2">No saved news yet</p>
-                  <p className="text-[#6B7280] text-sm mb-5">Browse news and click the bookmark icon to save articles you like.</p>
-                  <button
-                    onClick={() => setActiveCategory('All News')}
-                    className="px-6 py-2.5 bg-[#4F46E5] text-white text-sm font-bold rounded-full hover:bg-[#4338CA] transition-colors"
-                  >
-                    Browse All News
-                  </button>
-                </div>
-              ) : activeCategory !== 'Favorites' ? (
-              <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
-                <div className="w-16 h-16 bg-[#F3F4F6] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Search className="w-8 h-8 text-[#9CA3AF]" />
-                </div>
-                <p className="text-xl font-bold text-[#111827] mb-2">No news found</p>
-                <p className="text-[#6B7280] text-sm mb-5">Try a different category or search term.</p>
-                <button
-                  onClick={() => { setActiveCategory('All News'); setSearchQuery(''); }}
-                  className="px-6 py-2.5 bg-[#4F46E5] text-white text-sm font-bold rounded-full hover:bg-[#4338CA] transition-colors"
-                >
-                  Clear Filters
-                </button>
-              </div>
-              ) : null
+                ) : (
+                  <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
+                    <div className="w-16 h-16 bg-[#F3F4F6] rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Search className="w-8 h-8 text-[#9CA3AF]" />
+                    </div>
+                    <p className="text-xl font-bold text-[#111827] mb-2">No news found</p>
+                    <p className="text-[#6B7280] text-sm mb-5">Try a different category or search term.</p>
+                    <button
+                      onClick={() => { setActiveCategory('All News'); setSearchQuery(''); }}
+                      className="px-6 py-2.5 bg-[#4F46E5] text-white text-sm font-bold rounded-full hover:bg-[#4338CA] transition-colors"
+                    >
+                      Clear Filters
+                    </button>
+                  </div>
+                )
+              )
 
 
             ) : (

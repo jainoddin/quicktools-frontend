@@ -261,7 +261,9 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
         <div>
           <h3 className="font-bold text-[#111827] mb-4">Explore Blogs</h3>
           <ul className="space-y-1">
-            {categories.map((cat) => (
+            {categories.map((cat) => {
+              if (cat.name !== 'All Blogs' && cat.count === 0) return null;
+              return (
               <li key={cat.name}>
                 <button
                   onClick={() => {
@@ -284,7 +286,8 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
                   </span>
                 </button>
               </li>
-            ))}
+              );
+            })}
           </ul>
         </div>
 
@@ -480,44 +483,42 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
             {/* List of Posts */}
             <div className="space-y-4">
               {listBlogs.length === 0 ? (
-                activeTab === 'Favorites' ? (
-                  // If featured card is shown (1 saved blog), hide the empty state
-                  featuredPost ? null : (
-                  <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
-                    <div className="w-16 h-16 bg-[#F5F3FF] rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Bookmark className="w-8 h-8 text-[#6D5EF8]" />
+                // If featured card is shown (1 blog total), hide the empty state entirely
+                featuredPost ? null : (
+                  activeTab === 'Favorites' ? (
+                    <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
+                      <div className="w-16 h-16 bg-[#F5F3FF] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Bookmark className="w-8 h-8 text-[#6D5EF8]" />
+                      </div>
+                      <p className="text-xl font-bold text-[#111827] mb-2">No saved blogs yet</p>
+                      <p className="text-[#6B7280] text-sm mb-5">Browse blogs and click the bookmark icon to save your favorites.</p>
+                      <button onClick={() => setActiveTab('All')} className="px-6 py-2.5 bg-[#6D5EF8] text-white text-sm font-bold rounded-full hover:bg-[#5B4ED6] transition-colors">
+                        Browse All Blogs
+                      </button>
                     </div>
-                    <p className="text-xl font-bold text-[#111827] mb-2">No saved blogs yet</p>
-                    <p className="text-[#6B7280] text-sm mb-5">Browse blogs and click the bookmark icon to save your favorites.</p>
-                    <button onClick={() => setActiveTab('All')} className="px-6 py-2.5 bg-[#6D5EF8] text-white text-sm font-bold rounded-full hover:bg-[#5B4ED6] transition-colors">
-                      Browse All Blogs
-                    </button>
-                  </div>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center py-20 px-4 text-center bg-[#F9FAFB] border border-dashed border-[#E5E7EB] rounded-3xl group">
+                      <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-sm mb-5 relative">
+                        <div className="absolute inset-0 bg-[#6D5EF8]/5 rounded-full scale-150 animate-pulse"></div>
+                        <SearchX className="w-8 h-8 text-[#6B7280] group-hover:text-[#6D5EF8] transition-colors relative z-10" />
+                      </div>
+                      <h3 className="text-xl font-bold text-[#111827] mb-2">No more posts here</h3>
+                      <p className="text-[#6B7280] text-sm max-w-sm mb-6">
+                        It looks like you've reached the end of this category or search criteria.
+                      </p>
+                      <button
+                        onClick={() => {
+                          setSearchQuery('');
+                          setActiveCategory('All Blogs');
+                          setActiveTab('All');
+                        }}
+                        className="px-6 py-2.5 bg-white border border-[#E5E7EB] rounded-xl text-sm font-bold text-[#6D5EF8] hover:border-[#6D5EF8] hover:shadow-sm transition-all"
+                      >
+                        Clear Filters
+                      </button>
+                    </div>
                   )
-                ) : (
-
-                <div className="flex flex-col items-center justify-center py-20 px-4 text-center bg-[#F9FAFB] border border-dashed border-[#E5E7EB] rounded-3xl group">
-                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-sm mb-5 relative">
-                    <div className="absolute inset-0 bg-[#6D5EF8]/5 rounded-full scale-150 animate-pulse"></div>
-                    <SearchX className="w-8 h-8 text-[#6B7280] group-hover:text-[#6D5EF8] transition-colors relative z-10" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#111827] mb-2">No more posts here</h3>
-                  <p className="text-[#6B7280] text-sm max-w-sm mb-6">
-                    It looks like you've reached the end of this category or search criteria.
-                  </p>
-                  <button
-                    onClick={() => {
-                      setSearchQuery('');
-                      setActiveCategory('All Blogs');
-                      setActiveTab('All');
-                    }}
-                    className="px-6 py-2.5 bg-white border border-[#E5E7EB] rounded-xl text-sm font-bold text-[#6D5EF8] hover:border-[#6D5EF8] hover:shadow-sm transition-all"
-                  >
-                    Clear Filters
-                  </button>
-                </div>
                 )
-
               ) : (
                 listBlogs.map((post) => (
                   <Link href={`/blog/${post.slug}`} id={`blog-${post._id}`} key={post._id} className="block bg-white border border-[#E5E7EB] rounded-2xl p-4 flex flex-col sm:flex-row gap-5 hover:border-[#6D5EF8] hover:shadow-md transition-all group cursor-pointer">
