@@ -1628,6 +1628,13 @@ function ToolsClientInner() {
                                 Free
                               </div>
                             )}
+                            {/* Premium Badge */}
+                            {tool.isPremium && (
+                              <div className="flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-bold bg-amber-50 text-amber-600 border border-amber-100">
+                                <Crown className="w-3 h-3" />
+                                Premium
+                              </div>
+                            )}
                             {/* Popular Badge */}
                             {tool.tag?.type === 'popular' && !isNewTool(tool.createdAt) && (
                               <div className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-bold bg-red-50 text-red-500`}>
