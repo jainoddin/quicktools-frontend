@@ -423,7 +423,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
             {/* Filters Row */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#E5E7EB] gap-4 mb-6">
               <div className="flex items-center gap-6 overflow-x-auto w-full sm:w-auto pt-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                {['All', 'Latest', 'Popular', 'Trending', 'Favorites'].map(tab => (
+                {['All', 'Latest', 'Popular', 'Trending', ...(savedBlogs.length > 0 ? ['Favorites'] : [])].map(tab => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
@@ -432,6 +432,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
                     {tab}
                   </button>
                 ))}
+
               </div>
 
               <div className="relative shrink-0 mb-3 sm:mb-2 group z-20">
@@ -458,6 +459,18 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
             {/* List of Posts */}
             <div className="space-y-4">
               {listBlogs.length === 0 ? (
+                activeTab === 'Favorites' ? (
+                  <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
+                    <div className="w-16 h-16 bg-[#F5F3FF] rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Bookmark className="w-8 h-8 text-[#6D5EF8]" />
+                    </div>
+                    <p className="text-xl font-bold text-[#111827] mb-2">No saved blogs yet</p>
+                    <p className="text-[#6B7280] text-sm mb-5">Browse blogs and click the bookmark icon to save your favorites.</p>
+                    <button onClick={() => setActiveTab('All')} className="px-6 py-2.5 bg-[#6D5EF8] text-white text-sm font-bold rounded-full hover:bg-[#5B4ED6] transition-colors">
+                      Browse All Blogs
+                    </button>
+                  </div>
+                ) : (
                 <div className="flex flex-col items-center justify-center py-20 px-4 text-center bg-[#F9FAFB] border border-dashed border-[#E5E7EB] rounded-3xl group">
                   <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-sm mb-5 relative">
                     <div className="absolute inset-0 bg-[#6D5EF8]/5 rounded-full scale-150 animate-pulse"></div>
@@ -478,6 +491,8 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
                     Clear Filters
                   </button>
                 </div>
+                )
+
               ) : (
                 listBlogs.map((post) => (
                   <Link href={`/blog/${post.slug}`} id={`blog-${post._id}`} key={post._id} className="block bg-white border border-[#E5E7EB] rounded-2xl p-4 flex flex-col sm:flex-row gap-5 hover:border-[#6D5EF8] hover:shadow-md transition-all group cursor-pointer">

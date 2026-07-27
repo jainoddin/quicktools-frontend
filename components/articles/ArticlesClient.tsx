@@ -324,7 +324,7 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
       <section id="articles-grid" className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#E5E7EB] gap-4 mb-6">
           <div className="flex items-center gap-6 overflow-x-auto w-full pt-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            {TABS.map((tab) => (
+            {['All', 'Latest', 'Popular', 'Trending', ...(savedArticles.length > 0 ? ['Favorites'] : [])].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -335,6 +335,7 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
                 {tab}
               </button>
             ))}
+
           </div>
           <div className="relative shrink-0 mb-3 sm:mb-2 z-20">
             <button
@@ -378,13 +379,30 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
             ))}
           </div>
         ) : gridArticles.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-2xl font-bold text-[#111827] mb-2">No articles found</p>
-            <p className="text-[#6B7280]">Try a different category or search term.</p>
-            <button onClick={() => { setActiveCategory('All Articles'); setSearch(''); setActiveTab('All'); }} className="mt-6 bg-[#4F46E5] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#4338CA] transition-colors">
+          activeTab === 'Favorites' ? (
+            <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
+              <div className="w-16 h-16 bg-[#EEF2FF] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Bookmark className="w-8 h-8 text-[#4F46E5]" />
+              </div>
+              <p className="text-xl font-bold text-[#111827] mb-2">No saved articles yet</p>
+              <p className="text-[#6B7280] text-sm mb-5">Browse articles and click the bookmark icon to save your favorites.</p>
+              <button onClick={() => setActiveTab('All')} className="px-6 py-2.5 bg-[#4F46E5] text-white text-sm font-bold rounded-full hover:bg-[#4338CA] transition-colors">
+                Browse All Articles
+              </button>
+            </div>
+          ) : (
+          <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
+            <div className="w-16 h-16 bg-[#F3F4F6] rounded-full flex items-center justify-center mx-auto mb-4">
+              <Search className="w-8 h-8 text-[#9CA3AF]" />
+            </div>
+            <p className="text-xl font-bold text-[#111827] mb-2">No articles found</p>
+            <p className="text-[#6B7280] text-sm mb-5">Try a different category or search term.</p>
+            <button onClick={() => { setActiveCategory('All Articles'); setSearch(''); setActiveTab('All'); }} className="px-6 py-2.5 bg-[#4F46E5] text-white text-sm font-bold rounded-full hover:bg-[#4338CA] transition-colors">
               Show All Articles
             </button>
           </div>
+          )
+
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {gridArticles.map((article, i) => (

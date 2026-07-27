@@ -328,7 +328,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
 
             {/* Category Pills */}
             <div className="flex flex-wrap gap-2 mb-8">
-              {CATEGORIES.map((cat, idx) => (
+              {CATEGORIES.filter(cat => cat !== 'Favorites' || savedNews.length > 0).map((cat, idx) => (
                 <button
                   key={idx}
                   onClick={() => {
@@ -341,6 +341,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
                 </button>
               ))}
             </div>
+
 
             {/* Grid */}
             {regularNews.length === 0 ? (
@@ -462,7 +463,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
             <div className="bg-white rounded-2xl p-6 border border-[#E5E7EB] shadow-sm">
               <h3 className="font-bold text-[#111827] mb-5 text-sm">News Categories</h3>
               <ul className="space-y-3">
-                {CATEGORIES.map((cat, idx) => (
+                {CATEGORIES.filter(cat => cat !== 'Favorites' || savedNews.length > 0).map((cat, idx) => (
                   <li key={idx}>
                     <button
                       onClick={() => {
@@ -479,6 +480,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
                   </li>
                 ))}
               </ul>
+
             </div>
 
             {/* Popular News Widget */}
