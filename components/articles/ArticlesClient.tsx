@@ -315,31 +315,33 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
           {/* Trending Now */}
           <div className="lg:col-span-4 flex flex-col gap-4">
             <h2 className="text-xl font-bold text-[#111827] flex items-center gap-2">Trending Now <Flame className="w-5 h-5 text-orange-500 fill-orange-500"/></h2>
-            <div className="flex flex-col gap-5 bg-white p-6 rounded-3xl border border-[#E5E7EB] shadow-sm h-[450px] justify-between">
-              {trendingArticles.map((item, idx) => (
-                <Link href={`/articles/${item.slug}`} key={idx} className="flex items-center gap-4 group">
-                  <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0">
-                    <Image src={item.coverImage} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-300" unoptimized />
-                    <div className="absolute -left-1 top-1 bg-white border border-[#E5E7EB] w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-[#111827] z-10 shadow-sm">{idx + 1}</div>
-                  </div>
-                  <div className="flex flex-col flex-grow">
-                    <h4 className="text-sm font-bold text-[#111827] line-clamp-2 group-hover:text-[#4F46E5] transition-colors leading-tight mb-1">{item.title}</h4>
-                    <p className="text-xs text-[#6B7280]">{item.readTime}</p>
-                  </div>
-                  <button 
-                    onClick={(e) => handleToggleSave(e, item._id)}
-                    className={`transition-colors p-1 ${savedArticles.includes(item._id) ? 'text-[#4F46E5]' : 'text-gray-400 hover:text-[#4F46E5]'}`}
-                  >
-                    <Bookmark className={`w-4 h-4 ${savedArticles.includes(item._id) ? 'fill-current' : ''}`} />
-                  </button>
-                </Link>
-              ))}
+            <div className="flex flex-col bg-white p-6 rounded-3xl border border-[#E5E7EB] shadow-sm h-[450px]">
+              <div className="flex flex-col gap-5">
+                {trendingArticles.map((item, idx) => (
+                  <Link href={`/articles/${item.slug}`} key={idx} className="flex items-center gap-4 group">
+                    <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0">
+                      <Image src={item.coverImage} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-300" unoptimized />
+                      <div className="absolute -left-1 top-1 bg-white border border-[#E5E7EB] w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-[#111827] z-10 shadow-sm">{idx + 1}</div>
+                    </div>
+                    <div className="flex flex-col flex-grow">
+                      <h4 className="text-sm font-bold text-[#111827] line-clamp-2 group-hover:text-[#4F46E5] transition-colors leading-tight mb-1">{item.title}</h4>
+                      <p className="text-xs text-[#6B7280]">{item.readTime}</p>
+                    </div>
+                    <button 
+                      onClick={(e) => handleToggleSave(e, item._id)}
+                      className={`transition-colors p-1 ${savedArticles.includes(item._id) ? 'text-[#4F46E5]' : 'text-gray-400 hover:text-[#4F46E5]'}`}
+                    >
+                      <Bookmark className={`w-4 h-4 ${savedArticles.includes(item._id) ? 'fill-current' : ''}`} />
+                    </button>
+                  </Link>
+                ))}
+              </div>
               <button 
                 onClick={() => {
                   setActiveTab('Trending');
                   document.getElementById('articles-grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }}
-                className="w-full mt-2 text-[#4F46E5] font-semibold text-sm py-2.5 rounded-full border border-[#E5E7EB] hover:border-[#4F46E5] hover:bg-indigo-50 transition-colors flex items-center justify-center gap-2"
+                className="mt-auto w-full py-3 rounded-xl border border-[#E5E7EB] text-sm font-bold text-[#4F46E5] hover:bg-[#F3F4F6] transition-colors flex items-center justify-center gap-2 shrink-0"
               >
                 View all trending <ArrowRight className="w-4 h-4" />
               </button>
