@@ -83,6 +83,15 @@ const nextConfig: NextConfig = {
       }
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        // Use environment variable if available (e.g. localhost for dev), otherwise fallback to live backend
+        destination: process.env.NEXT_PUBLIC_API_URL ? `${process.env.NEXT_PUBLIC_API_URL}/api/:path*` : 'https://quicktools-backend-wlm5.onrender.com/api/:path*',
+      }
+    ];
+  },
 };
 
 export default nextConfig;

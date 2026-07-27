@@ -53,6 +53,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   useEffect(() => {
+    // 0. Intercept tokens from URL (for cross-domain mobile login bypass)
+    if (typeof window !== 'undefined') {
+      const searchParams = new URLSearchParams(window.location.search);
+      const urlToken = searchParams.get('token');
+      const urlUserData = searchParams.get('user_data');
+      
+      if (urlToken && urlUserData) {
+        document.cookie = `token=${urlToken}; path=/; max-age=${7 * 24 * 60 * 60}`;
+        document.cookie = `user_data=${urlUserData}; path=/; max-age=${7 * 24 * 60 * 60}`;
+        
+        // Clean URL
+        const newUrl = window.location.pathname;
+        window.history.replaceState({}, document.title, newUrl);
+      }
+    }
+
     // 1. Synchronous Optimistic Check
     // Instantly check for the non-httpOnly user_data cookie
     const userDataCookie = getCookie('user_data');
