@@ -15,7 +15,7 @@ import { useRouter } from 'next/navigation';
 
 export default function ImageGeneratorClient() {
   const router = useRouter();
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user, updateUser } = useAuth();
   const [activeView, setActiveView] = useState<'generate' | 'history'>('generate');
   const [isGenerating, setIsGenerating] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -154,7 +154,10 @@ export default function ImageGeneratorClient() {
             return updated;
           });
 
-          if (!isAuthenticated) {
+          if (isAuthenticated) {
+            // Refresh user state so navbar shows updated trial count (e.g. 0/5 → 1/5)
+            updateUser(user!);
+          } else {
             const newCount = freeGenCount + 1;
             setFreeGenCount(newCount);
             localStorage.setItem('freeImageGenCount', newCount.toString());

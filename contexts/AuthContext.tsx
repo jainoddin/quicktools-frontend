@@ -111,7 +111,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               email: data.user.email,
               avatar: data.user.avatar,
               bio: data.user.bio || '',
-              plan: data.user.plan || 'Free'
+              plan: data.user.plan || 'free',
+              credits: data.user.credits || 0,
+              createdAt: data.user.createdAt,
+              freeGenerationsCount: data.user.freeGenerationsCount || 0,
+              lastGenerationDate: data.user.lastGenerationDate || null,
             });
             document.cookie = `user_data=${encodeURIComponent(newUserData)}; path=/; max-age=${7 * 24 * 60 * 60}`;
           } else {
@@ -169,7 +173,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               email: data.user.email,
               avatar: data.user.avatar,
               bio: data.user.bio || '',
-              plan: data.user.plan || 'Free'
+              plan: data.user.plan || 'free',
+              credits: data.user.credits || 0,
+              createdAt: data.user.createdAt,
+              freeGenerationsCount: data.user.freeGenerationsCount || 0,
+              lastGenerationDate: data.user.lastGenerationDate || null,
             });
             document.cookie = `user_data=${encodeURIComponent(newUserData)}; path=/; max-age=${7 * 24 * 60 * 60}`;
           }
