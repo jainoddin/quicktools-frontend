@@ -155,7 +155,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
       return `</p><h3 class="text-xl sm:text-2xl font-bold mb-4 mt-8 text-[#111827]">${title.trim()}</h3><p class="text-[#4B5563] text-lg leading-relaxed mb-6">`;
     })
     .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-[#111827]">$1</strong>')
-    .replace(/!\[([^\]]+)\]\(([^)]+)\)/g, '</p><div class="my-10 rounded-2xl overflow-hidden border border-[#E5E7EB] shadow-sm"><img src="$2" alt="$1" class="w-full h-auto object-cover" loading="lazy" /></div><p class="text-[#4B5563] text-lg leading-relaxed mb-6">')
+    .replace(/!\[([^\]]+)\]\(([^)]+)\)/g, '</p><div class="my-10 rounded-2xl overflow-hidden border border-[#E5E7EB] shadow-sm"><img src="$2" alt="$1" class="w-full h-auto object-cover" loading="lazy" onerror="this.parentElement.style.display=\'none\'" /></div><p class="text-[#4B5563] text-lg leading-relaxed mb-6">')
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-[#4F46E5] font-semibold transition-colors" target="_blank" rel="noopener noreferrer">$1</a>')
     .replace(/\n\n/g, '</p><p class="text-[#4B5563] text-lg leading-relaxed mb-6">')
     .replace(/\n/g, ' ');

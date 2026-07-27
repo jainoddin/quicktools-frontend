@@ -293,7 +293,25 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
 
             {/* Article Body */}
             <div className="prose prose-lg max-w-none prose-h2:text-[#111827] prose-h2:font-bold prose-p:text-[#4B5563] prose-a:text-[#6D5EF8] prose-li:text-[#4B5563] scroll-smooth">
-              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]}>
+              <ReactMarkdown 
+                remarkPlugins={[remarkGfm]} 
+                rehypePlugins={[rehypeSlug]}
+                components={{
+                  img: ({node, ...props}) => (
+                    <span className="block my-10 rounded-2xl overflow-hidden border border-[#E5E7EB] shadow-sm bg-gray-50 relative min-h-[200px]">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img 
+                        {...props} 
+                        className="w-full h-auto object-cover" 
+                        loading="lazy" 
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).parentElement!.style.display = 'none';
+                        }} 
+                      />
+                    </span>
+                  )
+                }}
+              >
                 {blogPost.content}
               </ReactMarkdown>
             </div>
