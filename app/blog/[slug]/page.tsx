@@ -14,6 +14,7 @@ import GithubSlugger from 'github-slugger';
 import { getEndpoint } from '../../../lib/api';
 import NewsletterForm from '../../../components/shared/NewsletterForm';
 import NewsletterSectionWrapper from '../../../components/shared/NewsletterSectionWrapper';
+import ClientImageFallback from '../../../components/shared/ClientImageFallback';
 
 // ─── SEO Metadata ─────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -297,19 +298,7 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
                 remarkPlugins={[remarkGfm]} 
                 rehypePlugins={[rehypeSlug]}
                 components={{
-                  img: ({node, ...props}) => (
-                    <span className="block my-10 rounded-2xl overflow-hidden border border-[#E5E7EB] shadow-sm bg-gray-50 relative min-h-[200px]">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img 
-                        {...props} 
-                        className="w-full h-auto object-cover" 
-                        loading="lazy" 
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).parentElement!.style.display = 'none';
-                        }} 
-                      />
-                    </span>
-                  )
+                  img: (props) => <ClientImageFallback {...props as React.ImgHTMLAttributes<HTMLImageElement>} />
                 }}
               >
                 {blogPost.content}
