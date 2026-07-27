@@ -475,7 +475,10 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
             <div className="bg-white rounded-2xl p-6 border border-[#E5E7EB] shadow-sm">
               <h3 className="font-bold text-[#111827] mb-5 text-sm">News Categories</h3>
               <ul className="space-y-3">
-                {CATEGORIES.filter(cat => cat !== 'Favorites' || savedNews.length > 0).map((cat, idx) => (
+                {CATEGORIES.filter(cat => cat !== 'Favorites' || savedNews.length > 0).map((cat, idx) => {
+                  const count = getCategoryCount(cat);
+                  if (cat !== 'All News' && cat !== 'Favorites' && count === 0) return null;
+                  return (
                   <li key={idx}>
                     <button
                       onClick={() => {
@@ -486,11 +489,12 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
                     >
                       <span className={`font-medium ${activeCategory === cat ? 'text-[#4F46E5]' : ''}`}>{cat}</span>
                       <span className={`text-xs px-2 py-0.5 rounded-full transition-colors ${activeCategory === cat ? 'bg-[#EEF2FF] text-[#4F46E5]' : 'bg-gray-100 text-gray-500 group-hover:bg-[#EEF2FF] group-hover:text-[#4F46E5]'}`}>
-                        {getCategoryCount(cat)}
+                        {count}
                       </span>
                     </button>
                   </li>
-                ))}
+                  );
+                })}
               </ul>
 
             </div>
