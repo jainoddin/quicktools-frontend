@@ -171,8 +171,10 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
     return () => observer.disconnect();
   }, [hasMore, loading, page, activeCategory, search, sortOrder, activeTab, savedArticles]);
 
-  const featuredArticle = articles.length > 0 ? articles[0] : null;
+  // Featured Article — hide in Favorites mode so all saved articles appear in the grid
+  const featuredArticle = activeTab !== 'Favorites' && articles.length > 0 ? articles[0] : null;
   // Trending is always global top 4 by views
+
   const trendingArticles = [...articles].sort((a, b) => {
     const va = parseInt((a.views || '0').replace(/[^0-9]/g, ''));
     const vb = parseInt((b.views || '0').replace(/[^0-9]/g, ''));

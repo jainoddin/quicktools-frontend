@@ -237,8 +237,8 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
 
   // Infinite scroll observer removed in favor of Load More button
 
-  // 4. Featured Post (always the first post from the total blogs)
-  const featuredPost = blogs.length > 0 ? blogs[0] : undefined;
+  // 4. Featured Post — hide in Favorites mode so all saved blogs appear in the list
+  const featuredPost = activeTab !== 'Favorites' && blogs.length > 0 ? blogs[0] : undefined;
 
   // Exclude featured from the list shown below it if possible
   const listBlogs = blogs.filter(b => featuredPost ? b._id !== featuredPost._id : true);
