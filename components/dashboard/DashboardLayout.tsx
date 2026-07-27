@@ -76,9 +76,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="flex flex-1 relative">
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-1 gap-8">
 
-            {/* Sidebar */}
-
-            <Sidebar />
+            {/* Sidebar (Desktop only) */}
+            <div className="hidden lg:block shrink-0">
+              <Sidebar />
+            </div>
 
             {/* Scrollable Content */}
             <main className="flex-1 py-8 relative min-w-0 overflow-hidden">
