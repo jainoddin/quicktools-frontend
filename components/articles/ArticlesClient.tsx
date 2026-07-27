@@ -171,8 +171,8 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
     return () => observer.disconnect();
   }, [hasMore, loading, page, activeCategory, search, sortOrder, activeTab, savedArticles]);
 
-  // Featured Article — hide in Favorites mode so all saved articles appear in the grid
-  const featuredArticle = activeTab !== 'Favorites' && articles.length > 0 ? articles[0] : null;
+  // Featured Article (always the first article from data)
+  const featuredArticle = articles.length > 0 ? articles[0] : null;
   // Trending is always global top 4 by views
 
   const trendingArticles = [...articles].sort((a, b) => {
@@ -404,6 +404,8 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
           </div>
         ) : gridArticles.length === 0 ? (
           activeTab === 'Favorites' ? (
+            // If featured card is shown (1 saved article), hide the empty state
+            featuredArticle ? null : (
             <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
               <div className="w-16 h-16 bg-[#EEF2FF] rounded-full flex items-center justify-center mx-auto mb-4">
                 <Bookmark className="w-8 h-8 text-[#4F46E5]" />
@@ -414,7 +416,9 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
                 Browse All Articles
               </button>
             </div>
+            )
           ) : (
+
           <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
             <div className="w-16 h-16 bg-[#F3F4F6] rounded-full flex items-center justify-center mx-auto mb-4">
               <Search className="w-8 h-8 text-[#9CA3AF]" />

@@ -237,8 +237,8 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
 
   // Infinite scroll observer removed in favor of Load More button
 
-  // 4. Featured Post — hide in Favorites mode so all saved blogs appear in the list
-  const featuredPost = activeTab !== 'Favorites' && blogs.length > 0 ? blogs[0] : undefined;
+  // 4. Featured Post (always the first post from the total blogs)
+  const featuredPost = blogs.length > 0 ? blogs[0] : undefined;
 
   // Exclude featured from the list shown below it if possible
   const listBlogs = blogs.filter(b => featuredPost ? b._id !== featuredPost._id : true);
@@ -481,6 +481,8 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
             <div className="space-y-4">
               {listBlogs.length === 0 ? (
                 activeTab === 'Favorites' ? (
+                  // If featured card is shown (1 saved blog), hide the empty state
+                  featuredPost ? null : (
                   <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
                     <div className="w-16 h-16 bg-[#F5F3FF] rounded-full flex items-center justify-center mx-auto mb-4">
                       <Bookmark className="w-8 h-8 text-[#6D5EF8]" />
@@ -491,7 +493,9 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
                       Browse All Blogs
                     </button>
                   </div>
+                  )
                 ) : (
+
                 <div className="flex flex-col items-center justify-center py-20 px-4 text-center bg-[#F9FAFB] border border-dashed border-[#E5E7EB] rounded-3xl group">
                   <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-sm mb-5 relative">
                     <div className="absolute inset-0 bg-[#6D5EF8]/5 rounded-full scale-150 animate-pulse"></div>
