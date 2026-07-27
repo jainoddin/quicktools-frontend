@@ -167,6 +167,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
 
   // Get counts for sidebar
   const getCategoryCount = (cat: string) => {
+    if (cat === 'Favorites') return savedNews.length;
     if (initialCategoryCounts) {
       return initialCategoryCounts[cat] || 0;
     }
