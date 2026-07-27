@@ -12,10 +12,6 @@ export const getApiUrl = () => {
 
   // Use env var if present (set in .env.local or deployment environment)
   if (process.env.NEXT_PUBLIC_API_URL) {
-    // Avoid using hardcoded localhost from env if we are on a mobile device
-    if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_API_URL.includes('localhost') && window.location.hostname !== 'localhost') {
-       return `http://${window.location.hostname}:5000`;
-    }
     return process.env.NEXT_PUBLIC_API_URL;
   }
   
