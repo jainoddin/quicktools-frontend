@@ -344,6 +344,21 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
 
             {/* Grid */}
             {regularNews.length === 0 ? (
+              activeCategory === 'Favorites' ? (
+                <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
+                  <div className="w-16 h-16 bg-[#EEF2FF] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Bookmark className="w-8 h-8 text-[#4F46E5]" />
+                  </div>
+                  <p className="text-xl font-bold text-[#111827] mb-2">No saved news yet</p>
+                  <p className="text-[#6B7280] text-sm mb-5">Browse news and click the bookmark icon to save articles you like.</p>
+                  <button
+                    onClick={() => setActiveCategory('All News')}
+                    className="px-6 py-2.5 bg-[#4F46E5] text-white text-sm font-bold rounded-full hover:bg-[#4338CA] transition-colors"
+                  >
+                    Browse All News
+                  </button>
+                </div>
+              ) : (
               <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
                 <p className="text-xl font-bold text-[#111827] mb-2">No news found</p>
                 <p className="text-[#6B7280] text-sm">Try a different category or search term.</p>
@@ -351,6 +366,8 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
                   Clear Filters
                 </button>
               </div>
+              )
+
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {regularNews.map((news: any, idx: number) => (

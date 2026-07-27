@@ -116,6 +116,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               createdAt: data.user.createdAt,
               freeGenerationsCount: data.user.freeGenerationsCount || 0,
               lastGenerationDate: data.user.lastGenerationDate || null,
+              savedNews: data.user.savedNews || [],
+              savedTools: data.user.savedTools || [],
+              savedBlogs: data.user.savedBlogs || [],
+              savedArticles: data.user.savedArticles || [],
             });
             document.cookie = `user_data=${encodeURIComponent(newUserData)}; path=/; max-age=${7 * 24 * 60 * 60}`;
           } else {
@@ -178,6 +182,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               createdAt: data.user.createdAt,
               freeGenerationsCount: data.user.freeGenerationsCount || 0,
               lastGenerationDate: data.user.lastGenerationDate || null,
+              savedNews: data.user.savedNews || [],
+              savedTools: data.user.savedTools || [],
+              savedBlogs: data.user.savedBlogs || [],
+              savedArticles: data.user.savedArticles || [],
             });
             document.cookie = `user_data=${encodeURIComponent(newUserData)}; path=/; max-age=${7 * 24 * 60 * 60}`;
           }
