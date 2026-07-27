@@ -141,6 +141,25 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
     const fetchFilteredBlogs = async () => {
       setLoading(true);
       try {
+        // Favorites: fetch only saved blog IDs from backend
+        if (activeTab === 'Favorites') {
+          if (savedBlogs.length === 0) {
+            setBlogs([]);
+            setHasMore(false);
+            setLoading(false);
+            return;
+          }
+          const ids = savedBlogs.join(',');
+          const res = await fetch(getEndpoint(`/api/blogs?ids=${ids}&limit=50`));
+          const data = await res.json();
+          if (data.success) {
+            setBlogs(data.data);
+            setHasMore(false);
+          }
+          setLoading(false);
+          return;
+        }
+
         let url = `/api/blogs?page=1&limit=12`;
         if (activeCategory !== 'All Blogs') url += `&category=${encodeURIComponent(activeCategory)}`;
         if (searchQuery.trim()) url += `&search=${encodeURIComponent(searchQuery.trim())}`;
@@ -150,11 +169,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
         const data = await res.json();
 
         if (data.success) {
-          let results = data.data;
-          if (activeTab === 'Favorites') {
-            results = results.filter((b: any) => savedBlogs.includes(b._id));
-          }
-          setBlogs(results);
+          setBlogs(data.data);
           setPage(data.pagination.page);
           setHasMore(data.pagination.page < data.pagination.pages);
         }

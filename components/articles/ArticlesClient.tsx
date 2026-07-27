@@ -74,6 +74,25 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
     const fetchFiltered = async () => {
       setLoading(true);
       try {
+        // Favorites: fetch only saved article IDs from backend
+        if (activeTab === 'Favorites') {
+          if (savedArticles.length === 0) {
+            setArticles([]);
+            setHasMore(false);
+            setLoading(false);
+            return;
+          }
+          const ids = savedArticles.join(',');
+          const res = await fetch(getEndpoint(`/api/articles?ids=${ids}&limit=50`));
+          const data = await res.json();
+          if (data.success) {
+            setArticles(data.data);
+            setHasMore(false);
+          }
+          setLoading(false);
+          return;
+        }
+
         let url = `/api/articles?page=1&limit=12`;
         if (activeCategory !== 'All Articles') url += `&category=${encodeURIComponent(activeCategory)}`;
         if (search.trim()) url += `&search=${encodeURIComponent(search.trim())}`;
@@ -83,11 +102,7 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
         const data = await res.json();
         
         if (data.success) {
-          let results = data.data;
-          if (activeTab === 'Favorites') {
-             results = results.filter((a: any) => savedArticles.includes(a._id));
-          }
-          setArticles(results);
+          setArticles(data.data);
           setPage(data.pagination.page);
           setHasMore(data.pagination.page < data.pagination.pages);
         }
@@ -97,6 +112,7 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
         setLoading(false);
       }
     };
+
     
     const timeoutId = setTimeout(() => {
       fetchFiltered();
