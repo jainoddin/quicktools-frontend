@@ -79,7 +79,7 @@ export default function AiCodeClient() {
   const [showHistory, setShowHistory] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user, updateUser } = useAuth();
   const [codeHistory, setCodeHistory] = useState<any[]>([]);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showPremiumPopup, setShowPremiumPopup] = useState(false);
@@ -213,6 +213,9 @@ export default function AiCodeClient() {
       setIsProcessing(false);
       setHasResult(true);
       trackToolGenerate('ai-code-generator', { language, framework, code_type: codeType });
+
+      // Refresh navbar trial count badge
+      if (isAuthenticated) updateUser(user!);
     } catch (err) {
       console.error(err);
       await triggerErrorReport(err instanceof Error ? err.message : 'Unknown error');

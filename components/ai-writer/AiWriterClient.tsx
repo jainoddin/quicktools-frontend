@@ -68,7 +68,7 @@ const CustomSelect = ({ options, value, onChange, icon: Icon }: any) => {
 
 export default function AiWriterClient() {
   const { error, success } = useToast();
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user, updateUser } = useAuth();
   const isPro = ['pro', 'premium'].includes((user?.plan || '').toLowerCase());
 
   const [prompt, setPrompt] = useState('');
@@ -170,6 +170,9 @@ export default function AiWriterClient() {
         setGeneratedText(data.data);
         setHasResult(true);
         trackToolGenerate('ai-writer', { content_type: contentType, tone, language });
+
+        // Refresh navbar trial count badge
+        if (isAuthenticated) updateUser(user!);
 
         // Save guest usage to localStorage
         if (!isAuthenticated) {

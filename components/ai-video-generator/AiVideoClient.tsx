@@ -14,7 +14,7 @@ import { trackToolGenerate } from '@/lib/analytics';
 
 export default function AiVideoClient() {
   const { error, success } = useToast();
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user, updateUser } = useAuth();
   const isPro = ['pro', 'premium'].includes((user?.plan || '').toLowerCase());
   const [prompt, setPrompt] = useState('');
 
@@ -121,6 +121,9 @@ export default function AiVideoClient() {
         setVideoResult(data.data);
         setHasResult(true);
         trackToolGenerate('ai-video-generator');
+
+        // Refresh navbar trial count badge
+        if (isAuthenticated) updateUser(user!);
 
         const historyItem = {
           id: Date.now(),

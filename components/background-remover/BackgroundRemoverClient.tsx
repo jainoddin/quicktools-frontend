@@ -15,7 +15,7 @@ import { trackToolGenerate } from '@/lib/analytics';
 
 export default function BackgroundRemoverClient() {
   const { error, success } = useToast();
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user, updateUser } = useAuth();
   const isPro = ['pro', 'premium'].includes((user?.plan || '').toLowerCase());
   const [activeView, setActiveView] = useState<'generate' | 'history'>('generate');
   const [bgOption, setBgOption] = useState<'transparent' | 'white' | 'custom'>('transparent');
@@ -261,6 +261,8 @@ export default function BackgroundRemoverClient() {
               return;
             }
           }
+          // Refresh navbar trial count badge after successful credit/trial use
+          updateUser(user!);
         } catch (err) {
           console.error("Credit deduction err", err);
           error("Something went wrong with credit deduction.");
