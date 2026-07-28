@@ -11,6 +11,8 @@ import PremiumToolsWidget from '../../../components/shared/PremiumToolsWidget';
 import type { Metadata } from 'next';
 import { getEndpoint } from '../../../lib/api';
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space';
+
 // Simple markdown parser helper
 const parseMarkdown = (text: string) => {
   if (!text) return '';
@@ -25,12 +27,13 @@ const parseMarkdown = (text: string) => {
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const { slug } = await params;
   try {
-    const res = await fetch(getEndpoint(`/api/news/${slug}`));
+    const res = await fetch(getEndpoint(`/api/news/${slug}`), {
+      next: { revalidate: 300 }
+    });
     if (res.ok) {
       const json = await res.json();
       const news = json.data;
       const desc = news.metaDescription || news.summary || '';
-      const BASE_URL = 'https://quicktool.space';
       const canonicalUrl = news.canonicalOverride || `${BASE_URL}/news/${slug}`;
 
       return {
@@ -67,7 +70,7 @@ export default async function NewsDetailPage({ params }: any) {
     permanentRedirect(news.redirectUrl);
   }
 
-  const canonicalUrl = `https://quicktools.ai/news/${slug}`;
+  const canonicalUrl = news.canonicalOverride || `${BASE_URL}/news/${slug}`;
 
   // Fetch Top Tools
   let topTools = [];

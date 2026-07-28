@@ -167,7 +167,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
     .replace(/\n/g, ' ');
 
   const finalHtml = `<p class="text-[#4B5563] text-lg leading-relaxed mb-6">${formattedContent}</p>`.replace(/<p[^>]*>\s*<\/p>/g, '');
-  const canonicalUrl = `${BASE_URL}/articles/${article.slug}`;
+  const canonicalUrl = article.canonicalOverride || `${BASE_URL}/articles/${article.slug}`;
 
   return (
     <>

@@ -17,6 +17,9 @@ import NewsletterForm from '../../../components/shared/NewsletterForm';
 import NewsletterSectionWrapper from '../../../components/shared/NewsletterSectionWrapper';
 import ClientImageFallback from '../../../components/shared/ClientImageFallback';
 import CrossLinksWidget from '../../../components/shared/CrossLinksWidget';
+import ShareButtons from '../../../components/blog/ShareButtons';
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space';
 
 // ─── SEO Metadata ─────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -30,7 +33,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   const desc = blog.metaDescription || blog.description || '';
 
-  const BASE_URL = 'https://quicktool.space';
   const canonicalUrl = blog.canonicalOverride || `${BASE_URL}/blog/${blog.slug}`;
 
   return {
@@ -78,10 +80,11 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
     return <div className="text-center py-20 text-2xl font-bold">Blog post not found</div>;
   }
 
-  // Handle future-proof redirect
   if (blogPost.redirectUrl) {
     permanentRedirect(blogPost.redirectUrl);
   }
+
+  const canonicalUrl = blogPost.canonicalOverride || `${BASE_URL}/blog/${blogPost.slug}`;
 
   const jsonLd = [
     {
@@ -200,18 +203,7 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
             <div>
               <h3 className="text-xs font-bold text-[#111827] uppercase tracking-widest mb-3">Share this post</h3>
               <div className="flex items-center gap-2">
-                <button className="w-9 h-9 rounded-full bg-[#1DA1F2]/10 text-[#1DA1F2] flex items-center justify-center hover:bg-[#1DA1F2]/20 transition-colors font-bold text-xs">
-                  𝕏
-                </button>
-                <button className="w-9 h-9 rounded-full bg-[#0A66C2]/10 text-[#0A66C2] flex items-center justify-center hover:bg-[#0A66C2]/20 transition-colors font-bold text-xs">
-                  in
-                </button>
-                <button className="w-9 h-9 rounded-full bg-[#1877F2]/10 text-[#1877F2] flex items-center justify-center hover:bg-[#1877F2]/20 transition-colors font-bold text-xs">
-                  f
-                </button>
-                <button className="w-9 h-9 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center hover:bg-gray-200 transition-colors">
-                  <Link2 className="w-4 h-4" />
-                </button>
+                <ShareButtons url={canonicalUrl} title={blogPost.title} />
               </div>
             </div>
 
