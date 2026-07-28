@@ -10,8 +10,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch blogs
   let blogs: any[] = [];
   try {
-    const res = await fetch(getEndpoint('/api/blogs'), {
-      next: { revalidate: 3600 },
+    const res = await fetch(getEndpoint('/api/blogs?limit=500'), {
+      cache: 'no-store',
       signal: AbortSignal.timeout(10000),
     });
     const data = await res.json();
@@ -24,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let articles: any[] = [];
   try {
     const res = await fetch(getEndpoint('/api/articles?limit=500'), {
-      next: { revalidate: 3600 },
+      cache: 'no-store',
       signal: AbortSignal.timeout(10000),
     });
     const data = await res.json();
@@ -37,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let news: any[] = [];
   try {
     const res = await fetch(getEndpoint('/api/news?limit=500'), {
-      next: { revalidate: 3600 },
+      cache: 'no-store',
       signal: AbortSignal.timeout(10000),
     });
     const data = await res.json();

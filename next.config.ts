@@ -19,6 +19,12 @@ const nextConfig: NextConfig = {
         destination: '/icon',
         permanent: true,
       },
+      // Resolve Content Intent Duplicates
+      {
+        source: '/articles/ai-website-builders-evaluated-top-platforms',
+        destination: '/articles/best-ai-website-builders-2026',
+        permanent: true,
+      },
       // Redirect specific 2024 blogs/articles to 2026
       {
         source: '/blog/best-free-ai-tools-the-ultimate-guide-to-boosting-productivity-in-2024',

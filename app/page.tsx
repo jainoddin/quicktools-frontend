@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const freeToolsCount = allTools.filter(t => t.tag?.type === 'free').length;
+  const freeToolsCount = allTools.filter(t => !t.isPremium).length;
   const premiumToolsCount = allTools.length - freeToolsCount;
 
   return (

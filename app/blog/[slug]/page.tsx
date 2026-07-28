@@ -15,6 +15,7 @@ import { getEndpoint } from '../../../lib/api';
 import NewsletterForm from '../../../components/shared/NewsletterForm';
 import NewsletterSectionWrapper from '../../../components/shared/NewsletterSectionWrapper';
 import ClientImageFallback from '../../../components/shared/ClientImageFallback';
+import CrossLinksWidget from '../../../components/shared/CrossLinksWidget';
 
 // ─── SEO Metadata ─────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -28,15 +29,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   const desc = blog.metaDescription || blog.description || '';
 
+  const BASE_URL = 'https://quicktool.space';
+  const canonicalUrl = `${BASE_URL}/blog/${blog.slug}`;
+
   return {
     title: { absolute: blog.metaTitle || blog.title },
     description: desc.length > 145 ? desc.substring(0, 145) + '...' : desc,
-    alternates: { canonical: `/blog/${blog.slug}` },
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       title: blog.metaTitle || blog.title,
       description: desc,
       type: 'article',
-      url: `https://quicktools.ai/blog/${blog.slug}`,
+      url: canonicalUrl,
       siteName: 'QuickTools.ai',
       publishedTime: blog.publishedAt,
       authors: [blog.author?.name],
@@ -73,28 +77,40 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
     return <div className="text-center py-20 text-2xl font-bold">Blog post not found</div>;
   }
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: blogPost.title,
-    description: blogPost.description,
-    image: [blogPost.coverImage],
-    datePublished: blogPost.publishedAt,
-    dateModified: blogPost.publishedAt,
-    author: [{
-      '@type': 'Person',
-      name: blogPost.author?.name || 'QuickTools AI',
-      url: 'https://quicktools.ai/about'
-    }],
-    publisher: {
-      '@type': 'Organization',
-      name: 'QuickTools.ai',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://quicktools.ai/logo.png'
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: blogPost.title,
+      description: blogPost.description,
+      image: [blogPost.coverImage],
+      datePublished: blogPost.publishedAt,
+      dateModified: blogPost.publishedAt,
+      author: {
+        '@type': 'Organization',
+        name: 'QuickTools AI Team',
+        url: 'https://quicktool.space/author/quicktools-ai-team'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'QuickTools.ai',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png'
+        }
       }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://quicktool.space/' },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://quicktool.space/blog' },
+        { '@type': 'ListItem', position: 3, name: blogPost.category, item: `https://quicktool.space/blog?category=${encodeURIComponent(blogPost.category)}` },
+        { '@type': 'ListItem', position: 4, name: blogPost.title, item: `https://quicktool.space/blog/${blogPost.slug}` }
+      ]
     }
-  };
+  ];
 
   const faqSchema = (blogPost.faq && blogPost.faq.length > 0) ? {
     '@context': 'https://schema.org',
@@ -331,7 +347,7 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
                 Try AI Tools on QuickTools.ai <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
-
+            <CrossLinksWidget category={blogPost.category} />
           </main>
 
           {/* ── RIGHT SIDEBAR ── */}

@@ -6,6 +6,7 @@ import { ChevronRight, ArrowRight, Check, Home, Mail } from 'lucide-react';
 import ShareButtons from '../../../components/blog/ShareButtons';
 import NewsletterForm from '../../../components/shared/NewsletterForm';
 import NewsletterSectionWrapper from '../../../components/shared/NewsletterSectionWrapper';
+import CrossLinksWidget from '../../../components/shared/CrossLinksWidget';
 import PremiumToolsWidget from '../../../components/shared/PremiumToolsWidget';
 import type { Metadata } from 'next';
 import { getEndpoint } from '../../../lib/api';
@@ -29,15 +30,19 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
       const json = await res.json();
       const news = json.data;
       const desc = news.metaDescription || news.summary || '';
+      const BASE_URL = 'https://quicktool.space';
+      const canonicalUrl = `${BASE_URL}/news/${slug}`;
+
       return {
         title: { absolute: news.metaTitle || news.title },
         description: desc.length > 145 ? desc.substring(0, 145) + '...' : desc,
-        alternates: { canonical: `/news/${slug}` },
+        alternates: { canonical: canonicalUrl },
         openGraph: {
           title: news.metaTitle || news.title,
           description: desc,
           images: [news.heroImage],
           type: 'article',
+          url: canonicalUrl,
         },
       };
     }
@@ -85,16 +90,17 @@ export default async function NewsDetailPage({ params }: any) {
               "image": [news.heroImage],
               "datePublished": news.publishedAt,
               "dateModified": news.updatedAt || news.publishedAt,
-              "author": [{
-                "@type": "Person",
-                "name": news.author.name,
-              }],
+              "author": {
+                "@type": "Organization",
+                "name": "QuickTools AI Team",
+                "url": "https://quicktool.space/author/quicktools-ai-team"
+              },
               "publisher": {
                 "@type": "Organization",
-                "name": "QuickTools AI",
+                "name": "QuickTools.ai",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://quicktools.ai/icon.svg"
+                  "url": "https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
                 }
               }
             },
@@ -102,10 +108,10 @@ export default async function NewsDetailPage({ params }: any) {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktools.ai/" },
-                { "@type": "ListItem", "position": 2, "name": "News", "item": "https://quicktools.ai/news" },
-                { "@type": "ListItem", "position": 3, "name": news.category, "item": `https://quicktools.ai/news?category=${encodeURIComponent(news.category)}` },
-                { "@type": "ListItem", "position": 4, "name": news.title, "item": `https://quicktools.ai/news/${news.slug}` }
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktool.space/" },
+                { "@type": "ListItem", "position": 2, "name": "News", "item": "https://quicktool.space/news" },
+                { "@type": "ListItem", "position": 3, "name": news.category, "item": `https://quicktool.space/news?category=${encodeURIComponent(news.category)}` },
+                { "@type": "ListItem", "position": 4, "name": news.title, "item": `https://quicktool.space/news/${news.slug}` }
               ]
             }
           ])
@@ -138,7 +144,7 @@ export default async function NewsDetailPage({ params }: any) {
                 {news.keyHighlights && news.keyHighlights.length > 0 && <li><a href="#section-2" className="text-sm font-medium text-gray-500 hover:text-[#4F46E5] block py-1">2. Key Highlights</a></li>}
                 {news.whyItMatters && <li><a href="#section-3" className="text-sm font-medium text-gray-500 hover:text-[#4F46E5] block py-1">3. Why It Matters</a></li>}
                 {news.industryReaction && <li><a href="#section-4" className="text-sm font-medium text-gray-500 hover:text-[#4F46E5] block py-1">4. Industry Reaction</a></li>}
-                {news.quickToolsInsight && <li><a href="#section-5" className="text-sm font-medium text-gray-500 hover:text-[#4F46E5] block py-1">5. QuickTools Insight</a></li>}
+                {news.quickToolsInsight && <li><a href="#section-5" className="text-sm font-medium text-gray-500 hover:text-[#4F46E5] block py-1">5. Related AI Tools</a></li>}
                 {news.conclusion && <li><a href="#section-6" className="text-sm font-medium text-gray-500 hover:text-[#4F46E5] block py-1">6. Conclusion</a></li>}
               </ul>
             </div>
@@ -209,10 +215,16 @@ export default async function NewsDetailPage({ params }: any) {
                     {news.author.name}
                     <div className="w-4 h-4 bg-[#4F46E5] rounded-full flex items-center justify-center text-white text-[10px]">✓</div>
                   </div>
-                  <div className="text-sm text-gray-500 font-medium flex items-center gap-2">
+                  <div className="text-sm text-gray-500 font-medium flex flex-wrap items-center gap-2">
                     <span>{new Date(news.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                     <span>•</span>
                     <span>{news.readTime}</span>
+                    {news.sourceName && news.sourceUrl && (
+                      <>
+                        <span>•</span>
+                        <span>Source: <a href={news.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-[#4F46E5] hover:underline">{news.sourceName}</a></span>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -287,7 +299,7 @@ export default async function NewsDetailPage({ params }: any) {
                 <>
                   <div className="bg-[#FEF9C3] rounded-2xl p-6 my-10 border border-[#FEF08A]">
                     <h2 id="section-5" className="text-lg font-bold text-[#854D0E] mb-3 flex items-center gap-2 scroll-mt-32">
-                      <span className="text-xl">💡</span> QuickTools Insight
+                      <span className="text-xl">💡</span> Related AI Tools
                     </h2>
                     <div className="text-[#713F12] font-medium" dangerouslySetInnerHTML={{ __html: parseMarkdown(news.quickToolsInsight) }}></div>
                   </div>
@@ -309,6 +321,7 @@ export default async function NewsDetailPage({ params }: any) {
               <ShareButtons url={canonicalUrl} title={news.title} />
             </div>
             
+            <CrossLinksWidget category={news.category} />
           </main>
 
           {/* RIGHT SIDEBAR (Author, News, Related) */}

@@ -15,6 +15,7 @@ import ShareButtons from '@/components/blog/ShareButtons';
 import { getEndpoint } from '@/lib/api';
 import NewsletterForm from '@/components/shared/NewsletterForm';
 import NewsletterSectionWrapper from '@/components/shared/NewsletterSectionWrapper';
+import CrossLinksWidget from '@/components/shared/CrossLinksWidget';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space';
 
@@ -102,16 +103,16 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
     "description": article.metaDescription || article.description,
     "image": article.coverImage,
     "author": {
-      "@type": "Person",
-      "name": article.author?.name || "QuickTools AI Team",
-      "url": "https://quicktools.ai/about"
+      "@type": "Organization",
+      "name": "QuickTools AI Team",
+      "url": "https://quicktool.space/author/quicktools-ai-team"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "QuickTools AI",
+      "name": "QuickTools.ai",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://quicktools.ai/icon.svg"
+        "url": "https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
       }
     },
     "datePublished": new Date(article.publishedAt).toISOString(),
@@ -122,10 +123,10 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktools.ai/" },
-      { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://quicktools.ai/articles" },
-      { "@type": "ListItem", "position": 3, "name": article.category, "item": `https://quicktools.ai/articles?category=${encodeURIComponent(article.category)}` },
-      { "@type": "ListItem", "position": 4, "name": article.title, "item": `https://quicktools.ai/articles/${article.slug}` }
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktool.space/" },
+      { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://quicktool.space/articles" },
+      { "@type": "ListItem", "position": 3, "name": article.category, "item": `https://quicktool.space/articles?category=${encodeURIComponent(article.category)}` },
+      { "@type": "ListItem", "position": 4, "name": article.title, "item": `https://quicktool.space/articles/${article.slug}` }
     ]
   };
 
@@ -432,6 +433,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
               <ShareButtons url={canonicalUrl} title={article.title} />
             </div>
 
+            <CrossLinksWidget category={article.category} />
           </main>
 
           {/* RIGHT SIDEBAR (Author, News, Related) */}
