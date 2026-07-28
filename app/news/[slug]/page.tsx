@@ -46,6 +46,8 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
           images: [news.heroImage],
           type: 'article',
           url: canonicalUrl,
+          publishedTime: news.publishedAt,
+          modifiedTime: news.updatedAt || news.publishedAt,
         },
       };
     }

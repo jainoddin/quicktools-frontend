@@ -12,6 +12,8 @@ export async function GET() {
 
     const siteUrl = 'https://quicktool.space';
 
+    const validArticles = articles.filter((article: any) => !article.redirectUrl && !article.canonicalOverride);
+
     const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -21,7 +23,7 @@ export async function GET() {
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${siteUrl}/feed/articles" rel="self" type="application/rss+xml" />
-    ${articles.map((article: any) => `
+    ${validArticles.map((article: any) => `
     <item>
       <title><![CDATA[${article.title}]]></title>
       <link>${siteUrl}/articles/${article.slug}</link>

@@ -45,6 +45,7 @@ export async function generateMetadata(
         description: a.metaDescription || a.description,
         images: [{ url: a.coverImage, width: 1200, height: 630, alt: a.title }],
         publishedTime: new Date(a.publishedAt).toISOString(),
+        modifiedTime: new Date(a.updatedAt || a.publishedAt).toISOString(),
         authors: [a.author?.name || 'QuickTools AI Team'],
         tags: a.tags,
       },

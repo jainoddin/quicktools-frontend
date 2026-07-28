@@ -46,6 +46,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: canonicalUrl,
       siteName: 'QuickTools.ai',
       publishedTime: blog.publishedAt,
+      modifiedTime: blog.updatedAt || blog.publishedAt,
       authors: [blog.author?.name],
       images: [
         {
