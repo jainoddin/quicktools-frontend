@@ -5,8 +5,7 @@
  * Use MongoDB user id as user_id for de-duplication.
  */
 
-export const GA_MEASUREMENT_ID =
-  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-2TKCY5NQPG';
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 type EventParams = Record<string, string | number | boolean | undefined | null>;
 
@@ -20,8 +19,14 @@ declare global {
 }
 
 function gtag(...args: unknown[]) {
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
-  window.gtag(...(args as [string, ...unknown[]]));
+  if (typeof window === 'undefined') return;
+  window.dataLayer = window.dataLayer || [];
+  
+  // Create a proper array from arguments to push to dataLayer
+  // (In TS/JS, pushing the literal 'arguments' object works for native functions, 
+  // but using an array is safer when compiling down from TS).
+  // Actually, Google's script explicitly looks for the 'Arguments' object, so:
+  window.dataLayer.push(arguments);
 }
 
 function clean(params?: EventParams) {
