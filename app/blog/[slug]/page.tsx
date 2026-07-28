@@ -11,6 +11,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import GithubSlugger from 'github-slugger';
+import { permanentRedirect } from 'next/navigation';
 import { getEndpoint } from '../../../lib/api';
 import NewsletterForm from '../../../components/shared/NewsletterForm';
 import NewsletterSectionWrapper from '../../../components/shared/NewsletterSectionWrapper';
@@ -75,6 +76,11 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
 
   if (!blogPost) {
     return <div className="text-center py-20 text-2xl font-bold">Blog post not found</div>;
+  }
+
+  // Handle future-proof redirect
+  if (blogPost.redirectUrl) {
+    permanentRedirect(blogPost.redirectUrl);
   }
 
   const jsonLd = [

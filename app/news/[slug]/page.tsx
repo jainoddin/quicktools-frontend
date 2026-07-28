@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { ChevronRight, ArrowRight, Check, Home, Mail } from 'lucide-react';
 import ShareButtons from '../../../components/blog/ShareButtons';
 import NewsletterForm from '../../../components/shared/NewsletterForm';
@@ -62,6 +62,11 @@ export default async function NewsDetailPage({ params }: any) {
   }
 
   const { data: news, relatedNews } = await res.json();
+
+  if (news.redirectUrl) {
+    permanentRedirect(news.redirectUrl);
+  }
+
   const canonicalUrl = `https://quicktools.ai/news/${slug}`;
 
   // Fetch Top Tools

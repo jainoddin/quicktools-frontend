@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import ShareButtons from '@/components/blog/ShareButtons';
 import { getEndpoint } from '@/lib/api';
+import { permanentRedirect } from 'next/navigation';
 import NewsletterForm from '@/components/shared/NewsletterForm';
 import NewsletterSectionWrapper from '@/components/shared/NewsletterSectionWrapper';
 import CrossLinksWidget from '@/components/shared/CrossLinksWidget';
@@ -85,6 +86,10 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
   
   const data = await res.json();
   const article = data.data;
+
+  if (article.redirectUrl) {
+    permanentRedirect(article.redirectUrl);
+  }
 
   // We map the backend tableOfContents format to ensure isActive exists
   const tableOfContents = article.tableOfContents?.map((item: any, idx: number) => ({

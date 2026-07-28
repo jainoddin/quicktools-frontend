@@ -23,6 +23,19 @@ export default async function CrossLinksWidget({ category }: CrossLinksWidgetPro
     if (blogsRes.ok) latestBlogs = (await blogsRes.json()).data || [];
     if (articlesRes.ok) latestArticles = (await articlesRes.json()).data || [];
     if (newsRes.ok) latestNews = (await newsRes.json()).data || [];
+
+    // Fallback if category has no results (e.g. News category mismatch)
+    if (category && (latestBlogs.length === 0 || latestArticles.length === 0 || latestNews.length === 0)) {
+      const [fbBlogs, fbArticles, fbNews] = await Promise.all([
+        latestBlogs.length === 0 ? fetch(getEndpoint(`/api/blogs?limit=3`), { next: { revalidate: 3600 } }) : Promise.resolve(null),
+        latestArticles.length === 0 ? fetch(getEndpoint(`/api/articles?limit=3`), { next: { revalidate: 3600 } }) : Promise.resolve(null),
+        latestNews.length === 0 ? fetch(getEndpoint(`/api/news?limit=3`), { next: { revalidate: 3600 } }) : Promise.resolve(null)
+      ]);
+      
+      if (fbBlogs?.ok) latestBlogs = (await fbBlogs.json()).data || [];
+      if (fbArticles?.ok) latestArticles = (await fbArticles.json()).data || [];
+      if (fbNews?.ok) latestNews = (await fbNews.json()).data || [];
+    }
   } catch (error) {
     console.error("CrossLinksWidget fetch error:", error);
   }
