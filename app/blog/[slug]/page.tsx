@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const desc = blog.metaDescription || blog.description || '';
 
   const BASE_URL = 'https://quicktool.space';
-  const canonicalUrl = `${BASE_URL}/blog/${blog.slug}`;
+  const canonicalUrl = blog.canonicalOverride || `${BASE_URL}/blog/${blog.slug}`;
 
   return {
     title: { absolute: blog.metaTitle || blog.title },
@@ -85,7 +85,7 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
       description: blogPost.description,
       image: [blogPost.coverImage],
       datePublished: blogPost.publishedAt,
-      dateModified: blogPost.publishedAt,
+      dateModified: blogPost.updatedAt || blogPost.publishedAt,
       author: {
         '@type': 'Organization',
         name: 'QuickTools AI Team',

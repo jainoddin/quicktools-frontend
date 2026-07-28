@@ -31,7 +31,7 @@ export async function generateMetadata(
     if (!res.ok) return { title: 'Article Not Found' };
     const data = await res.json();
     const a = data.data;
-    const canonicalUrl = `${BASE_URL}/articles/${slug}`;
+    const canonicalUrl = a.canonicalOverride || `${BASE_URL}/articles/${slug}`;
 
     return {
       title: a.metaTitle || a.title,

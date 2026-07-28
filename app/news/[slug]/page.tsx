@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
       const news = json.data;
       const desc = news.metaDescription || news.summary || '';
       const BASE_URL = 'https://quicktool.space';
-      const canonicalUrl = `${BASE_URL}/news/${slug}`;
+      const canonicalUrl = news.canonicalOverride || `${BASE_URL}/news/${slug}`;
 
       return {
         title: { absolute: news.metaTitle || news.title },

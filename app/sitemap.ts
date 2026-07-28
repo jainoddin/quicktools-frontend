@@ -48,21 +48,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogUrls = blogs.map((blog: any) => ({
     url: `${baseUrl}/blog/${blog.slug}`,
-    lastModified: new Date(blog.publishedAt),
+    lastModified: new Date(blog.updatedAt || blog.publishedAt),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
 
   const articleUrls = articles.map((article: any) => ({
     url: `${baseUrl}/articles/${article.slug}`,
-    lastModified: new Date(article.publishedAt),
+    lastModified: new Date(article.updatedAt || article.publishedAt),
     changeFrequency: 'weekly' as const,
     priority: 0.9,
   }));
 
   const newsUrls = news.map((item: any) => ({
     url: `${baseUrl}/news/${item.slug}`,
-    lastModified: new Date(item.publishedAt),
+    lastModified: new Date(item.updatedAt || item.publishedAt),
     changeFrequency: 'daily' as const,
     priority: 0.9,
   }));
