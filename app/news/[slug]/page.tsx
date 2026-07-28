@@ -218,7 +218,7 @@ export default async function NewsDetailPage({ params }: any) {
             <div className="flex flex-wrap items-center justify-between gap-6 py-6 border-y border-[#E5E7EB] mb-10">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-100 border border-gray-200">
-                  <Image src={news.author.avatar} alt={news.author.name} width={48} height={48} className="object-cover" />
+                  <Image src={news.author.avatar === '/icon.svg' ? 'https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png' : news.author.avatar} alt={news.author.name} width={48} height={48} className="object-cover" />
                 </div>
                 <div>
                   <div className="font-bold text-[#111827] flex items-center gap-1">
