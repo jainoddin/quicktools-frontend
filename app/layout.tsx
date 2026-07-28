@@ -82,6 +82,13 @@ export const metadata: Metadata = {
     languages: {
       'en-US': '/en-US',
     },
+    types: {
+      'application/rss+xml': [
+        { url: '/feed/news', title: 'QuickTools.ai News RSS Feed' },
+        { url: '/feed/articles', title: 'QuickTools.ai Articles RSS Feed' },
+        { url: '/feed/blogs', title: 'QuickTools.ai Blog RSS Feed' }
+      ]
+    }
   },
   verification: {
     google: "u2eV2y9kS-0GuLrl16lDMrGz6k_HoCb5jIZieWTTiic",
