@@ -76,7 +76,7 @@ const UpiForm = ({ upiId, onChange }: { upiId: string; onChange: (v: string) => 
         <div className="text-center">
           <p className="text-sm font-bold text-[#111827]">Pay via UPI</p>
           <p className="text-xs text-[#6B7280] mt-1 leading-relaxed">
-            Click <span className="font-bold text-[#6D5EF8]">"Pay $1.00"</span> below →
+            Click the <span className="font-bold text-[#6D5EF8]">Pay securely</span> button below →
             Razorpay popup opens → <span className="font-semibold">UPI tab</span> select cheyyi →
             UPI ID enter cheyyi or QR scan cheyyi
           </p>
@@ -118,7 +118,7 @@ const PhonePeForm = ({ mobile, onChange }: { mobile: string; onChange: (v: strin
         <div className="text-center">
           <p className="text-sm font-bold text-[#111827]">Secure UPI QR</p>
           <p className="text-xs text-[#6B7280] mt-1 leading-relaxed">
-            Click <span className="font-bold text-[#5B2D8E]">"Pay $1.00"</span> below → Razorpay popup opens →{' '}
+            Click the <span className="font-bold text-[#5B2D8E]">Pay securely</span> button below → Razorpay popup opens →{' '}
             <span className="font-semibold">UPI tab</span> select cheyyi → Scan QR with PhonePe
           </p>
         </div>
@@ -162,15 +162,15 @@ function PaymentContent() {
   
   let planName = 'Pro Plan';
   let planIcon = <Zap className="w-5 h-5 text-[#6D5EF8]" />;
-  let totalAmount = '43.20';
+  let totalAmount = '3588';
 
   if (planId === 'starter') {
-    planName = 'Starter Plan';
-    totalAmount = '3.60';
+    planName = 'Pro Monthly';
+    totalAmount = '299';
   } else if (planId === 'business') {
     planName = 'Business Plan';
     planIcon = <Building2 className="w-5 h-5 text-[#6D5EF8]" />;
-    totalAmount = '72.00';
+    totalAmount = '6000';
   }
 
   const [selectedMethod, setSelectedMethod] = useState('card');
@@ -353,7 +353,7 @@ function PaymentContent() {
         >
           {loading
             ? <><Loader2 className="w-5 h-5 animate-spin" /> Processing...</>
-            : `Pay $${totalAmount}`
+            : `Pay ₹${Number(totalAmount).toLocaleString('en-IN')}`
           }
         </button>
       </div>

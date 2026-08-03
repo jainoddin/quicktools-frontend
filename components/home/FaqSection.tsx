@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     q: 'Are the tools really free to use?',
-    a: 'Yes, we offer a generous free tier that lets you test out our most popular AI tools. You can upgrade to a premium plan for unlimited access and advanced features.'
+    a: 'QuickTools.ai includes a free starter experience for eligible tools. Paid plans add more credits, premium tools, and faster processing.'
   },
   {
     q: 'Do I need a credit card to start?',
@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: 'Is my data safe with QuickTools.ai?',
-    a: 'Absolutely. We use industry-standard encryption to protect your data. Your prompts and generated content remain private to your account.'
+    a: 'We use secure account sessions and do not display your private generation history to other users. Avoid entering passwords or highly sensitive personal information into any AI prompt.'
   }
 ];
 

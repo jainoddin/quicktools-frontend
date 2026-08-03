@@ -66,8 +66,8 @@ export default async function AboutPage() {
   };
 
   const stats = [
-    { icon: Users, label: 'Happy Users', value: '10,000+', color: 'text-[#6D5EF8]', bg: 'bg-[#EEF2FF]' },
-    { icon: LayoutGrid, label: 'AI Tools', value: backendStats.tools + '+', color: 'text-[#F43F5E]', bg: 'bg-pink-50' },
+    { icon: Users, label: 'Built For', value: 'Creators', color: 'text-[#6D5EF8]', bg: 'bg-[#EEF2FF]' },
+    { icon: LayoutGrid, label: 'AI Tools', value: '100+', color: 'text-[#F43F5E]', bg: 'bg-pink-50' },
     { icon: Star, label: 'Tasks Completed', value: formatNumber(backendStats.tasks), color: 'text-[#F59E0B]', bg: 'bg-amber-50' },
     { icon: Globe, label: 'Countries', value: backendStats.countries + '+', color: 'text-[#10B981]', bg: 'bg-emerald-50' },
     { icon: Shield, label: 'Uptime', value: backendStats.uptime + '%', color: 'text-[#0EA5E9]', bg: 'bg-sky-50' },
@@ -267,9 +267,9 @@ export default async function AboutPage() {
 
           {/* CTA Card (right) */}
           <div className="lg:col-span-1">
-            <div className="bg-[#6D5EF8] rounded-2xl p-6 text-white h-full flex flex-col relative overflow-hidden">
+            <div className="bg-[#6D5EF8] rounded-2xl p-6 text-white flex flex-col relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
-              <h2 className="text-2xl font-black mb-2 relative z-10">Join 10,000+ Happy Users</h2>
+              <h2 className="text-2xl font-black mb-2 relative z-10">Start Creating with QuickTools.ai</h2>
               <p className="text-white/80 text-sm leading-relaxed mb-6 relative z-10">
                 Start using our AI tools today and experience the future of productivity.
               </p>
@@ -277,23 +277,12 @@ export default async function AboutPage() {
                 <Zap className="w-4 h-4 fill-[#6D5EF8]" /> Sign Up for Free
               </button>
               <ul className="space-y-2 mb-6 relative z-10">
-                {['Free to get started', 'No credit card required', `Access to ${backendStats.tools}+ AI tools`].map((item) => (
+                {['Free to get started', 'No credit card required', 'Access to 100+ AI tools'].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-white/90">
                     <Check className="w-4 h-4 text-white shrink-0" /> {item}
                   </li>
                 ))}
               </ul>
-              {/* Avatars */}
-              <div className="flex items-center gap-2 relative z-10 mt-auto">
-                <div className="flex -space-x-2">
-                  {['11', '16', '22', '33'].map((img) => (
-                    <Image key={img} src={`https://i.pravatar.cc/150?img=${img}`} width={28} height={28}
-                      alt="User" className="w-7 h-7 rounded-full border-2 border-[#6D5EF8] object-cover" />
-                  ))}
-                  <div className="w-7 h-7 rounded-full border-2 border-[#6D5EF8] bg-white/20 flex items-center justify-center text-[9px] font-bold text-white">10K+</div>
-                </div>
-                <p className="text-xs text-white/80 ml-1">Trusted by 10,000+ users worldwide</p>
-              </div>
             </div>
           </div>
         </section>

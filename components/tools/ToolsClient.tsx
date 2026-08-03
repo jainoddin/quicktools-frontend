@@ -1344,6 +1344,35 @@ export const allTools = [
   },
 ];
 
+// Header/footer categories are editorial groups that can span several legacy
+// database categories. Filter them by their real tool routes.
+const groupedCategorySlugs: Record<string, Set<string>> = {
+  'Code & Tech': new Set([
+    '/tools/ai-code-generator', '/tools/ai-code-explainer', '/tools/ai-sql-generator',
+    '/tools/ai-git-command', '/tools/ai-regex-generator', '/tools/ai-app-architecture',
+    '/tools/json-formatter', '/tools/css-box-shadow-generator', '/tools/password-generator',
+    '/tools/qr-code-generator', '/tools/lorem-ipsum', '/tools/url-shortener',
+  ]),
+  Business: new Set([
+    '/tools/ai-business-plan', '/tools/ai-pitch-deck', '/tools/ai-swot-analysis',
+    '/tools/ai-okr-generator', '/tools/ai-startup-ideas', '/tools/ai-competitor-analysis',
+    '/tools/ai-risk-assessment', '/tools/ai-investor-update', '/tools/ai-marketing-plan',
+    '/tools/ai-pricing-strategy', '/tools/ai-value-proposition', '/tools/ai-business-name-generator',
+  ]),
+  Creative: new Set([
+    '/tools/ai-image-generator', '/tools/ai-video-generator', '/tools/ai-color-palette',
+    '/tools/background-remover', '/tools/ai-video-script', '/tools/ai-podcast-script',
+    '/tools/ai-video-storyboard', '/tools/ai-youtube-tags', '/tools/ai-youtube-title',
+    '/tools/ai-emoji-translator', '/tools/ai-brand-guidelines', '/tools/ai-social-calendar',
+  ]),
+  'Career & HR': new Set([
+    '/tools/ai-resume-builder', '/tools/ai-cover-letter', '/tools/ai-job-description',
+    '/tools/ai-interview-questions', '/tools/ai-linkedin-bio', '/tools/ai-employee-review',
+    '/tools/ai-resignation-letter', '/tools/ai-onboarding-plan', '/tools/ai-training-module',
+    '/tools/ai-elevator-pitch', '/tools/ai-apology-letter', '/tools/ai-user-persona',
+  ]),
+};
+
 
 function ToolsClientInner() {
   const searchParams = useSearchParams();
@@ -1405,7 +1434,10 @@ function ToolsClientInner() {
     let result = allTools;
 
     if (activeCategory !== 'All Tools') {
-      result = result.filter(t => t.category === activeCategory);
+      const groupedSlugs = groupedCategorySlugs[activeCategory];
+      result = groupedSlugs
+        ? result.filter(tool => groupedSlugs.has(tool.slug))
+        : result.filter(tool => tool.category === activeCategory);
     }
 
     if (searchQuery.trim()) {

@@ -26,11 +26,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://quicktool.space'),
   title: {
-    default: "QuickTools.ai | Best Affordable AI Tools for Indian Freelancers & Students",
+    default: "QuickTools.ai | 100+ Affordable AI Tools for Work and Creativity",
     template: "%s | QuickTools.ai"
   },
-  description: "Replace 10 expensive subscriptions with QuickTools.ai. Generate resumes, business plans, marketing copy & AI images—all in one platform.",
-  authors: [{ name: "QuickTools.ai Team", url: "https://quicktool.space/about" }],
+  description: "Write content, generate images, plan a business, understand code, and finish everyday work with 100+ affordable AI and utility tools.",
+  authors: [{ name: "Shaik Jainoddin", url: "https://quicktool.space/author/quicktools-ai-team" }],
   creator: "QuickTools.ai",
   publisher: "QuickTools.ai",
   formatDetection: {
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://quicktool.space",
-    title: "QuickTools.ai | Best Affordable AI Tools for Indian Freelancers & Students",
-    description: "Replace 10 expensive subscriptions with QuickTools.ai. Generate resumes, business plans, marketing copy & AI images—all in one platform.",
+    title: "QuickTools.ai | 100+ Affordable AI Tools for Work and Creativity",
+    description: "Write content, generate images, plan a business, understand code, and finish everyday work with 100+ affordable AI and utility tools.",
     siteName: "QuickTools.ai",
     images: [
       {
@@ -59,8 +59,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "QuickTools.ai | Best Affordable AI Tools for Indian Freelancers & Students",
-    description: "Replace 10 expensive subscriptions with QuickTools.ai. Generate resumes, business plans, marketing copy & AI images—all in one platform.",
+    title: "QuickTools.ai | 100+ Affordable AI Tools for Work and Creativity",
+    description: "Write content, generate images, plan a business, understand code, and finish everyday work with 100+ affordable AI and utility tools.",
     creator: "@quicktoolsai",
     images: ["https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png"],
   },

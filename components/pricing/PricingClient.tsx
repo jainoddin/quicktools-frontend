@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Gift, Crown, Building2, CheckCircle2, X, HelpCircle, ArrowRight, Zap, ChevronDown, ChevronUp, Home, ChevronRight } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
-import { trackBeginCheckout, trackBillingPeriodToggle } from '@/lib/analytics';
+import { trackBeginCheckout } from '@/lib/analytics';
 
 const plans = [
   {
@@ -14,8 +14,9 @@ const plans = [
     icon: Gift,
     description: 'Try QuickTools completely free',
     originalPrice: 0,
-    monthlyPrice: 0,
-    yearlyPrice: 0,
+    price: 0,
+    period: 'forever',
+    billingNote: 'No card required',
     features: [
       { name: '3 Free Generations / day', included: true },
       { name: 'Standard Tools Access', included: true },
@@ -33,9 +34,10 @@ const plans = [
     name: 'Pro Monthly',
     icon: Zap,
     description: 'Perfect for regular users',
-    originalPrice: 10,
-    monthlyPrice: 3.60,
-    yearlyPrice: 43.20,
+    originalPrice: 599,
+    price: 299,
+    period: 'month',
+    billingNote: 'Billed monthly',
     features: [
       { name: '500 Credits / month', included: true },
       { name: 'HD Image Generation', included: true },
@@ -53,9 +55,10 @@ const plans = [
     name: 'Pro',
     icon: Crown,
     description: 'For professionals and creators',
-    originalPrice: 40,
-    monthlyPrice: 4.00,
-    yearlyPrice: 43.20, // 3.60 * 12
+    originalPrice: 4788,
+    price: 3588,
+    period: 'year',
+    billingNote: 'Equivalent to ₹299/month',
     features: [
       { name: '14,400 Credits / year', included: true },
       { name: 'HD Image Generation', included: true },
@@ -73,9 +76,10 @@ const plans = [
     name: 'Business',
     icon: Building2,
     description: 'For teams and power users',
-    originalPrice: 100,
-    monthlyPrice: 7.00,
-    yearlyPrice: 72.00, // 6.00 * 12
+    originalPrice: 9588,
+    price: 6000,
+    period: 'year',
+    billingNote: 'Equivalent to ₹500/month',
     features: [
       { name: '18,000 Credits / year', included: true },
       { name: 'Team Members (Up to 5)', included: true },
@@ -102,14 +106,13 @@ const compareFeatures = [
 ];
 
 const faqs = [
-  { q: 'What happened to the Free Trial?', a: 'To ensure high quality service, we have removed the free tier. Our Starter plan is perfect for beginners and is heavily discounted for the first month.' },
-  { q: 'What happens after the first month?', a: 'The 50% discount is a special offer for your first month! From the second month onwards, the subscription renews at the regular price. You can cancel anytime.' },
+  { q: 'Can I try QuickTools.ai for free?', a: 'Yes. The Free Starter experience includes up to 3 generations per day on eligible tools. Upgrade when you need more credits or premium tools.' },
+  { q: 'How are paid plans billed?', a: 'Pro Monthly is billed every month. Pro and Business are annual plans charged once per year at the price shown before checkout.' },
   { q: 'Can I upgrade my plan later?', a: 'Yes! You can upgrade from Starter to Pro or Business at any time. Your billing will be pro-rated.' },
-  { q: 'Can I cancel my subscription anytime?', a: 'Yes, you can cancel your subscription at any time from your account settings. You will not be charged for the next month.' }
+  { q: 'Can I cancel my subscription anytime?', a: 'Yes. You can cancel from your account settings. Cancellation prevents the next renewal; your current billing period remains available.' }
 ];
 
 export default function PricingClient() {
-  const [isYearly, setIsYearly] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const { isAuthenticated, isLoading, user } = useAuth();
   const router = useRouter();
@@ -155,26 +158,8 @@ export default function PricingClient() {
           Simple, transparent pricing for everyone.<br/>Start free and upgrade anytime.
         </p>
 
-        {/* Toggle */}
-        <div className="inline-flex items-center p-1.5 bg-white border border-[#E5E7EB] rounded-full shadow-sm">
-          <button 
-            onClick={() => {
-              setIsYearly(false);
-              trackBillingPeriodToggle('monthly');
-            }}
-            className={`px-6 py-2 rounded-full text-sm font-bold transition-colors ${!isYearly ? 'bg-white text-[#6D5EF8] shadow-sm' : 'text-[#6B7280] hover:text-[#111827]'}`}
-          >
-            Monthly
-          </button>
-          <button 
-            onClick={() => {
-              setIsYearly(true);
-              trackBillingPeriodToggle('yearly');
-            }}
-            className={`flex items-center gap-2 px-6 py-2 rounded-full text-sm font-bold transition-colors ${isYearly ? 'bg-white text-[#6D5EF8] shadow-sm' : 'text-[#6B7280] hover:text-[#111827]'}`}
-          >
-            Yearly <span className="px-2 py-0.5 rounded-full bg-[#6D5EF8] text-white text-[10px]">Save 20%</span>
-          </button>
+        <div className="inline-flex items-center px-4 py-2 bg-white border border-[#E5E7EB] rounded-full shadow-sm text-xs font-semibold text-[#6B7280]">
+          Prices shown in INR · Taxes included at checkout
         </div>
       </div>
 
@@ -196,24 +181,20 @@ export default function PricingClient() {
                 <plan.icon className={`w-8 h-8 ${plan.color === 'gold' ? 'text-[#F59E0B]' : 'text-[#6D5EF8]'}`} />
               </div>
               <h3 className="text-2xl font-bold text-[#111827] mb-1">{plan.name}</h3>
-              <p className="text-sm text-[#6B7280] h-10">{isYearly ? 'Save 20% on annual billing!' : plan.description}</p>
+              <p className="text-sm text-[#6B7280] h-10">{plan.description}</p>
             </div>
 
             <div className="text-center mb-8">
               {plan.originalPrice && (
                 <div className="text-sm font-bold text-[#9CA3AF] line-through mb-1">
-                  ${plan.originalPrice}/month
+                  ₹{plan.originalPrice.toLocaleString('en-IN')}/{plan.period}
                 </div>
               )}
               <div className="flex items-end justify-center gap-1">
-                <span className="text-4xl font-black text-[#111827]">${isYearly ? (plan.yearlyPrice / 12).toFixed(0) : plan.monthlyPrice}</span>
-                <span className="text-[#6B7280] font-medium pb-1">/month</span>
+                <span className="text-4xl font-black text-[#111827]">₹{plan.price.toLocaleString('en-IN')}</span>
+                <span className="text-[#6B7280] font-medium pb-1">/{plan.period}</span>
               </div>
-              {isYearly && (
-                <div className="text-xs font-semibold text-[#10B981] mt-2">
-                  Billed ${plan.yearlyPrice} yearly
-                </div>
-              )}
+              <div className="text-xs font-semibold text-[#10B981] mt-2">{plan.billingNote}</div>
             </div>
 
             <div className="flex-grow">
@@ -357,7 +338,7 @@ export default function PricingClient() {
           <div>
             <h3 className="text-2xl font-black text-[#111827] mb-2">Ready to create amazing AI content?</h3>
             <p className="text-[#4C1D95] text-sm max-w-lg font-medium">
-              Join thousands of creators and businesses using QuickTools.ai to save time and boost productivity.
+              Explore focused AI tools for writing, images, business, code, and everyday productivity.
             </p>
           </div>
         </div>

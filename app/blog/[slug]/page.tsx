@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: 'QuickTools.ai',
       publishedTime: blog.publishedAt,
       modifiedTime: blog.updatedAt || blog.publishedAt,
-      authors: [blog.author?.name],
+      authors: [blog.author?.name || 'Shaik Jainoddin'],
       images: [
         {
           url: blog.coverImage,
@@ -98,7 +98,7 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
       dateModified: blogPost.updatedAt || blogPost.publishedAt,
       author: {
         '@type': 'Organization',
-        name: 'QuickTools AI Team',
+        name: 'Shaik Jainoddin',
         url: 'https://quicktool.space/author/quicktools-ai-team'
       },
       publisher: {
@@ -261,6 +261,8 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
                   <span>·</span>
                   <Clock className="w-3 h-3" />
                   <span>{blogPost.readTime}</span>
+                  <span>·</span>
+                  <span className="text-[#4F46E5]">Reviewed by QuickTools Quality Pipeline</span>
                 </div>
               </div>
             </div>

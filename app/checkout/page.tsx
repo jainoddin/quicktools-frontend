@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Zap, Clock, ShieldCheck, Building2 } from 'lucide-react';
 import Stepper from '../../components/checkout/Stepper';
@@ -9,31 +9,26 @@ import { trackCheckoutContinue } from '@/lib/analytics';
 function CheckoutContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [couponCode, setCouponCode] = useState('');
-
   const planId = searchParams.get('plan') || 'pro';
   
   // Dynamic Pricing Logic
   let planName = 'Pro Plan';
   let planIcon = <Zap className="w-6 h-6 text-[#6D5EF8]" />;
-  let monthlyPrice = 20;
-  let subtotal = 20.00;
-  let gst = 3.60;
-  let total = 23.60;
+  let price = 3588;
+  let period = 'year';
+  let total = 3588;
 
   if (planId === 'starter') {
-    planName = 'Starter Plan';
-    monthlyPrice = 5;
-    subtotal = 5.00;
-    gst = 0.90;
-    total = 5.90;
+    planName = 'Pro Monthly';
+    price = 299;
+    period = 'month';
+    total = 299;
   } else if (planId === 'business') {
     planName = 'Business Plan';
     planIcon = <Building2 className="w-6 h-6 text-[#6D5EF8]" />;
-    monthlyPrice = 50;
-    subtotal = 50.00;
-    gst = 9.00;
-    total = 59.00;
+    price = 6000;
+    period = 'year';
+    total = 6000;
   }
 
   const handleContinue = () => {
@@ -59,12 +54,12 @@ function CheckoutContent() {
             </div>
             <div>
               <h3 className="font-bold text-[#111827] text-lg">{planName}</h3>
-              <p className="text-sm text-[#6B7280]">Billed monthly</p>
+              <p className="text-sm text-[#6B7280]">Billed per {period}</p>
             </div>
           </div>
           <div className="text-right">
-            <span className="font-bold text-[#111827] text-lg">${monthlyPrice}</span>
-            <span className="text-sm text-[#6B7280]"> /month</span>
+            <span className="font-bold text-[#111827] text-lg">₹{price.toLocaleString('en-IN')}</span>
+            <span className="text-sm text-[#6B7280]"> /{period}</span>
           </div>
         </div>
 
@@ -72,35 +67,18 @@ function CheckoutContent() {
         <div className="space-y-4 mb-6">
           <div className="flex justify-between text-[#4B5563] text-sm">
             <span>Subtotal</span>
-            <span className="font-bold text-[#111827]">${subtotal.toFixed(2)}</span>
+            <span className="font-bold text-[#111827]">₹{price.toLocaleString('en-IN')}</span>
           </div>
           <div className="flex justify-between text-[#4B5563] text-sm">
-            <span>GST (18%)</span>
-            <span className="font-bold text-[#111827]">${gst.toFixed(2)}</span>
-          </div>
-        </div>
-
-        {/* Coupon Code */}
-        <div className="mb-6">
-          <p className="text-sm text-[#4B5563] mb-2">Have a coupon code?</p>
-          <div className="flex gap-2">
-            <input 
-              type="text" 
-              placeholder="Enter coupon code" 
-              value={couponCode}
-              onChange={(e) => setCouponCode(e.target.value)}
-              className="flex-1 px-4 py-3 rounded-xl border border-[#E5E7EB] focus:ring-2 focus:ring-[#6D5EF8]/20 focus:border-[#6D5EF8] outline-none text-sm transition-all"
-            />
-            <button className="bg-[#EEF2FF] hover:bg-[#E0E7FF] text-[#6D5EF8] font-bold px-6 py-3 rounded-xl transition-colors text-sm">
-              Apply
-            </button>
+            <span>Taxes</span>
+            <span className="font-bold text-[#111827]">Included</span>
           </div>
         </div>
 
         {/* Total */}
         <div className="flex justify-between items-center py-6 border-t border-[#E5E7EB] mb-8">
           <span className="font-bold text-[#111827] text-lg">Total</span>
-          <span className="font-black text-[#111827] text-3xl">${total.toFixed(2)}</span>
+          <span className="font-black text-[#111827] text-3xl">₹{total.toLocaleString('en-IN')}</span>
         </div>
 
         {/* Trust Indicators */}
@@ -111,7 +89,7 @@ function CheckoutContent() {
           </div>
           <div className="flex items-center gap-1.5">
             <ShieldCheck className="w-4 h-4" />
-            30-day money-back guarantee
+            Secure Razorpay checkout
           </div>
         </div>
 

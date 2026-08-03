@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { Mail, Briefcase, Award, Sparkles, Code2, Users, FileText } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'QuickTools AI Team - Authors & Experts',
-  description: 'Meet the QuickTools AI Team. We are a group of AI engineers, data scientists, and prompt engineering experts dedicated to bringing you the best AI tools and insights.',
+  title: 'Shaik Jainoddin - Founder & Editor of QuickTools.ai',
+  description: 'Meet Shaik Jainoddin, founder of QuickTools.ai, and learn how AI-assisted content is automatically evaluated before publication.',
   alternates: {
     canonical: 'https://quicktool.space/author/quicktools-ai-team'
   }
@@ -21,14 +21,14 @@ export default function AuthorPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "QuickTools AI Team",
+            "@type": "Person",
+            "name": "Shaik Jainoddin",
             "url": "https://quicktool.space/author/quicktools-ai-team",
-            "logo": "https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png",
-            "description": "Expert team of AI engineers and prompt engineering specialists developing cutting-edge AI tools.",
+            "image": "https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/a5359b80-0e75-4262-8bb7-0f74c171fd8e.png",
+            "jobTitle": "Founder",
+            "description": "Founder of QuickTools.ai, responsible for product direction and the automated publishing quality standards.",
             "sameAs": [
-              "https://twitter.com/quicktoolsai",
-              "https://github.com/quicktoolsai"
+              "https://www.linkedin.com/in/sk-jainoddin-699060250/"
             ]
           })
         }}
@@ -38,19 +38,18 @@ export default function AuthorPage() {
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[#EEF2FF] mb-6 shadow-md relative">
             <Image
-              src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
+              src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/a5359b80-0e75-4262-8bb7-0f74c171fd8e.png"
               fill
-              alt="QuickTools AI Team"
+              alt="Shaik Jainoddin, founder of QuickTools.ai"
               className="object-cover"
               unoptimized
             />
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#111827] mb-4">
-            QuickTools AI Team
+            Shaik Jainoddin
           </h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto leading-relaxed">
-            We are a dedicated team of AI engineers, data scientists, and content specialists. 
-            Our mission is to democratize artificial intelligence by building intuitive, high-performance tools and providing expert industry analysis.
+            Founder of QuickTools.ai. I build practical AI tools and maintain the automated quality standards used for AI-assisted publishing.
           </p>
 
           <div className="flex items-center justify-center gap-4 mt-8">
@@ -92,7 +91,7 @@ export default function AuthorPage() {
             Our Editorial Standards
           </h2>
           <p className="text-[#4B5563] text-lg leading-relaxed mb-6">
-            The AI landscape is moving at breakneck speed. We believe in providing accurate, hype-free, and actionable content. Every article, blog, and news piece undergoes rigorous technical review by our engineering team to ensure factual accuracy.
+            QuickTools.ai uses AI assistance for research and drafting. Before publication, an automated pipeline checks structure, duplication, SEO, readability, sources, and unsupported claims. Content that fails the quality threshold is not published.
           </p>
           <ul className="space-y-4">
             <li className="flex items-start gap-3">
@@ -101,7 +100,7 @@ export default function AuthorPage() {
             </li>
             <li className="flex items-start gap-3">
               <CheckCircle />
-              <span className="text-[#4B5563] font-medium">Tools and software are personally evaluated by our team before recommendation.</span>
+              <span className="text-[#4B5563] font-medium">Product claims and recommendations should be supported by direct testing or primary sources.</span>
             </li>
             <li className="flex items-start gap-3">
               <CheckCircle />

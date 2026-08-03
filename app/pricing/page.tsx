@@ -25,13 +25,25 @@ export default function PricingPage() {
           "@type": "Offer",
           "name": "Free Starter",
           "price": "0",
-          "priceCurrency": "USD"
+          "priceCurrency": "INR"
         },
         {
           "@type": "Offer",
-          "name": "Pro Creator",
-          "price": "9.99",
-          "priceCurrency": "USD"
+          "name": "Pro Monthly",
+          "price": "299",
+          "priceCurrency": "INR"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro Annual",
+          "price": "3588",
+          "priceCurrency": "INR"
+        },
+        {
+          "@type": "Offer",
+          "name": "Business Annual",
+          "price": "6000",
+          "priceCurrency": "INR"
         }
       ]
     }

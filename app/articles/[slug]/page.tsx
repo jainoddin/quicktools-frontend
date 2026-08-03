@@ -46,7 +46,7 @@ export async function generateMetadata(
         images: [{ url: a.coverImage, width: 1200, height: 630, alt: a.title }],
         publishedTime: new Date(a.publishedAt).toISOString(),
         modifiedTime: new Date(a.updatedAt || a.publishedAt).toISOString(),
-        authors: [a.author?.name || 'QuickTools AI Team'],
+        authors: [a.author?.name || 'Shaik Jainoddin'],
         tags: a.tags,
       },
       twitter: {
@@ -110,7 +110,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
     "image": article.coverImage,
     "author": {
       "@type": "Organization",
-      "name": "QuickTools AI Team",
+      "name": "Shaik Jainoddin",
       "url": "https://quicktool.space/author/quicktools-ai-team"
     },
     "publisher": {
@@ -289,6 +289,8 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                       <span>{new Date(article.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                       <span>•</span>
                       <span>{article.readTime}</span>
+                      <span>•</span>
+                      <span className="text-[#4F46E5]">AI-assisted · Reviewed by QuickTools Quality Pipeline</span>
                     </div>
                   </div>
                 </div>

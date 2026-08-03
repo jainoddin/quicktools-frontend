@@ -235,6 +235,7 @@ export default async function NewsDetailPage({ params }: any) {
                         <span>Source: <a href={news.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-[#4F46E5] hover:underline">{news.sourceName}</a></span>
                       </>
                     )}
+                    <span className="text-[#6B7280]">AI-assisted summary · Automatically reviewed by the QuickTools Quality Pipeline</span>
                   </div>
                 </div>
               </div>

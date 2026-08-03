@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    // Multiple lockfiles exist above this app; keep Turbopack scoped to the frontend.
+    root: process.cwd(),
+  },
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'pub-0a928134dcdc420da2af02e6238ef06b.r2.dev' },

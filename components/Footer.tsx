@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Zap, Globe, MessageCircle, Share2, Mail } from 'lucide-react';
+import { Zap, Globe, Share2, Mail } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { getEndpoint } from '../lib/api';
 import { useAuth } from '../contexts/AuthContext';
@@ -60,6 +60,9 @@ export default function Footer() {
                 <a href="mailto:hello@quicktool.space" aria-label="Email">
                   <Mail className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
                 </a>
+                <a href="https://www.linkedin.com/in/hello-quicktool-4ba7b5421/" target="_blank" rel="noopener noreferrer" aria-label="QuickTools.ai on LinkedIn" className="hover:text-[#4F46E5] transition-colors">
+                  <span className="w-5 h-5 rounded-sm border border-current flex items-center justify-center text-[10px] font-black">in</span>
+                </a>
               </div>
             </div>
 
@@ -80,11 +83,12 @@ export default function Footer() {
             <div className="col-span-1">
               <h4 className="font-bold text-sm mb-4 text-[#111827]">Categories</h4>
               <ul className="space-y-3 text-sm text-[#6B7280]">
-                <li><Link href="/tools?c=AI Image" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Image Tools</Link></li>
-                <li><Link href="/tools?c=AI Writer" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Writing Tools</Link></li>
-                <li><Link href="/tools?c=AI Video" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Video Tools</Link></li>
-                <li><Link href="/tools?c=AI Code" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Code Tools</Link></li>
-                <li><Link href="/tools?c=SEO" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>SEO Tools</Link></li>
+                <li><Link href="/tools?c=Writing" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Writing</Link></li>
+                <li><Link href="/tools?c=Marketing" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Marketing</Link></li>
+                <li><Link href="/tools?c=Code%20%26%20Tech" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Code &amp; Tech</Link></li>
+                <li><Link href="/tools?c=Business" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Business</Link></li>
+                <li><Link href="/tools?c=Creative" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Creative</Link></li>
+                <li><Link href="/tools?c=Career%20%26%20HR" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Career &amp; HR</Link></li>
               </ul>
             </div>
 
@@ -142,5 +146,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-
