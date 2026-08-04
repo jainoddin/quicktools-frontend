@@ -30,9 +30,10 @@ export default async function LatestNews() {
   }
 
   return (
-    <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-gray-100">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4">
-        <div>
+    <section className="w-full bg-white border-t border-gray-100">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4">
+          <div>
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 border border-red-100 text-red-600 text-xs font-bold uppercase tracking-wider mb-4">
             <Radio className="w-4 h-4 animate-pulse" /> Live Updates
           </div>
@@ -73,6 +74,7 @@ export default async function LatestNews() {
             </div>
           </Link>
         ))}
+        </div>
       </div>
     </section>
   );

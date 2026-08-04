@@ -32,7 +32,7 @@ export default async function LatestArticles() {
   }
 
   return (
-    <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+    <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
       <div className="bg-[#111827] rounded-[2.5rem] p-8 sm:p-12 lg:p-16 relative overflow-hidden">
         {/* Background Decorative Elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>

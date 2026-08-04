@@ -11,6 +11,7 @@ import HomeSearch from '../components/home/HomeSearch';
 import LatestBlogs from '../components/home/LatestBlogs';
 import LatestArticles from '../components/home/LatestArticles';
 import LatestNews from '../components/home/LatestNews';
+import LatestCommunity from '../components/home/LatestCommunity';
 import FaqSection from '../components/home/FaqSection';
 import { Metadata } from 'next';
 import { allTools, IconMap } from '../lib/toolsData';
@@ -151,11 +152,11 @@ export default function HomePage() {
       </header>
 
       {/* 2.5 Top 5 Flagship Tools */}
-      <section className="relative w-full bg-[#0B0F19] py-16 border-b border-[#1F2937]">
+      <section className="relative w-full bg-white py-16 border-b border-gray-100">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Popular AI Tools</h2>
-            <p className="text-gray-400">Start with focused tools for writing, planning, research, and everyday work.</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Popular AI Tools</h2>
+            <p className="text-gray-500">Start with focused tools for writing, planning, research, and everyday work.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -166,13 +167,13 @@ export default function HomePage() {
               { id: 'ai-business-model', name: 'Business Model', icon: LayoutGrid, desc: 'Map your strategy', color: 'from-green-400 to-emerald-600' },
               { id: 'ai-sales-funnel', name: 'Sales Funnel', icon: Zap, desc: 'Convert more leads', color: 'from-cyan-400 to-blue-500' },
             ].map((tool, i) => (
-              <Link href={`/tools/${tool.id}`} key={i} className="group relative bg-[#111827] rounded-2xl p-6 border border-white/5 hover:border-white/20 transition-all hover:-translate-y-2 overflow-hidden shadow-xl">
-                <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${tool.color} flex items-center justify-center text-white mb-4 shadow-lg`}>
+              <Link href={`/tools/${tool.id}`} key={i} className="group relative bg-white rounded-2xl p-6 border border-gray-100 hover:border-gray-200 transition-all hover:-translate-y-2 overflow-hidden shadow-sm hover:shadow-lg">
+                <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${tool.color} flex items-center justify-center text-white mb-4 shadow-sm`}>
                   <tool.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-bold text-white mb-1">{tool.name}</h3>
-                <p className="text-sm text-gray-400">{tool.desc}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-1">{tool.name}</h3>
+                <p className="text-sm text-gray-500">{tool.desc}</p>
               </Link>
             ))}
           </div>
@@ -233,8 +234,9 @@ export default function HomePage() {
       </section>
 
       {/* 5. Why Choose QuickTools.ai? */}
-      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <h2 className="text-xl sm:text-2xl font-bold text-[#111827] mb-8 sm:mb-10">Why Choose QuickTools.ai?</h2>
+      <section className="w-full bg-white border-y border-gray-100">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#111827] mb-8 sm:mb-10">Why Choose QuickTools.ai?</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
           {[
             { icon: LayoutGrid, title: '100+ Total Tools', desc: 'AI and everyday utilities in one platform', color: 'text-indigo-600', bg: 'bg-indigo-100' },
@@ -252,6 +254,7 @@ export default function HomePage() {
               <p className="text-xs text-[#6B7280]">{feature.desc}</p>
             </div>
           ))}
+        </div>
         </div>
       </section>
 
@@ -281,8 +284,9 @@ export default function HomePage() {
       </section>
 
       {/* Pricing preview */}
-      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16" id="pricing-preview">
-        <div className="text-center max-w-2xl mx-auto mb-10">
+      <section className="w-full bg-white border-t border-gray-100" id="pricing-preview">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-xs font-black uppercase tracking-[0.22em] text-[#6D5EF8]">Simple pricing</span>
           <h2 className="text-3xl sm:text-4xl font-black text-[#111827] mt-3 mb-4">Start free. Upgrade when you need more.</h2>
           <p className="text-[#6B7280]">See the cost before you sign up. No card is required to explore the free experience.</p>
@@ -311,9 +315,10 @@ export default function HomePage() {
           ))}
         </div>
         <p className="text-center text-xs text-gray-500 mt-6">Pricing and included credits are shown before checkout. Cancel paid plans from your account.</p>
+        </div>
       </section>
-
-      {/* 5. Latest Blogs, Articles & News */}
+      {/* 5. Latest Content & Community */}
+      <LatestCommunity />
       <LatestBlogs />
       <LatestArticles />
       <LatestNews />

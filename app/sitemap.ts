@@ -46,6 +46,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error fetching news for sitemap', e);
   }
 
+  // Fetch Community Questions
+  let questions: any[] = [];
+  try {
+    const res = await fetch(getEndpoint('/api/community/questions?limit=500'), {
+      cache: 'no-store',
+      signal: AbortSignal.timeout(10000),
+    });
+    const data = await res.json();
+    if (data.success) questions = data.data;
+  } catch (e) {
+    console.error('Error fetching community questions for sitemap', e);
+  }
+
   const blogUrls = blogs
     .filter((blog: any) => !blog.redirectUrl && !blog.canonicalOverride)
     .map((blog: any) => ({
@@ -73,6 +86,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     }));
 
+  const questionUrls = questions
+    .map((item: any) => ({
+      url: `${baseUrl}/community/questions/${item.slug}`,
+      lastModified: new Date(item.updatedAt || item.createdAt),
+      changeFrequency: 'daily' as const,
+      priority: 0.8,
+    }));
+
   // Static routes
   const toolRoutes = allTools.map((tool) => ({
     url: `${baseUrl}${tool.slug}`,
@@ -82,7 +103,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const routes = [
-    '', '/tools', '/blog', '/articles', '/news', '/about', '/contact', '/pricing', '/login', '/signup'
+    '', '/tools', '/blog', '/articles', '/news', '/community', '/about', '/contact', '/pricing', '/login', '/signup'
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
@@ -90,6 +111,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === '' ? 1 : route.startsWith('/articles') || route.startsWith('/blog') || route.startsWith('/news') ? 0.9 : 0.7,
   }));
 
-  return [...routes, ...toolRoutes, ...blogUrls, ...articleUrls, ...newsUrls];
+  return [...routes, ...toolRoutes, ...blogUrls, ...articleUrls, ...newsUrls, ...questionUrls];
 }
 

@@ -10,6 +10,7 @@ export default function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileCategoriesOpen, setMobileCategoriesOpen] = useState(false);
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState('Writing');
 
@@ -232,9 +233,19 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <Link prefetch={false} href="/blog" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/blog') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/blog') ? { color: themeColor } : {}}>Blogs</Link>
-          <Link prefetch={false} href="/articles" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/articles') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/articles') ? { color: themeColor } : {}}>Articles</Link>
-          <Link prefetch={false} href="/news" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/news') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/news') ? { color: themeColor } : {}}>News</Link>
+          <div className="relative group">
+            <button className={`flex items-center gap-1 transition-colors px-2 xl:px-3 py-1.5 rounded-full hover:bg-[#F3F4F6] ${(isActiveStartsWith('/blog') || isActiveStartsWith('/articles') || isActiveStartsWith('/news')) ? 'text-[#111827] bg-[#F3F4F6]' : 'hover:text-[#111827]'}`}>
+              Resources <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
+            </button>
+            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="bg-white border border-[#E5E7EB] rounded-2xl shadow-xl py-2 w-36 flex flex-col">
+                <Link prefetch={false} href="/blog" className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActiveStartsWith('/blog') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>Blogs</Link>
+                <Link prefetch={false} href="/articles" className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActiveStartsWith('/articles') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>Articles</Link>
+                <Link prefetch={false} href="/news" className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActiveStartsWith('/news') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>News</Link>
+              </div>
+            </div>
+          </div>
+          <Link href="/community" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/community') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/community') ? { color: themeColor } : {}}>Community</Link>
           <Link href="/pricing" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActive('/pricing') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActive('/pricing') ? { color: themeColor } : {}}>Pricing</Link>
           {!user && (
             <>
@@ -416,18 +427,39 @@ export default function Header() {
               )}
             </div>
 
-            <Link prefetch={false} href="/blog" onClick={() => setMobileMenuOpen(false)}
-              className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/blog') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
-              <PenTool className="w-4 h-4" /> Blog
+            <Link href="/community" onClick={() => setMobileMenuOpen(false)}
+              className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/community') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
+              <Globe className="w-4 h-4" /> Community
             </Link>
-            <Link prefetch={false} href="/articles" onClick={() => setMobileMenuOpen(false)}
-              className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/articles') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
-              <Newspaper className="w-4 h-4" /> Articles
-            </Link>
-            <Link prefetch={false} href="/news" onClick={() => setMobileMenuOpen(false)}
-              className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/news') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
-              <Globe className="w-4 h-4" /> News
-            </Link>
+            
+            {/* Resources Accordion */}
+            <div>
+              <button
+                onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}
+                className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium text-[#374151] hover:bg-[#F9FAFB] transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <Newspaper className="w-4 h-4" /> <span>Resources</span>
+                </div>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileResourcesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileResourcesOpen && (
+                <div className="ml-4 mt-1 flex flex-col gap-1 border-l-2 border-[#EEF2FF] pl-3">
+                  <Link prefetch={false} href="/blog" onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-[#F9FAFB] transition-colors text-sm ${isActiveStartsWith('/blog') ? 'text-[#6D5EF8] font-semibold' : 'text-[#374151]'}`}>
+                    <PenTool className="w-3.5 h-3.5" /> Blogs
+                  </Link>
+                  <Link prefetch={false} href="/articles" onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-[#F9FAFB] transition-colors text-sm ${isActiveStartsWith('/articles') ? 'text-[#6D5EF8] font-semibold' : 'text-[#374151]'}`}>
+                    <Newspaper className="w-3.5 h-3.5" /> Articles
+                  </Link>
+                  <Link prefetch={false} href="/news" onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-[#F9FAFB] transition-colors text-sm ${isActiveStartsWith('/news') ? 'text-[#6D5EF8] font-semibold' : 'text-[#374151]'}`}>
+                    <Globe className="w-3.5 h-3.5" /> News
+                  </Link>
+                </div>
+              )}
+            </div>
             <Link href="/pricing" onClick={() => setMobileMenuOpen(false)}
               className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActive('/pricing') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
               <CreditCard className="w-4 h-4" /> Pricing

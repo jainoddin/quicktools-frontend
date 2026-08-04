@@ -30,6 +30,7 @@ export const metadata: Metadata = {
     template: "%s | QuickTools.ai"
   },
   description: "Write content, generate images, plan a business, understand code, and finish everyday work with 100+ affordable AI and utility tools.",
+  keywords: ["AI tools", "productivity tools", "AI writing", "code generator", "image generation", "QuickTools", "AI marketing", "AI business tools", "prompt engineering", "developer tools", "community", "discussions", "AI community"],
   authors: [{ name: "Shaik Jainoddin", url: "https://quicktool.space/author/quicktools-ai-team" }],
   creator: "QuickTools.ai",
   publisher: "QuickTools.ai",
@@ -61,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "QuickTools.ai | 100+ Affordable AI Tools for Work and Creativity",
     description: "Write content, generate images, plan a business, understand code, and finish everyday work with 100+ affordable AI and utility tools.",
-    creator: "@quicktoolsai",
+    creator: "@quicktool_ai",
     images: ["https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png"],
   },
   robots: {
@@ -132,66 +133,76 @@ export default function RootLayout({
         {/* Organization Schema */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "QuickTools.ai",
-            "url": "https://quicktool.space",
-            "logo": "https://quicktool.space/icon.svg",
-            "sameAs": ["https://twitter.com/quicktoolsai"],
-            "description": "Premium AI tools platform for creators and developers."
-          })}}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "QuickTools.ai",
+              "url": "https://quicktool.space",
+              "logo": "https://quicktool.space/icon.svg",
+              "sameAs": [
+                "https://twitter.com/quicktools_ai",
+                "https://www.linkedin.com/company/quicktools-ai"
+              ]
+            })
+          }}
         />
+
+
         {/* WebSite Schema with SearchAction */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "QuickTools.ai",
-            "url": "https://quicktool.space",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://quicktool.space/articles?q={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
-          })}}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "QuickTools.ai",
+              "url": "https://quicktool.space",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://quicktool.space/articles?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
         />
         {/* WebPage and SiteNavigationElement Schema */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "WebPage",
-                "@id": "https://quicktool.space/#webpage",
-                "url": "https://quicktool.space/",
-                "name": "QuickTools.ai - The Ultimate AI Toolkit for Creators",
-                "isPartOf": { "@id": "https://quicktool.space/#website" }
-              },
-              {
-                "@type": "SiteNavigationElement",
-                "name": "Home",
-                "url": "https://quicktool.space/"
-              },
-              {
-                "@type": "SiteNavigationElement",
-                "name": "Articles",
-                "url": "https://quicktool.space/articles"
-              },
-              {
-                "@type": "SiteNavigationElement",
-                "name": "News",
-                "url": "https://quicktool.space/news"
-              },
-              {
-                "@type": "SiteNavigationElement",
-                "name": "Blog",
-                "url": "https://quicktool.space/blog"
-              }
-            ]
-          })}}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebPage",
+                  "@id": "https://quicktool.space/#webpage",
+                  "url": "https://quicktool.space/",
+                  "name": "QuickTools.ai - The Ultimate AI Toolkit for Creators",
+                  "isPartOf": { "@id": "https://quicktool.space/#website" }
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "name": "Home",
+                  "url": "https://quicktool.space/"
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "name": "Articles",
+                  "url": "https://quicktool.space/articles"
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "name": "News",
+                  "url": "https://quicktool.space/news"
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "name": "Blog",
+                  "url": "https://quicktool.space/blog"
+                }
+              ]
+            })
+          }}
         />
 
         <ToastProvider>

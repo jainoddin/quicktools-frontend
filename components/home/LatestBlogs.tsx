@@ -39,8 +39,9 @@ export default async function LatestBlogs() {
   const sideBlogs = blogs.slice(1);
 
   return (
-    <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4">
+    <section className="w-full bg-white border-t border-gray-100">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4">
         <div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111827] mb-3 tracking-tight">Our Latest Insights</h2>
           <p className="text-base text-[#6B7280] max-w-2xl">Discover strategies, tutorials, and news about the future of AI tools.</p>
@@ -125,6 +126,7 @@ export default async function LatestBlogs() {
               </div>
             </Link>
           ))}
+        </div>
         </div>
       </div>
     </section>

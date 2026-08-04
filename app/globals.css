@@ -79,3 +79,12 @@ a[disabled],
 .cursor-not-allowed {
   cursor: not-allowed !important;
 }
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

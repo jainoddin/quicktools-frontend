@@ -166,7 +166,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
           return;
         }
 
-        let url = `/api/blogs?page=1&limit=12`;
+        let url = `/api/blogs?page=1&limit=15`;
         if (activeCategory !== 'All Blogs') url += `&category=${encodeURIComponent(activeCategory)}`;
         if (searchQuery.trim()) url += `&search=${encodeURIComponent(searchQuery.trim())}`;
         if (sortBy !== 'Newest First') url += `&sort=${encodeURIComponent(sortBy)}`;
@@ -196,7 +196,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
     if (loading || !hasMore) return;
     setLoading(true);
     try {
-      let url = `/api/blogs?page=${page + 1}&limit=12`;
+      let url = `/api/blogs?page=${page + 1}&limit=15`;
       if (activeCategory !== 'All Blogs') url += `&category=${encodeURIComponent(activeCategory)}`;
       if (searchQuery.trim()) url += `&search=${encodeURIComponent(searchQuery.trim())}`;
       if (sortBy !== 'Newest First') url += `&sort=${encodeURIComponent(sortBy)}`;

@@ -14,7 +14,7 @@ for (const folder of toolFolders) {
   if (!fs.existsSync(pagePath)) continue;
 
   const sourceFile = project.addSourceFileAtPath(pagePath);
-  
+
   const metadataDecl = sourceFile.getVariableDeclaration('metadata');
   if (metadataDecl) {
     const initializer = metadataDecl.getInitializerIfKind(SyntaxKind.ObjectLiteralExpression);
@@ -75,12 +75,12 @@ for (const folder of toolFolders) {
     card: 'summary_large_image',
     title: ${titleStr ? JSON.stringify(titleStr) : `'${toolName} | QuickTools'`},
     description: ${descStr ? JSON.stringify(descStr) : `'Free online ${toolName} tool.'`},
-    creator: '@quicktoolsai',
+    creator: '@quicktool_ai',
     images: ['https://quicktool.space/icon.svg']
   }`
         });
       }
-      
+
       modifiedCount++;
     }
   }
