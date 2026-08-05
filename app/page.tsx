@@ -45,103 +45,103 @@ export default function HomePage() {
       />
 
       {/* Hero */}
-      <header className="relative w-full bg-[#0B0F19] pt-16 pb-20 lg:pt-24 lg:pb-32 overflow-hidden border-b border-indigo-500/20 shadow-[0_20px_50px_rgba(79,70,229,0.15)]">
+      <header className="relative w-full bg-[#0B0F19] pt-8 pb-10 lg:pt-10 lg:pb-12 overflow-hidden border-b border-indigo-500/20 shadow-[0_20px_50px_rgba(79,70,229,0.15)]">
         {/* Background Glows */}
-        <div className="absolute top-0 right-1/4 -z-10 w-[400px] lg:w-[600px] h-[400px] lg:h-[600px] bg-[#6D5EF8]/30 rounded-full blur-[100px] opacity-60"></div>
-        <div className="absolute bottom-0 left-0 -z-10 w-[500px] lg:w-[800px] h-[500px] lg:h-[800px] bg-[#3B82F6]/20 rounded-full blur-[120px] opacity-40 translate-y-1/2"></div>
+        <div className="absolute top-0 right-1/4 -z-10 w-[300px] lg:w-[500px] h-[300px] lg:h-[500px] bg-[#6D5EF8]/30 rounded-full blur-[100px] opacity-60"></div>
+        <div className="absolute bottom-0 left-0 -z-10 w-[400px] lg:w-[700px] h-[400px] lg:h-[700px] bg-[#3B82F6]/20 rounded-full blur-[120px] opacity-40 translate-y-1/2"></div>
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
 
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 items-center">
             {/* Left Content */}
             <div className="max-w-2xl relative z-10">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-400/30 text-indigo-300 text-sm font-semibold mb-8 backdrop-blur-sm shadow-[0_0_15px_rgba(79,70,229,0.3)]">
-                <Sparkles className="w-4 h-4 text-indigo-300" /> 100+ AI tools. One simple workspace.
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-400/30 text-indigo-300 text-[13px] font-semibold mb-3 backdrop-blur-sm shadow-[0_0_15px_rgba(79,70,229,0.3)]">
+                <Sparkles className="w-3.5 h-3.5 text-indigo-300" /> 100+ AI tools. One workspace.
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-[64px] font-black leading-[1.1] mb-6 tracking-tight text-white drop-shadow-lg">
-                Create more. Work faster. <br className="hidden lg:block"/>
+              <h1 className="text-3xl sm:text-4xl lg:text-[48px] font-black leading-[1.1] mb-3 tracking-tight text-white drop-shadow-lg">
+                Create more. Work faster. <br className="hidden lg:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6D5EF8] to-[#3B82F6] animate-pulse">
                   With AI that feels simple.
                 </span>
               </h1>
-              <p className="text-lg sm:text-xl text-gray-300 mb-10 leading-relaxed font-medium">
+              <p className="text-[15px] sm:text-base text-gray-300 mb-4 leading-relaxed font-medium">
                 Write content, plan a business, generate images, understand code, and finish everyday work from one affordable AI platform built for creators, students, freelancers, and teams.
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 relative z-50">
-                <Link href="/tools" className="bg-gradient-to-r from-[#6D5EF8] to-[#3B82F6] hover:from-[#5B4DF5] hover:to-[#2563EB] text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-indigo-500/25 transition-all text-center flex items-center justify-center gap-2">
+              <div className="flex flex-col sm:flex-row gap-3 relative z-50">
+                <Link href="/tools" className="bg-gradient-to-r from-[#6D5EF8] to-[#3B82F6] hover:from-[#5B4DF5] hover:to-[#2563EB] text-white font-bold px-6 py-2.5 rounded-xl shadow-lg hover:shadow-indigo-500/25 transition-all text-center flex items-center justify-center gap-2 text-sm">
                   Explore 100+ Tools <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/pricing" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-8 py-4 rounded-xl backdrop-blur-md transition-all text-center">
+                <Link href="/pricing" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-6 py-2.5 rounded-xl backdrop-blur-md transition-all text-center text-sm">
                   View Plans
                 </Link>
               </div>
 
-              <div className="mt-7 max-w-xl">
-                <Suspense fallback={<div className="h-14 rounded-xl bg-white/10 animate-pulse" />}>
+              <div className="mt-3 max-w-xl">
+                <Suspense fallback={<div className="h-12 rounded-xl bg-white/10 animate-pulse" />}>
                   <HomeSearch />
                 </Suspense>
               </div>
 
               {/* Popular Searches */}
-              <div className="flex flex-wrap items-center gap-3 mt-8 text-xs sm:text-sm">
+              <div className="flex flex-wrap items-center gap-2 mt-3 text-[11px] sm:text-xs">
                 <span className="text-gray-400 font-medium mr-1">Trending:</span>
                 {['AI Writer', 'Image Generator', 'Business Plan', 'Code Generator'].map(tag => (
-                  <span key={tag} className="px-4 py-1.5 bg-white/5 border border-white/10 text-gray-300 rounded-full hover:bg-white/10 hover:border-indigo-500/50 hover:text-white transition-all backdrop-blur-md">
+                  <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 text-gray-300 rounded-full hover:bg-white/10 hover:border-indigo-500/50 hover:text-white transition-all backdrop-blur-md">
                     {tag}
                   </span>
                 ))}
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-6 sm:gap-10 border-t border-white/10 pt-10 mt-12">
+              <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-4 sm:gap-8 border-t border-white/10 pt-4 mt-4">
                 <div>
-                  <div className="flex items-center gap-2 font-black text-2xl text-white"><LayoutGrid className="w-5 h-5 text-indigo-400"/> 100+</div>
-                  <div className="text-sm font-medium text-gray-400 mt-1">AI & Utility Tools</div>
+                  <div className="flex items-center gap-1.5 font-black text-lg text-white"><LayoutGrid className="w-4 h-4 text-indigo-400" /> 100+</div>
+                  <div className="text-[12px] font-medium text-gray-400 mt-0.5">AI & Utility Tools</div>
                 </div>
                 <div>
-                  <div className="flex items-center gap-2 font-black text-2xl text-white"><Shield className="w-5 h-5 text-indigo-400" /> Secure</div>
-                  <div className="text-sm font-medium text-gray-400 mt-1">No Card Required</div>
+                  <div className="flex items-center gap-1.5 font-black text-lg text-white"><Shield className="w-4 h-4 text-indigo-400" /> Secure</div>
+                  <div className="text-[12px] font-medium text-gray-400 mt-0.5">No Card Required</div>
                 </div>
                 <div>
-                  <div className="flex items-center gap-2 font-black text-2xl text-white"><RefreshCcw className="w-5 h-5 text-indigo-400" /> Growing</div>
-                  <div className="text-sm font-medium text-gray-400 mt-1">New Tools & Updates</div>
+                  <div className="flex items-center gap-1.5 font-black text-lg text-white"><RefreshCcw className="w-4 h-4 text-indigo-400" /> Growing</div>
+                  <div className="text-[12px] font-medium text-gray-400 mt-0.5">New Tools & Updates</div>
                 </div>
               </div>
             </div>
 
             {/* Product demo preview */}
-            <div className="relative hidden md:block">
-              <div className="absolute -inset-8 bg-indigo-500/20 blur-3xl rounded-full" />
-              <div className="relative rounded-[28px] border border-white/15 bg-[#111827]/90 p-3 shadow-2xl shadow-indigo-950/50 backdrop-blur-xl rotate-[1deg] hover:rotate-0 transition-transform duration-500">
-                <div className="rounded-2xl border border-white/10 bg-[#0D1320] overflow-hidden">
-                  <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-                    <div className="flex items-center gap-2 text-sm font-bold text-white"><Sparkles className="w-4 h-4 text-indigo-400" /> AI Business Plan</div>
-                    <div className="flex gap-1.5"><span className="w-2 h-2 rounded-full bg-red-400"/><span className="w-2 h-2 rounded-full bg-amber-400"/><span className="w-2 h-2 rounded-full bg-emerald-400"/></div>
+            <div className="relative hidden md:block max-w-md mx-auto w-full">
+              <div className="absolute -inset-6 bg-indigo-500/20 blur-3xl rounded-full" />
+              <div className="relative rounded-[20px] border border-white/15 bg-[#111827]/90 p-2 shadow-2xl shadow-indigo-950/50 backdrop-blur-xl rotate-[1deg] hover:rotate-0 transition-transform duration-500">
+                <div className="rounded-xl border border-white/10 bg-[#0D1320] overflow-hidden">
+                  <div className="flex items-center justify-between border-b border-white/10 px-4 py-2.5">
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-white"><Sparkles className="w-3.5 h-3.5 text-indigo-400" /> AI Business Plan</div>
+                    <div className="flex gap-1"><span className="w-1.5 h-1.5 rounded-full bg-red-400" /><span className="w-1.5 h-1.5 rounded-full bg-amber-400" /><span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /></div>
                   </div>
-                  <div className="p-5 lg:p-7 space-y-5">
+                  <div className="p-4 space-y-3">
                     <div>
-                      <p className="text-[11px] uppercase tracking-widest text-gray-500 font-bold mb-2">Your prompt</p>
-                      <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-sm leading-6 text-gray-300">Create a launch plan for an affordable productivity app for freelance designers.</div>
+                      <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-1.5">Your prompt</p>
+                      <div className="rounded-lg border border-white/10 bg-white/5 p-3 text-xs leading-5 text-gray-300">Create a launch plan for an affordable productivity app for freelance designers.</div>
                     </div>
-                    <div className="flex items-center gap-3 text-xs text-indigo-300">
-                      <span className="relative flex h-2.5 w-2.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-75"/><span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-indigo-500"/></span>
+                    <div className="flex items-center gap-2 text-[10px] text-indigo-300">
+                      <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-75" /><span className="relative inline-flex h-2 w-2 rounded-full bg-indigo-500" /></span>
                       Generating a structured result...
                     </div>
-                    <div className="rounded-2xl bg-white p-5 shadow-xl">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-2 font-bold text-gray-900"><CheckCircle2 className="w-5 h-5 text-emerald-500"/> Launch strategy ready</div>
-                        <div className="flex gap-2 text-gray-400"><Copy className="w-4 h-4"/><Download className="w-4 h-4"/></div>
+                    <div className="rounded-xl bg-white p-3.5 shadow-xl">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-1.5 font-bold text-gray-900 text-xs"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Launch strategy ready</div>
+                        <div className="flex gap-1.5 text-gray-400"><Copy className="w-3.5 h-3.5" /><Download className="w-3.5 h-3.5" /></div>
                       </div>
-                      <div className="space-y-3">
-                        <div className="h-2.5 w-full rounded-full bg-indigo-100"/><div className="h-2.5 w-5/6 rounded-full bg-gray-100"/><div className="h-2.5 w-4/6 rounded-full bg-gray-100"/>
+                      <div className="space-y-2">
+                        <div className="h-2 w-full rounded-full bg-indigo-100" /><div className="h-2 w-5/6 rounded-full bg-gray-100" /><div className="h-2 w-4/6 rounded-full bg-gray-100" />
                       </div>
                     </div>
-                    <div className="grid grid-cols-3 gap-3 text-center text-[11px] font-semibold text-gray-400">
-                      <div className="rounded-xl bg-white/5 p-3"><Clock className="w-4 h-4 mx-auto mb-1 text-blue-400"/>Fast results</div>
-                      <div className="rounded-xl bg-white/5 p-3"><LockKeyhole className="w-4 h-4 mx-auto mb-1 text-emerald-400"/>Private</div>
-                      <div className="rounded-xl bg-white/5 p-3"><Download className="w-4 h-4 mx-auto mb-1 text-violet-400"/>Export ready</div>
+                    <div className="grid grid-cols-3 gap-2 text-center text-[10px] font-semibold text-gray-400">
+                      <div className="rounded-lg bg-white/5 p-2"><Clock className="w-3.5 h-3.5 mx-auto mb-1 text-blue-400" />Fast</div>
+                      <div className="rounded-lg bg-white/5 p-2"><LockKeyhole className="w-3.5 h-3.5 mx-auto mb-1 text-emerald-400" />Private</div>
+                      <div className="rounded-lg bg-white/5 p-2"><Download className="w-3.5 h-3.5 mx-auto mb-1 text-violet-400" />Export</div>
                     </div>
                   </div>
                 </div>
@@ -158,7 +158,7 @@ export default function HomePage() {
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Popular AI Tools</h2>
             <p className="text-gray-500">Start with focused tools for writing, planning, research, and everyday work.</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
               { id: 'ai-pitch-deck', name: 'AI Pitch Deck', icon: Briefcase, desc: 'Win investors over', color: 'from-blue-500 to-indigo-500' },
@@ -237,24 +237,24 @@ export default function HomePage() {
       <section className="w-full bg-white border-y border-gray-100">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <h2 className="text-xl sm:text-2xl font-bold text-[#111827] mb-8 sm:mb-10">Why Choose QuickTools.ai?</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
-          {[
-            { icon: LayoutGrid, title: '100+ Total Tools', desc: 'AI and everyday utilities in one platform', color: 'text-indigo-600', bg: 'bg-indigo-100' },
-            { icon: Zap, title: 'Easy to Use', desc: 'Simple interface, powerful results', color: 'text-emerald-600', bg: 'bg-emerald-100' },
-            { icon: Check, title: 'Save Time', desc: 'Complete tasks in seconds, not hours', color: 'text-blue-600', bg: 'bg-blue-100' },
-            { icon: Briefcase, title: 'Secure & Private', desc: 'Your data is safe and encrypted', color: 'text-orange-600', bg: 'bg-orange-100' },
-            { icon: Star, title: 'Affordable Pricing', desc: 'Premium tools at the best prices', color: 'text-pink-600', bg: 'bg-pink-100' },
-            { icon: RefreshCcw, title: 'Regular Updates', desc: 'New models added regularly', color: 'text-purple-600', bg: 'bg-purple-100' },
-          ].map((feature, i) => (
-            <div key={i} className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-100 flex flex-col items-center text-center">
-              <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl ${feature.bg} flex items-center justify-center mb-4`}>
-                <feature.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${feature.color}`} />
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+            {[
+              { icon: LayoutGrid, title: '100+ Total Tools', desc: 'AI and everyday utilities in one platform', color: 'text-indigo-600', bg: 'bg-indigo-100' },
+              { icon: Zap, title: 'Easy to Use', desc: 'Simple interface, powerful results', color: 'text-emerald-600', bg: 'bg-emerald-100' },
+              { icon: Check, title: 'Save Time', desc: 'Complete tasks in seconds, not hours', color: 'text-blue-600', bg: 'bg-blue-100' },
+              { icon: Briefcase, title: 'Secure & Private', desc: 'Your data is safe and encrypted', color: 'text-orange-600', bg: 'bg-orange-100' },
+              { icon: Star, title: 'Affordable Pricing', desc: 'Premium tools at the best prices', color: 'text-pink-600', bg: 'bg-pink-100' },
+              { icon: RefreshCcw, title: 'Regular Updates', desc: 'New models added regularly', color: 'text-purple-600', bg: 'bg-purple-100' },
+            ].map((feature, i) => (
+              <div key={i} className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-100 flex flex-col items-center text-center">
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl ${feature.bg} flex items-center justify-center mb-4`}>
+                  <feature.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${feature.color}`} />
+                </div>
+                <h3 className="font-bold text-sm text-[#111827] mb-2">{feature.title}</h3>
+                <p className="text-xs text-[#6B7280]">{feature.desc}</p>
               </div>
-              <h3 className="font-bold text-sm text-[#111827] mb-2">{feature.title}</h3>
-              <p className="text-xs text-[#6B7280]">{feature.desc}</p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -287,34 +287,34 @@ export default function HomePage() {
       <section className="w-full bg-white border-t border-gray-100" id="pricing-preview">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-xs font-black uppercase tracking-[0.22em] text-[#6D5EF8]">Simple pricing</span>
-          <h2 className="text-3xl sm:text-4xl font-black text-[#111827] mt-3 mb-4">Start free. Upgrade when you need more.</h2>
-          <p className="text-[#6B7280]">See the cost before you sign up. No card is required to explore the free experience.</p>
-        </div>
-        <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5 items-stretch">
-          {[
-            { name: 'Free Starter', icon: Gift, description: 'Try QuickTools completely free', originalPrice: '', price: '₹0', period: 'forever', features: ['3 Free Generations / day', 'Standard Tools Access', 'Basic AI Background Remover'], button: 'Start for Free', featured: false },
-            { name: 'Pro Monthly', icon: Zap, description: 'Perfect for regular users', originalPrice: '₹599/month', price: '₹299', period: 'month', features: ['500 Credits / month', 'HD Image Generation', 'All Premium Tools Access', 'Faster Processing'], button: 'Get Pro Monthly', featured: false },
-            { name: 'Pro', icon: Crown, description: 'For professionals and creators', originalPrice: '₹4,788/year', price: '₹3,588', period: 'year', features: ['14,400 Credits / year', 'HD Image Generation', 'Fast Processing', 'Priority Support'], button: 'Get Pro', featured: true },
-            { name: 'Business', icon: Building2, description: 'For teams and power users', originalPrice: '₹9,588/year', price: '₹6,000', period: 'year', features: ['18,000 Credits / year', 'Team Members (Up to 5)', 'API Access', 'Admin Dashboard'], button: 'Contact Sales', featured: false },
-          ].map((plan) => (
-            <div key={plan.name} className={`relative rounded-3xl bg-white p-7 flex flex-col text-[#111827] shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl ${plan.featured ? 'border-2 border-amber-400 shadow-amber-100' : 'border border-gray-200'}`}>
-              {plan.featured && <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-amber-500 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white">Most Popular</span>}
-              <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 ${plan.featured ? 'bg-amber-50 text-amber-500' : 'bg-indigo-50 text-[#6D5EF8]'}`}><plan.icon className="w-6 h-6" /></div>
-              <h3 className="text-xl font-black mb-1">{plan.name}</h3>
-              <p className="text-sm text-gray-500 min-h-10 mb-5">{plan.description}</p>
-              <div className="mb-6 min-h-16">
-                {plan.originalPrice && <span className="block text-xs font-semibold text-gray-400 line-through mb-1">{plan.originalPrice}</span>}
-                <span className="text-4xl font-black">{plan.price}</span><span className="text-sm text-gray-500">/{plan.period}</span>
+            <span className="text-xs font-black uppercase tracking-[0.22em] text-[#6D5EF8]">Simple pricing</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#111827] mt-3 mb-4">Start free. Upgrade when you need more.</h2>
+            <p className="text-[#6B7280]">See the cost before you sign up. No card is required to explore the free experience.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5 items-stretch">
+            {[
+              { name: 'Free Starter', icon: Gift, description: 'Try QuickTools completely free', originalPrice: '', price: '₹0', period: 'forever', features: ['3 Free Generations / day', 'Standard Tools Access', 'Basic AI Background Remover'], button: 'Start for Free', featured: false },
+              { name: 'Pro Monthly', icon: Zap, description: 'Perfect for regular users', originalPrice: '₹599/month', price: '₹299', period: 'month', features: ['500 Credits / month', 'HD Image Generation', 'All Premium Tools Access', 'Faster Processing'], button: 'Get Pro Monthly', featured: false },
+              { name: 'Pro', icon: Crown, description: 'For professionals and creators', originalPrice: '₹4,788/year', price: '₹3,588', period: 'year', features: ['14,400 Credits / year', 'HD Image Generation', 'Fast Processing', 'Priority Support'], button: 'Get Pro', featured: true },
+              { name: 'Business', icon: Building2, description: 'For teams and power users', originalPrice: '₹9,588/year', price: '₹6,000', period: 'year', features: ['18,000 Credits / year', 'Team Members (Up to 5)', 'API Access', 'Admin Dashboard'], button: 'Contact Sales', featured: false },
+            ].map((plan) => (
+              <div key={plan.name} className={`relative rounded-3xl bg-white p-7 flex flex-col text-[#111827] shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl ${plan.featured ? 'border-2 border-amber-400 shadow-amber-100' : 'border border-gray-200'}`}>
+                {plan.featured && <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-amber-500 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white">Most Popular</span>}
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 ${plan.featured ? 'bg-amber-50 text-amber-500' : 'bg-indigo-50 text-[#6D5EF8]'}`}><plan.icon className="w-6 h-6" /></div>
+                <h3 className="text-xl font-black mb-1">{plan.name}</h3>
+                <p className="text-sm text-gray-500 min-h-10 mb-5">{plan.description}</p>
+                <div className="mb-6 min-h-16">
+                  {plan.originalPrice && <span className="block text-xs font-semibold text-gray-400 line-through mb-1">{plan.originalPrice}</span>}
+                  <span className="text-4xl font-black">{plan.price}</span><span className="text-sm text-gray-500">/{plan.period}</span>
+                </div>
+                <ul className="space-y-3 mb-7 flex-grow">
+                  {plan.features.map(feature => <li key={feature} className="flex items-start gap-2 text-sm text-gray-600"><CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${plan.featured ? 'text-amber-500' : 'text-[#6D5EF8]'}`} />{feature}</li>)}
+                </ul>
+                <Link href="/pricing" className={`rounded-xl px-5 py-3 text-center text-sm font-bold transition-colors ${plan.featured ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-md' : 'border border-indigo-100 hover:bg-indigo-50 text-[#5B4DF5]'}`}>{plan.button}</Link>
               </div>
-              <ul className="space-y-3 mb-7 flex-grow">
-                {plan.features.map(feature => <li key={feature} className="flex items-start gap-2 text-sm text-gray-600"><CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${plan.featured ? 'text-amber-500' : 'text-[#6D5EF8]'}`} />{feature}</li>)}
-              </ul>
-              <Link href="/pricing" className={`rounded-xl px-5 py-3 text-center text-sm font-bold transition-colors ${plan.featured ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-md' : 'border border-indigo-100 hover:bg-indigo-50 text-[#5B4DF5]'}`}>{plan.button}</Link>
-            </div>
-          ))}
-        </div>
-        <p className="text-center text-xs text-gray-500 mt-6">Pricing and included credits are shown before checkout. Cancel paid plans from your account.</p>
+            ))}
+          </div>
+          <p className="text-center text-xs text-gray-500 mt-6">Pricing and included credits are shown before checkout. Cancel paid plans from your account.</p>
         </div>
       </section>
       {/* 5. Latest Content & Community */}

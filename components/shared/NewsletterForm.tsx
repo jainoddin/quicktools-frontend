@@ -70,12 +70,14 @@ export default function NewsletterForm({
         className={inputClassName}
         style={inputStyle}
         disabled={status === 'loading'}
+        suppressHydrationWarning
       />
       <button 
         type="submit" 
         className={buttonClassName}
         style={buttonStyle}
         disabled={status === 'loading'}
+        suppressHydrationWarning
       >
         {status === 'loading' ? 'Subscribing...' : buttonText}
       </button>

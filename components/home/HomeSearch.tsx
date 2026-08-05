@@ -20,15 +20,17 @@ export default function HomeSearch() {
   };
 
   return (
-    <form onSubmit={handleSearch} className="relative flex items-center mb-6">
+    <form onSubmit={handleSearch} className="relative flex items-center mb-6 group">
+      <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       <input 
         type="text" 
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search tools (e.g., image generator, background remover...)" 
-        className="w-full pl-5 pr-14 py-4 rounded-xl border border-[#E5E7EB] shadow-sm focus:ring-2 focus:ring-[#4F46E5] focus:border-[#4F46E5] outline-none text-sm sm:text-base transition-all bg-white"
+        className="relative w-full pl-6 pr-14 py-4 rounded-xl border border-white/10 bg-[#111827]/60 backdrop-blur-md shadow-inner shadow-black/20 focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 outline-none text-white placeholder-gray-400 text-sm sm:text-base transition-all hover:bg-[#111827]/80"
+        suppressHydrationWarning
       />
-      <button type="submit" className="absolute right-2 p-2.5 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-lg transition-colors">
+      <button type="submit" className="absolute right-2 p-2.5 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white rounded-lg transition-all shadow-lg shadow-indigo-500/25 transform hover:scale-105 active:scale-95 z-10" suppressHydrationWarning>
         <Search className="w-5 h-5" />
       </button>
     </form>

@@ -51,7 +51,7 @@ export default function Footer() {
                 <Link href="/" aria-label="Website">
                   <Globe className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
                 </Link>
-                <button onClick={handleShare} aria-label="Share" className="focus:outline-none">
+                <button onClick={handleShare} aria-label="Share" className="focus:outline-none" suppressHydrationWarning>
                   <Share2 className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
                 </button>
                 <a href="https://wa.me/917989015462" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
