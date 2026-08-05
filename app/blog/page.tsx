@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 async function getBlogs() {
   try {
     const res = await fetch(getEndpoint('/api/blogs?limit=15'), {
-      cache: 'no-store' // Always fetch fresh blogs
+      next: { revalidate: 60 } // Cache for 60 seconds for instant loads
     });
     if (!res.ok) return { data: [], pagination: {} };
     return await res.json();

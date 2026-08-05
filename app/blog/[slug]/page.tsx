@@ -24,7 +24,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space';
 // ─── SEO Metadata ─────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const res = await fetch(getEndpoint(`/api/blogs/${slug}`), { cache: 'no-store' });
+  const res = await fetch(getEndpoint(`/api/blogs/${slug}`), { next: { revalidate: 60 } });
   if (!res.ok) return { title: 'Blog Not Found | QuickTools.ai' };
 
   const json = await res.json();
@@ -68,7 +68,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogSlugPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const res = await fetch(getEndpoint(`/api/blogs/${slug}`), { cache: 'no-store' });
+  const res = await fetch(getEndpoint(`/api/blogs/${slug}`), { next: { revalidate: 60 } });
 
   if (!res.ok) {
     return <div className="text-center py-20 text-2xl font-bold">Blog post not found</div>;

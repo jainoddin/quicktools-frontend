@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 async function getArticles() {
   try {
     const res = await fetch(getEndpoint('/api/articles?limit=12'), {
-      cache: 'no-store' // Always fetch fresh articles
+      next: { revalidate: 60 } // Cache for 60 seconds for instant loads
     });
     if (!res.ok) return { data: [], pagination: {} };
     return await res.json();
