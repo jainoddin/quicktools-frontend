@@ -301,15 +301,7 @@ export const allTools = [
     category: 'AI Writer',
     createdAt: new Date().toISOString().split('T')[0],
   },
-  {
-    name: 'AI Dream Interpreter',
-    description: 'Analyze your dreams for psychological meaning and hidden messages.',
-    iconName: 'CloudSun',
-    color: 'bg-[#8B5CF6] text-white',
-    slug: '/tools/ai-dream-interpreter',
-    category: 'AI Writer',
-    createdAt: new Date().toISOString().split('T')[0],
-  },
+
   {
     name: 'AI Analogy Generator',
     description: 'Explain complex tech or legal jargon using simple analogies from sports, movies, or hobbies.',
