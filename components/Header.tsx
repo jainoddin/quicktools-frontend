@@ -239,9 +239,9 @@ export default function Header() {
             </button>
             <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <div className="bg-white border border-[#E5E7EB] rounded-2xl shadow-xl py-2 w-36 flex flex-col">
-                <Link prefetch={false} href="/blog" className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActiveStartsWith('/blog') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>Blogs</Link>
-                <Link prefetch={false} href="/articles" className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActiveStartsWith('/articles') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>Articles</Link>
-                <Link prefetch={false} href="/news" className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActiveStartsWith('/news') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>News</Link>
+                <Link href="/blog" className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActiveStartsWith('/blog') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>Blogs</Link>
+                <Link href="/articles" className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActiveStartsWith('/articles') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>Articles</Link>
+                <Link href="/news" className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActiveStartsWith('/news') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>News</Link>
               </div>
             </div>
           </div>
@@ -445,15 +445,15 @@ export default function Header() {
               </button>
               {mobileResourcesOpen && (
                 <div className="ml-4 mt-1 flex flex-col gap-1 border-l-2 border-[#EEF2FF] pl-3">
-                  <Link prefetch={false} href="/blog" onClick={() => setMobileMenuOpen(false)}
+                  <Link href="/blog" onClick={() => setMobileMenuOpen(false)}
                     className={`flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-[#F9FAFB] transition-colors text-sm ${isActiveStartsWith('/blog') ? 'text-[#6D5EF8] font-semibold' : 'text-[#374151]'}`}>
                     <PenTool className="w-3.5 h-3.5" /> Blogs
                   </Link>
-                  <Link prefetch={false} href="/articles" onClick={() => setMobileMenuOpen(false)}
+                  <Link href="/articles" onClick={() => setMobileMenuOpen(false)}
                     className={`flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-[#F9FAFB] transition-colors text-sm ${isActiveStartsWith('/articles') ? 'text-[#6D5EF8] font-semibold' : 'text-[#374151]'}`}>
                     <Newspaper className="w-3.5 h-3.5" /> Articles
                   </Link>
-                  <Link prefetch={false} href="/news" onClick={() => setMobileMenuOpen(false)}
+                  <Link href="/news" onClick={() => setMobileMenuOpen(false)}
                     className={`flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-[#F9FAFB] transition-colors text-sm ${isActiveStartsWith('/news') ? 'text-[#6D5EF8] font-semibold' : 'text-[#374151]'}`}>
                     <Globe className="w-3.5 h-3.5" /> News
                   </Link>
