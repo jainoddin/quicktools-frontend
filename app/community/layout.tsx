@@ -2,9 +2,13 @@ import React from 'react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://quicktool.space'),
   title: "Community | QuickTools.ai",
   description: "Join the QuickTools community. Ask questions, share your knowledge, discuss AI tools, and learn from experts.",
   keywords: ["QuickTools community", "AI tools forum", "ask questions", "AI discussions", "prompt engineering help"],
+  alternates: {
+    canonical: '/community',
+  },
   openGraph: {
     title: "Community | QuickTools.ai",
     description: "Join the QuickTools community. Ask questions, share your knowledge, discuss AI tools, and learn from experts.",

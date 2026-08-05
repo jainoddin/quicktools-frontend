@@ -31,9 +31,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const description = question.excerpt || question.body?.substring(0, 160) || "Join the discussion on QuickTools Community.";
 
   return {
+    metadataBase: new URL('https://quicktool.space'),
     title,
     description,
     authors: [{ name: question.author?.name }],
+    alternates: {
+      canonical: `/community/questions/${slug}`,
+    },
     openGraph: {
       title,
       description,
