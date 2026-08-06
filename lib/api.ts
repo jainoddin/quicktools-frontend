@@ -1,14 +1,22 @@
 /**
  * Returns the base URL for the backend API.
- * Uses the live server URL if deployed, otherwise falls back to localhost.
+ *
+ * Strategy:
+ * - Server-side (SSR/SSG): Use NEXT_PUBLIC_API_URL if set, else Render backend directly.
+ * - Client-side (browser): Always use '' (empty) so requests go to /api/* as relative URLs.
+ *   Next.js rewrites /api/* → Render backend (no CORS issues).
  */
 export const getApiUrl = () => {
-  // Use the public env var if available (works both client and server side)
+  // Client-side: use relative URL (proxied via Next.js rewrites → no CORS issue)
+  if (typeof window !== 'undefined') {
+    return '';
+  }
+
+  // Server-side (SSR/SSG/build): use env var if set, else direct Render backend URL
   if (process.env.NEXT_PUBLIC_API_URL) {
     return process.env.NEXT_PUBLIC_API_URL;
   }
 
-  // Fallback to the Render backend (used when NEXT_PUBLIC_API_URL is not set)
   return 'https://quicktools-backend-wlm5.onrender.com';
 };
 
