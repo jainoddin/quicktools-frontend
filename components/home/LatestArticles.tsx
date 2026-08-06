@@ -59,7 +59,7 @@ export default async function LatestArticles() {
 
           {/* Articles List */}
           <div className="lg:w-2/3 flex flex-col gap-4 w-full">
-            {articles.map((article) => (
+            {articles.map((article, idx) => (
               <Link 
                 href={`/articles/${article.slug}`} 
                 key={article._id}
