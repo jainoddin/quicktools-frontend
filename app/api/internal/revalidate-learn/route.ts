@@ -25,8 +25,6 @@ export async function POST(request: Request) {
     revalidatePath(`/learn/${courseSlug}`);
     revalidatePath(`/learn/${courseSlug}/${lessonSlug}`);
     
-    // Also revalidate sitemap if tags are used, or general layout
-    revalidateTag('learn-content');
 
     return NextResponse.json({ success: true, message: `Revalidated /learn/${courseSlug}/${lessonSlug}` });
   } catch (err: any) {
