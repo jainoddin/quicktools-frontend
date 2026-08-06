@@ -59,7 +59,14 @@ export default async function LatestBlogs() {
         >
           <div className="absolute inset-0 bg-gray-200 z-0">
             {featuredBlog.coverImage ? (
-              <img fetchPriority="high" loading="eager" src={featuredBlog.coverImage} alt={featuredBlog.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <Image 
+                src={featuredBlog.coverImage} 
+                alt={featuredBlog.title} 
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-700" 
+              />
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600"></div>
             )}
@@ -82,8 +89,14 @@ export default async function LatestBlogs() {
               {featuredBlog.description}
             </p>
             <div className="flex items-center gap-3 mt-auto">
-              <div className="w-10 h-10 rounded-full bg-gray-600 overflow-hidden border-2 border-white/20">
-                <img src={featuredBlog.author?.avatar || 'https://i.pravatar.cc/150?u=admin'} alt={featuredBlog.author?.name || 'Admin'} className="w-full h-full object-cover" />
+              <div className="w-10 h-10 rounded-full border-2 border-white/20 overflow-hidden relative flex-shrink-0">
+                <Image 
+                  src={featuredBlog.author?.avatar || 'https://i.pravatar.cc/150?u=admin'} 
+                  alt={featuredBlog.author?.name || 'Admin'} 
+                  fill
+                  sizes="40px"
+                  className="object-cover" 
+                />
               </div>
               <div>
                 <div className="text-sm font-bold">{featuredBlog.author?.name || 'QuickTools Team'}</div>
@@ -103,7 +116,13 @@ export default async function LatestBlogs() {
             >
               <div className="h-48 sm:h-full w-full sm:w-[200px] shrink-0 rounded-xl overflow-hidden bg-gray-100 relative">
                 {blog.coverImage ? (
-                  <img loading="lazy" src={blog.coverImage} alt={blog.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <Image 
+                    src={blog.coverImage} 
+                    alt={blog.title} 
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                  />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center text-indigo-300 text-xs">No Image</div>
                 )}

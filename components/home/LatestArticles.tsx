@@ -67,7 +67,14 @@ export default async function LatestArticles() {
               >
                 <div className="w-full sm:w-40 h-48 sm:h-28 shrink-0 rounded-2xl overflow-hidden bg-gray-800 relative">
                   {article.coverImage ? (
-                    <img fetchPriority="high" loading="eager" src={article.coverImage} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <Image 
+                      src={article.coverImage} 
+                      alt={article.title} 
+                      fill
+                      priority={idx === 0}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                    />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-gray-500">
                       <FileText className="w-8 h-8 opacity-20" />
