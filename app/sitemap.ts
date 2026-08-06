@@ -16,20 +16,23 @@ export async function generateSitemaps() {
   ];
 }
 
-export default async function sitemap({ id }: { id: number }): Promise<MetadataRoute.Sitemap> {
-  if (id === 0) {
+export default async function sitemap({ id }: { id: number | string }): Promise<MetadataRoute.Sitemap> {
+  // Normalize id: Next.js may pass string or number depending on version/runtime
+  const numId = Number(id);
+
+  if (numId === 0) {
     const routes = [
       '', '/tools', '/blog', '/articles', '/news', '/community', '/about', '/contact', '/pricing', '/login', '/signup', '/learn'
     ].map((route) => ({
       url: `${baseUrl}${route}`,
       lastModified: new Date(),
       changeFrequency: route === '' ? 'daily' : 'weekly' as any,
-      priority: route === '' ? 1 : 0.8,
+      priority: route === '' ? 1 : 0.7,
     }));
     return routes;
   }
 
-  if (id === 1) {
+  if (numId === 1) {
     return allTools.map((tool) => ({
       url: `${baseUrl}${tool.slug}`,
       lastModified: new Date(tool.createdAt || new Date()),
@@ -38,7 +41,7 @@ export default async function sitemap({ id }: { id: number }): Promise<MetadataR
     }));
   }
 
-  if (id === 2) {
+  if (numId === 2) {
     let blogs: any[] = [];
     try {
       const res = await fetch(getEndpoint('/api/blogs?limit=500'), { cache: 'no-store', signal: AbortSignal.timeout(10000) });
@@ -57,7 +60,7 @@ export default async function sitemap({ id }: { id: number }): Promise<MetadataR
       }));
   }
 
-  if (id === 3) {
+  if (numId === 3) {
     let articles: any[] = [];
     try {
       const res = await fetch(getEndpoint('/api/articles?limit=500'), { cache: 'no-store', signal: AbortSignal.timeout(10000) });
@@ -76,7 +79,7 @@ export default async function sitemap({ id }: { id: number }): Promise<MetadataR
       }));
   }
 
-  if (id === 4) {
+  if (numId === 4) {
     let news: any[] = [];
     try {
       const res = await fetch(getEndpoint('/api/news?limit=500'), { cache: 'no-store', signal: AbortSignal.timeout(10000) });
@@ -95,7 +98,7 @@ export default async function sitemap({ id }: { id: number }): Promise<MetadataR
       }));
   }
 
-  if (id === 5) {
+  if (numId === 5) {
     let questions: any[] = [];
     try {
       const res = await fetch(getEndpoint('/api/community/questions?limit=500'), { cache: 'no-store', signal: AbortSignal.timeout(10000) });
@@ -113,7 +116,7 @@ export default async function sitemap({ id }: { id: number }): Promise<MetadataR
       }));
   }
 
-  if (id === 6) {
+  if (numId === 6) {
     let courses: any[] = [];
     try {
       const res = await fetch(getEndpoint('/api/learn/courses?limit=500'), { cache: 'no-store', signal: AbortSignal.timeout(10000) });
