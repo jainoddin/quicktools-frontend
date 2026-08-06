@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { BookOpen, ChevronRight, Play, ArrowRight, Code, Sparkles, GraduationCap } from 'lucide-react';
+import Image from 'next/image';
 import { getEndpoint } from '../../lib/api';
 
 interface Course {
@@ -81,14 +82,24 @@ export default async function HomeLearn() {
                 <div className="relative h-56 overflow-hidden">
                   {/* Removed the dark overlay to ensure pure white background at all times */}
                   {course.coverImage ? (
-                    <img 
+                    <Image 
                       src={course.coverImage} 
                       alt={course.title} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110" 
                     />
                   ) : course.icon ? (
-                    <div className="w-full h-full bg-white flex items-center justify-center">
-                      <img src={course.icon} alt={course.title} className="w-32 h-32 sm:w-40 sm:h-40 object-contain drop-shadow-lg opacity-100 group-hover:scale-110 transition-all duration-500" />
+                    <div className="w-full h-full bg-white flex items-center justify-center relative">
+                      <div className="relative w-32 h-32 sm:w-40 sm:h-40">
+                        <Image 
+                          src={course.icon} 
+                          alt={course.title}
+                          fill
+                          sizes="160px"
+                          className="object-contain drop-shadow-lg opacity-100 group-hover:scale-110 transition-all duration-500" 
+                        />
+                      </div>
                     </div>
                   ) : (
                     <div className="w-full h-full bg-white flex items-center justify-center">
