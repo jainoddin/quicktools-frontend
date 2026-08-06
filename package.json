@@ -6,7 +6,8 @@
     "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:links": "linkinator http://localhost:3001 --skip \"^(?!http://localhost:3001)\" --retry --markdown"
   },
   "dependencies": {
     "@cashfreepayments/cashfree-js": "^1.0.7",
@@ -32,6 +33,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "linkinator": "^8.0.3",
     "tailwindcss": "^4",
     "ts-morph": "^28.0.0",
     "typescript": "^5"

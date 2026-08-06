@@ -17,13 +17,13 @@ export const metadata: Metadata = {
             url: 'https://quicktool.space/tools/ai-color-palette',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Color Palette Generator' }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Color Palette Generator",
             description: "Generate beautiful color palettes from a brand name or mood description with our free AI Color Palette Generator.",
-            images: ['https://quicktool.space/icon.svg']
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
           }
 };
 
@@ -51,8 +51,8 @@ export default function AiColorPalettePage() {
         </div>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([
+      {
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
               "name": "AI Color Palette",
@@ -64,11 +64,65 @@ export default function AiColorPalettePage() {
                 "price": "0",
                 "priceCurrency": "USD"
               }
-            })
-          }}
+            , "featureList": "AI-powered, fast generation, free to use, no signup required for basic use"},
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktool.space" },
+          { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://quicktool.space/tools" },
+          { "@type": "ListItem", "position": 3, "name": "Design", "item": "https://quicktool.space/tools?category=design" },
+          { "@type": "ListItem", "position": 4, "name": "QuickTools AI Tool", "item": "https://quicktool.space/tools/ai-color-palette" }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is QuickTools AI Tool?", "acceptedAnswer": { "@type": "Answer", "text": "The QuickTools AI Tool is an advanced AI-powered tool by QuickTools designed to help you generate beautiful color palettes from a brand name or mood description with our free ai color palette generator." } },
+          { "@type": "Question", "name": "What image formats are supported by QuickTools AI Tool?", "acceptedAnswer": { "@type": "Answer", "text": "The tool supports major high-resolution image formats like PNG, JPG, and JPEG for optimal quality processing and downloading." } },
+          { "@type": "Question", "name": "Can I use the generated images commercially?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, all generated images and designs come with full commercial usage rights, allowing you to use them in ads, websites, and print." } },
+          { "@type": "Question", "name": "Is it fast to generate results?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. It usually takes just 2-3 seconds to generate the desired output, making it one of the fastest tools available." } },
+          { "@type": "Question", "name": "Do I need to download any software?", "acceptedAnswer": { "@type": "Answer", "text": "No, the QuickTools AI Tool is entirely web-based and runs in your browser. You can access it from any device with an internet connection." } },
+          { "@type": "Question", "name": "Is the QuickTools AI Tool free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, you can use the QuickTools AI Tool and many other tools on QuickTools.ai for free without needing a credit card." } }
+        ]
+      }
+    ]) }}
         />
         <AiColorPaletteClient />
-      </div>
+      
+        {/* Visible FAQ Section for SEO and Users */}
+        <div id="faq" className="mt-16 bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800">What is QuickTools AI Tool?</h3>
+              <p className="text-slate-600 mt-2">The QuickTools AI Tool is an advanced AI-powered tool by QuickTools designed to help you generate beautiful color palettes from a brand name or mood description with our free ai color palette generator.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800">What image formats are supported by QuickTools AI Tool?</h3>
+              <p className="text-slate-600 mt-2">The tool supports major high-resolution image formats like PNG, JPG, and JPEG for optimal quality processing and downloading.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800">Can I use the generated images commercially?</h3>
+              <p className="text-slate-600 mt-2">Yes, all generated images and designs come with full commercial usage rights, allowing you to use them in ads, websites, and print.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800">Is it fast to generate results?</h3>
+              <p className="text-slate-600 mt-2">Absolutely. It usually takes just 2-3 seconds to generate the desired output, making it one of the fastest tools available.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800">Do I need to download any software?</h3>
+              <p className="text-slate-600 mt-2">No, the QuickTools AI Tool is entirely web-based and runs in your browser. You can access it from any device with an internet connection.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800">Is the QuickTools AI Tool free to use?</h3>
+              <p className="text-slate-600 mt-2">Yes, you can use the QuickTools AI Tool and many other tools on QuickTools.ai for free without needing a credit card.</p>
+            </div>
+          </div>
+        </div>
+
+</div>
     </div>
   );
 }

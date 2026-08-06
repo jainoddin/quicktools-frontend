@@ -15,13 +15,13 @@ export const metadata: Metadata = {
             url: 'https://quicktool.space/tools/ai-hashtag-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Instagram Hashtag Generator' }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Instagram Hashtag Generator | QuickTools",
             description: "Boost your reach and engagement with AI-generated, highly relevant hashtags for Instagram, TikTok, and Twitter.",
-            images: ['https://quicktool.space/icon.svg']
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
           }
 };
 

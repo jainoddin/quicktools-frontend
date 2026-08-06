@@ -18,7 +18,7 @@ export default function DynamicContentRenderer({ blocks, updatedBlockIds = [] }:
 
         switch (block.type) {
           case 'heading':
-            const Tag = `h${block.level}` as keyof JSX.IntrinsicElements;
+            const Tag = `h${block.level}` as keyof React.JSX.IntrinsicElements;
             content = (
               <Tag id={block.id} className="font-bold text-slate-900 scroll-mt-24" style={{
                 fontSize: block.level === 1 ? '2.25rem' : block.level === 2 ? '1.875rem' : block.level === 3 ? '1.5rem' : '1.25rem',

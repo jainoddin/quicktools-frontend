@@ -14,13 +14,13 @@ export const metadata: Metadata = {
             url: 'https://quicktool.space/tools/ai-video-storyboard',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Video Storyboard Generator' }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
             title: "AI Video Storyboard Generator | Premium Tools",
             description: "Generate detailed scene-by-scene video storyboards.",
-            images: ['https://quicktool.space/icon.svg']
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
           }
 };
 
@@ -29,8 +29,8 @@ export default function Page() {
     <div className="flex-1 w-full max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 py-6 h-[calc(100vh-80px)]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([
+      {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "AI Video Storyboard Generator",
@@ -42,8 +42,30 @@ export default function Page() {
               "price": "0",
               "priceCurrency": "USD"
             }
-          })
-        }}
+          , "featureList": "AI-powered, fast generation, free to use, no signup required for basic use"},
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktool.space" },
+          { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://quicktool.space/tools" },
+          { "@type": "ListItem", "position": 3, "name": "Writing", "item": "https://quicktool.space/tools?category=writing" },
+          { "@type": "ListItem", "position": 4, "name": "QuickTools AI Tool", "item": "https://quicktool.space/tools/ai-video-storyboard" }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is QuickTools AI Tool?", "acceptedAnswer": { "@type": "Answer", "text": "The QuickTools AI Tool is an advanced AI-powered tool by QuickTools designed to help you generate detailed scene-by-scene video storyboards." } },
+          { "@type": "Question", "name": "Can the QuickTools AI Tool generate content in different tones?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, our AI algorithms are trained to adapt to various professional, casual, persuasive, and creative tones based on your input." } },
+          { "@type": "Question", "name": "Is the content plagiarism-free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the QuickTools AI Tool generates 100% unique, original text every time you use it, ensuring it passes plagiarism checkers." } },
+          { "@type": "Question", "name": "Is it fast to generate results?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. It usually takes just 2-3 seconds to generate the desired output, making it one of the fastest tools available." } },
+          { "@type": "Question", "name": "Do I need to download any software?", "acceptedAnswer": { "@type": "Answer", "text": "No, the QuickTools AI Tool is entirely web-based and runs in your browser. You can access it from any device with an internet connection." } },
+          { "@type": "Question", "name": "Is the QuickTools AI Tool free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, you can use the QuickTools AI Tool and many other tools on QuickTools.ai for free without needing a credit card." } }
+        ]
+      }
+    ]) }}
       />
       
       {/* Breadcrumbs */}

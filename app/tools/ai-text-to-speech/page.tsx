@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     url: 'https://quicktool.space/tools/ai-text-to-speech',
     siteName: 'QuickTools.ai',
     type: 'website',
-    images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'AI Text to Speech' }]
+    images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AI Text to Speech Generator | QuickTools',
     description: 'Convert any text into natural-sounding speech instantly using advanced browser AI.',
-    images: ['https://quicktool.space/icon.svg']
+    images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
   }
 };
 

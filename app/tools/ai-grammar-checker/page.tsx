@@ -15,13 +15,13 @@ export const metadata: Metadata = {
             url: 'https://quicktool.space/tools/ai-grammar-checker',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI Grammar & Spell Checker' }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Grammar & Spell Checker | QuickTools",
             description: "Instantly check your text for grammar, spelling, and punctuation errors. Rewrites sentences for better flow and professional tone.",
-            images: ['https://quicktool.space/icon.svg']
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
           }
 };
 

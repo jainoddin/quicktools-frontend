@@ -15,13 +15,13 @@ export const metadata: Metadata = {
             url: 'https://quicktool.space/tools/ai-app-architecture',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Premium AI App Architecture Planner' }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
             title: "Premium AI App Architecture Planner | QuickTools",
             description: "Generate the full tech stack, database schema, and API endpoints documentation for a new app.",
-            images: ['https://quicktool.space/icon.svg']
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
           }
 };
 

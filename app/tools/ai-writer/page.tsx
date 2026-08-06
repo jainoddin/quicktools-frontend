@@ -17,20 +17,21 @@ export const metadata: Metadata = {
             url: 'https://quicktool.space/tools/ai-writer',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Advanced AI Writer & Content Generator for Creators' }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Writer  Create Blogs, Emails & Marketing Copy")}&type=tool`, width: 1200, height: 630, alt: `AI Writer  Create Blogs, Emails & Marketing Copy - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
             title: { absolute: "AI Writer – Create Blogs, Emails & Marketing Copy | QuickTools" },
             description: "Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
-            images: ['https://quicktool.space/icon.svg']
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Writer  Create Blogs, Emails & Marketing Copy")}&type=tool`]
           }
 };
 
 export default function AiWriterPage() {
   return (
     <div className="flex-grow bg-[#F8FAFC] flex flex-col font-sans selection:bg-[#6D5EF8] selection:text-white relative">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
+      {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "Advanced AI Writer & Content Generator for Creators",
@@ -43,7 +44,30 @@ export default function AiWriterPage() {
       },
       "description": "Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
       "url": "https://quicktool.space/tools/ai-writer"
-    }) }} />
+    , "featureList": "AI-powered, fast generation, free to use, no signup required for basic use"},
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktool.space" },
+          { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://quicktool.space/tools" },
+          { "@type": "ListItem", "position": 3, "name": "Writing", "item": "https://quicktool.space/tools?category=writing" },
+          { "@type": "ListItem", "position": 4, "name": "AI Writer  Create Blogs, Emails & Marketing Copy", "item": "https://quicktool.space/tools/ai-writer" }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is AI Writer  Create Blogs, Emails & Marketing Copy?", "acceptedAnswer": { "@type": "Answer", "text": "The AI Writer  Create Blogs, Emails & Marketing Copy is an advanced AI-powered tool by QuickTools designed to help you generate blogs, articles, emails, social media posts, marketing copy, and seo content instantly with the quicktools ai writer." } },
+          { "@type": "Question", "name": "Can the AI Writer  Create Blogs, Emails & Marketing Copy generate content in different tones?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, our AI algorithms are trained to adapt to various professional, casual, persuasive, and creative tones based on your input." } },
+          { "@type": "Question", "name": "Is the content plagiarism-free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the AI Writer  Create Blogs, Emails & Marketing Copy generates 100% unique, original text every time you use it, ensuring it passes plagiarism checkers." } },
+          { "@type": "Question", "name": "Is it fast to generate results?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. It usually takes just 2-3 seconds to generate the desired output, making it one of the fastest tools available." } },
+          { "@type": "Question", "name": "Do I need to download any software?", "acceptedAnswer": { "@type": "Answer", "text": "No, the AI Writer  Create Blogs, Emails & Marketing Copy is entirely web-based and runs in your browser. You can access it from any device with an internet connection." } },
+          { "@type": "Question", "name": "Is the AI Writer  Create Blogs, Emails & Marketing Copy free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, you can use the AI Writer  Create Blogs, Emails & Marketing Copy and many other tools on QuickTools.ai for free without needing a credit card." } }
+        ]
+      }
+    ]) }} />
       
       {/* Background Gradients */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -74,7 +98,39 @@ export default function AiWriterPage() {
         {/* Client Component */}
         <AiWriterClient />
 
-      </div>
+      
+        {/* Visible FAQ Section for SEO and Users */}
+        <div id="faq" className="mt-16 bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800">What is AI Writer  Create Blogs, Emails & Marketing Copy?</h3>
+              <p className="text-slate-600 mt-2">The AI Writer  Create Blogs, Emails & Marketing Copy is an advanced AI-powered tool by QuickTools designed to help you generate blogs, articles, emails, social media posts, marketing copy, and seo content instantly with the quicktools ai writer.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800">Can the AI Writer  Create Blogs, Emails & Marketing Copy generate content in different tones?</h3>
+              <p className="text-slate-600 mt-2">Yes, our AI algorithms are trained to adapt to various professional, casual, persuasive, and creative tones based on your input.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800">Is the content plagiarism-free?</h3>
+              <p className="text-slate-600 mt-2">Yes, the AI Writer  Create Blogs, Emails & Marketing Copy generates 100% unique, original text every time you use it, ensuring it passes plagiarism checkers.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800">Is it fast to generate results?</h3>
+              <p className="text-slate-600 mt-2">Absolutely. It usually takes just 2-3 seconds to generate the desired output, making it one of the fastest tools available.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800">Do I need to download any software?</h3>
+              <p className="text-slate-600 mt-2">No, the AI Writer  Create Blogs, Emails & Marketing Copy is entirely web-based and runs in your browser. You can access it from any device with an internet connection.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800">Is the AI Writer  Create Blogs, Emails & Marketing Copy free to use?</h3>
+              <p className="text-slate-600 mt-2">Yes, you can use the AI Writer  Create Blogs, Emails & Marketing Copy and many other tools on QuickTools.ai for free without needing a credit card.</p>
+            </div>
+          </div>
+        </div>
+
+</div>
     </div>
   );
 }

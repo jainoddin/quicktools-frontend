@@ -15,13 +15,13 @@ export const metadata: Metadata = {
             url: 'https://quicktool.space/tools/ai-youtube-tags',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free AI YouTube Tags Generator' }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
             title: "Free AI YouTube Tags Generator | QuickTools",
             description: "Boost your video views and SEO ranking with AI-generated, highly optimized tags for YouTube.",
-            images: ['https://quicktool.space/icon.svg']
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
           }
 };
 

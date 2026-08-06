@@ -15,13 +15,13 @@ export const metadata: Metadata = {
             url: 'https://quicktool.space/tools/lorem-ipsum',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: 'Free Lorem Ipsum Generator' }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
             title: "Free Lorem Ipsum Generator | QuickTools",
             description: "Generate placeholder text (Lorem Ipsum) instantly for your designs, websites, and mockups with our free Lorem Ipsum Generator.",
-            images: ['https://quicktool.space/icon.svg']
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
           }
 };
 

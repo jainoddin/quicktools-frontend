@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import { usePathname } from 'next/navigation';
 import LearnSidebarLeft from './LearnSidebarLeft';
 import LearnSidebarRight from './LearnSidebarRight';
@@ -16,7 +16,9 @@ export default function LearnLayoutWrapper({ children }: { children: ReactNode }
       {/* Left Sidebar */}
       <aside className="hidden lg:block lg:col-span-3">
          <div className="sticky top-24">
-           <LearnSidebarLeft />
+           <Suspense fallback={<div className="h-96 animate-pulse bg-slate-100 rounded-xl" />}>
+             <LearnSidebarLeft />
+           </Suspense>
          </div>
       </aside>
       
