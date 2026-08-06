@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { BookOpen, Clock, ArrowRight, Play, Users, Award, Target, FileText, Zap, MessageSquare } from 'lucide-react';
 import Image from 'next/image';
 import { LEARN_UPDATE_BADGE_DAYS } from '@/lib/constants';
+import { getEndpoint } from '@/lib/api';
 
 export const metadata = {
   title: {
@@ -23,7 +24,7 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
   const resolvedParams = await searchParams;
   let courses = [];
   try {
-    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/api/learn/courses', { cache: 'no-store' });
+    const res = await fetch(getEndpoint('/api/learn/courses'), { cache: 'no-store' });
     if (res.ok) {
       courses = await res.json();
     }
@@ -39,7 +40,7 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
   let latestUpdate = null;
   if (activeCourse) {
     try {
-      const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/api/learn/courses/${activeCourse.slug}`, { cache: 'no-store' });
+      const res = await fetch(getEndpoint(`/api/learn/courses/${activeCourse.slug}`), { cache: 'no-store' });
       if (res.ok) {
         const activeCourseData = await res.json();
         const now = new Date().getTime();

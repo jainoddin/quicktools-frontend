@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Clock, Calendar, BookOpen, Code, Play, FileQuestion, FileText } from 'lucide-react';
 import DynamicContentRenderer from '@/components/learn/DynamicContentRenderer';
 import { LEARN_UPDATE_BADGE_DAYS } from '@/lib/constants';
+import { getEndpoint } from '@/lib/api';
 
 type Props = {
   params: { courseSlug: string; lessonSlug: string }
@@ -15,7 +16,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const resolvedParams = await params;
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/learn/courses/${resolvedParams.courseSlug}/lessons/${resolvedParams.lessonSlug}`, { cache: 'no-store' });
+  const res = await fetch(getEndpoint(`/api/learn/courses/${resolvedParams.courseSlug}/lessons/${resolvedParams.lessonSlug}`), { cache: 'no-store' });
   
   if (!res.ok) {
     return { title: 'Lesson Not Found' };
@@ -24,7 +25,7 @@ export async function generateMetadata(
   const data = await res.json();
   const { lesson, course } = data; 
 
-  const courseRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/learn/courses/${resolvedParams.courseSlug}`, { cache: 'no-store' });
+  const courseRes = await fetch(getEndpoint(`/api/learn/courses/${resolvedParams.courseSlug}`), { cache: 'no-store' });
   const courseData = courseRes.ok ? await courseRes.json() : null;
   const courseTitle = course?.title || courseData?.title || resolvedParams.courseSlug.charAt(0).toUpperCase() + resolvedParams.courseSlug.slice(1);
 
@@ -72,7 +73,7 @@ export async function generateMetadata(
 
 export default async function LessonPage({ params }: Props) {
   const resolvedParams = await params;
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/learn/courses/${resolvedParams.courseSlug}/lessons/${resolvedParams.lessonSlug}`;
+  const url = getEndpoint(`/api/learn/courses/${resolvedParams.courseSlug}/lessons/${resolvedParams.lessonSlug}`);
   const res = await fetch(url, { cache: 'no-store' });
   
   if (!res.ok) {

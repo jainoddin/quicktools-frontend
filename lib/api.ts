@@ -8,8 +8,8 @@ export const getApiUrl = () => {
     return process.env.NEXT_PUBLIC_API_URL;
   }
 
-  // Fallback to the live Render backend
-  return 'https://quicktools-backend-wlm5.onrender.com';
+  // Fallback to the live production backend
+  return 'https://quicktool.space';
 };
 
 /**
