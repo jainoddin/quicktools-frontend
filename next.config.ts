@@ -111,15 +111,10 @@ const nextConfig: NextConfig = {
   },
   async rewrites() {
     return [
-      // Sitemap index: /sitemap.xml → custom route (Next.js 15 doesn't always generate root index)
-      {
-        source: '/sitemap.xml',
-        destination: '/api/sitemap-index',
-      },
       {
         source: '/api/:path*',
-        // Use environment variable if available (e.g. localhost for dev), otherwise fallback to live backend
-        destination: process.env.NEXT_PUBLIC_API_URL ? `${process.env.NEXT_PUBLIC_API_URL}/api/:path*` : 'https://quicktool.space/api/:path*',
+        // Use environment variable if available (e.g. localhost for dev), otherwise fallback to Render backend
+        destination: process.env.NEXT_PUBLIC_API_URL ? `${process.env.NEXT_PUBLIC_API_URL}/api/:path*` : 'https://quicktools-backend-wlm5.onrender.com/api/:path*',
       }
     ];
   },

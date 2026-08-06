@@ -1,138 +1,125 @@
+/**
+ * Single sitemap.ts - No generateSitemaps() split approach.
+ * Generates one /sitemap.xml with ALL URLs.
+ * Reliable on all Next.js versions, no type/ID confusion.
+ */
 import { MetadataRoute } from 'next';
 import { getEndpoint } from '../lib/api';
 import { allTools } from '../lib/toolsData';
 
-const baseUrl = 'https://quicktool.space';
+const BASE_URL = 'https://quicktool.space';
 
-export async function generateSitemaps() {
-  return [
-    { id: 0 }, // core
-    { id: 1 }, // tools
-    { id: 2 }, // blog
-    { id: 3 }, // articles
-    { id: 4 }, // news
-    { id: 5 }, // community
-    { id: 6 }, // learn
+export const dynamic = 'force-dynamic';
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const entries: MetadataRoute.Sitemap = [];
+
+  // ─── 1. Core Static Routes (always included, no API needed) ───────────────
+  const coreRoutes: string[] = [
+    '', '/tools', '/blog', '/articles', '/news', '/community',
+    '/about', '/contact', '/pricing', '/login', '/signup', '/learn',
   ];
-}
+  entries.push(...coreRoutes.map((route) => ({
+    url: `${BASE_URL}${route}`,
+    lastModified: new Date(),
+    changeFrequency: (route === '' ? 'daily' : 'weekly') as MetadataRoute.Sitemap[0]['changeFrequency'],
+    priority: route === '' ? 1 : 0.7,
+  })));
 
-export default async function sitemap({ id }: { id: number | string }): Promise<MetadataRoute.Sitemap> {
-  // Normalize id: Next.js may pass string or number depending on version/runtime
-  const numId = Number(id);
+  // ─── 2. Tool Pages (from local data - no API needed) ──────────────────────
+  entries.push(...allTools.map((tool) => ({
+    url: `${BASE_URL}${tool.slug}`,
+    lastModified: new Date(tool.createdAt || new Date()),
+    changeFrequency: 'weekly' as const,
+    priority: tool.tag?.type === 'premium' ? 0.9 : 0.8,
+  })));
 
-  if (numId === 0) {
-    const routes = [
-      '', '/tools', '/blog', '/articles', '/news', '/community', '/about', '/contact', '/pricing', '/login', '/signup', '/learn'
-    ].map((route) => ({
-      url: `${baseUrl}${route}`,
-      lastModified: new Date(),
-      changeFrequency: route === '' ? 'daily' : 'weekly' as any,
-      priority: route === '' ? 1 : 0.7,
-    }));
-    return routes;
-  }
-
-  if (numId === 1) {
-    return allTools.map((tool) => ({
-      url: `${baseUrl}${tool.slug}`,
-      lastModified: new Date(tool.createdAt || new Date()),
-      changeFrequency: 'weekly' as const,
-      priority: tool.tag?.type === 'premium' ? 0.9 : 0.8,
-    }));
-  }
-
-  if (numId === 2) {
-    let blogs: any[] = [];
-    try {
-      const res = await fetch(getEndpoint('/api/blogs?limit=500'), { cache: 'no-store', signal: AbortSignal.timeout(10000) });
+  // ─── 3. Blog Posts ────────────────────────────────────────────────────────
+  try {
+    const res = await fetch(getEndpoint('/api/blogs?limit=500'), {
+      signal: AbortSignal.timeout(10000),
+      next: { revalidate: 3600 },
+    });
+    if (res.ok) {
       const data = await res.json();
-      if (data.success) blogs = data.data;
-    } catch (e) {
-      console.error('Error fetching blogs for sitemap', e);
+      const blogs: any[] = data.success ? data.data : (Array.isArray(data) ? data : []);
+      entries.push(...blogs
+        .filter((b) => !b.redirectUrl && !b.canonicalOverride)
+        .map((b) => ({
+          url: `${BASE_URL}/blog/${b.slug}`,
+          lastModified: new Date(b.updatedAt || b.publishedAt),
+          changeFrequency: 'weekly' as const,
+          priority: 0.8,
+        })));
     }
-    return blogs
-      .filter((blog: any) => !blog.redirectUrl && !blog.canonicalOverride)
-      .map((blog: any) => ({
-        url: `${baseUrl}/blog/${blog.slug}`,
-        lastModified: new Date(blog.updatedAt || blog.publishedAt),
-        changeFrequency: 'weekly' as const,
-        priority: 0.8,
-      }));
+  } catch (e) {
+    console.error('[sitemap] blogs fetch failed:', e);
   }
 
-  if (numId === 3) {
-    let articles: any[] = [];
-    try {
-      const res = await fetch(getEndpoint('/api/articles?limit=500'), { cache: 'no-store', signal: AbortSignal.timeout(10000) });
+  // ─── 4. Articles ──────────────────────────────────────────────────────────
+  try {
+    const res = await fetch(getEndpoint('/api/articles?limit=500'), {
+      signal: AbortSignal.timeout(10000),
+      next: { revalidate: 3600 },
+    });
+    if (res.ok) {
       const data = await res.json();
-      if (data.success) articles = data.data;
-    } catch (e) {
-      console.error('Error fetching articles for sitemap', e);
+      const articles: any[] = data.success ? data.data : (Array.isArray(data) ? data : []);
+      entries.push(...articles
+        .filter((a) => !a.redirectUrl && !a.canonicalOverride)
+        .map((a) => ({
+          url: `${BASE_URL}/articles/${a.slug}`,
+          lastModified: new Date(a.updatedAt || a.publishedAt),
+          changeFrequency: 'weekly' as const,
+          priority: 0.9,
+        })));
     }
-    return articles
-      .filter((article: any) => !article.redirectUrl && !article.canonicalOverride)
-      .map((article: any) => ({
-        url: `${baseUrl}/articles/${article.slug}`,
-        lastModified: new Date(article.updatedAt || article.publishedAt),
-        changeFrequency: 'weekly' as const,
-        priority: 0.9,
-      }));
+  } catch (e) {
+    console.error('[sitemap] articles fetch failed:', e);
   }
 
-  if (numId === 4) {
-    let news: any[] = [];
-    try {
-      const res = await fetch(getEndpoint('/api/news?limit=500'), { cache: 'no-store', signal: AbortSignal.timeout(10000) });
+  // ─── 5. News ──────────────────────────────────────────────────────────────
+  try {
+    const res = await fetch(getEndpoint('/api/news?limit=500'), {
+      signal: AbortSignal.timeout(10000),
+      next: { revalidate: 3600 },
+    });
+    if (res.ok) {
       const data = await res.json();
-      if (data.success) news = data.data;
-    } catch (e) {
-      console.error('Error fetching news for sitemap', e);
+      const news: any[] = data.success ? data.data : (Array.isArray(data) ? data : []);
+      entries.push(...news
+        .filter((n) => !n.redirectUrl && !n.canonicalOverride)
+        .map((n) => ({
+          url: `${BASE_URL}/news/${n.slug}`,
+          lastModified: new Date(n.updatedAt || n.publishedAt),
+          changeFrequency: 'daily' as const,
+          priority: 0.9,
+        })));
     }
-    return news
-      .filter((item: any) => !item.redirectUrl && !item.canonicalOverride)
-      .map((item: any) => ({
-        url: `${baseUrl}/news/${item.slug}`,
-        lastModified: new Date(item.updatedAt || item.publishedAt),
-        changeFrequency: 'daily' as const,
-        priority: 0.9,
-      }));
+  } catch (e) {
+    console.error('[sitemap] news fetch failed:', e);
   }
 
-  if (numId === 5) {
-    let questions: any[] = [];
-    try {
-      const res = await fetch(getEndpoint('/api/community/questions?limit=500'), { cache: 'no-store', signal: AbortSignal.timeout(10000) });
+  // ─── 6. Learn Courses ────────────────────────────────────────────────────
+  try {
+    const res = await fetch(getEndpoint('/api/learn/courses?limit=500'), {
+      signal: AbortSignal.timeout(10000),
+      next: { revalidate: 3600 },
+    });
+    if (res.ok) {
       const data = await res.json();
-      if (data.success) questions = data.data;
-    } catch (e) {
-      console.error('Error fetching community questions for sitemap', e);
-    }
-    return questions
-      .map((item: any) => ({
-        url: `${baseUrl}/community/questions/${item.slug}`,
-        lastModified: new Date(item.updatedAt || item.createdAt),
-        changeFrequency: 'daily' as const,
-        priority: 0.8,
-      }));
-  }
-
-  if (numId === 6) {
-    let courses: any[] = [];
-    try {
-      const res = await fetch(getEndpoint('/api/learn/courses?limit=500'), { cache: 'no-store', signal: AbortSignal.timeout(10000) });
-      const data = await res.json();
-      if (data.success) courses = data.data;
-    } catch (e) {
-      console.error('Error fetching courses for sitemap', e);
-    }
-    return courses
-      .map((item: any) => ({
-        url: `${baseUrl}/learn/${item.slug}/${item.firstLessonSlug || '1-introduction'}`,
-        lastModified: new Date(item.updatedAt || item.createdAt),
+      // Learn courses API returns plain array (not {success, data} envelope)
+      const courses: any[] = Array.isArray(data) ? data : (data.success ? data.data : []);
+      entries.push(...courses.map((c) => ({
+        url: `${BASE_URL}/learn/${c.slug}/${c.firstLessonSlug || '1-introduction'}`,
+        lastModified: new Date(c.updatedAt || c.createdAt),
         changeFrequency: 'weekly' as const,
         priority: 0.9,
-      }));
+      })));
+    }
+  } catch (e) {
+    console.error('[sitemap] courses fetch failed:', e);
   }
 
-  return [];
+  return entries;
 }
