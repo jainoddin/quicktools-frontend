@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Emoji Translator | QuickTools',
   description: 'Turn any text, quote, or sentence into a fun sequence of emojis instantly.',
-    keywords: ['Free AI Emoji Translator', 'Free Free AI Emoji Translator', 'AI Free AI Emoji Translator', 'QuickTools', 'Online Free AI Emoji Translator', 'AI Tool'],
+    keywords: ["AI Emoji Translator","Emoji Translator AI","Free AI Emoji Translator","Best AI Emoji Translator","Online Emoji Translator","AI Emoji Translator Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-emoji-translator' },
     openGraph: {
             title: "Free AI Emoji Translator | QuickTools",

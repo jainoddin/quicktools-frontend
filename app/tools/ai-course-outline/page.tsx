@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Masterclass Course Outline | Premium Tools',
   description: 'Generate detailed course outlines and curriculum.',
-    keywords: ['AI Masterclass Course Outline', 'Free AI Masterclass Course Outline', 'AI AI Masterclass Course Outline', 'QuickTools', 'Online AI Masterclass Course Outline', 'AI Tool'],
+    keywords: ["AI Course Outline","Course Outline AI","Free AI Course Outline","Best AI Course Outline","Online Course Outline","AI Course Outline Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-course-outline' },
     openGraph: {
             title: "AI Masterclass Course Outline | Premium Tools",

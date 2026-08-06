@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Meal Planner | QuickTools',
   description: 'Generate healthy, customized weekly meal plans based on your dietary preferences and goals.',
-    keywords: ['Free AI Meal Planner', 'Free Free AI Meal Planner', 'AI Free AI Meal Planner', 'QuickTools', 'Online Free AI Meal Planner', 'AI Tool'],
+    keywords: ["AI Meal Planner","Meal Planner AI","Free AI Meal Planner","Best AI Meal Planner","Online Meal Planner","AI Meal Planner Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-meal-planner' },
     openGraph: {
             title: "Free AI Meal Planner | QuickTools",

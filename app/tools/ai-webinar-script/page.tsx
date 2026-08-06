@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Webinar Script Generator | Premium Tools',
   description: 'Generate engaging scripts for your webinars.',
-    keywords: ['AI Webinar Script Generator', 'Free AI Webinar Script Generator', 'AI AI Webinar Script Generator', 'QuickTools', 'Online AI Webinar Script Generator', 'AI Tool'],
+    keywords: ["AI Webinar Script","Webinar Script AI","Free AI Webinar Script","Best AI Webinar Script","Online Webinar Script","AI Webinar Script Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-webinar-script' },
     openGraph: {
             title: "AI Webinar Script Generator | Premium Tools",

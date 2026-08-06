@@ -3,15 +3,17 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://quicktool.space'),
-  title: "Community | QuickTools.ai",
-  description: "Join the QuickTools community. Ask questions, share your knowledge, discuss AI tools, and learn from experts.",
-  keywords: ["QuickTools community", "AI tools forum", "ask questions", "AI discussions", "prompt engineering help"],
+  title: {
+    absolute: "AI Community - Ask Questions & Share Knowledge | QuickTools",
+  },
+  description: "Join the QuickTools AI Community to ask questions, share knowledge, discuss ChatGPT, Claude, Gemini, coding, prompting, and AI tools.",
+  keywords: ["AI community", "AI forum", "AI questions", "AI answers", "AI discussions", "Ask AI questions", "AI tools community", "ChatGPT community", "Claude community", "Gemini community", "Prompt engineering", "AI help", "Developer community", "QuickTools Community", "AI knowledge sharing", "AI support forum", "AI learning community"],
   alternates: {
-    canonical: '/community',
+    canonical: 'https://quicktool.space/community',
   },
   openGraph: {
-    title: "Community | QuickTools.ai",
-    description: "Join the QuickTools community. Ask questions, share your knowledge, discuss AI tools, and learn from experts.",
+    title: "AI Community - Ask Questions & Share Knowledge | QuickTools",
+    description: "Join the QuickTools AI Community to ask questions, share knowledge, discuss ChatGPT, Claude, Gemini, coding, prompting, and AI tools.",
     url: "https://quicktool.space/community",
     type: "website",
   }

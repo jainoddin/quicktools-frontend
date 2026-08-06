@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free Lorem Ipsum Generator | QuickTools',
   description: 'Generate placeholder text (Lorem Ipsum) instantly for your designs, websites, and mockups with our free Lorem Ipsum Generator.',
-    keywords: ['Free Lorem Ipsum Generator', 'Free Free Lorem Ipsum Generator', 'AI Free Lorem Ipsum Generator', 'QuickTools', 'Online Free Lorem Ipsum Generator', 'AI Tool'],
+    keywords: ["Lorem Ipsum","AI Lorem Ipsum","Lorem Ipsum AI","Free Lorem Ipsum","Best Lorem Ipsum","Online Lorem Ipsum","Lorem Ipsum Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/lorem-ipsum' },
     openGraph: {
             title: "Free Lorem Ipsum Generator | QuickTools",

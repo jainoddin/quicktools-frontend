@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Customer Journey Mapper | Premium Tools',
   description: 'Map out the end-to-end customer journey.',
-    keywords: ['AI Customer Journey Mapper', 'Free AI Customer Journey Mapper', 'AI AI Customer Journey Mapper', 'QuickTools', 'Online AI Customer Journey Mapper', 'AI Tool'],
+    keywords: ["AI Customer Journey","Customer Journey AI","Free AI Customer Journey","Best AI Customer Journey","Online Customer Journey","AI Customer Journey Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-customer-journey' },
     openGraph: {
             title: "AI Customer Journey Mapper | Premium Tools",

@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI B2B Cold Email Sequence | Premium Tools',
   description: 'Generate high-converting B2B cold email sequences.',
-    keywords: ['AI B2B Cold Email Sequence', 'Free AI B2B Cold Email Sequence', 'AI AI B2B Cold Email Sequence', 'QuickTools', 'Online AI B2B Cold Email Sequence', 'AI Tool'],
+    keywords: ["AI Cold Email","Cold Email AI","Free AI Cold Email","Best AI Cold Email","Online Cold Email","AI Cold Email Tool","Cold Email Assistant","AI Cold Email Assistant","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-cold-email' },
     openGraph: {
             title: "AI B2B Cold Email Sequence | Premium Tools",

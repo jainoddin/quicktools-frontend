@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Apology Letter Generator | QuickTools',
   description: 'Draft sincere, well-worded, and appropriate apology letters for professional or personal situations instantly.',
-    keywords: ['Free AI Apology Letter Generator', 'Free Free AI Apology Letter Generator', 'AI Free AI Apology Letter Generator', 'QuickTools', 'Online Free AI Apology Letter Generator', 'AI Tool'],
+    keywords: ["AI Apology Letter","Apology Letter AI","Free AI Apology Letter","Best AI Apology Letter","Online Apology Letter","AI Apology Letter Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-apology-letter' },
     openGraph: {
             title: "Free AI Apology Letter Generator | QuickTools",

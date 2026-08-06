@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-video-generator'
   },
-    keywords: ['Professional AI Video Generator - Text to Video Creator', 'Free Professional AI Video Generator - Text to Video Creator', 'AI Professional AI Video Generator - Text to Video Creator', 'QuickTools', 'Online Professional AI Video Generator - Text to Video Creator', 'AI Tool'],
+    keywords: ["AI Video Generator","Video Generator AI","Free AI Video Generator","Best AI Video Generator","Online Video Generator","AI Video Generator Tool","Video Creator","AI Video Creator","QuickTools AI"],
     openGraph: {
             title: "Professional AI Video Generator - Text to Video Creator",
             description: "Turn your ideas into high-quality videos instantly. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.",

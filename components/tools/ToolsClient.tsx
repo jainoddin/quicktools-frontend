@@ -1586,7 +1586,7 @@ function ToolsClientInner() {
           <main className="flex-1 min-w-0">
             <div className="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
-                <h1 className="text-3xl md:text-4xl font-black text-[#111827] mb-2 tracking-tight">All Premium Tools</h1>
+                <h1 className="text-3xl md:text-4xl font-black text-[#111827] mb-2 tracking-tight">Explore 110+ AI Tools</h1>
                 <p className="text-[#6B7280] text-lg">Explore {allTools.length} AI-powered tools to boost your productivity ✨</p>
               </div>
             </div>

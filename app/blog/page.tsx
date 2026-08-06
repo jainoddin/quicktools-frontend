@@ -8,20 +8,18 @@ import { getEndpoint } from '@/lib/api';
 
 
 export const metadata: Metadata = {
-  title: 'AI Blog: Expert Tips, Tutorials & Insights',
-  description: 'Explore the QuickTools.ai blog for expert insights, detailed tutorials, and the latest news on AI tools. Learn how to boost your productivity.',
+  title: {
+    absolute: 'AI Blog, Tutorials & AI News | QuickTools',
+  },
+  description: 'Read the latest AI blogs, tutorials, news, and guides about ChatGPT, Claude, Gemini, Perplexity, and productivity tools on QuickTools.',
+  keywords: [
+    'AI blog', 'AI tutorials', 'AI guides', 'AI news', 'AI tools blog', 
+    'ChatGPT guides', 'Claude AI', 'Gemini AI', 'Perplexity AI', 
+    'AI productivity', 'AI automation', 'QuickTools Blog'
+  ],
   alternates: {
-    canonical: '/blog',
+    canonical: 'https://quicktool.space/blog',
   },
-  openGraph: {
-    title: 'AI Blog: Expert Tips, Tutorials & Insights | QuickTools.ai',
-    description: 'Explore the QuickTools.ai blog for expert insights, detailed tutorials, and the latest news on AI tools. Learn how to boost your productivity.',
-    url: 'https://quicktool.space/blog',
-  },
-  twitter: {
-    title: 'AI Blog: Expert Tips, Tutorials & Insights | QuickTools.ai',
-    description: 'Explore the QuickTools.ai blog for expert insights, detailed tutorials, and the latest news on AI tools. Learn how to boost your productivity.',
-  }
 };
 
 async function getBlogs() {

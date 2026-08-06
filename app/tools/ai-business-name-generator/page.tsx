@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Business Name Generator | QuickTools',
   description: 'Generate catchy, memorable business names and taglines for your startup or company instantly with AI.',
-    keywords: ['Free AI Business Name Generator', 'Free Free AI Business Name Generator', 'AI Free AI Business Name Generator', 'QuickTools', 'Online Free AI Business Name Generator', 'AI Tool'],
+    keywords: ["AI Business Name Generator","Business Name Generator AI","Free AI Business Name Generator","Best AI Business Name Generator","Online Business Name Generator","AI Business Name Generator Tool","Business Name Creator","AI Business Name Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-business-name-generator' },
     openGraph: {
             title: "Free AI Business Name Generator | QuickTools",

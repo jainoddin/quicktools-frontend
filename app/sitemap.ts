@@ -59,6 +59,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error fetching community questions for sitemap', e);
   }
 
+  // Fetch Courses
+  let courses: any[] = [];
+  try {
+    const res = await fetch(getEndpoint('/api/learn/courses?limit=500'), {
+      cache: 'no-store',
+      signal: AbortSignal.timeout(10000),
+    });
+    const data = await res.json();
+    if (data.success) courses = data.data;
+  } catch (e) {
+    console.error('Error fetching courses for sitemap', e);
+  }
+
   const blogUrls = blogs
     .filter((blog: any) => !blog.redirectUrl && !blog.canonicalOverride)
     .map((blog: any) => ({
@@ -94,6 +107,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     }));
 
+  const courseUrls = courses
+    .map((item: any) => ({
+      url: `${baseUrl}/learn/${item.slug}/${item.firstLessonSlug || '1-introduction'}`,
+      lastModified: new Date(item.updatedAt || item.createdAt),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    }));
+
   // Static routes
   const toolRoutes = allTools.map((tool) => ({
     url: `${baseUrl}${tool.slug}`,
@@ -103,14 +124,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const routes = [
-    '', '/tools', '/blog', '/articles', '/news', '/community', '/about', '/contact', '/pricing', '/login', '/signup'
+    '', '/tools', '/blog', '/articles', '/news', '/community', '/about', '/contact', '/pricing', '/login', '/signup', '/learn'
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: route === '' ? 'daily' : 'weekly' as any,
-    priority: route === '' ? 1 : route.startsWith('/articles') || route.startsWith('/blog') || route.startsWith('/news') ? 0.9 : 0.7,
+    priority: route === '' ? 1 : route.startsWith('/articles') || route.startsWith('/blog') || route.startsWith('/news') || route.startsWith('/learn') ? 0.9 : 0.7,
   }));
 
-  return [...routes, ...toolRoutes, ...blogUrls, ...articleUrls, ...newsUrls, ...questionUrls];
+  return [...routes, ...toolRoutes, ...blogUrls, ...articleUrls, ...newsUrls, ...questionUrls, ...courseUrls];
 }
 

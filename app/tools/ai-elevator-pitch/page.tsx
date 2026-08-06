@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Elevator Pitch Generator | QuickTools',
   description: 'Craft a compelling and persuasive 30-second elevator pitch for yourself or your business instantly.',
-    keywords: ['Free AI Elevator Pitch Generator', 'Free Free AI Elevator Pitch Generator', 'AI Free AI Elevator Pitch Generator', 'QuickTools', 'Online Free AI Elevator Pitch Generator', 'AI Tool'],
+    keywords: ["AI Elevator Pitch","Elevator Pitch AI","Free AI Elevator Pitch","Best AI Elevator Pitch","Online Elevator Pitch","AI Elevator Pitch Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-elevator-pitch' },
     openGraph: {
             title: "Free AI Elevator Pitch Generator | QuickTools",

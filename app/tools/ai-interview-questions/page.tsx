@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Interview Questions Generator | QuickTools',
   description: 'Prepare for any interview by generating targeted, role-specific questions for candidates or for your own practice.',
-    keywords: ['Free AI Interview Questions Generator', 'Free Free AI Interview Questions Generator', 'AI Free AI Interview Questions Generator', 'QuickTools', 'Online Free AI Interview Questions Generator', 'AI Tool'],
+    keywords: ["AI Interview Questions","Interview Questions AI","Free AI Interview Questions","Best AI Interview Questions","Online Interview Questions","AI Interview Questions Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-interview-questions' },
     openGraph: {
             title: "Free AI Interview Questions Generator | QuickTools",

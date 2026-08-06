@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-image-generator'
   },
-    keywords: ['Powerful AI Image Generator - Create Stunning AI Art', 'Free Powerful AI Image Generator - Create Stunning AI Art', 'AI Powerful AI Image Generator - Create Stunning AI Art', 'QuickTools', 'Online Powerful AI Image Generator - Create Stunning AI Art', 'AI Tool'],
+    keywords: ["AI Image Generator","Image Generator AI","Free AI Image Generator","Best AI Image Generator","Online Image Generator","AI Image Generator Tool","Image Creator","AI Image Creator","QuickTools AI"],
     openGraph: {
             title: "Powerful AI Image Generator - Create Stunning AI Art",
             description: "Create stunning, high-resolution images from text descriptions. Unleash your creativity with our powerful AI Image Generator and models.",

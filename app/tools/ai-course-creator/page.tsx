@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Premium AI Course Curriculum Creator | QuickTools',
   description: 'Generate a full 4-week course syllabus, lesson plans, and quizzes.',
-    keywords: ['Premium AI Course Curriculum Creator', 'Free Premium AI Course Curriculum Creator', 'AI Premium AI Course Curriculum Creator', 'QuickTools', 'Online Premium AI Course Curriculum Creator', 'AI Tool'],
+    keywords: ["AI Course Creator","Course Creator AI","Free AI Course Creator","Best AI Course Creator","Online Course Creator","AI Course Creator Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-course-creator' },
     openGraph: {
             title: "Premium AI Course Curriculum Creator | QuickTools",

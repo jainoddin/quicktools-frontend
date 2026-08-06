@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-code-generator'
   },
-    keywords: ['Intelligent AI Code Generator & Programming Assistant', 'Free Intelligent AI Code Generator & Programming Assistant', 'AI Intelligent AI Code Generator & Programming Assistant', 'QuickTools', 'Online Intelligent AI Code Generator & Programming Assistant', 'AI Tool'],
+    keywords: ["AI Code Generator","Code Generator AI","Free AI Code Generator","Best AI Code Generator","Online Code Generator","AI Code Generator Tool","Code Creator","AI Code Creator","QuickTools AI"],
     openGraph: {
             title: "Intelligent AI Code Generator & Programming Assistant",
             description: "Generate production-ready code in seconds with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.",

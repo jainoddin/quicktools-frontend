@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Gift Idea Generator | QuickTools',
   description: 'Find the perfect, thoughtful gift for anyone instantly based on their age, interests, and your budget with our AI Gift Idea Generator.',
-    keywords: ['Free AI Gift Idea Generator', 'Free Free AI Gift Idea Generator', 'AI Free AI Gift Idea Generator', 'QuickTools', 'Online Free AI Gift Idea Generator', 'AI Tool'],
+    keywords: ["AI Gift Idea","Gift Idea AI","Free AI Gift Idea","Best AI Gift Idea","Online Gift Idea","AI Gift Idea Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-gift-idea' },
     openGraph: {
             title: "Free AI Gift Idea Generator | QuickTools",

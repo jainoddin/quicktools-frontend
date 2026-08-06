@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Competitor Analysis | Premium Tools',
   description: 'Generate detailed competitor analysis reports.',
-    keywords: ['AI Competitor Analysis', 'Free AI Competitor Analysis', 'AI AI Competitor Analysis', 'QuickTools', 'Online AI Competitor Analysis', 'AI Tool'],
+    keywords: ["AI Competitor Analysis","Competitor Analysis AI","Free AI Competitor Analysis","Best AI Competitor Analysis","Online Competitor Analysis","AI Competitor Analysis Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-competitor-analysis' },
     openGraph: {
             title: "AI Competitor Analysis | Premium Tools",

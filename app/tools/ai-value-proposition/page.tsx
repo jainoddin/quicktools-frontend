@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Value Proposition Generator | Premium Tools',
   description: 'Generate unique value propositions for your products.',
-    keywords: ['AI Value Proposition Generator', 'Free AI Value Proposition Generator', 'AI AI Value Proposition Generator', 'QuickTools', 'Online AI Value Proposition Generator', 'AI Tool'],
+    keywords: ["AI Value Proposition","Value Proposition AI","Free AI Value Proposition","Best AI Value Proposition","Online Value Proposition","AI Value Proposition Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-value-proposition' },
     openGraph: {
             title: "AI Value Proposition Generator | Premium Tools",

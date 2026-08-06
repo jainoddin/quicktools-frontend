@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Poem Generator | QuickTools',
   description: 'Compose beautiful, rhyming, or free-verse poetry instantly based on your chosen topic and emotion.',
-    keywords: ['Free AI Poem Generator', 'Free Free AI Poem Generator', 'AI Free AI Poem Generator', 'QuickTools', 'Online Free AI Poem Generator', 'AI Tool'],
+    keywords: ["AI Poem Generator","Poem Generator AI","Free AI Poem Generator","Best AI Poem Generator","Online Poem Generator","AI Poem Generator Tool","Poem Creator","AI Poem Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-poem-generator' },
     openGraph: {
             title: "Free AI Poem Generator | QuickTools",

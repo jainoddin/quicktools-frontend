@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Workout Plan Generator | QuickTools',
   description: 'Generate custom, highly effective workout plans instantly based on your fitness goals and available time with our AI Workout Plan Generator.',
-    keywords: ['Free AI Workout Plan Generator', 'Free Free AI Workout Plan Generator', 'AI Free AI Workout Plan Generator', 'QuickTools', 'Online Free AI Workout Plan Generator', 'AI Tool'],
+    keywords: ["AI Workout Plan","Workout Plan AI","Free AI Workout Plan","Best AI Workout Plan","Online Workout Plan","AI Workout Plan Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-workout-plan' },
     openGraph: {
             title: "Free AI Workout Plan Generator | QuickTools",

@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Interview Scoring Rubric | Premium Tools',
   description: 'Generate standardized interview scoring rubrics.',
-    keywords: ['AI Interview Scoring Rubric', 'Free AI Interview Scoring Rubric', 'AI AI Interview Scoring Rubric', 'QuickTools', 'Online AI Interview Scoring Rubric', 'AI Tool'],
+    keywords: ["AI Job Interview Rubric","Job Interview Rubric AI","Free AI Job Interview Rubric","Best AI Job Interview Rubric","Online Job Interview Rubric","AI Job Interview Rubric Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-job-interview-rubric' },
     openGraph: {
             title: "AI Interview Scoring Rubric | Premium Tools",

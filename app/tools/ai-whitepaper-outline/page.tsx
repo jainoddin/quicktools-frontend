@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Whitepaper Outline | Premium Tools',
   description: 'Generate structured outlines for B2B whitepapers.',
-    keywords: ['AI Whitepaper Outline', 'Free AI Whitepaper Outline', 'AI AI Whitepaper Outline', 'QuickTools', 'Online AI Whitepaper Outline', 'AI Tool'],
+    keywords: ["AI Whitepaper Outline","Whitepaper Outline AI","Free AI Whitepaper Outline","Best AI Whitepaper Outline","Online Whitepaper Outline","AI Whitepaper Outline Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-whitepaper-outline' },
     openGraph: {
             title: "AI Whitepaper Outline | Premium Tools",

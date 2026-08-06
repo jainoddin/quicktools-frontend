@@ -3,10 +3,18 @@ import { Metadata } from 'next';
 import PricingClient from '@/components/pricing/PricingClient';
 
 export const metadata: Metadata = {
-  title: 'Simple & Transparent AI Tools Pricing Plans',
-  description: 'Simple, transparent pricing for everyone. Start free and upgrade anytime to access premium AI generation features.',
+  title: {
+    absolute: 'AI Pricing & Plans | Affordable AI Tools | QuickTools',
+  },
+  description: 'Compare QuickTools AI plans and pricing. Access 100+ AI tools with affordable monthly and yearly subscriptions for creators, students, and businesses.',
+  keywords: [
+    'AI pricing', 'AI tools pricing', 'AI subscription', 'AI plans',
+    'AI software pricing', 'affordable AI tools', 'AI premium plans',
+    'QuickTools pricing', 'AI tool subscription', 'AI platform pricing',
+    'AI plans comparison', 'AI credits'
+  ],
   alternates: {
-    canonical: '/pricing',
+    canonical: 'https://quicktool.space/pricing',
   }
 };
 

@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Landing Page Copywriter | Premium Tools',
   description: 'Generate high-converting copy for landing pages.',
-    keywords: ['AI Landing Page Copywriter', 'Free AI Landing Page Copywriter', 'AI AI Landing Page Copywriter', 'QuickTools', 'Online AI Landing Page Copywriter', 'AI Tool'],
+    keywords: ["AI Landing Page Copy","Landing Page Copy AI","Free AI Landing Page Copy","Best AI Landing Page Copy","Online Landing Page Copy","AI Landing Page Copy Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-landing-page-copy' },
     openGraph: {
             title: "AI Landing Page Copywriter | Premium Tools",

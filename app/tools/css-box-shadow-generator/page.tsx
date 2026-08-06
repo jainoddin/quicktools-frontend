@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free CSS Box Shadow Generator | QuickTools',
   description: 'Visually generate perfect CSS box shadows and copy the CSS code instantly with our free visual CSS Box Shadow Generator.',
-    keywords: ['Free CSS Box Shadow Generator', 'Free Free CSS Box Shadow Generator', 'AI Free CSS Box Shadow Generator', 'QuickTools', 'Online Free CSS Box Shadow Generator', 'AI Tool'],
+    keywords: ["Css Box Shadow Generator","AI Css Box Shadow Generator","Css Box Shadow Generator AI","Free Css Box Shadow Generator","Best Css Box Shadow Generator","Online Css Box Shadow Generator","Css Box Shadow Generator Tool","Css Box Shadow Creator","AI Css Box Shadow Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/css-box-shadow-generator' },
     openGraph: {
             title: "Free CSS Box Shadow Generator | QuickTools",

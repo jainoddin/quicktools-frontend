@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free Strong Password Generator | QuickTools',
   description: 'Generate secure, highly randomized, and unbreakable passwords instantly with our free Strong Password Generator.',
-    keywords: ['Free Strong Password Generator', 'Free Free Strong Password Generator', 'AI Free Strong Password Generator', 'QuickTools', 'Online Free Strong Password Generator', 'AI Tool'],
+    keywords: ["Password Generator","AI Password Generator","Password Generator AI","Free Password Generator","Best Password Generator","Online Password Generator","Password Generator Tool","Password Creator","AI Password Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/password-generator' },
     openGraph: {
             title: "Free Strong Password Generator | QuickTools",

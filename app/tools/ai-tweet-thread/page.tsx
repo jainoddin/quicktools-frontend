@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Tweet Thread Generator | QuickTools',
   description: 'Write highly engaging, viral Twitter threads with perfect hooks instantly using our AI Tweet Thread Generator.',
-    keywords: ['Free AI Tweet Thread Generator', 'Free Free AI Tweet Thread Generator', 'AI Free AI Tweet Thread Generator', 'QuickTools', 'Online Free AI Tweet Thread Generator', 'AI Tool'],
+    keywords: ["AI Tweet Thread","Tweet Thread AI","Free AI Tweet Thread","Best AI Tweet Thread","Online Tweet Thread","AI Tweet Thread Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-tweet-thread' },
     openGraph: {
             title: "Free AI Tweet Thread Generator | QuickTools",

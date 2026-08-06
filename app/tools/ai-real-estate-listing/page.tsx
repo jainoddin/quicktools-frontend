@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Real Estate Listing Generator | QuickTools',
   description: 'Write captivating, conversion-optimized property descriptions that sell homes faster.',
-    keywords: ['Free AI Real Estate Listing Generator', 'Free Free AI Real Estate Listing Generator', 'AI Free AI Real Estate Listing Generator', 'QuickTools', 'Online Free AI Real Estate Listing Generator', 'AI Tool'],
+    keywords: ["AI Real Estate Listing","Real Estate Listing AI","Free AI Real Estate Listing","Best AI Real Estate Listing","Online Real Estate Listing","AI Real Estate Listing Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-real-estate-listing' },
     openGraph: {
             title: "Free AI Real Estate Listing Generator | QuickTools",

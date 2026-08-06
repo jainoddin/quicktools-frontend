@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-color-palette'
   },
-    keywords: ['Free AI Color Palette Generator', 'Free Free AI Color Palette Generator', 'AI Free AI Color Palette Generator', 'QuickTools', 'Online Free AI Color Palette Generator', 'AI Tool'],
+    keywords: ["AI Color Palette","Color Palette AI","Free AI Color Palette","Best AI Color Palette","Online Color Palette","AI Color Palette Tool","QuickTools AI"],
     openGraph: {
             title: "Free AI Color Palette Generator",
             description: "Generate beautiful color palettes from a brand name or mood description with our free AI Color Palette Generator.",
@@ -54,7 +54,7 @@ export default function AiColorPalettePage() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "WebApplication",
+              "@type": "SoftwareApplication",
               "name": "AI Color Palette",
               "description": "Generate beautiful color palettes from a brand name or mood description with our free AI Color Palette Generator.",
               "applicationCategory": "DesignApplication",

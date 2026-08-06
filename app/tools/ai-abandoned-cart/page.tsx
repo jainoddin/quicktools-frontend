@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Abandoned Cart Email Series | Premium Tools',
   description: 'Generate email sequences to recover lost sales.',
-    keywords: ['AI Abandoned Cart Email Series', 'Free AI Abandoned Cart Email Series', 'AI AI Abandoned Cart Email Series', 'QuickTools', 'Online AI Abandoned Cart Email Series', 'AI Tool'],
+    keywords: ["AI Abandoned Cart","Abandoned Cart AI","Free AI Abandoned Cart","Best AI Abandoned Cart","Online Abandoned Cart","AI Abandoned Cart Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-abandoned-cart' },
     openGraph: {
             title: "AI Abandoned Cart Email Series | Premium Tools",

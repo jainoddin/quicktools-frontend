@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Email Reply Generator | QuickTools',
   description: 'Instantly generate professional, polite, or casual email replies with AI. Save time and communicate better.',
-    keywords: ['Free AI Email Reply Generator', 'Free Free AI Email Reply Generator', 'AI Free AI Email Reply Generator', 'QuickTools', 'Online Free AI Email Reply Generator', 'AI Tool'],
+    keywords: ["AI Email Generator","Email Generator AI","Free AI Email Generator","Best AI Email Generator","Online Email Generator","AI Email Generator Tool","Email Creator","AI Email Creator","Email Assistant Generator","AI Email Assistant Generator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-email-generator' },
     openGraph: {
             title: "Free AI Email Reply Generator | QuickTools",

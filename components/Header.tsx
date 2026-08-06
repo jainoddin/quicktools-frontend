@@ -246,36 +246,8 @@ export default function Header() {
             </div>
           </div>
           <Link href="/community" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/community') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/community') ? { color: themeColor } : {}}>Community</Link>
+          <Link href="/learn" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/learn') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/learn') ? { color: themeColor } : {}}>Learn</Link>
           <Link href="/pricing" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActive('/pricing') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActive('/pricing') ? { color: themeColor } : {}}>Pricing</Link>
-          {!user && (
-            <>
-              {/* Direct links for xl and above */}
-              <div className="hidden xl:flex items-center gap-1 xl:gap-5">
-                <Link href="/about" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActive('/about') ? 'bg-[#F3F4F6]' : 'hover:text-[#111827]'}`} style={isActive('/about') ? { color: themeColor } : {}}>About</Link>
-                <Link href="/contact" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActive('/contact') ? 'bg-[#F3F4F6]' : 'hover:text-[#111827]'}`} style={isActive('/contact') ? { color: themeColor } : {}}>Contact</Link>
-              </div>
-
-              {/* More dropdown for lg to xl */}
-              <div
-                className="relative group xl:hidden"
-                onMouseLeave={() => setMoreDropdownOpen(false)}
-              >
-                <button
-                  onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
-                  onMouseEnter={() => setMoreDropdownOpen(true)}
-                  className={`flex items-center gap-1 transition-colors px-3 py-1.5 rounded-full hover:bg-[#F3F4F6] ${(isActive('/about') || isActive('/contact') || moreDropdownOpen) ? 'text-[#111827] bg-[#F3F4F6]' : 'hover:text-[#111827]'}`}
-                >
-                  More <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${moreDropdownOpen ? 'rotate-180' : 'group-hover:rotate-180'}`} />
-                </button>
-                <div className={`absolute top-full right-0 pt-2 transition-all duration-200 z-50 ${moreDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible'}`}>
-                  <div className="bg-white border border-[#E5E7EB] rounded-2xl shadow-xl py-2 w-32 flex flex-col">
-                    <Link href="/about" onClick={() => setMoreDropdownOpen(false)} className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActive('/about') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>About</Link>
-                    <Link href="/contact" onClick={() => setMoreDropdownOpen(false)} className={`px-4 py-2 text-sm font-medium hover:bg-[#F9FAFB] transition-colors ${isActive('/contact') ? 'text-[#6D5EF8]' : 'text-[#4B5563]'}`}>Contact</Link>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
         </div>
 
         {/* Right side - Auth + Hamburger */}
@@ -430,6 +402,11 @@ export default function Header() {
             <Link href="/community" onClick={() => setMobileMenuOpen(false)}
               className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/community') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
               <Globe className="w-4 h-4" /> Community
+            </Link>
+            
+            <Link href="/learn" onClick={() => setMobileMenuOpen(false)}
+              className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/learn') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
+              <BookOpen className="w-4 h-4" /> Learn
             </Link>
             
             {/* Resources Accordion */}

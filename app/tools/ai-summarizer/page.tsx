@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-summarizer'
   },
-    keywords: ['Free AI Text Summarizer - Summarize Articles Instantly', 'Free Free AI Text Summarizer - Summarize Articles Instantly', 'AI Free AI Text Summarizer - Summarize Articles Instantly', 'QuickTools', 'Online Free AI Text Summarizer - Summarize Articles Instantly', 'AI Tool'],
+    keywords: ["AI Summarizer","Summarizer AI","Free AI Summarizer","Best AI Summarizer","Online Summarizer","AI Summarizer Tool","QuickTools AI"],
     openGraph: {
             title: "Free AI Text Summarizer - Summarize Articles Instantly",
             description: "Summarize long articles, PDFs, or any text into clear bullet points instantly with our free AI Summarizer.",
@@ -54,7 +54,7 @@ export default function AiSummarizerPage() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "WebApplication",
+              "@type": "SoftwareApplication",
               "name": "AI Text Summarizer",
               "description": "Summarize long articles, PDFs, or any text into clear bullet points instantly with our free AI Summarizer.",
               "applicationCategory": "BusinessApplication",

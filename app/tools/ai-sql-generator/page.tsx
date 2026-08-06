@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI SQL Query Generator | QuickTools',
   description: 'Generate optimized SQL queries from plain English descriptions instantly.',
-    keywords: ['Free AI SQL Query Generator', 'Free Free AI SQL Query Generator', 'AI Free AI SQL Query Generator', 'QuickTools', 'Online Free AI SQL Query Generator', 'AI Tool'],
+    keywords: ["AI Sql Generator","Sql Generator AI","Free AI Sql Generator","Best AI Sql Generator","Online Sql Generator","AI Sql Generator Tool","Sql Creator","AI Sql Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-sql-generator' },
     openGraph: {
             title: "Free AI SQL Query Generator | QuickTools",

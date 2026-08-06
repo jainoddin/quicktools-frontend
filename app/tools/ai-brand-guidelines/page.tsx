@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Brand Guidelines Generator | Premium Tools',
   description: 'Create comprehensive brand identity guidelines.',
-    keywords: ['AI Brand Guidelines Generator', 'Free AI Brand Guidelines Generator', 'AI AI Brand Guidelines Generator', 'QuickTools', 'Online AI Brand Guidelines Generator', 'AI Tool'],
+    keywords: ["AI Brand Guidelines","Brand Guidelines AI","Free AI Brand Guidelines","Best AI Brand Guidelines","Online Brand Guidelines","AI Brand Guidelines Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-brand-guidelines' },
     openGraph: {
             title: "AI Brand Guidelines Generator | Premium Tools",

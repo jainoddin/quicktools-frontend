@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free QR Code Generator | QuickTools',
   description: 'Generate high-quality QR codes for URLs, text, or emails instantly. 100% free with no limits.',
-    keywords: ['Free QR Code Generator', 'Free Free QR Code Generator', 'AI Free QR Code Generator', 'QuickTools', 'Online Free QR Code Generator', 'AI Tool'],
+    keywords: ["Qr Code Generator","AI Qr Code Generator","Qr Code Generator AI","Free Qr Code Generator","Best Qr Code Generator","Online Qr Code Generator","Qr Code Generator Tool","Qr Code Creator","AI Qr Code Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/qr-code-generator' },
     openGraph: {
             title: "Free QR Code Generator | QuickTools",

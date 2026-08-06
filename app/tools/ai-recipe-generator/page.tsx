@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Recipe Generator | QuickTools',
   description: 'Generate delicious recipes based on the ingredients you have in your fridge instantly with our AI Recipe Generator.',
-    keywords: ['Free AI Recipe Generator', 'Free Free AI Recipe Generator', 'AI Free AI Recipe Generator', 'QuickTools', 'Online Free AI Recipe Generator', 'AI Tool'],
+    keywords: ["AI Recipe Generator","Recipe Generator AI","Free AI Recipe Generator","Best AI Recipe Generator","Online Recipe Generator","AI Recipe Generator Tool","Recipe Creator","AI Recipe Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-recipe-generator' },
     openGraph: {
             title: "Free AI Recipe Generator | QuickTools",

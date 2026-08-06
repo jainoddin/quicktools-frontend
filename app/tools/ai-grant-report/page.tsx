@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Grant Progress Report | Premium Tools',
   description: 'Write professional progress reports for grants.',
-    keywords: ['AI Grant Progress Report', 'Free AI Grant Progress Report', 'AI AI Grant Progress Report', 'QuickTools', 'Online AI Grant Progress Report', 'AI Tool'],
+    keywords: ["AI Grant Report","Grant Report AI","Free AI Grant Report","Best AI Grant Report","Online Grant Report","AI Grant Report Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-grant-report' },
     openGraph: {
             title: "AI Grant Progress Report | Premium Tools",

@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Marketing Plan Generator | Premium Tools',
   description: 'Generate a comprehensive marketing plan and strategy.',
-    keywords: ['AI Marketing Plan Generator', 'Free AI Marketing Plan Generator', 'AI AI Marketing Plan Generator', 'QuickTools', 'Online AI Marketing Plan Generator', 'AI Tool'],
+    keywords: ["AI Marketing Plan","Marketing Plan AI","Free AI Marketing Plan","Best AI Marketing Plan","Online Marketing Plan","AI Marketing Plan Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-marketing-plan' },
     openGraph: {
             title: "AI Marketing Plan Generator | Premium Tools",

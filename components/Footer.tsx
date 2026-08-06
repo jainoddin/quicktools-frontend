@@ -38,8 +38,8 @@ export default function Footer() {
     <footer className="bg-white border-t border-[#E5E7EB] w-full mt-auto">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {!isAuthenticated ?
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-8 pb-12 pt-8 mt-8">
-            <div className="col-span-2 md:col-span-2">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 pb-12 pt-8 mt-8">
+            <div className="col-span-2 md:col-span-4 lg:col-span-2">
               <div className="flex items-center gap-2 mb-4 group cursor-pointer">
                 <div className="relative flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-1">
                   <Zap className="w-6 h-6" style={{ color: themeColor, fill: themeColor }} />
@@ -72,11 +72,19 @@ export default function Footer() {
                 <li><Link href="/" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Home</Link></li>
                 <li><Link href="/tools" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>All Tools</Link></li>
                 <li><Link href="/pricing" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Pricing</Link></li>
+                <li><Link href="/learn" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Learn</Link></li>
+                <li><Link href="/community" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Community</Link></li>
+                <li><Link href="/about" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>About Us</Link></li>
+                <li><Link href="/contact" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Contact Us</Link></li>
+              </ul>
+            </div>
+
+            <div className="col-span-1">
+              <h4 className="font-bold text-sm mb-4 text-[#111827]">Resources</h4>
+              <ul className="space-y-3 text-sm text-[#6B7280]">
                 <li><Link href="/blog" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Blog</Link></li>
                 <li><Link href="/news" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>News</Link></li>
                 <li><Link href="/articles" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Articles</Link></li>
-                <li><Link href="/about" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>About Us</Link></li>
-                <li><Link href="/contact" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Contact Us</Link></li>
               </ul>
             </div>
 
@@ -92,7 +100,7 @@ export default function Footer() {
               </ul>
             </div>
 
-            <div className="col-span-2 md:col-span-1">
+            <div className="col-span-1">
               <h4 className="font-bold text-sm mb-4 text-[#111827]">Support</h4>
               <ul className="space-y-3 text-sm text-[#6B7280]">
                 <li><Link href="/help" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Help Center</Link></li>
@@ -102,7 +110,7 @@ export default function Footer() {
               </ul>
             </div>
 
-            <div className="col-span-2 md:col-span-1">
+            <div className="col-span-2 md:col-span-2 lg:col-span-2">
               <h4 className="font-bold text-sm mb-4 text-[#111827]">Subscribe</h4>
               <p className="text-xs text-[#6B7280] mb-4">Get the latest updates, new tools, tips, and offers.</p>
               <NewsletterForm

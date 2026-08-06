@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Travel Itinerary Planner | QuickTools',
   description: 'Plan your perfect trip instantly. Generate day-by-day travel itineraries customized to your destination and duration.',
-    keywords: ['Free AI Travel Itinerary Planner', 'Free Free AI Travel Itinerary Planner', 'AI Free AI Travel Itinerary Planner', 'QuickTools', 'Online Free AI Travel Itinerary Planner', 'AI Tool'],
+    keywords: ["AI Travel Planner","Travel Planner AI","Free AI Travel Planner","Best AI Travel Planner","Online Travel Planner","AI Travel Planner Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-travel-planner' },
     openGraph: {
             title: "Free AI Travel Itinerary Planner | QuickTools",

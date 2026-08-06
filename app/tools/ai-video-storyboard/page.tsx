@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Video Storyboard Generator | Premium Tools',
   description: 'Generate detailed scene-by-scene video storyboards.',
-    keywords: ['AI Video Storyboard Generator', 'Free AI Video Storyboard Generator', 'AI AI Video Storyboard Generator', 'QuickTools', 'Online AI Video Storyboard Generator', 'AI Tool'],
+    keywords: ["AI Video Storyboard","Video Storyboard AI","Free AI Video Storyboard","Best AI Video Storyboard","Online Video Storyboard","AI Video Storyboard Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-video-storyboard' },
     openGraph: {
             title: "AI Video Storyboard Generator | Premium Tools",

@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Risk Assessment Report | Premium Tools',
   description: 'Generate detailed business risk assessments.',
-    keywords: ['AI Risk Assessment Report', 'Free AI Risk Assessment Report', 'AI AI Risk Assessment Report', 'QuickTools', 'Online AI Risk Assessment Report', 'AI Tool'],
+    keywords: ["AI Risk Assessment","Risk Assessment AI","Free AI Risk Assessment","Best AI Risk Assessment","Online Risk Assessment","AI Risk Assessment Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-risk-assessment' },
     openGraph: {
             title: "AI Risk Assessment Report | Premium Tools",

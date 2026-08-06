@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Premium AI Sales Funnel Copywriter | QuickTools',
   description: 'Write landing page copy, email sequences, and ad copy all at once.',
-    keywords: ['Premium AI Sales Funnel Copywriter', 'Free Premium AI Sales Funnel Copywriter', 'AI Premium AI Sales Funnel Copywriter', 'QuickTools', 'Online Premium AI Sales Funnel Copywriter', 'AI Tool'],
+    keywords: ["AI Sales Funnel","Sales Funnel AI","Free AI Sales Funnel","Best AI Sales Funnel","Online Sales Funnel","AI Sales Funnel Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-sales-funnel' },
     openGraph: {
             title: "Premium AI Sales Funnel Copywriter | QuickTools",

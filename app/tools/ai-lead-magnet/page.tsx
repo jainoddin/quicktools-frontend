@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Lead Magnet Idea Generator | Premium Tools',
   description: 'Generate compelling lead magnet ideas to grow your list.',
-    keywords: ['AI Lead Magnet Idea Generator', 'Free AI Lead Magnet Idea Generator', 'AI AI Lead Magnet Idea Generator', 'QuickTools', 'Online AI Lead Magnet Idea Generator', 'AI Tool'],
+    keywords: ["AI Lead Magnet","Lead Magnet AI","Free AI Lead Magnet","Best AI Lead Magnet","Online Lead Magnet","AI Lead Magnet Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-lead-magnet' },
     openGraph: {
             title: "AI Lead Magnet Idea Generator | Premium Tools",

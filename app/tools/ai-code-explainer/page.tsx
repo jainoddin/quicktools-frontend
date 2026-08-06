@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Code Explainer | QuickTools',
   description: 'Understand any snippet of code easily. Our free AI Code Explainer translates complex code into simple, plain English explanations instantly.',
-    keywords: ['Free AI Code Explainer', 'Free Free AI Code Explainer', 'AI Free AI Code Explainer', 'QuickTools', 'Online Free AI Code Explainer', 'AI Tool'],
+    keywords: ["AI Code Explainer","Code Explainer AI","Free AI Code Explainer","Best AI Code Explainer","Online Code Explainer","AI Code Explainer Tool","Code Generator Explainer","AI Code Generator Explainer","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-code-explainer' },
     openGraph: {
             title: "Free AI Code Explainer | QuickTools",

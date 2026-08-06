@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-translator'
   },
-    keywords: ['Free AI Language Translator - Translate 50+ Languages', 'Free Free AI Language Translator - Translate 50+ Languages', 'AI Free AI Language Translator - Translate 50+ Languages', 'QuickTools', 'Online Free AI Language Translator - Translate 50+ Languages', 'AI Tool'],
+    keywords: ["AI Translator","Translator AI","Free AI Translator","Best AI Translator","Online Translator","AI Translator Tool","QuickTools AI"],
     openGraph: {
             title: "Free AI Language Translator - Translate 50+ Languages",
             description: "Translate text into 50+ languages instantly with AI-powered accuracy using our free AI Translator.",
@@ -54,7 +54,7 @@ export default function AiTranslatorPage() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "WebApplication",
+              "@type": "SoftwareApplication",
               "name": "AI Language Translator",
               "description": "Translate text into 50+ languages instantly with AI-powered accuracy using our free AI Translator.",
               "applicationCategory": "BusinessApplication",

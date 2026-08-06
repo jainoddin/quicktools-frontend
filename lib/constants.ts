@@ -1,0 +1,1 @@
+export const LEARN_UPDATE_BADGE_DAYS = 14;

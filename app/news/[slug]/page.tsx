@@ -36,9 +36,21 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
       const desc = news.metaDescription || news.summary || '';
       const canonicalUrl = news.canonicalOverride || `${BASE_URL}/news/${slug}`;
 
+      const keywords = [
+        news.title,
+        news.category,
+        ...(news.tags || []),
+        `${news.title} guide`,
+        `${news.title} tutorial`,
+        `${news.title} explained`,
+        news.category ? `${news.category} AI` : '',
+        'QuickTools News'
+      ].filter(Boolean);
+
       return {
         title: { absolute: news.metaTitle || news.title },
         description: desc.length > 145 ? desc.substring(0, 145) + '...' : desc,
+        keywords,
         alternates: { canonical: canonicalUrl },
         openGraph: {
           title: news.metaTitle || news.title,

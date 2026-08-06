@@ -29,14 +29,26 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   const title = `${question.title} - QuickTools Community`;
   const description = question.excerpt || question.body?.substring(0, 160) || "Join the discussion on QuickTools Community.";
+  
+  const titleWords = question.title.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(' ').filter((w: string) => w.length > 3 && !['how', 'to', 'use', 'with', 'using', 'what', 'the', 'is', 'for', 'and', 'can', 'you'].includes(w));
+  const dynamicKeywords = [
+    question.title,
+    ...(question.tags || []),
+    ...titleWords,
+    ...titleWords.map((w: string) => `AI ${w}`),
+    "QuickTools community",
+    "AI community",
+    "AI tools forum"
+  ];
 
   return {
     metadataBase: new URL('https://quicktool.space'),
     title,
     description,
+    keywords: Array.from(new Set(dynamicKeywords)),
     authors: [{ name: question.author?.name }],
     alternates: {
-      canonical: `/community/questions/${slug}`,
+      canonical: `https://quicktool.space/community/questions/${slug}`,
     },
     openGraph: {
       title,

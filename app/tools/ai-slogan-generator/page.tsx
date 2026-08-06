@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Slogan Generator | QuickTools',
   description: 'Instantly brainstorm catchy, memorable, and high-converting slogans for your business, brand, or marketing campaign.',
-    keywords: ['Free AI Slogan Generator', 'Free Free AI Slogan Generator', 'AI Free AI Slogan Generator', 'QuickTools', 'Online Free AI Slogan Generator', 'AI Tool'],
+    keywords: ["AI Slogan Generator","Slogan Generator AI","Free AI Slogan Generator","Best AI Slogan Generator","Online Slogan Generator","AI Slogan Generator Tool","Slogan Creator","AI Slogan Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-slogan-generator' },
     openGraph: {
             title: "Free AI Slogan Generator | QuickTools",

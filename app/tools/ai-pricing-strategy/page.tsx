@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Pricing Strategy Generator | Premium Tools',
   description: 'Generate optimized pricing strategies and tiers.',
-    keywords: ['AI Pricing Strategy Generator', 'Free AI Pricing Strategy Generator', 'AI AI Pricing Strategy Generator', 'QuickTools', 'Online AI Pricing Strategy Generator', 'AI Tool'],
+    keywords: ["AI Pricing Strategy","Pricing Strategy AI","Free AI Pricing Strategy","Best AI Pricing Strategy","Online Pricing Strategy","AI Pricing Strategy Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-pricing-strategy' },
     openGraph: {
             title: "AI Pricing Strategy Generator | Premium Tools",

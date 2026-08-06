@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Crisis Management Plan | Premium Tools',
   description: 'Generate step-by-step crisis communication plans.',
-    keywords: ['AI Crisis Management Plan', 'Free AI Crisis Management Plan', 'AI AI Crisis Management Plan', 'QuickTools', 'Online AI Crisis Management Plan', 'AI Tool'],
+    keywords: ["AI Crisis Management","Crisis Management AI","Free AI Crisis Management","Best AI Crisis Management","Online Crisis Management","AI Crisis Management Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-crisis-management' },
     openGraph: {
             title: "AI Crisis Management Plan | Premium Tools",

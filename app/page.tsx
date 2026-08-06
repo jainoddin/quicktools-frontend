@@ -13,15 +13,24 @@ import LatestArticles from '../components/home/LatestArticles';
 import LatestNews from '../components/home/LatestNews';
 import LatestCommunity from '../components/home/LatestCommunity';
 import FaqSection from '../components/home/FaqSection';
+import HomeLearn from '../components/home/HomeLearn';
 import { Metadata } from 'next';
 import { allTools, IconMap } from '../lib/toolsData';
 
 export const revalidate = 0;
 
 export const metadata: Metadata = {
+  title: '100+ AI Tools for Writing, Coding & Productivity | QuickTools',
+  description: 'Explore 100+ AI tools for writing, coding, image generation, business, and productivity. Find the best AI tools with QuickTools.',
   alternates: {
     canonical: 'https://quicktool.space',
   },
+  keywords: [
+    'AI tools', 'Best AI tools', 'Free AI tools', 'AI productivity', 'AI writing',
+    'AI image generator', 'AI code generator', 'AI business tools', 'AI marketing tools',
+    'AI automation', 'Prompt engineering', 'Developer tools', 'AI for students',
+    'AI for freelancers', 'AI for creators', 'QuickTools', 'AI software', 'AI platform', '100+ AI tools'
+  ],
 };
 
 export default function HomePage() {
@@ -32,14 +41,35 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "QuickTools.ai",
-            "url": "https://quicktool.space",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://quicktool.space/tools?q={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
+            "@graph": [
+              {
+                "@type": "WebSite",
+                "name": "QuickTools.ai",
+                "url": "https://quicktool.space",
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "https://quicktool.space/tools?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              },
+              {
+                "@type": "Organization",
+                "name": "QuickTools",
+                "url": "https://quicktool.space",
+                "logo": "https://quicktool.space/logo.png"
+              },
+              {
+                "@type": "SoftwareApplication",
+                "name": "QuickTools",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "WebBrowser",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "USD"
+                }
+              }
+            ]
           })
         }}
       />
@@ -59,9 +89,9 @@ export default function HomePage() {
                 <Sparkles className="w-3.5 h-3.5 text-indigo-300" /> 100+ AI tools. One workspace.
               </div>
               <h1 className="text-3xl sm:text-4xl lg:text-[48px] font-black leading-[1.1] mb-3 tracking-tight text-white drop-shadow-lg">
-                Create more. Work faster. <br className="hidden lg:block" />
+                100+ AI Tools. <br className="hidden lg:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6D5EF8] to-[#3B82F6] animate-pulse">
-                  With AI that feels simple.
+                  One Workspace.
                 </span>
               </h1>
               <p className="text-[15px] sm:text-base text-gray-300 mb-4 leading-relaxed font-medium">
@@ -232,6 +262,11 @@ export default function HomePage() {
             })}
         </div>
       </section>
+
+      {/* 4.5 Learn Section */}
+      <Suspense fallback={<div>Loading Courses...</div>}>
+        <HomeLearn />
+      </Suspense>
 
       {/* 5. Why Choose QuickTools.ai? */}
       <section className="w-full bg-white border-y border-gray-100">

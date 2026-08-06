@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Story Generator | QuickTools',
   description: 'Unleash your creativity. Generate engaging, unique short stories based on any prompt or genre.',
-    keywords: ['Free AI Story Generator', 'Free Free AI Story Generator', 'AI Free AI Story Generator', 'QuickTools', 'Online Free AI Story Generator', 'AI Tool'],
+    keywords: ["AI Story Generator","Story Generator AI","Free AI Story Generator","Best AI Story Generator","Online Story Generator","AI Story Generator Tool","Story Creator","AI Story Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-story-generator' },
     openGraph: {
             title: "Free AI Story Generator | QuickTools",

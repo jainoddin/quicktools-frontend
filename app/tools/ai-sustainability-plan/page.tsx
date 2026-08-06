@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI ESG / Sustainability Plan | Premium Tools',
   description: 'Generate corporate sustainability and ESG plans.',
-    keywords: ['AI ESG / Sustainability Plan', 'Free AI ESG / Sustainability Plan', 'AI AI ESG / Sustainability Plan', 'QuickTools', 'Online AI ESG / Sustainability Plan', 'AI Tool'],
+    keywords: ["AI Sustainability Plan","Sustainability Plan AI","Free AI Sustainability Plan","Best AI Sustainability Plan","Online Sustainability Plan","AI Sustainability Plan Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-sustainability-plan' },
     openGraph: {
             title: "AI ESG / Sustainability Plan | Premium Tools",

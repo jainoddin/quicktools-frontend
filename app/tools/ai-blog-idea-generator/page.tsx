@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Blog Idea Generator | QuickTools',
   description: 'Generate highly engaging, viral blog post ideas and titles instantly with AI. Overcome writer\'s block forever.',
-    keywords: ['Free AI Blog Idea Generator', 'Free Free AI Blog Idea Generator', 'AI Free AI Blog Idea Generator', 'QuickTools', 'Online Free AI Blog Idea Generator', 'AI Tool'],
+    keywords: ["AI Blog Idea Generator","Blog Idea Generator AI","Free AI Blog Idea Generator","Best AI Blog Idea Generator","Online Blog Idea Generator","AI Blog Idea Generator Tool","Blog Idea Creator","AI Blog Idea Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-blog-idea-generator' },
     openGraph: {
             title: "Free AI Blog Idea Generator | QuickTools",

@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Product Launch Strategy | Premium Tools',
   description: 'Generate a comprehensive product launch plan.',
-    keywords: ['AI Product Launch Strategy', 'Free AI Product Launch Strategy', 'AI AI Product Launch Strategy', 'QuickTools', 'Online AI Product Launch Strategy', 'AI Tool'],
+    keywords: ["AI Product Launch","Product Launch AI","Free AI Product Launch","Best AI Product Launch","Online Product Launch","AI Product Launch Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-product-launch' },
     openGraph: {
             title: "AI Product Launch Strategy | Premium Tools",

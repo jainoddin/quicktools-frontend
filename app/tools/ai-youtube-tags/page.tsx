@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI YouTube Tags Generator | QuickTools',
   description: 'Boost your video views and SEO ranking with AI-generated, highly optimized tags for YouTube.',
-    keywords: ['Free AI YouTube Tags Generator', 'Free Free AI YouTube Tags Generator', 'AI Free AI YouTube Tags Generator', 'QuickTools', 'Online Free AI YouTube Tags Generator', 'AI Tool'],
+    keywords: ["AI Youtube Tags","Youtube Tags AI","Free AI Youtube Tags","Best AI Youtube Tags","Online Youtube Tags","AI Youtube Tags Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-youtube-tags' },
     openGraph: {
             title: "Free AI YouTube Tags Generator | QuickTools",

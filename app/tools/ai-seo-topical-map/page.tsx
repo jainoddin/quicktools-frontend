@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Premium AI SEO Topical Map Builder | QuickTools',
   description: 'Generate a full SEO content cluster map for an entire month for a niche.',
-    keywords: ['Premium AI SEO Topical Map Builder', 'Free Premium AI SEO Topical Map Builder', 'AI Premium AI SEO Topical Map Builder', 'QuickTools', 'Online Premium AI SEO Topical Map Builder', 'AI Tool'],
+    keywords: ["AI Seo Topical Map","Seo Topical Map AI","Free AI Seo Topical Map","Best AI Seo Topical Map","Online Seo Topical Map","AI Seo Topical Map Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-seo-topical-map' },
     openGraph: {
             title: "Premium AI SEO Topical Map Builder | QuickTools",

@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Employee Onboarding Plan | Premium Tools',
   description: 'Generate structured 30-60-90 day onboarding plans.',
-    keywords: ['AI Employee Onboarding Plan', 'Free AI Employee Onboarding Plan', 'AI AI Employee Onboarding Plan', 'QuickTools', 'Online AI Employee Onboarding Plan', 'AI Tool'],
+    keywords: ["AI Onboarding Plan","Onboarding Plan AI","Free AI Onboarding Plan","Best AI Onboarding Plan","Online Onboarding Plan","AI Onboarding Plan Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-onboarding-plan' },
     openGraph: {
             title: "AI Employee Onboarding Plan | Premium Tools",

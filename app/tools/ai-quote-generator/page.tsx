@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Motivational Quote Generator | QuickTools',
   description: 'Generate highly inspiring, completely original motivational quotes on any topic instantly with our AI Motivational Quote Generator.',
-    keywords: ['Free AI Motivational Quote Generator', 'Free Free AI Motivational Quote Generator', 'AI Free AI Motivational Quote Generator', 'QuickTools', 'Online Free AI Motivational Quote Generator', 'AI Tool'],
+    keywords: ["AI Quote Generator","Quote Generator AI","Free AI Quote Generator","Best AI Quote Generator","Online Quote Generator","AI Quote Generator Tool","Quote Creator","AI Quote Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-quote-generator' },
     openGraph: {
             title: "Free AI Motivational Quote Generator | QuickTools",

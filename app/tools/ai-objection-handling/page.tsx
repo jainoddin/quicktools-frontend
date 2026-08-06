@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Sales Objection Handler | Premium Tools',
   description: 'Generate responses to common sales objections.',
-    keywords: ['AI Sales Objection Handler', 'Free AI Sales Objection Handler', 'AI AI Sales Objection Handler', 'QuickTools', 'Online AI Sales Objection Handler', 'AI Tool'],
+    keywords: ["AI Objection Handling","Objection Handling AI","Free AI Objection Handling","Best AI Objection Handling","Online Objection Handling","AI Objection Handling Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-objection-handling' },
     openGraph: {
             title: "AI Sales Objection Handler | Premium Tools",

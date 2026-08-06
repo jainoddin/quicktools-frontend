@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Business Model Canvas | Premium Tools',
   description: 'Generate a complete Business Model Canvas.',
-    keywords: ['AI Business Model Canvas', 'Free AI Business Model Canvas', 'AI AI Business Model Canvas', 'QuickTools', 'Online AI Business Model Canvas', 'AI Tool'],
+    keywords: ["AI Business Model","Business Model AI","Free AI Business Model","Best AI Business Model","Online Business Model","AI Business Model Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-business-model' },
     openGraph: {
             title: "AI Business Model Canvas | Premium Tools",

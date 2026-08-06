@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Newsletter Content Generator | Premium Tools',
   description: 'Generate engaging content for email newsletters.',
-    keywords: ['AI Newsletter Content Generator', 'Free AI Newsletter Content Generator', 'AI AI Newsletter Content Generator', 'QuickTools', 'Online AI Newsletter Content Generator', 'AI Tool'],
+    keywords: ["AI Newsletter Content","Newsletter Content AI","Free AI Newsletter Content","Best AI Newsletter Content","Online Newsletter Content","AI Newsletter Content Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-newsletter-content' },
     openGraph: {
             title: "AI Newsletter Content Generator | Premium Tools",

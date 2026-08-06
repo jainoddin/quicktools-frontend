@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/url-shortener'
   },
-    keywords: ['Free URL Shortener - Create Short Links', 'Free Free URL Shortener - Create Short Links', 'AI Free URL Shortener - Create Short Links', 'QuickTools', 'Online Free URL Shortener - Create Short Links', 'AI Tool'],
+    keywords: ["Url Shortener","AI Url Shortener","Url Shortener AI","Free Url Shortener","Best Url Shortener","Online Url Shortener","Url Shortener Tool","QuickTools AI"],
     openGraph: {
             title: "Free URL Shortener - Create Short Links",
             description: "Shorten any long URL into a clean, shareable link in one click with our free URL Shortener.",
@@ -54,7 +54,7 @@ export default function UrlShortenerPage() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "WebApplication",
+              "@type": "SoftwareApplication",
               "name": "URL Shortener",
               "description": "Shorten any long URL into a clean, shareable link in one click with our free URL Shortener.",
               "applicationCategory": "UtilitiesApplication",

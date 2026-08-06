@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Premium AI Grant Proposal Writer | QuickTools',
   description: 'Write professional grant proposals for non-profits and startups.',
-    keywords: ['Premium AI Grant Proposal Writer', 'Free Premium AI Grant Proposal Writer', 'AI Premium AI Grant Proposal Writer', 'QuickTools', 'Online Premium AI Grant Proposal Writer', 'AI Tool'],
+    keywords: ["AI Grant Proposal","Grant Proposal AI","Free AI Grant Proposal","Best AI Grant Proposal","Online Grant Proposal","AI Grant Proposal Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-grant-proposal' },
     openGraph: {
             title: "Premium AI Grant Proposal Writer | QuickTools",

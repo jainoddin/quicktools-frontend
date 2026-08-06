@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI OKR Generator | Premium Tools',
   description: 'Generate Objectives and Key Results for your teams.',
-    keywords: ['AI OKR Generator', 'Free AI OKR Generator', 'AI AI OKR Generator', 'QuickTools', 'Online AI OKR Generator', 'AI Tool'],
+    keywords: ["AI Okr Generator","Okr Generator AI","Free AI Okr Generator","Best AI Okr Generator","Online Okr Generator","AI Okr Generator Tool","Okr Creator","AI Okr Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-okr-generator' },
     openGraph: {
             title: "AI OKR Generator | Premium Tools",

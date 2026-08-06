@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI User Persona Creator | Premium Tools',
   description: 'Generate detailed buyer and user personas.',
-    keywords: ['AI User Persona Creator', 'Free AI User Persona Creator', 'AI AI User Persona Creator', 'QuickTools', 'Online AI User Persona Creator', 'AI Tool'],
+    keywords: ["AI User Persona","User Persona AI","Free AI User Persona","Best AI User Persona","Online User Persona","AI User Persona Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-user-persona' },
     openGraph: {
             title: "AI User Persona Creator | Premium Tools",

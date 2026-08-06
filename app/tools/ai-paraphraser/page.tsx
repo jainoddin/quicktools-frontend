@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Paraphrasing Tool | QuickTools',
   description: 'Rewrite and paraphrase text completely uniquely while retaining the original meaning with our advanced AI paraphraser.',
-    keywords: ['Free AI Paraphrasing Tool', 'Free Free AI Paraphrasing Tool', 'AI Free AI Paraphrasing Tool', 'QuickTools', 'Online Free AI Paraphrasing Tool', 'AI Tool'],
+    keywords: ["AI Paraphraser","Paraphraser AI","Free AI Paraphraser","Best AI Paraphraser","Online Paraphraser","AI Paraphraser Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-paraphraser' },
     openGraph: {
             title: "Free AI Paraphrasing Tool | QuickTools",

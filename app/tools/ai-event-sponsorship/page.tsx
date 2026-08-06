@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Event Sponsorship Deck | Premium Tools',
   description: 'Generate sponsorship proposal decks for events.',
-    keywords: ['AI Event Sponsorship Deck', 'Free AI Event Sponsorship Deck', 'AI AI Event Sponsorship Deck', 'QuickTools', 'Online AI Event Sponsorship Deck', 'AI Tool'],
+    keywords: ["AI Event Sponsorship","Event Sponsorship AI","Free AI Event Sponsorship","Best AI Event Sponsorship","Online Event Sponsorship","AI Event Sponsorship Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-event-sponsorship' },
     openGraph: {
             title: "AI Event Sponsorship Deck | Premium Tools",

@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'AI Text to Speech Generator | QuickTools',
   description: 'Convert any text into natural-sounding speech instantly using advanced browser AI. Free online text to speech generator with multiple voices and languages.',
-  keywords: ['AI Text to Speech', 'Free Text to Speech', 'Online Voice Generator', 'TTS Tool', 'QuickTools'],
+  keywords: ["AI Text To Speech","Text To Speech AI","Free AI Text To Speech","Best AI Text To Speech","Online Text To Speech","AI Text To Speech Tool","QuickTools AI"],
   alternates: { canonical: 'https://quicktool.space/tools/ai-text-to-speech' },
   openGraph: {
     title: 'AI Text to Speech Generator | QuickTools',

@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Startup Idea Generator | Premium Tools',
   description: 'Generate validated startup ideas based on market trends.',
-    keywords: ['AI Startup Idea Generator', 'Free AI Startup Idea Generator', 'AI AI Startup Idea Generator', 'QuickTools', 'Online AI Startup Idea Generator', 'AI Tool'],
+    keywords: ["AI Startup Ideas","Startup Ideas AI","Free AI Startup Ideas","Best AI Startup Ideas","Online Startup Ideas","AI Startup Ideas Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-startup-ideas' },
     openGraph: {
             title: "AI Startup Idea Generator | Premium Tools",

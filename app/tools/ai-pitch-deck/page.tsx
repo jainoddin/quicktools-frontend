@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Premium AI Pitch Deck Generator | QuickTools',
   description: 'Generate slide-by-slide text, data points, and script for a startup pitch deck.',
-    keywords: ['Premium AI Pitch Deck Generator', 'Free Premium AI Pitch Deck Generator', 'AI Premium AI Pitch Deck Generator', 'QuickTools', 'Online Premium AI Pitch Deck Generator', 'AI Tool'],
+    keywords: ["AI Pitch Deck","Pitch Deck AI","Free AI Pitch Deck","Best AI Pitch Deck","Online Pitch Deck","AI Pitch Deck Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-pitch-deck' },
     openGraph: {
             title: "Premium AI Pitch Deck Generator | QuickTools",

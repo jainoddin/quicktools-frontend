@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Ad Copy Generator | QuickTools',
   description: 'Write highly converting ad copy variations for Facebook or Google Ads instantly with our AI Ad Copy Generator.',
-    keywords: ['Free AI Ad Copy Generator', 'Free Free AI Ad Copy Generator', 'AI Free AI Ad Copy Generator', 'QuickTools', 'Online Free AI Ad Copy Generator', 'AI Tool'],
+    keywords: ["AI Ad Copy","Ad Copy AI","Free AI Ad Copy","Best AI Ad Copy","Online Ad Copy","AI Ad Copy Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-ad-copy' },
     openGraph: {
             title: "Free AI Ad Copy Generator | QuickTools",

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-resume-builder'
   },
-    keywords: ['Free AI Resume Builder - ATS Friendly Resumes', 'Free Free AI Resume Builder - ATS Friendly Resumes', 'AI Free AI Resume Builder - ATS Friendly Resumes', 'QuickTools', 'Online Free AI Resume Builder - ATS Friendly Resumes', 'AI Tool'],
+    keywords: ["AI Resume Builder","Resume Builder AI","Free AI Resume Builder","Best AI Resume Builder","Online Resume Builder","AI Resume Builder Tool","CV Builder Builder","AI CV Builder Builder","QuickTools AI"],
     openGraph: {
             title: "Free AI Resume Builder - ATS Friendly Resumes",
             description: "Generate a professional, ATS-friendly resume from your details in seconds using our free AI Resume Builder.",
@@ -54,7 +54,7 @@ export default function AiResumeBuilderPage() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "WebApplication",
+              "@type": "SoftwareApplication",
               "name": "AI Resume Builder",
               "description": "Generate a professional, ATS-friendly resume from your details in seconds using our free AI Resume Builder.",
               "applicationCategory": "BusinessApplication",

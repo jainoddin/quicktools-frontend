@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Podcast Episode Script | Premium Tools',
   description: 'Generate structured scripts for podcast episodes.',
-    keywords: ['AI Podcast Episode Script', 'Free AI Podcast Episode Script', 'AI AI Podcast Episode Script', 'QuickTools', 'Online AI Podcast Episode Script', 'AI Tool'],
+    keywords: ["AI Podcast Script","Podcast Script AI","Free AI Podcast Script","Best AI Podcast Script","Online Podcast Script","AI Podcast Script Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-podcast-script' },
     openGraph: {
             title: "AI Podcast Episode Script | Premium Tools",

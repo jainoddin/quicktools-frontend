@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Event Planner | QuickTools',
   description: 'Plan your events effortlessly. Get a comprehensive checklist, timeline, and ideas for your next party or corporate event.',
-    keywords: ['Free AI Event Planner', 'Free Free AI Event Planner', 'AI Free AI Event Planner', 'QuickTools', 'Online Free AI Event Planner', 'AI Tool'],
+    keywords: ["AI Event Planner","Event Planner AI","Free AI Event Planner","Best AI Event Planner","Online Event Planner","AI Event Planner Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-event-planner' },
     openGraph: {
             title: "Free AI Event Planner | QuickTools",

@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Partnership Proposal | Premium Tools',
   description: 'Generate B2B strategic partnership proposals.',
-    keywords: ['AI Partnership Proposal', 'Free AI Partnership Proposal', 'AI AI Partnership Proposal', 'QuickTools', 'Online AI Partnership Proposal', 'AI Tool'],
+    keywords: ["AI Partnership Proposal","Partnership Proposal AI","Free AI Partnership Proposal","Best AI Partnership Proposal","Online Partnership Proposal","AI Partnership Proposal Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-partnership-proposal' },
     openGraph: {
             title: "AI Partnership Proposal | Premium Tools",

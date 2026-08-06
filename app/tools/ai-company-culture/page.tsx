@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Company Culture Guide | Premium Tools',
   description: 'Generate company culture and values handbooks.',
-    keywords: ['AI Company Culture Guide', 'Free AI Company Culture Guide', 'AI AI Company Culture Guide', 'QuickTools', 'Online AI Company Culture Guide', 'AI Tool'],
+    keywords: ["AI Company Culture","Company Culture AI","Free AI Company Culture","Best AI Company Culture","Online Company Culture","AI Company Culture Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-company-culture' },
     openGraph: {
             title: "AI Company Culture Guide | Premium Tools",

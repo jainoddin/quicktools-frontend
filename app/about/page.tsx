@@ -9,9 +9,19 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About Us | QuickTools.ai',
-  description: 'Learn about QuickTools.ai — our mission to make AI simple, powerful and accessible for everyone.',
-  alternates: { canonical: '/about' },
+  title: {
+    absolute: 'About QuickTools | AI Platform for Productivity & Innovation',
+  },
+  description: 'Learn about QuickTools, our mission, and how we\'re building an AI platform that helps creators, students, freelancers, and businesses work smarter.',
+  keywords: [
+    'About QuickTools', 'QuickTools AI', 'AI platform', 'AI company',
+    'AI tools platform', 'AI productivity', 'AI innovation',
+    'QuickTools mission', 'AI for creators', 'AI for students',
+    'AI for businesses', 'About us'
+  ],
+  alternates: {
+    canonical: 'https://quicktool.space/about',
+  }
 };
 
 import { getEndpoint } from '../../lib/api';

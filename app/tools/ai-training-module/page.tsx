@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Training Module Generator | Premium Tools',
   description: 'Generate corporate training modules and quizzes.',
-    keywords: ['AI Training Module Generator', 'Free AI Training Module Generator', 'AI AI Training Module Generator', 'QuickTools', 'Online AI Training Module Generator', 'AI Tool'],
+    keywords: ["AI Training Module","Training Module AI","Free AI Training Module","Best AI Training Module","Online Training Module","AI Training Module Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-training-module' },
     openGraph: {
             title: "AI Training Module Generator | Premium Tools",

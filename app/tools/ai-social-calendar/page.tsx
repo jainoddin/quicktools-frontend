@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Premium AI Social Media Calendar | QuickTools',
   description: 'Generate a 30-day multi-channel marketing calendar with specific daily posts.',
-    keywords: ['Premium AI Social Media Calendar', 'Free Premium AI Social Media Calendar', 'AI Premium AI Social Media Calendar', 'QuickTools', 'Online Premium AI Social Media Calendar', 'AI Tool'],
+    keywords: ["AI Social Calendar","Social Calendar AI","Free AI Social Calendar","Best AI Social Calendar","Online Social Calendar","AI Social Calendar Tool","AI Social Calendar AI","Social Media Calendar AI","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-social-calendar' },
     openGraph: {
             title: "Premium AI Social Media Calendar | QuickTools",

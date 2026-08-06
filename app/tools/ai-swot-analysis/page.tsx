@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI SWOT Analysis Generator | Premium Tools',
   description: 'Generate a detailed SWOT analysis for your business.',
-    keywords: ['AI SWOT Analysis Generator', 'Free AI SWOT Analysis Generator', 'AI AI SWOT Analysis Generator', 'QuickTools', 'Online AI SWOT Analysis Generator', 'AI Tool'],
+    keywords: ["AI Swot Analysis","Swot Analysis AI","Free AI Swot Analysis","Best AI Swot Analysis","Online Swot Analysis","AI Swot Analysis Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-swot-analysis' },
     openGraph: {
             title: "AI SWOT Analysis Generator | Premium Tools",

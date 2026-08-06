@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Premium AI Legal Template Drafter | QuickTools',
   description: 'Generate standard boilerplate templates for NDAs, Freelance agreements, etc.',
-    keywords: ['Premium AI Legal Template Drafter', 'Free Premium AI Legal Template Drafter', 'AI Premium AI Legal Template Drafter', 'QuickTools', 'Online Premium AI Legal Template Drafter', 'AI Tool'],
+    keywords: ["AI Legal Template","Legal Template AI","Free AI Legal Template","Best AI Legal Template","Online Legal Template","AI Legal Template Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-legal-template' },
     openGraph: {
             title: "Premium AI Legal Template Drafter | QuickTools",

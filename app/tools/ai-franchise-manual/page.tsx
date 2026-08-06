@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Franchise Operations Manual | Premium Tools',
   description: 'Generate standard operating procedures for franchises.',
-    keywords: ['AI Franchise Operations Manual', 'Free AI Franchise Operations Manual', 'AI AI Franchise Operations Manual', 'QuickTools', 'Online AI Franchise Operations Manual', 'AI Tool'],
+    keywords: ["AI Franchise Manual","Franchise Manual AI","Free AI Franchise Manual","Best AI Franchise Manual","Online Franchise Manual","AI Franchise Manual Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-franchise-manual' },
     openGraph: {
             title: "AI Franchise Operations Manual | Premium Tools",

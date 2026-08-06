@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Article Outline Generator | QuickTools',
   description: 'Generate comprehensive, SEO-optimized article and blog outlines instantly. Save hours of planning and structure your content perfectly.',
-    keywords: ['Free AI Article Outline Generator', 'Free Free AI Article Outline Generator', 'AI Free AI Article Outline Generator', 'QuickTools', 'Online Free AI Article Outline Generator', 'AI Tool'],
+    keywords: ["AI Article Outline Generator","Article Outline Generator AI","Free AI Article Outline Generator","Best AI Article Outline Generator","Online Article Outline Generator","AI Article Outline Generator Tool","Article Outline Creator","AI Article Outline Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-article-outline-generator' },
     openGraph: {
             title: "Free AI Article Outline Generator | QuickTools",

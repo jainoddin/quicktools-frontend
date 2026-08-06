@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Sales Cold Call Script | Premium Tools',
   description: 'Generate effective scripts for sales calls.',
-    keywords: ['AI Sales Cold Call Script', 'Free AI Sales Cold Call Script', 'AI AI Sales Cold Call Script', 'QuickTools', 'Online AI Sales Cold Call Script', 'AI Tool'],
+    keywords: ["AI Sales Script","Sales Script AI","Free AI Sales Script","Best AI Sales Script","Online Sales Script","AI Sales Script Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-sales-script' },
     openGraph: {
             title: "AI Sales Cold Call Script | Premium Tools",

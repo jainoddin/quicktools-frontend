@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free JSON Formatter & Validator | QuickTools',
   description: 'Format, validate, and beautify your JSON data instantly with our free online JSON Formatter tool.',
-    keywords: ['Free JSON Formatter & Validator', 'Free Free JSON Formatter & Validator', 'AI Free JSON Formatter & Validator', 'QuickTools', 'Online Free JSON Formatter & Validator', 'AI Tool'],
+    keywords: ["Json Formatter","AI Json Formatter","Json Formatter AI","Free Json Formatter","Best Json Formatter","Online Json Formatter","Json Formatter Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/json-formatter' },
     openGraph: {
             title: "Free JSON Formatter & Validator | QuickTools",

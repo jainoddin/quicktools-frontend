@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Resignation Letter Generator | QuickTools',
   description: 'Leave on good terms. Generate a polite, professional, and appropriately toned resignation letter instantly.',
-    keywords: ['Free AI Resignation Letter Generator', 'Free Free AI Resignation Letter Generator', 'AI Free AI Resignation Letter Generator', 'QuickTools', 'Online Free AI Resignation Letter Generator', 'AI Tool'],
+    keywords: ["AI Resignation Letter","Resignation Letter AI","Free AI Resignation Letter","Best AI Resignation Letter","Online Resignation Letter","AI Resignation Letter Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-resignation-letter' },
     openGraph: {
             title: "Free AI Resignation Letter Generator | QuickTools",

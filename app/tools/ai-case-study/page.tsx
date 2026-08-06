@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Case Study Writer | Premium Tools',
   description: 'Write professional business case studies.',
-    keywords: ['AI Case Study Writer', 'Free AI Case Study Writer', 'AI AI Case Study Writer', 'QuickTools', 'Online AI Case Study Writer', 'AI Tool'],
+    keywords: ["AI Case Study","Case Study AI","Free AI Case Study","Best AI Case Study","Online Case Study","AI Case Study Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-case-study' },
     openGraph: {
             title: "AI Case Study Writer | Premium Tools",

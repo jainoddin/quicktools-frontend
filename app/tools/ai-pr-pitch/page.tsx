@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI PR Media Pitch Generator | Premium Tools',
   description: 'Generate compelling media pitches for journalists.',
-    keywords: ['AI PR Media Pitch Generator', 'Free AI PR Media Pitch Generator', 'AI AI PR Media Pitch Generator', 'QuickTools', 'Online AI PR Media Pitch Generator', 'AI Tool'],
+    keywords: ["AI Pr Pitch","Pr Pitch AI","Free AI Pr Pitch","Best AI Pr Pitch","Online Pr Pitch","AI Pr Pitch Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-pr-pitch' },
     openGraph: {
             title: "AI PR Media Pitch Generator | Premium Tools",

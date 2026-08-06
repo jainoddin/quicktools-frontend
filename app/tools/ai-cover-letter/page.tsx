@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Cover Letter Generator | QuickTools',
   description: 'Write a professional, standout cover letter for any job application in seconds based on your skills and the job title.',
-    keywords: ['Free AI Cover Letter Generator', 'Free Free AI Cover Letter Generator', 'AI Free AI Cover Letter Generator', 'QuickTools', 'Online Free AI Cover Letter Generator', 'AI Tool'],
+    keywords: ["AI Cover Letter","Cover Letter AI","Free AI Cover Letter","Best AI Cover Letter","Online Cover Letter","AI Cover Letter Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-cover-letter' },
     openGraph: {
             title: "Free AI Cover Letter Generator | QuickTools",

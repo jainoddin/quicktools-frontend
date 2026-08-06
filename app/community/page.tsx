@@ -276,10 +276,10 @@ export default function CommunityFeedPage() {
                  activeTab === 'unanswered' ? 'Unanswered Questions' : 
                  activeTab === 'saved' ? 'Saved Questions' :
                  activeTab === 'mine' ? 'My Questions' :
-                 activeTab === 'my_answers' ? 'My Answers' : 'Community Feed'}
+                 activeTab === 'my_answers' ? 'My Answers' : 'AI Community'}
               </h1>
               <p className="text-sm text-gray-500 mt-1.5">
-                {selectedCategory ? `Explore discussions and tools related to ${selectedCategory}.` : 'Join the conversation, ask questions, and share knowledge.'}
+                {selectedCategory ? `Explore discussions and tools related to ${selectedCategory}.` : 'Ask questions, share knowledge, and learn AI with the QuickTools community.'}
               </p>
             </div>
 

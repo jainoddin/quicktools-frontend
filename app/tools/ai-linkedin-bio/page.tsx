@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI LinkedIn Bio Generator | QuickTools',
   description: 'Create a professional, highly optimized LinkedIn summary and bio in seconds with our AI LinkedIn Bio Generator.',
-    keywords: ['Free AI LinkedIn Bio Generator', 'Free Free AI LinkedIn Bio Generator', 'AI Free AI LinkedIn Bio Generator', 'QuickTools', 'Online Free AI LinkedIn Bio Generator', 'AI Tool'],
+    keywords: ["AI Linkedin Bio","Linkedin Bio AI","Free AI Linkedin Bio","Best AI Linkedin Bio","Online Linkedin Bio","AI Linkedin Bio Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-linkedin-bio' },
     openGraph: {
             title: "Free AI LinkedIn Bio Generator | QuickTools",

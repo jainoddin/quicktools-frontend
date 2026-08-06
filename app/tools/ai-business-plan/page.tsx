@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Premium AI Business Plan Generator | QuickTools',
   description: 'Generate a complete 10-page business plan with executive summary, market analysis, and financial projections.',
-    keywords: ['Premium AI Business Plan Generator', 'Free Premium AI Business Plan Generator', 'AI Premium AI Business Plan Generator', 'QuickTools', 'Online Premium AI Business Plan Generator', 'AI Tool'],
+    keywords: ["AI Business Plan","Business Plan AI","Free AI Business Plan","Best AI Business Plan","Online Business Plan","AI Business Plan Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-business-plan' },
     openGraph: {
             title: "Premium AI Business Plan Generator | QuickTools",

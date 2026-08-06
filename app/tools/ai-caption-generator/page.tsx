@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Social Media Caption Generator | QuickTools',
   description: 'Generate engaging, viral social media captions with emojis and trending hashtags for Instagram, TikTok, and Twitter.',
-    keywords: ['Free AI Social Media Caption Generator', 'Free Free AI Social Media Caption Generator', 'AI Free AI Social Media Caption Generator', 'QuickTools', 'Online Free AI Social Media Caption Generator', 'AI Tool'],
+    keywords: ["AI Caption Generator","Caption Generator AI","Free AI Caption Generator","Best AI Caption Generator","Online Caption Generator","AI Caption Generator Tool","Caption Creator","AI Caption Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-caption-generator' },
     openGraph: {
             title: "Free AI Social Media Caption Generator | QuickTools",

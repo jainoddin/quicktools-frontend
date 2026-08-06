@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Product Description Generator | QuickTools',
   description: 'Write compelling, conversion-focused product descriptions for your e-commerce store instantly with AI.',
-    keywords: ['Free AI Product Description Generator', 'Free Free AI Product Description Generator', 'AI Free AI Product Description Generator', 'QuickTools', 'Online Free AI Product Description Generator', 'AI Tool'],
+    keywords: ["AI Product Description","Product Description AI","Free AI Product Description","Best AI Product Description","Online Product Description","AI Product Description Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-product-description' },
     openGraph: {
             title: "Free AI Product Description Generator | QuickTools",

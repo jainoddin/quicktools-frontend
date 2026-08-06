@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Video Script Generator | QuickTools',
   description: 'Write highly engaging, viral-worthy scripts for YouTube, TikTok, and Instagram Reels in seconds.',
-    keywords: ['Free AI Video Script Generator', 'Free Free AI Video Script Generator', 'AI Free AI Video Script Generator', 'QuickTools', 'Online Free AI Video Script Generator', 'AI Tool'],
+    keywords: ["AI Video Script","Video Script AI","Free AI Video Script","Best AI Video Script","Online Video Script","AI Video Script Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-video-script' },
     openGraph: {
             title: "Free AI Video Script Generator | QuickTools",

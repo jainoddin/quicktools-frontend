@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Grammar & Spell Checker | QuickTools',
   description: 'Instantly check your text for grammar, spelling, and punctuation errors. Rewrites sentences for better flow and professional tone.',
-    keywords: ['Free AI Grammar & Spell Checker', 'Free Free AI Grammar & Spell Checker', 'AI Free AI Grammar & Spell Checker', 'QuickTools', 'Online Free AI Grammar & Spell Checker', 'AI Tool'],
+    keywords: ["AI Grammar Checker","Grammar Checker AI","Free AI Grammar Checker","Best AI Grammar Checker","Online Grammar Checker","AI Grammar Checker Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-grammar-checker' },
     openGraph: {
             title: "Free AI Grammar & Spell Checker | QuickTools",

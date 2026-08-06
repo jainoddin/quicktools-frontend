@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Investor Update Generator | Premium Tools',
   description: 'Write professional updates for your startup investors.',
-    keywords: ['AI Investor Update Generator', 'Free AI Investor Update Generator', 'AI AI Investor Update Generator', 'QuickTools', 'Online AI Investor Update Generator', 'AI Tool'],
+    keywords: ["AI Investor Update","Investor Update AI","Free AI Investor Update","Best AI Investor Update","Online Investor Update","AI Investor Update Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-investor-update' },
     openGraph: {
             title: "AI Investor Update Generator | Premium Tools",

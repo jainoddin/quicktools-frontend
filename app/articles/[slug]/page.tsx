@@ -34,9 +34,21 @@ export async function generateMetadata(
     const a = data.data;
     const canonicalUrl = a.canonicalOverride || `${BASE_URL}/articles/${slug}`;
 
+    const keywords = [
+      a.title,
+      a.category,
+      ...(a.tags || []),
+      `${a.title} guide`,
+      `${a.title} tutorial`,
+      `${a.title} 2026`,
+      a.category ? `${a.category} AI` : '',
+      'QuickTools Articles'
+    ].filter(Boolean);
+
     return {
       title: a.metaTitle || a.title,
       description: a.metaDescription || a.description,
+      keywords,
       alternates: { canonical: canonicalUrl },
       openGraph: {
         type: 'article',

@@ -6,7 +6,7 @@ import BackgroundRemoverClient from '@/components/background-remover/BackgroundR
 export const metadata: Metadata = {
   title: 'Free AI Background Remover - Erase Backgrounds Fast',
   description: 'Remove image backgrounds instantly with our AI Background Remover. Fast, accurate, and perfectly cut out subjects in seconds for design projects.',
-  keywords: 'background remover, ai background removal, transparent background, image editing',
+  keywords: ["Background Remover","AI Background Remover","Background Remover AI","Free Background Remover","Best Background Remover","Online Background Remover","Background Remover Tool","Background Eraser","AI Background Eraser","Remove Background","Image Background Remover","QuickTools AI"],
   alternates: {
     canonical: 'https://quicktool.space/tools/background-remover'
   },

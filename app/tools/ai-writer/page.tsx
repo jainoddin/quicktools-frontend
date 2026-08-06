@@ -5,14 +5,14 @@ import { ChevronRight, Home, History, LayoutGrid } from 'lucide-react';
 import AiWriterClient from '@/components/ai-writer/AiWriterClient';
 
 export const metadata: Metadata = {
-  title: 'Advanced AI Writer & Content Generator for Creators',
-  description: 'Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.',
+  title: { absolute: "AI Writer – Create Blogs, Emails & Marketing Copy | QuickTools" },
+  description: "Generate blogs, articles, emails, social media posts, marketing copy, and SEO content instantly with the QuickTools AI Writer.",
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-writer'
   },
-    keywords: ['Advanced AI Writer & Content Generator for Creators', 'Free Advanced AI Writer & Content Generator for Creators', 'AI Advanced AI Writer & Content Generator for Creators', 'QuickTools', 'Online Advanced AI Writer & Content Generator for Creators', 'AI Tool'],
+    keywords: ["AI Writer","Writer AI","Free AI Writer","Best AI Writer","Online Writer","AI Writer Tool","Writing Tool","AI Writing Tool","Content Writer AI","Blog Writer","AI Copywriting","QuickTools AI"],
     openGraph: {
-            title: "Advanced AI Writer & Content Generator for Creators",
+            title: { absolute: "AI Writer – Create Blogs, Emails & Marketing Copy | QuickTools" },
             description: "Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
             url: 'https://quicktool.space/tools/ai-writer',
             siteName: 'QuickTools.ai',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Advanced AI Writer & Content Generator for Creators",
+            title: { absolute: "AI Writer – Create Blogs, Emails & Marketing Copy | QuickTools" },
             description: "Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
             images: ['https://quicktool.space/icon.svg']
           }

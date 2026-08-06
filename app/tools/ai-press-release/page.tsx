@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Press Release Writer | Premium Tools',
   description: 'Write compelling press releases for your announcements.',
-    keywords: ['AI Press Release Writer', 'Free AI Press Release Writer', 'AI AI Press Release Writer', 'QuickTools', 'Online AI Press Release Writer', 'AI Tool'],
+    keywords: ["AI Press Release","Press Release AI","Free AI Press Release","Best AI Press Release","Online Press Release","AI Press Release Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-press-release' },
     openGraph: {
             title: "AI Press Release Writer | Premium Tools",

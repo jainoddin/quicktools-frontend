@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Regex Generator | QuickTools',
   description: 'Generate complex Regular Expressions easily from plain English descriptions instantly with our free AI Regex Generator.',
-    keywords: ['Free AI Regex Generator', 'Free Free AI Regex Generator', 'AI Free AI Regex Generator', 'QuickTools', 'Online Free AI Regex Generator', 'AI Tool'],
+    keywords: ["AI Regex Generator","Regex Generator AI","Free AI Regex Generator","Best AI Regex Generator","Online Regex Generator","AI Regex Generator Tool","Regex Creator","AI Regex Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-regex-generator' },
     openGraph: {
             title: "Free AI Regex Generator | QuickTools",

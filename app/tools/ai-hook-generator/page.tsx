@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free AI Hook Generator | QuickTools',
   description: 'Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts instantly with our AI Hook Generator.',
-    keywords: ['Free AI Hook Generator', 'Free Free AI Hook Generator', 'AI Free AI Hook Generator', 'QuickTools', 'Online Free AI Hook Generator', 'AI Tool'],
+    keywords: ["AI Hook Generator","Hook Generator AI","Free AI Hook Generator","Best AI Hook Generator","Online Hook Generator","AI Hook Generator Tool","Hook Creator","AI Hook Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-hook-generator' },
     openGraph: {
             title: "Free AI Hook Generator | QuickTools",
