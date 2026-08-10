@@ -16,7 +16,8 @@ export default function CookieBanner() {
       updateAnalyticsConsent(true);
     }
 
-    if (!consent) {
+    const dismissedForSession = sessionStorage.getItem('quicktools_cookie_banner_dismissed') === 'true';
+    if (!consent && !dismissedForSession) {
       const timer = setTimeout(() => setIsVisible(true), 1500);
       return () => clearTimeout(timer);
     }
@@ -31,6 +32,14 @@ export default function CookieBanner() {
   const declineCookies = () => {
     localStorage.setItem('quicktools_cookie_consent', 'declined');
     updateAnalyticsConsent(false);
+    setIsVisible(false);
+  };
+
+  const dismissBanner = () => {
+    // Closing the banner is not the same as explicitly declining analytics.
+    // Keep this dismissal scoped to the current tab so the user can make a
+    // clear consent choice on a future visit.
+    sessionStorage.setItem('quicktools_cookie_banner_dismissed', 'true');
     setIsVisible(false);
   };
 
@@ -52,9 +61,9 @@ export default function CookieBanner() {
             <div className="flex items-center justify-between mb-1">
               <h3 className="font-bold text-[#111827] text-sm">We use cookies</h3>
               <button 
-                onClick={declineCookies}
+                onClick={dismissBanner}
                 className="text-[#9CA3AF] hover:text-[#4B5563] transition-colors"
-                aria-label="Dismiss"
+                aria-label="Dismiss cookie notice"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -77,6 +86,12 @@ export default function CookieBanner() {
               >
                 Privacy Policy
               </Link>
+              <button
+                onClick={declineCookies}
+                className="text-[#6B7280] hover:text-[#374151] text-xs font-semibold px-2 py-2 transition-colors"
+              >
+                Decline
+              </button>
             </div>
           </div>
         </div>
