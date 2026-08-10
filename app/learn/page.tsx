@@ -17,7 +17,9 @@ export const metadata = {
   ],
   alternates: {
     canonical: 'https://quicktool.space/learn',
-  }
+  },
+  openGraph: { title: 'Learn AI with ChatGPT, Claude & Gemini', description: 'Step-by-step AI courses, tutorials, prompts, and practical lessons on QuickTools Learn.', url: 'https://quicktool.space/learn', type: 'website', images: [{ url: 'https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png', width: 1200, height: 630, alt: 'QuickTools Learn' }] },
+  twitter: { card: 'summary_large_image', title: 'Learn AI with QuickTools Learn', description: 'Step-by-step practical AI courses.', images: ['https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png'] }
 };
 
 export default async function LearnPage({ searchParams }: { searchParams: Promise<{ course?: string }> }) {
@@ -135,7 +137,7 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
   
   // If no courses yet, provide fallback empty state
   if (!activeCourse) {
-    return <div className="p-12 text-center text-slate-500">No courses found.</div>;
+    return <div className="p-12 text-center bg-white border border-slate-200 rounded-2xl"><BookOpen className="w-12 h-12 text-indigo-300 mx-auto mb-4" /><h1 className="text-2xl font-black text-slate-900 mb-2">Courses are temporarily unavailable</h1><p className="text-slate-500 mb-6">Please try again shortly or explore our free AI tools.</p><Link href="/tools" className="inline-flex items-center gap-2 bg-indigo-600 text-white font-bold px-5 py-2.5 rounded-xl">Explore AI tools <ArrowRight className="w-4 h-4" /></Link></div>;
   }
 
   return (

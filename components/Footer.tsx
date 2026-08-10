@@ -82,6 +82,7 @@ export default function Footer() {
             <div className="col-span-1">
               <h4 className="font-bold text-sm mb-4 text-[#111827]">Resources</h4>
               <ul className="space-y-3 text-sm text-[#6B7280]">
+                <li><Link href="/prompts" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>AI Prompts</Link></li>
                 <li><Link href="/blog" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Blog</Link></li>
                 <li><Link href="/news" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>News</Link></li>
                 <li><Link href="/articles" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Articles</Link></li>

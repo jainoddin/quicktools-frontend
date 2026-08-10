@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Zap, ChevronDown, Image as ImageIcon, PenTool, Video, Code, LayoutGrid, LogOut, Menu, X, LayoutDashboard, Settings, Home, Wrench, FolderOpen, Newspaper, Globe, CreditCard, Info, Mail, Coins, Crown, BookOpen } from 'lucide-react';
+import { Zap, ChevronDown, Image as ImageIcon, PenTool, Video, Code, LayoutGrid, LogOut, Menu, X, LayoutDashboard, Settings, Home, Wrench, FolderOpen, Newspaper, Globe, CreditCard, Info, Mail, Coins, Crown, BookOpen, Sparkles } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -178,7 +178,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-1 xl:gap-5 text-sm font-medium text-[#6B7280]">
+        <div className="hidden xl:flex items-center gap-1 2xl:gap-5 text-sm font-medium text-[#6B7280]">
           <Link href="/" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActive('/') ? 'bg-[#F3F4F6]' : 'hover:text-[#111827]'}`} style={isActive('/') ? { color: themeColor } : {}}>Home</Link>
           <Link href="/tools" className={`px-2 xl:px-3 py-1.5 rounded-full transition-colors ${isActive('/tools') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActive('/tools') ? { color: themeColor } : {}}>All Tools</Link>
           <div className="relative group">
@@ -233,6 +233,7 @@ export default function Header() {
               </div>
             </div>
           </div>
+          <Link href="/prompts" className={`px-2 2xl:px-3 py-1.5 rounded-full transition-colors ${isActiveStartsWith('/prompts') ? 'bg-[#EEF2FF]' : 'hover:text-[#111827]'}`} style={isActiveStartsWith('/prompts') ? { color: themeColor } : {}}>Prompts</Link>
           <div className="relative group">
             <button className={`flex items-center gap-1 transition-colors px-2 xl:px-3 py-1.5 rounded-full hover:bg-[#F3F4F6] ${(isActiveStartsWith('/blog') || isActiveStartsWith('/articles') || isActiveStartsWith('/news')) ? 'text-[#111827] bg-[#F3F4F6]' : 'hover:text-[#111827]'}`}>
               Resources <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
@@ -342,7 +343,7 @@ export default function Header() {
           {/* Hamburger Button - only mobile */}
           <button
             id="mobile-menu-toggle"
-            className="lg:hidden p-2 rounded-xl hover:bg-[#F3F4F6] transition-colors"
+            className="xl:hidden p-2 rounded-xl hover:bg-[#F3F4F6] transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -356,7 +357,7 @@ export default function Header() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden mobile-menu-animate bg-white border-t border-[#E5E7EB] shadow-lg max-h-[calc(100dvh-64px)] overflow-y-auto">
+        <div className="xl:hidden mobile-menu-animate bg-white border-t border-[#E5E7EB] shadow-lg max-h-[calc(100dvh-64px)] overflow-y-auto">
           <div className="px-4 py-3 flex flex-col gap-1">
             <Link href="/" onClick={() => setMobileMenuOpen(false)}
               className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActive('/') ? 'text-[#4F46E5] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
@@ -398,6 +399,12 @@ export default function Header() {
                 </div>
               )}
             </div>
+
+            <Link href="/prompts" onClick={() => setMobileMenuOpen(false)}
+              className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/prompts') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>
+              <Sparkles className="w-4 h-4" /> Prompts
+              <span className="ml-auto rounded-full bg-indigo-50 px-2 py-0.5 text-[9px] font-black uppercase tracking-wider text-indigo-600">New</span>
+            </Link>
 
             <Link href="/community" onClick={() => setMobileMenuOpen(false)}
               className={`px-4 py-3 flex items-center gap-3 rounded-xl text-sm font-medium transition-colors ${isActiveStartsWith('/community') ? 'text-[#6D5EF8] bg-[#EEF2FF]' : 'text-[#374151] hover:bg-[#F9FAFB]'}`}>

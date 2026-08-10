@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Home, ChevronRight } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { getEndpoint } from '@/lib/api';
 
 export default function LearnBreadcrumbs() {
   const params = useParams();
@@ -17,7 +18,7 @@ export default function LearnBreadcrumbs() {
     if (courseSlug) {
       // We can fetch the course title, or we can just format the slug for now to avoid extra fetches if not strictly needed
       // But for exact names, fetching is better.
-      fetch(process.env.NEXT_PUBLIC_API_URL + `/api/learn/courses/${courseSlug}`)
+      fetch(getEndpoint(`/api/learn/courses/${courseSlug}`))
         .then(res => res.json())
         .then(data => {
            if (data?.course?.title) setCourseTitle(data.course.title);
@@ -30,7 +31,7 @@ export default function LearnBreadcrumbs() {
 
   useEffect(() => {
     if (courseSlug && lessonSlug) {
-      fetch(process.env.NEXT_PUBLIC_API_URL + `/api/learn/courses/${courseSlug}/lessons/${lessonSlug}`)
+      fetch(getEndpoint(`/api/learn/courses/${courseSlug}/lessons/${lessonSlug}`))
         .then(res => res.json())
         .then(data => {
            if (data?.lesson?.title) setLessonTitle(data.lesson.title);

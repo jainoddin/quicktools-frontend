@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { BookOpen, ChevronDown, ChevronRight, FileText } from 'lucide-react';
+import { getEndpoint } from '@/lib/api';
 
 export default function LearnSidebarLeft() {
   const [courses, setCourses] = useState<any[]>([]);
@@ -17,7 +18,7 @@ export default function LearnSidebarLeft() {
   const currentLessonSlug = params?.lessonSlug as string;
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_API_URL + '/api/learn/courses')
+    fetch(getEndpoint('/api/learn/courses'))
       .then(res => res.json())
       .then(data => {
         const coursesList = Array.isArray(data) ? data : [];
@@ -93,7 +94,7 @@ function CourseLessonList({ courseSlug, currentLessonSlug }: { courseSlug: strin
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_API_URL + `/api/learn/courses/${courseSlug}`)
+    fetch(getEndpoint(`/api/learn/courses/${courseSlug}`))
       .then(res => res.json())
       .then(data => {
         setLessons(data.lessons || []);

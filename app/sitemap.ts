@@ -6,6 +6,7 @@
 import { MetadataRoute } from 'next';
 import { getEndpoint } from '../lib/api';
 import { allTools } from '../lib/toolsData';
+import { promptCategoryToSlug } from '../lib/promptSlugs';
 
 const BASE_URL = 'https://quicktool.space';
 
@@ -18,6 +19,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const coreRoutes: string[] = [
     '', '/tools', '/blog', '/articles', '/news', '/community',
     '/about', '/contact', '/pricing', '/login', '/signup', '/learn',
+    '/prompts', '/prompts/chatgpt', '/prompts/claude', '/prompts/gemini',
+    '/prompts/categories', '/prompts/generator',
   ];
   entries.push(...coreRoutes.map((route) => ({
     url: `${BASE_URL}${route}`,
@@ -33,6 +36,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'weekly' as const,
     priority: tool.tag?.type === 'premium' ? 0.9 : 0.8,
   })));
+
+  // Prompt Hub canonical pages. Each prompt has one canonical detail URL even
+  // when it can also be opened for another supported model.
+  try {
+    const prompts: any[] = [];
+    for (let page = 1; page <= 10; page += 1) {
+      const res = await fetch(getEndpoint(`/api/prompts?limit=100&page=${page}`), { signal: AbortSignal.timeout(10000), next: { revalidate: 3600 } });
+      if (!res.ok) break;
+      const data = await res.json();
+      const batch: any[] = data.success ? data.data : [];
+      prompts.push(...batch);
+      if (batch.length < 100) break;
+    }
+    const categories = new Set<string>();
+    for (const prompt of prompts) {
+      if (prompt.category) categories.add(promptCategoryToSlug(prompt.category));
+      const model = String(prompt.models?.[0] || 'chatgpt').toLowerCase();
+      entries.push({ url: `${BASE_URL}/prompts/${model}/${prompt.slug}`, lastModified: new Date(prompt.updatedAt || prompt.publishedAt || prompt.createdAt), changeFrequency: 'weekly', priority: 0.8 });
+    }
+    entries.push(...Array.from(categories).map(category => ({ url: `${BASE_URL}/prompts/category/${category}`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 })));
+  } catch (e) {
+    console.error('[sitemap] prompts fetch failed:', e);
+  }
 
   // ─── 3. Blog Posts ────────────────────────────────────────────────────────
   try {
@@ -110,12 +136,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const data = await res.json();
       // Learn courses API returns plain array (not {success, data} envelope)
       const courses: any[] = Array.isArray(data) ? data : (data.success ? data.data : []);
-      entries.push(...courses.map((c) => ({
-        url: `${BASE_URL}/learn/${c.slug}/${c.firstLessonSlug || '1-introduction'}`,
-        lastModified: new Date(c.updatedAt || c.createdAt),
-        changeFrequency: 'weekly' as const,
-        priority: 0.9,
-      })));
+      for (const course of courses) {
+        const courseRes = await fetch(getEndpoint(`/api/learn/courses/${course.slug}`), { signal: AbortSignal.timeout(10000), next: { revalidate: 3600 } });
+        if (!courseRes.ok) continue;
+        const courseData = await courseRes.json();
+        const lessons: any[] = Array.isArray(courseData?.lessons) ? courseData.lessons : [];
+        entries.push(...lessons.map(lesson => ({
+          url: `${BASE_URL}/learn/${course.slug}/${lesson.slug}`,
+          lastModified: new Date(lesson.lastUpdatedAt || lesson.updatedAt || lesson.publishedAt || lesson.createdAt || course.updatedAt || course.createdAt),
+          changeFrequency: 'weekly' as const,
+          priority: lesson.order === 1 ? 0.9 : 0.8,
+        })));
+      }
     }
   } catch (e) {
     console.error('[sitemap] courses fetch failed:', e);

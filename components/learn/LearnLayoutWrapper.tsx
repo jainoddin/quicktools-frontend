@@ -13,6 +13,17 @@ export default function LearnLayoutWrapper({ children }: { children: ReactNode }
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 relative">
+      <aside className="lg:hidden">
+        <details className="bg-white border border-indigo-100 rounded-xl shadow-sm group">
+          <summary className="cursor-pointer list-none px-4 py-3 font-semibold text-slate-800 flex items-center justify-between">
+            Browse courses and lessons
+            <span className="text-indigo-600 group-open:rotate-180 transition-transform">⌄</span>
+          </summary>
+          <div className="px-4 pb-4 border-t border-slate-100">
+            <Suspense fallback={<div className="h-40 animate-pulse bg-slate-100 rounded-xl mt-4" />}><LearnSidebarLeft /></Suspense>
+          </div>
+        </details>
+      </aside>
       {/* Left Sidebar */}
       <aside className="hidden lg:block lg:col-span-3">
          <div className="sticky top-24">

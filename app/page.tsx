@@ -14,6 +14,7 @@ import LatestNews from '../components/home/LatestNews';
 import LatestCommunity from '../components/home/LatestCommunity';
 import FaqSection from '../components/home/FaqSection';
 import HomeLearn from '../components/home/HomeLearn';
+import HomePrompts from '../components/home/HomePrompts';
 import { Metadata } from 'next';
 import { allTools, IconMap } from '../lib/toolsData';
 
@@ -28,9 +29,21 @@ export const metadata: Metadata = {
   keywords: [
     'AI tools', 'Best AI tools', 'Free AI tools', 'AI productivity', 'AI writing',
     'AI image generator', 'AI code generator', 'AI business tools', 'AI marketing tools',
-    'AI automation', 'Prompt engineering', 'Developer tools', 'AI for students',
+    'AI automation', 'AI prompts', 'ChatGPT prompts', 'Claude prompts', 'Gemini prompts', 'Prompt engineering', 'Developer tools', 'AI for students',
     'AI for freelancers', 'AI for creators', 'QuickTools', 'AI software', 'AI platform', '100+ AI tools'
   ],
+  openGraph: {
+    title: '100+ AI Tools and Ready-to-Use AI Prompts | QuickTools',
+    description: 'Explore AI tools and practical prompts for ChatGPT, Claude, and Gemini in one workspace.',
+    url: 'https://quicktool.space',
+    siteName: 'QuickTools.ai',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '100+ AI Tools and Ready-to-Use AI Prompts | QuickTools',
+    description: 'Explore AI tools and practical prompts for ChatGPT, Claude, and Gemini in one workspace.',
+  },
 };
 
 export default function HomePage() {
@@ -50,6 +63,12 @@ export default function HomePage() {
                   "@type": "SearchAction",
                   "target": "https://quicktool.space/tools?q={search_term_string}",
                   "query-input": "required name=search_term_string"
+                },
+                "hasPart": {
+                  "@type": "CollectionPage",
+                  "name": "QuickTools AI Prompt Library",
+                  "url": "https://quicktool.space/prompts",
+                  "description": "Ready-to-use prompts for ChatGPT, Claude, and Gemini."
                 }
               },
               {
@@ -262,6 +281,11 @@ export default function HomePage() {
             })}
         </div>
       </section>
+
+      {/* 4.5 Learn Section */}
+      <Suspense fallback={<div className="h-80 bg-white animate-pulse" />}>
+        <HomePrompts />
+      </Suspense>
 
       {/* 4.5 Learn Section */}
       <Suspense fallback={<div>Loading Courses...</div>}>

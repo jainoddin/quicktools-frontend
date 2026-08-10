@@ -27,7 +27,7 @@ export async function generateMetadata(
 
   const courseRes = await fetch(getEndpoint(`/api/learn/courses/${resolvedParams.courseSlug}`), { cache: 'no-store' });
   const courseData = courseRes.ok ? await courseRes.json() : null;
-  const courseTitle = course?.title || courseData?.title || resolvedParams.courseSlug.charAt(0).toUpperCase() + resolvedParams.courseSlug.slice(1);
+  const courseTitle = course?.title || courseData?.course?.title || resolvedParams.courseSlug.charAt(0).toUpperCase() + resolvedParams.courseSlug.slice(1);
 
   const keywords = [
     courseTitle,
@@ -62,11 +62,14 @@ export async function generateMetadata(
       type: 'article',
       publishedTime: lesson.publishedAt,
       modifiedTime: lesson.lastUpdatedAt,
+      url: lesson.canonicalUrl || `https://quicktool.space/learn/${resolvedParams.courseSlug}/${resolvedParams.lessonSlug}`,
+      images: [{ url: 'https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png', width: 1200, height: 630, alt: `${courseTitle} lesson on QuickTools Learn` }],
     },
     twitter: {
       card: 'summary_large_image',
       title: lesson.seoTitle || lesson.title,
       description: finalDescription,
+      images: ['https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png'],
     }
   };
 }
@@ -77,26 +80,19 @@ export default async function LessonPage({ params }: Props) {
   const res = await fetch(url, { cache: 'no-store' });
   
   if (!res.ok) {
-    const errText = await res.text();
-    return (
-      <div className="p-8 space-y-4">
-        <h2 className="text-xl font-bold text-red-600">API Error: {res.status} {res.statusText}</h2>
-        <p className="font-mono text-sm bg-slate-100 p-2 rounded">URL: {url}</p>
-        <p className="font-mono text-sm bg-slate-100 p-2 rounded text-red-800">Response Body: {errText}</p>
-      </div>
-    );
+    notFound();
   }
 
   let data;
   try {
     data = await res.json();
   } catch (err: any) {
-    return <div>JSON Parse Error: {err.message}</div>;
+    notFound();
   }
   const { lesson, previousLesson, nextLesson } = data;
 
   if (!lesson) {
-    return <div>Lesson not found in response data. Data received: {JSON.stringify(data)}</div>;
+    notFound();
   }
 
   const courseTitle = data.course?.title || resolvedParams.courseSlug.charAt(0).toUpperCase() + resolvedParams.courseSlug.slice(1);

@@ -202,6 +202,9 @@ export default function CommunityQuestionCard({ question, user, onUpdate, setSho
                 )}
               </div>
               <span className="text-xs font-semibold text-gray-900 truncate">{question.author?.name}</span>
+              {question.author?.isAiAssisted && (
+                <span className="text-[9px] font-semibold text-[#4F46E5] bg-[#EEF2FF] border border-[#C7D2FE] px-1.5 py-0.5 rounded-full shrink-0">AI-assisted</span>
+              )}
               <span className="text-xs text-gray-400 shrink-0">•</span>
               <span className="text-xs text-gray-400 shrink-0">{new Date(question.createdAt).toLocaleDateString()}</span>
             </div>
@@ -288,6 +291,7 @@ export default function CommunityQuestionCard({ question, user, onUpdate, setSho
                       </div>
                       <span className="text-sm font-bold text-gray-900">{answer.author?.name}</span>
                       {answer.author?.isGuest && <span className="text-[10px] font-medium text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">Guest</span>}
+                      {answer.author?.isAiAssisted && <span className="text-[10px] font-medium text-[#4F46E5] bg-[#EEF2FF] px-1.5 py-0.5 rounded">AI-assisted</span>}
                       {answer.isAccepted && (
                         <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
                           Accepted

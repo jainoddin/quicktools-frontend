@@ -40,3 +40,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local development output and one-off maintenance helpers
+*.log
+*.out
+link_report.md
+check_*.js
+fix_*.js
+colorFix.js
+remove_twitter.js
+update_tools.js
+lib/count*.js
+.ai/testing.md

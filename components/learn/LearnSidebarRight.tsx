@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { ExternalLink, MessageCircle, FileText } from 'lucide-react';
+import { ExternalLink, MessageCircle, Printer } from 'lucide-react';
+import { getEndpoint } from '@/lib/api';
 
 export default function LearnSidebarRight() {
   const params = useParams();
@@ -18,7 +19,7 @@ export default function LearnSidebarRight() {
       return;
     }
     
-    fetch(process.env.NEXT_PUBLIC_API_URL + `/api/learn/courses/${currentCourseSlug}/lessons/${currentLessonSlug}`)
+    fetch(getEndpoint(`/api/learn/courses/${currentCourseSlug}/lessons/${currentLessonSlug}`))
       .then(res => res.json())
       .then(data => {
         setLesson(data.lesson || null);
@@ -82,17 +83,17 @@ export default function LearnSidebarRight() {
           <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Resources</h3>
           <ul className="space-y-2">
             <li>
-              <button className="flex items-center gap-2 text-sm text-slate-600 hover:text-indigo-600 transition-colors">
-                <FileText className="w-4 h-4" />
-                Download Cheat Sheet
+              <button onClick={() => window.print()} className="flex items-center gap-2 text-sm text-slate-600 hover:text-indigo-600 transition-colors">
+                <Printer className="w-4 h-4" />
+                Print / Save Lesson
               </button>
             </li>
-            <li>
-              <button className="flex items-center gap-2 text-sm text-slate-600 hover:text-indigo-600 transition-colors">
+            {lesson?.sourceReferences?.[0] && /^https?:\/\//i.test(lesson.sourceReferences[0]) && <li>
+              <a href={lesson.sourceReferences[0]} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-slate-600 hover:text-indigo-600 transition-colors">
                 <ExternalLink className="w-4 h-4" />
-                Official Documentation
-              </button>
-            </li>
+                Source Documentation
+              </a>
+            </li>}
           </ul>
         </div>
 

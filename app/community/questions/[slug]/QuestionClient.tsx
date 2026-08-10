@@ -325,6 +325,9 @@ export default function QuestionClient({ slug }: { slug: string }) {
                 )}
               </div>
               <span className="text-xs font-semibold text-gray-900 truncate">{question.author?.name}</span>
+              {question.author?.isAiAssisted && (
+                <span className="text-[9px] font-semibold text-[#4F46E5] bg-[#EEF2FF] border border-[#C7D2FE] px-1.5 py-0.5 rounded-full shrink-0">AI-assisted</span>
+              )}
               <span className="text-xs text-gray-400 shrink-0">•</span>
               <span className="text-xs text-gray-400 shrink-0">{new Date(question.createdAt).toLocaleDateString()}</span>
             </div>
@@ -413,6 +416,7 @@ export default function QuestionClient({ slug }: { slug: string }) {
                     <div>
                       <div className="flex items-center gap-1.5">
                         <span className="font-bold text-sm text-gray-900">{ans.author?.name}</span>
+                        {ans.author?.isAiAssisted && <span className="text-[10px] font-medium text-[#4F46E5] bg-[#EEF2FF] px-1.5 py-0.5 rounded">AI-assisted</span>}
                       </div>
                       <div className="text-xs text-gray-400 flex items-center gap-1 mt-0.5">
                          {ans.isAccepted && <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />}
