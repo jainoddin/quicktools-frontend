@@ -97,8 +97,8 @@ export default function QuickToolsNavigator() {
   const [speechSection, setSpeechSection] = useState(1);
   const [busy, setBusy] = useState(false); const [loginOpen, setLoginOpen] = useState(false);
   const [assistantIntro, setAssistantIntro] = useState('');
-  const [navigatorBottom, setNavigatorBottom] = useState(16);
-  const [viewportBottom, setViewportBottom] = useState(16);
+  const [navigatorBottom, setNavigatorBottom] = useState(12);
+  const [viewportBottom, setViewportBottom] = useState(12);
   const [context, setContext] = useState<SessionContext>({ currentPage: pathname, detectedLanguage: 'en', lastSearchResults: [] });
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null); const endRef = useRef<HTMLDivElement>(null);
   const navigatorRef = useRef<HTMLDivElement>(null);
@@ -131,7 +131,7 @@ export default function QuickToolsNavigator() {
     const updatePosition = () => {
       window.cancelAnimationFrame(animationFrame);
       animationFrame = window.requestAnimationFrame(() => {
-        const baseBottom = window.matchMedia('(min-width: 640px)').matches ? 24 : 16;
+        const baseBottom = window.matchMedia('(min-width: 640px)').matches ? 24 : 12;
         const footer = document.querySelector('footer');
         const footerTop = footer?.getBoundingClientRect().top ?? window.innerHeight;
         const footerOverlap = Math.max(0, window.innerHeight - footerTop + 12);
@@ -425,9 +425,9 @@ export default function QuickToolsNavigator() {
 
   if (pathname === '/login' || pathname === '/signup') return null;
 
-  return <div ref={navigatorRef} className="fixed right-4 z-[180] transition-[bottom] duration-150 sm:right-6" style={{ bottom: open ? viewportBottom : navigatorBottom }}>
+  return <div ref={navigatorRef} className="fixed right-3 z-[180] transition-[bottom] duration-150 sm:right-6" style={{ bottom: open ? viewportBottom : navigatorBottom }}>
     <LoginPopup isOpen={loginOpen} onClose={() => setLoginOpen(false)} />
-    {open && <section className="mb-3 w-[calc(100vw-2rem)] sm:w-[410px] h-[min(650px,calc(100dvh-7rem))] overflow-hidden rounded-[28px] border border-indigo-200/80 bg-white shadow-[0_24px_70px_rgba(30,41,59,0.24)] flex flex-col" role="dialog" aria-label="QuickTools AI Navigator">
+    {open && <section className="mb-3 h-[min(500px,65dvh)] w-[calc(100vw-1.5rem)] overflow-hidden rounded-[24px] border border-indigo-200/80 bg-white shadow-[0_24px_70px_rgba(30,41,59,0.24)] flex flex-col sm:h-[min(650px,calc(100dvh-7rem))] sm:w-[410px] sm:rounded-[28px]" role="dialog" aria-label="QuickTools AI Navigator">
       <header className="bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 text-white px-4 py-3.5 flex items-center justify-between"><div className="flex items-center gap-3"><div className={`w-12 h-10 overflow-hidden ${speaking || listening ? 'animate-pulse' : ''}`}><Lottie animationData={quickToolsAiAnimation} loop autoplay className="w-full h-full -translate-x-[12%] scale-[1.9] pointer-events-none" aria-hidden /></div><div><h2 className="font-black tracking-tight">QuickTools AI</h2><p className="max-w-[220px] truncate text-[11px] font-medium text-white/80">{speaking ? `Speaking · section ${speechSection}` : micEnabled ? micStatus : 'Microphone off'}</p></div></div><div className="flex items-center gap-1"><button onClick={() => { setVoiceEnabled(value => !value); stopSpeech(); }} className="p-2 rounded-xl hover:bg-white/15 transition-colors" aria-label={voiceEnabled ? 'Turn voice off' : 'Turn voice on'}>{voiceEnabled ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}</button><button onClick={closePanel} className="p-2 rounded-xl hover:bg-white/15 transition-colors" aria-label="Close navigator"><X className="w-5 h-5" /></button></div></header>
       <div className="flex-1 overflow-y-auto bg-gradient-to-b from-slate-50 via-white to-indigo-50/40 p-4 space-y-4" aria-live="polite">{messages.map((message, index) => <div key={`${message.role}-${index}`} className={`flex items-end gap-2 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>{message.role === 'assistant' && <span className="mb-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-blue-500 text-[10px] font-black text-white shadow-sm">AI</span>}<div className={`max-w-[82%] px-4 py-3 rounded-[20px] text-sm leading-relaxed ${message.role === 'user' ? 'bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-200/60 rounded-br-md' : 'bg-white text-slate-700 border border-slate-200/80 shadow-[0_5px_18px_rgba(15,23,42,0.07)] rounded-bl-md'}`}>{message.role === 'assistant' ? <TypewriterMessage text={message.text} /> : message.text}</div></div>)}{busy && <div className="ml-9 flex w-fit items-center gap-1 rounded-2xl border border-indigo-100 bg-white px-4 py-3 shadow-sm"><span className="h-2 w-2 animate-bounce rounded-full bg-indigo-400 [animation-delay:-0.3s]" /><span className="h-2 w-2 animate-bounce rounded-full bg-indigo-500 [animation-delay:-0.15s]" /><span className="h-2 w-2 animate-bounce rounded-full bg-indigo-600" /></div>}<div ref={endRef} /></div>
       {speechActive && <div className="px-4 py-2 border-t bg-white flex items-center justify-center gap-2"><button onClick={() => { window.speechSynthesis.pause(); setSpeaking(false); }} disabled={!speaking} className="p-2 rounded-lg bg-slate-100 disabled:opacity-40" aria-label="Pause"><Pause className="w-4 h-4" /></button><button onClick={() => { window.speechSynthesis.resume(); setSpeaking(true); }} disabled={speaking} className="p-2 rounded-lg bg-slate-100 disabled:opacity-40" aria-label="Resume"><Play className="w-4 h-4" /></button><button onClick={() => { window.speechSynthesis.cancel(); speakChunk(speechIndexRef.current + 1, context.detectedLanguage); }} className="p-2 rounded-lg bg-indigo-50 text-indigo-600" aria-label="Next section"><ChevronRight className="w-4 h-4" /></button><button onClick={stopSpeech} className="p-2 rounded-lg bg-red-50 text-red-600" aria-label="Stop"><Square className="w-4 h-4" /></button></div>}
