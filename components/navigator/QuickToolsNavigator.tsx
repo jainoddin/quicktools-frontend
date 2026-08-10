@@ -97,8 +97,11 @@ export default function QuickToolsNavigator() {
   const [speechSection, setSpeechSection] = useState(1);
   const [busy, setBusy] = useState(false); const [loginOpen, setLoginOpen] = useState(false);
   const [assistantIntro, setAssistantIntro] = useState('');
+  const [navigatorBottom, setNavigatorBottom] = useState(16);
+  const [viewportBottom, setViewportBottom] = useState(16);
   const [context, setContext] = useState<SessionContext>({ currentPage: pathname, detectedLanguage: 'en', lastSearchResults: [] });
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null); const endRef = useRef<HTMLDivElement>(null);
+  const navigatorRef = useRef<HTMLDivElement>(null);
   const openRef = useRef(false); const autoListenRef = useRef(false); const speakingRef = useRef(false);
   const voiceCommandPendingRef = useRef(false); const voiceTypingTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const greetedRef = useRef(false); const greetingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -123,6 +126,32 @@ export default function QuickToolsNavigator() {
   }, [pathname]);
   useEffect(() => { sessionStorage.setItem('quicktools_navigator_context', JSON.stringify(context)); }, [context]);
   useEffect(() => () => { if (greetingTimerRef.current) clearTimeout(greetingTimerRef.current); if (voiceTypingTimerRef.current) clearInterval(voiceTypingTimerRef.current); recognitionRef.current?.stop(); window.speechSynthesis?.cancel(); }, []);
+  useEffect(() => {
+    let animationFrame = 0;
+    const updatePosition = () => {
+      window.cancelAnimationFrame(animationFrame);
+      animationFrame = window.requestAnimationFrame(() => {
+        const baseBottom = window.matchMedia('(min-width: 640px)').matches ? 24 : 16;
+        const footer = document.querySelector('footer');
+        const footerTop = footer?.getBoundingClientRect().top ?? window.innerHeight;
+        const footerOverlap = Math.max(0, window.innerHeight - footerTop + 12);
+        const siteHeader = document.querySelector('body header');
+        const headerBottom = siteHeader?.getBoundingClientRect().bottom ?? 0;
+        const navigatorHeight = navigatorRef.current?.offsetHeight ?? 0;
+        const maximumBottom = Math.max(baseBottom, window.innerHeight - headerBottom - navigatorHeight - 12);
+        setViewportBottom(baseBottom);
+        setNavigatorBottom(Math.min(baseBottom + footerOverlap, maximumBottom));
+      });
+    };
+    updatePosition();
+    window.addEventListener('scroll', updatePosition, { passive: true });
+    window.addEventListener('resize', updatePosition);
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener('scroll', updatePosition);
+      window.removeEventListener('resize', updatePosition);
+    };
+  }, []);
   useEffect(() => {
     if (open) return;
     const message = "I'm your AI assistant — ask me anything about this website!";
@@ -394,7 +423,9 @@ export default function QuickToolsNavigator() {
   const openPanel = () => { openRef.current = true; autoListenRef.current = false; setMicEnabled(false); setMicStatus('Microphone off'); setContext(previous => ({ ...previous, detectedLanguage: 'en' })); setOpen(true); setVoiceEnabled(true); track('assistant_open'); greetedRef.current = true; };
   const closePanel = () => { openRef.current = false; autoListenRef.current = false; voiceCommandPendingRef.current = false; setMicEnabled(false); setMicStatus('Microphone off'); if (greetingTimerRef.current) clearTimeout(greetingTimerRef.current); if (voiceTypingTimerRef.current) clearInterval(voiceTypingTimerRef.current); voiceTypingTimerRef.current = null; recognitionRef.current?.stop(); recognitionRef.current = null; stopSpeech(); setListening(false); setOpen(false); };
 
-  return <div className="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-[180]">
+  if (pathname === '/login' || pathname === '/signup') return null;
+
+  return <div ref={navigatorRef} className="fixed right-4 z-[180] transition-[bottom] duration-150 sm:right-6" style={{ bottom: open ? viewportBottom : navigatorBottom }}>
     <LoginPopup isOpen={loginOpen} onClose={() => setLoginOpen(false)} />
     {open && <section className="mb-3 w-[calc(100vw-2rem)] sm:w-[410px] h-[min(650px,calc(100dvh-7rem))] overflow-hidden rounded-[28px] border border-indigo-200/80 bg-white shadow-[0_24px_70px_rgba(30,41,59,0.24)] flex flex-col" role="dialog" aria-label="QuickTools AI Navigator">
       <header className="bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 text-white px-4 py-3.5 flex items-center justify-between"><div className="flex items-center gap-3"><div className={`w-12 h-10 overflow-hidden ${speaking || listening ? 'animate-pulse' : ''}`}><Lottie animationData={quickToolsAiAnimation} loop autoplay className="w-full h-full -translate-x-[12%] scale-[1.9] pointer-events-none" aria-hidden /></div><div><h2 className="font-black tracking-tight">QuickTools AI</h2><p className="max-w-[220px] truncate text-[11px] font-medium text-white/80">{speaking ? `Speaking · section ${speechSection}` : micEnabled ? micStatus : 'Microphone off'}</p></div></div><div className="flex items-center gap-1"><button onClick={() => { setVoiceEnabled(value => !value); stopSpeech(); }} className="p-2 rounded-xl hover:bg-white/15 transition-colors" aria-label={voiceEnabled ? 'Turn voice off' : 'Turn voice on'}>{voiceEnabled ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}</button><button onClick={closePanel} className="p-2 rounded-xl hover:bg-white/15 transition-colors" aria-label="Close navigator"><X className="w-5 h-5" /></button></div></header>

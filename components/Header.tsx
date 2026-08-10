@@ -121,7 +121,7 @@ export default function Header() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#E5E7EB]">
+    <nav className="sticky top-0 z-[200] bg-white/80 backdrop-blur-md border-b border-[#E5E7EB]">
       <style dangerouslySetInnerHTML={{
         __html: `
         @keyframes textSlideIn {
