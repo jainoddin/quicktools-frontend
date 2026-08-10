@@ -10,6 +10,7 @@ import CookieBanner from "@/components/shared/CookieBanner";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import AnalyticsIdentity from "@/components/analytics/AnalyticsIdentity";
 import AnalyticsClickTracker from "@/components/analytics/AnalyticsClickTracker";
+import QuickToolsNavigator from "@/components/navigator/QuickToolsNavigator";
 import { AuthProvider } from "../contexts/AuthContext";
 import { ToastProvider } from "../contexts/ToastContext";
 
@@ -216,6 +217,7 @@ export default function RootLayout({
             </main>
             <Footer />
             <CookieBanner />
+            <QuickToolsNavigator />
           </AuthProvider>
         </ToastProvider>
       </body>
