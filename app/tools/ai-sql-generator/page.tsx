@@ -15,13 +15,13 @@ export const metadata: Metadata = {
             url: 'https://quicktool.space/tools/ai-sql-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI SQL Query Generator")}&type=tool`, width: 1200, height: 630, alt: `AI SQL Query Generator - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
             title: "Free AI SQL Query Generator | QuickTools",
             description: "Generate optimized SQL queries from plain English descriptions instantly.",
-            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI SQL Query Generator")}&type=tool`]
           }
 };
 

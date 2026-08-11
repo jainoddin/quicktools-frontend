@@ -233,14 +233,12 @@ export default function HomePage() {
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-12">
           {[
-            { icon: ImageIcon, label: 'Image Tools', slug: '/tools?c=AI Image', color: 'text-blue-500' },
-            { icon: PenTool, label: 'Writing Tools', slug: '/tools?c=AI Writer', color: 'text-green-500' },
-            { icon: Video, label: 'Video Tools', slug: '/tools?c=AI Video', color: 'text-pink-500' },
-            { icon: Code, label: 'Code Tools', slug: '/tools?c=AI Code', color: 'text-purple-500' },
-            { icon: Search, label: 'SEO Tools', slug: '/tools?c=SEO', color: 'text-orange-500' },
-            { icon: Briefcase, label: 'Business', slug: '/tools?c=Business', color: 'text-teal-500' },
-            { icon: Palette, label: 'Design', slug: '/tools?c=Design', color: 'text-rose-500' },
-            { icon: Mic, label: 'AI Chat', slug: '/tools?c=AI Chat', color: 'text-emerald-500' },
+            { icon: ImageIcon, label: 'Creative Tools', slug: '/tools/category/creative', color: 'text-blue-500' },
+            { icon: PenTool, label: 'Writing Tools', slug: '/tools/category/writing', color: 'text-green-500' },
+            { icon: Video, label: 'Marketing Tools', slug: '/tools/category/marketing', color: 'text-pink-500' },
+            { icon: Code, label: 'Code Tools', slug: '/tools/category/code-tech', color: 'text-purple-500' },
+            { icon: Search, label: 'Career & HR', slug: '/tools/category/career-hr', color: 'text-orange-500' },
+            { icon: Briefcase, label: 'Business', slug: '/tools/category/business', color: 'text-teal-500' },
             { icon: LayoutGrid, label: 'View All', slug: '/tools', color: 'text-gray-500' },
           ].map((item, i) => (
             <Link href={item.slug} key={i} className="flex flex-col items-center gap-2 group">

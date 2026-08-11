@@ -15,13 +15,13 @@ export const metadata: Metadata = {
             url: 'https://quicktool.space/tools/ai-linkedin-bio',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI LinkedIn Bio Generator")}&type=tool`, width: 1200, height: 630, alt: `AI LinkedIn Bio Generator - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
             title: "Free AI LinkedIn Bio Generator | QuickTools",
             description: "Create a professional, highly optimized LinkedIn summary and bio in seconds with our AI LinkedIn Bio Generator.",
-            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI LinkedIn Bio Generator")}&type=tool`]
           }
 };
 

@@ -15,13 +15,13 @@ export const metadata: Metadata = {
             url: 'https://quicktool.space/tools/ai-video-script',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Video Script Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Video Script Generator - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Video Script Generator | QuickTools",
             description: "Write highly engaging, viral-worthy scripts for YouTube, TikTok, and Instagram Reels in seconds.",
-            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Video Script Generator")}&type=tool`]
           }
 };
 

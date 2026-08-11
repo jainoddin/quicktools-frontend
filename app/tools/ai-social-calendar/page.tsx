@@ -15,13 +15,13 @@ export const metadata: Metadata = {
             url: 'https://quicktool.space/tools/ai-social-calendar',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Social Media Calendar")}&type=tool`, width: 1200, height: 630, alt: `AI Social Media Calendar - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
             title: "Premium AI Social Media Calendar | QuickTools",
             description: "Generate a 30-day multi-channel marketing calendar with specific daily posts.",
-            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Social Media Calendar")}&type=tool`]
           }
 };
 

@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3001",
-    "build": "next build",
+    "build": "npm run validate:tools && next build",
     "start": "next start",
     "lint": "eslint",
+    "validate:tools": "node scripts/validate-tool-registry.mjs",
     "check:links": "linkinator http://localhost:3001 --skip \"^(?!http://localhost:3001)\" --retry --markdown"
   },
   "dependencies": {

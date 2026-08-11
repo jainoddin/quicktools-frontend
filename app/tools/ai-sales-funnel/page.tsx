@@ -15,13 +15,13 @@ export const metadata: Metadata = {
             url: 'https://quicktool.space/tools/ai-sales-funnel',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Sales Funnel Copywriter")}&type=tool`, width: 1200, height: 630, alt: `AI Sales Funnel Copywriter - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
             title: "Premium AI Sales Funnel Copywriter | QuickTools",
             description: "Write landing page copy, email sequences, and ad copy all at once.",
-            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Sales Funnel Copywriter")}&type=tool`]
           }
 };
 

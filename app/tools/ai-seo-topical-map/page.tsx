@@ -15,13 +15,13 @@ export const metadata: Metadata = {
             url: 'https://quicktool.space/tools/ai-seo-topical-map',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI SEO Topical Map Builder")}&type=tool`, width: 1200, height: 630, alt: `AI SEO Topical Map Builder - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
             title: "Premium AI SEO Topical Map Builder | QuickTools",
             description: "Generate a full SEO content cluster map for an entire month for a niche.",
-            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI SEO Topical Map Builder")}&type=tool`]
           }
 };
 

@@ -92,12 +92,12 @@ export default function Footer() {
             <div className="col-span-1">
               <h4 className="font-bold text-sm mb-4 text-[#111827]">Categories</h4>
               <ul className="space-y-3 text-sm text-[#6B7280]">
-                <li><Link href="/tools?c=Writing" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Writing</Link></li>
-                <li><Link href="/tools?c=Marketing" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Marketing</Link></li>
-                <li><Link href="/tools?c=Code%20%26%20Tech" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Code &amp; Tech</Link></li>
-                <li><Link href="/tools?c=Business" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Business</Link></li>
-                <li><Link href="/tools?c=Creative" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Creative</Link></li>
-                <li><Link href="/tools?c=Career%20%26%20HR" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Career &amp; HR</Link></li>
+                <li><Link href="/tools/category/writing" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Writing</Link></li>
+                <li><Link href="/tools/category/marketing" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Marketing</Link></li>
+                <li><Link href="/tools/category/code-tech" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Code &amp; Tech</Link></li>
+                <li><Link href="/tools/category/business" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Business</Link></li>
+                <li><Link href="/tools/category/creative" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Creative</Link></li>
+                <li><Link href="/tools/category/career-hr" className="transition-colors" style={{ ':hover': { color: themeColor } } as any}>Career &amp; HR</Link></li>
               </ul>
             </div>
 

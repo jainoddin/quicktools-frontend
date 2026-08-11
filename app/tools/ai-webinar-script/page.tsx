@@ -4,23 +4,23 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Webinar Script Generator | Premium Tools',
+  title: 'AI Webinar Script Generator | QuickTools.ai',
   description: 'Generate engaging scripts for your webinars.',
     keywords: ["AI Webinar Script","Webinar Script AI","Free AI Webinar Script","Best AI Webinar Script","Online Webinar Script","AI Webinar Script Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-webinar-script' },
     openGraph: {
-            title: "AI Webinar Script Generator | Premium Tools",
+            title: "AI Webinar Script Generator | QuickTools.ai",
             description: "Generate engaging scripts for your webinars.",
             url: 'https://quicktool.space/tools/ai-webinar-script',
             siteName: 'QuickTools.ai',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`, width: 1200, height: 630, alt: `QuickTools AI Tool - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Webinar Script Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Webinar Script Generator - QuickTools.ai` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Webinar Script Generator | Premium Tools",
+            title: "AI Webinar Script Generator | QuickTools.ai",
             description: "Generate engaging scripts for your webinars.",
-            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QuickTools AI Tool")}&type=tool`]
+            images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Webinar Script Generator")}&type=tool`]
           }
 };
 
@@ -37,32 +37,15 @@ export default function Page() {
             "applicationCategory": "BusinessApplication",
             "operatingSystem": "Any",
             "description": "Generate engaging scripts for your webinars.",
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "USD"
-            }
-          , "featureList": "AI-powered, fast generation, free to use, no signup required for basic use"},
+            "featureList": "AI-assisted workflow, editable results, and browser-based access"},
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktool.space" },
           { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://quicktool.space/tools" },
-          { "@type": "ListItem", "position": 3, "name": "Writing", "item": "https://quicktool.space/tools?category=writing" },
-          { "@type": "ListItem", "position": 4, "name": "QuickTools AI Tool", "item": "https://quicktool.space/tools/ai-webinar-script" }
-        ]
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          { "@type": "Question", "name": "What is QuickTools AI Tool?", "acceptedAnswer": { "@type": "Answer", "text": "The QuickTools AI Tool is an advanced AI-powered tool by QuickTools designed to help you generate engaging scripts for your webinars." } },
-          { "@type": "Question", "name": "Can the QuickTools AI Tool generate content in different tones?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, our AI algorithms are trained to adapt to various professional, casual, persuasive, and creative tones based on your input." } },
-          { "@type": "Question", "name": "Is the content plagiarism-free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the QuickTools AI Tool generates 100% unique, original text every time you use it, ensuring it passes plagiarism checkers." } },
-          { "@type": "Question", "name": "Is it fast to generate results?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. It usually takes just 2-3 seconds to generate the desired output, making it one of the fastest tools available." } },
-          { "@type": "Question", "name": "Do I need to download any software?", "acceptedAnswer": { "@type": "Answer", "text": "No, the QuickTools AI Tool is entirely web-based and runs in your browser. You can access it from any device with an internet connection." } },
-          { "@type": "Question", "name": "Is the QuickTools AI Tool free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, you can use the QuickTools AI Tool and many other tools on QuickTools.ai for free without needing a credit card." } }
+          { "@type": "ListItem", "position": 3, "name": "Writing", "item": "https://quicktool.space/tools/category/marketing" },
+          { "@type": "ListItem", "position": 4, "name": "AI Webinar Script Generator", "item": "https://quicktool.space/tools/ai-webinar-script" }
         ]
       }
     ]) }}

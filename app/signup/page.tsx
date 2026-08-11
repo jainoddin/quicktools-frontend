@@ -7,6 +7,7 @@ import GitHubLoginButton from '@/components/auth/GitHubLoginButton';
 export const metadata: Metadata = {
   title: 'Create Your Free QuickTools.ai Account',
   description: 'Create your QuickTools.ai account today and get instant access to our powerful suite of premium AI tools for text, images, video, and code.',
+  robots: { index: false, follow: false },
 };
 
 export default function SignUpPage() {

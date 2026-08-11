@@ -119,6 +119,11 @@ export default function Header() {
       { name: 'AI User Persona', href: '/tools/ai-user-persona' },
     ],
   };
+  const categoryHubHref: Record<string, string> = {
+    Writing: '/tools/category/writing', Marketing: '/tools/category/marketing',
+    'Code & Tech': '/tools/category/code-tech', Business: '/tools/category/business',
+    Creative: '/tools/category/creative', 'Career & HR': '/tools/category/career-hr',
+  };
 
   return (
     <nav className="sticky top-0 z-[200] bg-white/80 backdrop-blur-md border-b border-[#E5E7EB]">
@@ -212,7 +217,7 @@ export default function Header() {
 
                 {/* Right - Tools Grid */}
                 <div className="flex-1 p-5">
-                  <p className="text-[10px] font-bold text-[#6D5EF8] uppercase tracking-wider mb-3">{activeCategory}</p>
+                  <Link href={categoryHubHref[activeCategory]} className="mb-3 block text-[10px] font-bold uppercase tracking-wider text-[#6D5EF8] hover:underline">View all {activeCategory} tools</Link>
                   <div className="grid grid-cols-2 gap-x-4 gap-y-1">
                     {(categoryTools[activeCategory] || []).map(t => (
                       <Link
@@ -383,7 +388,7 @@ export default function Header() {
                 <div className="ml-4 mt-1 flex flex-col gap-1 border-l-2 border-[#EEF2FF] pl-3">
                   {Object.entries(categoryTools).map(([cat, catTools]) => (
                     <div key={cat}>
-                      <p className="text-[10px] font-bold text-[#6D5EF8] uppercase tracking-wider px-3 pt-2 pb-1">{cat}</p>
+                      <Link href={categoryHubHref[cat]} onClick={() => setMobileMenuOpen(false)} className="block px-3 pt-2 pb-1 text-[10px] font-bold uppercase tracking-wider text-[#6D5EF8] hover:underline">{cat}</Link>
                       {catTools.slice(0, 4).map((t) => (
                         <Link key={t.href} href={t.href} onClick={() => setMobileMenuOpen(false)}
                           className="flex items-center px-3 py-2 rounded-xl hover:bg-[#F9FAFB] transition-colors text-sm text-[#374151] hover:text-[#6D5EF8]">

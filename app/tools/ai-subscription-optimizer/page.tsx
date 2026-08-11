@@ -25,27 +25,15 @@ export default function Page() {
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "description": "Analyze your active subscriptions to find feature overlaps and save money instantly.",
         "url": "https://quicktool.space/tools/ai-subscription-optimizer"
-      , "featureList": "AI-powered, fast generation, free to use, no signup required for basic use"},
+      , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktool.space" },
           { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://quicktool.space/tools" },
-          { "@type": "ListItem", "position": 3, "name": "Writing", "item": "https://quicktool.space/tools?category=writing" },
-          { "@type": "ListItem", "position": 4, "name": "QuickTools AI Tool", "item": "https://quicktool.space/tools/ai-subscription-optimizer" }
-        ]
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          { "@type": "Question", "name": "What is QuickTools AI Tool?", "acceptedAnswer": { "@type": "Answer", "text": "The QuickTools AI Tool is an advanced AI-powered tool by QuickTools designed to help you analyze your active subscriptions to find feature overlaps and save money instantly." } },
-          { "@type": "Question", "name": "Can the QuickTools AI Tool generate content in different tones?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, our AI algorithms are trained to adapt to various professional, casual, persuasive, and creative tones based on your input." } },
-          { "@type": "Question", "name": "Is the content plagiarism-free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the QuickTools AI Tool generates 100% unique, original text every time you use it, ensuring it passes plagiarism checkers." } },
-          { "@type": "Question", "name": "Is it fast to generate results?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. It usually takes just 2-3 seconds to generate the desired output, making it one of the fastest tools available." } },
-          { "@type": "Question", "name": "Do I need to download any software?", "acceptedAnswer": { "@type": "Answer", "text": "No, the QuickTools AI Tool is entirely web-based and runs in your browser. You can access it from any device with an internet connection." } },
-          { "@type": "Question", "name": "Is the QuickTools AI Tool free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, you can use the QuickTools AI Tool and many other tools on QuickTools.ai for free without needing a credit card." } }
+          { "@type": "ListItem", "position": 3, "name": "Writing", "item": "https://quicktool.space/tools/category/career-hr" },
+          { "@type": "ListItem", "position": 4, "name": "Subscription Optimizer", "item": "https://quicktool.space/tools/ai-subscription-optimizer" }
         ]
       }
     ]) }} />
@@ -73,28 +61,28 @@ export default function Page() {
           <h2 className="text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-slate-800">What is QuickTools AI Tool?</h3>
-              <p className="text-slate-600 mt-2">The QuickTools AI Tool is an advanced AI-powered tool by QuickTools designed to help you analyze your active subscriptions to find feature overlaps and save money instantly.</p>
+              <h3 className="text-lg font-semibold text-slate-800">What is Subscription Optimizer?</h3>
+              <p className="text-slate-600 mt-2">The Subscription Optimizer is an advanced AI-powered tool by QuickTools designed to help you analyze your active subscriptions to find feature overlaps and save money instantly.</p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-slate-800">Can the QuickTools AI Tool generate content in different tones?</h3>
+              <h3 className="text-lg font-semibold text-slate-800">Can the Subscription Optimizer generate content in different tones?</h3>
               <p className="text-slate-600 mt-2">Yes, our AI algorithms are trained to adapt to various professional, casual, persuasive, and creative tones based on your input.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the content plagiarism-free?</h3>
-              <p className="text-slate-600 mt-2">Yes, the QuickTools AI Tool generates 100% unique, original text every time you use it, ensuring it passes plagiarism checkers.</p>
+              <p className="text-slate-600 mt-2">Yes, the Subscription Optimizer generates 100% unique, original text every time you use it, ensuring it passes plagiarism checkers.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is it fast to generate results?</h3>
-              <p className="text-slate-600 mt-2">Absolutely. It usually takes just 2-3 seconds to generate the desired output, making it one of the fastest tools available.</p>
+              <p className="text-slate-600 mt-2">Generation time depends on the request and current service availability. Review the result before using it.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Do I need to download any software?</h3>
-              <p className="text-slate-600 mt-2">No, the QuickTools AI Tool is entirely web-based and runs in your browser. You can access it from any device with an internet connection.</p>
+              <p className="text-slate-600 mt-2">No, the Subscription Optimizer is entirely web-based and runs in your browser. You can access it from any device with an internet connection.</p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-slate-800">Is the QuickTools AI Tool free to use?</h3>
-              <p className="text-slate-600 mt-2">Yes, you can use the QuickTools AI Tool and many other tools on QuickTools.ai for free without needing a credit card.</p>
+              <h3 className="text-lg font-semibold text-slate-800">Is the Subscription Optimizer free to use?</h3>
+              <p className="text-slate-600 mt-2">Yes, you can use the Subscription Optimizer and many other tools on QuickTools.ai for free without needing a credit card.</p>
             </div>
           </div>
         </div>

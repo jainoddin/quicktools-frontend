@@ -7,6 +7,7 @@ import GitHubLoginButton from '@/components/auth/GitHubLoginButton';
 export const metadata: Metadata = {
   title: 'Login to Your QuickTools.ai Account',
   description: 'Sign in to access your QuickTools.ai account. Continue generating content, images, and code with our premium suite of AI tools.',
+  robots: { index: false, follow: false },
 };
 
 export default function LoginPage() {

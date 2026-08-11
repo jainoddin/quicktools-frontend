@@ -908,5 +908,45 @@
     "slug": "ai-franchise-manual",
     "category": "Business",
     "isPremium": true
+  },
+  {
+    "name": "AI Analogy Generator",
+    "description": "Turn complex concepts into clear, audience-friendly analogies.",
+    "iconName": "Lightbulb",
+    "color": "bg-[#06B6D4] text-white",
+    "slug": "ai-analogy-generator",
+    "category": "Writing",
+    "isPremium": false,
+    "createdAt": "2026-07-20"
+  },
+  {
+    "name": "AI Conflict Resolver",
+    "description": "Draft calm, constructive messages for difficult conversations.",
+    "iconName": "Handshake",
+    "color": "bg-[#F59E0B] text-white",
+    "slug": "ai-conflict-resolver",
+    "category": "Productivity",
+    "isPremium": false,
+    "createdAt": "2026-07-20"
+  },
+  {
+    "name": "AI Legal Loophole Finder",
+    "description": "Review supplied agreements for unclear clauses and issues that need professional verification.",
+    "iconName": "Scale",
+    "color": "bg-[#EF4444] text-white",
+    "slug": "ai-legal-loophole-finder",
+    "category": "Business",
+    "isPremium": false,
+    "createdAt": "2026-07-20"
+  },
+  {
+    "name": "Subscription Optimizer",
+    "description": "Compare subscriptions, identify overlap, and plan possible savings.",
+    "iconName": "DollarSign",
+    "color": "bg-[#10B981] text-white",
+    "slug": "ai-subscription-optimizer",
+    "category": "Productivity",
+    "isPremium": false,
+    "createdAt": "2026-07-20"
   }
 ]
