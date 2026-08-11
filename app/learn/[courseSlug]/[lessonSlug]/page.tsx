@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, Clock, Calendar, BookOpen, Code, Play, FileQuest
 import DynamicContentRenderer from '@/components/learn/DynamicContentRenderer';
 import { LEARN_UPDATE_BADGE_DAYS } from '@/lib/constants';
 import { getEndpoint } from '@/lib/api';
+import RelevantToolsLinks from '@/components/shared/RelevantToolsLinks';
 
 type Props = {
   params: { courseSlug: string; lessonSlug: string }
@@ -214,6 +215,7 @@ export default async function LessonPage({ params }: Props) {
 
       {/* Main Content Rendered Server-Side */}
       <DynamicContentRenderer blocks={lesson.contentBlocks} updatedBlockIds={lesson.updatedBlockIds} />
+      <RelevantToolsLinks content={`${courseTitle} ${lesson.title} ${lesson.excerpt || ''} ${(lesson.seoKeywords || []).join(' ')}`} />
 
       {/* Footer Navigation */}
       <footer className="mt-16 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">

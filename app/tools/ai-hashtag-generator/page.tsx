@@ -5,8 +5,8 @@ import AiHashtagGeneratorClient from '@/components/ai-hashtag-generator/AiHashta
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Instagram Hashtag Generator | QuickTools',
-  description: 'Boost your reach and engagement with AI-generated, highly relevant hashtags for Instagram, TikTok, and Twitter.',
+  title: "Free AI Instagram Hashtag Generator",
+  description: "Boost your reach and engagement with AI-generated, highly relevant hashtags for Instagram, TikTok, and Twitter.",
     keywords: ["AI Hashtag Generator","Hashtag Generator AI","Free AI Hashtag Generator","Best AI Hashtag Generator","Online Hashtag Generator","AI Hashtag Generator Tool","Hashtag Creator","AI Hashtag Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-hashtag-generator' },
     openGraph: {

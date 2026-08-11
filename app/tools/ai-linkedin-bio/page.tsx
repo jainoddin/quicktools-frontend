@@ -5,13 +5,13 @@ import AiLinkedinBioClient from '@/components/ai-linkedin-bio/AiLinkedinBioClien
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI LinkedIn Bio Generator | QuickTools',
-  description: 'Create a professional, highly optimized LinkedIn summary and bio in seconds with our AI LinkedIn Bio Generator.',
+  title: "Free AI LinkedIn Bio Generator",
+  description: "Create a professional, highly optimized LinkedIn summary and bio from the details you provide with our AI LinkedIn Bio Generator.",
     keywords: ["AI Linkedin Bio","Linkedin Bio AI","Free AI Linkedin Bio","Best AI Linkedin Bio","Online Linkedin Bio","AI Linkedin Bio Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-linkedin-bio' },
     openGraph: {
             title: "Free AI LinkedIn Bio Generator | QuickTools",
-            description: "Create a professional, highly optimized LinkedIn summary and bio in seconds with our AI LinkedIn Bio Generator.",
+            description: "Create a professional, highly optimized LinkedIn summary and bio from the details you provide with our AI LinkedIn Bio Generator.",
             url: 'https://quicktool.space/tools/ai-linkedin-bio',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI LinkedIn Bio Generator | QuickTools",
-            description: "Create a professional, highly optimized LinkedIn summary and bio in seconds with our AI LinkedIn Bio Generator.",
+            description: "Create a professional, highly optimized LinkedIn summary and bio from the details you provide with our AI LinkedIn Bio Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI LinkedIn Bio Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiLinkedinBioPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Create a professional, highly optimized LinkedIn summary and bio in seconds.',
+    description: 'Create a professional, highly optimized LinkedIn summary and bio from the details you provide.',
   };
 
   return (

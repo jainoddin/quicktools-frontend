@@ -5,15 +5,15 @@ import { ChevronRight, Home } from 'lucide-react';
 import AiVideoClient from '@/components/ai-video-generator/AiVideoClient';
 
 export const metadata: Metadata = {
-  title: 'Professional AI Video Generator - Text to Video Creator',
-  description: 'Turn your ideas into high-quality videos instantly. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.',
+  title: "AI Video Generator",
+  description: "Turn your ideas into structured videos with AI assistance. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.",
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-video-generator'
   },
     keywords: ["AI Video Generator","Video Generator AI","Free AI Video Generator","Best AI Video Generator","Online Video Generator","AI Video Generator Tool","Video Creator","AI Video Creator","QuickTools AI"],
     openGraph: {
             title: "Professional AI Video Generator - Text to Video Creator",
-            description: "Turn your ideas into high-quality videos instantly. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.",
+            description: "Turn your ideas into structured videos with AI assistance. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.",
             url: 'https://quicktool.space/tools/ai-video-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Professional AI Video Generator - Text to Video Creator",
-            description: "Turn your ideas into high-quality videos instantly. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.",
+            description: "Turn your ideas into structured videos with AI assistance. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Video Generator")}&type=tool`]
           }
 };
@@ -42,7 +42,7 @@ export default function AiVideoGeneratorPage() {
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": "Turn your ideas into high-quality videos instantly. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.",
+      "description": "Turn your ideas into structured videos with AI assistance. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.",
       "url": "https://quicktool.space/tools/ai-video-generator"
     , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
       {
@@ -93,11 +93,11 @@ export default function AiVideoGeneratorPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Video Generator?</h3>
-              <p className="text-slate-600 mt-2">The AI Video Generator is an advanced AI-powered tool by QuickTools designed to help you turn your ideas into high-quality videos instantly. use our ai video generator to convert text prompts into engaging visual stories effortlessly.</p>
+              <p className="text-slate-600 mt-2">The AI Video Generator is an AI-assisted tool by QuickTools designed to help you turn your ideas into structured videos with AI assistance. use our ai video generator to convert text prompts into engaging visual stories effortlessly.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">How does the AI Video Generator work?</h3>
-              <p className="text-slate-600 mt-2">It uses cutting-edge artificial intelligence to analyze your input and automatically generate high-quality results in seconds. Just provide a prompt, and the AI handles the rest.</p>
+              <p className="text-slate-600 mt-2">It uses AI-assisted processing to analyze your input and automatically generate structured results from the details you provide. Just provide a prompt, and the AI handles the rest.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Can I use AI Video Generator for professional purposes?</h3>
@@ -113,7 +113,7 @@ export default function AiVideoGeneratorPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the AI Video Generator free to use?</h3>
-              <p className="text-slate-600 mt-2">Yes, you can use the AI Video Generator and many other tools on QuickTools.ai for free without needing a credit card.</p>
+              <p className="text-slate-600 mt-2">Current availability and usage limits are shown in the tool interface and pricing page.</p>
             </div>
           </div>
         </div>

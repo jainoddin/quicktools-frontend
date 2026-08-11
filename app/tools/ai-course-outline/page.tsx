@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Masterclass Course Outline | QuickTools.ai',
-  description: 'Generate detailed course outlines and curriculum.',
+  title: "AI Masterclass Course Outline",
+  description: "AI Masterclass Course Outline creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
     keywords: ["AI Course Outline","Course Outline AI","Free AI Course Outline","Best AI Course Outline","Online Course Outline","AI Course Outline Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-course-outline' },
     openGraph: {
-            title: "AI Masterclass Course Outline | QuickTools.ai",
-            description: "Generate detailed course outlines and curriculum.",
+            title: "AI Masterclass Course Outline",
+            description: "AI Masterclass Course Outline creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             url: 'https://quicktool.space/tools/ai-course-outline',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Masterclass Course Outline | QuickTools.ai",
-            description: "Generate detailed course outlines and curriculum.",
+            title: "AI Masterclass Course Outline",
+            description: "AI Masterclass Course Outline creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Masterclass Course Outline")}&type=tool`]
           }
 };

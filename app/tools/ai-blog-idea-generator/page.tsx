@@ -5,13 +5,13 @@ import AiBlogIdeaClient from '@/components/ai-blog-idea-generator/AiBlogIdeaClie
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Blog Idea Generator | QuickTools',
-  description: 'Generate highly engaging, viral blog post ideas and titles instantly with AI. Overcome writer\'s block forever.',
+  title: "Free AI Blog Idea Generator",
+  description: "Generate highly engaging, audience-focused blog post ideas and titles with AI assistance. Move past a blank page.",
     keywords: ["AI Blog Idea Generator","Blog Idea Generator AI","Free AI Blog Idea Generator","Best AI Blog Idea Generator","Online Blog Idea Generator","AI Blog Idea Generator Tool","Blog Idea Creator","AI Blog Idea Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-blog-idea-generator' },
     openGraph: {
             title: "Free AI Blog Idea Generator | QuickTools",
-            description: "Generate highly engaging, viral blog post ideas and titles instantly with AI. Overcome writer's block forever.",
+            description: "Generate highly engaging, audience-focused blog post ideas and titles with AI assistance. Move past a blank page.",
             url: 'https://quicktool.space/tools/ai-blog-idea-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Blog Idea Generator | QuickTools",
-            description: "Generate highly engaging, viral blog post ideas and titles instantly with AI. Overcome writer's block forever.",
+            description: "Generate highly engaging, audience-focused blog post ideas and titles with AI assistance. Move past a blank page.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Blog Idea Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiBlogIdeaGeneratorPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Generate highly engaging, viral blog post ideas and titles instantly with AI.',
+    description: 'Generate highly engaging, audience-focused blog post ideas and titles with AI assistance.',
   };
 
   return (

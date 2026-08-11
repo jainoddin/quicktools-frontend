@@ -5,13 +5,13 @@ import QrCodeClient from '@/components/qr-code-generator/QrCodeClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free QR Code Generator | QuickTools',
-  description: 'Generate high-quality QR codes for URLs, text, or emails instantly. 100% free with no limits.',
+  title: "Free QR Code Generator",
+  description: "Generate customizable QR codes for URLs, text, or email details and download the result for testing.",
     keywords: ["Qr Code Generator","AI Qr Code Generator","Qr Code Generator AI","Free Qr Code Generator","Best Qr Code Generator","Online Qr Code Generator","Qr Code Generator Tool","Qr Code Creator","AI Qr Code Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/qr-code-generator' },
     openGraph: {
             title: "Free QR Code Generator | QuickTools",
-            description: "Generate high-quality QR codes for URLs, text, or emails instantly. 100% free with no limits.",
+            description: "Generate customizable QR codes for URLs, text, or email details and download the result for testing.",
             url: 'https://quicktool.space/tools/qr-code-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free QR Code Generator | QuickTools",
-            description: "Generate high-quality QR codes for URLs, text, or emails instantly. 100% free with no limits.",
+            description: "Generate customizable QR codes for URLs, text, or email details and download the result for testing.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QR Code Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function QrCodeGeneratorPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Generate high-quality QR codes for URLs, text, or emails instantly.',
+    description: 'Generate structured QR codes for URLs, text, or emails with AI assistance.',
   };
 
   return (

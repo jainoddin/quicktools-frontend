@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Brand Guidelines Generator | QuickTools.ai',
-  description: 'Create comprehensive brand identity guidelines.',
+  title: "AI Brand Guidelines Generator",
+  description: "Create a structured brand guidelines draft with AI Brand Guidelines Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Brand Guidelines","Brand Guidelines AI","Free AI Brand Guidelines","Best AI Brand Guidelines","Online Brand Guidelines","AI Brand Guidelines Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-brand-guidelines' },
     openGraph: {
-            title: "AI Brand Guidelines Generator | QuickTools.ai",
-            description: "Create comprehensive brand identity guidelines.",
+            title: "AI Brand Guidelines Generator",
+            description: "Create a structured brand guidelines draft with AI Brand Guidelines Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-brand-guidelines',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Brand Guidelines Generator | QuickTools.ai",
-            description: "Create comprehensive brand identity guidelines.",
+            title: "AI Brand Guidelines Generator",
+            description: "Create a structured brand guidelines draft with AI Brand Guidelines Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Brand Guidelines Generator")}&type=tool`]
           }
 };

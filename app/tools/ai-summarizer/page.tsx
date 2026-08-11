@@ -5,15 +5,15 @@ import { ChevronRight, Home } from 'lucide-react';
 import AiSummarizerClient from '@/components/ai-summarizer/AiSummarizerClient';
 
 export const metadata: Metadata = {
-  title: 'Free AI Text Summarizer - Summarize Articles Instantly',
-  description: 'Summarize long articles, PDFs, or any text into clear bullet points instantly with our free AI Summarizer.',
+  title: "AI Text Summarizer",
+  description: "Summarize long articles, PDFs, or any text into clear bullet points using our AI Summarizer.",
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-summarizer'
   },
     keywords: ["AI Summarizer","Summarizer AI","Free AI Summarizer","Best AI Summarizer","Online Summarizer","AI Summarizer Tool","QuickTools AI"],
     openGraph: {
-            title: "Free AI Text Summarizer - Summarize Articles Instantly",
-            description: "Summarize long articles, PDFs, or any text into clear bullet points instantly with our free AI Summarizer.",
+            title: "Free AI Text Summarizer - Summarize Articles With AI assistance",
+            description: "Summarize long articles, PDFs, or any text into clear bullet points using our AI Summarizer.",
             url: 'https://quicktool.space/tools/ai-summarizer',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Text Summarizer - Summarize Articles Instantly",
-            description: "Summarize long articles, PDFs, or any text into clear bullet points instantly with our free AI Summarizer.",
+            title: "Free AI Text Summarizer - Summarize Articles With AI assistance",
+            description: "Summarize long articles, PDFs, or any text into clear bullet points using our AI Summarizer.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Text Summarizer")}&type=tool`]
           }
 };
@@ -56,7 +56,7 @@ export default function AiSummarizerPage() {
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
               "name": "AI Text Summarizer",
-              "description": "Summarize long articles, PDFs, or any text into clear bullet points instantly with our free AI Summarizer.",
+              "description": "Summarize long articles, PDFs, or any text into clear bullet points using our AI Summarizer.",
               "applicationCategory": "BusinessApplication",
               "operatingSystem": "All",
               "offers": {
@@ -85,11 +85,11 @@ export default function AiSummarizerPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Text Summarizer?</h3>
-              <p className="text-slate-600 mt-2">The AI Text Summarizer is an advanced AI-powered tool by QuickTools designed to help you summarize long articles, pdfs, or any text into clear bullet points instantly with our free ai summarizer.</p>
+              <p className="text-slate-600 mt-2">The AI Text Summarizer is an AI-assisted tool by QuickTools designed to help you summarize long articles, pdfs, or any text into clear bullet points using our ai summarizer.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">How does the AI Text Summarizer work?</h3>
-              <p className="text-slate-600 mt-2">It uses cutting-edge artificial intelligence to analyze your input and automatically generate high-quality results in seconds. Just provide a prompt, and the AI handles the rest.</p>
+              <p className="text-slate-600 mt-2">It uses AI-assisted processing to analyze your input and automatically generate structured results from the details you provide. Just provide a prompt, and the AI handles the rest.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Can I use AI Text Summarizer for professional purposes?</h3>
@@ -105,7 +105,7 @@ export default function AiSummarizerPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the AI Text Summarizer free to use?</h3>
-              <p className="text-slate-600 mt-2">Yes, you can use the AI Text Summarizer and many other tools on QuickTools.ai for free without needing a credit card.</p>
+              <p className="text-slate-600 mt-2">Current availability and usage limits are shown in the tool interface and pricing page.</p>
             </div>
           </div>
         </div>

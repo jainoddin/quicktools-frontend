@@ -5,8 +5,8 @@ import AiYoutubeTagsClient from '@/components/ai-youtube-tags/AiYoutubeTagsClien
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI YouTube Tags Generator | QuickTools',
-  description: 'Boost your video views and SEO ranking with AI-generated, highly optimized tags for YouTube.',
+  title: "Free AI YouTube Tags Generator",
+  description: "Boost your video views and SEO ranking with AI-generated, highly optimized tags for YouTube.",
     keywords: ["AI Youtube Tags","Youtube Tags AI","Free AI Youtube Tags","Best AI Youtube Tags","Online Youtube Tags","AI Youtube Tags Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-youtube-tags' },
     openGraph: {

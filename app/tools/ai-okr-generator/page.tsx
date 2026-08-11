@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI OKR Generator | QuickTools.ai',
-  description: 'Generate Objectives and Key Results for your teams.',
+  title: "AI OKR Generator",
+  description: "Use AI OKR Generator to create a structured okr draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
     keywords: ["AI Okr Generator","Okr Generator AI","Free AI Okr Generator","Best AI Okr Generator","Online Okr Generator","AI Okr Generator Tool","Okr Creator","AI Okr Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-okr-generator' },
     openGraph: {
-            title: "AI OKR Generator | QuickTools.ai",
-            description: "Generate Objectives and Key Results for your teams.",
+            title: "AI OKR Generator",
+            description: "Use AI OKR Generator to create a structured okr draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
             url: 'https://quicktool.space/tools/ai-okr-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI OKR Generator | QuickTools.ai",
-            description: "Generate Objectives and Key Results for your teams.",
+            title: "AI OKR Generator",
+            description: "Use AI OKR Generator to create a structured okr draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI OKR Generator")}&type=tool`]
           }
 };

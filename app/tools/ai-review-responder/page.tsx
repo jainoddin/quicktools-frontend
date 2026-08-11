@@ -5,8 +5,8 @@ import AiReviewResponderClient from '@/components/ai-review-responder/AiReviewRe
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Review Responder | QuickTools',
-  description: 'Save time and maintain a great reputation by generating professional, empathetic replies to customer reviews.',
+  title: "Free AI Review Responder",
+  description: "Save time and maintain a great reputation by generating professional, empathetic replies to customer reviews.",
     keywords: ["AI Review Responder","Review Responder AI","Free AI Review Responder","Best AI Review Responder","Online Review Responder","AI Review Responder Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-review-responder' },
     openGraph: {

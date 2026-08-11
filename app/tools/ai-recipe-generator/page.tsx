@@ -5,13 +5,13 @@ import AiRecipeClient from '@/components/ai-recipe-generator/AiRecipeClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Recipe Generator | QuickTools',
-  description: 'Generate delicious recipes based on the ingredients you have in your fridge instantly with our AI Recipe Generator.',
+  title: "Free AI Recipe Generator",
+  description: "Generate delicious recipes based on the ingredients you have in your fridge using our AI Recipe Generator.",
     keywords: ["AI Recipe Generator","Recipe Generator AI","Free AI Recipe Generator","Best AI Recipe Generator","Online Recipe Generator","AI Recipe Generator Tool","Recipe Creator","AI Recipe Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-recipe-generator' },
     openGraph: {
             title: "Free AI Recipe Generator | QuickTools",
-            description: "Generate delicious recipes based on the ingredients you have in your fridge instantly with our AI Recipe Generator.",
+            description: "Generate delicious recipes based on the ingredients you have in your fridge using our AI Recipe Generator.",
             url: 'https://quicktool.space/tools/ai-recipe-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Recipe Generator | QuickTools",
-            description: "Generate delicious recipes based on the ingredients you have in your fridge instantly with our AI Recipe Generator.",
+            description: "Generate delicious recipes based on the ingredients you have in your fridge using our AI Recipe Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Recipe Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiRecipePage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Generate delicious recipes based on the ingredients you have in your fridge instantly.',
+    description: 'Generate delicious recipes based on the ingredients you have in your fridge with AI assistance.',
   };
 
   return (

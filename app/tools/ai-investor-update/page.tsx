@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Investor Update Generator | QuickTools.ai',
-  description: 'Write professional updates for your startup investors.',
+  title: "AI Investor Update Generator",
+  description: "Create a structured investor update draft with AI Investor Update Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Investor Update","Investor Update AI","Free AI Investor Update","Best AI Investor Update","Online Investor Update","AI Investor Update Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-investor-update' },
     openGraph: {
-            title: "AI Investor Update Generator | QuickTools.ai",
-            description: "Write professional updates for your startup investors.",
+            title: "AI Investor Update Generator",
+            description: "Create a structured investor update draft with AI Investor Update Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-investor-update',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Investor Update Generator | QuickTools.ai",
-            description: "Write professional updates for your startup investors.",
+            title: "AI Investor Update Generator",
+            description: "Create a structured investor update draft with AI Investor Update Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Investor Update Generator")}&type=tool`]
           }
 };

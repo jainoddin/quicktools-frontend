@@ -586,7 +586,7 @@
     "color": "bg-[#EF4444]",
     "slug": "ai-sales-funnel",
     "category": "Marketing",
-    "isPremium": false,
+    "isPremium": true,
     "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
@@ -596,7 +596,7 @@
     "color": "bg-[#8B5CF6]",
     "slug": "ai-ebook-writer",
     "category": "Writing",
-    "isPremium": false,
+    "isPremium": true,
     "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
@@ -606,7 +606,7 @@
     "color": "bg-[#10B981]",
     "slug": "ai-course-creator",
     "category": "Education",
-    "isPremium": false,
+    "isPremium": true,
     "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
@@ -616,7 +616,7 @@
     "color": "bg-[#06B6D4]",
     "slug": "ai-seo-topical-map",
     "category": "SEO",
-    "isPremium": false,
+    "isPremium": true,
     "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
@@ -636,7 +636,7 @@
     "color": "bg-[#3B82F6]",
     "slug": "ai-app-architecture",
     "category": "Development",
-    "isPremium": false,
+    "isPremium": true,
     "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
@@ -646,7 +646,7 @@
     "color": "bg-[#14B8A6]",
     "slug": "ai-grant-proposal",
     "category": "Writing",
-    "isPremium": false,
+    "isPremium": true,
     "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
@@ -656,7 +656,7 @@
     "color": "bg-[#64748B]",
     "slug": "ai-legal-template",
     "category": "Business",
-    "isPremium": false,
+    "isPremium": true,
     "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {
@@ -666,7 +666,7 @@
     "color": "bg-[#EC4899]",
     "slug": "ai-social-calendar",
     "category": "Marketing",
-    "isPremium": false,
+    "isPremium": true,
     "createdAt": "2026-07-19T18:20:54.033Z"
   },
   {

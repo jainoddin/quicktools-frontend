@@ -5,13 +5,13 @@ import AiHookClient from '@/components/ai-hook-generator/AiHookClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Hook Generator | QuickTools',
-  description: 'Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts instantly with our AI Hook Generator.',
+  title: "Free AI Hook Generator",
+  description: "Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts using our AI Hook Generator.",
     keywords: ["AI Hook Generator","Hook Generator AI","Free AI Hook Generator","Best AI Hook Generator","Online Hook Generator","AI Hook Generator Tool","Hook Creator","AI Hook Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-hook-generator' },
     openGraph: {
             title: "Free AI Hook Generator | QuickTools",
-            description: "Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts instantly with our AI Hook Generator.",
+            description: "Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts using our AI Hook Generator.",
             url: 'https://quicktool.space/tools/ai-hook-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Hook Generator | QuickTools",
-            description: "Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts instantly with our AI Hook Generator.",
+            description: "Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts using our AI Hook Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Hook Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiHookPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts instantly.',
+    description: 'Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts with AI assistance.',
   };
 
   return (

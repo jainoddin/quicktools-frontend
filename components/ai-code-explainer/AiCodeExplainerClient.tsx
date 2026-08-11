@@ -184,7 +184,7 @@ export default function AiCodeExplainerClient() {
         <div className="mt-4 pt-4 border-t border-[#E5E7EB]">
           <h3 className="text-xs font-bold text-[#111827] mb-3">Explore Other Free Tools</h3>
           <div className="flex flex-col gap-2">
-            <a href="/tools/sql-query-generator" className="flex items-center gap-3 p-2.5 bg-[#F9FAFB] hover:bg-[#F5F3FF] rounded-xl transition-colors group">
+            <a href="/tools/ai-sql-generator" className="flex items-center gap-3 p-2.5 bg-[#F9FAFB] hover:bg-[#F5F3FF] rounded-xl transition-colors group">
               <div className="w-8 h-8 shrink-0 rounded-lg bg-white border border-[#E5E7EB] flex items-center justify-center group-hover:border-[#8B5CF6]/30 group-hover:shadow-sm transition-all">
                 <Code className="w-4 h-4 text-[#8B5CF6]" />
               </div>

@@ -1,0 +1,3032 @@
+[
+  {
+    "url": "https://quicktool.space/articles/ai-app-architecture-in-2026-building-scalable-software",
+    "lastModified": "2026-08-01T15:35:56.688Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-cold-email-tools-for-b2b-sales-outreach-in-2026",
+    "lastModified": "2026-07-30T15:35:55.270Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-competitor-analysis-in-2026-market-intelligence",
+    "lastModified": "2026-08-10T18:06:22.916Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-contract-review-workflows-2026-strategic-guide",
+    "lastModified": "2026-08-09T18:24:11.694Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-course-creation-tools-in-2026-modern-educator-guide",
+    "lastModified": "2026-07-31T15:35:58.543Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-crisis-management-workflows-2026-response-guide",
+    "lastModified": "2026-08-11T15:36:19.362Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-customer-support-automation-2026-operational-strategy",
+    "lastModified": "2026-08-03T15:35:57.038Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-data-extraction-tools-2026-detailed-comparison",
+    "lastModified": "2026-08-09T18:24:01.719Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-grant-writing-tools-for-nonprofits-2026-guide",
+    "lastModified": "2026-08-02T15:36:16.055Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-localization-tools-scaling-global-content-in-2026",
+    "lastModified": "2026-08-03T21:27:17.817Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-presentation-makers-reviewed-top-tools-for-impactful-decks",
+    "lastModified": "2026-07-26T18:40:50.042Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-product-management-tools-2026-strategy-guide",
+    "lastModified": "2026-08-09T18:23:49.062Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-prompt-optimization-tools-strategic-guide-for-2026",
+    "lastModified": "2026-08-09T18:23:54.211Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-recruitment-tools-for-modern-hiring-teams-in-2026",
+    "lastModified": "2026-07-29T15:35:30.702Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-seo-tools-to-rank-higher-the-2026-strategy-guide",
+    "lastModified": "2026-07-26T18:40:50.203Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-synthetic-data-generators-ml-workflows-in-2026",
+    "lastModified": "2026-08-09T18:23:44.015Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-website-builders-evaluated-best-platforms-for-2026",
+    "lastModified": "2026-07-26T18:40:50.405Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/ai-writing-assistants-comparison-top-tools-for-2026",
+    "lastModified": "2026-07-27T15:35:25.532Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/best-ai-code-assistants-for-developers-2026-top-picks",
+    "lastModified": "2026-07-26T18:40:50.099Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/best-ai-image-generators-top-tools-for-stunning-visuals",
+    "lastModified": "2026-07-26T18:40:50.489Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/essential-ai-tools-for-small-businesses-2026-guide",
+    "lastModified": "2026-07-26T18:40:50.609Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/top-ai-video-generators-2026-studio-benchmark",
+    "lastModified": "2026-07-28T15:35:56.721Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/articles/top-ai-voice-generators-best-tools-for-realistic-speech",
+    "lastModified": "2026-07-26T18:40:50.303Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/blog/25-best-ai-tools-to-supercharge-your-productivity-and-creativity-in-2026",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/27-high-profit-ai-business-ideas-to-launch-in-2026-the-ultimate-entrepreneurs-playbook",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/ai-seo-tools-workflow-how-to-automate-on-page-search-strategy-in-2026",
+    "lastModified": "2026-08-11T03:35:40.275Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/ai-video-generator-workflow-production-grade-videos-in-2026",
+    "lastModified": "2026-07-29T03:40:25.462Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/ai-writing-assistant-playbook-2026-how-to-scale-high-ranking-content-without-losing-human-voice",
+    "lastModified": "2026-07-31T03:36:00.362Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/best-ai-seo-tools-to-rank-higher-on-google-your-ultimate-guide",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/best-free-ai-tools-the-ultimate-guide-to-boosting-productivity-in-2026",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/beyond-the-syntax-how-ai-coding-tools-are-redefining-software-engineering-in-2026",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/boost-your-google-rankings-the-best-ai-seo-tools-for-2026",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/breaking-auramind-ai-unleashes-sentinel-agents-your-proactive-cognitive-co-pilot-has-arrived",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/breaking-omnicorps-synergyos-unleashes-autonomous-multi-agent-ai-the-future-of-business-is-collaborating-not-just-automating",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/claude-ai-context-window-optimization-how-to-stop-context-rot-in-large-documents-2026",
+    "lastModified": "2026-08-02T03:40:34.092Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/claude-ai-for-non-technical-teams-a-practical-operational-framework-for-2026",
+    "lastModified": "2026-08-09T18:15:04.463Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/claude-ai-in-2026-the-complete-guide-to-anthropics-next-gen-ai-model",
+    "lastModified": "2026-07-28T03:40:38.932Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/claude-ai-system-prompts-how-to-engineer-precision-workflows-in-2026",
+    "lastModified": "2026-08-03T21:27:16.093Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/claude-ai-the-ultimate-deep-dive-into-anthropics-masterpiece-2026-edition",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/claude-ai-vs-chatgpt-for-complex-workflows-in-2026-real-world-benchmarks-artifact-strategies",
+    "lastModified": "2026-08-01T03:35:55.583Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/demystifying-ai-seo-tools-in-2026-mechanics-hidden-blindspots-and-diagnostic-workflows",
+    "lastModified": "2026-08-09T18:14:59.411Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/gemini-ai-in-2026-deep-architectural-breakdown-massive-context-processing-and-real-world-limitations",
+    "lastModified": "2026-08-09T18:08:13.370Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/gemini-ai-multimodal-workflows-practical-implementation-playbook-for-2026",
+    "lastModified": "2026-08-09T18:14:49.404Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/gemini-ai-the-ultimate-guide-to-googles-most-powerful-multimodal-model",
+    "lastModified": "2026-08-05T07:26:53.138Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/how-perplexity-ai-processes-the-web-mechanics-context-pipelines-and-limitations-in-2026",
+    "lastModified": "2026-08-09T18:14:54.373Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/mastering-chatgpt-prompts-the-definitive-guide-to-prompt-engineering-for-2026",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/mastering-claude-ai-projects-how-to-build-high-precision-custom-knowledge-hubs-in-2026",
+    "lastModified": "2026-08-03T03:40:29.773Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/mastering-the-ai-logo-generator-the-ultimate-guide-to-instant-branding-in-2026",
+    "lastModified": "2026-07-26T18:32:16.151Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/mastering-the-ai-resume-builder-how-to-beat-the-ats-and-land-your-dream-job",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/perplexity-ai-in-2026-the-ultimate-guide-to-the-worlds-leading-answer-engine",
+    "lastModified": "2026-07-26T18:32:16.352Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/perplexity-ai-the-complete-guide-to-the-new-king-of-search-and-discovery",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/perplexity-ai-vs-chatgpt-in-2026-which-ai-tool-belongs-in-your-daily-stack",
+    "lastModified": "2026-08-10T14:32:56.969Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/perplexity-ai-workflows-for-deep-research-focus-modes-real-world-benchmarks-case-study-2026",
+    "lastModified": "2026-07-30T03:36:01.967Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/the-definitive-guide-to-ai-marketing-tools-in-2026-scale-your-brand-faster",
+    "lastModified": "2026-07-26T18:40:49.917Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/the-ultimate-guide-to-ai-image-generators-in-2026-transform-text-into-high-impact-visuals",
+    "lastModified": "2026-07-27T03:35:58.730Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/the-ultimate-guide-to-choosing-the-best-ai-website-builder-in-2026-build-your-brand-in-minutes",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/top-5-ai-voice-generators-comparing-the-best-text-to-speech-tools-for-2026",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/unleash-your-inbox-power-the-ultimate-guide-to-ai-email-generators",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/unlock-growth-essential-ai-tools-for-small-businesses-in-2026",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/unlock-top-google-rankings-the-best-ai-seo-tools-for-unprecedented-growth",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/blog/unlock-your-creativity-the-ultimate-guide-to-ai-presentation-makers",
+    "lastModified": "2026-07-25T05:57:51.007Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/best-use-cases",
+    "lastModified": "2026-08-06T15:27:07.685Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/coding-with-chatgpt",
+    "lastModified": "2026-08-06T15:27:07.643Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/common-mistakes",
+    "lastModified": "2026-08-06T15:27:07.745Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/create-account",
+    "lastModified": "2026-08-06T15:27:07.176Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/custom-gpts",
+    "lastModified": "2026-08-06T15:27:07.509Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/data-analysis",
+    "lastModified": "2026-08-06T15:27:07.465Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/file-uploads",
+    "lastModified": "2026-08-06T15:27:07.372Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/image-generation",
+    "lastModified": "2026-08-06T15:27:07.421Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/interface-overview",
+    "lastModified": "2026-08-06T15:27:07.225Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/introduction",
+    "lastModified": "2026-08-06T15:27:07.114Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/projects",
+    "lastModified": "2026-08-06T15:29:06.413Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/prompt-basics",
+    "lastModified": "2026-08-06T15:27:07.271Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/quiz",
+    "lastModified": "2026-08-06T15:27:07.065Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/system-prompts",
+    "lastModified": "2026-08-06T15:27:07.326Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/chatgpt/voice-mode",
+    "lastModified": "2026-08-06T15:27:07.600Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-artifacts",
+    "lastModified": "2026-08-06T15:27:08.975Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-best-use-cases",
+    "lastModified": "2026-08-06T15:27:09.248Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-coding",
+    "lastModified": "2026-08-06T15:27:09.197Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-create-account",
+    "lastModified": "2026-08-06T15:27:08.739Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-data-analysis",
+    "lastModified": "2026-08-06T15:27:09.021Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-file-uploads",
+    "lastModified": "2026-08-06T15:27:08.929Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-interface",
+    "lastModified": "2026-08-06T15:27:08.787Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-introduction",
+    "lastModified": "2026-08-06T15:27:08.693Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-mistakes",
+    "lastModified": "2026-08-06T15:27:09.293Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-models",
+    "lastModified": "2026-08-06T15:27:09.151Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-projects",
+    "lastModified": "2026-08-06T15:27:09.063Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-prompts",
+    "lastModified": "2026-08-06T15:27:08.841Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-quiz",
+    "lastModified": "2026-08-06T15:27:08.639Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-system-prompts",
+    "lastModified": "2026-08-06T15:27:08.887Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/claude/claude-workbench",
+    "lastModified": "2026-08-06T15:27:09.107Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-chat",
+    "lastModified": "2026-08-06T15:27:11.943Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-cmd-k",
+    "lastModified": "2026-08-06T15:27:11.892Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-custom-prompts",
+    "lastModified": "2026-08-06T15:27:12.228Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-debugging",
+    "lastModified": "2026-08-06T15:27:12.033Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-extensions",
+    "lastModified": "2026-08-06T15:27:12.275Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-indexing",
+    "lastModified": "2026-08-06T15:27:11.991Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-interface",
+    "lastModified": "2026-08-06T15:27:11.849Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-introduction",
+    "lastModified": "2026-08-06T15:27:11.750Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-mistakes",
+    "lastModified": "2026-08-06T15:27:12.371Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-models",
+    "lastModified": "2026-08-06T15:27:12.184Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-quiz",
+    "lastModified": "2026-08-06T15:27:11.707Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-refactoring",
+    "lastModified": "2026-08-06T15:27:12.080Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-setup",
+    "lastModified": "2026-08-06T15:27:11.804Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-terminal",
+    "lastModified": "2026-08-06T15:27:12.130Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/cursor/cursor-workflows",
+    "lastModified": "2026-08-06T15:27:12.326Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-advanced",
+    "lastModified": "2026-08-06T15:27:10.414Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-api",
+    "lastModified": "2026-08-06T15:27:10.683Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-best-use-cases",
+    "lastModified": "2026-08-06T15:27:10.771Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-coding",
+    "lastModified": "2026-08-06T15:27:10.727Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-create-account",
+    "lastModified": "2026-08-06T15:27:10.286Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-data-analysis",
+    "lastModified": "2026-08-06T15:27:10.547Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-extensions",
+    "lastModified": "2026-08-06T15:27:10.597Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-gems",
+    "lastModified": "2026-08-06T15:27:10.639Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-image-gen",
+    "lastModified": "2026-08-06T15:27:10.501Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-interface",
+    "lastModified": "2026-08-06T15:27:10.327Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-introduction",
+    "lastModified": "2026-08-06T15:27:10.244Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-mistakes",
+    "lastModified": "2026-08-06T15:27:10.821Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-prompts",
+    "lastModified": "2026-08-06T15:27:10.370Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-quiz",
+    "lastModified": "2026-08-06T15:27:10.186Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/gemini/gemini-workspace",
+    "lastModified": "2026-08-06T15:27:10.459Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-api",
+    "lastModified": "2026-08-06T15:27:13.804Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-asking",
+    "lastModified": "2026-08-06T15:27:13.489Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-best-use-cases",
+    "lastModified": "2026-08-06T15:27:13.900Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-collections",
+    "lastModified": "2026-08-06T15:27:13.619Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-copilot",
+    "lastModified": "2026-08-06T15:27:13.533Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-create-account",
+    "lastModified": "2026-08-06T15:27:13.395Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-discover",
+    "lastModified": "2026-08-06T15:27:13.714Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-focus",
+    "lastModified": "2026-08-06T15:27:13.576Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-interface",
+    "lastModified": "2026-08-06T15:27:13.441Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-introduction",
+    "lastModified": "2026-08-06T15:27:13.347Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-mistakes",
+    "lastModified": "2026-08-06T15:27:13.949Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-pro",
+    "lastModified": "2026-08-06T15:27:13.761Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-quiz",
+    "lastModified": "2026-08-06T15:27:13.288Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-research",
+    "lastModified": "2026-08-06T15:27:13.849Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/perplexity/perplexity-uploads",
+    "lastModified": "2026-08-06T15:27:13.666Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-best-practices",
+    "lastModified": "2026-08-06T15:27:15.350Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-browsing",
+    "lastModified": "2026-08-06T15:27:14.909Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-context",
+    "lastModified": "2026-08-06T15:27:15.135Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-cot",
+    "lastModified": "2026-08-06T15:27:15.219Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-creating",
+    "lastModified": "2026-08-06T15:27:15.005Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-evaluation",
+    "lastModified": "2026-08-06T15:27:15.264Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-fewshot",
+    "lastModified": "2026-08-06T15:27:15.177Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-interface",
+    "lastModified": "2026-08-06T15:27:14.866Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-introduction",
+    "lastModified": "2026-08-06T15:27:14.820Z",
+    "changeFrequency": "weekly",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-mistakes",
+    "lastModified": "2026-08-06T15:27:15.393Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-quiz",
+    "lastModified": "2026-08-06T15:27:14.767Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-sharing",
+    "lastModified": "2026-08-06T15:27:15.308Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-system",
+    "lastModified": "2026-08-06T15:27:15.092Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-using",
+    "lastModified": "2026-08-06T15:27:14.960Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/learn/prompthub/prompthub-variables",
+    "lastModified": "2026-08-06T15:27:15.050Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/news/193-nations-sign-global-ai-accord-on-autonomous-systems",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/2001-cinema-retrospective-ai-and-waking-life-analyzed",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/ai-and-education-balancing-tech-and-critical-thinking",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/ai-hallucination-risks-why-nasa-must-remain-cautious",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/ai-in-healthcare-why-physicians-must-lead-ai-integration",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/ai-market-volatility-reuters-highlights-the-ai-whipsaw",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/amazon-texas-data-center-could-be-top-us-polluter",
+    "lastModified": "2026-08-09T18:34:42.121Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/anthropic-secures-4-billion-in-series-e-funding-round",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/anthropic-unveils-claude-4-with-real-time-action-agents",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/apple-unveils-apple-intelligence-20-with-holographic-ui",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/aws-partners-with-superblocks-for-secure-vibe-coding",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/bill-ackmans-top-ai-stock-holdings-highlighted-in-new-report",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/brookfield-projects-65-gw-ai-data-center-growth-in-india",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/ct-bank-embraces-ai-future-with-strategic-new-role",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/eu-parliament-approves-landmark-artificial-intelligence-act",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/forbes-releases-2026-ai-50-list-of-top-ai-firms",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/fox-news-highlights-cornerstone-ai-vision-in-education",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/german-minister-pushes-ai-self-sufficiency-after-openai-breach",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/google-gemini-30-hits-agi-threshold-on-new-benchmarks",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/historic-ai-infrastructure-build-out-may-yield-multibagger",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/meta-launches-muse-code-ai-agent-for-large-repos",
+    "lastModified": "2026-08-09T18:34:24.328Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/meta-unveils-llama-4-open-source-trillion-parameter-model",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/microsoft-integrates-ai-copilot-across-office-365-suite-1784532912853",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/midjourney-v8-launches-real-time-interactive-3d-worlds",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/motley-fool-unveils-top-3-ai-stocks-to-buy-right-now",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/new-senate-bill-focuses-on-ai-ready-education-data-systems",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/nvidia-unveils-blackwell-20-chips-with-quantum-cores",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/nvidia-unveils-rubin-next-gen-ai-chip-architecture-for-2026",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/openai-ai-smart-speaker-may-cost-between-300-400",
+    "lastModified": "2026-08-09T18:34:30.510Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/openai-completes-7b-employee-tender-at-852b-value",
+    "lastModified": "2026-08-11T07:35:49.914Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/openai-launches-gpt-6-featuring-native-video-reasoning",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/openai-pauses-astra-development-over-security-risk",
+    "lastModified": "2026-08-09T18:34:36.479Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/situational-awareness-invests-400m-in-source-foundry",
+    "lastModified": "2026-08-10T14:33:56.330Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/spacex-buys-329m-in-tesla-megapacks-for-data-centers",
+    "lastModified": "2026-08-09T18:34:19.037Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/steven-spielberg-film-lands-on-new-streaming-platform-soon",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/top-ai-stock-projected-to-double-in-value-within-3-years",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/understanding-the-ai-premium-cepr-analyzes-tech-valuation",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/why-ai-adoption-hinges-on-trust-over-pure-capability",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/why-credit-default-swaps-are-spooking-ai-investors",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/news/wsu-launches-masters-degree-in-artificial-intelligence",
+    "lastModified": "2026-08-05T07:57:28.161Z",
+    "changeFrequency": "daily",
+    "priority": 0.9
+  },
+  {
+    "url": "https://quicktool.space/prompts/category/business",
+    "lastModified": "2026-08-11T00:00:00.000Z",
+    "changeFrequency": "weekly",
+    "priority": 0.7
+  },
+  {
+    "url": "https://quicktool.space/prompts/category/career",
+    "lastModified": "2026-08-11T00:00:00.000Z",
+    "changeFrequency": "weekly",
+    "priority": 0.7
+  },
+  {
+    "url": "https://quicktool.space/prompts/category/coding",
+    "lastModified": "2026-08-11T00:00:00.000Z",
+    "changeFrequency": "weekly",
+    "priority": 0.7
+  },
+  {
+    "url": "https://quicktool.space/prompts/category/design-image",
+    "lastModified": "2026-08-11T00:00:00.000Z",
+    "changeFrequency": "weekly",
+    "priority": 0.7
+  },
+  {
+    "url": "https://quicktool.space/prompts/category/education",
+    "lastModified": "2026-08-11T00:00:00.000Z",
+    "changeFrequency": "weekly",
+    "priority": 0.7
+  },
+  {
+    "url": "https://quicktool.space/prompts/category/marketing",
+    "lastModified": "2026-08-11T00:00:00.000Z",
+    "changeFrequency": "weekly",
+    "priority": 0.7
+  },
+  {
+    "url": "https://quicktool.space/prompts/category/productivity",
+    "lastModified": "2026-08-11T00:00:00.000Z",
+    "changeFrequency": "weekly",
+    "priority": 0.7
+  },
+  {
+    "url": "https://quicktool.space/prompts/category/seo",
+    "lastModified": "2026-08-11T00:00:00.000Z",
+    "changeFrequency": "weekly",
+    "priority": 0.7
+  },
+  {
+    "url": "https://quicktool.space/prompts/category/social-media",
+    "lastModified": "2026-08-11T00:00:00.000Z",
+    "changeFrequency": "weekly",
+    "priority": 0.7
+  },
+  {
+    "url": "https://quicktool.space/prompts/category/writing",
+    "lastModified": "2026-08-11T00:00:00.000Z",
+    "changeFrequency": "weekly",
+    "priority": 0.7
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/30-day-social-calendar",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/3d-icon-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/90-day-marketing-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/90-day-startup-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/about-us-page-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/action-item-tracker",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/active-recall-question-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/ad-creative-art-direction",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/ai-image-prompt-builder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/algorithm-explainer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/api-integration-helper",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/app-ui-concept-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/ats-resume-tailor",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/audience-engagement-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/audience-research-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/b2b-outreach-campaign",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/background-pattern-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/backlink-content-asset-ideas",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/behavioral-interview-coach",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/bio-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/blog-cover-image-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/blog-post-outline",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/blog-seo-outline",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/brain-dump-organizer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/brand-moodboard-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/brand-style-exploration",
+    "lastModified": "2026-08-09T21:44:44.885Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/brand-voice-guide",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/break-even-analysis",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/bug-finder-and-fixer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/business-card-design-brief",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/business-health-checklist",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/business-idea-validator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/business-model-canvas",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/business-process-improvement",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/calendar-optimization",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/canonical-url-review",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/career-achievement-inventory",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/career-goal-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/career-pivot-mapper",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/case-study-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/chapter-summary-tutor",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/ci-cd-pipeline-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/code-documentation-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/code-refactor-for-readability",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/code-review",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/cold-email-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/color-palette-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/comment-reply-templates",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/community-engagement-questions",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/community-marketing-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/community-post-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/comparison-article-outline",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/competitor-analysis",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/competitor-content-gap-analysis",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/comprehensive-seo-content-strategy-and-brief-generator",
+    "lastModified": "2026-08-09T21:42:40.596Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/comprehensive-seo-content-strategy-outline-generator",
+    "lastModified": "2026-08-11T12:27:38.394Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/concept-comparison-table",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/conclusion-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/content-calendar-ideas",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/content-distribution-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/content-refresh-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/content-repurposing-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/content-series-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/conversion-rate-improvement-ideas",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/core-web-vitals-action-plan",
+    "lastModified": "2026-08-09T20:31:53.240Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/cover-letter-builder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/creator-content-pillars",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/customer-discovery-questions",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/customer-persona-builder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/customer-success-story",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/customer-testimonial-request",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/customer-win-back-campaign",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/daily-priority-planner",
+    "lastModified": "2026-08-09T20:38:26.371Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/database-schema-designer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/deadline-recovery-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/decision-journal-template",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/decision-matrix",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/deep-work-week-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/delegation-checklist",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/dockerfile-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/duplicate-content-resolver",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/e-commerce-business-strategy",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/e-commerce-product-banner",
+    "lastModified": "2026-08-09T21:18:24.311Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/e-e-a-t-content-improvement",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/editorial-content-reviewer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/editorial-illustration-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/educational-carousel-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/email-welcome-sequence",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/error-message-decoder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/essay-feedback-tutor",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/essay-outline-builder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/event-flyer-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/exam-answer-improver",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/exam-revision-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/executive-summary",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/exit-strategy-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/explain-code-line-by-line",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/explain-simply-then-deeply",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/facebook-ad-copy",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/faq-content-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/faq-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/featured-snippet-optimizer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/first-30-days-at-new-job",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/flashcard-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/focus-session-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/founder-linkedin-strategy",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/founder-weekly-review",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/franchise-feasibility-check",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/freelance-proposal-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/freelancer-profile-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/frontend-accessibility-audit",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/git-commands-helper",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/goal-breakdown-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/google-ads-copy-pack",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/google-search-console-analyzer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/grammar-and-clarity-fixer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/habit-review",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/headline-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/hero-banner-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/history-timeline-builder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/homework-feedback-coach",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/how-to-guide-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/icon-set-art-direction",
+    "lastModified": "2026-08-09T21:27:16.174Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/image-alt-text-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/inbox-triage",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/indexing-issue-diagnoser",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/influencer-outreach-message",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/infographic-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/instagram-ad-copy",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/instagram-caption-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/instagram-reel-ideas",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/internal-linking-suggestions",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/interview-follow-up-email",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/interview-question-prep",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/introduction-rewriter",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/investor-pitch-deck-outline",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/isometric-illustration-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/job-description-analyzer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/job-search-weekly-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/keyword-cluster-builder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/keyword-research-brainstorm",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/landing-page-copy",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/landing-page-visual-direction",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/language-learning-practice",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/lead-magnet-ideas",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/lead-nurture-sequence",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/leadership-interview-prep",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/learning-gap-finder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/legacy-code-modernizer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/lesson-plan-builder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/linkedin-carousel-outline",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/linkedin-headline-optimizer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/linkedin-post-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/linkedin-profile-optimizer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/local-business-growth-strategy",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/local-seo-description",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/logo-concept-brief",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/long-form-article-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/market-entry-strategy",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/market-positioning-statement",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/marketing-budget-allocator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/marketing-experiment-backlog",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/marketing-funnel-builder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/mascot-concept-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/math-problem-tutor",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/meeting-agenda-builder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/meeting-notes-to-actions",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/meeting-summary-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/memory-aid-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/meta-title-and-description-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/migration-plan-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/minimal-logo-direction",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/mobile-app-screen-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/mock-exam-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/mock-interview-coach",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/mongodb-query-optimizer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/monthly-planning-session",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/networking-message-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/newsletter-growth-strategy",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/newsletter-intro-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/next-js-page-builder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/next-js-seo-implementation",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/note-taking-template",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/offer-comparison-matrix",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/okr-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/one-page-business-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/orphan-page-finder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/packaging-design-brief",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/partnership-strategy",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/performance-optimization-review",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/performance-review-self-evaluation",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/personal-brand-content-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/personal-brand-strategy",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/personal-knowledge-system",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/personal-learning-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/podcast-clip-ideas",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/portfolio-project-ideas",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/poster-design-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/practice-problem-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/presentation-cover-prompt",
+    "lastModified": "2026-08-10T06:21:27.825Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/presentation-outline-for-students",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/press-release-draft",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/pricing-strategy-advisor",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/procrastination-breaker-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/product-description-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/product-launch-campaign",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/product-market-fit-interview-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/product-messaging-framework",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/product-mockup-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/product-photography-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/productivity-system-designer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/professional-email-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/programmatic-seo-page-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/project-breakdown-into-tasks",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/project-risk-checklist",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/promotion-discussion-prep",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/proofreading-assistant",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/proposal-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/quarterly-review",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/quiz-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/react-component-builder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/react-state-management-advisor",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/reading-comprehension-coach",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/recruiter-message-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/redirect-mapping-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/reels-and-shorts-script",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/referral-program-strategy",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/regex-pattern-builder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/research-question-generator",
+    "lastModified": "2026-08-10T03:30:47.172Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/research-topic-brainstorm",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/rest-api-designer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/resume-bullet-point-improver",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/resume-summary-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/retargeting-campaign",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/revenue-model-brainstorm",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/rewrite-for-clarity",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/risk-assessment-report",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/saas-dashboard-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/saas-metrics-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/salary-negotiation-script",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/schema-markup-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/science-concept-tutor",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/search-intent-analyzer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/seasonal-campaign-ideas",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/security-code-review",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/seo-content-brief",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/seo-landing-page-reviewer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/seo-migration-checklist",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/seo-url-slug-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/simplify-a-complex-topic",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/skill-learning-roadmap",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/skills-gap-analysis",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/small-business-growth-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/social-bio-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/social-cta-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/social-media-audit",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/social-media-graphic-brief",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/social-media-strategy",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/socratic-tutor",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/sop-builder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/spaced-repetition-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/sql-query-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/sql-query-optimizer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/star-answer-coach",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/startup-cost-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/story-idea-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/story-poll-ideas",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/storytelling-framework",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/study-plan-creator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/study-session-planner",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/subscription-business-strategy",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/swot-analysis-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/system-design-walkthrough",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/task-estimation-helper",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/team-standup-summarizer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/technical-debt-prioritizer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/technical-interview-study-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/technical-seo-audit",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/technical-writing-simplifier",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/tiktok-video-concepts",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/time-audit",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/time-blocking-schedule",
+    "lastModified": "2026-08-10T12:06:10.375Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/tone-rewriter",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/topical-authority-map",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/typescript-error-fixer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/unit-test-generator",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/usp-finder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/value-proposition-designer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/vendor-negotiation-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/video-opening-hook-variations",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/viral-hook-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/vocabulary-builder",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/webinar-promotion-plan",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/weekly-review-template",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/workload-prioritizer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/write-a-high-converting-thought-leadership-article",
+    "lastModified": "2026-08-10T21:00:13.849Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/write-an-engaging-thought-leadership-article",
+    "lastModified": "2026-08-10T21:00:34.426Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/x-thread-outline",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/xml-sitemap-audit",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/youtube-description-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/youtube-script-writer",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/youtube-thumbnail-ideas",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/youtube-thumbnail-prompt",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  },
+  {
+    "url": "https://quicktool.space/prompts/chatgpt/youtube-title-ideas",
+    "lastModified": "2026-08-09T20:23:27.453Z",
+    "changeFrequency": "weekly",
+    "priority": 0.8
+  }
+]

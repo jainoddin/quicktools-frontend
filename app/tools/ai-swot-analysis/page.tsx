@@ -2,15 +2,16 @@ import { Metadata } from 'next';
 import AiSwotAnalysisClient from '@/components/ai-swot-analysis/AiSwotAnalysisClient';
 import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
+import PriorityToolSeoSection from '@/components/tools/PriorityToolSeoSection';
 
 export const metadata: Metadata = {
-  title: 'AI SWOT Analysis Generator | QuickTools.ai',
-  description: 'Generate a detailed SWOT analysis for your business.',
-    keywords: ["AI Swot Analysis","Swot Analysis AI","Free AI Swot Analysis","Best AI Swot Analysis","Online Swot Analysis","AI Swot Analysis Tool","QuickTools AI"],
+  title: "AI SWOT Analysis",
+  description: "Separate internal strengths and weaknesses from external opportunities and threats, then turn evidence into strategic actions.",
+    keywords: ["AI SWOT Analysis","SWOT Analysis AI","SWOT Analysis Generator","Online SWOT Analysis","AI SWOT Analysis Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-swot-analysis' },
     openGraph: {
-            title: "AI SWOT Analysis Generator | QuickTools.ai",
-            description: "Generate a detailed SWOT analysis for your business.",
+            title: "AI SWOT Analysis",
+            description: "Separate internal strengths and weaknesses from external opportunities and threats, then turn evidence into strategic actions.",
             url: 'https://quicktool.space/tools/ai-swot-analysis',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,14 +19,15 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI SWOT Analysis Generator | QuickTools.ai",
-            description: "Generate a detailed SWOT analysis for your business.",
+            title: "AI SWOT Analysis",
+            description: "Separate internal strengths and weaknesses from external opportunities and threats, then turn evidence into strategic actions.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI SWOT Analysis Generator")}&type=tool`]
           }
 };
 
 export default function Page() {
   return (
+    <>
     <div className="flex-1 w-full max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 py-6 h-[calc(100vh-80px)]">
       <script
         type="application/ld+json"
@@ -62,5 +64,7 @@ export default function Page() {
 
       <AiSwotAnalysisClient />
     </div>
+    <PriorityToolSeoSection slug="ai-swot-analysis" />
+    </>
   );
 }

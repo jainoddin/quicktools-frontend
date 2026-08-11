@@ -5,13 +5,13 @@ import AiGrantProposalClient from '@/components/ai-grant-proposal/AiGrantProposa
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Premium AI Grant Proposal Writer | QuickTools',
-  description: 'Write professional grant proposals for non-profits and startups.',
+  title: "Premium AI Grant Proposal Writer",
+  description: "Premium AI Grant Proposal Writer creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
     keywords: ["AI Grant Proposal","Grant Proposal AI","Free AI Grant Proposal","Best AI Grant Proposal","Online Grant Proposal","AI Grant Proposal Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-grant-proposal' },
     openGraph: {
             title: "Premium AI Grant Proposal Writer | QuickTools",
-            description: "Write professional grant proposals for non-profits and startups.",
+            description: "Premium AI Grant Proposal Writer creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             url: 'https://quicktool.space/tools/ai-grant-proposal',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Premium AI Grant Proposal Writer | QuickTools",
-            description: "Write professional grant proposals for non-profits and startups.",
+            description: "Premium AI Grant Proposal Writer creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Grant Proposal Writer")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiGrantProposalPage() {
       price: '5',
       priceCurrency: 'USD',
     },
-    description: 'Write professional grant proposals for non-profits and startups.',
+    description: 'Write professional grant proposals for non-profits and startups. Create an editable Grant Proposal Writer draft with guided inputs, then review and refine it for your workflow.',
   };
 
   return (

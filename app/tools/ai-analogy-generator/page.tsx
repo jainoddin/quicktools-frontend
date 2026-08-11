@@ -5,11 +5,13 @@ import { ChevronRight, Home } from 'lucide-react';
 import AnalogyGeneratorClient from '@/components/ai-analogy-generator/AnalogyGeneratorClient';
 
 export const metadata: Metadata = {
-  title: 'AI Analogy Generator - QuickTools.ai',
-  description: 'Explain complex tech or legal jargon using simple analogies from sports, movies, or hobbies.',
+  title: "AI Analogy Generator",
+  description: "Explain complex tech or legal jargon using simple analogies from sports, movies, or hobbies.",
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-analogy-generator'
-  }
+  },
+  openGraph: { title: 'AI Analogy Generator - QuickTools.ai', description: 'Explain complex ideas with audience-friendly analogies.', url: 'https://quicktool.space/tools/ai-analogy-generator', type: 'website', images: [{ url: 'https://quicktool.space/api/og?title=AI%20Analogy%20Generator&type=tool', width: 1200, height: 630, alt: 'AI Analogy Generator' }] },
+  twitter: { card: 'summary_large_image', title: 'AI Analogy Generator - QuickTools.ai', description: 'Explain complex ideas with audience-friendly analogies.', images: ['https://quicktool.space/api/og?title=AI%20Analogy%20Generator&type=tool'] }
 };
 
 export default function Page() {
@@ -62,11 +64,11 @@ export default function Page() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Analogy Generator?</h3>
-              <p className="text-slate-600 mt-2">The AI Analogy Generator is an advanced AI-powered tool by QuickTools designed to help you explain complex tech or legal jargon using simple analogies from sports, movies, or hobbies.</p>
+              <p className="text-slate-600 mt-2">The AI Analogy Generator is an AI-assisted tool by QuickTools designed to help you explain complex tech or legal jargon using simple analogies from sports, movies, or hobbies.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">How does the AI Analogy Generator work?</h3>
-              <p className="text-slate-600 mt-2">It uses cutting-edge artificial intelligence to analyze your input and automatically generate high-quality results in seconds. Just provide a prompt, and the AI handles the rest.</p>
+              <p className="text-slate-600 mt-2">It uses AI-assisted processing to analyze your input and automatically generate structured results from the details you provide. Just provide a prompt, and the AI handles the rest.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Can I use AI Analogy Generator for professional purposes?</h3>

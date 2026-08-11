@@ -5,15 +5,15 @@ import { ChevronRight, Home } from 'lucide-react';
 import AiCodeClient from '@/components/ai-code-generator/AiCodeClient';
 
 export const metadata: Metadata = {
-  title: 'Intelligent AI Code Generator & Programming Assistant',
-  description: 'Generate production-ready code in seconds with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.',
+  title: "AI Code Generator",
+  description: "Generate editable code from the details you provide with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.",
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-code-generator'
   },
     keywords: ["AI Code Generator","Code Generator AI","Free AI Code Generator","Best AI Code Generator","Online Code Generator","AI Code Generator Tool","Code Creator","AI Code Creator","QuickTools AI"],
     openGraph: {
             title: "Intelligent AI Code Generator & Programming Assistant",
-            description: "Generate production-ready code in seconds with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.",
+            description: "Generate editable code from the details you provide with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.",
             url: 'https://quicktool.space/tools/ai-code-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Intelligent AI Code Generator & Programming Assistant",
-            description: "Generate production-ready code in seconds with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.",
+            description: "Generate editable code from the details you provide with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Code Generator")}&type=tool`]
           }
 };
@@ -42,7 +42,7 @@ export default function AiCodeGeneratorPage() {
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": "Generate production-ready code in seconds with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.",
+      "description": "Generate editable code from the details you provide with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.",
       "url": "https://quicktool.space/tools/ai-code-generator"
     , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
       {
@@ -93,7 +93,7 @@ export default function AiCodeGeneratorPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Code Generator?</h3>
-              <p className="text-slate-600 mt-2">The AI Code Generator is an advanced AI-powered tool by QuickTools designed to help you generate production-ready code in seconds with our ai code generator. boost development speed and debug effortlessly with intelligent assistance.</p>
+              <p className="text-slate-600 mt-2">The AI Code Generator is an AI-assisted tool by QuickTools designed to help you generate editable code from the details you provide with our ai code generator. boost development speed and debug effortlessly with intelligent assistance.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the generated code from AI Code Generator secure?</h3>
@@ -113,7 +113,7 @@ export default function AiCodeGeneratorPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the AI Code Generator free to use?</h3>
-              <p className="text-slate-600 mt-2">Yes, you can use the AI Code Generator and many other tools on QuickTools.ai for free without needing a credit card.</p>
+              <p className="text-slate-600 mt-2">Current availability and usage limits are shown in the tool interface and pricing page.</p>
             </div>
           </div>
         </div>

@@ -5,11 +5,13 @@ import { ChevronRight, Home } from 'lucide-react';
 import ConflictResolverClient from '@/components/ai-conflict-resolver/ConflictResolverClient';
 
 export const metadata: Metadata = {
-  title: 'AI Conflict Resolver - QuickTools.ai',
-  description: 'Craft calm, mature, and de-escalating text messages to resolve conflicts with partners or bosses.',
+  title: "AI Conflict Resolver",
+  description: "Craft calm, mature, and de-escalating text messages to resolve conflicts with partners or bosses.",
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-conflict-resolver'
-  }
+  },
+  openGraph: { title: 'AI Conflict Resolver - QuickTools.ai', description: 'Prepare calm, constructive conflict-resolution messages.', url: 'https://quicktool.space/tools/ai-conflict-resolver', type: 'website', images: [{ url: 'https://quicktool.space/api/og?title=AI%20Conflict%20Resolver&type=tool', width: 1200, height: 630, alt: 'AI Conflict Resolver' }] },
+  twitter: { card: 'summary_large_image', title: 'AI Conflict Resolver - QuickTools.ai', description: 'Prepare calm, constructive conflict-resolution messages.', images: ['https://quicktool.space/api/og?title=AI%20Conflict%20Resolver&type=tool'] }
 };
 
 export default function Page() {
@@ -62,11 +64,11 @@ export default function Page() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Conflict Resolver?</h3>
-              <p className="text-slate-600 mt-2">The AI Conflict Resolver is an advanced AI-powered tool by QuickTools designed to help you craft calm, mature, and de-escalating text messages to resolve conflicts with partners or bosses.</p>
+              <p className="text-slate-600 mt-2">The AI Conflict Resolver is an AI-assisted tool by QuickTools designed to help you craft calm, mature, and de-escalating text messages to resolve conflicts with partners or bosses.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">How does the AI Conflict Resolver work?</h3>
-              <p className="text-slate-600 mt-2">It uses cutting-edge artificial intelligence to analyze your input and automatically generate high-quality results in seconds. Just provide a prompt, and the AI handles the rest.</p>
+              <p className="text-slate-600 mt-2">It uses AI-assisted processing to analyze your input and automatically generate structured results from the details you provide. Just provide a prompt, and the AI handles the rest.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Can I use AI Conflict Resolver for professional purposes?</h3>

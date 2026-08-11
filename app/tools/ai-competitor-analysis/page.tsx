@@ -2,15 +2,16 @@ import { Metadata } from 'next';
 import AiCompetitorAnalysisClient from '@/components/ai-competitor-analysis/AiCompetitorAnalysisClient';
 import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
+import PriorityToolSeoSection from '@/components/tools/PriorityToolSeoSection';
 
 export const metadata: Metadata = {
-  title: 'AI Competitor Analysis | QuickTools.ai',
-  description: 'Generate detailed competitor analysis reports.',
-    keywords: ["AI Competitor Analysis","Competitor Analysis AI","Free AI Competitor Analysis","Best AI Competitor Analysis","Online Competitor Analysis","AI Competitor Analysis Tool","QuickTools AI"],
+  title: "AI Competitor Analysis",
+  description: "Build a structured competitor matrix for positioning, customers, offers, pricing, channels, evidence gaps, risks, and strategic actions.",
+    keywords: ["AI Competitor Analysis","Competitor Analysis AI","Competitor Analysis Generator","Online Competitor Analysis","AI Competitor Analysis Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-competitor-analysis' },
     openGraph: {
-            title: "AI Competitor Analysis | QuickTools.ai",
-            description: "Generate detailed competitor analysis reports.",
+            title: "AI Competitor Analysis",
+            description: "Build a structured competitor matrix for positioning, customers, offers, pricing, channels, evidence gaps, risks, and strategic actions.",
             url: 'https://quicktool.space/tools/ai-competitor-analysis',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,14 +19,15 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Competitor Analysis | QuickTools.ai",
-            description: "Generate detailed competitor analysis reports.",
+            title: "AI Competitor Analysis",
+            description: "Build a structured competitor matrix for positioning, customers, offers, pricing, channels, evidence gaps, risks, and strategic actions.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Competitor Analysis")}&type=tool`]
           }
 };
 
 export default function Page() {
   return (
+    <>
     <div className="flex-1 w-full max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 py-6 h-[calc(100vh-80px)]">
       <script
         type="application/ld+json"
@@ -62,5 +64,7 @@ export default function Page() {
 
       <AiCompetitorAnalysisClient />
     </div>
+    <PriorityToolSeoSection slug="ai-competitor-analysis" />
+    </>
   );
 }

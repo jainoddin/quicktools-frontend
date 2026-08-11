@@ -2,15 +2,16 @@ import { Metadata } from 'next';
 import AiBusinessModelClient from '@/components/ai-business-model/AiBusinessModelClient';
 import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
+import PriorityToolSeoSection from '@/components/tools/PriorityToolSeoSection';
 
 export const metadata: Metadata = {
-  title: 'AI Business Model Canvas | QuickTools.ai',
-  description: 'Generate a complete Business Model Canvas.',
-    keywords: ["AI Business Model","Business Model AI","Free AI Business Model","Best AI Business Model","Online Business Model","AI Business Model Tool","QuickTools AI"],
+  title: "AI Business Model Canvas for Strategy Mapping",
+  description: "Map customers, value propositions, channels, revenue, resources, activities, partners, and costs in a structured canvas draft.",
+    keywords: ["AI Business Model","Business Model AI","Business Model Canvas","Online Business Model","AI Business Model Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-business-model' },
     openGraph: {
-            title: "AI Business Model Canvas | QuickTools.ai",
-            description: "Generate a complete Business Model Canvas.",
+            title: "AI Business Model Canvas for Strategy Mapping",
+            description: "Map customers, value propositions, channels, revenue, resources, activities, partners, and costs in a structured canvas draft.",
             url: 'https://quicktool.space/tools/ai-business-model',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,14 +19,15 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Business Model Canvas | QuickTools.ai",
-            description: "Generate a complete Business Model Canvas.",
+            title: "AI Business Model Canvas for Strategy Mapping",
+            description: "Map customers, value propositions, channels, revenue, resources, activities, partners, and costs in a structured canvas draft.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Business Model Canvas")}&type=tool`]
           }
 };
 
 export default function Page() {
   return (
+    <>
     <div className="flex-1 w-full max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 py-6 h-[calc(100vh-80px)]">
       <script
         type="application/ld+json"
@@ -62,5 +64,7 @@ export default function Page() {
 
       <AiBusinessModelClient />
     </div>
+    <PriorityToolSeoSection slug="ai-business-model" />
+    </>
   );
 }

@@ -5,13 +5,13 @@ import AiGiftIdeaClient from '@/components/ai-gift-idea-generator/AiGiftIdeaClie
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Gift Idea Generator | QuickTools',
-  description: 'Find the perfect, thoughtful gift for anyone instantly based on their age, interests, and your budget with our AI Gift Idea Generator.',
+  title: "Free AI Gift Idea Generator",
+  description: "Find the perfect, thoughtful gift for anyone with AI assistance based on their age, interests, and your budget with our AI Gift Idea Generator.",
     keywords: ["AI Gift Idea","Gift Idea AI","Free AI Gift Idea","Best AI Gift Idea","Online Gift Idea","AI Gift Idea Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-gift-idea' },
     openGraph: {
             title: "Free AI Gift Idea Generator | QuickTools",
-            description: "Find the perfect, thoughtful gift for anyone instantly based on their age, interests, and your budget with our AI Gift Idea Generator.",
+            description: "Find the perfect, thoughtful gift for anyone with AI assistance based on their age, interests, and your budget with our AI Gift Idea Generator.",
             url: 'https://quicktool.space/tools/ai-gift-idea',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Gift Idea Generator | QuickTools",
-            description: "Find the perfect, thoughtful gift for anyone instantly based on their age, interests, and your budget with our AI Gift Idea Generator.",
+            description: "Find the perfect, thoughtful gift for anyone with AI assistance based on their age, interests, and your budget with our AI Gift Idea Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Gift Idea Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiGiftIdeaPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Find the perfect, thoughtful gift for anyone instantly based on their age, interests, and your budget.',
+    description: 'Find the perfect, thoughtful gift for anyone with AI assistance based on their age, interests, and your budget.',
   };
 
   return (

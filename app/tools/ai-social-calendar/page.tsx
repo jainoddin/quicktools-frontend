@@ -5,8 +5,8 @@ import AiSocialCalendarClient from '@/components/ai-social-calendar/AiSocialCale
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Premium AI Social Media Calendar | QuickTools',
-  description: 'Generate a 30-day multi-channel marketing calendar with specific daily posts.',
+  title: "Premium AI Social Media Calendar",
+  description: "Generate a 30-day multi-channel marketing calendar with specific daily posts.",
     keywords: ["AI Social Calendar","Social Calendar AI","Free AI Social Calendar","Best AI Social Calendar","Online Social Calendar","AI Social Calendar Tool","AI Social Calendar AI","Social Media Calendar AI","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-social-calendar' },
     openGraph: {

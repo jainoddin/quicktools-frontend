@@ -5,8 +5,8 @@ import AiEbookWriterClient from '@/components/ai-ebook-writer/AiEbookWriterClien
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Premium AI E-Book Writer | QuickTools',
-  description: 'Generate chapter-by-chapter outlines and content for an entire e-book.',
+  title: "Premium AI E-Book Writer",
+  description: "Generate chapter-by-chapter outlines and content for an entire e-book.",
     keywords: ["AI Ebook Writer","Ebook Writer AI","Free AI Ebook Writer","Best AI Ebook Writer","Online Ebook Writer","AI Ebook Writer Tool","Ebook Writing Tool","AI Ebook Writing Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-ebook-writer' },
     openGraph: {

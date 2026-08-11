@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Value Proposition Generator | QuickTools.ai',
-  description: 'Generate unique value propositions for your products.',
+  title: "AI Value Proposition Generator",
+  description: "Create a structured value proposition draft with AI Value Proposition Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Value Proposition","Value Proposition AI","Free AI Value Proposition","Best AI Value Proposition","Online Value Proposition","AI Value Proposition Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-value-proposition' },
     openGraph: {
-            title: "AI Value Proposition Generator | QuickTools.ai",
-            description: "Generate unique value propositions for your products.",
+            title: "AI Value Proposition Generator",
+            description: "Create a structured value proposition draft with AI Value Proposition Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-value-proposition',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Value Proposition Generator | QuickTools.ai",
-            description: "Generate unique value propositions for your products.",
+            title: "AI Value Proposition Generator",
+            description: "Create a structured value proposition draft with AI Value Proposition Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Value Proposition Generator")}&type=tool`]
           }
 };

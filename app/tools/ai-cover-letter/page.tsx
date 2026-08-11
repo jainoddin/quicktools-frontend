@@ -5,13 +5,13 @@ import AiCoverLetterClient from '@/components/ai-cover-letter/AiCoverLetterClien
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Cover Letter Generator | QuickTools',
-  description: 'Write a professional, standout cover letter for any job application in seconds based on your skills and the job title.',
+  title: "Free AI Cover Letter Generator",
+  description: "Write a professional, standout cover letter for any job application from the details you provide based on your skills and the job title.",
     keywords: ["AI Cover Letter","Cover Letter AI","Free AI Cover Letter","Best AI Cover Letter","Online Cover Letter","AI Cover Letter Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-cover-letter' },
     openGraph: {
             title: "Free AI Cover Letter Generator | QuickTools",
-            description: "Write a professional, standout cover letter for any job application in seconds based on your skills and the job title.",
+            description: "Write a professional, standout cover letter for any job application from the details you provide based on your skills and the job title.",
             url: 'https://quicktool.space/tools/ai-cover-letter',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Cover Letter Generator | QuickTools",
-            description: "Write a professional, standout cover letter for any job application in seconds based on your skills and the job title.",
+            description: "Write a professional, standout cover letter for any job application from the details you provide based on your skills and the job title.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Cover Letter Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiCoverLetterPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Write a professional, standout cover letter for any job application in seconds.',
+    description: 'Write a professional, standout cover letter for any job application from the details you provide.',
   };
 
   return (

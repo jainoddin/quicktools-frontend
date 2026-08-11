@@ -5,15 +5,15 @@ import { ChevronRight, Home } from 'lucide-react';
 import AiTranslatorClient from '@/components/ai-translator/AiTranslatorClient';
 
 export const metadata: Metadata = {
-  title: 'Free AI Language Translator - Translate 50+ Languages',
-  description: 'Translate text into 50+ languages instantly with AI-powered accuracy using our free AI Translator.',
+  title: "AI Language Translator",
+  description: "Translate text into 50+ languages with AI-assisted translation using our AI Translator.",
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-translator'
   },
     keywords: ["AI Translator","Translator AI","Free AI Translator","Best AI Translator","Online Translator","AI Translator Tool","QuickTools AI"],
     openGraph: {
             title: "Free AI Language Translator - Translate 50+ Languages",
-            description: "Translate text into 50+ languages instantly with AI-powered accuracy using our free AI Translator.",
+            description: "Translate text into 50+ languages with AI-assisted translation using our AI Translator.",
             url: 'https://quicktool.space/tools/ai-translator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Language Translator - Translate 50+ Languages",
-            description: "Translate text into 50+ languages instantly with AI-powered accuracy using our free AI Translator.",
+            description: "Translate text into 50+ languages with AI-assisted translation using our AI Translator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Language Translator")}&type=tool`]
           }
 };
@@ -56,7 +56,7 @@ export default function AiTranslatorPage() {
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
               "name": "AI Language Translator",
-              "description": "Translate text into 50+ languages instantly with AI-powered accuracy using our free AI Translator.",
+              "description": "Translate text into 50+ languages with AI-assisted translation using our AI Translator.",
               "applicationCategory": "BusinessApplication",
               "operatingSystem": "All",
               "offers": {
@@ -85,11 +85,11 @@ export default function AiTranslatorPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Language Translator?</h3>
-              <p className="text-slate-600 mt-2">The AI Language Translator is an advanced AI-powered tool by QuickTools designed to help you translate text into 50+ languages instantly with ai-powered accuracy using our free ai translator.</p>
+              <p className="text-slate-600 mt-2">The AI Language Translator is an AI-assisted tool by QuickTools designed to help you translate text into 50+ languages with AI-assisted translation using our ai translator.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">How does the AI Language Translator work?</h3>
-              <p className="text-slate-600 mt-2">It uses cutting-edge artificial intelligence to analyze your input and automatically generate high-quality results in seconds. Just provide a prompt, and the AI handles the rest.</p>
+              <p className="text-slate-600 mt-2">It uses AI-assisted processing to analyze your input and automatically generate structured results from the details you provide. Just provide a prompt, and the AI handles the rest.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Can I use AI Language Translator for professional purposes?</h3>
@@ -105,7 +105,7 @@ export default function AiTranslatorPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the AI Language Translator free to use?</h3>
-              <p className="text-slate-600 mt-2">Yes, you can use the AI Language Translator and many other tools on QuickTools.ai for free without needing a credit card.</p>
+              <p className="text-slate-600 mt-2">Current availability and usage limits are shown in the tool interface and pricing page.</p>
             </div>
           </div>
         </div>

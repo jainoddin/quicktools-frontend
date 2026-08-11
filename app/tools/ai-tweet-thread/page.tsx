@@ -5,13 +5,13 @@ import AiTweetThreadClient from '@/components/ai-tweet-thread/AiTweetThreadClien
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Tweet Thread Generator | QuickTools',
-  description: 'Write highly engaging, viral Twitter threads with perfect hooks instantly using our AI Tweet Thread Generator.',
+  title: "Free AI Tweet Thread Generator",
+  description: "Write highly engaging, audience-focused Twitter threads with perfect hooks with AI assistance using our AI Tweet Thread Generator.",
     keywords: ["AI Tweet Thread","Tweet Thread AI","Free AI Tweet Thread","Best AI Tweet Thread","Online Tweet Thread","AI Tweet Thread Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-tweet-thread' },
     openGraph: {
             title: "Free AI Tweet Thread Generator | QuickTools",
-            description: "Write highly engaging, viral Twitter threads with perfect hooks instantly using our AI Tweet Thread Generator.",
+            description: "Write highly engaging, audience-focused Twitter threads with perfect hooks with AI assistance using our AI Tweet Thread Generator.",
             url: 'https://quicktool.space/tools/ai-tweet-thread',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Tweet Thread Generator | QuickTools",
-            description: "Write highly engaging, viral Twitter threads with perfect hooks instantly using our AI Tweet Thread Generator.",
+            description: "Write highly engaging, audience-focused Twitter threads with perfect hooks with AI assistance using our AI Tweet Thread Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Tweet Thread Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiTweetThreadPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Write highly engaging, viral Twitter threads with perfect hooks instantly.',
+    description: 'Write highly engaging, audience-focused Twitter threads with perfect hooks with AI assistance.',
   };
 
   return (

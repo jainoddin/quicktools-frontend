@@ -5,13 +5,13 @@ import PasswordGeneratorClient from '@/components/password-generator/PasswordGen
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free Strong Password Generator | QuickTools',
-  description: 'Generate secure, highly randomized, and unbreakable passwords instantly with our free Strong Password Generator.',
+  title: "Free Strong Password Generator",
+  description: "Generate configurable randomized passwords using our free Strong Password Generator.",
     keywords: ["Password Generator","AI Password Generator","Password Generator AI","Free Password Generator","Best Password Generator","Online Password Generator","Password Generator Tool","Password Creator","AI Password Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/password-generator' },
     openGraph: {
             title: "Free Strong Password Generator | QuickTools",
-            description: "Generate secure, highly randomized, and unbreakable passwords instantly with our free Strong Password Generator.",
+            description: "Generate configurable randomized passwords using our free Strong Password Generator.",
             url: 'https://quicktool.space/tools/password-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free Strong Password Generator | QuickTools",
-            description: "Generate secure, highly randomized, and unbreakable passwords instantly with our free Strong Password Generator.",
+            description: "Generate configurable randomized passwords using our free Strong Password Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("Strong Password Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function PasswordGeneratorPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Generate secure, highly randomized, and unbreakable passwords instantly.',
+    description: 'Generate configurable randomized passwords with AI assistance.',
   };
 
   return (

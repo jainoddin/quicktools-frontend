@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Employee Performance Review | QuickTools.ai',
-  description: 'Write constructive employee performance reviews.',
+  title: "AI Employee Performance Review",
+  description: "AI Employee Performance Review creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
     keywords: ["AI Employee Review","Employee Review AI","Free AI Employee Review","Best AI Employee Review","Online Employee Review","AI Employee Review Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-employee-review' },
     openGraph: {
-            title: "AI Employee Performance Review | QuickTools.ai",
-            description: "Write constructive employee performance reviews.",
+            title: "AI Employee Performance Review",
+            description: "AI Employee Performance Review creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             url: 'https://quicktool.space/tools/ai-employee-review',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Employee Performance Review | QuickTools.ai",
-            description: "Write constructive employee performance reviews.",
+            title: "AI Employee Performance Review",
+            description: "AI Employee Performance Review creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Employee Performance Review")}&type=tool`]
           }
 };

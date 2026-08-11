@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Product Launch Strategy | QuickTools.ai',
-  description: 'Generate a comprehensive product launch plan.',
+  title: "AI Product Launch Strategy",
+  description: "Create a structured product launch strategy draft with AI Product Launch Strategy. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Product Launch","Product Launch AI","Free AI Product Launch","Best AI Product Launch","Online Product Launch","AI Product Launch Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-product-launch' },
     openGraph: {
-            title: "AI Product Launch Strategy | QuickTools.ai",
-            description: "Generate a comprehensive product launch plan.",
+            title: "AI Product Launch Strategy",
+            description: "Create a structured product launch strategy draft with AI Product Launch Strategy. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-product-launch',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Product Launch Strategy | QuickTools.ai",
-            description: "Generate a comprehensive product launch plan.",
+            title: "AI Product Launch Strategy",
+            description: "Create a structured product launch strategy draft with AI Product Launch Strategy. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Product Launch Strategy")}&type=tool`]
           }
 };

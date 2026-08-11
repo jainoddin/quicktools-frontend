@@ -18,6 +18,7 @@ import NewsletterSectionWrapper from '../../../components/shared/NewsletterSecti
 import ClientImageFallback from '../../../components/shared/ClientImageFallback';
 import CrossLinksWidget from '../../../components/shared/CrossLinksWidget';
 import ShareButtons from '../../../components/blog/ShareButtons';
+import RelevantToolsLinks from '../../../components/shared/RelevantToolsLinks';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space';
 
@@ -361,6 +362,7 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
               </Link>
             </div>
             <CrossLinksWidget category={blogPost.category} />
+            <RelevantToolsLinks content={`${blogPost.title} ${blogPost.description || ''} ${blogPost.category || ''} ${(blogPost.tags || []).join(' ')}`} />
           </main>
 
           {/* ── RIGHT SIDEBAR ── */}

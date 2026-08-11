@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Whitepaper Outline | QuickTools.ai',
-  description: 'Generate structured outlines for B2B whitepapers.',
+  title: "AI Whitepaper Outline",
+  description: "Use AI Whitepaper Outline to create a structured whitepaper outline draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
     keywords: ["AI Whitepaper Outline","Whitepaper Outline AI","Free AI Whitepaper Outline","Best AI Whitepaper Outline","Online Whitepaper Outline","AI Whitepaper Outline Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-whitepaper-outline' },
     openGraph: {
-            title: "AI Whitepaper Outline | QuickTools.ai",
-            description: "Generate structured outlines for B2B whitepapers.",
+            title: "AI Whitepaper Outline",
+            description: "Use AI Whitepaper Outline to create a structured whitepaper outline draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
             url: 'https://quicktool.space/tools/ai-whitepaper-outline',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Whitepaper Outline | QuickTools.ai",
-            description: "Generate structured outlines for B2B whitepapers.",
+            title: "AI Whitepaper Outline",
+            description: "Use AI Whitepaper Outline to create a structured whitepaper outline draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Whitepaper Outline")}&type=tool`]
           }
 };

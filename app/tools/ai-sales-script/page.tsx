@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Sales Cold Call Script | QuickTools.ai',
-  description: 'Generate effective scripts for sales calls.',
+  title: "AI Sales Cold Call Script",
+  description: "Create a structured sales cold call script draft with AI Sales Cold Call Script. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Sales Script","Sales Script AI","Free AI Sales Script","Best AI Sales Script","Online Sales Script","AI Sales Script Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-sales-script' },
     openGraph: {
-            title: "AI Sales Cold Call Script | QuickTools.ai",
-            description: "Generate effective scripts for sales calls.",
+            title: "AI Sales Cold Call Script",
+            description: "Create a structured sales cold call script draft with AI Sales Cold Call Script. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-sales-script',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Sales Cold Call Script | QuickTools.ai",
-            description: "Generate effective scripts for sales calls.",
+            title: "AI Sales Cold Call Script",
+            description: "Create a structured sales cold call script draft with AI Sales Cold Call Script. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Sales Cold Call Script")}&type=tool`]
           }
 };

@@ -5,13 +5,13 @@ import JsonFormatterClient from '@/components/json-formatter/JsonFormatterClient
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free JSON Formatter & Validator | QuickTools',
-  description: 'Format, validate, and beautify your JSON data instantly with our free online JSON Formatter tool.',
+  title: "Free JSON Formatter & Validator",
+  description: "Format, validate, and beautify your JSON data using our online JSON Formatter tool.",
     keywords: ["Json Formatter","AI Json Formatter","Json Formatter AI","Free Json Formatter","Best Json Formatter","Online Json Formatter","Json Formatter Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/json-formatter' },
     openGraph: {
             title: "Free JSON Formatter & Validator | QuickTools",
-            description: "Format, validate, and beautify your JSON data instantly with our free online JSON Formatter tool.",
+            description: "Format, validate, and beautify your JSON data using our online JSON Formatter tool.",
             url: 'https://quicktool.space/tools/json-formatter',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free JSON Formatter & Validator | QuickTools",
-            description: "Format, validate, and beautify your JSON data instantly with our free online JSON Formatter tool.",
+            description: "Format, validate, and beautify your JSON data using our online JSON Formatter tool.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("JSON Formatter & Validator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function JsonFormatterPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Format, validate, and beautify your JSON data instantly.',
+    description: 'Format, validate, and beautify your JSON data with AI assistance.',
   };
 
   return (

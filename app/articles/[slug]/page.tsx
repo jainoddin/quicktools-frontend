@@ -17,6 +17,7 @@ import { permanentRedirect } from 'next/navigation';
 import NewsletterForm from '@/components/shared/NewsletterForm';
 import NewsletterSectionWrapper from '@/components/shared/NewsletterSectionWrapper';
 import CrossLinksWidget from '@/components/shared/CrossLinksWidget';
+import RelevantToolsLinks from '@/components/shared/RelevantToolsLinks';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space';
 
@@ -454,6 +455,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
             </div>
 
             <CrossLinksWidget category={article.category} />
+            <RelevantToolsLinks content={`${article.title} ${article.description || ''} ${article.category || ''} ${(article.tags || []).join(' ')}`} />
           </main>
 
           {/* RIGHT SIDEBAR (Author, News, Related) */}

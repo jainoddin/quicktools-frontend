@@ -5,8 +5,8 @@ import AiRealEstateListingClient from '@/components/ai-real-estate-listing/AiRea
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Real Estate Listing Generator | QuickTools',
-  description: 'Write captivating, conversion-optimized property descriptions that sell homes faster.',
+  title: "Free AI Real Estate Listing Generator",
+  description: "Write captivating, conversion-optimized property descriptions that sell homes faster.",
     keywords: ["AI Real Estate Listing","Real Estate Listing AI","Free AI Real Estate Listing","Best AI Real Estate Listing","Online Real Estate Listing","AI Real Estate Listing Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-real-estate-listing' },
     openGraph: {

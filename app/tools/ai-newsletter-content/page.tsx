@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Newsletter Content Generator | QuickTools.ai',
-  description: 'Generate engaging content for email newsletters.',
+  title: "AI Newsletter Content Generator",
+  description: "Create a structured newsletter content draft with AI Newsletter Content Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Newsletter Content","Newsletter Content AI","Free AI Newsletter Content","Best AI Newsletter Content","Online Newsletter Content","AI Newsletter Content Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-newsletter-content' },
     openGraph: {
-            title: "AI Newsletter Content Generator | QuickTools.ai",
-            description: "Generate engaging content for email newsletters.",
+            title: "AI Newsletter Content Generator",
+            description: "Create a structured newsletter content draft with AI Newsletter Content Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-newsletter-content',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Newsletter Content Generator | QuickTools.ai",
-            description: "Generate engaging content for email newsletters.",
+            title: "AI Newsletter Content Generator",
+            description: "Create a structured newsletter content draft with AI Newsletter Content Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Newsletter Content Generator")}&type=tool`]
           }
 };

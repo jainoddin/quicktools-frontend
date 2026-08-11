@@ -4,15 +4,15 @@ import { ChevronRight, Home } from 'lucide-react';
 import BackgroundRemoverClient from '@/components/background-remover/BackgroundRemoverClient';
 
 export const metadata: Metadata = {
-  title: 'Free AI Background Remover - Erase Backgrounds Fast',
-  description: 'Remove image backgrounds instantly with our AI Background Remover. Fast, accurate, and perfectly cut out subjects in seconds for design projects.',
+  title: "Background Remover",
+  description: "Remove image backgrounds using our AI Background Remover. Create clear subject cutouts from the details you provide for design projects.",
   keywords: ["Background Remover","AI Background Remover","Background Remover AI","Free Background Remover","Best Background Remover","Online Background Remover","Background Remover Tool","Background Eraser","AI Background Eraser","Remove Background","Image Background Remover","QuickTools AI"],
   alternates: {
     canonical: 'https://quicktool.space/tools/background-remover'
   },
     openGraph: {
             title: "Free AI Background Remover - Erase Backgrounds Fast",
-            description: "Remove image backgrounds instantly with our AI Background Remover. Fast, accurate, and perfectly cut out subjects in seconds for design projects.",
+            description: "Remove image backgrounds using our AI Background Remover. Create clear subject cutouts from the details you provide for design projects.",
             url: 'https://quicktool.space/tools/background-remover',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Background Remover - Erase Backgrounds Fast",
-            description: "Remove image backgrounds instantly with our AI Background Remover. Fast, accurate, and perfectly cut out subjects in seconds for design projects.",
+            description: "Remove image backgrounds using our AI Background Remover. Create clear subject cutouts from the details you provide for design projects.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("Background Remover")}&type=tool`]
           }
 };
@@ -41,7 +41,7 @@ export default function BackgroundRemoverPage() {
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": "Remove image backgrounds instantly with our AI Background Remover. Fast, accurate, and perfectly cut out subjects in seconds for design projects.",
+      "description": "Remove image backgrounds using our AI Background Remover. Create clear subject cutouts from the details you provide for design projects.",
       "url": "https://quicktool.space/tools/background-remover"
     , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
       {
@@ -85,7 +85,7 @@ export default function BackgroundRemoverPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is Background Remover?</h3>
-              <p className="text-slate-600 mt-2">The Background Remover is an advanced AI-powered tool by QuickTools designed to help you remove image backgrounds instantly with our ai background remover. fast, accurate, and perfectly cut out subjects in seconds for design projects.</p>
+              <p className="text-slate-600 mt-2">The Background Remover is an AI-assisted tool by QuickTools designed to help you remove image backgrounds using our ai background remover. fast, accurate, and clearly cut out subjects from the details you provide for design projects.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What image formats are supported by Background Remover?</h3>
@@ -105,7 +105,7 @@ export default function BackgroundRemoverPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the Background Remover free to use?</h3>
-              <p className="text-slate-600 mt-2">Yes, you can use the Background Remover and many other tools on QuickTools.ai for free without needing a credit card.</p>
+              <p className="text-slate-600 mt-2">Current availability and usage limits are shown in the tool interface and pricing page.</p>
             </div>
           </div>
         </div>

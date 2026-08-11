@@ -5,13 +5,13 @@ import AiQuoteClient from '@/components/ai-quote-generator/AiQuoteClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Motivational Quote Generator | QuickTools',
-  description: 'Generate highly inspiring, completely original motivational quotes on any topic instantly with our AI Motivational Quote Generator.',
+  title: "Free AI Motivational Quote Generator",
+  description: "Generate highly inspiring, original-style motivational quotes on any topic using our AI Motivational Quote Generator.",
     keywords: ["AI Quote Generator","Quote Generator AI","Free AI Quote Generator","Best AI Quote Generator","Online Quote Generator","AI Quote Generator Tool","Quote Creator","AI Quote Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-quote-generator' },
     openGraph: {
             title: "Free AI Motivational Quote Generator | QuickTools",
-            description: "Generate highly inspiring, completely original motivational quotes on any topic instantly with our AI Motivational Quote Generator.",
+            description: "Generate highly inspiring, original-style motivational quotes on any topic using our AI Motivational Quote Generator.",
             url: 'https://quicktool.space/tools/ai-quote-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Motivational Quote Generator | QuickTools",
-            description: "Generate highly inspiring, completely original motivational quotes on any topic instantly with our AI Motivational Quote Generator.",
+            description: "Generate highly inspiring, original-style motivational quotes on any topic using our AI Motivational Quote Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Motivational Quote Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiQuotePage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Generate highly inspiring, completely original motivational quotes on any topic instantly.',
+    description: 'Generate highly inspiring, original-style motivational quotes on any topic with AI assistance.',
   };
 
   return (

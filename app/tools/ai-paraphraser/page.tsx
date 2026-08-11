@@ -5,13 +5,13 @@ import AiParaphraserClient from '@/components/ai-paraphraser/AiParaphraserClient
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Paraphrasing Tool | QuickTools',
-  description: 'Rewrite and paraphrase text completely uniquely while retaining the original meaning with our advanced AI paraphraser.',
+  title: "Free AI Paraphrasing Tool",
+  description: "Rewrite and paraphrase text in different wording while retaining the original meaning with our advanced AI paraphraser.",
     keywords: ["AI Paraphraser","Paraphraser AI","Free AI Paraphraser","Best AI Paraphraser","Online Paraphraser","AI Paraphraser Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-paraphraser' },
     openGraph: {
             title: "Free AI Paraphrasing Tool | QuickTools",
-            description: "Rewrite and paraphrase text completely uniquely while retaining the original meaning with our advanced AI paraphraser.",
+            description: "Rewrite and paraphrase text in different wording while retaining the original meaning with our advanced AI paraphraser.",
             url: 'https://quicktool.space/tools/ai-paraphraser',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Paraphrasing Tool | QuickTools",
-            description: "Rewrite and paraphrase text completely uniquely while retaining the original meaning with our advanced AI paraphraser.",
+            description: "Rewrite and paraphrase text in different wording while retaining the original meaning with our advanced AI paraphraser.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Paraphrasing Tool")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiParaphraserPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Rewrite and paraphrase text completely uniquely while retaining the original meaning.',
+    description: 'Rewrite and paraphrase text in different wording while retaining the original meaning.',
   };
 
   return (

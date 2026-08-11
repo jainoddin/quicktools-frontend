@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Employee Onboarding Plan | QuickTools.ai',
-  description: 'Generate structured 30-60-90 day onboarding plans.',
+  title: "AI Employee Onboarding Plan",
+  description: "Create a structured employee onboarding plan draft with AI Employee Onboarding Plan. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Onboarding Plan","Onboarding Plan AI","Free AI Onboarding Plan","Best AI Onboarding Plan","Online Onboarding Plan","AI Onboarding Plan Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-onboarding-plan' },
     openGraph: {
-            title: "AI Employee Onboarding Plan | QuickTools.ai",
-            description: "Generate structured 30-60-90 day onboarding plans.",
+            title: "AI Employee Onboarding Plan",
+            description: "Create a structured employee onboarding plan draft with AI Employee Onboarding Plan. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-onboarding-plan',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Employee Onboarding Plan | QuickTools.ai",
-            description: "Generate structured 30-60-90 day onboarding plans.",
+            title: "AI Employee Onboarding Plan",
+            description: "Create a structured employee onboarding plan draft with AI Employee Onboarding Plan. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Employee Onboarding Plan")}&type=tool`]
           }
 };

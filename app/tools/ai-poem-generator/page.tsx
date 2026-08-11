@@ -5,13 +5,13 @@ import AiPoemGeneratorClient from '@/components/ai-poem-generator/AiPoemGenerato
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Poem Generator | QuickTools',
-  description: 'Compose beautiful, rhyming, or free-verse poetry instantly based on your chosen topic and emotion.',
+  title: "Free AI Poem Generator",
+  description: "Compose beautiful, rhyming, or free-verse poetry with AI assistance based on your chosen topic and emotion.",
     keywords: ["AI Poem Generator","Poem Generator AI","Free AI Poem Generator","Best AI Poem Generator","Online Poem Generator","AI Poem Generator Tool","Poem Creator","AI Poem Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-poem-generator' },
     openGraph: {
             title: "Free AI Poem Generator | QuickTools",
-            description: "Compose beautiful, rhyming, or free-verse poetry instantly based on your chosen topic and emotion.",
+            description: "Compose beautiful, rhyming, or free-verse poetry with AI assistance based on your chosen topic and emotion.",
             url: 'https://quicktool.space/tools/ai-poem-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Poem Generator | QuickTools",
-            description: "Compose beautiful, rhyming, or free-verse poetry instantly based on your chosen topic and emotion.",
+            description: "Compose beautiful, rhyming, or free-verse poetry with AI assistance based on your chosen topic and emotion.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Poem Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiPoemGeneratorPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Compose beautiful, rhyming, or free-verse poetry instantly based on your chosen topic and emotion.',
+    description: 'Compose beautiful, rhyming, or free-verse poetry with AI assistance based on your chosen topic and emotion.',
   };
 
   return (

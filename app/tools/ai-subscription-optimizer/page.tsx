@@ -5,11 +5,13 @@ import { ChevronRight, Home } from 'lucide-react';
 import SubscriptionOptimizerClient from '@/components/ai-subscription-optimizer/SubscriptionOptimizerClient';
 
 export const metadata: Metadata = {
-  title: 'Subscription Optimizer - QuickTools.ai',
-  description: 'Analyze your active subscriptions to find feature overlaps and save money instantly.',
+  title: "Subscription Optimizer",
+  description: "Analyze your active subscriptions to find feature overlaps and save money with AI assistance.",
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-subscription-optimizer'
-  }
+  },
+  openGraph: { title: 'Subscription Optimizer - QuickTools.ai', description: 'Compare subscriptions, overlaps, and cancellation decisions.', url: 'https://quicktool.space/tools/ai-subscription-optimizer', type: 'website', images: [{ url: 'https://quicktool.space/api/og?title=Subscription%20Optimizer&type=tool', width: 1200, height: 630, alt: 'Subscription Optimizer' }] },
+  twitter: { card: 'summary_large_image', title: 'Subscription Optimizer - QuickTools.ai', description: 'Compare subscriptions, overlaps, and cancellation decisions.', images: ['https://quicktool.space/api/og?title=Subscription%20Optimizer&type=tool'] }
 };
 
 export default function Page() {
@@ -23,7 +25,7 @@ export default function Page() {
         "operatingSystem": "Web",
         "applicationCategory": "WebApplication",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "description": "Analyze your active subscriptions to find feature overlaps and save money instantly.",
+        "description": "Analyze your active subscriptions to find feature overlaps and save money with AI assistance.",
         "url": "https://quicktool.space/tools/ai-subscription-optimizer"
       , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
       {
@@ -62,7 +64,7 @@ export default function Page() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is Subscription Optimizer?</h3>
-              <p className="text-slate-600 mt-2">The Subscription Optimizer is an advanced AI-powered tool by QuickTools designed to help you analyze your active subscriptions to find feature overlaps and save money instantly.</p>
+              <p className="text-slate-600 mt-2">The Subscription Optimizer is an AI-assisted tool by QuickTools designed to help you analyze your active subscriptions to find feature overlaps and save money with AI assistance.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Can the Subscription Optimizer generate content in different tones?</h3>
@@ -82,7 +84,7 @@ export default function Page() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the Subscription Optimizer free to use?</h3>
-              <p className="text-slate-600 mt-2">Yes, you can use the Subscription Optimizer and many other tools on QuickTools.ai for free without needing a credit card.</p>
+              <p className="text-slate-600 mt-2">Current availability and usage limits are shown in the tool interface and pricing page.</p>
             </div>
           </div>
         </div>

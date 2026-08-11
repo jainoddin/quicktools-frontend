@@ -5,13 +5,13 @@ import LoremIpsumClient from '@/components/lorem-ipsum/LoremIpsumClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free Lorem Ipsum Generator | QuickTools',
-  description: 'Generate placeholder text (Lorem Ipsum) instantly for your designs, websites, and mockups with our free Lorem Ipsum Generator.',
+  title: "Free Lorem Ipsum Generator",
+  description: "Generate placeholder text (Lorem Ipsum) with AI assistance for your designs, websites, and mockups with our free Lorem Ipsum Generator.",
     keywords: ["Lorem Ipsum","AI Lorem Ipsum","Lorem Ipsum AI","Free Lorem Ipsum","Best Lorem Ipsum","Online Lorem Ipsum","Lorem Ipsum Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/lorem-ipsum' },
     openGraph: {
             title: "Free Lorem Ipsum Generator | QuickTools",
-            description: "Generate placeholder text (Lorem Ipsum) instantly for your designs, websites, and mockups with our free Lorem Ipsum Generator.",
+            description: "Generate placeholder text (Lorem Ipsum) with AI assistance for your designs, websites, and mockups with our free Lorem Ipsum Generator.",
             url: 'https://quicktool.space/tools/lorem-ipsum',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free Lorem Ipsum Generator | QuickTools",
-            description: "Generate placeholder text (Lorem Ipsum) instantly for your designs, websites, and mockups with our free Lorem Ipsum Generator.",
+            description: "Generate placeholder text (Lorem Ipsum) with AI assistance for your designs, websites, and mockups with our free Lorem Ipsum Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("Lorem Ipsum Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function LoremIpsumPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Generate placeholder text (Lorem Ipsum) instantly for your designs.',
+    description: 'Generate placeholder text (Lorem Ipsum) with AI assistance for your designs.',
   };
 
   return (

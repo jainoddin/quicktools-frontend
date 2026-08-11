@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Interview Scoring Rubric | QuickTools.ai',
-  description: 'Generate standardized interview scoring rubrics.',
+  title: "AI Interview Scoring Rubric",
+  description: "Create a structured interview scoring rubric draft with AI Interview Scoring Rubric. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Job Interview Rubric","Job Interview Rubric AI","Free AI Job Interview Rubric","Best AI Job Interview Rubric","Online Job Interview Rubric","AI Job Interview Rubric Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-job-interview-rubric' },
     openGraph: {
-            title: "AI Interview Scoring Rubric | QuickTools.ai",
-            description: "Generate standardized interview scoring rubrics.",
+            title: "AI Interview Scoring Rubric",
+            description: "Create a structured interview scoring rubric draft with AI Interview Scoring Rubric. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-job-interview-rubric',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Interview Scoring Rubric | QuickTools.ai",
-            description: "Generate standardized interview scoring rubrics.",
+            title: "AI Interview Scoring Rubric",
+            description: "Create a structured interview scoring rubric draft with AI Interview Scoring Rubric. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Interview Scoring Rubric")}&type=tool`]
           }
 };

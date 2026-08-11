@@ -5,13 +5,13 @@ import AiEmojiTranslatorClient from '@/components/ai-emoji-translator/AiEmojiTra
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Emoji Translator | QuickTools',
-  description: 'Turn any text, quote, or sentence into a fun sequence of emojis instantly.',
+  title: "Free AI Emoji Translator",
+  description: "Turn any text, quote, or sentence into a fun sequence of emojis with AI assistance.",
     keywords: ["AI Emoji Translator","Emoji Translator AI","Free AI Emoji Translator","Best AI Emoji Translator","Online Emoji Translator","AI Emoji Translator Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-emoji-translator' },
     openGraph: {
             title: "Free AI Emoji Translator | QuickTools",
-            description: "Turn any text, quote, or sentence into a fun sequence of emojis instantly.",
+            description: "Turn any text, quote, or sentence into a fun sequence of emojis with AI assistance.",
             url: 'https://quicktool.space/tools/ai-emoji-translator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Emoji Translator | QuickTools",
-            description: "Turn any text, quote, or sentence into a fun sequence of emojis instantly.",
+            description: "Turn any text, quote, or sentence into a fun sequence of emojis with AI assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Emoji Translator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiEmojiTranslatorPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Turn any text, quote, or sentence into a fun sequence of emojis instantly.',
+    description: 'Turn any text, quote, or sentence into a fun sequence of emojis with AI assistance.',
   };
 
   return (

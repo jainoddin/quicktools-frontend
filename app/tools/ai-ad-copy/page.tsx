@@ -5,13 +5,13 @@ import AiAdCopyClient from '@/components/ai-ad-copy/AiAdCopyClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Ad Copy Generator | QuickTools',
-  description: 'Write highly converting ad copy variations for Facebook or Google Ads instantly with our AI Ad Copy Generator.',
+  title: "Free AI Ad Copy Generator",
+  description: "Write conversion-focused ad copy variations for Facebook or Google Ads using our AI Ad Copy Generator.",
     keywords: ["AI Ad Copy","Ad Copy AI","Free AI Ad Copy","Best AI Ad Copy","Online Ad Copy","AI Ad Copy Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-ad-copy' },
     openGraph: {
             title: "Free AI Ad Copy Generator | QuickTools",
-            description: "Write highly converting ad copy variations for Facebook or Google Ads instantly with our AI Ad Copy Generator.",
+            description: "Write conversion-focused ad copy variations for Facebook or Google Ads using our AI Ad Copy Generator.",
             url: 'https://quicktool.space/tools/ai-ad-copy',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Ad Copy Generator | QuickTools",
-            description: "Write highly converting ad copy variations for Facebook or Google Ads instantly with our AI Ad Copy Generator.",
+            description: "Write conversion-focused ad copy variations for Facebook or Google Ads using our AI Ad Copy Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Ad Copy Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiAdCopyPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Write highly converting ad copy variations for Facebook or Google Ads instantly.',
+    description: 'Write conversion-focused ad copy variations for Facebook or Google Ads with AI assistance.',
   };
 
   return (

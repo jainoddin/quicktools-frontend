@@ -5,8 +5,8 @@ import AiLegalTemplateClient from '@/components/ai-legal-template/AiLegalTemplat
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Premium AI Legal Template Drafter | QuickTools',
-  description: 'Generate standard boilerplate templates for NDAs, Freelance agreements, etc.',
+  title: "Premium AI Legal Template Drafter",
+  description: "Generate standard boilerplate templates for NDAs, Freelance agreements, etc.",
     keywords: ["AI Legal Template","Legal Template AI","Free AI Legal Template","Best AI Legal Template","Online Legal Template","AI Legal Template Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-legal-template' },
     openGraph: {

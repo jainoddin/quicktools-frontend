@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Sales Objection Handler | QuickTools.ai',
-  description: 'Generate responses to common sales objections.',
+  title: "AI Sales Objection Handler",
+  description: "Create a structured sales objection handler draft with AI Sales Objection Handler. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Objection Handling","Objection Handling AI","Free AI Objection Handling","Best AI Objection Handling","Online Objection Handling","AI Objection Handling Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-objection-handling' },
     openGraph: {
-            title: "AI Sales Objection Handler | QuickTools.ai",
-            description: "Generate responses to common sales objections.",
+            title: "AI Sales Objection Handler",
+            description: "Create a structured sales objection handler draft with AI Sales Objection Handler. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-objection-handling',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Sales Objection Handler | QuickTools.ai",
-            description: "Generate responses to common sales objections.",
+            title: "AI Sales Objection Handler",
+            description: "Create a structured sales objection handler draft with AI Sales Objection Handler. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Sales Objection Handler")}&type=tool`]
           }
 };

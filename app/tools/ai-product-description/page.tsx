@@ -5,13 +5,13 @@ import AiProductDescClient from '@/components/ai-product-description/AiProductDe
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Product Description Generator | QuickTools',
-  description: 'Write compelling, conversion-focused product descriptions for your e-commerce store instantly with AI.',
+  title: "Free AI Product Description Generator",
+  description: "Write compelling, conversion-focused product descriptions for your e-commerce store with AI assistance.",
     keywords: ["AI Product Description","Product Description AI","Free AI Product Description","Best AI Product Description","Online Product Description","AI Product Description Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-product-description' },
     openGraph: {
             title: "Free AI Product Description Generator | QuickTools",
-            description: "Write compelling, conversion-focused product descriptions for your e-commerce store instantly with AI.",
+            description: "Write compelling, conversion-focused product descriptions for your e-commerce store with AI assistance.",
             url: 'https://quicktool.space/tools/ai-product-description',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Product Description Generator | QuickTools",
-            description: "Write compelling, conversion-focused product descriptions for your e-commerce store instantly with AI.",
+            description: "Write compelling, conversion-focused product descriptions for your e-commerce store with AI assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Product Description Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiProductDescPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Write compelling, conversion-focused product descriptions instantly.',
+    description: 'Write compelling, conversion-focused product descriptions with AI assistance.',
   };
 
   return (

@@ -5,13 +5,13 @@ import AiGitCommandClient from '@/components/ai-git-command/AiGitCommandClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Git Command Generator | QuickTools',
-  description: 'Forget complex git syntax. Describe what you want to do in plain English, and get the exact git commands instantly.',
+  title: "Free AI Git Command Generator",
+  description: "Forget complex git syntax. Describe what you want to do in plain English, and get the exact git commands with AI assistance.",
     keywords: ["AI Git Command","Git Command AI","Free AI Git Command","Best AI Git Command","Online Git Command","AI Git Command Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-git-command' },
     openGraph: {
             title: "Free AI Git Command Generator | QuickTools",
-            description: "Forget complex git syntax. Describe what you want to do in plain English, and get the exact git commands instantly.",
+            description: "Forget complex git syntax. Describe what you want to do in plain English, and get the exact git commands with AI assistance.",
             url: 'https://quicktool.space/tools/ai-git-command',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Git Command Generator | QuickTools",
-            description: "Forget complex git syntax. Describe what you want to do in plain English, and get the exact git commands instantly.",
+            description: "Forget complex git syntax. Describe what you want to do in plain English, and get the exact git commands with AI assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Git Command Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiGitCommandPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Forget complex git syntax. Describe what you want to do in plain English, and get the exact git commands instantly.',
+    description: 'Forget complex git syntax. Describe what you want to do in plain English, and get the exact git commands with AI assistance.',
   };
 
   return (

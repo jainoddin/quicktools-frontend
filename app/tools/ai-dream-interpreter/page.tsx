@@ -5,11 +5,13 @@ import { ChevronRight, Home } from 'lucide-react';
 import DreamInterpreterClient from '@/components/ai-dream-interpreter/DreamInterpreterClient';
 
 export const metadata: Metadata = {
-  title: 'AI Dream Interpreter - QuickTools.ai',
-  description: 'Analyze your dreams for psychological meaning and hidden messages.',
+  title: "AI Dream Interpreter",
+  description: "Create a structured dream interpreter draft with AI Dream Interpreter. Use guided inputs, then review, refine, and adapt the result for your workflow.",
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-dream-interpreter'
-  }
+  },
+  openGraph: { title: 'AI Dream Interpreter - QuickTools.ai', description: 'Explore possible themes in a dream without treating them as diagnosis.', url: 'https://quicktool.space/tools/ai-dream-interpreter', type: 'website', images: [{ url: 'https://quicktool.space/api/og?title=AI%20Dream%20Interpreter&type=tool', width: 1200, height: 630, alt: 'AI Dream Interpreter' }] },
+  twitter: { card: 'summary_large_image', title: 'AI Dream Interpreter - QuickTools.ai', description: 'Explore possible themes in a dream without treating them as diagnosis.', images: ['https://quicktool.space/api/og?title=AI%20Dream%20Interpreter&type=tool'] }
 };
 
 export default function Page() {
@@ -23,7 +25,7 @@ export default function Page() {
         "operatingSystem": "Web",
         "applicationCategory": "WebApplication",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "description": "Analyze your dreams for psychological meaning and hidden messages.",
+        "description": "Analyze your dreams for psychological meaning and hidden messages. Create an editable Dream Interpreter draft with guided inputs, then review and refine it for your workflow.",
         "url": "https://quicktool.space/tools/ai-dream-interpreter"
       , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
       {
@@ -62,11 +64,11 @@ export default function Page() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Dream Interpreter?</h3>
-              <p className="text-slate-600 mt-2">The AI Dream Interpreter is an advanced AI-powered tool by QuickTools designed to help you analyze your dreams for psychological meaning and hidden messages.</p>
+              <p className="text-slate-600 mt-2">The AI Dream Interpreter is an AI-assisted tool by QuickTools designed to help you analyze your dreams for psychological meaning and hidden messages.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">How does the AI Dream Interpreter work?</h3>
-              <p className="text-slate-600 mt-2">It uses cutting-edge artificial intelligence to analyze your input and automatically generate high-quality results in seconds. Just provide a prompt, and the AI handles the rest.</p>
+              <p className="text-slate-600 mt-2">It uses AI-assisted processing to analyze your input and automatically generate structured results from the details you provide. Just provide a prompt, and the AI handles the rest.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Can I use AI Dream Interpreter for professional purposes?</h3>

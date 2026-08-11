@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Marketing Plan Generator | QuickTools.ai',
-  description: 'Generate a comprehensive marketing plan and strategy.',
+  title: "AI Marketing Plan Generator",
+  description: "Create a structured marketing plan draft with AI Marketing Plan Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Marketing Plan","Marketing Plan AI","Free AI Marketing Plan","Best AI Marketing Plan","Online Marketing Plan","AI Marketing Plan Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-marketing-plan' },
     openGraph: {
-            title: "AI Marketing Plan Generator | QuickTools.ai",
-            description: "Generate a comprehensive marketing plan and strategy.",
+            title: "AI Marketing Plan Generator",
+            description: "Create a structured marketing plan draft with AI Marketing Plan Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-marketing-plan',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Marketing Plan Generator | QuickTools.ai",
-            description: "Generate a comprehensive marketing plan and strategy.",
+            title: "AI Marketing Plan Generator",
+            description: "Create a structured marketing plan draft with AI Marketing Plan Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Marketing Plan Generator")}&type=tool`]
           }
 };

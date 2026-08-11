@@ -8,6 +8,7 @@ import { getEndpoint } from '../lib/api';
 import { allTools } from '../lib/toolsData';
 import { promptCategoryToSlug } from '../lib/promptSlugs';
 import { toolCategoryHubs } from '../lib/toolCategoryHubs';
+import sitemapFallback from '../data/sitemapFallback.json';
 
 const BASE_URL = 'https://quicktool.space';
 const SITE_CONTENT_UPDATED_AT = new Date('2026-08-11T00:00:00.000Z');
@@ -35,7 +36,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ─── 2. Tool Pages (from local data - no API needed) ──────────────────────
   entries.push(...allTools.map((tool) => ({
     url: `${BASE_URL}${tool.slug}`,
-    lastModified: new Date(tool.createdAt || new Date()),
+    // All tool pages received a meaningful SEO/content update on this date.
+    // Keep this stable until the next real page-content change.
+    lastModified: SITE_CONTENT_UPDATED_AT,
     changeFrequency: 'weekly' as const,
     priority: tool.tag?.type === 'premium' ? 0.9 : 0.8,
   })));
@@ -44,6 +47,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: SITE_CONTENT_UPDATED_AT,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
+  })));
+
+  // Durable last-known-good inventory for API-backed content. Live API entries
+  // are appended below and replace matching snapshot URLs during deduplication.
+  entries.push(...sitemapFallback.map(entry => ({
+    url: entry.url,
+    lastModified: new Date(entry.lastModified),
+    changeFrequency: entry.changeFrequency as MetadataRoute.Sitemap[0]['changeFrequency'],
+    priority: entry.priority,
   })));
 
   // Prompt Hub canonical pages. Each prompt has one canonical detail URL even
@@ -169,5 +181,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // A URL must appear only once even when multiple content sources overlap.
-  return Array.from(new Map(entries.map(entry => [entry.url, entry])).values());
+  const deduplicated = Array.from(new Map(entries.map(entry => [entry.url, entry])).values());
+  const counts = deduplicated.reduce<Record<string, number>>((summary, entry) => {
+    const path = new URL(entry.url).pathname;
+    const type = path.startsWith('/tools/category/') ? 'toolCategories'
+      : path.startsWith('/tools/') ? 'tools'
+      : path.startsWith('/prompts/') ? 'prompts'
+      : path.startsWith('/blog/') ? 'blogs'
+      : path.startsWith('/articles/') ? 'articles'
+      : path.startsWith('/news/') ? 'news'
+      : path.startsWith('/learn/') ? 'lessons'
+      : 'core';
+    summary[type] = (summary[type] || 0) + 1;
+    return summary;
+  }, {});
+  console.info('[sitemap] generated URL inventory', { total: deduplicated.length, ...counts });
+  return deduplicated;
 }

@@ -5,8 +5,8 @@ import AiEventPlannerClient from '@/components/ai-event-planner/AiEventPlannerCl
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Event Planner | QuickTools',
-  description: 'Plan your events effortlessly. Get a comprehensive checklist, timeline, and ideas for your next party or corporate event.',
+  title: "Free AI Event Planner",
+  description: "Plan your events effortlessly. Get a comprehensive checklist, timeline, and ideas for your next party or corporate event.",
     keywords: ["AI Event Planner","Event Planner AI","Free AI Event Planner","Best AI Event Planner","Online Event Planner","AI Event Planner Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-event-planner' },
     openGraph: {

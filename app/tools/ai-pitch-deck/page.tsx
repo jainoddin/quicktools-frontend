@@ -3,15 +3,16 @@ import Link from 'next/link';
 import { Home, ChevronRight } from 'lucide-react';
 import AiPitchDeckClient from '@/components/ai-pitch-deck/AiPitchDeckClient';
 import { Metadata } from 'next';
+import PriorityToolSeoSection from '@/components/tools/PriorityToolSeoSection';
 
 export const metadata: Metadata = {
-  title: 'Premium AI Pitch Deck Generator | QuickTools',
-  description: 'Generate slide-by-slide text, data points, and script for a startup pitch deck.',
-    keywords: ["AI Pitch Deck","Pitch Deck AI","Free AI Pitch Deck","Best AI Pitch Deck","Online Pitch Deck","AI Pitch Deck Tool","QuickTools AI"],
+  title: "AI Pitch Deck Generator for Startup Narratives",
+  description: "Build a slide-by-slide pitch-deck draft covering the problem, solution, market, traction, model, team, milestones, and funding ask.",
+    keywords: ["AI Pitch Deck","Pitch Deck AI","Pitch Deck Generator","Online Pitch Deck","AI Pitch Deck Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-pitch-deck' },
     openGraph: {
-            title: "Premium AI Pitch Deck Generator | QuickTools",
-            description: "Generate slide-by-slide text, data points, and script for a startup pitch deck.",
+            title: "AI Pitch Deck Generator for Startup Narratives | QuickTools",
+            description: "Build a slide-by-slide pitch-deck draft covering the problem, solution, market, traction, model, team, milestones, and funding ask.",
             url: 'https://quicktool.space/tools/ai-pitch-deck',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -19,8 +20,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Premium AI Pitch Deck Generator | QuickTools",
-            description: "Generate slide-by-slide text, data points, and script for a startup pitch deck.",
+            title: "AI Pitch Deck Generator for Startup Narratives | QuickTools",
+            description: "Build a slide-by-slide pitch-deck draft covering the problem, solution, market, traction, model, team, milestones, and funding ask.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Pitch Deck Generator")}&type=tool`]
           }
 };
@@ -32,11 +33,6 @@ export default function AiPitchDeckPage() {
     name: 'AI Pitch Deck Generator',
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '5',
-      priceCurrency: 'USD',
-    },
     description: 'Generate slide-by-slide text, data points, and script for a startup pitch deck.',
   };
 
@@ -62,6 +58,7 @@ export default function AiPitchDeckPage() {
         </div>
         <AiPitchDeckClient />
       </div>
+      <PriorityToolSeoSection slug="ai-pitch-deck" />
     </>
   );
 }

@@ -5,15 +5,15 @@ import { ChevronRight, Home, History, LayoutGrid } from 'lucide-react';
 import AiWriterClient from '@/components/ai-writer/AiWriterClient';
 
 export const metadata: Metadata = {
-  title: { absolute: "AI Writer â€“ Create Blogs, Emails & Marketing Copy | QuickTools" },
-  description: "Generate blogs, articles, emails, social media posts, marketing copy, and SEO content instantly with the QuickTools AI Writer.",
+  title: "AI Writer - Create Blogs, Emails & Marketing Copy",
+  description: "Generate blogs, articles, emails, social media posts, marketing copy, and SEO content using the QuickTools AI Writer.",
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-writer'
   },
     keywords: ["AI Writer","Writer AI","Free AI Writer","Best AI Writer","Online Writer","AI Writer Tool","Writing Tool","AI Writing Tool","Content Writer AI","Blog Writer","AI Copywriting","QuickTools AI"],
     openGraph: {
-            title: { absolute: "AI Writer â€“ Create Blogs, Emails & Marketing Copy | QuickTools" },
-            description: "Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
+            title: { absolute: "AI Writer - Create Blogs, Emails & Marketing Copy" },
+            description: "Generate structured content using our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
             url: 'https://quicktool.space/tools/ai-writer',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: { absolute: "AI Writer â€“ Create Blogs, Emails & Marketing Copy | QuickTools" },
-            description: "Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
+            title: { absolute: "AI Writer - Create Blogs, Emails & Marketing Copy" },
+            description: "Generate structured content using our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Writer  Create Blogs, Emails & Marketing Copy")}&type=tool`]
           }
 };
@@ -42,7 +42,7 @@ export default function AiWriterPage() {
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": "Generate high-quality content instantly with our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
+      "description": "Generate structured content using our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
       "url": "https://quicktool.space/tools/ai-writer"
     , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
       {
@@ -93,7 +93,7 @@ export default function AiWriterPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Writer  Create Blogs, Emails & Marketing Copy?</h3>
-              <p className="text-slate-600 mt-2">The AI Writer  Create Blogs, Emails & Marketing Copy is an advanced AI-powered tool by QuickTools designed to help you generate blogs, articles, emails, social media posts, marketing copy, and seo content instantly with the quicktools ai writer.</p>
+              <p className="text-slate-600 mt-2">The AI Writer  Create Blogs, Emails & Marketing Copy is an AI-assisted tool by QuickTools designed to help you generate blogs, articles, emails, social media posts, marketing copy, and seo content using the QuickTools ai writer.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Can the AI Writer  Create Blogs, Emails & Marketing Copy generate content in different tones?</h3>
@@ -113,7 +113,7 @@ export default function AiWriterPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the AI Writer  Create Blogs, Emails & Marketing Copy free to use?</h3>
-              <p className="text-slate-600 mt-2">Yes, you can use the AI Writer  Create Blogs, Emails & Marketing Copy and many other tools on QuickTools.ai for free without needing a credit card.</p>
+              <p className="text-slate-600 mt-2">Current availability and usage limits are shown in the tool interface and pricing page.</p>
             </div>
           </div>
         </div>

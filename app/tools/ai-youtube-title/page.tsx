@@ -5,13 +5,13 @@ import AiYoutubeTitleClient from '@/components/ai-youtube-title/AiYoutubeTitleCl
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI YouTube Title Generator | QuickTools',
-  description: 'Generate highly clickable, viral, and engaging YouTube video titles instantly with our AI YouTube Title Generator.',
+  title: "Free AI YouTube Title Generator",
+  description: "Generate highly clickable, audience-focused, and engaging YouTube video titles using our AI YouTube Title Generator.",
     keywords: ["AI Youtube Title","Youtube Title AI","Free AI Youtube Title","Best AI Youtube Title","Online Youtube Title","AI Youtube Title Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-youtube-title' },
     openGraph: {
             title: "Free AI YouTube Title Generator | QuickTools",
-            description: "Generate highly clickable, viral, and engaging YouTube video titles instantly with our AI YouTube Title Generator.",
+            description: "Generate highly clickable, audience-focused, and engaging YouTube video titles using our AI YouTube Title Generator.",
             url: 'https://quicktool.space/tools/ai-youtube-title',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI YouTube Title Generator | QuickTools",
-            description: "Generate highly clickable, viral, and engaging YouTube video titles instantly with our AI YouTube Title Generator.",
+            description: "Generate highly clickable, audience-focused, and engaging YouTube video titles using our AI YouTube Title Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI YouTube Title Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiYoutubeTitlePage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Generate highly clickable, viral, and engaging YouTube video titles instantly.',
+    description: 'Generate highly clickable, audience-focused, and engaging YouTube video titles with AI assistance.',
   };
 
   return (

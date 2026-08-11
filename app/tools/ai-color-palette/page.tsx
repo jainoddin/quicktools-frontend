@@ -5,15 +5,15 @@ import { ChevronRight, Home } from 'lucide-react';
 import AiColorPaletteClient from '@/components/ai-color-palette/AiColorPaletteClient';
 
 export const metadata: Metadata = {
-  title: 'Free AI Color Palette Generator',
-  description: 'Generate beautiful color palettes from a brand name or mood description with our free AI Color Palette Generator.',
+  title: "Free AI Color Palette Generator",
+  description: "Generate beautiful color palettes from a brand name or mood description with our AI Color Palette Generator.",
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-color-palette'
   },
     keywords: ["AI Color Palette","Color Palette AI","Free AI Color Palette","Best AI Color Palette","Online Color Palette","AI Color Palette Tool","QuickTools AI"],
     openGraph: {
             title: "Free AI Color Palette Generator",
-            description: "Generate beautiful color palettes from a brand name or mood description with our free AI Color Palette Generator.",
+            description: "Generate beautiful color palettes from a brand name or mood description with our AI Color Palette Generator.",
             url: 'https://quicktool.space/tools/ai-color-palette',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Color Palette Generator",
-            description: "Generate beautiful color palettes from a brand name or mood description with our free AI Color Palette Generator.",
+            description: "Generate beautiful color palettes from a brand name or mood description with our AI Color Palette Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Color Palette")}&type=tool`]
           }
 };
@@ -56,7 +56,7 @@ export default function AiColorPalettePage() {
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
               "name": "AI Color Palette",
-              "description": "Generate beautiful color palettes from a brand name or mood description with our free AI Color Palette Generator.",
+              "description": "Generate beautiful color palettes from a brand name or mood description with our AI Color Palette Generator.",
               "applicationCategory": "DesignApplication",
               "operatingSystem": "All",
               "offers": {
@@ -85,7 +85,7 @@ export default function AiColorPalettePage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Color Palette?</h3>
-              <p className="text-slate-600 mt-2">The AI Color Palette is an advanced AI-powered tool by QuickTools designed to help you generate beautiful color palettes from a brand name or mood description with our free ai color palette generator.</p>
+              <p className="text-slate-600 mt-2">The AI Color Palette is an AI-assisted tool by QuickTools designed to help you generate beautiful color palettes from a brand name or mood description with our ai color palette generator.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What image formats are supported by AI Color Palette?</h3>
@@ -105,7 +105,7 @@ export default function AiColorPalettePage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the AI Color Palette free to use?</h3>
-              <p className="text-slate-600 mt-2">Yes, you can use the AI Color Palette and many other tools on QuickTools.ai for free without needing a credit card.</p>
+              <p className="text-slate-600 mt-2">Current availability and usage limits are shown in the tool interface and pricing page.</p>
             </div>
           </div>
         </div>

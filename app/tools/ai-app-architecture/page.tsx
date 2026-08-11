@@ -5,8 +5,8 @@ import AiAppArchitectureClient from '@/components/ai-app-architecture/AiAppArchi
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Premium AI App Architecture Planner | QuickTools',
-  description: 'Generate the full tech stack, database schema, and API endpoints documentation for a new app.',
+  title: "Premium AI App Architecture Planner",
+  description: "Generate the full tech stack, database schema, and API endpoints documentation for a new app.",
     keywords: ["AI App Architecture","App Architecture AI","Free AI App Architecture","Best AI App Architecture","Online App Architecture","AI App Architecture Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-app-architecture' },
     openGraph: {

@@ -5,13 +5,13 @@ import AiWorkoutClient from '@/components/ai-workout-generator/AiWorkoutClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Workout Plan Generator | QuickTools',
-  description: 'Generate custom, highly effective workout plans instantly based on your fitness goals and available time with our AI Workout Plan Generator.',
+  title: "Free AI Workout Plan Generator",
+  description: "Generate custom, highly effective workout plans with AI assistance based on your fitness goals and available time with our AI Workout Plan Generator.",
     keywords: ["AI Workout Plan","Workout Plan AI","Free AI Workout Plan","Best AI Workout Plan","Online Workout Plan","AI Workout Plan Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-workout-plan' },
     openGraph: {
             title: "Free AI Workout Plan Generator | QuickTools",
-            description: "Generate custom, highly effective workout plans instantly based on your fitness goals and available time with our AI Workout Plan Generator.",
+            description: "Generate custom, highly effective workout plans with AI assistance based on your fitness goals and available time with our AI Workout Plan Generator.",
             url: 'https://quicktool.space/tools/ai-workout-plan',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Workout Plan Generator | QuickTools",
-            description: "Generate custom, highly effective workout plans instantly based on your fitness goals and available time with our AI Workout Plan Generator.",
+            description: "Generate custom, highly effective workout plans with AI assistance based on your fitness goals and available time with our AI Workout Plan Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Workout Plan Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiWorkoutPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Generate custom, highly effective workout plans instantly based on your fitness goals and available time.',
+    description: 'Generate custom, highly effective workout plans with AI assistance based on your fitness goals and available time.',
   };
 
   return (

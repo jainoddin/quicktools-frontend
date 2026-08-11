@@ -5,13 +5,13 @@ import AiSloganGeneratorClient from '@/components/ai-slogan-generator/AiSloganGe
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Slogan Generator | QuickTools',
-  description: 'Instantly brainstorm catchy, memorable, and high-converting slogans for your business, brand, or marketing campaign.',
+  title: "Free AI Slogan Generator",
+  description: "With AI assistance brainstorm catchy, memorable, and conversion-focused slogans for your business, brand, or marketing campaign.",
     keywords: ["AI Slogan Generator","Slogan Generator AI","Free AI Slogan Generator","Best AI Slogan Generator","Online Slogan Generator","AI Slogan Generator Tool","Slogan Creator","AI Slogan Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-slogan-generator' },
     openGraph: {
             title: "Free AI Slogan Generator | QuickTools",
-            description: "Instantly brainstorm catchy, memorable, and high-converting slogans for your business, brand, or marketing campaign.",
+            description: "With AI assistance brainstorm catchy, memorable, and conversion-focused slogans for your business, brand, or marketing campaign.",
             url: 'https://quicktool.space/tools/ai-slogan-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Slogan Generator | QuickTools",
-            description: "Instantly brainstorm catchy, memorable, and high-converting slogans for your business, brand, or marketing campaign.",
+            description: "With AI assistance brainstorm catchy, memorable, and conversion-focused slogans for your business, brand, or marketing campaign.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Slogan Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiSloganGeneratorPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Instantly brainstorm catchy, memorable, and high-converting slogans for your business, brand, or marketing campaign.',
+    description: 'With AI assistance brainstorm catchy, memorable, and conversion-focused slogans for your business, brand, or marketing campaign.',
   };
 
   return (

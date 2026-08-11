@@ -5,8 +5,8 @@ import AiJobDescriptionClient from '@/components/ai-job-description/AiJobDescrip
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Job Description Generator | QuickTools',
-  description: 'Generate professional, comprehensive, and attractive job descriptions to attract top talent.',
+  title: "Free AI Job Description Generator",
+  description: "Generate professional, comprehensive, and attractive job descriptions to attract top talent.",
     keywords: ["AI Job Description","Job Description AI","Free AI Job Description","Best AI Job Description","Online Job Description","AI Job Description Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-job-description' },
     openGraph: {

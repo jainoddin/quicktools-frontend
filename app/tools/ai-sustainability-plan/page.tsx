@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI ESG / Sustainability Plan | QuickTools.ai',
-  description: 'Generate corporate sustainability and ESG plans.',
+  title: "AI ESG / Sustainability Plan",
+  description: "AI ESG / Sustainability Plan creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
     keywords: ["AI Sustainability Plan","Sustainability Plan AI","Free AI Sustainability Plan","Best AI Sustainability Plan","Online Sustainability Plan","AI Sustainability Plan Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-sustainability-plan' },
     openGraph: {
-            title: "AI ESG / Sustainability Plan | QuickTools.ai",
-            description: "Generate corporate sustainability and ESG plans.",
+            title: "AI ESG / Sustainability Plan",
+            description: "AI ESG / Sustainability Plan creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             url: 'https://quicktool.space/tools/ai-sustainability-plan',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI ESG / Sustainability Plan | QuickTools.ai",
-            description: "Generate corporate sustainability and ESG plans.",
+            title: "AI ESG / Sustainability Plan",
+            description: "AI ESG / Sustainability Plan creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI ESG / Sustainability Plan")}&type=tool`]
           }
 };

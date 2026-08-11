@@ -3,15 +3,16 @@ import Link from 'next/link';
 import { Home, ChevronRight } from 'lucide-react';
 import AiBusinessPlanClient from '@/components/ai-business-plan/AiBusinessPlanClient';
 import { Metadata } from 'next';
+import PriorityToolSeoSection from '@/components/tools/PriorityToolSeoSection';
 
 export const metadata: Metadata = {
-  title: 'Premium AI Business Plan Generator | QuickTools',
-  description: 'Generate a complete 10-page business plan with executive summary, market analysis, and financial projections.',
-    keywords: ["AI Business Plan","Business Plan AI","Free AI Business Plan","Best AI Business Plan","Online Business Plan","AI Business Plan Tool","QuickTools AI"],
+  title: "AI Business Plan Generator",
+  description: "Create a structured business-plan draft with customer, market, operations, risk, milestone, and financial-assumption sections.",
+    keywords: ["AI Business Plan","Business Plan AI","Business Plan Generator","Online Business Plan","AI Business Plan Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-business-plan' },
     openGraph: {
-            title: "Premium AI Business Plan Generator | QuickTools",
-            description: "Generate a complete 10-page business plan with executive summary, market analysis, and financial projections.",
+            title: "AI Business Plan Generator for Structured Planning | QuickTools",
+            description: "Create a structured business-plan draft with customer, market, operations, risk, milestone, and financial-assumption sections.",
             url: 'https://quicktool.space/tools/ai-business-plan',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -19,8 +20,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Premium AI Business Plan Generator | QuickTools",
-            description: "Generate a complete 10-page business plan with executive summary, market analysis, and financial projections.",
+            title: "AI Business Plan Generator for Structured Planning | QuickTools",
+            description: "Create a structured business-plan draft with customer, market, operations, risk, milestone, and financial-assumption sections.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Business Plan Generator")}&type=tool`]
           }
 };
@@ -32,11 +33,6 @@ export default function AiBusinessPlanPage() {
     name: 'AI Business Plan Generator',
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '5',
-      priceCurrency: 'USD',
-    },
     description: 'Generate a complete 10-page business plan with executive summary, market analysis, and financial projections.',
   };
 
@@ -62,6 +58,7 @@ export default function AiBusinessPlanPage() {
         </div>
         <AiBusinessPlanClient />
       </div>
+      <PriorityToolSeoSection slug="ai-business-plan" />
     </>
   );
 }

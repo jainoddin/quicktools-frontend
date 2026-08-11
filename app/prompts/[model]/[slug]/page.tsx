@@ -5,6 +5,7 @@ import { getEndpoint } from '../../../../lib/api';
 import PromptDetailClient from '../../../../components/prompts/PromptDetailClient';
 import PromptQuickLinks from '../../../../components/prompts/PromptQuickLinks';
 import { promptMetadata } from '../../../../lib/promptMetadata';
+import RelevantToolsLinks from '../../../../components/shared/RelevantToolsLinks';
 
 export const revalidate = 3600;
 
@@ -60,6 +61,7 @@ export default async function PromptDetailPage({ params }: { params: Promise<{ m
 
       <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 mt-10 -translate-y-16">
         <PromptDetailClient prompt={prompt} selectedModel={resolvedParams.model} />
+        <RelevantToolsLinks content={`${prompt.title} ${prompt.description || ''} ${prompt.category || ''} ${(prompt.tags || []).join(' ')}`} />
       </div>
     </div>
   );

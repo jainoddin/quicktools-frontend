@@ -5,13 +5,13 @@ import AiOutlineClient from '@/components/ai-article-outline-generator/AiOutline
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Article Outline Generator | QuickTools',
-  description: 'Generate comprehensive, SEO-optimized article and blog outlines instantly. Save hours of planning and structure your content perfectly.',
+  title: "Free AI Article Outline Generator",
+  description: "Generate comprehensive, SEO-optimized article and blog outlines with AI assistance. Reduce manual planning and structure your content clearly.",
     keywords: ["AI Article Outline Generator","Article Outline Generator AI","Free AI Article Outline Generator","Best AI Article Outline Generator","Online Article Outline Generator","AI Article Outline Generator Tool","Article Outline Creator","AI Article Outline Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-article-outline-generator' },
     openGraph: {
             title: "Free AI Article Outline Generator | QuickTools",
-            description: "Generate comprehensive, SEO-optimized article and blog outlines instantly. Save hours of planning and structure your content perfectly.",
+            description: "Generate comprehensive, SEO-optimized article and blog outlines with AI assistance. Reduce manual planning and structure your content clearly.",
             url: 'https://quicktool.space/tools/ai-article-outline-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Article Outline Generator | QuickTools",
-            description: "Generate comprehensive, SEO-optimized article and blog outlines instantly. Save hours of planning and structure your content perfectly.",
+            description: "Generate comprehensive, SEO-optimized article and blog outlines with AI assistance. Reduce manual planning and structure your content clearly.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Article Outline Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiOutlineGeneratorPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Generate comprehensive, SEO-optimized article and blog outlines instantly.',
+    description: 'Generate comprehensive, SEO-optimized article and blog outlines with AI assistance.',
   };
 
   return (

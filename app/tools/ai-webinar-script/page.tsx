@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Webinar Script Generator | QuickTools.ai',
-  description: 'Generate engaging scripts for your webinars.',
+  title: "AI Webinar Script Generator",
+  description: "Create a structured webinar script draft with AI Webinar Script Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Webinar Script","Webinar Script AI","Free AI Webinar Script","Best AI Webinar Script","Online Webinar Script","AI Webinar Script Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-webinar-script' },
     openGraph: {
-            title: "AI Webinar Script Generator | QuickTools.ai",
-            description: "Generate engaging scripts for your webinars.",
+            title: "AI Webinar Script Generator",
+            description: "Create a structured webinar script draft with AI Webinar Script Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-webinar-script',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Webinar Script Generator | QuickTools.ai",
-            description: "Generate engaging scripts for your webinars.",
+            title: "AI Webinar Script Generator",
+            description: "Create a structured webinar script draft with AI Webinar Script Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Webinar Script Generator")}&type=tool`]
           }
 };

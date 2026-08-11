@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Lead Magnet Idea Generator | QuickTools.ai',
-  description: 'Generate compelling lead magnet ideas to grow your list.',
+  title: "AI Lead Magnet Idea Generator",
+  description: "Create a structured lead magnet idea draft with AI Lead Magnet Idea Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Lead Magnet","Lead Magnet AI","Free AI Lead Magnet","Best AI Lead Magnet","Online Lead Magnet","AI Lead Magnet Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-lead-magnet' },
     openGraph: {
-            title: "AI Lead Magnet Idea Generator | QuickTools.ai",
-            description: "Generate compelling lead magnet ideas to grow your list.",
+            title: "AI Lead Magnet Idea Generator",
+            description: "Create a structured lead magnet idea draft with AI Lead Magnet Idea Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-lead-magnet',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Lead Magnet Idea Generator | QuickTools.ai",
-            description: "Generate compelling lead magnet ideas to grow your list.",
+            title: "AI Lead Magnet Idea Generator",
+            description: "Create a structured lead magnet idea draft with AI Lead Magnet Idea Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Lead Magnet Idea Generator")}&type=tool`]
           }
 };

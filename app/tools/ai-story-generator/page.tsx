@@ -5,8 +5,8 @@ import AiStoryGeneratorClient from '@/components/ai-story-generator/AiStoryGener
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Story Generator | QuickTools',
-  description: 'Unleash your creativity. Generate engaging, unique short stories based on any prompt or genre.',
+  title: "Free AI Story Generator",
+  description: "Unleash your creativity. Generate engaging, unique short stories based on any prompt or genre.",
     keywords: ["AI Story Generator","Story Generator AI","Free AI Story Generator","Best AI Story Generator","Online Story Generator","AI Story Generator Tool","Story Creator","AI Story Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-story-generator' },
     openGraph: {

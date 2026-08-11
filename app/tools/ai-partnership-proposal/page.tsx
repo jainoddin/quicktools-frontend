@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Partnership Proposal | QuickTools.ai',
-  description: 'Generate B2B strategic partnership proposals.',
+  title: "AI Partnership Proposal",
+  description: "Create a structured partnership proposal draft with AI Partnership Proposal. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Partnership Proposal","Partnership Proposal AI","Free AI Partnership Proposal","Best AI Partnership Proposal","Online Partnership Proposal","AI Partnership Proposal Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-partnership-proposal' },
     openGraph: {
-            title: "AI Partnership Proposal | QuickTools.ai",
-            description: "Generate B2B strategic partnership proposals.",
+            title: "AI Partnership Proposal",
+            description: "Create a structured partnership proposal draft with AI Partnership Proposal. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-partnership-proposal',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Partnership Proposal | QuickTools.ai",
-            description: "Generate B2B strategic partnership proposals.",
+            title: "AI Partnership Proposal",
+            description: "Create a structured partnership proposal draft with AI Partnership Proposal. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Partnership Proposal")}&type=tool`]
           }
 };

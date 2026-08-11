@@ -72,9 +72,9 @@ export default function SplashScreen() {
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl font-black tracking-tight text-white mb-2">
+        <div className="text-3xl font-black tracking-tight text-white mb-2">
           QuickTools.ai
-        </h1>
+        </div>
 
         {/* Subtitle */}
         <p className="text-sm font-medium text-[#9CA3AF]">

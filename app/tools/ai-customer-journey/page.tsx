@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Customer Journey Mapper | QuickTools.ai',
-  description: 'Map out the end-to-end customer journey.',
+  title: "AI Customer Journey Mapper",
+  description: "Create a structured customer journey mapper draft with AI Customer Journey Mapper. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Customer Journey","Customer Journey AI","Free AI Customer Journey","Best AI Customer Journey","Online Customer Journey","AI Customer Journey Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-customer-journey' },
     openGraph: {
-            title: "AI Customer Journey Mapper | QuickTools.ai",
-            description: "Map out the end-to-end customer journey.",
+            title: "AI Customer Journey Mapper",
+            description: "Create a structured customer journey mapper draft with AI Customer Journey Mapper. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-customer-journey',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Customer Journey Mapper | QuickTools.ai",
-            description: "Map out the end-to-end customer journey.",
+            title: "AI Customer Journey Mapper",
+            description: "Create a structured customer journey mapper draft with AI Customer Journey Mapper. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Customer Journey Mapper")}&type=tool`]
           }
 };

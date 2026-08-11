@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Landing Page Copywriter | QuickTools.ai',
-  description: 'Generate high-converting copy for landing pages.',
+  title: "AI Landing Page Copywriter",
+  description: "Create a structured landing page copywriter draft with AI Landing Page Copywriter. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Landing Page Copy","Landing Page Copy AI","Free AI Landing Page Copy","Best AI Landing Page Copy","Online Landing Page Copy","AI Landing Page Copy Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-landing-page-copy' },
     openGraph: {
-            title: "AI Landing Page Copywriter | QuickTools.ai",
-            description: "Generate high-converting copy for landing pages.",
+            title: "AI Landing Page Copywriter",
+            description: "Create a structured landing page copywriter draft with AI Landing Page Copywriter. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-landing-page-copy',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Landing Page Copywriter | QuickTools.ai",
-            description: "Generate high-converting copy for landing pages.",
+            title: "AI Landing Page Copywriter",
+            description: "Create a structured landing page copywriter draft with AI Landing Page Copywriter. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Landing Page Copywriter")}&type=tool`]
           }
 };
@@ -36,7 +36,7 @@ export default function Page() {
             "name": "AI Landing Page Copywriter",
             "applicationCategory": "BusinessApplication",
             "operatingSystem": "Any",
-            "description": "Generate high-converting copy for landing pages.",
+            "description": "Generate conversion-focused copy for landing pages.",
             "featureList": "AI-assisted workflow, editable results, and browser-based access"},
       {
         "@context": "https://schema.org",

@@ -5,13 +5,13 @@ import RegexGeneratorClient from '@/components/regex-generator/RegexGeneratorCli
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Regex Generator | QuickTools',
-  description: 'Generate complex Regular Expressions easily from plain English descriptions instantly with our free AI Regex Generator.',
+  title: "Free AI Regex Generator",
+  description: "Generate complex Regular Expressions easily from plain English descriptions using our AI Regex Generator.",
     keywords: ["AI Regex Generator","Regex Generator AI","Free AI Regex Generator","Best AI Regex Generator","Online Regex Generator","AI Regex Generator Tool","Regex Creator","AI Regex Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-regex-generator' },
     openGraph: {
             title: "Free AI Regex Generator | QuickTools",
-            description: "Generate complex Regular Expressions easily from plain English descriptions instantly with our free AI Regex Generator.",
+            description: "Generate complex Regular Expressions easily from plain English descriptions using our AI Regex Generator.",
             url: 'https://quicktool.space/tools/ai-regex-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Regex Generator | QuickTools",
-            description: "Generate complex Regular Expressions easily from plain English descriptions instantly with our free AI Regex Generator.",
+            description: "Generate complex Regular Expressions easily from plain English descriptions using our AI Regex Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("Regex Generator")}&type=tool`]
           }
 };

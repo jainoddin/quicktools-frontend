@@ -5,13 +5,13 @@ import AiEmailClient from '@/components/ai-email-generator/AiEmailClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Email Reply Generator | QuickTools',
-  description: 'Instantly generate professional, polite, or casual email replies with AI. Save time and communicate better.',
+  title: "Free AI Email Reply Generator",
+  description: "With AI assistance generate professional, polite, or casual email replies with AI. Save time and communicate better.",
     keywords: ["AI Email Generator","Email Generator AI","Free AI Email Generator","Best AI Email Generator","Online Email Generator","AI Email Generator Tool","Email Creator","AI Email Creator","Email Assistant Generator","AI Email Assistant Generator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-email-generator' },
     openGraph: {
             title: "Free AI Email Reply Generator | QuickTools",
-            description: "Instantly generate professional, polite, or casual email replies with AI. Save time and communicate better.",
+            description: "With AI assistance generate professional, polite, or casual email replies with AI. Save time and communicate better.",
             url: 'https://quicktool.space/tools/ai-email-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Email Reply Generator | QuickTools",
-            description: "Instantly generate professional, polite, or casual email replies with AI. Save time and communicate better.",
+            description: "With AI assistance generate professional, polite, or casual email replies with AI. Save time and communicate better.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Email Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiEmailGeneratorPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Instantly generate professional, polite, or casual email replies with AI.',
+    description: 'With AI assistance generate professional, polite, or casual email replies with AI.',
   };
 
   return (

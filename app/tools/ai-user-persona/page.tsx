@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI User Persona Creator | QuickTools.ai',
-  description: 'Generate detailed buyer and user personas.',
+  title: "AI User Persona Creator",
+  description: "Create a structured user persona draft with AI User Persona Creator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI User Persona","User Persona AI","Free AI User Persona","Best AI User Persona","Online User Persona","AI User Persona Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-user-persona' },
     openGraph: {
-            title: "AI User Persona Creator | QuickTools.ai",
-            description: "Generate detailed buyer and user personas.",
+            title: "AI User Persona Creator",
+            description: "Create a structured user persona draft with AI User Persona Creator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-user-persona',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI User Persona Creator | QuickTools.ai",
-            description: "Generate detailed buyer and user personas.",
+            title: "AI User Persona Creator",
+            description: "Create a structured user persona draft with AI User Persona Creator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI User Persona Creator")}&type=tool`]
           }
 };

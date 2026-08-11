@@ -5,8 +5,8 @@ import { ChevronRight, Home } from 'lucide-react';
 import UrlShortenerClient from '@/components/url-shortener/UrlShortenerClient';
 
 export const metadata: Metadata = {
-  title: 'Free URL Shortener - Create Short Links',
-  description: 'Shorten any long URL into a clean, shareable link in one click with our free URL Shortener.',
+  title: "Free URL Shortener - Create Short Links",
+  description: "Shorten any long URL into a clean, shareable link in one click with our free URL Shortener.",
   alternates: {
     canonical: 'https://quicktool.space/tools/url-shortener'
   },
@@ -85,11 +85,11 @@ export default function UrlShortenerPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is URL Shortener?</h3>
-              <p className="text-slate-600 mt-2">The URL Shortener is an advanced AI-powered tool by QuickTools designed to help you shorten any long url into a clean, shareable link in one click with our free url shortener.</p>
+              <p className="text-slate-600 mt-2">The URL Shortener is an AI-assisted tool by QuickTools designed to help you shorten any long url into a clean, shareable link in one click with our free url shortener.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">How does the URL Shortener work?</h3>
-              <p className="text-slate-600 mt-2">It uses cutting-edge artificial intelligence to analyze your input and automatically generate high-quality results in seconds. Just provide a prompt, and the AI handles the rest.</p>
+              <p className="text-slate-600 mt-2">It uses AI-assisted processing to analyze your input and automatically generate structured results from the details you provide. Just provide a prompt, and the AI handles the rest.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Can I use URL Shortener for professional purposes?</h3>
@@ -105,7 +105,7 @@ export default function UrlShortenerPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the URL Shortener free to use?</h3>
-              <p className="text-slate-600 mt-2">Yes, you can use the URL Shortener and many other tools on QuickTools.ai for free without needing a credit card.</p>
+              <p className="text-slate-600 mt-2">Current availability and usage limits are shown in the tool interface and pricing page.</p>
             </div>
           </div>
         </div>

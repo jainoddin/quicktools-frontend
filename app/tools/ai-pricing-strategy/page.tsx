@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Pricing Strategy Generator | QuickTools.ai',
-  description: 'Generate optimized pricing strategies and tiers.',
+  title: "AI Pricing Strategy Generator",
+  description: "Create a structured pricing strategy draft with AI Pricing Strategy Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Pricing Strategy","Pricing Strategy AI","Free AI Pricing Strategy","Best AI Pricing Strategy","Online Pricing Strategy","AI Pricing Strategy Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-pricing-strategy' },
     openGraph: {
-            title: "AI Pricing Strategy Generator | QuickTools.ai",
-            description: "Generate optimized pricing strategies and tiers.",
+            title: "AI Pricing Strategy Generator",
+            description: "Create a structured pricing strategy draft with AI Pricing Strategy Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-pricing-strategy',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Pricing Strategy Generator | QuickTools.ai",
-            description: "Generate optimized pricing strategies and tiers.",
+            title: "AI Pricing Strategy Generator",
+            description: "Create a structured pricing strategy draft with AI Pricing Strategy Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Pricing Strategy Generator")}&type=tool`]
           }
 };

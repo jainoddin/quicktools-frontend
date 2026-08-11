@@ -5,13 +5,13 @@ import AiTtsClient from '@/components/ai-text-to-speech/AiTtsClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'AI Text to Speech Generator | QuickTools',
-  description: 'Convert any text into natural-sounding speech instantly using advanced browser AI. Free online text to speech generator with multiple voices and languages.',
+  title: "AI Text to Speech Generator",
+  description: "Convert any text into natural-sounding speech with AI assistance using advanced browser AI. Free online text to speech generator with multiple voices and languages.",
   keywords: ["AI Text To Speech","Text To Speech AI","Free AI Text To Speech","Best AI Text To Speech","Online Text To Speech","AI Text To Speech Tool","QuickTools AI"],
   alternates: { canonical: 'https://quicktool.space/tools/ai-text-to-speech' },
   openGraph: {
     title: 'AI Text to Speech Generator | QuickTools',
-    description: 'Convert any text into natural-sounding speech instantly using advanced browser AI.',
+    description: 'Convert any text into natural-sounding speech with AI assistance using advanced browser AI.',
     url: 'https://quicktool.space/tools/ai-text-to-speech',
     siteName: 'QuickTools.ai',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'AI Text to Speech Generator | QuickTools',
-    description: 'Convert any text into natural-sounding speech instantly using advanced browser AI.',
+    description: 'Convert any text into natural-sounding speech with AI assistance using advanced browser AI.',
     images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Text to Speech")}&type=tool`]
   }
 };
@@ -37,7 +37,7 @@ export default function AiTextToSpeechPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Convert any text into natural-sounding speech instantly using browser AI.',
+    description: 'Convert any text into natural-sounding speech with AI assistance using browser AI.',
   };
 
   return (

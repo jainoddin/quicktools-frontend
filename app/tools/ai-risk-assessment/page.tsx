@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Risk Assessment Report | QuickTools.ai',
-  description: 'Generate detailed business risk assessments.',
+  title: "AI Risk Assessment Report",
+  description: "Create a structured risk assessment report draft with AI Risk Assessment Report. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Risk Assessment","Risk Assessment AI","Free AI Risk Assessment","Best AI Risk Assessment","Online Risk Assessment","AI Risk Assessment Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-risk-assessment' },
     openGraph: {
-            title: "AI Risk Assessment Report | QuickTools.ai",
-            description: "Generate detailed business risk assessments.",
+            title: "AI Risk Assessment Report",
+            description: "Create a structured risk assessment report draft with AI Risk Assessment Report. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-risk-assessment',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Risk Assessment Report | QuickTools.ai",
-            description: "Generate detailed business risk assessments.",
+            title: "AI Risk Assessment Report",
+            description: "Create a structured risk assessment report draft with AI Risk Assessment Report. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Risk Assessment Report")}&type=tool`]
           }
 };

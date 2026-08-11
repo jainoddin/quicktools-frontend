@@ -10,8 +10,8 @@ import {
 import ImageGeneratorClient from '@/components/ai-image-generator/ImageGeneratorClient';
 
 export const metadata: Metadata = {
-  title: 'Powerful AI Image Generator - Create Stunning AI Art',
-  description: 'Create stunning, high-resolution images from text descriptions. Unleash your creativity with our powerful AI Image Generator and models.',
+  title: "AI Image Generator",
+  description: "Create stunning, high-resolution images from text descriptions. Unleash your creativity with our powerful AI Image Generator and models.",
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-image-generator'
   },
@@ -87,7 +87,7 @@ export default function AIImageGeneratorPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Image Generator?</h3>
-              <p className="text-slate-600 mt-2">The AI Image Generator is an advanced AI-powered tool by QuickTools designed to help you create stunning, high-resolution images from text descriptions. unleash your creativity with our powerful ai image generator and models.</p>
+              <p className="text-slate-600 mt-2">The AI Image Generator is an AI-assisted tool by QuickTools designed to help you create stunning, high-resolution images from text descriptions. unleash your creativity with our powerful ai image generator and models.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What image formats are supported by AI Image Generator?</h3>
@@ -107,7 +107,7 @@ export default function AIImageGeneratorPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the AI Image Generator free to use?</h3>
-              <p className="text-slate-600 mt-2">Yes, you can use the AI Image Generator and many other tools on QuickTools.ai for free without needing a credit card.</p>
+              <p className="text-slate-600 mt-2">Current availability and usage limits are shown in the tool interface and pricing page.</p>
             </div>
           </div>
         </div>

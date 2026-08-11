@@ -5,13 +5,13 @@ import AiBusinessNameClient from '@/components/ai-business-name-generator/AiBusi
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Business Name Generator | QuickTools',
-  description: 'Generate catchy, memorable business names and taglines for your startup or company instantly with AI.',
+  title: "Free AI Business Name Generator",
+  description: "Generate catchy, memorable business names and taglines for your startup or company with AI assistance.",
     keywords: ["AI Business Name Generator","Business Name Generator AI","Free AI Business Name Generator","Best AI Business Name Generator","Online Business Name Generator","AI Business Name Generator Tool","Business Name Creator","AI Business Name Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-business-name-generator' },
     openGraph: {
             title: "Free AI Business Name Generator | QuickTools",
-            description: "Generate catchy, memorable business names and taglines for your startup or company instantly with AI.",
+            description: "Generate catchy, memorable business names and taglines for your startup or company with AI assistance.",
             url: 'https://quicktool.space/tools/ai-business-name-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Business Name Generator | QuickTools",
-            description: "Generate catchy, memorable business names and taglines for your startup or company instantly with AI.",
+            description: "Generate catchy, memorable business names and taglines for your startup or company with AI assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Business Name Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiBusinessNameGeneratorPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Generate catchy, memorable business names and taglines for your startup or company instantly with AI.',
+    description: 'Generate catchy, memorable business names and taglines for your startup or company with AI assistance.',
   };
 
   return (

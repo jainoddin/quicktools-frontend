@@ -5,13 +5,13 @@ import AiSalesFunnelClient from '@/components/ai-sales-funnel/AiSalesFunnelClien
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Premium AI Sales Funnel Copywriter | QuickTools',
-  description: 'Write landing page copy, email sequences, and ad copy all at once.',
+  title: "Premium AI Sales Funnel Copywriter",
+  description: "Premium AI Sales Funnel Copywriter creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
     keywords: ["AI Sales Funnel","Sales Funnel AI","Free AI Sales Funnel","Best AI Sales Funnel","Online Sales Funnel","AI Sales Funnel Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-sales-funnel' },
     openGraph: {
             title: "Premium AI Sales Funnel Copywriter | QuickTools",
-            description: "Write landing page copy, email sequences, and ad copy all at once.",
+            description: "Premium AI Sales Funnel Copywriter creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             url: 'https://quicktool.space/tools/ai-sales-funnel',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Premium AI Sales Funnel Copywriter | QuickTools",
-            description: "Write landing page copy, email sequences, and ad copy all at once.",
+            description: "Premium AI Sales Funnel Copywriter creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Sales Funnel Copywriter")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiSalesFunnelPage() {
       price: '5',
       priceCurrency: 'USD',
     },
-    description: 'Write landing page copy, email sequences, and ad copy all at once.',
+    description: 'Write landing page copy, email sequences, and ad copy all at once. Create an editable Sales Funnel Copywriter draft with guided inputs, then review and refine it for your workflow.',
   };
 
   return (

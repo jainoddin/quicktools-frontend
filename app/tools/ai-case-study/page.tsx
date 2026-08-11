@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Case Study Writer | QuickTools.ai',
-  description: 'Write professional business case studies.',
+  title: "AI Case Study Writer",
+  description: "Use AI Case Study Writer to create a structured case study draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
     keywords: ["AI Case Study","Case Study AI","Free AI Case Study","Best AI Case Study","Online Case Study","AI Case Study Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-case-study' },
     openGraph: {
-            title: "AI Case Study Writer | QuickTools.ai",
-            description: "Write professional business case studies.",
+            title: "AI Case Study Writer",
+            description: "Use AI Case Study Writer to create a structured case study draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
             url: 'https://quicktool.space/tools/ai-case-study',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Case Study Writer | QuickTools.ai",
-            description: "Write professional business case studies.",
+            title: "AI Case Study Writer",
+            description: "Use AI Case Study Writer to create a structured case study draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Case Study Writer")}&type=tool`]
           }
 };

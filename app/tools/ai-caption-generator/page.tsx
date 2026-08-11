@@ -5,13 +5,13 @@ import AiCaptionClient from '@/components/ai-caption-generator/AiCaptionClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Social Media Caption Generator | QuickTools',
-  description: 'Generate engaging, viral social media captions with emojis and trending hashtags for Instagram, TikTok, and Twitter.',
+  title: "Free AI Social Media Caption Generator",
+  description: "Generate engaging, audience-focused social media captions with emojis and trending hashtags for Instagram, TikTok, and Twitter.",
     keywords: ["AI Caption Generator","Caption Generator AI","Free AI Caption Generator","Best AI Caption Generator","Online Caption Generator","AI Caption Generator Tool","Caption Creator","AI Caption Creator","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-caption-generator' },
     openGraph: {
             title: "Free AI Social Media Caption Generator | QuickTools",
-            description: "Generate engaging, viral social media captions with emojis and trending hashtags for Instagram, TikTok, and Twitter.",
+            description: "Generate engaging, audience-focused social media captions with emojis and trending hashtags for Instagram, TikTok, and Twitter.",
             url: 'https://quicktool.space/tools/ai-caption-generator',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Social Media Caption Generator | QuickTools",
-            description: "Generate engaging, viral social media captions with emojis and trending hashtags for Instagram, TikTok, and Twitter.",
+            description: "Generate engaging, audience-focused social media captions with emojis and trending hashtags for Instagram, TikTok, and Twitter.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Caption Generator")}&type=tool`]
           }
 };

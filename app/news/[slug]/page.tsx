@@ -10,6 +10,7 @@ import CrossLinksWidget from '../../../components/shared/CrossLinksWidget';
 import PremiumToolsWidget from '../../../components/shared/PremiumToolsWidget';
 import type { Metadata } from 'next';
 import { getEndpoint } from '../../../lib/api';
+import RelevantToolsLinks from '../../../components/shared/RelevantToolsLinks';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space';
 
@@ -345,6 +346,7 @@ export default async function NewsDetailPage({ params }: any) {
             </div>
             
             <CrossLinksWidget category={news.category} />
+            <RelevantToolsLinks content={`${news.title} ${news.summary || news.description || ''} ${news.category || ''} ${(news.tags || []).join(' ')}`} />
           </main>
 
           {/* RIGHT SIDEBAR (Author, News, Related) */}

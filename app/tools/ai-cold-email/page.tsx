@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI B2B Cold Email Sequence | QuickTools.ai',
-  description: 'Generate high-converting B2B cold email sequences.',
+  title: "AI B2B Cold Email Sequence",
+  description: "Create a structured b2b cold email sequence draft with AI B2B Cold Email Sequence. Use guided inputs, then review, refine, and adapt the result for your workflow.",
     keywords: ["AI Cold Email","Cold Email AI","Free AI Cold Email","Best AI Cold Email","Online Cold Email","AI Cold Email Tool","Cold Email Assistant","AI Cold Email Assistant","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-cold-email' },
     openGraph: {
-            title: "AI B2B Cold Email Sequence | QuickTools.ai",
-            description: "Generate high-converting B2B cold email sequences.",
+            title: "AI B2B Cold Email Sequence",
+            description: "Create a structured b2b cold email sequence draft with AI B2B Cold Email Sequence. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-cold-email',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI B2B Cold Email Sequence | QuickTools.ai",
-            description: "Generate high-converting B2B cold email sequences.",
+            title: "AI B2B Cold Email Sequence",
+            description: "Create a structured b2b cold email sequence draft with AI B2B Cold Email Sequence. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI B2B Cold Email Sequence")}&type=tool`]
           }
 };
@@ -36,7 +36,7 @@ export default function Page() {
             "name": "AI B2B Cold Email Sequence",
             "applicationCategory": "BusinessApplication",
             "operatingSystem": "Any",
-            "description": "Generate high-converting B2B cold email sequences.",
+            "description": "Generate conversion-focused B2B cold email sequences.",
             "featureList": "AI-assisted workflow, editable results, and browser-based access"},
       {
         "@context": "https://schema.org",

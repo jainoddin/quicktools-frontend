@@ -5,8 +5,8 @@ import AiMealPlannerClient from '@/components/ai-meal-planner/AiMealPlannerClien
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Meal Planner | QuickTools',
-  description: 'Generate healthy, customized weekly meal plans based on your dietary preferences and goals.',
+  title: "Free AI Meal Planner",
+  description: "Generate healthy, customized weekly meal plans based on your dietary preferences and goals.",
     keywords: ["AI Meal Planner","Meal Planner AI","Free AI Meal Planner","Best AI Meal Planner","Online Meal Planner","AI Meal Planner Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-meal-planner' },
     openGraph: {

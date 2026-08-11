@@ -5,13 +5,13 @@ import AiVideoScriptClient from '@/components/ai-video-script/AiVideoScriptClien
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Video Script Generator | QuickTools',
-  description: 'Write highly engaging, viral-worthy scripts for YouTube, TikTok, and Instagram Reels in seconds.',
+  title: "Free AI Video Script Generator",
+  description: "Write highly engaging, audience-focused-worthy scripts for YouTube, TikTok, and Instagram Reels from the details you provide.",
     keywords: ["AI Video Script","Video Script AI","Free AI Video Script","Best AI Video Script","Online Video Script","AI Video Script Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-video-script' },
     openGraph: {
             title: "Free AI Video Script Generator | QuickTools",
-            description: "Write highly engaging, viral-worthy scripts for YouTube, TikTok, and Instagram Reels in seconds.",
+            description: "Write highly engaging, audience-focused-worthy scripts for YouTube, TikTok, and Instagram Reels from the details you provide.",
             url: 'https://quicktool.space/tools/ai-video-script',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
             card: 'summary_large_image',
             title: "Free AI Video Script Generator | QuickTools",
-            description: "Write highly engaging, viral-worthy scripts for YouTube, TikTok, and Instagram Reels in seconds.",
+            description: "Write highly engaging, audience-focused-worthy scripts for YouTube, TikTok, and Instagram Reels from the details you provide.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Video Script Generator")}&type=tool`]
           }
 };
@@ -37,7 +37,7 @@ export default function AiVideoScriptPage() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Write highly engaging, viral-worthy scripts for YouTube, TikTok, and Instagram Reels in seconds.',
+    description: 'Write highly engaging, audience-focused-worthy scripts for YouTube, TikTok, and Instagram Reels from the details you provide.',
   };
 
   return (

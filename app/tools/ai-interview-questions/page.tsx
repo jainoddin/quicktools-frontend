@@ -5,8 +5,8 @@ import AiInterviewQuestionsClient from '@/components/ai-interview-questions/AiIn
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free AI Interview Questions Generator | QuickTools',
-  description: 'Prepare for any interview by generating targeted, role-specific questions for candidates or for your own practice.',
+  title: "Free AI Interview Questions Generator",
+  description: "Prepare for any interview by generating targeted, role-specific questions for candidates or for your own practice.",
     keywords: ["AI Interview Questions","Interview Questions AI","Free AI Interview Questions","Best AI Interview Questions","Online Interview Questions","AI Interview Questions Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-interview-questions' },
     openGraph: {

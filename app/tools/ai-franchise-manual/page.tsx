@@ -4,13 +4,13 @@ import { Sparkles, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Franchise Operations Manual | QuickTools.ai',
-  description: 'Generate standard operating procedures for franchises.',
+  title: "AI Franchise Operations Manual",
+  description: "AI Franchise Operations Manual creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
     keywords: ["AI Franchise Manual","Franchise Manual AI","Free AI Franchise Manual","Best AI Franchise Manual","Online Franchise Manual","AI Franchise Manual Tool","QuickTools AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-franchise-manual' },
     openGraph: {
-            title: "AI Franchise Operations Manual | QuickTools.ai",
-            description: "Generate standard operating procedures for franchises.",
+            title: "AI Franchise Operations Manual",
+            description: "AI Franchise Operations Manual creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             url: 'https://quicktool.space/tools/ai-franchise-manual',
             siteName: 'QuickTools.ai',
             type: 'website',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Franchise Operations Manual | QuickTools.ai",
-            description: "Generate standard operating procedures for franchises.",
+            title: "AI Franchise Operations Manual",
+            description: "AI Franchise Operations Manual creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Franchise Operations Manual")}&type=tool`]
           }
 };
