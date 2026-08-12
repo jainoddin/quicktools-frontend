@@ -20,14 +20,11 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
+        "@type": "WebPage",
         "name": "AI Dream Interpreter",
-        "operatingSystem": "Web",
-        "applicationCategory": "WebApplication",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "description": "Analyze your dreams for psychological meaning and hidden messages. Create an editable Dream Interpreter draft with guided inputs, then review and refine it for your workflow.",
         "url": "https://quicktool.space/tools/ai-dream-interpreter"
-      , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+      },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

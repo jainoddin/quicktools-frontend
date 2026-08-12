@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiTweetThreadPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Tweet Thread Generator',
-    applicationCategory: 'SocialNetworkingApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Write highly engaging, audience-focused Twitter threads with perfect hooks with AI assistance.',
   };
 

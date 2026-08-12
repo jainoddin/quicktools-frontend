@@ -40,10 +40,17 @@ export default async function PromptModelPage({ params }: { params: Promise<{ mo
   } catch (error) {
     console.error(`Failed to fetch prompts for model ${model}`, error);
   }
+  const canonicalUrl = `https://quicktool.space/prompts/${modelKey}`;
+  const structuredData = {
+    '@context': 'https://schema.org', '@graph': [
+      { '@type': 'CollectionPage', name: `${modelLabel} AI Prompts`, url: canonicalUrl, description: `Practical AI prompts optimized for ${modelLabel}.`, mainEntity: { '@type': 'ItemList', numberOfItems: prompts.length, itemListElement: prompts.map((prompt: any, index: number) => ({ '@type': 'ListItem', position: index + 1, name: prompt.title, url: `https://quicktool.space/prompts/${String(prompt.models?.[0] || modelKey).toLowerCase()}/${prompt.slug}` })) } },
+      { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://quicktool.space' }, { '@type': 'ListItem', position: 2, name: 'AI Prompts', item: 'https://quicktool.space/prompts' }, { '@type': 'ListItem', position: 3, name: `${modelLabel} Prompts`, item: canonicalUrl }] },
+    ],
+  };
 
   return (
     <div className="flex-grow bg-[#F8FAFC] text-[#111827] pb-16">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@graph': [{ '@type': 'CollectionPage', name: `${modelLabel} AI Prompts`, url: `https://quicktool.space/prompts/${modelKey}`, description: `AI prompts optimized for ${modelLabel}.` }, { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://quicktool.space' }, { '@type': 'ListItem', position: 2, name: 'AI Prompts', item: 'https://quicktool.space/prompts' }, { '@type': 'ListItem', position: 3, name: `${modelLabel} Prompts`, item: `https://quicktool.space/prompts/${modelKey}` }] }] }).replace(/</g, '\\u003c') }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
       
       <div className="bg-white pt-12 pb-8 px-4 sm:px-6 lg:px-8 border-b border-gray-100">
          <div className="max-w-[1440px] mx-auto">

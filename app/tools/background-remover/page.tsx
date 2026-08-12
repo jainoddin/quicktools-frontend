@@ -32,18 +32,11 @@ export default function BackgroundRemoverPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Free AI Background Remover - Erase Backgrounds Fast",
-      "operatingSystem": "Web",
-      "applicationCategory": "WebApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
       "description": "Remove image backgrounds using our AI Background Remover. Create clear subject cutouts from the details you provide for design projects.",
       "url": "https://quicktool.space/tools/background-remover"
-    , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+    },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

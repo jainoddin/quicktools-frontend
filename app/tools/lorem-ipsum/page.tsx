@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function LoremIpsumPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'Lorem Ipsum Generator',
-    applicationCategory: 'DeveloperApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate placeholder text (Lorem Ipsum) with AI assistance for your designs.',
   };
 

@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiOutlineGeneratorPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Article Outline Generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate comprehensive, SEO-optimized article and blog outlines with AI assistance.',
   };
 

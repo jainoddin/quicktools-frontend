@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiElevatorPitchPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Elevator Pitch Generator',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Craft a compelling and persuasive 30-second elevator pitch for yourself or your business with AI assistance.',
   };
 

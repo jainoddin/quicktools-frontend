@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiQuotePage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Motivational Quote Generator',
-    applicationCategory: 'LifestyleApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate highly inspiring, original-style motivational quotes on any topic with AI assistance.',
   };
 

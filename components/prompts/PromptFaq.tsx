@@ -52,7 +52,7 @@ export default function PromptFaq() {
     <section className="w-full bg-white py-16 border-t border-gray-100">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c') }}
       />
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         

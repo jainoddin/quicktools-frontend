@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiCaptionGeneratorPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Caption Generator',
-    applicationCategory: 'SocialNetworkingApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate engaging social media captions with emojis and trending hashtags.',
   };
 

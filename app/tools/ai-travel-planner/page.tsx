@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiTravelPlannerPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Travel Itinerary Planner',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Plan your perfect trip with AI assistance. Generate day-by-day travel itineraries customized to your destination and duration.',
   };
 

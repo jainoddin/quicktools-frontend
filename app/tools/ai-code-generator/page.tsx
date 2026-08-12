@@ -33,18 +33,11 @@ export default function AiCodeGeneratorPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Intelligent AI Code Generator & Programming Assistant",
-      "operatingSystem": "Web",
-      "applicationCategory": "WebApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
       "description": "Generate editable code from the details you provide with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.",
       "url": "https://quicktool.space/tools/ai-code-generator"
-    , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+    },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

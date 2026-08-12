@@ -32,12 +32,9 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
+            "@type": "WebPage",
             "name": "AI Lead Magnet Idea Generator",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Any",
-            "description": "Generate compelling lead magnet ideas to grow your list.",
-            "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+            "description": "Generate compelling lead magnet ideas to grow your list."},
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

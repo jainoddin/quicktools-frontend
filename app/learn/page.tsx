@@ -175,14 +175,10 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
               "@type": "ListItem",
               "position": index + 1,
               "item": {
-                "@type": "Course",
+                "@type": "WebPage",
                 "url": `https://quicktool.space/learn/${course.slug}/${course.firstLessonSlug || '1-introduction'}`,
                 "name": course.title,
-                "description": course.description,
-                "provider": {
-                  "@type": "Organization",
-                  "name": "QuickTools.ai"
-                }
+                "description": course.description
               }
             }))
           })

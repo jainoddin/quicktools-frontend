@@ -32,12 +32,9 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
+            "@type": "WebPage",
             "name": "AI Brand Guidelines Generator",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Any",
-            "description": "Create comprehensive brand identity guidelines.",
-            "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+            "description": "Create comprehensive brand identity guidelines."},
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

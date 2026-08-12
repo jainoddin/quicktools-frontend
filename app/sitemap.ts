@@ -24,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/about', '/contact', '/pricing', '/learn', '/faq', '/help', '/privacy', '/terms',
     '/author/quicktools-ai-team',
     '/prompts', '/prompts/chatgpt', '/prompts/claude', '/prompts/gemini',
-    '/prompts/categories', '/prompts/generator',
+    '/prompts/categories', '/prompts/generator', '/prompts/all', '/prompts/models',
   ];
   entries.push(...coreRoutes.map((route) => ({
     url: `${BASE_URL}${route}`,

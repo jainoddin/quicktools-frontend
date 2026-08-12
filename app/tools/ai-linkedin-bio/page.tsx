@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiLinkedinBioPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI LinkedIn Bio Generator',
-    applicationCategory: 'SocialNetworkingApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Create a professional, highly optimized LinkedIn summary and bio from the details you provide.',
   };
 

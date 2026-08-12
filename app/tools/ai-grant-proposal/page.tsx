@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiGrantProposalPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Grant Proposal Writer',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '5',
-      priceCurrency: 'USD',
-    },
     description: 'Write professional grant proposals for non-profits and startups. Create an editable Grant Proposal Writer draft with guided inputs, then review and refine it for your workflow.',
   };
 

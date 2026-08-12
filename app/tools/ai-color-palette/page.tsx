@@ -54,17 +54,10 @@ export default function AiColorPalettePage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
               "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
+              "@type": "WebPage",
               "name": "AI Color Palette",
-              "description": "Generate beautiful color palettes from a brand name or mood description with our AI Color Palette Generator.",
-              "applicationCategory": "DesignApplication",
-              "operatingSystem": "All",
-              "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-              }
-            , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+              "description": "Generate beautiful color palettes from a brand name or mood description with our AI Color Palette Generator."
+            },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

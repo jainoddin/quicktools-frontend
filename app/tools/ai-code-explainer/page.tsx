@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiCodeExplainerPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Code Explainer',
-    applicationCategory: 'DeveloperApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Understand any snippet of code easily by translating it into plain English.',
   };
 

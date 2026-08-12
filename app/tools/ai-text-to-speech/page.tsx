@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiTextToSpeechPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Text to Speech Generator',
-    applicationCategory: 'MultimediaApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Convert any text into natural-sounding speech with AI assistance using browser AI.',
   };
 

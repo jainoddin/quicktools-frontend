@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiCourseCreatorPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Course Curriculum Creator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '5',
-      priceCurrency: 'USD',
-    },
     description: 'Generate a full 4-week course syllabus, lesson plans, and quizzes. Create an editable Course Curriculum Creator draft with guided inputs, then review and refine it for your workflow.',
   };
 

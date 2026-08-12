@@ -12,7 +12,7 @@ interface TrendingPromptsProps {
 export default function TrendingPrompts({ prompts, isFallbackToNewest = false }: TrendingPromptsProps) {
   const title = isFallbackToNewest ? 'Newest Prompts' : 'Trending Prompts';
   const desc = isFallbackToNewest ? 'Recently added prompts' : 'Most used prompts this week';
-  const viewAllLink = isFallbackToNewest ? '/prompts?sort=newest' : '/prompts?sort=trending';
+  const viewAllLink = isFallbackToNewest ? '/prompts/all?tab=newest' : '/prompts/all?tab=trending';
 
   return (
     <section className="w-full bg-[#0B0F19] py-16" id="trending">
@@ -36,7 +36,7 @@ export default function TrendingPrompts({ prompts, isFallbackToNewest = false }:
             title="Trending data is building"
             desc="Explore newest prompts instead."
             actionText="View Newest Prompts"
-            actionLink="/prompts?sort=newest"
+            actionLink="/prompts/all?tab=newest"
           />
         ) : (
           <div className="flex overflow-x-auto pb-8 -mx-4 px-4 sm:mx-0 sm:px-0 gap-6 snap-x snap-mandatory scrollbar-hide">

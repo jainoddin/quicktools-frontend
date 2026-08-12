@@ -32,12 +32,9 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
+            "@type": "WebPage",
             "name": "AI Investor Update Generator",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Any",
-            "description": "Write professional updates for your startup investors.",
-            "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+            "description": "Write professional updates for your startup investors."},
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

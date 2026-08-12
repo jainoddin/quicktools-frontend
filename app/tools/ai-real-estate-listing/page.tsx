@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiRealEstateListingPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Real Estate Listing Generator',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Write captivating, conversion-optimized property descriptions that sell homes faster.',
   };
 

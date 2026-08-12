@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiVideoScriptPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Video Script Generator',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Write highly engaging, audience-focused-worthy scripts for YouTube, TikTok, and Instagram Reels from the details you provide.',
   };
 

@@ -26,12 +26,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space',
   },
-  keywords: [
-    'AI tools', 'Best AI tools', 'Free AI tools', 'AI productivity', 'AI writing',
-    'AI image generator', 'AI code generator', 'AI business tools', 'AI marketing tools',
-    'AI automation', 'AI prompts', 'ChatGPT prompts', 'Claude prompts', 'Gemini prompts', 'Prompt engineering', 'Developer tools', 'AI for students',
-    'AI for freelancers', 'AI for creators', 'QuickTools', 'AI software', 'AI platform', '100+ AI tools'
-  ],
   openGraph: {
     title: '100+ AI Tools and Ready-to-Use AI Prompts | QuickTools',
     description: 'Explore AI tools and practical prompts for ChatGPT, Claude, and Gemini in one workspace.',
@@ -78,15 +72,10 @@ export default function HomePage() {
                 "logo": "https://quicktool.space/logo.png"
               },
               {
-                "@type": "SoftwareApplication",
+                "@type": "WebPage",
                 "name": "QuickTools",
-                "applicationCategory": "BusinessApplication",
-                "operatingSystem": "WebBrowser",
-                "offers": {
-                  "@type": "Offer",
-                  "price": "0",
-                  "priceCurrency": "USD"
-                }
+                "url": "https://quicktool.space",
+                "description": "A web workspace with AI tools and prompt resources for writing, business, coding, images, and productivity."
               }
             ]
           })
@@ -94,74 +83,75 @@ export default function HomePage() {
       />
 
       {/* Hero */}
-      <header className="relative w-full bg-[#0B0F19] pt-8 pb-10 lg:pt-10 lg:pb-12 overflow-hidden border-b border-indigo-500/20 shadow-[0_20px_50px_rgba(79,70,229,0.15)]">
+      <header className="relative w-full bg-[#F8FAFC] px-3 py-4 sm:px-6 sm:py-6 lg:px-8">
+        <div className="relative mx-auto max-w-[1440px] overflow-hidden rounded-[24px] border border-indigo-400/20 bg-[#0B0F19] py-8 shadow-[0_24px_70px_rgba(15,23,42,0.18)] sm:rounded-[32px] sm:py-10 lg:py-12">
         {/* Background Glows */}
         <div className="absolute top-0 right-1/4 -z-10 w-[300px] lg:w-[500px] h-[300px] lg:h-[500px] bg-[#6D5EF8]/30 rounded-full blur-[100px] opacity-60"></div>
         <div className="absolute bottom-0 left-0 -z-10 w-[400px] lg:w-[700px] h-[400px] lg:h-[700px] bg-[#3B82F6]/20 rounded-full blur-[120px] opacity-40 translate-y-1/2"></div>
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
 
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-6 items-center">
+        <div className="relative mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-12">
+          <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_.95fr] lg:gap-12">
             {/* Left Content */}
-            <div className="max-w-2xl relative z-10">
+            <div className="relative z-10 max-w-2xl text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-400/30 text-indigo-300 text-[13px] font-semibold mb-3 backdrop-blur-sm shadow-[0_0_15px_rgba(79,70,229,0.3)]">
                 <Sparkles className="w-3.5 h-3.5 text-indigo-300" /> 100+ AI tools. One workspace.
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-[48px] font-black leading-[1.1] mb-3 tracking-tight text-white drop-shadow-lg">
+              <h1 className="mb-4 text-[36px] font-black leading-[1.04] tracking-[-0.035em] text-white drop-shadow-lg sm:text-5xl lg:text-[58px]">
                 100+ AI Tools. <br className="hidden lg:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6D5EF8] to-[#3B82F6] animate-pulse">
+                <span className="bg-gradient-to-r from-[#8B7CFF] via-[#6D5EF8] to-[#60A5FA] bg-clip-text text-transparent">
                   One Workspace.
                 </span>
               </h1>
-              <p className="text-[15px] sm:text-base text-gray-300 mb-4 leading-relaxed font-medium">
+              <p className="mx-auto mb-5 max-w-xl text-[15px] font-medium leading-7 text-slate-300 sm:text-[17px] lg:mx-0">
                 Write content, plan a business, generate images, understand code, and finish everyday work from one affordable AI platform built for creators, students, freelancers, and teams.
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 relative z-50">
-                <Link href="/tools" className="bg-gradient-to-r from-[#6D5EF8] to-[#3B82F6] hover:from-[#5B4DF5] hover:to-[#2563EB] text-white font-bold px-6 py-2.5 rounded-xl shadow-lg hover:shadow-indigo-500/25 transition-all text-center flex items-center justify-center gap-2 text-sm">
+              <div className="relative z-10 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+                <Link href="/tools" className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#6D5EF8] to-[#3B82F6] px-6 py-3 text-sm font-bold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:from-[#5B4DF5] hover:to-[#2563EB] hover:shadow-indigo-500/25">
                   Explore 100+ Tools <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/pricing" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-6 py-2.5 rounded-xl backdrop-blur-md transition-all text-center text-sm">
+                <Link href="/pricing" className="flex min-h-12 items-center justify-center rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur-md transition-all hover:bg-white/20">
                   View Plans
                 </Link>
               </div>
 
-              <div className="mt-3 max-w-xl">
+              <div className="mx-auto mt-4 max-w-xl lg:mx-0">
                 <Suspense fallback={<div className="h-12 rounded-xl bg-white/10 animate-pulse" />}>
                   <HomeSearch />
                 </Suspense>
               </div>
 
               {/* Popular Searches */}
-              <div className="flex flex-wrap items-center gap-2 mt-3 text-[11px] sm:text-xs">
+              <div className="mt-3 flex items-center gap-2 overflow-x-auto pb-1 text-[11px] sm:flex-wrap sm:justify-center sm:text-xs lg:justify-start">
                 <span className="text-gray-400 font-medium mr-1">Trending:</span>
                 {['AI Writer', 'Image Generator', 'Business Plan', 'Code Generator'].map(tag => (
-                  <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 text-gray-300 rounded-full hover:bg-white/10 hover:border-indigo-500/50 hover:text-white transition-all backdrop-blur-md">
+                  <span key={tag} className="shrink-0 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-gray-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-white/10 hover:text-white">
                     {tag}
                   </span>
                 ))}
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-4 sm:gap-8 border-t border-white/10 pt-4 mt-4">
+              <div className="mt-5 grid grid-cols-3 gap-2 border-t border-white/10 pt-5 text-left sm:gap-5">
                 <div>
-                  <div className="flex items-center gap-1.5 font-black text-lg text-white"><LayoutGrid className="w-4 h-4 text-indigo-400" /> 100+</div>
+                  <div className="flex items-center gap-1.5 text-sm font-black text-white sm:text-lg"><LayoutGrid className="h-4 w-4 text-indigo-400" /> 100+</div>
                   <div className="text-[12px] font-medium text-gray-400 mt-0.5">AI & Utility Tools</div>
                 </div>
                 <div>
-                  <div className="flex items-center gap-1.5 font-black text-lg text-white"><Shield className="w-4 h-4 text-indigo-400" /> Secure</div>
+                  <div className="flex items-center gap-1.5 text-sm font-black text-white sm:text-lg"><Shield className="h-4 w-4 text-indigo-400" /> Secure</div>
                   <div className="text-[12px] font-medium text-gray-400 mt-0.5">No Card Required</div>
                 </div>
                 <div>
-                  <div className="flex items-center gap-1.5 font-black text-lg text-white"><RefreshCcw className="w-4 h-4 text-indigo-400" /> Growing</div>
+                  <div className="flex items-center gap-1.5 text-sm font-black text-white sm:text-lg"><RefreshCcw className="h-4 w-4 text-indigo-400" /> Growing</div>
                   <div className="text-[12px] font-medium text-gray-400 mt-0.5">New Tools & Updates</div>
                 </div>
               </div>
             </div>
 
             {/* Product demo preview */}
-            <div className="relative hidden md:block max-w-md mx-auto w-full">
+            <div className="relative mx-auto hidden w-full max-w-lg md:block">
               <div className="absolute -inset-6 bg-indigo-500/20 blur-3xl rounded-full" />
               <div className="relative rounded-[20px] border border-white/15 bg-[#111827]/90 p-2 shadow-2xl shadow-indigo-950/50 backdrop-blur-xl rotate-[1deg] hover:rotate-0 transition-transform duration-500">
                 <div className="rounded-xl border border-white/10 bg-[#0D1320] overflow-hidden">
@@ -198,17 +188,18 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+        </div>
       </header>
 
       {/* 2.5 Top 5 Flagship Tools */}
-      <section className="relative w-full bg-white py-16 border-b border-gray-100">
+      <section className="relative w-full border-b border-gray-100 bg-white py-10 sm:py-14">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="mb-7 text-center sm:mb-10">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Popular AI Tools</h2>
             <p className="text-gray-500">Start with focused tools for writing, planning, research, and everyday work.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-5">
             {[
               { id: 'ai-pitch-deck', name: 'AI Pitch Deck', icon: Briefcase, desc: 'Win investors over', color: 'from-blue-500 to-indigo-500' },
               { id: 'ai-swot-analysis', name: 'SWOT Analysis', icon: Check, desc: 'Know your strengths', color: 'from-purple-500 to-pink-500' },
@@ -216,12 +207,12 @@ export default function HomePage() {
               { id: 'ai-business-model', name: 'Business Model', icon: LayoutGrid, desc: 'Map your strategy', color: 'from-green-400 to-emerald-600' },
               { id: 'ai-sales-funnel', name: 'Sales Funnel', icon: Zap, desc: 'Convert more leads', color: 'from-cyan-400 to-blue-500' },
             ].map((tool, i) => (
-              <Link href={`/tools/${tool.id}`} key={i} className="group relative bg-white rounded-2xl p-6 border border-gray-100 hover:border-gray-200 transition-all hover:-translate-y-2 overflow-hidden shadow-sm hover:shadow-lg">
+              <Link href={`/tools/${tool.id}`} key={i} className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition-all hover:-translate-y-1.5 hover:border-indigo-200 hover:shadow-lg sm:p-6">
                 <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${tool.color} flex items-center justify-center text-white mb-4 shadow-sm`}>
+                <div className={`mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-sm sm:mb-4 sm:h-12 sm:w-12 ${tool.color}`}>
                   <tool.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-1">{tool.name}</h3>
+                <h3 className="mb-1 text-sm font-bold text-gray-900 sm:text-lg">{tool.name}</h3>
                 <p className="text-sm text-gray-500">{tool.desc}</p>
               </Link>
             ))}
@@ -231,7 +222,7 @@ export default function HomePage() {
 
       {/* 3. Secondary Nav / Category Icons */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-12">
+        <div className="flex snap-x items-start gap-4 overflow-x-auto pb-2 sm:flex-wrap sm:justify-center sm:gap-6 sm:overflow-visible lg:gap-12">
           {[
             { icon: ImageIcon, label: 'Creative Tools', slug: '/tools/category/creative', color: 'text-blue-500' },
             { icon: PenTool, label: 'Writing Tools', slug: '/tools/category/writing', color: 'text-green-500' },
@@ -241,7 +232,7 @@ export default function HomePage() {
             { icon: Briefcase, label: 'Business', slug: '/tools/category/business', color: 'text-teal-500' },
             { icon: LayoutGrid, label: 'View All', slug: '/tools', color: 'text-gray-500' },
           ].map((item, i) => (
-            <Link href={item.slug} key={i} className="flex flex-col items-center gap-2 group">
+            <Link href={item.slug} key={i} className="group flex w-[76px] shrink-0 snap-start flex-col items-center gap-2 sm:w-auto">
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white shadow-sm border border-gray-100 flex items-center justify-center group-hover:-translate-y-1 group-hover:shadow-md transition-all duration-200">
                 <item.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${item.color}`} />
               </div>
@@ -258,20 +249,20 @@ export default function HomePage() {
           <Link href="/tools" className="text-sm font-semibold text-[#4F46E5] hover:text-[#4338CA] flex items-center gap-1">View All Tools <ArrowRight className="w-4 h-4" /></Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-6 lg:grid-cols-5">
           {[...allTools]
             .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
             .slice(0, 5)
             .map((tool, i) => {
               const Icon = IconMap[tool.iconName] || LayoutGrid;
               return (
-                <Link href={tool.slug} key={i} className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 flex flex-col items-center text-center group cursor-pointer">
-                  <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl ${tool.color} flex items-center justify-center mb-4`}>
-                    <Icon className="w-7 h-7 sm:w-8 sm:h-8" />
+                <Link href={tool.slug} key={i} className="group flex min-w-0 cursor-pointer flex-col items-center rounded-2xl border border-gray-100 bg-white p-3 text-center shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg sm:p-6">
+                  <div className={`mb-3 flex h-11 w-11 items-center justify-center rounded-xl sm:mb-4 sm:h-16 sm:w-16 sm:rounded-2xl ${tool.color}`}>
+                    <Icon className="h-5 w-5 sm:h-8 sm:w-8" />
                   </div>
-                  <h3 className="font-bold text-[#111827] text-sm sm:text-base mb-2">{tool.name}</h3>
-                  <p className="text-xs text-[#6B7280] mb-6 flex-grow">{tool.description}</p>
-                  <div className="text-sm font-semibold text-[#4F46E5] border border-transparent group-hover:border-[#4F46E5] group-hover:bg-indigo-50 w-full py-2 rounded-lg transition-all flex justify-center items-center gap-1">
+                  <h3 className="mb-1.5 line-clamp-2 text-xs font-bold leading-5 text-[#111827] sm:mb-2 sm:text-base">{tool.name}</h3>
+                  <p className="mb-3 line-clamp-3 flex-grow text-[11px] leading-4 text-[#6B7280] sm:mb-6 sm:text-xs">{tool.description}</p>
+                  <div className="flex w-full items-center justify-center gap-1 rounded-lg border border-transparent py-1.5 text-xs font-semibold text-[#4F46E5] transition-all group-hover:border-[#4F46E5] group-hover:bg-indigo-50 sm:py-2 sm:text-sm">
                     Try Now <ArrowRight className="w-4 h-4" />
                   </div>
                 </Link>

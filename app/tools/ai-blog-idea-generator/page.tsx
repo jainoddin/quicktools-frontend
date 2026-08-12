@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiBlogIdeaGeneratorPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Blog Idea Generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate highly engaging, audience-focused blog post ideas and titles with AI assistance.',
   };
 

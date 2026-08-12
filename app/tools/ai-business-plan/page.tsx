@@ -29,10 +29,8 @@ export const metadata: Metadata = {
 export default function AiBusinessPlanPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Business Plan Generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
     description: 'Generate a complete 10-page business plan with executive summary, market analysis, and financial projections.',
   };
 

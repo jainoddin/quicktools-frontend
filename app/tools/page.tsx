@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import ToolsClient from '@/components/tools/ToolsClient';
 import { allTools } from '@/lib/toolsRegistry';
 import { toolCategoryHubs } from '@/lib/toolCategoryHubs';
-import Link from 'next/link';
 
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ c?: string, category?: string }> }): Promise<Metadata> {
   const resolvedParams = await searchParams;
@@ -29,14 +28,14 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
 
   return {
     title: {
-      absolute: '110+ AI Tools Directory | Compare the Best AI Tools | QuickTools',
+      absolute: `${allTools.length} AI Tools Directory | Compare AI Tools | QuickTools`,
     },
-    description: 'Explore 110+ AI tools for writing, coding, image generation, business, and productivity. Compare the best AI tools with QuickTools.',
+    description: `Explore ${allTools.length} AI tools for writing, coding, image generation, business, and productivity. Compare tools and choose the right workflow with QuickTools.`,
     keywords: [
       'AI tools', 'Best AI tools', 'Free AI tools', 'AI tool directory', 'AI software',
       'AI productivity tools', 'AI writing tools', 'AI image generator', 'AI code generator',
       'AI video tools', 'AI business tools', 'AI marketing tools', 'AI design tools',
-      'AI developer tools', 'AI automation tools', 'AI utilities', 'QuickTools', '110 AI tools'
+      'AI developer tools', 'AI automation tools', 'AI utilities', 'QuickTools'
     ],
     alternates: {
       canonical: 'https://quicktool.space/tools',
@@ -50,11 +49,12 @@ export default function AllToolsPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "All 100+ AI Tools | QuickTools.ai",
-    "description": "Explore our curated collection of 100+ premium and free AI tools including Image Generator, Resume Builder, Translator, Summarizer, and more.",
+    "name": `All ${allTools.length} AI Tools | QuickTools.ai`,
+    "description": `Explore ${allTools.length} AI tools including Image Generator, Resume Builder, Translator, Summarizer, and more.`,
     "url": "https://quicktool.space/tools",
     "mainEntity": {
       "@type": "ItemList",
+      "numberOfItems": allTools.length,
       "itemListElement": allTools.map((tool, index) => ({
         "@type": "ListItem", 
         "position": index + 1, 
@@ -70,17 +70,6 @@ export default function AllToolsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <nav aria-label="Tool categories" className="mx-auto flex max-w-[1440px] flex-wrap gap-2 px-6 pt-6 lg:px-10">
-        {toolCategoryHubs.map(category => (
-          <Link
-            key={category.slug}
-            href={`/tools/category/${category.slug}`}
-            className="rounded-full border border-[#E5E7EB] bg-white px-4 py-2 text-sm font-semibold text-[#374151] transition-colors hover:border-[#6D5EF8] hover:text-[#4F46E5]"
-          >
-            {category.name}
-          </Link>
-        ))}
-      </nav>
       <ToolsClient />
     </div>
   );

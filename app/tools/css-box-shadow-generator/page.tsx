@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function BoxShadowPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'CSS Box Shadow Generator',
-    applicationCategory: 'DeveloperApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Visually generate custom CSS box shadows and copy the CSS code with AI assistance.',
   };
 

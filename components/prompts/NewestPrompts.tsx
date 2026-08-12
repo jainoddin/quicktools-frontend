@@ -21,7 +21,7 @@ export default function NewestPrompts({ prompts }: NewestPromptsProps) {
             </h2>
             <p className="text-gray-500">Freshly added prompts from the AI community.</p>
           </div>
-          <Link href="/prompts?sort=newest" className="text-sm font-semibold text-indigo-600 hover:text-indigo-500 flex items-center gap-1 transition-colors">
+          <Link href="/prompts/all?tab=newest" className="text-sm font-semibold text-indigo-600 hover:text-indigo-500 flex items-center gap-1 transition-colors">
              View all newest <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

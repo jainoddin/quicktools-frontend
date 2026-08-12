@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiGitCommandPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Git Command Generator',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Forget complex git syntax. Describe what you want to do in plain English, and get the exact git commands with AI assistance.',
   };
 

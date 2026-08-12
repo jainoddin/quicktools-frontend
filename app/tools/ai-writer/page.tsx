@@ -33,18 +33,11 @@ export default function AiWriterPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Advanced AI Writer & Content Generator for Creators",
-      "operatingSystem": "Web",
-      "applicationCategory": "WebApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
       "description": "Generate structured content using our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
       "url": "https://quicktool.space/tools/ai-writer"
-    , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+    },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

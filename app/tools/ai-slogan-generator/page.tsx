@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiSloganGeneratorPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Slogan Generator',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'With AI assistance brainstorm catchy, memorable, and conversion-focused slogans for your business, brand, or marketing campaign.',
   };
 

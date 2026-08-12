@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiYoutubeTitlePage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI YouTube Title Generator',
-    applicationCategory: 'MultimediaApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate highly clickable, audience-focused, and engaging YouTube video titles with AI assistance.',
   };
 

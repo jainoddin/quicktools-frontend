@@ -95,8 +95,8 @@ const plans = [
 ];
 
 const compareFeatures = [
-  { name: 'Access Limit', free: '3 Generations / day', starter: '100 / month', pro: 'Unlimited', business: 'Unlimited' },
-  { name: 'HD Image Generation', free: false, starter: false, pro: true, business: true },
+  { name: 'Credits / access', free: '3 Generations / day', starter: '500 Credits / month', pro: '14,400 Credits / year', business: '18,000 Credits / year' },
+  { name: 'HD Image Generation', free: false, starter: true, pro: true, business: true },
   { name: 'AI Background Remover', free: 'Basic', starter: true, pro: true, business: true },
   { name: 'AI Text Summarizer', free: true, starter: true, pro: true, business: true },
   { name: 'AI Code Writer', free: true, starter: true, pro: true, business: true },

@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiReviewResponderPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Review Responder',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Save time and maintain a great reputation by generating professional, empathetic replies to customer reviews.',
   };
 

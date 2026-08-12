@@ -40,6 +40,7 @@ export default function CookieBanner() {
     // Keep this dismissal scoped to the current tab so the user can make a
     // clear consent choice on a future visit.
     sessionStorage.setItem('quicktools_cookie_banner_dismissed', 'true');
+    updateAnalyticsConsent(false);
     setIsVisible(false);
   };
 

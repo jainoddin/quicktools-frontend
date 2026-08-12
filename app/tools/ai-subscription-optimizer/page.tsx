@@ -20,14 +20,11 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
+        "@type": "WebPage",
         "name": "Subscription Optimizer",
-        "operatingSystem": "Web",
-        "applicationCategory": "WebApplication",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "description": "Analyze your active subscriptions to find feature overlaps and save money with AI assistance.",
         "url": "https://quicktool.space/tools/ai-subscription-optimizer"
-      , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+      },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

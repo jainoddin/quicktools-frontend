@@ -158,9 +158,9 @@ export default function ToolHistorySidebar({
             &larr; Back to Generator
           </button>
           <div className="flex items-center gap-2 mb-2">
-            <h1 className="text-2xl md:text-3xl font-bold text-[#111827] flex items-center gap-2">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#111827] flex items-center gap-2">
               History <Sparkles className="w-6 h-6 text-[#F59E0B] fill-[#F59E0B]" />
-            </h1>
+            </h2>
           </div>
           <p className="text-[#6B7280] text-sm md:text-base">View and manage all your previously generated content.</p>
         </div>

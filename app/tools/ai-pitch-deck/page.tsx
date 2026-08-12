@@ -29,10 +29,8 @@ export const metadata: Metadata = {
 export default function AiPitchDeckPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Pitch Deck Generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
     description: 'Generate slide-by-slide text, data points, and script for a startup pitch deck.',
   };
 

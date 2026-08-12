@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiEventPlannerPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Event Planner',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Plan your events effortlessly. Get a comprehensive checklist, timeline, and ideas for your next party or corporate event.',
   };
 

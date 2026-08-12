@@ -158,7 +158,10 @@ function PaymentContent() {
   const searchParams = useSearchParams();
   const { user } = useAuth();
   
-  const planId = searchParams.get('plan') || 'pro';
+  const requestedPlan = searchParams.get('plan');
+  const planId = requestedPlan === 'starter' || requestedPlan === 'business' || requestedPlan === 'pro'
+    ? requestedPlan
+    : 'pro';
   
   let planName = 'Pro Plan';
   let planIcon = <Zap className="w-5 h-5 text-[#6D5EF8]" />;
@@ -253,6 +256,7 @@ function PaymentContent() {
           const verifyRes = await fetch(getEndpoint('/api/payment/verify'), {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
             body: JSON.stringify({
               razorpayOrderId:   response.razorpay_order_id,
               razorpayPaymentId: response.razorpay_payment_id,

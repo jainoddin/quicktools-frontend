@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3001",
-    "build": "npm run validate:tools && npm run validate:seo && next build",
+    "build": "npm run validate:tools && npm run validate:seo && npm run validate:prompts && npm run validate:audit && next build",
     "start": "next start",
     "lint": "eslint",
     "validate:tools": "node scripts/validate-tool-registry.mjs",
     "validate:seo": "node scripts/validate-seo-coverage.mjs",
+    "validate:prompts": "node scripts/validate-prompt-seo.mjs",
+    "validate:audit": "node scripts/validate-audit-remediation.mjs",
     "refresh:sitemap-fallback": "node scripts/refresh-sitemap-fallback.mjs",
     "check:links": "linkinator http://localhost:3001 --skip \"^(?!http://localhost:3001)\" --retry --markdown"
   },

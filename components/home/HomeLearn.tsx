@@ -11,7 +11,10 @@ interface Course {
 export default async function HomeLearn() {
   let courses: Course[] = [];
   try {
-    const res = await fetch(getEndpoint('/api/learn/courses'), { next: { revalidate: 300 } });
+    const res = await fetch(getEndpoint('/api/learn/courses'), {
+      next: { revalidate: 300 },
+      signal: AbortSignal.timeout(8_000),
+    });
     if (res.ok) {
       const data = await res.json();
       courses = (Array.isArray(data) ? data : (data.data || [])).slice(0, 3);
@@ -20,7 +23,17 @@ export default async function HomeLearn() {
     console.error('Failed to fetch latest courses:', error);
   }
 
-  if (!courses.length) return null;
+  if (!courses.length) {
+    return (
+      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div className="rounded-[28px] border border-indigo-100 bg-indigo-50 px-6 py-7 text-center">
+          <h2 className="text-xl font-black text-slate-900">QuickTools Academy</h2>
+          <p className="mt-2 text-sm text-slate-600">Courses are temporarily unavailable. You can still browse the learning library.</p>
+          <Link href="/learn" className="mt-4 inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-3 text-sm font-bold text-white">Browse courses <ArrowRight className="h-4 w-4" /></Link>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">

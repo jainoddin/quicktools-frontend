@@ -34,13 +34,13 @@ const FAQS = [
     id: 3,
     category: 'Billing & Payments',
     question: 'How do credits work?',
-    answer: 'Credits are the currency used on QuickTools.ai. Different AI tools consume different amounts of credits per use. Free accounts get 15 credits per month, while premium plans offer significantly more. You can purchase additional credits anytime.'
+    answer: 'Credits are used by eligible QuickTools.ai features. The Free Starter plan currently includes up to 3 eligible generations per day, while paid plans include the credit allowance shown on the pricing page.'
   },
   {
     id: 4,
     category: 'Billing & Payments',
     question: 'What payment methods do you accept?',
-    answer: 'We accept all major credit cards, debit cards, PayPal, and various local payment methods depending on your region, processed securely via Razorpay/Stripe.'
+    answer: 'Payments are processed securely through Razorpay. The payment methods available for your account and region are shown directly in the Razorpay checkout.'
   },
   {
     id: 5,

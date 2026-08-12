@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 import { Copy, Download, Edit2, RefreshCw, Maximize2, Minimize2, Trash2, CheckCircle2, ChevronDown, Crown, Share2, X, FileText, File, Link as LinkIcon, MessageCircle, MessageSquare, Mail, Lock } from 'lucide-react';
 
 import ReactMarkdown from 'react-markdown';
@@ -25,7 +25,10 @@ export default function AiWriterResult({
   const [isCopied, setIsCopied] = useState(false);
   const [isShareCopied, setIsShareCopied] = useState(false);
   const [activeShareNode, setActiveShareNode] = useState('copy');
-  const [shareLink] = useState(`https://quicktools.ai/share/writer/${Math.random().toString(36).substring(2, 10)}`);
+  // useId is stable across server and client renders, unlike Math.random().
+  // This prevents a hydration mismatch while retaining a per-result share id.
+  const shareId = useId().replace(/[^a-zA-Z0-9]/g, '');
+  const shareLink = `https://quicktool.space/share/writer/${shareId}`;
 
   const handleAction = (action: () => void) => {
     if (!isAuthenticated && onRequireLogin) {

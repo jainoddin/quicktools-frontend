@@ -23,24 +23,25 @@ export default function PromptHero({ stats = { prompts: null, categories: null, 
     ? `/prompts/${featuredPrompt.models?.[0]?.toLowerCase() || 'chatgpt'}/${featuredPrompt.slug}`
     : '/prompts/generator';
   return (
-    <section className="relative w-full bg-[#F8FAFC] pt-12 pb-16 lg:pt-16 lg:pb-20 overflow-hidden">
+    <section className="relative w-full bg-[#090D18] pt-10 pb-14 lg:pt-14 lg:pb-16 overflow-hidden">
       {/* Background Glows */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-400/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"></div>
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-purple-400/10 rounded-full blur-[100px] translate-y-1/2"></div>
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3"></div>
+      <div className="absolute bottom-0 left-1/4 w-[420px] h-[420px] bg-purple-600/15 rounded-full blur-[110px] translate-y-1/2"></div>
       
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           
           {/* Left Content */}
           <div className="max-w-2xl relative z-10">
-            <h1 className="text-4xl sm:text-5xl lg:text-[64px] font-black leading-[1.1] mb-6 tracking-tight text-[#111827]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-400/10 px-3.5 py-1.5 text-xs font-bold text-indigo-200 mb-5"><Sparkles className="w-4 h-4" /> 900+ ready-to-use prompts</div>
+            <h1 className="text-4xl sm:text-5xl lg:text-[64px] font-black leading-[1.08] mb-6 tracking-tight text-white">
               Find the Perfect <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                 AI Prompt
               </span> for Any Task
             </h1>
             
-            <p className="text-[17px] text-gray-600 mb-8 leading-relaxed max-w-lg">
+            <p className="text-[17px] text-slate-300 mb-8 leading-relaxed max-w-xl">
               Explore 300+ practical prompts for ChatGPT, Claude, and Gemini. Save time, boost productivity, and get better results.
             </p>
 
@@ -51,24 +52,24 @@ export default function PromptHero({ stats = { prompts: null, categories: null, 
 
             {/* Popular Tags */}
             <div className="flex flex-wrap items-center gap-2 text-xs mb-10">
-              <span className="text-gray-900 font-bold mr-1">Popular:</span>
+              <span className="text-white font-bold mr-1">Popular:</span>
               {['Business Plan', 'Instagram Caption', 'YouTube Script', 'Resume Builder', 'SEO Article'].map(tag => (
-                <Link key={tag} href={`/prompts?q=${encodeURIComponent(tag)}`} className="px-3 py-1.5 bg-white border border-gray-200 text-gray-600 rounded-full hover:border-indigo-200 hover:text-indigo-600 transition-colors shadow-sm font-medium">
+                <Link key={tag} href={`/prompts?q=${encodeURIComponent(tag)}`} className="px-3 py-1.5 bg-white/5 border border-white/15 text-slate-300 rounded-full hover:bg-white/10 hover:border-indigo-300 hover:text-white transition-colors font-medium">
                   {tag}
                 </Link>
               ))}
             </div>
 
             {/* Real Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-8 border-t border-gray-200">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-7 border-t border-white/10">
               <div className="flex flex-col gap-1">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 shrink-0">
                     <LayoutGrid className="w-4 h-4" />
                   </div>
-                  <span className="font-bold text-xl text-gray-900">{stats.prompts ?? 0}</span>
+                  <span className="font-bold text-xl text-white">{stats.prompts ?? 0}</span>
                 </div>
-                <span className="text-xs text-gray-500 font-medium ml-10">Published Prompts</span>
+                <span className="text-xs text-slate-400 font-medium ml-10">Published Prompts</span>
               </div>
               
               <div className="flex flex-col gap-1">
@@ -76,9 +77,9 @@ export default function PromptHero({ stats = { prompts: null, categories: null, 
                   <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
                     <Sparkles className="w-4 h-4" />
                   </div>
-                  <span className="font-bold text-xl text-gray-900">{stats.categories ?? 0}</span>
+                  <span className="font-bold text-xl text-white">{stats.categories ?? 0}</span>
                 </div>
-                <span className="text-xs text-gray-500 font-medium ml-10">Categories</span>
+                <span className="text-xs text-slate-400 font-medium ml-10">Categories</span>
               </div>
 
               <div className="flex flex-col gap-1">
@@ -86,9 +87,9 @@ export default function PromptHero({ stats = { prompts: null, categories: null, 
                   <div className="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center text-amber-600 shrink-0">
                     <Zap className="w-4 h-4" />
                   </div>
-                  <span className="font-bold text-xl text-gray-900">{stats.models ?? 0}</span>
+                  <span className="font-bold text-xl text-white">{stats.models ?? 0}</span>
                 </div>
-                <span className="text-xs text-gray-500 font-medium ml-10">AI Models</span>
+                <span className="text-xs text-slate-400 font-medium ml-10">AI Models</span>
               </div>
 
               <div className="flex flex-col gap-1">
@@ -96,9 +97,9 @@ export default function PromptHero({ stats = { prompts: null, categories: null, 
                   <div className="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 shrink-0">
                     <Users className="w-4 h-4" />
                   </div>
-                  <span className="font-bold text-xl text-gray-900">Free</span>
+                  <span className="font-bold text-xl text-white">Free</span>
                 </div>
-                <span className="text-xs text-gray-500 font-medium ml-10">Copy & Use</span>
+                <span className="text-xs text-slate-400 font-medium ml-10">Copy & Use</span>
               </div>
             </div>
             
@@ -120,7 +121,7 @@ export default function PromptHero({ stats = { prompts: null, categories: null, 
                  </span>
                </div>
                
-               <p className="text-[13px] text-gray-500 line-clamp-4 leading-relaxed mb-6">
+               <p className="text-[13px] text-gray-500 line-clamp-3 leading-relaxed mb-6">
                  {featuredPrompt?.description || 'Act as a business consultant. Create a detailed business plan including executive summary, market analysis, marketing strategy and financial plan.'}
                </p>
                

@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiLegalTemplatePage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Legal Template Drafter',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '5',
-      priceCurrency: 'USD',
-    },
     description: 'Generate standard boilerplate templates for NDAs, Freelance agreements, etc.',
   };
 

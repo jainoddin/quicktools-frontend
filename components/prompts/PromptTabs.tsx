@@ -39,14 +39,21 @@ export default function PromptTabs({ trendingPrompts, newestPrompts, initialTab 
 
   useEffect(() => {
     if (authLoading) return;
-    const hash = window.location.hash.slice(1) as PromptTab;
-    if (!['newest', 'trending', 'saved'].includes(hash)) return;
-    if (hash === 'saved' && !user) {
-      setShowLoginPopup(true);
-      return;
-    }
-    setActiveTab(hash);
-    requestAnimationFrame(() => document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    const handleHashTab = () => {
+      const hash = window.location.hash.slice(1).split('#')[0] as PromptTab;
+      if (!['newest', 'trending', 'saved'].includes(hash)) return;
+      if (hash === 'saved' && !user) {
+        setShowLoginPopup(true);
+        return;
+      }
+      setActiveTab(hash);
+      window.setTimeout(() => {
+        document.getElementById('prompt-library')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    };
+    handleHashTab();
+    window.addEventListener('hashchange', handleHashTab);
+    return () => window.removeEventListener('hashchange', handleHashTab);
   }, [user, authLoading]);
 
   useEffect(() => {
@@ -67,21 +74,22 @@ export default function PromptTabs({ trendingPrompts, newestPrompts, initialTab 
     }
     setActiveTab(tab);
     window.history.replaceState(null, '', `#${tab}`);
+    document.getElementById('prompt-library')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const promptsToShow = activeTab === 'trending' ? trendingPrompts : activeTab === 'newest' ? newestPrompts : savedPrompts;
 
   return (
-    <section id={activeTab} className="w-full bg-[#F8FAFC] py-12 scroll-mt-24">
+    <section id="prompt-library" data-active-tab={activeTab} className="w-full bg-[#F8FAFC] pb-5 pt-9 sm:pb-7 sm:pt-10 scroll-mt-[76px] sm:scroll-mt-24">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="sr-only">{activeTab === 'trending' ? 'Trending AI Prompts' : activeTab === 'newest' ? 'Newest AI Prompts' : 'Your Saved AI Prompts'}</h2>
-        <div className="flex flex-col sm:flex-row items-center justify-between border-b border-gray-200 mb-8 pb-4">
-          <div className="flex flex-wrap items-center gap-x-5 sm:gap-x-8 gap-y-4 text-base sm:text-lg font-bold max-w-full">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-200 mb-6 pb-3 gap-3">
+          <div className="grid w-full grid-cols-3 sm:flex sm:w-auto items-center gap-1 sm:gap-x-8 text-sm sm:text-lg font-bold">
             {(['trending', 'newest', 'saved'] as PromptTab[]).map(tab => (
               <button
                 key={tab}
                 onClick={() => openTab(tab)}
-                className={`relative pb-4 -mb-5 whitespace-nowrap transition-colors flex items-center gap-2 ${activeTab === tab ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-500 hover:text-gray-900'}`}
+                className={`relative justify-center sm:justify-start pb-3 -mb-4 whitespace-nowrap transition-colors flex items-center gap-1.5 ${activeTab === tab ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-500 hover:text-gray-900'}`}
               >
                 {tab === 'saved' && <Bookmark className="w-4 h-4" />}
                 {tab === 'trending' ? 'Trending Prompts' : tab === 'newest' ? 'Newest Prompts' : 'Saved'}
@@ -89,7 +97,7 @@ export default function PromptTabs({ trendingPrompts, newestPrompts, initialTab 
             ))}
           </div>
           {activeTab !== 'saved' && (
-            <Link href={`/prompts?sort=${activeTab}`} className="text-indigo-600 font-semibold flex items-center gap-1 hover:text-indigo-700 transition mt-4 sm:mt-0 text-sm">
+            <Link href={`/prompts/all?tab=${activeTab}`} className="text-indigo-600 font-semibold flex items-center gap-1 hover:text-indigo-700 transition mt-4 sm:mt-0 text-sm">
               View all {activeTab} <ArrowRight className="w-4 h-4" />
             </Link>
           )}

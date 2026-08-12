@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiWorkoutPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Workout Plan Generator',
-    applicationCategory: 'HealthAndFitnessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate custom, highly effective workout plans with AI assistance based on your fitness goals and available time.',
   };
 

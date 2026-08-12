@@ -20,14 +20,11 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
+        "@type": "WebPage",
         "name": "Legal Loophole Finder",
-        "operatingSystem": "Web",
-        "applicationCategory": "WebApplication",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "description": "Find hidden clauses, red flags, and loopholes in legal contracts and rental agreements.",
         "url": "https://quicktool.space/tools/ai-legal-loophole-finder"
-      , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+      },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

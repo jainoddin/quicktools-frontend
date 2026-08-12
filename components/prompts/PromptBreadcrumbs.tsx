@@ -13,6 +13,8 @@ const fixedLabels: Record<string, string> = {
   categories: 'Categories',
   collections: 'Collections',
   generator: 'Prompt Generator',
+  all: 'All Prompts',
+  models: 'AI Models',
 };
 
 function segmentLabel(segment: string) {

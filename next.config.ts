@@ -1,5 +1,25 @@
 import type { NextConfig } from "next";
 
+const productionCsp = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'self'",
+  "form-action 'self' https://api.razorpay.com https://checkout.razorpay.com",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://scripts.clarity.ms https://checkout.razorpay.com",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://pub-0a928134dcdc420da2af02e6238ef06b.r2.dev https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev https://images.unsplash.com https://i.pravatar.cc https://cdn-icons-png.flaticon.com https://www.google-analytics.com https://www.clarity.ms",
+  "font-src 'self' data:",
+  "connect-src 'self' https://quicktools-backend-wlm5.onrender.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms https://api.razorpay.com https://checkout.razorpay.com",
+  "frame-src 'self' https://api.razorpay.com https://checkout.razorpay.com",
+  "upgrade-insecure-requests",
+].join('; ');
+
+const developmentCsp = productionCsp
+  .replace("script-src 'self'", "script-src 'self' 'unsafe-eval'")
+  .replace(/connect-src [^;]+/, "connect-src 'self' http://localhost:* ws://localhost:* https: wss:")
+  .replace('; upgrade-insecure-requests', '');
+
 const nextConfig: NextConfig = {
   turbopack: {
     // Multiple lockfiles exist above this app; keep Turbopack scoped to the frontend.
@@ -26,13 +46,20 @@ const nextConfig: NextConfig = {
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(self), geolocation=()' },
-          { key: 'Content-Security-Policy', value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.clarity.ms https://scripts.clarity.ms; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https: wss:;" }
+          { key: 'Content-Security-Policy', value: process.env.NODE_ENV === 'production' ? productionCsp : developmentCsp }
         ],
       },
     ];
   },
   async redirects() {
     return [
+      // Keep one canonical host so crawlers do not index www and non-www separately.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.quicktool.space' }],
+        destination: 'https://quicktool.space/:path*',
+        permanent: true,
+      },
       // Redirect favicon.ico to new icon to prevent 404
       {
         source: '/favicon.ico',

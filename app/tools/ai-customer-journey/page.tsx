@@ -32,12 +32,9 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
+            "@type": "WebPage",
             "name": "AI Customer Journey Mapper",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Any",
-            "description": "Map out the end-to-end customer journey.",
-            "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+            "description": "Map out the end-to-end customer journey."},
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

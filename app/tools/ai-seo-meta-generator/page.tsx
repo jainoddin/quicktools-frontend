@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiSeoMetaPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI SEO Title & Meta Generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate search-focused, SEO-optimized Page Titles and Meta Descriptions with AI assistance.',
   };
 

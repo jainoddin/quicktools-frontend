@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiHashtagGeneratorPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Instagram Hashtag Generator',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Boost your reach and engagement with AI-generated, highly relevant hashtags for Instagram, TikTok, and Twitter.',
   };
 

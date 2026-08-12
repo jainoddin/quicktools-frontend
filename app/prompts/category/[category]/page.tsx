@@ -33,10 +33,12 @@ export default async function PromptCategoryPage({ params }: { params: Promise<{
   } catch (error) {
     console.error(`Failed to fetch prompts for category ${category}`, error);
   }
+  const canonicalUrl = `https://quicktool.space/prompts/category/${resolvedParams.category.toLowerCase()}`;
+  const structuredData = { '@context': 'https://schema.org', '@graph': [{ '@type': 'CollectionPage', name: `${category} AI Prompts`, url: canonicalUrl, description: `Practical AI prompts for ${category}.`, mainEntity: { '@type': 'ItemList', numberOfItems: prompts.length, itemListElement: prompts.map((prompt: any, index: number) => ({ '@type': 'ListItem', position: index + 1, name: prompt.title, url: `https://quicktool.space/prompts/${String(prompt.models?.[0] || 'chatgpt').toLowerCase()}/${prompt.slug}` })) } }, { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://quicktool.space' }, { '@type': 'ListItem', position: 2, name: 'AI Prompts', item: 'https://quicktool.space/prompts' }, { '@type': 'ListItem', position: 3, name: category, item: canonicalUrl }] }] };
 
   return (
     <div className="flex-grow bg-[#F8FAFC] text-[#111827] pb-16">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@graph': [{ '@type': 'CollectionPage', name: `${category} AI Prompts`, url: `https://quicktool.space/prompts/category/${resolvedParams.category.toLowerCase()}`, description: `Practical AI prompts for ${category}.` }, { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://quicktool.space' }, { '@type': 'ListItem', position: 2, name: 'AI Prompts', item: 'https://quicktool.space/prompts' }, { '@type': 'ListItem', position: 3, name: category, item: `https://quicktool.space/prompts/category/${resolvedParams.category.toLowerCase()}` }] }] }).replace(/</g, '\\u003c') }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
       
       <div className="bg-[#0B0F19] pt-12 pb-8 px-4 sm:px-6 lg:px-8 border-b border-indigo-500/20">
          <div className="max-w-[1440px] mx-auto">

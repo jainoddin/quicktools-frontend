@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function JsonFormatterPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'JSON Formatter',
-    applicationCategory: 'DeveloperApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Format, validate, and beautify your JSON data with AI assistance.',
   };
 

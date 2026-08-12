@@ -32,12 +32,9 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
+            "@type": "WebPage",
             "name": "AI Case Study Writer",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Any",
-            "description": "Write professional business case studies.",
-            "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+            "description": "Write professional business case studies."},
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

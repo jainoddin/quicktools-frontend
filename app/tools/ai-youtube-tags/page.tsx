@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiYoutubeTagsPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI YouTube Tags Generator',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Boost your video views and SEO ranking with AI-generated, highly optimized tags for YouTube.',
   };
 

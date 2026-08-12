@@ -54,17 +54,10 @@ export default function UrlShortenerPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
               "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
+              "@type": "WebPage",
               "name": "URL Shortener",
-              "description": "Shorten any long URL into a clean, shareable link in one click with our free URL Shortener.",
-              "applicationCategory": "UtilitiesApplication",
-              "operatingSystem": "All",
-              "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-              }
-            , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+              "description": "Shorten any long URL into a clean, shareable link in one click with our free URL Shortener."
+            },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

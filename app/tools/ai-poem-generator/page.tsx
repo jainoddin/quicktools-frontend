@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiPoemGeneratorPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Poem Generator',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Compose beautiful, rhyming, or free-verse poetry with AI assistance based on your chosen topic and emotion.',
   };
 

@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiGrammarCheckerPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Grammar Checker',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'With AI assistance check your text for grammar, spelling, and punctuation errors.',
   };
 

@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function QrCodeGeneratorPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'QR Code Generator',
-    applicationCategory: 'UtilitiesApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate structured QR codes for URLs, text, or emails with AI assistance.',
   };
 

@@ -33,18 +33,11 @@ export default function AiVideoGeneratorPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Professional AI Video Generator - Text to Video Creator",
-      "operatingSystem": "Web",
-      "applicationCategory": "WebApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
       "description": "Turn your ideas into structured videos with AI assistance. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.",
       "url": "https://quicktool.space/tools/ai-video-generator"
-    , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+    },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

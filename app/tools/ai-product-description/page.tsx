@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiProductDescPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Product Description Generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Write compelling, conversion-focused product descriptions with AI assistance.',
   };
 

@@ -32,12 +32,9 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
+            "@type": "WebPage",
             "name": "AI Interview Scoring Rubric",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Any",
-            "description": "Generate standardized interview scoring rubrics.",
-            "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+            "description": "Generate standardized interview scoring rubrics."},
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

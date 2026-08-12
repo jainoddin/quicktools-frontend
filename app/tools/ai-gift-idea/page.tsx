@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiGiftIdeaPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Gift Idea Generator',
-    applicationCategory: 'LifestyleApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Find the perfect, thoughtful gift for anyone with AI assistance based on their age, interests, and your budget.',
   };
 

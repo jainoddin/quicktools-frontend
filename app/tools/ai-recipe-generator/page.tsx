@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiRecipePage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Recipe Generator',
-    applicationCategory: 'LifestyleApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate delicious recipes based on the ingredients you have in your fridge with AI assistance.',
   };
 

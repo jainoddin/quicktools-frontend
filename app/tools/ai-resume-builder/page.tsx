@@ -54,17 +54,10 @@ export default function AiResumeBuilderPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
               "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
+              "@type": "WebPage",
               "name": "AI Resume Builder",
-              "description": "Generate a professional, ATS-friendly resume from the details you provide using our AI Resume Builder.",
-              "applicationCategory": "BusinessApplication",
-              "operatingSystem": "All",
-              "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-              }
-            , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+              "description": "Generate a professional, ATS-friendly resume from the details you provide using our AI Resume Builder."
+            },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

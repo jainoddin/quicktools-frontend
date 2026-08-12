@@ -10,15 +10,10 @@ export default function PromptGeneratorPage() {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'WebApplication',
+        '@type': 'WebPage',
         name: 'QuickTools AI Prompt Generator',
         url: 'https://quicktool.space/prompts/generator',
         description: 'Create custom prompts for ChatGPT, Claude, and Gemini.',
-        applicationCategory: 'ProductivityApplication',
-        operatingSystem: 'Any',
-        browserRequirements: 'Requires JavaScript and a modern web browser.',
-        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-        featureList: ['ChatGPT prompt generation', 'Claude prompt generation', 'Gemini prompt generation', 'Copy generated prompts'],
       },
       {
         '@type': 'BreadcrumbList',

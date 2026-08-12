@@ -54,17 +54,10 @@ export default function AiSummarizerPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
               "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
+              "@type": "WebPage",
               "name": "AI Text Summarizer",
-              "description": "Summarize long articles, PDFs, or any text into clear bullet points using our AI Summarizer.",
-              "applicationCategory": "BusinessApplication",
-              "operatingSystem": "All",
-              "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-              }
-            , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+              "description": "Summarize long articles, PDFs, or any text into clear bullet points using our AI Summarizer."
+            },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

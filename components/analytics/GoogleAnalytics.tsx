@@ -2,7 +2,7 @@
 
 import Script from 'next/script';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { GA_MEASUREMENT_ID, pageview } from '@/lib/analytics';
 
 function PageViewTracker() {
@@ -20,8 +20,21 @@ function PageViewTracker() {
 }
 
 export default function GoogleAnalytics() {
+  const [hasConsent, setHasConsent] = useState(false);
+
+  useEffect(() => {
+    const readConsent = () => setHasConsent(localStorage.getItem('quicktools_cookie_consent') === 'true');
+    const onConsent = (event: Event) => {
+      setHasConsent(Boolean((event as CustomEvent<{ granted: boolean }>).detail?.granted));
+    };
+    readConsent();
+    window.addEventListener('quicktools:analytics-consent', onConsent);
+    return () => window.removeEventListener('quicktools:analytics-consent', onConsent);
+  }, []);
+
   if (process.env.NODE_ENV !== 'production') return null;
   if (!GA_MEASUREMENT_ID) return null;
+  if (!hasConsent) return null;
 
   return (
     <>

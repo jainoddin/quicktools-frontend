@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiEmailGeneratorPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Email Reply Generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'With AI assistance generate professional, polite, or casual email replies with AI.',
   };
 

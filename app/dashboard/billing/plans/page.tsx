@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import DashboardLayout from '../../../../components/dashboard/DashboardLayout';
 import { CheckCircle2, ShieldCheck, XCircle, Gift, Crown, Building2, X } from 'lucide-react';
 import Link from 'next/link';
@@ -10,19 +10,19 @@ import { trackBeginCheckout } from '@/lib/analytics';
 const plans = [
   {
     id: 'starter',
-    name: 'Starter',
+    name: 'Pro Monthly',
     icon: Gift,
     description: 'Perfect for getting started',
-    originalPrice: 10,
-    monthlyPrice: 3.60,
-    yearlyPrice: 43.20,
+    originalPrice: 599,
+    price: 299,
+    period: 'month',
+    billingNote: 'Billed monthly',
     features: [
       { name: '500 Credits / month', included: true },
-      { name: 'Standard Image Generation', included: true },
+      { name: 'HD Image Generation', included: true },
       { name: 'AI Background Remover', included: true },
       { name: 'AI Text Summarizer', included: true },
       { name: 'AI Code Writer', included: true },
-      { name: 'HD Image Generation', included: false },
     ],
     popular: false,
     color: 'blue'
@@ -32,9 +32,10 @@ const plans = [
     name: 'Pro',
     icon: Crown,
     description: 'For professionals and creators',
-    originalPrice: 40,
-    monthlyPrice: 4.00,
-    yearlyPrice: 43.20,
+    originalPrice: 4788,
+    price: 3588,
+    period: 'year',
+    billingNote: 'Equivalent to ₹299/month',
     features: [
       { name: '14,400 Credits / year', included: true },
       { name: 'HD Image Generation', included: true },
@@ -51,9 +52,10 @@ const plans = [
     name: 'Business',
     icon: Building2,
     description: 'For teams and power users',
-    originalPrice: 100,
-    monthlyPrice: 7.00,
-    yearlyPrice: 72.00,
+    originalPrice: 9588,
+    price: 6000,
+    period: 'year',
+    billingNote: 'Equivalent to ₹500/month',
     features: [
       { name: '18,000 Credits / year', included: true },
       { name: 'Team Members (Up to 5)', included: true },
@@ -68,7 +70,6 @@ const plans = [
 ];
 
 export default function BillingPlansPage() {
-  const [isYearly, setIsYearly] = useState(false);
   const { user } = useAuth();
   const router = useRouter();
   
@@ -104,20 +105,7 @@ export default function BillingPlansPage() {
             <p className="text-sm text-[#6B7280]">Select the perfect plan for your needs</p>
           </div>
           
-          <div className="flex items-center gap-2 bg-[#F9FAFB] p-1.5 rounded-xl border border-[#E5E7EB] self-start md:self-auto">
-            <button 
-              onClick={() => setIsYearly(false)}
-              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${!isYearly ? 'bg-white text-[#111827] shadow-sm' : 'text-[#6B7280] hover:text-[#111827]'}`}
-            >
-              Monthly
-            </button>
-            <button 
-              onClick={() => setIsYearly(true)}
-              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 ${isYearly ? 'bg-white text-[#111827] shadow-sm' : 'text-[#6B7280] hover:text-[#111827]'}`}
-            >
-              Yearly <span className="bg-[#ECFDF5] text-[#10B981] text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider">Save 20%</span>
-            </button>
-          </div>
+          <Link href="/pricing" className="text-sm font-bold text-[#6D5EF8] hover:text-[#5546E8]">View full plan comparison</Link>
         </div>
 
         {/* Pricing Cards */}
@@ -141,24 +129,20 @@ export default function BillingPlansPage() {
                     <plan.icon className={`w-8 h-8 ${plan.color === 'gold' ? 'text-[#F59E0B]' : 'text-[#6D5EF8]'}`} />
                   </div>
                   <h3 className="text-2xl font-bold text-[#111827] mb-1">{plan.name}</h3>
-                  <p className="text-sm text-[#6B7280] h-10">{isYearly ? 'Save 20% on annual billing!' : plan.description}</p>
+                  <p className="text-sm text-[#6B7280] h-10">{plan.description}</p>
                 </div>
 
                 <div className="text-center mb-8">
                   {plan.originalPrice && (
                     <div className="text-sm font-bold text-[#9CA3AF] line-through mb-1">
-                      ${plan.originalPrice}/month
+                      ₹{plan.originalPrice.toLocaleString('en-IN')}/{plan.period}
                     </div>
                   )}
                   <div className="flex items-end justify-center gap-1">
-                    <span className="text-4xl font-black text-[#111827]">${isYearly ? (plan.yearlyPrice / 12).toFixed(0) : plan.monthlyPrice}</span>
-                    <span className="text-[#6B7280] font-medium pb-1">/month</span>
+                    <span className="text-4xl font-black text-[#111827]">₹{plan.price.toLocaleString('en-IN')}</span>
+                    <span className="text-[#6B7280] font-medium pb-1">/{plan.period}</span>
                   </div>
-                  {isYearly && (
-                    <div className="text-xs font-semibold text-[#10B981] mt-2">
-                      Billed ${plan.yearlyPrice} yearly
-                    </div>
-                  )}
+                  <div className="text-xs font-semibold text-[#10B981] mt-2">{plan.billingNote}</div>
                 </div>
 
                 <div className="flex-grow mb-8">

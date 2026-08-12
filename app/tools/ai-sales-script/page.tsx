@@ -32,12 +32,9 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
+            "@type": "WebPage",
             "name": "AI Sales Cold Call Script",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Any",
-            "description": "Generate effective scripts for sales calls.",
-            "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+            "description": "Generate effective scripts for sales calls."},
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

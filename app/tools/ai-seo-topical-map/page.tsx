@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiSeoTopicalMapPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI SEO Topical Map Builder',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '5',
-      priceCurrency: 'USD',
-    },
     description: 'Generate a full SEO content cluster map for an entire month for a niche.',
   };
 

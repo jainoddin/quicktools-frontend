@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiCoverLetterPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Cover Letter Generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Write a professional, standout cover letter for any job application from the details you provide.',
   };
 

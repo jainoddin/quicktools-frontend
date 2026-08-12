@@ -161,7 +161,7 @@ export default function ContactPage() {
                   <div>
                     <p className="font-bold text-[#111827] text-sm">LinkedIn</p>
                     <p className="text-xs text-[#6B7280] mb-1">hello quicktool</p>
-                    <a href="https://www.linkedin.com/in/hello-quicktool-4ba7b5421/" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-[#6D5EF8] hover:underline">Connect with us</a>
+                    <a href="https://www.linkedin.com/in/sk-jainoddin-699060250/" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-[#6D5EF8] hover:underline">Connect with us</a>
                   </div>
                 </div>
 

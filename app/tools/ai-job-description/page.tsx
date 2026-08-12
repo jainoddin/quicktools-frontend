@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiJobDescriptionPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Job Description Generator',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate professional, comprehensive, and attractive job descriptions to attract top talent.',
   };
 

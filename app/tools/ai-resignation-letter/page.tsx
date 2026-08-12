@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiResignationLetterPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Resignation Letter Generator',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Leave on good terms. Generate a polite, professional, and appropriately toned resignation letter with AI assistance.',
   };
 

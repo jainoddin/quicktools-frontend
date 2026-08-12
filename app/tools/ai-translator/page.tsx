@@ -54,17 +54,10 @@ export default function AiTranslatorPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
               "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
+              "@type": "WebPage",
               "name": "AI Language Translator",
-              "description": "Translate text into 50+ languages with AI-assisted translation using our AI Translator.",
-              "applicationCategory": "BusinessApplication",
-              "operatingSystem": "All",
-              "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-              }
-            , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+              "description": "Translate text into 50+ languages with AI-assisted translation using our AI Translator."
+            },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

@@ -20,14 +20,11 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
+        "@type": "WebPage",
         "name": "AI Conflict Resolver",
-        "operatingSystem": "Web",
-        "applicationCategory": "WebApplication",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "description": "Craft calm, mature, and de-escalating text messages to resolve conflicts with partners or bosses.",
         "url": "https://quicktool.space/tools/ai-conflict-resolver"
-      , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+      },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

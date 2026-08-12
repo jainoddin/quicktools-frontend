@@ -103,6 +103,7 @@ import { getEndpoint } from '@/lib/api';
 import LoginPopup from '@/components/auth/LoginPopup';
 import { trackToolFilter, trackFavorite } from '@/lib/analytics';
 import { allTools } from '@/lib/toolsRegistry';
+import { toolCategoryHubs } from '@/lib/toolCategoryHubs';
 export { allTools } from '@/lib/toolsRegistry';
 
 // âœ… Static icon map â€” RSC bundler idi safely handle cheyagaladu
@@ -403,7 +404,7 @@ function ToolsClientInner() {
     <>
       <LoginPopup isOpen={showLoginPopup} onClose={() => setShowLoginPopup(false)} />
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-8 pt-2 relative w-full">
+      <div className="relative mx-auto w-full max-w-[1440px] min-w-0 overflow-x-clip px-3 pb-8 pt-2 sm:px-6 lg:px-8">
         {/* Background Gradient */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-200/40 rounded-full blur-[100px] -z-10 pointer-events-none -translate-y-1/4"></div>
 
@@ -427,7 +428,7 @@ function ToolsClientInner() {
           </button>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 items-start">
+        <div className="flex min-w-0 flex-col items-start gap-6 lg:flex-row lg:gap-8">
           {/* Left Sidebar (Desktop) */}
           <aside className="hidden lg:block w-[260px] shrink-0 space-y-6 sticky top-20 self-start">
             <div>
@@ -472,7 +473,7 @@ function ToolsClientInner() {
                 </div>
                 <h4 className="font-bold text-[#111827] mb-1">Unlock Premium</h4>
                 <p className="text-sm text-[#6B7280] mb-5 leading-relaxed">
-                  Get unlimited access to all tools and premium features.
+                  Get more monthly credits and access premium features.
                 </p>
                 <Link href="/pricing" className="w-full flex justify-center items-center bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm py-2.5 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20">
                   Upgrade Now
@@ -482,16 +483,16 @@ function ToolsClientInner() {
           </aside>
 
           {/* Main Content Area */}
-          <main className="flex-1 min-w-0">
-            <div className="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-              <div>
-                <h1 className="text-3xl md:text-4xl font-black text-[#111827] mb-2 tracking-tight">Explore 110+ AI Tools</h1>
+          <main className="w-full min-w-0 flex-1">
+            <div className="mb-6 flex min-w-0 flex-col gap-3 sm:mb-8 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
+              <div className="min-w-0">
+                <h1 className="mb-2 text-2xl font-black leading-tight tracking-tight text-[#111827] sm:text-3xl md:text-4xl">Explore {allTools.length} AI Tools</h1>
                 <p className="text-[#6B7280] text-lg">Explore {allTools.length} AI-powered tools to boost your productivity âœ¨</p>
               </div>
             </div>
 
             {/* Search Bar */}
-            <div className="mb-6 relative z-10">
+            <div className="relative z-10 mb-4 min-w-0 sm:mb-6">
               <div className="relative group">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#9CA3AF] group-focus-within:text-[#6D5EF8] transition-colors" />
                 <input
@@ -504,8 +505,24 @@ function ToolsClientInner() {
               </div>
             </div>
 
+            {/* Crawlable category hubs */}
+            <nav
+              aria-label="Tool categories"
+              className="mb-5 grid min-w-0 grid-cols-2 gap-2 sm:mb-6 sm:flex sm:flex-wrap"
+            >
+              {toolCategoryHubs.map(category => (
+                <Link
+                  key={category.slug}
+                  href={`/tools/category/${category.slug}`}
+                  className="min-w-0 truncate rounded-xl border border-[#E5E7EB] bg-white px-3 py-2 text-center text-xs font-semibold text-[#374151] shadow-sm transition-colors hover:border-[#6D5EF8] hover:text-[#4F46E5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D5EF8] focus-visible:ring-offset-2 sm:rounded-full sm:px-4 sm:text-sm"
+                >
+                  {category.name}
+                </Link>
+              ))}
+            </nav>
+
             {/* Filter Chips */}
-            <div className="flex flex-wrap items-center gap-2.5 mb-8">
+            <div className="mb-6 grid grid-cols-2 gap-2 sm:mb-8 sm:flex sm:flex-wrap sm:items-center sm:gap-2.5">
               {filtersList.map((filter, idx) => {
                 if (!isAuthenticated && (filter.name === 'Favorite' || filter.name === 'Recent')) {
                   return null;
@@ -518,7 +535,7 @@ function ToolsClientInner() {
                       setActiveFilter(filter.name);
                       trackToolFilter('type', filter.name);
                     }}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[14px] font-semibold transition-all shadow-sm ${isActive
+                    className={`flex min-w-0 items-center justify-center gap-2 rounded-xl px-3 py-2 text-[13px] font-semibold shadow-sm transition-all sm:px-4 sm:text-[14px] ${isActive
                       ? 'bg-[#6D5EF8] text-white shadow-md shadow-[#6D5EF8]/20'
                       : 'bg-white text-[#4B5563] border border-[#E5E7EB] hover:bg-[#F9FAFB]'
                       }`}
@@ -531,13 +548,13 @@ function ToolsClientInner() {
             </div>
 
             {/* Tools Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
               {filteredTools.length > 0 ? (
                 filteredTools.map((tool, index) => {
                   const isStarred = starredTools.includes(tool.slug);
                   return (
-                    <Link href={tool.slug} key={index} className="group">
-                      <div className="bg-white p-5 rounded-2xl border border-[#E5E7EB] hover:border-[#6D5EF8] hover:shadow-xl hover:shadow-[#6D5EF8]/10 transition-all duration-300 relative h-full flex flex-col">
+                    <Link href={tool.slug} key={index} className="group min-w-0">
+                      <div className="relative flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white p-4 transition-all duration-300 hover:border-[#6D5EF8] hover:shadow-xl hover:shadow-[#6D5EF8]/10 sm:p-5">
                         <div className="flex items-start justify-between mb-4">
                           <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-inner ${tool.color}`}>
                             <DynamicIcon name={tool.iconName} className="w-7 h-7" />
@@ -581,10 +598,10 @@ function ToolsClientInner() {
                           </div>
                         </div>
 
-                        <h3 className="text-lg font-bold text-[#111827] mb-2 group-hover:text-[#6D5EF8] transition-colors">
+                        <h3 className="mb-2 break-words text-base font-bold text-[#111827] transition-colors group-hover:text-[#6D5EF8] sm:text-lg">
                           {tool.name}
                         </h3>
-                        <p className="text-[#6B7280] text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
+                        <p className="mb-4 line-clamp-3 flex-grow break-words text-sm leading-relaxed text-[#6B7280] sm:mb-6">
                           {tool.description}
                         </p>
 
@@ -672,7 +689,7 @@ function ToolsClientInner() {
                     </div>
                     <h4 className="font-bold text-[#111827] mb-1">Unlock Premium</h4>
                     <p className="text-sm text-[#6B7280] mb-5 leading-relaxed">
-                      Get unlimited access to all tools and premium features.
+                      Get more monthly credits and access premium features.
                     </p>
                     <Link href="/pricing" className="w-full flex justify-center items-center bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm py-2.5 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20">
                       Upgrade Now

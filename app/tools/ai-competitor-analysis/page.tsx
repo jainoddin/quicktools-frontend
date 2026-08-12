@@ -34,12 +34,9 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
+            "@type": "WebPage",
             "name": "AI Competitor Analysis",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Any",
-            "description": "Generate detailed competitor analysis reports.",
-            "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+            "description": "Generate detailed competitor analysis reports."},
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

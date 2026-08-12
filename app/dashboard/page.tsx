@@ -161,7 +161,7 @@ export default function DashboardPage() {
                   </h3>
                   <p className="text-sm text-gray-500 mt-1">
                     {plan === 'free' 
-                      ? "You are on the Free Plan. Upgrade for unlimited access."
+                      ? "You are on the Free Plan. Upgrade for more monthly credits and premium features."
                       : "You are on a Premium plan. Check your remaining credits below."}
                   </p>
                 </div>

@@ -3,6 +3,26 @@ import type { Metadata } from 'next';
 import { getEndpoint } from '../../../../lib/api';
 import QuestionClient from './QuestionClient';
 
+const COMMUNITY_TITLE_SUFFIX = ' | QuickTools';
+const MAX_SEO_TITLE_LENGTH = 60;
+
+function buildCommunitySeoTitle(questionTitle: string) {
+  const cleanTitle = questionTitle.replace(/\s+/g, ' ').trim();
+  const maxQuestionLength = MAX_SEO_TITLE_LENGTH - COMMUNITY_TITLE_SUFFIX.length - 1;
+
+  if (cleanTitle.length <= maxQuestionLength) {
+    return `${cleanTitle}${COMMUNITY_TITLE_SUFFIX}`;
+  }
+
+  const clipped = cleanTitle.slice(0, maxQuestionLength);
+  const lastSpace = clipped.lastIndexOf(' ');
+  const readableCut = lastSpace >= Math.floor(maxQuestionLength * 0.7)
+    ? clipped.slice(0, lastSpace)
+    : clipped;
+
+  return `${readableCut.trimEnd()}…${COMMUNITY_TITLE_SUFFIX}`;
+}
+
 async function fetchQuestion(slug: string) {
   try {
     const res = await fetch(getEndpoint(`/api/community/questions/${slug}`), {
@@ -23,11 +43,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!question) {
     return {
-      title: "Question Not Found | QuickTools Community",
+      title: { absolute: "Question Not Found | QuickTools" },
     };
   }
 
-  const title = `${question.title} - QuickTools Community`;
+  const title = buildCommunitySeoTitle(question.title);
   const description = question.excerpt || question.body?.substring(0, 160) || "Join the discussion on QuickTools Community.";
   
   const titleWords = question.title.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(' ').filter((w: string) => w.length > 3 && !['how', 'to', 'use', 'with', 'using', 'what', 'the', 'is', 'for', 'and', 'can', 'you'].includes(w));
@@ -43,7 +63,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   return {
     metadataBase: new URL('https://quicktool.space'),
-    title,
+    title: { absolute: title },
     description,
     keywords: Array.from(new Set(dynamicKeywords)),
     authors: [{ name: question.author?.name }],

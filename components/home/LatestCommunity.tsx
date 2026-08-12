@@ -105,7 +105,7 @@ export default async function LatestCommunity() {
                   </div>
                   <div className="flex items-center gap-1.5 group-hover:text-blue-500 transition-colors">
                     <MessageSquare className="w-4 h-4" />
-                    <span>{q.answers?.length || 0}</span>
+                    <span>{q.answersCount ?? q.answers?.length ?? 0} answers</span>
                   </div>
                 </div>
               </div>

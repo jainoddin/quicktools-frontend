@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import SplashScreen from "@/components/SplashScreen";
 import CookieBanner from "@/components/shared/CookieBanner";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
 import AnalyticsIdentity from "@/components/analytics/AnalyticsIdentity";
 import AnalyticsClickTracker from "@/components/analytics/AnalyticsClickTracker";
 import QuickToolsNavigator from "@/components/navigator/QuickToolsNavigator";
@@ -31,7 +32,6 @@ export const metadata: Metadata = {
     template: "%s | QuickTools.ai"
   },
   description: "Write content, generate images, plan a business, understand code, and finish everyday work with 100+ affordable AI and utility tools.",
-  keywords: ["AI tools", "productivity tools", "AI writing", "code generator", "image generation", "QuickTools", "AI marketing", "AI business tools", "prompt engineering", "developer tools", "community", "discussions", "AI community"],
   authors: [{ name: "Shaik Jainoddin", url: "https://quicktool.space/author/quicktools-ai-team" }],
   creator: "QuickTools.ai",
   publisher: "QuickTools.ai",
@@ -81,9 +81,6 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    languages: {
-      'en-US': '/en-US',
-    },
     types: {
       'application/rss+xml': [
         { url: '/feed/news', title: 'QuickTools.ai News RSS Feed' },
@@ -116,19 +113,7 @@ export default function RootLayout({
         {/* Razorpay Checkout SDK */}
         <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
 
-        {/* Microsoft Clarity Analytics - Only in Production */}
-        {process.env.NODE_ENV === 'production' && (
-          <Script id="microsoft-clarity" strategy="afterInteractive">
-            {`
-              (function(c,l,a,r,i,t,y){
-                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "xoi9as94lf");
-            `}
-          </Script>
-        )}
-
+        <MicrosoftClarity />
         <GoogleAnalytics />
 
         {/* Organization Schema */}

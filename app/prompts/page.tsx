@@ -10,6 +10,7 @@ import PromptGeneratorCTA from '../../components/prompts/PromptGeneratorCTA';
 import LearnPromptingCTA from '../../components/prompts/LearnPromptingCTA';
 import PromptFaq from '../../components/prompts/PromptFaq';
 import CommunityCTA from '../../components/prompts/CommunityCTA';
+import SavedPromptsCTA from '../../components/prompts/SavedPromptsCTA';
 import { promptMetadata } from '../../lib/promptMetadata';
 
 export const revalidate = 3600; // Revalidate every hour
@@ -34,7 +35,7 @@ async function getPromptsData(query = '') {
     const [statsRes, trendingRes, newestRes] = await Promise.all([
       fetch(getEndpoint('/api/prompts/stats'), { cache: 'no-store' }),
       fetch(getEndpoint(`/api/prompts?sort=trending&limit=10${query ? `&q=${encodeURIComponent(query)}` : ''}`), { cache: 'no-store' }),
-      fetch(getEndpoint(`/api/prompts?sort=recent&limit=10${query ? `&q=${encodeURIComponent(query)}` : ''}`), { cache: 'no-store' })
+      fetch(getEndpoint(`/api/prompts?sort=recent&limit=20${query ? `&q=${encodeURIComponent(query)}` : ''}`), { cache: 'no-store' })
     ]);
 
     if (statsRes.ok) {
@@ -73,7 +74,7 @@ export default async function PromptsLandingPage({ searchParams }: { searchParam
   const hasTrendingData = trendingPrompts && trendingPrompts.length > 0; 
 
   return (
-    <div className="flex-grow bg-[#F8FAFC] text-[#111827] font-sans selection:bg-[#4F46E5] selection:text-white">
+    <div className="flex-grow overflow-x-clip bg-[#F8FAFC] text-[#111827] font-sans selection:bg-[#4F46E5] selection:text-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'QuickTools AI Prompt Hub', description: 'A library of 300+ practical prompts for ChatGPT, Claude, and Gemini.', url: 'https://quicktool.space/prompts', isPartOf: { '@type': 'WebSite', name: 'QuickTools.ai', url: 'https://quicktool.space' } }).replace(/</g, '\\u003c') }} />
       
       {/* 1. Hero */}
@@ -83,7 +84,7 @@ export default async function PromptsLandingPage({ searchParams }: { searchParam
       <PromptQuickLinks />
 
       {/* 3. Browse by AI Model */}
-      <PromptModelSelector counts={stats?.modelCounts || []} />
+      <PromptModelSelector counts={stats?.modelCounts || []} totalPrompts={stats?.prompts || newestPrompts.length} />
 
       {/* 4. Browse by Category */}
       <PromptCategories counts={stats?.categoryCounts || []} />
@@ -97,12 +98,17 @@ export default async function PromptsLandingPage({ searchParams }: { searchParam
       <FeaturedCollections counts={stats?.categoryCounts || []} />
 
       {/* 7. Bottom CTAs in a 3-column grid */}
-      <section className="w-full bg-[#F8FAFC] pb-12">
+      <section className="w-full bg-gradient-to-b from-[#F8FAFC] to-indigo-50/70 pb-12 pt-3 sm:pb-16">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="mb-5 sm:mb-7">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-600 mb-1.5">Do more with prompts</p>
+            <h2 className="text-2xl sm:text-3xl font-black tracking-tight">Create, learn and share</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
             <PromptGeneratorCTA />
             <LearnPromptingCTA />
             <CommunityCTA />
+            <SavedPromptsCTA />
           </div>
         </div>
       </section>

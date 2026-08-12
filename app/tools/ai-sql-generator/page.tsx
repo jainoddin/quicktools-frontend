@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiSqlGeneratorPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI SQL Query Generator',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate optimized SQL queries from plain English descriptions with AI assistance.',
   };
 

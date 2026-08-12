@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiAdCopyPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Ad Copy Generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Write conversion-focused ad copy variations for Facebook or Google Ads with AI assistance.',
   };
 

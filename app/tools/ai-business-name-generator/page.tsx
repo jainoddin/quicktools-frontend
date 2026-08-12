@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiBusinessNameGeneratorPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Business Name Generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate catchy, memorable business names and taglines for your startup or company with AI assistance.',
   };
 

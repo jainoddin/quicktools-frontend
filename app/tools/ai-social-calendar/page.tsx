@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiSocialCalendarPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Social Media Calendar',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '5',
-      priceCurrency: 'USD',
-    },
     description: 'Generate a 30-day multi-channel marketing calendar with specific daily posts.',
   };
 

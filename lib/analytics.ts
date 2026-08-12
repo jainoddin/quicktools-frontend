@@ -82,6 +82,9 @@ export function updateAnalyticsConsent(granted: boolean) {
   gtag('consent', 'update', {
     analytics_storage: granted ? 'granted' : 'denied',
   });
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('quicktools:analytics-consent', { detail: { granted } }));
+  }
 }
 
 /* ─── Auth ─── */

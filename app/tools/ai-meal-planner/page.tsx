@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiMealPlannerPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Meal Planner',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate healthy, customized weekly meal plans based on your dietary preferences and goals.',
   };
 

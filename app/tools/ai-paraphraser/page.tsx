@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiParaphraserPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Paraphrasing Tool',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Rewrite and paraphrase text in different wording while retaining the original meaning.',
   };
 

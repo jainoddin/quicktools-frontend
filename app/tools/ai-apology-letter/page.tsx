@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiApologyLetterPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Apology Letter Generator',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Draft sincere, well-worded, and appropriate apology letters for professional or personal situations with AI assistance.',
   };
 

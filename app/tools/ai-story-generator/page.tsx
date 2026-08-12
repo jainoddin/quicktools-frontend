@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiStoryGeneratorPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Story Generator',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Unleash your creativity. Generate engaging, unique short stories based on any prompt or genre.',
   };
 

@@ -20,14 +20,11 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
+        "@type": "WebPage",
         "name": "AI Analogy Generator",
-        "operatingSystem": "Web",
-        "applicationCategory": "WebApplication",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "description": "Explain complex tech or legal jargon using simple analogies from sports, movies, or hobbies.",
         "url": "https://quicktool.space/tools/ai-analogy-generator"
-      , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+      },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

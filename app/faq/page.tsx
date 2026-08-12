@@ -29,7 +29,7 @@ export default function FaqPage() {
         name: 'How do credits work?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Credits are the currency used on QuickTools.ai. Different AI tools consume different amounts of credits per use. Free accounts get 15 credits per month, while premium plans offer significantly more.',
+          text: 'Credits are used by eligible QuickTools.ai features. The Free Starter plan currently includes up to 3 eligible generations per day, while paid plans include the credit allowance shown on the pricing page.',
         },
       },
       {

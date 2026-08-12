@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiEmojiTranslatorPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Emoji Translator',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Turn any text, quote, or sentence into a fun sequence of emojis with AI assistance.',
   };
 

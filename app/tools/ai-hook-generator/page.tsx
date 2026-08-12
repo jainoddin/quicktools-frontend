@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiHookPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Hook Generator',
-    applicationCategory: 'SocialNetworkingApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     description: 'Generate catchy, curiosity-inducing hooks for TikTok, Reels, or Shorts with AI assistance.',
   };
 

@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiEbookWriterPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI E-Book Writer',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '5',
-      priceCurrency: 'USD',
-    },
     description: 'Generate chapter-by-chapter outlines and content for an entire e-book.',
   };
 

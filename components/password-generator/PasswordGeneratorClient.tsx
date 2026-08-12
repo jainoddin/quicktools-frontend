@@ -25,9 +25,21 @@ export default function PasswordGeneratorClient() {
       return;
     }
 
+    // Use the Web Crypto API with rejection sampling so every character has
+    // an equal chance of being selected. Math.random() is not suitable for
+    // passwords because it is predictable and not cryptographically secure.
+    const randomCharacter = () => {
+      const maxUnbiasedValue = Math.floor(256 / chars.length) * chars.length;
+      const randomByte = new Uint8Array(1);
+      do {
+        window.crypto.getRandomValues(randomByte);
+      } while (randomByte[0] >= maxUnbiasedValue);
+      return chars.charAt(randomByte[0] % chars.length);
+    };
+
     let newPassword = '';
     for (let i = 0; i < length; i++) {
-      newPassword += chars.charAt(Math.floor(Math.random() * chars.length));
+      newPassword += randomCharacter();
     }
     setPassword(newPassword);
     evaluateStrength(newPassword);

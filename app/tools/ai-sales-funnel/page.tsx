@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiSalesFunnelPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI Sales Funnel Copywriter',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '5',
-      priceCurrency: 'USD',
-    },
     description: 'Write landing page copy, email sequences, and ad copy all at once. Create an editable Sales Funnel Copywriter draft with guided inputs, then review and refine it for your workflow.',
   };
 

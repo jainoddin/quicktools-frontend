@@ -32,12 +32,9 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
+            "@type": "WebPage",
             "name": "AI PR Media Pitch Generator",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Any",
-            "description": "Generate compelling media pitches for journalists.",
-            "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+            "description": "Generate compelling media pitches for journalists."},
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

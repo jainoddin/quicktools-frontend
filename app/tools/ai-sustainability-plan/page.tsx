@@ -32,12 +32,9 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
+            "@type": "WebPage",
             "name": "AI ESG / Sustainability Plan",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Any",
-            "description": "Generate corporate sustainability and ESG plans.",
-            "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+            "description": "Generate corporate sustainability and ESG plans."},
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

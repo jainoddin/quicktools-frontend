@@ -111,7 +111,7 @@ export default function Sidebar() {
             </div>
             <h4 className="font-bold text-[#111827] mb-1">Unlock Premium</h4>
             <p className="text-sm text-[#6B7280] mb-5 leading-relaxed">
-              Get unlimited access to all tools and premium features.
+              Get more monthly credits and access premium features.
             </p>
             <Link href="/dashboard/billing/plans" className="w-full bg-[#6D5EF8] hover:bg-[#5B4DF5] text-white font-semibold text-sm py-2.5 rounded-xl transition-colors shadow-md shadow-[#6D5EF8]/20 flex items-center justify-center gap-2">
               Upgrade Now <ChevronRight className="w-3 h-3" />

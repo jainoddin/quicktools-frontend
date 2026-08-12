@@ -38,18 +38,11 @@ export default function AIImageGeneratorPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Powerful AI Image Generator - Create Stunning AI Art",
-      "operatingSystem": "Web",
-      "applicationCategory": "WebApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
       "description": "Create stunning, high-resolution images from text descriptions. Unleash your creativity with our powerful AI Image Generator and models.",
       "url": "https://quicktool.space/tools/ai-image-generator"
-    , "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+    },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

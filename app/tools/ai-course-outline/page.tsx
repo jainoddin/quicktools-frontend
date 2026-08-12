@@ -32,12 +32,9 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([
       {
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
+            "@type": "WebPage",
             "name": "AI Masterclass Course Outline",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Any",
-            "description": "Generate detailed course outlines and curriculum.",
-            "featureList": "AI-assisted workflow, editable results, and browser-based access"},
+            "description": "Generate detailed course outlines and curriculum."},
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

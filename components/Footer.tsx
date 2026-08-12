@@ -51,7 +51,7 @@ export default function Footer() {
                 <Link href="/" aria-label="Website">
                   <Globe className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
                 </Link>
-                <button onClick={handleShare} aria-label="Share" className="focus:outline-none" suppressHydrationWarning>
+                <button onClick={handleShare} aria-label="Share" className="focus:outline-none">
                   <Share2 className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
                 </button>
                 <a href="https://wa.me/917989015462" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
@@ -60,7 +60,7 @@ export default function Footer() {
                 <a href="mailto:hello@quicktool.space" aria-label="Email">
                   <Mail className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
                 </a>
-                <a href="https://www.linkedin.com/in/hello-quicktool-4ba7b5421/" target="_blank" rel="noopener noreferrer" aria-label="QuickTools.ai on LinkedIn" className="hover:text-[#4F46E5] transition-colors">
+                <a href="https://www.linkedin.com/in/sk-jainoddin-699060250/" target="_blank" rel="noopener noreferrer" aria-label="QuickTools.ai on LinkedIn" className="hover:text-[#4F46E5] transition-colors">
                   <span className="w-5 h-5 rounded-sm border border-current flex items-center justify-center text-[10px] font-black">in</span>
                 </a>
               </div>

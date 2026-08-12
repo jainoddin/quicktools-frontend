@@ -28,15 +28,8 @@ export const metadata: Metadata = {
 export default function AiAppArchitecturePage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    '@type': 'WebPage',
     name: 'AI App Architecture Planner',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Any',
-    offers: {
-      '@type': 'Offer',
-      price: '5',
-      priceCurrency: 'USD',
-    },
     description: 'Generate the full tech stack, database schema, and API endpoints documentation for a new app.',
   };
 
