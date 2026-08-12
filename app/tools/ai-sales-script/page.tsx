@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Sales Cold Call Script",
   description: "Create a structured sales cold call script draft with AI Sales Cold Call Script. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Sales Script","Sales Script AI","Free AI Sales Script","Best AI Sales Script","Online Sales Script","AI Sales Script Tool","QuickTools AI"],
+    keywords: ["AI Sales Script","Sales Script AI","Free AI Sales Script","Best AI Sales Script","Online Sales Script","AI Sales Script Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-sales-script' },
     openGraph: {
             title: "AI Sales Cold Call Script",
             description: "Create a structured sales cold call script draft with AI Sales Cold Call Script. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-sales-script',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Sales Cold Call Script")}&type=tool`, width: 1200, height: 630, alt: `AI Sales Cold Call Script - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Sales Cold Call Script")}&type=tool`, width: 1200, height: 630, alt: `AI Sales Cold Call Script - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

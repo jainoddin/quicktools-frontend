@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI YouTube Title Generator",
   description: "Generate highly clickable, audience-focused, and engaging YouTube video titles using our AI YouTube Title Generator.",
-    keywords: ["AI Youtube Title","Youtube Title AI","Free AI Youtube Title","Best AI Youtube Title","Online Youtube Title","AI Youtube Title Tool","QuickTools AI"],
+    keywords: ["AI Youtube Title","Youtube Title AI","Free AI Youtube Title","Best AI Youtube Title","Online Youtube Title","AI Youtube Title Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-youtube-title' },
     openGraph: {
-            title: "Free AI YouTube Title Generator | QuickTools",
+            title: "Free AI YouTube Title Generator | QuickTool",
             description: "Generate highly clickable, audience-focused, and engaging YouTube video titles using our AI YouTube Title Generator.",
             url: 'https://quicktool.space/tools/ai-youtube-title',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI YouTube Title Generator")}&type=tool`, width: 1200, height: 630, alt: `AI YouTube Title Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI YouTube Title Generator")}&type=tool`, width: 1200, height: 630, alt: `AI YouTube Title Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI YouTube Title Generator | QuickTools",
+            title: "Free AI YouTube Title Generator | QuickTool",
             description: "Generate highly clickable, audience-focused, and engaging YouTube video titles using our AI YouTube Title Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI YouTube Title Generator")}&type=tool`]
           }

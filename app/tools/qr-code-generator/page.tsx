@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free QR Code Generator",
   description: "Generate customizable QR codes for URLs, text, or email details and download the result for testing.",
-    keywords: ["Qr Code Generator","AI Qr Code Generator","Qr Code Generator AI","Free Qr Code Generator","Best Qr Code Generator","Online Qr Code Generator","Qr Code Generator Tool","Qr Code Creator","AI Qr Code Creator","QuickTools AI"],
+    keywords: ["Qr Code Generator","AI Qr Code Generator","Qr Code Generator AI","Free Qr Code Generator","Best Qr Code Generator","Online Qr Code Generator","Qr Code Generator Tool","Qr Code Creator","AI Qr Code Creator","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/qr-code-generator' },
     openGraph: {
-            title: "Free QR Code Generator | QuickTools",
+            title: "Free QR Code Generator | QuickTool",
             description: "Generate customizable QR codes for URLs, text, or email details and download the result for testing.",
             url: 'https://quicktool.space/tools/qr-code-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QR Code Generator")}&type=tool`, width: 1200, height: 630, alt: `QR Code Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("QR Code Generator")}&type=tool`, width: 1200, height: 630, alt: `QR Code Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free QR Code Generator | QuickTools",
+            title: "Free QR Code Generator | QuickTool",
             description: "Generate customizable QR codes for URLs, text, or email details and download the result for testing.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("QR Code Generator")}&type=tool`]
           }

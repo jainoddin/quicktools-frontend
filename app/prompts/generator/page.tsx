@@ -11,7 +11,7 @@ export default function PromptGeneratorPage() {
     '@graph': [
       {
         '@type': 'WebPage',
-        name: 'QuickTools AI Prompt Generator',
+        name: 'QuickTool AI Prompt Generator',
         url: 'https://quicktool.space/prompts/generator',
         description: 'Create custom prompts for ChatGPT, Claude, and Gemini.',
       },

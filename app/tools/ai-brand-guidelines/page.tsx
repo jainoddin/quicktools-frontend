@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Brand Guidelines Generator",
   description: "Create a structured brand guidelines draft with AI Brand Guidelines Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Brand Guidelines","Brand Guidelines AI","Free AI Brand Guidelines","Best AI Brand Guidelines","Online Brand Guidelines","AI Brand Guidelines Tool","QuickTools AI"],
+    keywords: ["AI Brand Guidelines","Brand Guidelines AI","Free AI Brand Guidelines","Best AI Brand Guidelines","Online Brand Guidelines","AI Brand Guidelines Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-brand-guidelines' },
     openGraph: {
             title: "AI Brand Guidelines Generator",
             description: "Create a structured brand guidelines draft with AI Brand Guidelines Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-brand-guidelines',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Brand Guidelines Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Brand Guidelines Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Brand Guidelines Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Brand Guidelines Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

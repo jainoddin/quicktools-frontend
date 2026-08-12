@@ -27,7 +27,7 @@ export default async function HomeLearn() {
     return (
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         <div className="rounded-[28px] border border-indigo-100 bg-indigo-50 px-6 py-7 text-center">
-          <h2 className="text-xl font-black text-slate-900">QuickTools Academy</h2>
+          <h2 className="text-xl font-black text-slate-900">QuickTool Academy</h2>
           <p className="mt-2 text-sm text-slate-600">Courses are temporarily unavailable. You can still browse the learning library.</p>
           <Link href="/learn" className="mt-4 inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-3 text-sm font-bold text-white">Browse courses <ArrowRight className="h-4 w-4" /></Link>
         </div>
@@ -42,7 +42,7 @@ export default async function HomeLearn() {
         <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[1.25fr_1.5fr_auto]">
           <div>
             <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-indigo-300 mb-2">
-              <GraduationCap className="w-4 h-4" /> QuickTools Academy
+              <GraduationCap className="w-4 h-4" /> QuickTool Academy
             </div>
             <h2 className="text-2xl sm:text-3xl font-black leading-tight text-white">
               Master AI. <span className="text-indigo-300">Grow faster.</span>

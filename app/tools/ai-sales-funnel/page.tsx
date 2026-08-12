@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Premium AI Sales Funnel Copywriter",
   description: "Premium AI Sales Funnel Copywriter creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
-    keywords: ["AI Sales Funnel","Sales Funnel AI","Free AI Sales Funnel","Best AI Sales Funnel","Online Sales Funnel","AI Sales Funnel Tool","QuickTools AI"],
+    keywords: ["AI Sales Funnel","Sales Funnel AI","Free AI Sales Funnel","Best AI Sales Funnel","Online Sales Funnel","AI Sales Funnel Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-sales-funnel' },
     openGraph: {
-            title: "Premium AI Sales Funnel Copywriter | QuickTools",
+            title: "Premium AI Sales Funnel Copywriter | QuickTool",
             description: "Premium AI Sales Funnel Copywriter creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             url: 'https://quicktool.space/tools/ai-sales-funnel',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Sales Funnel Copywriter")}&type=tool`, width: 1200, height: 630, alt: `AI Sales Funnel Copywriter - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Sales Funnel Copywriter")}&type=tool`, width: 1200, height: 630, alt: `AI Sales Funnel Copywriter - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Premium AI Sales Funnel Copywriter | QuickTools",
+            title: "Premium AI Sales Funnel Copywriter | QuickTool",
             description: "Premium AI Sales Funnel Copywriter creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Sales Funnel Copywriter")}&type=tool`]
           }

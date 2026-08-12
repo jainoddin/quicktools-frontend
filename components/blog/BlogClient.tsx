@@ -352,7 +352,7 @@ export default function BlogClient({ initialBlogs = [], initialPagination, initi
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
             <h1 className="text-2xl lg:text-3xl font-bold text-[#111827] mb-2 tracking-tight">
-              Latest from <span className="text-[#6D5EF8]">QuickTools.ai</span> Blog
+              Latest from <span className="text-[#6D5EF8]">QuickTool</span> Blog
             </h1>
             <p className="text-[#6B7280] text-sm">Insights, tutorials and updates to help you work smarter with AI.</p>
           </div>

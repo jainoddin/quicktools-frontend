@@ -7,13 +7,13 @@ import { getEndpoint } from '../../lib/api';
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'AI Articles, Guides & Insights | QuickTools',
+    absolute: 'AI Articles, Guides & Insights | QuickTool',
   },
   description: 'Explore expert AI articles, in-depth guides, tutorials, and insights on ChatGPT, Claude, Gemini, automation, productivity, and AI tools.',
   keywords: [
     'AI articles', 'AI guides', 'AI insights', 'AI tutorials',
     'ChatGPT guides', 'Claude AI', 'Gemini AI', 'AI productivity',
-    'AI automation', 'AI trends', 'QuickTools Articles', 'AI resources'
+    'AI automation', 'AI trends', 'QuickTool Articles', 'AI resources'
   ],
   alternates: {
     canonical: 'https://quicktool.space/articles',

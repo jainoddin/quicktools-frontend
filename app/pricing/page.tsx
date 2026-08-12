@@ -4,13 +4,13 @@ import PricingClient from '@/components/pricing/PricingClient';
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'AI Pricing & Plans | Affordable AI Tools | QuickTools',
+    absolute: 'AI Pricing & Plans | Affordable AI Tools | QuickTool',
   },
-  description: 'Compare QuickTools AI plans and pricing. Access 100+ AI tools with affordable monthly and yearly subscriptions for creators, students, and businesses.',
+  description: 'Compare QuickTool AI plans and pricing. Access 100+ AI tools with affordable monthly and yearly subscriptions for creators, students, and businesses.',
   keywords: [
     'AI pricing', 'AI tools pricing', 'AI subscription', 'AI plans',
     'AI software pricing', 'affordable AI tools', 'AI premium plans',
-    'QuickTools pricing', 'AI tool subscription', 'AI platform pricing',
+    'QuickTool pricing', 'AI tool subscription', 'AI platform pricing',
     'AI plans comparison', 'AI credits'
   ],
   alternates: {
@@ -22,12 +22,12 @@ export default function PricingPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "QuickTools.ai Pricing",
+    "name": "QuickTool Pricing",
     "description": "Simple, transparent pricing for everyone.",
     "url": "https://quicktool.space/pricing",
     "mainEntity": {
       "@type": "OfferCatalog",
-      "name": "QuickTools.ai Subscription Plans",
+      "name": "QuickTool Subscription Plans",
       "itemListElement": [
         {
           "@type": "Offer",

@@ -21,8 +21,8 @@ const FAQS = [
   {
     id: 1,
     category: 'General',
-    question: 'What is QuickTools.ai?',
-    answer: 'QuickTools.ai is an all-in-one platform providing access to the most powerful AI tools for image generation, content writing, video creation, coding assistance, and SEO optimization. It is designed to save you time and help you work smarter.'
+    question: 'What is QuickTool?',
+    answer: 'QuickTool is an all-in-one platform providing access to the most powerful AI tools for image generation, content writing, video creation, coding assistance, and SEO optimization. It is designed to save you time and help you work smarter.'
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ const FAQS = [
     id: 3,
     category: 'Billing & Payments',
     question: 'How do credits work?',
-    answer: 'Credits are used by eligible QuickTools.ai features. The Free Starter plan currently includes up to 3 eligible generations per day, while paid plans include the credit allowance shown on the pricing page.'
+    answer: 'Credits are used by eligible QuickTool features. The Free Starter plan currently includes up to 3 eligible generations per day, while paid plans include the credit allowance shown on the pricing page.'
   },
   {
     id: 4,
@@ -112,7 +112,7 @@ export default function FaqClient() {
             Frequently Asked Questions
           </h1>
           <p className="text-[#6B7280] text-sm md:text-base max-w-lg mx-auto mb-10 leading-relaxed">
-            Find quick answers to the most common questions about QuickTools.ai
+            Find quick answers to the most common questions about QuickTool
           </p>
 
           <div className="max-w-2xl mx-auto relative shadow-xl shadow-[#6D5EF8]/5 rounded-2xl">

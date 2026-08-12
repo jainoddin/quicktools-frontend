@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Interview Scoring Rubric",
   description: "Create a structured interview scoring rubric draft with AI Interview Scoring Rubric. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Job Interview Rubric","Job Interview Rubric AI","Free AI Job Interview Rubric","Best AI Job Interview Rubric","Online Job Interview Rubric","AI Job Interview Rubric Tool","QuickTools AI"],
+    keywords: ["AI Job Interview Rubric","Job Interview Rubric AI","Free AI Job Interview Rubric","Best AI Job Interview Rubric","Online Job Interview Rubric","AI Job Interview Rubric Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-job-interview-rubric' },
     openGraph: {
             title: "AI Interview Scoring Rubric",
             description: "Create a structured interview scoring rubric draft with AI Interview Scoring Rubric. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-job-interview-rubric',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Interview Scoring Rubric")}&type=tool`, width: 1200, height: 630, alt: `AI Interview Scoring Rubric - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Interview Scoring Rubric")}&type=tool`, width: 1200, height: 630, alt: `AI Interview Scoring Rubric - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

@@ -5,8 +5,8 @@ import GoogleLoginButton from '@/components/auth/GoogleLoginButton';
 import GitHubLoginButton from '@/components/auth/GitHubLoginButton';
 
 export const metadata: Metadata = {
-  title: 'Create Your Free QuickTools.ai Account',
-  description: 'Create your QuickTools.ai account today and get instant access to our powerful suite of premium AI tools for text, images, video, and code.',
+  title: 'Create Your Free QuickTool Account',
+  description: 'Create your QuickTool account today and get instant access to our powerful suite of premium AI tools for text, images, video, and code.',
   robots: { index: false, follow: false },
 };
 
@@ -22,7 +22,7 @@ export default function SignUpPage() {
           {/* Using the user's provided exact image URL */}
           <img 
             src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/9766c871-78dd-4b3a-a606-faa1cf880e7d.png"
-            alt="QuickTools.ai AI Platform"
+            alt="QuickTool AI Platform"
             className="w-full h-auto max-h-full object-contain rounded-[25px] shadow-sm"
           />
         </div>
@@ -34,7 +34,7 @@ export default function SignUpPage() {
           {/* Header */}
           <div className="text-center mb-10 animate-stagger-1">
             <h1 className="text-3xl font-bold text-[#111827] mb-3">Create an Account ✨</h1>
-            <p className="text-[#6B7280]">Join QuickTools.ai and boost your productivity</p>
+            <p className="text-[#6B7280]">Join QuickTool and boost your productivity</p>
           </div>
 
           {/* Social Login Buttons */}

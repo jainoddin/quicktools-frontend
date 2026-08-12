@@ -7,15 +7,15 @@ import PriorityToolSeoSection from '@/components/tools/PriorityToolSeoSection';
 export const metadata: Metadata = {
   title: "AI Business Model Canvas for Strategy Mapping",
   description: "Map customers, value propositions, channels, revenue, resources, activities, partners, and costs in a structured canvas draft.",
-    keywords: ["AI Business Model","Business Model AI","Business Model Canvas","Online Business Model","AI Business Model Tool","QuickTools AI"],
+    keywords: ["AI Business Model","Business Model AI","Business Model Canvas","Online Business Model","AI Business Model Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-business-model' },
     openGraph: {
             title: "AI Business Model Canvas for Strategy Mapping",
             description: "Map customers, value propositions, channels, revenue, resources, activities, partners, and costs in a structured canvas draft.",
             url: 'https://quicktool.space/tools/ai-business-model',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Business Model Canvas")}&type=tool`, width: 1200, height: 630, alt: `AI Business Model Canvas - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Business Model Canvas")}&type=tool`, width: 1200, height: 630, alt: `AI Business Model Canvas - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

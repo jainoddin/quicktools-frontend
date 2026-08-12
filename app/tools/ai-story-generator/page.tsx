@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Story Generator",
   description: "Unleash your creativity. Generate engaging, unique short stories based on any prompt or genre.",
-    keywords: ["AI Story Generator","Story Generator AI","Free AI Story Generator","Best AI Story Generator","Online Story Generator","AI Story Generator Tool","Story Creator","AI Story Creator","QuickTools AI"],
+    keywords: ["AI Story Generator","Story Generator AI","Free AI Story Generator","Best AI Story Generator","Online Story Generator","AI Story Generator Tool","Story Creator","AI Story Creator","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-story-generator' },
     openGraph: {
-            title: "Free AI Story Generator | QuickTools",
+            title: "Free AI Story Generator | QuickTool",
             description: "Unleash your creativity. Generate engaging, unique short stories based on any prompt or genre.",
             url: 'https://quicktool.space/tools/ai-story-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Story Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Story Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Story Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Story Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Story Generator | QuickTools",
+            title: "Free AI Story Generator | QuickTool",
             description: "Unleash your creativity. Generate engaging, unique short stories based on any prompt or genre.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Story Generator")}&type=tool`]
           }

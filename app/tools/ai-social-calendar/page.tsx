@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Premium AI Social Media Calendar",
   description: "Generate a 30-day multi-channel marketing calendar with specific daily posts.",
-    keywords: ["AI Social Calendar","Social Calendar AI","Free AI Social Calendar","Best AI Social Calendar","Online Social Calendar","AI Social Calendar Tool","AI Social Calendar AI","Social Media Calendar AI","QuickTools AI"],
+    keywords: ["AI Social Calendar","Social Calendar AI","Free AI Social Calendar","Best AI Social Calendar","Online Social Calendar","AI Social Calendar Tool","AI Social Calendar AI","Social Media Calendar AI","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-social-calendar' },
     openGraph: {
-            title: "Premium AI Social Media Calendar | QuickTools",
+            title: "Premium AI Social Media Calendar | QuickTool",
             description: "Generate a 30-day multi-channel marketing calendar with specific daily posts.",
             url: 'https://quicktool.space/tools/ai-social-calendar',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Social Media Calendar")}&type=tool`, width: 1200, height: 630, alt: `AI Social Media Calendar - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Social Media Calendar")}&type=tool`, width: 1200, height: 630, alt: `AI Social Media Calendar - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Premium AI Social Media Calendar | QuickTools",
+            title: "Premium AI Social Media Calendar | QuickTool",
             description: "Generate a 30-day multi-channel marketing calendar with specific daily posts.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Social Media Calendar")}&type=tool`]
           }

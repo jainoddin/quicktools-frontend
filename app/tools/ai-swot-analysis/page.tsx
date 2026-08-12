@@ -7,15 +7,15 @@ import PriorityToolSeoSection from '@/components/tools/PriorityToolSeoSection';
 export const metadata: Metadata = {
   title: "AI SWOT Analysis",
   description: "Separate internal strengths and weaknesses from external opportunities and threats, then turn evidence into strategic actions.",
-    keywords: ["AI SWOT Analysis","SWOT Analysis AI","SWOT Analysis Generator","Online SWOT Analysis","AI SWOT Analysis Tool","QuickTools AI"],
+    keywords: ["AI SWOT Analysis","SWOT Analysis AI","SWOT Analysis Generator","Online SWOT Analysis","AI SWOT Analysis Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-swot-analysis' },
     openGraph: {
             title: "AI SWOT Analysis",
             description: "Separate internal strengths and weaknesses from external opportunities and threats, then turn evidence into strategic actions.",
             url: 'https://quicktool.space/tools/ai-swot-analysis',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI SWOT Analysis Generator")}&type=tool`, width: 1200, height: 630, alt: `AI SWOT Analysis Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI SWOT Analysis Generator")}&type=tool`, width: 1200, height: 630, alt: `AI SWOT Analysis Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

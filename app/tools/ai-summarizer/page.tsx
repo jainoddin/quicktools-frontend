@@ -10,14 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-summarizer'
   },
-    keywords: ["AI Summarizer","Summarizer AI","Free AI Summarizer","Best AI Summarizer","Online Summarizer","AI Summarizer Tool","QuickTools AI"],
+    keywords: ["AI Summarizer","Summarizer AI","Free AI Summarizer","Best AI Summarizer","Online Summarizer","AI Summarizer Tool","QuickTool AI"],
     openGraph: {
             title: "Free AI Text Summarizer - Summarize Articles With AI assistance",
             description: "Summarize long articles, PDFs, or any text into clear bullet points using our AI Summarizer.",
             url: 'https://quicktool.space/tools/ai-summarizer',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Text Summarizer")}&type=tool`, width: 1200, height: 630, alt: `AI Text Summarizer - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Text Summarizer")}&type=tool`, width: 1200, height: 630, alt: `AI Text Summarizer - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
@@ -78,7 +78,7 @@ export default function AiSummarizerPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Text Summarizer?</h3>
-              <p className="text-slate-600 mt-2">The AI Text Summarizer is an AI-assisted tool by QuickTools designed to help you summarize long articles, pdfs, or any text into clear bullet points using our ai summarizer.</p>
+              <p className="text-slate-600 mt-2">The AI Text Summarizer is an AI-assisted tool by QuickTool designed to help you summarize long articles, pdfs, or any text into clear bullet points using our ai summarizer.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">How does the AI Text Summarizer work?</h3>

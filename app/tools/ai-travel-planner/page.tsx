@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Travel Itinerary Planner",
   description: "Plan your perfect trip with AI assistance. Generate day-by-day travel itineraries customized to your destination and duration.",
-    keywords: ["AI Travel Planner","Travel Planner AI","Free AI Travel Planner","Best AI Travel Planner","Online Travel Planner","AI Travel Planner Tool","QuickTools AI"],
+    keywords: ["AI Travel Planner","Travel Planner AI","Free AI Travel Planner","Best AI Travel Planner","Online Travel Planner","AI Travel Planner Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-travel-planner' },
     openGraph: {
-            title: "Free AI Travel Itinerary Planner | QuickTools",
+            title: "Free AI Travel Itinerary Planner | QuickTool",
             description: "Plan your perfect trip with AI assistance. Generate day-by-day travel itineraries customized to your destination and duration.",
             url: 'https://quicktool.space/tools/ai-travel-planner',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Travel Itinerary Planner")}&type=tool`, width: 1200, height: 630, alt: `AI Travel Itinerary Planner - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Travel Itinerary Planner")}&type=tool`, width: 1200, height: 630, alt: `AI Travel Itinerary Planner - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Travel Itinerary Planner | QuickTools",
+            title: "Free AI Travel Itinerary Planner | QuickTool",
             description: "Plan your perfect trip with AI assistance. Generate day-by-day travel itineraries customized to your destination and duration.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Travel Itinerary Planner")}&type=tool`]
           }

@@ -43,7 +43,7 @@ export async function generateMetadata(
       `${a.title} tutorial`,
       `${a.title} 2026`,
       a.category ? `${a.category} AI` : '',
-      'QuickTools Articles'
+      'QuickTool Articles'
     ].filter(Boolean);
 
     return {
@@ -71,7 +71,7 @@ export async function generateMetadata(
       robots: { index: true, follow: true },
     };
   } catch {
-    return { title: 'Article | QuickTools.ai' };
+    return { title: 'Article | QuickTool' };
   }
 }
 
@@ -128,7 +128,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
     },
     "publisher": {
       "@type": "Organization",
-      "name": "QuickTools.ai",
+      "name": "QuickTool",
       "logo": {
         "@type": "ImageObject",
         "url": "https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
@@ -303,7 +303,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                       <span>•</span>
                       <span>{article.readTime}</span>
                       <span>•</span>
-                      <span className="text-[#4F46E5]">AI-assisted · Reviewed by QuickTools Quality Pipeline</span>
+                      <span className="text-[#4F46E5]">AI-assisted · Reviewed by QuickTool Quality Pipeline</span>
                     </div>
                   </div>
                 </div>

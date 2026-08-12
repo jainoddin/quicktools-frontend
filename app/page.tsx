@@ -21,21 +21,21 @@ import { allTools, IconMap } from '../lib/toolsData';
 export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: '100+ AI Tools for Writing, Coding & Productivity | QuickTools',
-  description: 'Explore 100+ AI tools for writing, coding, image generation, business, and productivity. Find the best AI tools with QuickTools.',
+  title: '100+ AI Tools for Writing, Coding & Productivity | QuickTool',
+  description: 'Explore 100+ AI tools for writing, coding, image generation, business, and productivity. Find the best AI tools with QuickTool.',
   alternates: {
     canonical: 'https://quicktool.space',
   },
   openGraph: {
-    title: '100+ AI Tools and Ready-to-Use AI Prompts | QuickTools',
+    title: '100+ AI Tools and Ready-to-Use AI Prompts | QuickTool',
     description: 'Explore AI tools and practical prompts for ChatGPT, Claude, and Gemini in one workspace.',
     url: 'https://quicktool.space',
-    siteName: 'QuickTools.ai',
+    siteName: 'QuickTool',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: '100+ AI Tools and Ready-to-Use AI Prompts | QuickTools',
+    title: '100+ AI Tools and Ready-to-Use AI Prompts | QuickTool',
     description: 'Explore AI tools and practical prompts for ChatGPT, Claude, and Gemini in one workspace.',
   },
 };
@@ -51,7 +51,7 @@ export default function HomePage() {
             "@graph": [
               {
                 "@type": "WebSite",
-                "name": "QuickTools.ai",
+                "name": "QuickTool",
                 "url": "https://quicktool.space",
                 "potentialAction": {
                   "@type": "SearchAction",
@@ -60,20 +60,20 @@ export default function HomePage() {
                 },
                 "hasPart": {
                   "@type": "CollectionPage",
-                  "name": "QuickTools AI Prompt Library",
+                  "name": "QuickTool AI Prompt Library",
                   "url": "https://quicktool.space/prompts",
                   "description": "Ready-to-use prompts for ChatGPT, Claude, and Gemini."
                 }
               },
               {
                 "@type": "Organization",
-                "name": "QuickTools",
+                "name": "QuickTool",
                 "url": "https://quicktool.space",
                 "logo": "https://quicktool.space/logo.png"
               },
               {
                 "@type": "WebPage",
-                "name": "QuickTools",
+                "name": "QuickTool",
                 "url": "https://quicktool.space",
                 "description": "A web workspace with AI tools and prompt resources for writing, business, coding, images, and productivity."
               }
@@ -277,14 +277,14 @@ export default function HomePage() {
       </Suspense>
 
       {/* 4.5 Learn Section */}
-      <Suspense fallback={<div>Loading Courses...</div>}>
+      <Suspense fallback={<div className="h-40 animate-pulse bg-gray-100 rounded-2xl" aria-hidden="true" />}>
         <HomeLearn />
       </Suspense>
 
-      {/* 5. Why Choose QuickTools.ai? */}
+      {/* 5. Why Choose QuickTool? */}
       <section className="w-full bg-white border-y border-gray-100">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          <h2 className="text-xl sm:text-2xl font-bold text-[#111827] mb-8 sm:mb-10">Why Choose QuickTools.ai?</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-[#111827] mb-8 sm:mb-10">Why Choose QuickTool?</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
             {[
               { icon: LayoutGrid, title: '100+ Total Tools', desc: 'AI and everyday utilities in one platform', color: 'text-indigo-600', bg: 'bg-indigo-100' },
@@ -341,7 +341,7 @@ export default function HomePage() {
           </div>
           <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5 items-stretch">
             {[
-              { name: 'Free Starter', icon: Gift, description: 'Try QuickTools completely free', originalPrice: '', price: '₹0', period: 'forever', features: ['3 Free Generations / day', 'Standard Tools Access', 'Basic AI Background Remover'], button: 'Start for Free', featured: false },
+              { name: 'Free Starter', icon: Gift, description: 'Try QuickTool completely free', originalPrice: '', price: '₹0', period: 'forever', features: ['3 Free Generations / day', 'Standard Tools Access', 'Basic AI Background Remover'], button: 'Start for Free', featured: false },
               { name: 'Pro Monthly', icon: Zap, description: 'Perfect for regular users', originalPrice: '₹599/month', price: '₹299', period: 'month', features: ['500 Credits / month', 'HD Image Generation', 'All Premium Tools Access', 'Faster Processing'], button: 'Get Pro Monthly', featured: false },
               { name: 'Pro', icon: Crown, description: 'For professionals and creators', originalPrice: '₹4,788/year', price: '₹3,588', period: 'year', features: ['14,400 Credits / year', 'HD Image Generation', 'Fast Processing', 'Priority Support'], button: 'Get Pro', featured: true },
               { name: 'Business', icon: Building2, description: 'For teams and power users', originalPrice: '₹9,588/year', price: '₹6,000', period: 'year', features: ['18,000 Credits / year', 'Team Members (Up to 5)', 'API Access', 'Admin Dashboard'], button: 'Contact Sales', featured: false },

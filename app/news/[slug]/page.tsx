@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
         `${news.title} tutorial`,
         `${news.title} explained`,
         news.category ? `${news.category} AI` : '',
-        'QuickTools News'
+        'QuickTool News'
       ].filter(Boolean);
 
       return {
@@ -115,12 +115,12 @@ export default async function NewsDetailPage({ params }: any) {
               "dateModified": news.updatedAt || news.publishedAt,
               "author": {
                 "@type": "Organization",
-                "name": "QuickTools AI Team",
+                "name": "QuickTool AI Team",
                 "url": "https://quicktool.space/author/quicktools-ai-team"
               },
               "publisher": {
                 "@type": "Organization",
-                "name": "QuickTools.ai",
+                "name": "QuickTool",
                 "logo": {
                   "@type": "ImageObject",
                   "url": "https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
@@ -248,7 +248,7 @@ export default async function NewsDetailPage({ params }: any) {
                         <span>Source: <a href={news.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-[#4F46E5] hover:underline">{news.sourceName}</a></span>
                       </>
                     )}
-                    <span className="text-[#6B7280]">AI-assisted summary · Automatically reviewed by the QuickTools Quality Pipeline</span>
+                    <span className="text-[#6B7280]">AI-assisted summary · Automatically reviewed by the QuickTool Quality Pipeline</span>
                   </div>
                 </div>
               </div>

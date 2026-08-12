@@ -4,8 +4,8 @@ import type { NextRequest } from 'next/server';
 export const runtime = 'edge';
 
 const cleanTitle = (value: string | null) => {
-  const title = (value || 'QuickTools.ai').replace(/[<>]/g, '').trim();
-  return title.slice(0, 90) || 'QuickTools.ai';
+  const title = (value || 'QuickTool').replace(/[<>]/g, '').trim();
+  return title.slice(0, 90) || 'QuickTool';
 };
 
 export function GET(request: NextRequest) {
@@ -43,7 +43,7 @@ export function GET(request: NextRequest) {
           >
             ⚡
           </div>
-          QuickTools.ai
+          QuickTool
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 28, maxWidth: 1040 }}>

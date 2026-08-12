@@ -117,7 +117,7 @@ export default function QuestionClient({ slug }: { slug: string }) {
     try {
       const payload = {
         body: answerBody,
-        guestName: !user ? (guestName || 'QuickTools Guest') : undefined
+        guestName: !user ? (guestName || 'QuickTool Guest') : undefined
       };
 
       const res = await fetch(getEndpoint(`/api/community/questions/${slug}/answers`), {
@@ -155,7 +155,7 @@ export default function QuestionClient({ slug }: { slug: string }) {
     try {
       const payload = {
         body: replyBody,
-        guestName: !user ? (guestName || 'QuickTools Guest') : undefined
+        guestName: !user ? (guestName || 'QuickTool Guest') : undefined
       };
       const res = await fetch(getEndpoint(`/api/community/questions/${slug}/answers/${answerId}/replies`), {
         method: 'POST',

@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Premium AI Grant Proposal Writer",
   description: "Premium AI Grant Proposal Writer creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
-    keywords: ["AI Grant Proposal","Grant Proposal AI","Free AI Grant Proposal","Best AI Grant Proposal","Online Grant Proposal","AI Grant Proposal Tool","QuickTools AI"],
+    keywords: ["AI Grant Proposal","Grant Proposal AI","Free AI Grant Proposal","Best AI Grant Proposal","Online Grant Proposal","AI Grant Proposal Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-grant-proposal' },
     openGraph: {
-            title: "Premium AI Grant Proposal Writer | QuickTools",
+            title: "Premium AI Grant Proposal Writer | QuickTool",
             description: "Premium AI Grant Proposal Writer creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             url: 'https://quicktool.space/tools/ai-grant-proposal',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Grant Proposal Writer")}&type=tool`, width: 1200, height: 630, alt: `AI Grant Proposal Writer - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Grant Proposal Writer")}&type=tool`, width: 1200, height: 630, alt: `AI Grant Proposal Writer - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Premium AI Grant Proposal Writer | QuickTools",
+            title: "Premium AI Grant Proposal Writer | QuickTool",
             description: "Premium AI Grant Proposal Writer creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Grant Proposal Writer")}&type=tool`]
           }

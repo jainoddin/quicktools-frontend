@@ -13,7 +13,7 @@ interface ShareModalProps {
 export default function ShareModal({ 
   isOpen, 
   onClose, 
-  imageUrl = "https://quicktools.ai/image/abc123",
+  imageUrl = "https://quicktool.space/image/abc123",
   isAuthenticated = true,
   onRequireLogin
 }: ShareModalProps) {
@@ -47,7 +47,7 @@ export default function ShareModal({
   };
 
   const isLocalImage = imageUrl.startsWith('blob:') || imageUrl.startsWith('data:');
-  const displayUrl = isAuthenticated ? imageUrl : "https://quicktools.ai/image/xxxxxx";
+  const displayUrl = isAuthenticated ? imageUrl : "https://quicktool.space/image/xxxxxx";
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">

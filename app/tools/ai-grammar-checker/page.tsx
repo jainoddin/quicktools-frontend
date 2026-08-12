@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Grammar & Spell Checker",
   description: "With AI assistance check your text for grammar, spelling, and punctuation errors. Rewrites sentences for better flow and professional tone.",
-    keywords: ["AI Grammar Checker","Grammar Checker AI","Free AI Grammar Checker","Best AI Grammar Checker","Online Grammar Checker","AI Grammar Checker Tool","QuickTools AI"],
+    keywords: ["AI Grammar Checker","Grammar Checker AI","Free AI Grammar Checker","Best AI Grammar Checker","Online Grammar Checker","AI Grammar Checker Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-grammar-checker' },
     openGraph: {
-            title: "Free AI Grammar & Spell Checker | QuickTools",
+            title: "Free AI Grammar & Spell Checker | QuickTool",
             description: "With AI assistance check your text for grammar, spelling, and punctuation errors. Rewrites sentences for better flow and professional tone.",
             url: 'https://quicktool.space/tools/ai-grammar-checker',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Grammar Checker")}&type=tool`, width: 1200, height: 630, alt: `AI Grammar Checker - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Grammar Checker")}&type=tool`, width: 1200, height: 630, alt: `AI Grammar Checker - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Grammar & Spell Checker | QuickTools",
+            title: "Free AI Grammar & Spell Checker | QuickTool",
             description: "With AI assistance check your text for grammar, spelling, and punctuation errors. Rewrites sentences for better flow and professional tone.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Grammar Checker")}&type=tool`]
           }

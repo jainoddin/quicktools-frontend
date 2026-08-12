@@ -10,14 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-video-generator'
   },
-    keywords: ["AI Video Generator","Video Generator AI","Free AI Video Generator","Best AI Video Generator","Online Video Generator","AI Video Generator Tool","Video Creator","AI Video Creator","QuickTools AI"],
+    keywords: ["AI Video Generator","Video Generator AI","Free AI Video Generator","Best AI Video Generator","Online Video Generator","AI Video Generator Tool","Video Creator","AI Video Creator","QuickTool AI"],
     openGraph: {
             title: "Professional AI Video Generator - Text to Video Creator",
             description: "Turn your ideas into structured videos with AI assistance. Use our AI Video Generator to convert text prompts into engaging visual stories effortlessly.",
             url: 'https://quicktool.space/tools/ai-video-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Video Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Video Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Video Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Video Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
@@ -86,7 +86,7 @@ export default function AiVideoGeneratorPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Video Generator?</h3>
-              <p className="text-slate-600 mt-2">The AI Video Generator is an AI-assisted tool by QuickTools designed to help you turn your ideas into structured videos with AI assistance. use our ai video generator to convert text prompts into engaging visual stories effortlessly.</p>
+              <p className="text-slate-600 mt-2">The AI Video Generator is an AI-assisted tool by QuickTool designed to help you turn your ideas into structured videos with AI assistance. use our ai video generator to convert text prompts into engaging visual stories effortlessly.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">How does the AI Video Generator work?</h3>

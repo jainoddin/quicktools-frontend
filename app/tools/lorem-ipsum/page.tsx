@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free Lorem Ipsum Generator",
   description: "Generate placeholder text (Lorem Ipsum) with AI assistance for your designs, websites, and mockups with our free Lorem Ipsum Generator.",
-    keywords: ["Lorem Ipsum","AI Lorem Ipsum","Lorem Ipsum AI","Free Lorem Ipsum","Best Lorem Ipsum","Online Lorem Ipsum","Lorem Ipsum Tool","QuickTools AI"],
+    keywords: ["Lorem Ipsum","AI Lorem Ipsum","Lorem Ipsum AI","Free Lorem Ipsum","Best Lorem Ipsum","Online Lorem Ipsum","Lorem Ipsum Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/lorem-ipsum' },
     openGraph: {
-            title: "Free Lorem Ipsum Generator | QuickTools",
+            title: "Free Lorem Ipsum Generator | QuickTool",
             description: "Generate placeholder text (Lorem Ipsum) with AI assistance for your designs, websites, and mockups with our free Lorem Ipsum Generator.",
             url: 'https://quicktool.space/tools/lorem-ipsum',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("Lorem Ipsum Generator")}&type=tool`, width: 1200, height: 630, alt: `Lorem Ipsum Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("Lorem Ipsum Generator")}&type=tool`, width: 1200, height: 630, alt: `Lorem Ipsum Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free Lorem Ipsum Generator | QuickTools",
+            title: "Free Lorem Ipsum Generator | QuickTool",
             description: "Generate placeholder text (Lorem Ipsum) with AI assistance for your designs, websites, and mockups with our free Lorem Ipsum Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("Lorem Ipsum Generator")}&type=tool`]
           }

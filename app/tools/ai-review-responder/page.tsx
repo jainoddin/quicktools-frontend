@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Review Responder",
   description: "Save time and maintain a great reputation by generating professional, empathetic replies to customer reviews.",
-    keywords: ["AI Review Responder","Review Responder AI","Free AI Review Responder","Best AI Review Responder","Online Review Responder","AI Review Responder Tool","QuickTools AI"],
+    keywords: ["AI Review Responder","Review Responder AI","Free AI Review Responder","Best AI Review Responder","Online Review Responder","AI Review Responder Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-review-responder' },
     openGraph: {
-            title: "Free AI Review Responder | QuickTools",
+            title: "Free AI Review Responder | QuickTool",
             description: "Save time and maintain a great reputation by generating professional, empathetic replies to customer reviews.",
             url: 'https://quicktool.space/tools/ai-review-responder',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Review Responder")}&type=tool`, width: 1200, height: 630, alt: `AI Review Responder - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Review Responder")}&type=tool`, width: 1200, height: 630, alt: `AI Review Responder - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Review Responder | QuickTools",
+            title: "Free AI Review Responder | QuickTool",
             description: "Save time and maintain a great reputation by generating professional, empathetic replies to customer reviews.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Review Responder")}&type=tool`]
           }

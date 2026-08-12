@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Code Explainer",
   description: "Understand any snippet of code easily. Our AI Code Explainer translates complex code into simple, plain English explanations with AI assistance.",
-    keywords: ["AI Code Explainer","Code Explainer AI","Free AI Code Explainer","Best AI Code Explainer","Online Code Explainer","AI Code Explainer Tool","Code Generator Explainer","AI Code Generator Explainer","QuickTools AI"],
+    keywords: ["AI Code Explainer","Code Explainer AI","Free AI Code Explainer","Best AI Code Explainer","Online Code Explainer","AI Code Explainer Tool","Code Generator Explainer","AI Code Generator Explainer","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-code-explainer' },
     openGraph: {
-            title: "Free AI Code Explainer | QuickTools",
+            title: "Free AI Code Explainer | QuickTool",
             description: "Understand any snippet of code easily. Our AI Code Explainer translates complex code into simple, plain English explanations with AI assistance.",
             url: 'https://quicktool.space/tools/ai-code-explainer',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Code Explainer")}&type=tool`, width: 1200, height: 630, alt: `AI Code Explainer - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Code Explainer")}&type=tool`, width: 1200, height: 630, alt: `AI Code Explainer - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Code Explainer | QuickTools",
+            title: "Free AI Code Explainer | QuickTool",
             description: "Understand any snippet of code easily. Our AI Code Explainer translates complex code into simple, plain English explanations with AI assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Code Explainer")}&type=tool`]
           }

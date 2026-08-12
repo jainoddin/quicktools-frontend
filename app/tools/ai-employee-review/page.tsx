@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Employee Performance Review",
   description: "AI Employee Performance Review creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
-    keywords: ["AI Employee Review","Employee Review AI","Free AI Employee Review","Best AI Employee Review","Online Employee Review","AI Employee Review Tool","QuickTools AI"],
+    keywords: ["AI Employee Review","Employee Review AI","Free AI Employee Review","Best AI Employee Review","Online Employee Review","AI Employee Review Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-employee-review' },
     openGraph: {
             title: "AI Employee Performance Review",
             description: "AI Employee Performance Review creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             url: 'https://quicktool.space/tools/ai-employee-review',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Employee Performance Review")}&type=tool`, width: 1200, height: 630, alt: `AI Employee Performance Review - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Employee Performance Review")}&type=tool`, width: 1200, height: 630, alt: `AI Employee Performance Review - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

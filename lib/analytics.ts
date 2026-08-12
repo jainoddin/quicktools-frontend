@@ -1,5 +1,5 @@
 /**
- * Google Analytics 4 — full journey tracking for QuickTools.
+ * Google Analytics 4 — full journey tracking for QuickTool.
  *
  * Never send name, email, phone, or other PII.
  * Use MongoDB user id as user_id for de-duplication.
@@ -83,7 +83,7 @@ export function updateAnalyticsConsent(granted: boolean) {
     analytics_storage: granted ? 'granted' : 'denied',
   });
   if (typeof window !== 'undefined') {
-    window.dispatchEvent(new CustomEvent('quicktools:analytics-consent', { detail: { granted } }));
+    window.dispatchEvent(new CustomEvent('QuickTool:analytics-consent', { detail: { granted } }));
   }
 }
 

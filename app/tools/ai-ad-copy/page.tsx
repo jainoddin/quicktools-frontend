@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Ad Copy Generator",
   description: "Write conversion-focused ad copy variations for Facebook or Google Ads using our AI Ad Copy Generator.",
-    keywords: ["AI Ad Copy","Ad Copy AI","Free AI Ad Copy","Best AI Ad Copy","Online Ad Copy","AI Ad Copy Tool","QuickTools AI"],
+    keywords: ["AI Ad Copy","Ad Copy AI","Free AI Ad Copy","Best AI Ad Copy","Online Ad Copy","AI Ad Copy Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-ad-copy' },
     openGraph: {
-            title: "Free AI Ad Copy Generator | QuickTools",
+            title: "Free AI Ad Copy Generator | QuickTool",
             description: "Write conversion-focused ad copy variations for Facebook or Google Ads using our AI Ad Copy Generator.",
             url: 'https://quicktool.space/tools/ai-ad-copy',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Ad Copy Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Ad Copy Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Ad Copy Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Ad Copy Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Ad Copy Generator | QuickTools",
+            title: "Free AI Ad Copy Generator | QuickTool",
             description: "Write conversion-focused ad copy variations for Facebook or Google Ads using our AI Ad Copy Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Ad Copy Generator")}&type=tool`]
           }

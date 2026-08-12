@@ -177,7 +177,7 @@ export default function Header() {
             <Zap className="w-7 h-7 relative z-10 group-hover:scale-125 group-hover:rotate-[20deg] group-hover:text-fuchsia-500 group-hover:fill-fuchsia-500 transition-all duration-300" style={{ color: themeColor, fill: themeColor }} />
           </div>
           <span className="text-2xl font-black tracking-tighter animate-reveal-text sweep-mask px-1">
-            <span className="text-[#111827] transition-all duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:to-fuchsia-500" style={{ '--tw-gradient-from': themeColor } as any}>QuickTools</span>
+            <span className="text-[#111827] transition-all duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:to-fuchsia-500" style={{ '--tw-gradient-from': themeColor } as any}>QuickTool</span>
             <span className="transition-colors duration-300 group-hover:text-fuchsia-500" style={{ color: themeColor }}>.ai</span>
           </span>
         </Link>

@@ -8,19 +8,19 @@ import PriorityToolSeoSection from '@/components/tools/PriorityToolSeoSection';
 export const metadata: Metadata = {
   title: "AI Business Plan Generator",
   description: "Create a structured business-plan draft with customer, market, operations, risk, milestone, and financial-assumption sections.",
-    keywords: ["AI Business Plan","Business Plan AI","Business Plan Generator","Online Business Plan","AI Business Plan Tool","QuickTools AI"],
+    keywords: ["AI Business Plan","Business Plan AI","Business Plan Generator","Online Business Plan","AI Business Plan Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-business-plan' },
     openGraph: {
-            title: "AI Business Plan Generator for Structured Planning | QuickTools",
+            title: "AI Business Plan Generator for Structured Planning | QuickTool",
             description: "Create a structured business-plan draft with customer, market, operations, risk, milestone, and financial-assumption sections.",
             url: 'https://quicktool.space/tools/ai-business-plan',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Business Plan Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Business Plan Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Business Plan Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Business Plan Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "AI Business Plan Generator for Structured Planning | QuickTools",
+            title: "AI Business Plan Generator for Structured Planning | QuickTool",
             description: "Create a structured business-plan draft with customer, market, operations, risk, milestone, and financial-assumption sections.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Business Plan Generator")}&type=tool`]
           }

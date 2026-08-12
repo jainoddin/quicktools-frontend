@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Landing Page Copywriter",
   description: "Create a structured landing page copywriter draft with AI Landing Page Copywriter. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Landing Page Copy","Landing Page Copy AI","Free AI Landing Page Copy","Best AI Landing Page Copy","Online Landing Page Copy","AI Landing Page Copy Tool","QuickTools AI"],
+    keywords: ["AI Landing Page Copy","Landing Page Copy AI","Free AI Landing Page Copy","Best AI Landing Page Copy","Online Landing Page Copy","AI Landing Page Copy Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-landing-page-copy' },
     openGraph: {
             title: "AI Landing Page Copywriter",
             description: "Create a structured landing page copywriter draft with AI Landing Page Copywriter. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-landing-page-copy',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Landing Page Copywriter")}&type=tool`, width: 1200, height: 630, alt: `AI Landing Page Copywriter - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Landing Page Copywriter")}&type=tool`, width: 1200, height: 630, alt: `AI Landing Page Copywriter - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

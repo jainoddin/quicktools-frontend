@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Franchise Operations Manual",
   description: "AI Franchise Operations Manual creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
-    keywords: ["AI Franchise Manual","Franchise Manual AI","Free AI Franchise Manual","Best AI Franchise Manual","Online Franchise Manual","AI Franchise Manual Tool","QuickTools AI"],
+    keywords: ["AI Franchise Manual","Franchise Manual AI","Free AI Franchise Manual","Best AI Franchise Manual","Online Franchise Manual","AI Franchise Manual Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-franchise-manual' },
     openGraph: {
             title: "AI Franchise Operations Manual",
             description: "AI Franchise Operations Manual creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             url: 'https://quicktool.space/tools/ai-franchise-manual',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Franchise Operations Manual")}&type=tool`, width: 1200, height: 630, alt: `AI Franchise Operations Manual - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Franchise Operations Manual")}&type=tool`, width: 1200, height: 630, alt: `AI Franchise Operations Manual - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

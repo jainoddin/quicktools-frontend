@@ -5,7 +5,7 @@ import { FileText, ShieldAlert, Ban, CheckCircle2, Home, ChevronRight } from 'lu
 
 export const metadata: Metadata = {
   title: 'Terms of Service - User Rules & Guidelines',
-  description: 'Read the Terms of Service for using QuickTools.ai. Understand your rights, responsibilities, and the rules governing our platform and AI tools.',
+  description: 'Read the Terms of Service for using QuickTool. Understand your rights, responsibilities, and the rules governing our platform and AI tools.',
   alternates: { canonical: '/terms' },
 };
 
@@ -13,19 +13,19 @@ export default function TermsOfServicePage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Terms of Service | QuickTools.ai",
-    "description": "Read the terms and conditions for using QuickTools.ai services and tools.",
+    "name": "Terms of Service | QuickTool",
+    "description": "Read the terms and conditions for using QuickTool services and tools.",
     "url": "https://quicktool.space/terms",
     "mainEntity": {
       "@type": "Article",
       "headline": "Terms of Service",
       "author": {
         "@type": "Organization",
-        "name": "QuickTools.ai"
+        "name": "QuickTool"
       },
       "publisher": {
         "@type": "Organization",
-        "name": "QuickTools.ai",
+        "name": "QuickTool",
         "logo": {
           "@type": "ImageObject",
           "url": "https://quicktool.space/icon.svg"
@@ -95,7 +95,7 @@ export default function TermsOfServicePage() {
             <section id="introduction" className="mb-12 scroll-mt-24">
               <h2 className="text-2xl mb-4">1. Introduction</h2>
               <p>
-                Welcome to QuickTools.ai. By accessing or using our website, APIs, tools, and services, you agree to be bound by these Terms of Service and all applicable laws and regulations.
+                Welcome to QuickTool. By accessing or using our website, APIs, tools, and services, you agree to be bound by these Terms of Service and all applicable laws and regulations.
               </p>
             </section>
 

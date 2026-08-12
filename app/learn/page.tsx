@@ -7,19 +7,19 @@ import { getEndpoint } from '@/lib/api';
 
 export const metadata = {
   title: {
-    absolute: 'Learn AI with ChatGPT, Claude & Gemini | QuickTools Learn',
+    absolute: 'Learn AI with ChatGPT, Claude & Gemini | QuickTool Learn',
   },
-  description: 'Learn ChatGPT, Claude, Gemini, Cursor, and more with step-by-step AI courses, tutorials, prompts, and practical lessons on QuickTools Learn.',
+  description: 'Learn ChatGPT, Claude, Gemini, Cursor, and more with step-by-step AI courses, tutorials, prompts, and practical lessons on QuickTool Learn.',
   keywords: [
     'AI learning', 'AI courses', 'AI tutorials', 'Learn ChatGPT',
     'Learn Claude', 'Learn Gemini', 'Learn Cursor AI', 'AI education',
-    'Prompt engineering', 'AI certification', 'QuickTools Learn', 'AI training'
+    'Prompt engineering', 'AI certification', 'QuickTool Learn', 'AI training'
   ],
   alternates: {
     canonical: 'https://quicktool.space/learn',
   },
-  openGraph: { title: 'Learn AI with ChatGPT, Claude & Gemini', description: 'Step-by-step AI courses, tutorials, prompts, and practical lessons on QuickTools Learn.', url: 'https://quicktool.space/learn', type: 'website', images: [{ url: 'https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png', width: 1200, height: 630, alt: 'QuickTools Learn' }] },
-  twitter: { card: 'summary_large_image', title: 'Learn AI with QuickTools Learn', description: 'Step-by-step practical AI courses.', images: ['https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png'] }
+  openGraph: { title: 'Learn AI with ChatGPT, Claude & Gemini', description: 'Step-by-step AI courses, tutorials, prompts, and practical lessons on QuickTool Learn.', url: 'https://quicktool.space/learn', type: 'website', images: [{ url: 'https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png', width: 1200, height: 630, alt: 'QuickTool Learn' }] },
+  twitter: { card: 'summary_large_image', title: 'Learn AI with QuickTool Learn', description: 'Step-by-step practical AI courses.', images: ['https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png'] }
 };
 
 export default async function LearnPage({ searchParams }: { searchParams: Promise<{ course?: string }> }) {
@@ -335,7 +335,7 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
 
       {/* SEO Content Block */}
       <div className="bg-slate-50 border border-slate-100 rounded-2xl p-8 text-slate-600 space-y-6 text-sm leading-relaxed mb-8">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">Master the Best AI Tools on QuickTools Learn</h2>
+        <h2 className="text-xl font-bold text-slate-900 mb-4">Master the Best AI Tools on QuickTool Learn</h2>
         
         <div>
           <h3 className="font-bold text-slate-800 mb-1">ChatGPT Course</h3>

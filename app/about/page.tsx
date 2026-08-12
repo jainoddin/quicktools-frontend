@@ -10,13 +10,13 @@ import {
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'About QuickTools | AI Platform for Productivity & Innovation',
+    absolute: 'About QuickTool | AI Platform for Productivity & Innovation',
   },
-  description: 'Learn about QuickTools, our mission, and how we\'re building an AI platform that helps creators, students, freelancers, and businesses work smarter.',
+  description: 'Learn about QuickTool, our mission, and how we\'re building an AI platform that helps creators, students, freelancers, and businesses work smarter.',
   keywords: [
-    'About QuickTools', 'QuickTools AI', 'AI platform', 'AI company',
+    'About QuickTool', 'QuickTool AI', 'AI platform', 'AI company',
     'AI tools platform', 'AI productivity', 'AI innovation',
-    'QuickTools mission', 'AI for creators', 'AI for students',
+    'QuickTool mission', 'AI for creators', 'AI for students',
     'AI for businesses', 'About us'
   ],
   alternates: {
@@ -86,12 +86,12 @@ export default async function AboutPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    "name": "About QuickTools.ai",
-    "description": "Learn about QuickTools.ai — our mission to make AI simple, powerful and accessible for everyone.",
+    "name": "About QuickTool",
+    "description": "Learn about QuickTool — our mission to make AI simple, powerful and accessible for everyone.",
     "url": "https://quicktool.space/about",
     "mainEntity": {
       "@type": "Organization",
-      "name": "QuickTools.ai",
+      "name": "QuickTool",
       "foundingDate": "2026",
       "founders": [
         {
@@ -127,14 +127,14 @@ export default async function AboutPage() {
           {/* Left */}
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#EEF2FF] border border-[#DDD6FE] text-[#6D5EF8] text-xs font-bold mb-6">
-              <Zap className="w-3.5 h-3.5 fill-[#6D5EF8]" /> About QuickTools.ai
+              <Zap className="w-3.5 h-3.5 fill-[#6D5EF8]" /> About QuickTool
             </div>
             <h1 className="text-4xl sm:text-5xl font-black text-[#111827] leading-tight mb-6 tracking-tight">
               Making AI Simple, Powerful<br className="hidden sm:block" />
               <span className="text-[#6D5EF8]"> and Accessible</span> for Everyone
             </h1>
             <p className="text-[#6B7280] text-lg leading-relaxed mb-8">
-              At QuickTools.ai, we believe AI should be simple, accessible, and affordable for everyone.
+              At QuickTool, we believe AI should be simple, accessible, and affordable for everyone.
               Our mission is to bring the power of artificial intelligence to your fingertips with 100+
               easy-to-use tools that help you work smarter and achieve more.
             </p>
@@ -212,9 +212,9 @@ export default async function AboutPage() {
           {/* Team (left — spans 1 col) */}
           <div className="lg:col-span-1">
             <p className="text-xs font-bold text-[#6D5EF8] uppercase tracking-widest mb-2">Our Team</p>
-            <h2 className="text-2xl font-black text-[#111827] mb-3">The Person Behind QuickTools.ai</h2>
+            <h2 className="text-2xl font-black text-[#111827] mb-3">The Person Behind QuickTool</h2>
             <p className="text-[#6B7280] text-sm leading-relaxed mb-8">
-              Building QuickTools.ai to make AI accessible for everyone.
+              Building QuickTool to make AI accessible for everyone.
             </p>
 
             {/* Single Founder Card */}
@@ -279,7 +279,7 @@ export default async function AboutPage() {
           <div className="lg:col-span-1">
             <div className="bg-[#6D5EF8] rounded-2xl p-6 text-white flex flex-col relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
-              <h2 className="text-2xl font-black mb-2 relative z-10">Start Creating with QuickTools.ai</h2>
+              <h2 className="text-2xl font-black mb-2 relative z-10">Start Creating with QuickTool</h2>
               <p className="text-white/80 text-sm leading-relaxed mb-6 relative z-10">
                 Start using our AI tools today and experience the future of productivity.
               </p>

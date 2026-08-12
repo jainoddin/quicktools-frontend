@@ -21,8 +21,8 @@ export default function Footer() {
     try {
       if (navigator.share) {
         await navigator.share({
-          title: 'QuickTools.ai',
-          text: 'Check out QuickTools.ai - The Ultimate AI Toolkit!',
+          title: 'QuickTool',
+          text: 'Check out QuickTool - The Ultimate AI Toolkit!',
           url: window.location.origin
         });
       } else {
@@ -44,7 +44,7 @@ export default function Footer() {
                 <div className="relative flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-1">
                   <Zap className="w-6 h-6" style={{ color: themeColor, fill: themeColor }} />
                 </div>
-                <span className="text-xl font-black tracking-tighter text-[#111827]">QuickTools<span style={{ color: themeColor }}>.ai</span></span>
+                <span className="text-xl font-black tracking-tighter text-[#111827]">QuickTool<span style={{ color: themeColor }}>.ai</span></span>
               </div>
               <p className="text-sm text-[#6B7280] mb-6 pr-4">All AI tools you need in one place. Save time, work smarter, and achieve more with AI.</p>
               <div className="flex items-center gap-4 text-gray-400">
@@ -60,7 +60,7 @@ export default function Footer() {
                 <a href="mailto:hello@quicktool.space" aria-label="Email">
                   <Mail className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
                 </a>
-                <a href="https://www.linkedin.com/in/sk-jainoddin-699060250/" target="_blank" rel="noopener noreferrer" aria-label="QuickTools.ai on LinkedIn" className="hover:text-[#4F46E5] transition-colors">
+                <a href="https://www.linkedin.com/in/sk-jainoddin-699060250/" target="_blank" rel="noopener noreferrer" aria-label="QuickTool on LinkedIn" className="hover:text-[#4F46E5] transition-colors">
                   <span className="w-5 h-5 rounded-sm border border-current flex items-center justify-center text-[10px] font-black">in</span>
                 </a>
               </div>
@@ -134,14 +134,14 @@ export default function Footer() {
                   <Zap className="w-5 h-5 text-[#6D5EF8]" style={{ fill: '#6D5EF8' }} />
                 </div>
                 <span className="text-lg font-black tracking-tighter text-[#111827]">
-                  QuickTools<span className="text-[#6D5EF8]">.ai</span>
+                  QuickTool<span className="text-[#6D5EF8]">.ai</span>
                 </span>
               </Link>
             </div>
 
             {/* Middle: Copyright */}
             <div className="w-full md:w-1/3 text-center mb-4 md:mb-0">
-              © {new Date().getFullYear()} QuickTools.ai. All rights reserved.
+              © {new Date().getFullYear()} QuickTool. All rights reserved.
             </div>
 
             {/* Right: Links */}

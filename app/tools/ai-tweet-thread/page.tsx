@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Tweet Thread Generator",
   description: "Write highly engaging, audience-focused Twitter threads with perfect hooks with AI assistance using our AI Tweet Thread Generator.",
-    keywords: ["AI Tweet Thread","Tweet Thread AI","Free AI Tweet Thread","Best AI Tweet Thread","Online Tweet Thread","AI Tweet Thread Tool","QuickTools AI"],
+    keywords: ["AI Tweet Thread","Tweet Thread AI","Free AI Tweet Thread","Best AI Tweet Thread","Online Tweet Thread","AI Tweet Thread Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-tweet-thread' },
     openGraph: {
-            title: "Free AI Tweet Thread Generator | QuickTools",
+            title: "Free AI Tweet Thread Generator | QuickTool",
             description: "Write highly engaging, audience-focused Twitter threads with perfect hooks with AI assistance using our AI Tweet Thread Generator.",
             url: 'https://quicktool.space/tools/ai-tweet-thread',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Tweet Thread Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Tweet Thread Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Tweet Thread Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Tweet Thread Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Tweet Thread Generator | QuickTools",
+            title: "Free AI Tweet Thread Generator | QuickTool",
             description: "Write highly engaging, audience-focused Twitter threads with perfect hooks with AI assistance using our AI Tweet Thread Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Tweet Thread Generator")}&type=tool`]
           }

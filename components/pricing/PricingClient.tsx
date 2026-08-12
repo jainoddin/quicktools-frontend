@@ -12,7 +12,7 @@ const plans = [
     id: 'free',
     name: 'Free Starter',
     icon: Gift,
-    description: 'Try QuickTools completely free',
+    description: 'Try QuickTool completely free',
     originalPrice: 0,
     price: 0,
     period: 'forever',
@@ -21,9 +21,6 @@ const plans = [
       { name: '3 Free Generations / day', included: true },
       { name: 'Standard Tools Access', included: true },
       { name: 'Basic AI Background Remover', included: true },
-      { name: 'HD Image Generation', included: false },
-      { name: 'Priority Support', included: false },
-      { name: 'API Access', included: false },
     ],
     buttonText: 'Start for Free',
     popular: false,
@@ -106,7 +103,7 @@ const compareFeatures = [
 ];
 
 const faqs = [
-  { q: 'Can I try QuickTools.ai for free?', a: 'Yes. The Free Starter experience includes up to 3 generations per day on eligible tools. Upgrade when you need more credits or premium tools.' },
+  { q: 'Can I try QuickTool for free?', a: 'Yes. The Free Starter experience includes up to 3 generations per day on eligible tools. Upgrade when you need more credits or premium tools.' },
   { q: 'How are paid plans billed?', a: 'Pro Monthly is billed every month. Pro and Business are annual plans charged once per year at the price shown before checkout.' },
   { q: 'Can I upgrade my plan later?', a: 'Yes! You can upgrade from Starter to Pro or Business at any time. Your billing will be pro-rated.' },
   { q: 'Can I cancel my subscription anytime?', a: 'Yes. You can cancel from your account settings. Cancellation prevents the next renewal; your current billing period remains available.' }

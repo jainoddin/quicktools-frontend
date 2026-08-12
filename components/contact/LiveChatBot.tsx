@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MessageSquare, X, Send, Bot, User } from 'lucide-react';
 
 const QUESTIONS = [
-  "Hi! I'm the QuickTools Bot. What's your name?",
+  "Hi! I'm the QuickTool Bot. What's your name?",
   "Nice to meet you! How can we help you today?",
   "Are you currently using any AI tools?",
   "Please provide your email ID so our team can connect with you."
@@ -104,7 +104,7 @@ export default function LiveChatBot() {
                   <Bot className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white">QuickTools Bot</h3>
+                  <h3 className="font-bold text-white">QuickTool Bot</h3>
                   <div className="flex items-center gap-1.5 text-white/80 text-xs">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Online
                   </div>

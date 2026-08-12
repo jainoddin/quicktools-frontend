@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI OKR Generator",
   description: "Use AI OKR Generator to create a structured okr draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
-    keywords: ["AI Okr Generator","Okr Generator AI","Free AI Okr Generator","Best AI Okr Generator","Online Okr Generator","AI Okr Generator Tool","Okr Creator","AI Okr Creator","QuickTools AI"],
+    keywords: ["AI Okr Generator","Okr Generator AI","Free AI Okr Generator","Best AI Okr Generator","Online Okr Generator","AI Okr Generator Tool","Okr Creator","AI Okr Creator","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-okr-generator' },
     openGraph: {
             title: "AI OKR Generator",
             description: "Use AI OKR Generator to create a structured okr draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
             url: 'https://quicktool.space/tools/ai-okr-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI OKR Generator")}&type=tool`, width: 1200, height: 630, alt: `AI OKR Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI OKR Generator")}&type=tool`, width: 1200, height: 630, alt: `AI OKR Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

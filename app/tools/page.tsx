@@ -14,8 +14,8 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
       hub.sourceCategories.some(source => source.toLowerCase() === category.toLowerCase())
     );
     return {
-      title: `Best ${category} Tools | QuickTools`,
-      description: `Explore the best ${category} generation and editing tools available on QuickTools.`,
+      title: `Best ${category} Tools | QuickTool`,
+      description: `Explore the best ${category} generation and editing tools available on QuickTool.`,
       keywords: [`${category} tools`, `${category} generator`, `${cleanCat} AI`, `AI ${cleanCat}`, `AI ${cleanCat} tools`, `AI art`, `AI content generator`],
       alternates: {
         canonical: matchingHub
@@ -28,14 +28,14 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
 
   return {
     title: {
-      absolute: `${allTools.length} AI Tools Directory | Compare AI Tools | QuickTools`,
+      absolute: `${allTools.length} AI Tools Directory | Compare AI Tools | QuickTool`,
     },
-    description: `Explore ${allTools.length} AI tools for writing, coding, image generation, business, and productivity. Compare tools and choose the right workflow with QuickTools.`,
+    description: `Explore ${allTools.length} AI tools for writing, coding, image generation, business, and productivity. Compare tools and choose the right workflow with QuickTool.`,
     keywords: [
       'AI tools', 'Best AI tools', 'Free AI tools', 'AI tool directory', 'AI software',
       'AI productivity tools', 'AI writing tools', 'AI image generator', 'AI code generator',
       'AI video tools', 'AI business tools', 'AI marketing tools', 'AI design tools',
-      'AI developer tools', 'AI automation tools', 'AI utilities', 'QuickTools'
+      'AI developer tools', 'AI automation tools', 'AI utilities', 'QuickTool'
     ],
     alternates: {
       canonical: 'https://quicktool.space/tools',
@@ -49,7 +49,7 @@ export default function AllToolsPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": `All ${allTools.length} AI Tools | QuickTools.ai`,
+    "name": `All ${allTools.length} AI Tools | QuickTool`,
     "description": `Explore ${allTools.length} AI tools including Image Generator, Resume Builder, Translator, Summarizer, and more.`,
     "url": "https://quicktool.space/tools",
     "mainEntity": {

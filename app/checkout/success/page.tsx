@@ -27,7 +27,7 @@ function SuccessContent() {
       const element = document.createElement('div');
       element.innerHTML = `
         <div style="padding: 40px; font-family: sans-serif; color: #111827;">
-          <h1 style="color: #6D5EF8; font-size: 28px; font-weight: 900; margin-bottom: 10px;">QuickTools.ai</h1>
+          <h1 style="color: #6D5EF8; font-size: 28px; font-weight: 900; margin-bottom: 10px;">QuickTool</h1>
           <h2 style="font-size: 20px; font-weight: bold; margin-bottom: 5px;">Payment Invoice</h2>
           <p style="color: #6B7280; font-size: 14px; margin-bottom: 30px;">Date: ${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
           
@@ -49,14 +49,14 @@ function SuccessContent() {
           
           <div style="margin-top: 60px; font-size: 12px; color: #9CA3AF; border-top: 1px solid #E5E7EB; padding-top: 20px;">
             <p style="margin: 0 0 5px 0;"><strong>Payment ID:</strong> ${paymentId}</p>
-            <p style="margin: 0;">Thank you for your business! For support, contact support@quicktools.ai</p>
+            <p style="margin: 0;">Thank you for your business! For support, contact support@QuickTool</p>
           </div>
         </div>
       `;
 
       const opt: any = {
         margin: 0.5,
-        filename: `QuickTools_Invoice_${paymentId}.pdf`,
+        filename: `QuickTool_Invoice_${paymentId}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 2 },
         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }

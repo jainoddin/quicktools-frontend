@@ -10,14 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-resume-builder'
   },
-    keywords: ["AI Resume Builder","Resume Builder AI","Free AI Resume Builder","Best AI Resume Builder","Online Resume Builder","AI Resume Builder Tool","CV Builder Builder","AI CV Builder Builder","QuickTools AI"],
+    keywords: ["AI Resume Builder","Resume Builder AI","Free AI Resume Builder","Best AI Resume Builder","Online Resume Builder","AI Resume Builder Tool","CV Builder Builder","AI CV Builder Builder","QuickTool AI"],
     openGraph: {
             title: "Free AI Resume Builder - ATS Friendly Resumes",
             description: "Generate a professional, ATS-friendly resume from the details you provide using our AI Resume Builder.",
             url: 'https://quicktool.space/tools/ai-resume-builder',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Resume Builder")}&type=tool`, width: 1200, height: 630, alt: `AI Resume Builder - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Resume Builder")}&type=tool`, width: 1200, height: 630, alt: `AI Resume Builder - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
@@ -78,7 +78,7 @@ export default function AiResumeBuilderPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Resume Builder?</h3>
-              <p className="text-slate-600 mt-2">The AI Resume Builder is an AI-assisted tool by QuickTools designed to help you generate a professional, ats-friendly resume from the details you provide using our ai resume builder.</p>
+              <p className="text-slate-600 mt-2">The AI Resume Builder is an AI-assisted tool by QuickTool designed to help you generate a professional, ats-friendly resume from the details you provide using our ai resume builder.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">How does the AI Resume Builder work?</h3>

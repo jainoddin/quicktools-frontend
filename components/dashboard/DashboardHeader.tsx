@@ -30,7 +30,7 @@ export default function DashboardHeader({ user, onMenuClick }: { user: any, onMe
             <div className="w-8 h-8 bg-[#6D5EF8] rounded-lg flex items-center justify-center shrink-0">
               <ZapIcon className="w-5 h-5 text-white fill-white" />
             </div>
-            <Link href="/dashboard" className="text-lg md:text-xl font-bold text-[#111827] hidden sm:block">QuickTools</Link>
+            <Link href="/dashboard" className="text-lg md:text-xl font-bold text-[#111827] hidden sm:block">QuickTool</Link>
           </div>
         </div>
 

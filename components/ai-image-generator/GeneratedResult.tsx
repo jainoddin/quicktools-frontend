@@ -99,7 +99,7 @@ export default function GeneratedResult({
         {!isAuthenticated && (
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center overflow-hidden select-none" onContextMenu={(e) => { e.preventDefault(); onRequireLogin?.(); }}>
             {/* Repeating subtle watermark */}
-            <div className="absolute inset-0 opacity-[0.15]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'300\' height=\'300\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Ctext x=\'50%25\' y=\'50%25\' font-size=\'32\' fill=\'white\' font-family=\'Arial\' font-weight=\'900\' text-anchor=\'middle\' dominant-baseline=\'middle\' transform=\'rotate(-30 150 150)\'%3EQUICKTOOLS%3C/text%3E%3C/svg%3E")' }}></div>
+            <div className="absolute inset-0 opacity-[0.15]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'300\' height=\'300\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Ctext x=\'50%25\' y=\'50%25\' font-size=\'32\' fill=\'white\' font-family=\'Arial\' font-weight=\'900\' text-anchor=\'middle\' dominant-baseline=\'middle\' transform=\'rotate(-30 150 150)\'%3EQUICKTOOL%3C/text%3E%3C/svg%3E")' }}></div>
 
             {/* Main center watermark */}
             <div className="bg-black/70 backdrop-blur-md text-white px-8 py-4 rounded-3xl transform -rotate-6 border border-white/20 shadow-2xl flex flex-col items-center hover:scale-105 transition-transform cursor-pointer" onClick={() => onRequireLogin?.()}>

@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Premium AI E-Book Writer",
   description: "Generate chapter-by-chapter outlines and content for an entire e-book.",
-    keywords: ["AI Ebook Writer","Ebook Writer AI","Free AI Ebook Writer","Best AI Ebook Writer","Online Ebook Writer","AI Ebook Writer Tool","Ebook Writing Tool","AI Ebook Writing Tool","QuickTools AI"],
+    keywords: ["AI Ebook Writer","Ebook Writer AI","Free AI Ebook Writer","Best AI Ebook Writer","Online Ebook Writer","AI Ebook Writer Tool","Ebook Writing Tool","AI Ebook Writing Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-ebook-writer' },
     openGraph: {
-            title: "Premium AI E-Book Writer | QuickTools",
+            title: "Premium AI E-Book Writer | QuickTool",
             description: "Generate chapter-by-chapter outlines and content for an entire e-book.",
             url: 'https://quicktool.space/tools/ai-ebook-writer',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI E-Book Writer")}&type=tool`, width: 1200, height: 630, alt: `AI E-Book Writer - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI E-Book Writer")}&type=tool`, width: 1200, height: 630, alt: `AI E-Book Writer - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Premium AI E-Book Writer | QuickTools",
+            title: "Premium AI E-Book Writer | QuickTool",
             description: "Generate chapter-by-chapter outlines and content for an entire e-book.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI E-Book Writer")}&type=tool`]
           }

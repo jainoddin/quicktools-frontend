@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Premium AI Course Curriculum Creator",
   description: "Premium AI Course Curriculum Creator creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
-    keywords: ["AI Course Creator","Course Creator AI","Free AI Course Creator","Best AI Course Creator","Online Course Creator","AI Course Creator Tool","QuickTools AI"],
+    keywords: ["AI Course Creator","Course Creator AI","Free AI Course Creator","Best AI Course Creator","Online Course Creator","AI Course Creator Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-course-creator' },
     openGraph: {
-            title: "Premium AI Course Curriculum Creator | QuickTools",
+            title: "Premium AI Course Curriculum Creator | QuickTool",
             description: "Premium AI Course Curriculum Creator creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             url: 'https://quicktool.space/tools/ai-course-creator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Course Curriculum Creator")}&type=tool`, width: 1200, height: 630, alt: `AI Course Curriculum Creator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Course Curriculum Creator")}&type=tool`, width: 1200, height: 630, alt: `AI Course Curriculum Creator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Premium AI Course Curriculum Creator | QuickTools",
+            title: "Premium AI Course Curriculum Creator | QuickTool",
             description: "Premium AI Course Curriculum Creator creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Course Curriculum Creator")}&type=tool`]
           }

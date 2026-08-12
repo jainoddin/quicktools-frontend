@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Premium AI App Architecture Planner",
   description: "Generate the full tech stack, database schema, and API endpoints documentation for a new app.",
-    keywords: ["AI App Architecture","App Architecture AI","Free AI App Architecture","Best AI App Architecture","Online App Architecture","AI App Architecture Tool","QuickTools AI"],
+    keywords: ["AI App Architecture","App Architecture AI","Free AI App Architecture","Best AI App Architecture","Online App Architecture","AI App Architecture Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-app-architecture' },
     openGraph: {
-            title: "Premium AI App Architecture Planner | QuickTools",
+            title: "Premium AI App Architecture Planner | QuickTool",
             description: "Generate the full tech stack, database schema, and API endpoints documentation for a new app.",
             url: 'https://quicktool.space/tools/ai-app-architecture',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI App Architecture Planner")}&type=tool`, width: 1200, height: 630, alt: `AI App Architecture Planner - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI App Architecture Planner")}&type=tool`, width: 1200, height: 630, alt: `AI App Architecture Planner - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Premium AI App Architecture Planner | QuickTools",
+            title: "Premium AI App Architecture Planner | QuickTool",
             description: "Generate the full tech stack, database schema, and API endpoints documentation for a new app.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI App Architecture Planner")}&type=tool`]
           }

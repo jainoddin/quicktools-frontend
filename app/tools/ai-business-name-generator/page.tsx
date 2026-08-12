@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Business Name Generator",
   description: "Generate catchy, memorable business names and taglines for your startup or company with AI assistance.",
-    keywords: ["AI Business Name Generator","Business Name Generator AI","Free AI Business Name Generator","Best AI Business Name Generator","Online Business Name Generator","AI Business Name Generator Tool","Business Name Creator","AI Business Name Creator","QuickTools AI"],
+    keywords: ["AI Business Name Generator","Business Name Generator AI","Free AI Business Name Generator","Best AI Business Name Generator","Online Business Name Generator","AI Business Name Generator Tool","Business Name Creator","AI Business Name Creator","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-business-name-generator' },
     openGraph: {
-            title: "Free AI Business Name Generator | QuickTools",
+            title: "Free AI Business Name Generator | QuickTool",
             description: "Generate catchy, memorable business names and taglines for your startup or company with AI assistance.",
             url: 'https://quicktool.space/tools/ai-business-name-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Business Name Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Business Name Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Business Name Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Business Name Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Business Name Generator | QuickTools",
+            title: "Free AI Business Name Generator | QuickTool",
             description: "Generate catchy, memorable business names and taglines for your startup or company with AI assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Business Name Generator")}&type=tool`]
           }

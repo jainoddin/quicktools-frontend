@@ -97,7 +97,7 @@ export default function AdminUsersPage() {
     
     const link = document.createElement('a');
     link.setAttribute('href', url);
-    link.setAttribute('download', `quicktools_users_${new Date().toISOString().split('T')[0]}.csv`);
+    link.setAttribute('download', `quicktool_users_${new Date().toISOString().split('T')[0]}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -137,7 +137,7 @@ export default function AdminUsersPage() {
               </div>
             </div>
             <h1 className="text-3xl font-black text-[#111827]">User Management</h1>
-            <p className="text-[#6B7280] text-sm mt-1">Overview of all registered users on QuickTools.ai</p>
+            <p className="text-[#6B7280] text-sm mt-1">Overview of all registered users on QuickTool</p>
           </div>
           
           <button 

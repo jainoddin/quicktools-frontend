@@ -5,8 +5,8 @@ import GoogleLoginButton from '@/components/auth/GoogleLoginButton';
 import GitHubLoginButton from '@/components/auth/GitHubLoginButton';
 
 export const metadata: Metadata = {
-  title: 'Login to Your QuickTools.ai Account',
-  description: 'Sign in to access your QuickTools.ai account. Continue generating content, images, and code with our premium suite of AI tools.',
+  title: 'Login to Your QuickTool Account',
+  description: 'Sign in to access your QuickTool account. Continue generating content, images, and code with our premium suite of AI tools.',
   robots: { index: false, follow: false },
 };
 
@@ -22,7 +22,7 @@ export default function LoginPage() {
           {/* Using the user's provided exact image URL */}
           <img 
             src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/9766c871-78dd-4b3a-a606-faa1cf880e7d.png"
-            alt="QuickTools.ai AI Platform"
+            alt="QuickTool AI Platform"
             className="w-full h-auto max-h-full object-contain rounded-[25px] shadow-sm"
           />
         </div>

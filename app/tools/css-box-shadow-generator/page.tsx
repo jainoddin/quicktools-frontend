@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free CSS Box Shadow Generator",
   description: "Visually generate custom CSS box shadows and copy the CSS code using our free visual CSS Box Shadow Generator.",
-    keywords: ["Css Box Shadow Generator","AI Css Box Shadow Generator","Css Box Shadow Generator AI","Free Css Box Shadow Generator","Best Css Box Shadow Generator","Online Css Box Shadow Generator","Css Box Shadow Generator Tool","Css Box Shadow Creator","AI Css Box Shadow Creator","QuickTools AI"],
+    keywords: ["Css Box Shadow Generator","AI Css Box Shadow Generator","Css Box Shadow Generator AI","Free Css Box Shadow Generator","Best Css Box Shadow Generator","Online Css Box Shadow Generator","Css Box Shadow Generator Tool","Css Box Shadow Creator","AI Css Box Shadow Creator","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/css-box-shadow-generator' },
     openGraph: {
-            title: "Free CSS Box Shadow Generator | QuickTools",
+            title: "Free CSS Box Shadow Generator | QuickTool",
             description: "Visually generate custom CSS box shadows and copy the CSS code using our free visual CSS Box Shadow Generator.",
             url: 'https://quicktool.space/tools/css-box-shadow-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("CSS Box Shadow Generator")}&type=tool`, width: 1200, height: 630, alt: `CSS Box Shadow Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("CSS Box Shadow Generator")}&type=tool`, width: 1200, height: 630, alt: `CSS Box Shadow Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free CSS Box Shadow Generator | QuickTools",
+            title: "Free CSS Box Shadow Generator | QuickTool",
             description: "Visually generate custom CSS box shadows and copy the CSS code using our free visual CSS Box Shadow Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("CSS Box Shadow Generator")}&type=tool`]
           }

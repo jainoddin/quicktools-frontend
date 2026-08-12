@@ -11,8 +11,8 @@ export default function MicrosoftClarity() {
       setHasConsent(Boolean((event as CustomEvent<{ granted: boolean }>).detail?.granted));
     };
     setHasConsent(localStorage.getItem('quicktools_cookie_consent') === 'true');
-    window.addEventListener('quicktools:analytics-consent', onConsent);
-    return () => window.removeEventListener('quicktools:analytics-consent', onConsent);
+    window.addEventListener('QuickTool:analytics-consent', onConsent);
+    return () => window.removeEventListener('QuickTool:analytics-consent', onConsent);
   }, []);
 
   if (process.env.NODE_ENV !== 'production' || !hasConsent) return null;

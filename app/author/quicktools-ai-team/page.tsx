@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { Mail, Briefcase, Award, Sparkles, Code2, Users, FileText } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Shaik Jainoddin - Founder & Editor of QuickTools.ai',
-  description: 'Meet Shaik Jainoddin, founder of QuickTools.ai, and learn how AI-assisted content is automatically evaluated before publication.',
+  title: 'Shaik Jainoddin - Founder & Editor of QuickTool',
+  description: 'Meet Shaik Jainoddin, founder of QuickTool, and learn how AI-assisted content is automatically evaluated before publication.',
   alternates: {
     canonical: 'https://quicktool.space/author/quicktools-ai-team'
   }
@@ -26,7 +26,7 @@ export default function AuthorPage() {
             "url": "https://quicktool.space/author/quicktools-ai-team",
             "image": "https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/a5359b80-0e75-4262-8bb7-0f74c171fd8e.png",
             "jobTitle": "Founder",
-            "description": "Founder of QuickTools.ai, responsible for product direction and the automated publishing quality standards.",
+            "description": "Founder of QuickTool, responsible for product direction and the automated publishing quality standards.",
             "sameAs": [
               "https://www.linkedin.com/in/sk-jainoddin-699060250/"
             ]
@@ -40,7 +40,7 @@ export default function AuthorPage() {
             <Image
               src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/a5359b80-0e75-4262-8bb7-0f74c171fd8e.png"
               fill
-              alt="Shaik Jainoddin, founder of QuickTools.ai"
+              alt="Shaik Jainoddin, founder of QuickTool"
               className="object-cover"
               unoptimized
             />
@@ -49,7 +49,7 @@ export default function AuthorPage() {
             Shaik Jainoddin
           </h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto leading-relaxed">
-            Founder of QuickTools.ai. I build practical AI tools and maintain the automated quality standards used for AI-assisted publishing.
+            Founder of QuickTool. I build practical AI tools and maintain the automated quality standards used for AI-assisted publishing.
           </p>
 
           <div className="flex items-center justify-center gap-4 mt-8">
@@ -91,7 +91,7 @@ export default function AuthorPage() {
             Our Editorial Standards
           </h2>
           <p className="text-[#4B5563] text-lg leading-relaxed mb-6">
-            QuickTools.ai uses AI assistance for research and drafting. Before publication, an automated pipeline checks structure, duplication, SEO, readability, sources, and unsupported claims. Content that fails the quality threshold is not published.
+            QuickTool uses AI assistance for research and drafting. Before publication, an automated pipeline checks structure, duplication, SEO, readability, sources, and unsupported claims. Content that fails the quality threshold is not published.
           </p>
           <ul className="space-y-4">
             <li className="flex items-start gap-3">

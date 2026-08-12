@@ -13,7 +13,7 @@ const CATEGORIES = [
   'Business',
   'Design',
   'Productivity',
-  'QuickTools Help'
+  'QuickTool Help'
 ];
 
 interface AskQuestionModalProps {
@@ -69,7 +69,7 @@ export default function AskQuestionModal({ isOpen, onClose, onSuccess, isGuest }
         body,
         category,
         tags: tagArray,
-        guestName: isGuest ? 'QuickTools Guest' : undefined
+        guestName: isGuest ? 'QuickTool Guest' : undefined
       };
 
       const res = await fetch(getEndpoint('/api/community/questions'), {

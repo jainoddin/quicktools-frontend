@@ -7,15 +7,15 @@ import PriorityToolSeoSection from '@/components/tools/PriorityToolSeoSection';
 export const metadata: Metadata = {
   title: "AI Competitor Analysis",
   description: "Build a structured competitor matrix for positioning, customers, offers, pricing, channels, evidence gaps, risks, and strategic actions.",
-    keywords: ["AI Competitor Analysis","Competitor Analysis AI","Competitor Analysis Generator","Online Competitor Analysis","AI Competitor Analysis Tool","QuickTools AI"],
+    keywords: ["AI Competitor Analysis","Competitor Analysis AI","Competitor Analysis Generator","Online Competitor Analysis","AI Competitor Analysis Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-competitor-analysis' },
     openGraph: {
             title: "AI Competitor Analysis",
             description: "Build a structured competitor matrix for positioning, customers, offers, pricing, channels, evidence gaps, risks, and strategic actions.",
             url: 'https://quicktool.space/tools/ai-competitor-analysis',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Competitor Analysis")}&type=tool`, width: 1200, height: 630, alt: `AI Competitor Analysis - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Competitor Analysis")}&type=tool`, width: 1200, height: 630, alt: `AI Competitor Analysis - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

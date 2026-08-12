@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Job Description Generator",
   description: "Generate professional, comprehensive, and attractive job descriptions to attract top talent.",
-    keywords: ["AI Job Description","Job Description AI","Free AI Job Description","Best AI Job Description","Online Job Description","AI Job Description Tool","QuickTools AI"],
+    keywords: ["AI Job Description","Job Description AI","Free AI Job Description","Best AI Job Description","Online Job Description","AI Job Description Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-job-description' },
     openGraph: {
-            title: "Free AI Job Description Generator | QuickTools",
+            title: "Free AI Job Description Generator | QuickTool",
             description: "Generate professional, comprehensive, and attractive job descriptions to attract top talent.",
             url: 'https://quicktool.space/tools/ai-job-description',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Job Description Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Job Description Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Job Description Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Job Description Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Job Description Generator | QuickTools",
+            title: "Free AI Job Description Generator | QuickTool",
             description: "Generate professional, comprehensive, and attractive job descriptions to attract top talent.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Job Description Generator")}&type=tool`]
           }

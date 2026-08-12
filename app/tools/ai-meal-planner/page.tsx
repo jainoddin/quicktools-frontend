@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Meal Planner",
   description: "Generate healthy, customized weekly meal plans based on your dietary preferences and goals.",
-    keywords: ["AI Meal Planner","Meal Planner AI","Free AI Meal Planner","Best AI Meal Planner","Online Meal Planner","AI Meal Planner Tool","QuickTools AI"],
+    keywords: ["AI Meal Planner","Meal Planner AI","Free AI Meal Planner","Best AI Meal Planner","Online Meal Planner","AI Meal Planner Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-meal-planner' },
     openGraph: {
-            title: "Free AI Meal Planner | QuickTools",
+            title: "Free AI Meal Planner | QuickTool",
             description: "Generate healthy, customized weekly meal plans based on your dietary preferences and goals.",
             url: 'https://quicktool.space/tools/ai-meal-planner',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Meal Planner")}&type=tool`, width: 1200, height: 630, alt: `AI Meal Planner - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Meal Planner")}&type=tool`, width: 1200, height: 630, alt: `AI Meal Planner - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Meal Planner | QuickTools",
+            title: "Free AI Meal Planner | QuickTool",
             description: "Generate healthy, customized weekly meal plans based on your dietary preferences and goals.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Meal Planner")}&type=tool`]
           }

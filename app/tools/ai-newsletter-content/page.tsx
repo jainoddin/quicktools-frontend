@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Newsletter Content Generator",
   description: "Create a structured newsletter content draft with AI Newsletter Content Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Newsletter Content","Newsletter Content AI","Free AI Newsletter Content","Best AI Newsletter Content","Online Newsletter Content","AI Newsletter Content Tool","QuickTools AI"],
+    keywords: ["AI Newsletter Content","Newsletter Content AI","Free AI Newsletter Content","Best AI Newsletter Content","Online Newsletter Content","AI Newsletter Content Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-newsletter-content' },
     openGraph: {
             title: "AI Newsletter Content Generator",
             description: "Create a structured newsletter content draft with AI Newsletter Content Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-newsletter-content',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Newsletter Content Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Newsletter Content Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Newsletter Content Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Newsletter Content Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

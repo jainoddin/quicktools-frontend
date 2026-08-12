@@ -6,18 +6,18 @@ import AiWriterClient from '@/components/ai-writer/AiWriterClient';
 
 export const metadata: Metadata = {
   title: "AI Writer - Create Blogs, Emails & Marketing Copy",
-  description: "Generate blogs, articles, emails, social media posts, marketing copy, and SEO content using the QuickTools AI Writer.",
+  description: "Generate blogs, articles, emails, social media posts, marketing copy, and SEO content using the QuickTool AI Writer.",
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-writer'
   },
-    keywords: ["AI Writer","Writer AI","Free AI Writer","Best AI Writer","Online Writer","AI Writer Tool","Writing Tool","AI Writing Tool","Content Writer AI","Blog Writer","AI Copywriting","QuickTools AI"],
+    keywords: ["AI Writer","Writer AI","Free AI Writer","Best AI Writer","Online Writer","AI Writer Tool","Writing Tool","AI Writing Tool","Content Writer AI","Blog Writer","AI Copywriting","QuickTool AI"],
     openGraph: {
             title: { absolute: "AI Writer - Create Blogs, Emails & Marketing Copy" },
             description: "Generate structured content using our AI Writer. Effortlessly draft engaging blogs, professional emails, and creative social media copy.",
             url: 'https://quicktool.space/tools/ai-writer',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Writer  Create Blogs, Emails & Marketing Copy")}&type=tool`, width: 1200, height: 630, alt: `AI Writer  Create Blogs, Emails & Marketing Copy - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Writer  Create Blogs, Emails & Marketing Copy")}&type=tool`, width: 1200, height: 630, alt: `AI Writer  Create Blogs, Emails & Marketing Copy - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
@@ -86,7 +86,7 @@ export default function AiWriterPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Writer  Create Blogs, Emails & Marketing Copy?</h3>
-              <p className="text-slate-600 mt-2">The AI Writer  Create Blogs, Emails & Marketing Copy is an AI-assisted tool by QuickTools designed to help you generate blogs, articles, emails, social media posts, marketing copy, and seo content using the QuickTools ai writer.</p>
+              <p className="text-slate-600 mt-2">The AI Writer  Create Blogs, Emails & Marketing Copy is an AI-assisted tool by QuickTool designed to help you generate blogs, articles, emails, social media posts, marketing copy, and seo content using the QuickTool ai writer.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Can the AI Writer  Create Blogs, Emails & Marketing Copy generate content in different tones?</h3>

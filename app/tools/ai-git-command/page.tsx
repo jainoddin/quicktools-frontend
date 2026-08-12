@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Git Command Generator",
   description: "Forget complex git syntax. Describe what you want to do in plain English, and get the exact git commands with AI assistance.",
-    keywords: ["AI Git Command","Git Command AI","Free AI Git Command","Best AI Git Command","Online Git Command","AI Git Command Tool","QuickTools AI"],
+    keywords: ["AI Git Command","Git Command AI","Free AI Git Command","Best AI Git Command","Online Git Command","AI Git Command Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-git-command' },
     openGraph: {
-            title: "Free AI Git Command Generator | QuickTools",
+            title: "Free AI Git Command Generator | QuickTool",
             description: "Forget complex git syntax. Describe what you want to do in plain English, and get the exact git commands with AI assistance.",
             url: 'https://quicktool.space/tools/ai-git-command',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Git Command Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Git Command Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Git Command Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Git Command Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Git Command Generator | QuickTools",
+            title: "Free AI Git Command Generator | QuickTool",
             description: "Forget complex git syntax. Describe what you want to do in plain English, and get the exact git commands with AI assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Git Command Generator")}&type=tool`]
           }

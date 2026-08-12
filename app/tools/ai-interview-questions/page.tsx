@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Interview Questions Generator",
   description: "Prepare for any interview by generating targeted, role-specific questions for candidates or for your own practice.",
-    keywords: ["AI Interview Questions","Interview Questions AI","Free AI Interview Questions","Best AI Interview Questions","Online Interview Questions","AI Interview Questions Tool","QuickTools AI"],
+    keywords: ["AI Interview Questions","Interview Questions AI","Free AI Interview Questions","Best AI Interview Questions","Online Interview Questions","AI Interview Questions Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-interview-questions' },
     openGraph: {
-            title: "Free AI Interview Questions Generator | QuickTools",
+            title: "Free AI Interview Questions Generator | QuickTool",
             description: "Prepare for any interview by generating targeted, role-specific questions for candidates or for your own practice.",
             url: 'https://quicktool.space/tools/ai-interview-questions',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Interview Questions Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Interview Questions Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Interview Questions Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Interview Questions Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Interview Questions Generator | QuickTools",
+            title: "Free AI Interview Questions Generator | QuickTool",
             description: "Prepare for any interview by generating targeted, role-specific questions for candidates or for your own practice.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Interview Questions Generator")}&type=tool`]
           }

@@ -54,7 +54,7 @@ export default function DownloadModal({ isOpen, onClose, imageUrl, isPro = false
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `quicktools-ai-${Date.now()}.jpg`;
+        a.download = `quicktool-${Date.now()}.jpg`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -91,7 +91,7 @@ export default function DownloadModal({ isOpen, onClose, imageUrl, isPro = false
           const dataUrl = canvas.toDataURL(mimeType, 1.0);
           const a = document.createElement('a');
           a.href = dataUrl;
-          a.download = `quicktools-ai-${Date.now()}.${extension}`;
+          a.download = `quicktool-${Date.now()}.${extension}`;
           document.body.appendChild(a);
           a.click();
           document.body.removeChild(a);

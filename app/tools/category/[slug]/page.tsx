@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: category.description,
     alternates: { canonical: `${BASE_URL}/tools/category/${category.slug}` },
     openGraph: {
-      title: `${category.name} | QuickTools.ai`,
+      title: `${category.name} | QuickTool`,
       description: category.description,
       url: `${BASE_URL}/tools/category/${category.slug}`,
       type: 'website',
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${category.name} | QuickTools.ai`,
+      title: `${category.name} | QuickTool`,
       description: category.description,
       images: [`${BASE_URL}/api/og?title=${encodeURIComponent(category.name)}&type=collection`],
     },

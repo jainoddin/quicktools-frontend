@@ -77,7 +77,7 @@ export default function BackgroundRemoverResult({
     try {
       const a = document.createElement('a');
       a.href = processedUrl;
-      a.download = `quicktools-bg-removed-${Date.now()}.${format}`;
+      a.download = `quicktool-bg-removed-${Date.now()}.${format}`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);

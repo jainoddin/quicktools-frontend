@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-legal-loophole-finder'
   },
-  openGraph: { title: 'Legal Contract Risk Finder - QuickTools.ai', description: 'Flag contract clauses and questions for qualified legal review.', url: 'https://quicktool.space/tools/ai-legal-loophole-finder', type: 'website', images: [{ url: 'https://quicktool.space/api/og?title=Legal%20Contract%20Risk%20Finder&type=tool', width: 1200, height: 630, alt: 'Legal Contract Risk Finder' }] },
-  twitter: { card: 'summary_large_image', title: 'Legal Contract Risk Finder - QuickTools.ai', description: 'Flag contract clauses and questions for qualified legal review.', images: ['https://quicktool.space/api/og?title=Legal%20Contract%20Risk%20Finder&type=tool'] }
+  openGraph: { title: 'Legal Contract Risk Finder - QuickTool', description: 'Flag contract clauses and questions for qualified legal review.', url: 'https://quicktool.space/tools/ai-legal-loophole-finder', type: 'website', images: [{ url: 'https://quicktool.space/api/og?title=Legal%20Contract%20Risk%20Finder&type=tool', width: 1200, height: 630, alt: 'Legal Contract Risk Finder' }] },
+  twitter: { card: 'summary_large_image', title: 'Legal Contract Risk Finder - QuickTool', description: 'Flag contract clauses and questions for qualified legal review.', images: ['https://quicktool.space/api/og?title=Legal%20Contract%20Risk%20Finder&type=tool'] }
 };
 
 export default function Page() {
@@ -61,7 +61,7 @@ export default function Page() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Legal Loophole Finder?</h3>
-              <p className="text-slate-600 mt-2">The AI Legal Loophole Finder is an AI-assisted tool by QuickTools designed to help you find hidden clauses, red flags, and loopholes in legal contracts and rental agreements.</p>
+              <p className="text-slate-600 mt-2">The AI Legal Loophole Finder is an AI-assisted tool by QuickTool designed to help you find hidden clauses, red flags, and loopholes in legal contracts and rental agreements.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">How does the AI Legal Loophole Finder work?</h3>
@@ -81,7 +81,7 @@ export default function Page() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the AI Legal Loophole Finder free to use?</h3>
-              <p className="text-slate-600 mt-2">QuickTools offers limited free access and paid plans. Current limits are shown on the pricing page.</p>
+              <p className="text-slate-600 mt-2">QuickTool offers limited free access and paid plans. Current limits are shown on the pricing page.</p>
             </div>
           </div>
         </div>

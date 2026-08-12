@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Event Planner",
   description: "Plan your events effortlessly. Get a comprehensive checklist, timeline, and ideas for your next party or corporate event.",
-    keywords: ["AI Event Planner","Event Planner AI","Free AI Event Planner","Best AI Event Planner","Online Event Planner","AI Event Planner Tool","QuickTools AI"],
+    keywords: ["AI Event Planner","Event Planner AI","Free AI Event Planner","Best AI Event Planner","Online Event Planner","AI Event Planner Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-event-planner' },
     openGraph: {
-            title: "Free AI Event Planner | QuickTools",
+            title: "Free AI Event Planner | QuickTool",
             description: "Plan your events effortlessly. Get a comprehensive checklist, timeline, and ideas for your next party or corporate event.",
             url: 'https://quicktool.space/tools/ai-event-planner',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Event Planner")}&type=tool`, width: 1200, height: 630, alt: `AI Event Planner - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Event Planner")}&type=tool`, width: 1200, height: 630, alt: `AI Event Planner - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Event Planner | QuickTools",
+            title: "Free AI Event Planner | QuickTool",
             description: "Plan your events effortlessly. Get a comprehensive checklist, timeline, and ideas for your next party or corporate event.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Event Planner")}&type=tool`]
           }

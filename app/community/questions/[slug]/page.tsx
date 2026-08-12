@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { getEndpoint } from '../../../../lib/api';
 import QuestionClient from './QuestionClient';
 
-const COMMUNITY_TITLE_SUFFIX = ' | QuickTools';
+const COMMUNITY_TITLE_SUFFIX = ' | QuickTool';
 const MAX_SEO_TITLE_LENGTH = 60;
 
 function buildCommunitySeoTitle(questionTitle: string) {
@@ -43,12 +43,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!question) {
     return {
-      title: { absolute: "Question Not Found | QuickTools" },
+      title: { absolute: "Question Not Found | QuickTool" },
     };
   }
 
   const title = buildCommunitySeoTitle(question.title);
-  const description = question.excerpt || question.body?.substring(0, 160) || "Join the discussion on QuickTools Community.";
+  const description = question.excerpt || question.body?.substring(0, 160) || "Join the discussion on QuickTool Community.";
   
   const titleWords = question.title.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(' ').filter((w: string) => w.length > 3 && !['how', 'to', 'use', 'with', 'using', 'what', 'the', 'is', 'for', 'and', 'can', 'you'].includes(w));
   const dynamicKeywords = [
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     ...(question.tags || []),
     ...titleWords,
     ...titleWords.map((w: string) => `AI ${w}`),
-    "QuickTools community",
+    "QuickTool community",
     "AI community",
     "AI tools forum"
   ];

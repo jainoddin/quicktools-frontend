@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Emoji Translator",
   description: "Turn any text, quote, or sentence into a fun sequence of emojis with AI assistance.",
-    keywords: ["AI Emoji Translator","Emoji Translator AI","Free AI Emoji Translator","Best AI Emoji Translator","Online Emoji Translator","AI Emoji Translator Tool","QuickTools AI"],
+    keywords: ["AI Emoji Translator","Emoji Translator AI","Free AI Emoji Translator","Best AI Emoji Translator","Online Emoji Translator","AI Emoji Translator Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-emoji-translator' },
     openGraph: {
-            title: "Free AI Emoji Translator | QuickTools",
+            title: "Free AI Emoji Translator | QuickTool",
             description: "Turn any text, quote, or sentence into a fun sequence of emojis with AI assistance.",
             url: 'https://quicktool.space/tools/ai-emoji-translator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Emoji Translator")}&type=tool`, width: 1200, height: 630, alt: `AI Emoji Translator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Emoji Translator")}&type=tool`, width: 1200, height: 630, alt: `AI Emoji Translator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Emoji Translator | QuickTools",
+            title: "Free AI Emoji Translator | QuickTool",
             description: "Turn any text, quote, or sentence into a fun sequence of emojis with AI assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Emoji Translator")}&type=tool`]
           }

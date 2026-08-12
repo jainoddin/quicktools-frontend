@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Company Culture Guide",
   description: "Create a structured company culture guide draft with AI Company Culture Guide. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Company Culture","Company Culture AI","Free AI Company Culture","Best AI Company Culture","Online Company Culture","AI Company Culture Tool","QuickTools AI"],
+    keywords: ["AI Company Culture","Company Culture AI","Free AI Company Culture","Best AI Company Culture","Online Company Culture","AI Company Culture Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-company-culture' },
     openGraph: {
             title: "AI Company Culture Guide",
             description: "Create a structured company culture guide draft with AI Company Culture Guide. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-company-culture',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Company Culture Guide")}&type=tool`, width: 1200, height: 630, alt: `AI Company Culture Guide - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Company Culture Guide")}&type=tool`, width: 1200, height: 630, alt: `AI Company Culture Guide - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

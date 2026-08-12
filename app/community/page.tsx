@@ -237,7 +237,7 @@ export default function CommunityFeedPage() {
                   'Design': '🎨',
                   'Productivity': '⚡', 
                   'No Code': '🛠️',
-                  'QuickTools Help': '🛠️'
+                  'QuickTool Help': '🛠️'
                 };
                 return (
                 <li key={cat.name}>
@@ -279,7 +279,7 @@ export default function CommunityFeedPage() {
                  activeTab === 'my_answers' ? 'My Answers' : 'AI Community'}
               </h1>
               <p className="text-sm text-gray-500 mt-1.5">
-                {selectedCategory ? `Explore discussions and tools related to ${selectedCategory}.` : 'Ask questions, share knowledge, and learn AI with the QuickTools community.'}
+                {selectedCategory ? `Explore discussions and tools related to ${selectedCategory}.` : 'Ask questions, share knowledge, and learn AI with the QuickTool community.'}
               </p>
             </div>
 

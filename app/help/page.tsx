@@ -8,7 +8,7 @@ import {
 
 export const metadata: Metadata = {
   title: 'Help Center, Documentation & Customer Support',
-  description: 'Find answers, tutorials and support to make the most of QuickTools.ai. Explore our comprehensive help center for guides, troubleshooting, and FAQs.',
+  description: 'Find answers, tutorials and support to make the most of QuickTool. Explore our comprehensive help center for guides, troubleshooting, and FAQs.',
   alternates: { canonical: '/help' },
 };
 
@@ -31,7 +31,7 @@ const categories = [
   {
     icon: <Code className="w-6 h-6 text-[#EC4899]" />,
     title: 'API Documentation',
-    desc: 'Integrate QuickTools.ai with our API.'
+    desc: 'Integrate QuickTool with our API.'
   },
   {
     icon: <User className="w-6 h-6 text-[#06B6D4]" />,
@@ -49,8 +49,8 @@ export default function HelpCenterPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Help Center | QuickTools.ai",
-    "description": "Find answers, tutorials and support to make the most of QuickTools.ai",
+    "name": "Help Center | QuickTool",
+    "description": "Find answers, tutorials and support to make the most of QuickTool",
     "url": "https://quicktool.space/help",
     "specialty": "Customer Support",
     "mainEntity": {
@@ -95,7 +95,7 @@ export default function HelpCenterPage() {
             Help Center
           </h1>
           <p className="text-[#6B7280] text-sm md:text-base max-w-lg mx-auto mb-10 leading-relaxed">
-            Find answers, tutorials and support to make the most of QuickTools.ai
+            Find answers, tutorials and support to make the most of QuickTool
           </p>
 
           <form action="/faq" method="GET" className="max-w-2xl mx-auto relative shadow-xl shadow-[#6D5EF8]/5 rounded-2xl">

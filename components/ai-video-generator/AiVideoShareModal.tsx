@@ -8,7 +8,7 @@ interface AiVideoShareModalProps {
   videoUrl?: string;
 }
 
-export default function AiVideoShareModal({ isOpen, onClose, videoUrl = "https://quicktools.ai/video/abc123" }: AiVideoShareModalProps) {
+export default function AiVideoShareModal({ isOpen, onClose, videoUrl = "https://quicktool.space/video/abc123" }: AiVideoShareModalProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';

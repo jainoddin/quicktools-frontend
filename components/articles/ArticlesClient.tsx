@@ -281,13 +281,13 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
                       <Image
                         src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
                         width={36} height={36}
-                        alt="QuickTools AI"
+                        alt="QuickTool AI"
                         className="w-full h-full object-cover"
                         unoptimized
                       />
                     </div>
                     <p className="font-bold text-sm text-[#111827] flex items-center gap-2">
-                      {featuredArticle.author?.name || 'QuickTools AI'}
+                      {featuredArticle.author?.name || 'QuickTool AI'}
                       <span className="text-[10px] text-[#D1D5DB]">•</span>
                       <span className="font-normal text-[#6B7280]">{new Date(featuredArticle.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                       <span className="text-[10px] text-[#D1D5DB]">•</span>
@@ -467,13 +467,13 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
                         <Image
                           src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
                           width={32} height={32}
-                          alt="QuickTools AI"
+                          alt="QuickTool AI"
                           className="w-full h-full object-cover"
                           unoptimized
                         />
                       </div>
                       <div>
-                        <p className="text-xs font-semibold text-[#111827]">{article.author?.name || 'QuickTools AI'}</p>
+                        <p className="text-xs font-semibold text-[#111827]">{article.author?.name || 'QuickTool AI'}</p>
                         <p className="text-[10px] text-[#9CA3AF]">{new Date(article.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
                       </div>
                     </div>

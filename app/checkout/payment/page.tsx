@@ -242,7 +242,7 @@ function PaymentContent() {
         amount:      data.amount,
         currency:    data.currency,
         order_id:    data.orderId,
-        name:        'QuickTools.ai',
+        name:        'QuickTool',
         description: `${planName} Subscription`,
         prefill,
         theme: { color: '#6D5EF8' },

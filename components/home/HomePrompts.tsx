@@ -29,7 +29,7 @@ export default async function HomePrompts() {
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Latest AI Prompts on QuickTools',
+    name: 'Latest AI Prompts on QuickTool',
     url: 'https://quicktool.space/prompts',
     numberOfItems: prompts.length,
     itemListElement: prompts.map((prompt, index) => ({

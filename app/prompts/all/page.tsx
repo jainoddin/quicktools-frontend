@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = promptMetadata(
   'All AI Prompts for ChatGPT, Claude & Gemini',
-  'Browse the complete QuickTools library of practical prompts for writing, coding, marketing, design, business, and productivity.',
+  'Browse the complete QuickTool library of practical prompts for writing, coding, marketing, design, business, and productivity.',
   'https://quicktool.space/prompts/all',
 );
 
@@ -36,8 +36,8 @@ export default async function AllPromptsPage({ searchParams }: { searchParams: P
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'All QuickTools AI Prompts',
-    description: 'The complete QuickTools prompt library for ChatGPT, Claude, and Gemini.',
+    name: 'All QuickTool AI Prompts',
+    description: 'The complete QuickTool prompt library for ChatGPT, Claude, and Gemini.',
     url: 'https://quicktool.space/prompts/all',
     mainEntity: {
       '@type': 'ItemList',

@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI PR Media Pitch Generator",
   description: "Create a structured pr media pitch draft with AI PR Media Pitch Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Pr Pitch","Pr Pitch AI","Free AI Pr Pitch","Best AI Pr Pitch","Online Pr Pitch","AI Pr Pitch Tool","QuickTools AI"],
+    keywords: ["AI Pr Pitch","Pr Pitch AI","Free AI Pr Pitch","Best AI Pr Pitch","Online Pr Pitch","AI Pr Pitch Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-pr-pitch' },
     openGraph: {
             title: "AI PR Media Pitch Generator",
             description: "Create a structured pr media pitch draft with AI PR Media Pitch Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-pr-pitch',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI PR Media Pitch Generator")}&type=tool`, width: 1200, height: 630, alt: `AI PR Media Pitch Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI PR Media Pitch Generator")}&type=tool`, width: 1200, height: 630, alt: `AI PR Media Pitch Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

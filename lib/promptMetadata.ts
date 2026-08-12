@@ -10,7 +10,7 @@ export function promptMetadata(title: string, description: string, canonical: st
     : cleanTitle;
 
   const cleanDescription = description.replace(/\s+/g, ' ').trim();
-  const helpfulSuffix = ' Browse, copy, customize, and use ready-to-use prompts free on QuickTools.ai.';
+  const helpfulSuffix = ' Browse, copy, customize, and use ready-to-use prompts free on QuickTool.';
   const expandedDescription = cleanDescription.length < 110
     ? `${cleanDescription.replace(/[.!?]?$/, '.')}${helpfulSuffix}`
     : cleanDescription;
@@ -25,8 +25,8 @@ export function promptMetadata(title: string, description: string, canonical: st
     robots: { index: true, follow: true },
     openGraph: {
       type: 'website', url: canonical, title: metaTitle, description: metaDescription,
-      siteName: 'QuickTools.ai',
-      images: [{ url: PROMPT_OG_IMAGE, width: 1200, height: 630, alt: 'QuickTools.ai Prompt Hub' }],
+      siteName: 'QuickTool',
+      images: [{ url: PROMPT_OG_IMAGE, width: 1200, height: 630, alt: 'QuickTool Prompt Hub' }],
     },
     twitter: { card: 'summary_large_image', title: metaTitle, description: metaDescription, images: [PROMPT_OG_IMAGE] },
   };

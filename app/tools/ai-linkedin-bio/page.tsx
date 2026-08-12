@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI LinkedIn Bio Generator",
   description: "Create a professional, highly optimized LinkedIn summary and bio from the details you provide with our AI LinkedIn Bio Generator.",
-    keywords: ["AI Linkedin Bio","Linkedin Bio AI","Free AI Linkedin Bio","Best AI Linkedin Bio","Online Linkedin Bio","AI Linkedin Bio Tool","QuickTools AI"],
+    keywords: ["AI Linkedin Bio","Linkedin Bio AI","Free AI Linkedin Bio","Best AI Linkedin Bio","Online Linkedin Bio","AI Linkedin Bio Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-linkedin-bio' },
     openGraph: {
-            title: "Free AI LinkedIn Bio Generator | QuickTools",
+            title: "Free AI LinkedIn Bio Generator | QuickTool",
             description: "Create a professional, highly optimized LinkedIn summary and bio from the details you provide with our AI LinkedIn Bio Generator.",
             url: 'https://quicktool.space/tools/ai-linkedin-bio',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI LinkedIn Bio Generator")}&type=tool`, width: 1200, height: 630, alt: `AI LinkedIn Bio Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI LinkedIn Bio Generator")}&type=tool`, width: 1200, height: 630, alt: `AI LinkedIn Bio Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI LinkedIn Bio Generator | QuickTools",
+            title: "Free AI LinkedIn Bio Generator | QuickTool",
             description: "Create a professional, highly optimized LinkedIn summary and bio from the details you provide with our AI LinkedIn Bio Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI LinkedIn Bio Generator")}&type=tool`]
           }

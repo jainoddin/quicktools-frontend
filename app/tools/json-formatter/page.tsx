@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free JSON Formatter & Validator",
   description: "Format, validate, and beautify your JSON data using our online JSON Formatter tool.",
-    keywords: ["Json Formatter","AI Json Formatter","Json Formatter AI","Free Json Formatter","Best Json Formatter","Online Json Formatter","Json Formatter Tool","QuickTools AI"],
+    keywords: ["Json Formatter","AI Json Formatter","Json Formatter AI","Free Json Formatter","Best Json Formatter","Online Json Formatter","Json Formatter Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/json-formatter' },
     openGraph: {
-            title: "Free JSON Formatter & Validator | QuickTools",
+            title: "Free JSON Formatter & Validator | QuickTool",
             description: "Format, validate, and beautify your JSON data using our online JSON Formatter tool.",
             url: 'https://quicktool.space/tools/json-formatter',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("JSON Formatter & Validator")}&type=tool`, width: 1200, height: 630, alt: `JSON Formatter & Validator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("JSON Formatter & Validator")}&type=tool`, width: 1200, height: 630, alt: `JSON Formatter & Validator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free JSON Formatter & Validator | QuickTools",
+            title: "Free JSON Formatter & Validator | QuickTool",
             description: "Format, validate, and beautify your JSON data using our online JSON Formatter tool.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("JSON Formatter & Validator")}&type=tool`]
           }

@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Regex Generator",
   description: "Generate complex Regular Expressions easily from plain English descriptions using our AI Regex Generator.",
-    keywords: ["AI Regex Generator","Regex Generator AI","Free AI Regex Generator","Best AI Regex Generator","Online Regex Generator","AI Regex Generator Tool","Regex Creator","AI Regex Creator","QuickTools AI"],
+    keywords: ["AI Regex Generator","Regex Generator AI","Free AI Regex Generator","Best AI Regex Generator","Online Regex Generator","AI Regex Generator Tool","Regex Creator","AI Regex Creator","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-regex-generator' },
     openGraph: {
-            title: "Free AI Regex Generator | QuickTools",
+            title: "Free AI Regex Generator | QuickTool",
             description: "Generate complex Regular Expressions easily from plain English descriptions using our AI Regex Generator.",
             url: 'https://quicktool.space/tools/ai-regex-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("Regex Generator")}&type=tool`, width: 1200, height: 630, alt: `Regex Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("Regex Generator")}&type=tool`, width: 1200, height: 630, alt: `Regex Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Regex Generator | QuickTools",
+            title: "Free AI Regex Generator | QuickTool",
             description: "Generate complex Regular Expressions easily from plain English descriptions using our AI Regex Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("Regex Generator")}&type=tool`]
           }

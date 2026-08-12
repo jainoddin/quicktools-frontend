@@ -73,7 +73,7 @@ export default function FeedbackModal() {
               <h2 className="text-xl font-bold text-[#111827] mb-2 flex items-center gap-2">
                 <Heart className="w-5 h-5 text-[#8B5CF6] fill-[#8B5CF6]" /> Share Your Feedback
               </h2>
-              <p className="text-sm text-gray-500">We read every piece of feedback to improve QuickTools.ai.</p>
+              <p className="text-sm text-gray-500">We read every piece of feedback to improve QuickTool.</p>
             </div>
 
             {status === 'success' ? (

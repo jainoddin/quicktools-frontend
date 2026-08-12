@@ -18,7 +18,7 @@ const ICONS: any = {
   'Design': '🎨',
   'Productivity': '⚡', 
   'No Code': '🛠️',
-  'QuickTools Help': '🛠️'
+  'QuickTool Help': '🛠️'
 };
 
 export default function CommunitySidebarLeft({ user, activeTab, selectedCategory, onTabChange, onCategoryChange }: any) {

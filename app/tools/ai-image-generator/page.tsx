@@ -15,14 +15,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-image-generator'
   },
-    keywords: ["AI Image Generator","Image Generator AI","Free AI Image Generator","Best AI Image Generator","Online Image Generator","AI Image Generator Tool","Image Creator","AI Image Creator","QuickTools AI"],
+    keywords: ["AI Image Generator","Image Generator AI","Free AI Image Generator","Best AI Image Generator","Online Image Generator","AI Image Generator Tool","Image Creator","AI Image Creator","QuickTool AI"],
     openGraph: {
             title: "Powerful AI Image Generator - Create Stunning AI Art",
             description: "Create stunning, high-resolution images from text descriptions. Unleash your creativity with our powerful AI Image Generator and models.",
             url: 'https://quicktool.space/tools/ai-image-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Image Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Image Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Image Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Image Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
@@ -80,7 +80,7 @@ export default function AIImageGeneratorPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Image Generator?</h3>
-              <p className="text-slate-600 mt-2">The AI Image Generator is an AI-assisted tool by QuickTools designed to help you create stunning, high-resolution images from text descriptions. unleash your creativity with our powerful ai image generator and models.</p>
+              <p className="text-slate-600 mt-2">The AI Image Generator is an AI-assisted tool by QuickTool designed to help you create stunning, high-resolution images from text descriptions. unleash your creativity with our powerful ai image generator and models.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What image formats are supported by AI Image Generator?</h3>

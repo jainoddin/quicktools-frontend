@@ -10,14 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-translator'
   },
-    keywords: ["AI Translator","Translator AI","Free AI Translator","Best AI Translator","Online Translator","AI Translator Tool","QuickTools AI"],
+    keywords: ["AI Translator","Translator AI","Free AI Translator","Best AI Translator","Online Translator","AI Translator Tool","QuickTool AI"],
     openGraph: {
             title: "Free AI Language Translator - Translate 50+ Languages",
             description: "Translate text into 50+ languages with AI-assisted translation using our AI Translator.",
             url: 'https://quicktool.space/tools/ai-translator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Language Translator")}&type=tool`, width: 1200, height: 630, alt: `AI Language Translator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Language Translator")}&type=tool`, width: 1200, height: 630, alt: `AI Language Translator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
@@ -78,7 +78,7 @@ export default function AiTranslatorPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Language Translator?</h3>
-              <p className="text-slate-600 mt-2">The AI Language Translator is an AI-assisted tool by QuickTools designed to help you translate text into 50+ languages with AI-assisted translation using our ai translator.</p>
+              <p className="text-slate-600 mt-2">The AI Language Translator is an AI-assisted tool by QuickTool designed to help you translate text into 50+ languages with AI-assisted translation using our ai translator.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">How does the AI Language Translator work?</h3>

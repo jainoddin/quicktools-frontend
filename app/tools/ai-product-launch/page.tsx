@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Product Launch Strategy",
   description: "Create a structured product launch strategy draft with AI Product Launch Strategy. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Product Launch","Product Launch AI","Free AI Product Launch","Best AI Product Launch","Online Product Launch","AI Product Launch Tool","QuickTools AI"],
+    keywords: ["AI Product Launch","Product Launch AI","Free AI Product Launch","Best AI Product Launch","Online Product Launch","AI Product Launch Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-product-launch' },
     openGraph: {
             title: "AI Product Launch Strategy",
             description: "Create a structured product launch strategy draft with AI Product Launch Strategy. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-product-launch',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Product Launch Strategy")}&type=tool`, width: 1200, height: 630, alt: `AI Product Launch Strategy - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Product Launch Strategy")}&type=tool`, width: 1200, height: 630, alt: `AI Product Launch Strategy - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

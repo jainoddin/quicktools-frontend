@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Lead Magnet Idea Generator",
   description: "Create a structured lead magnet idea draft with AI Lead Magnet Idea Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Lead Magnet","Lead Magnet AI","Free AI Lead Magnet","Best AI Lead Magnet","Online Lead Magnet","AI Lead Magnet Tool","QuickTools AI"],
+    keywords: ["AI Lead Magnet","Lead Magnet AI","Free AI Lead Magnet","Best AI Lead Magnet","Online Lead Magnet","AI Lead Magnet Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-lead-magnet' },
     openGraph: {
             title: "AI Lead Magnet Idea Generator",
             description: "Create a structured lead magnet idea draft with AI Lead Magnet Idea Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-lead-magnet',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Lead Magnet Idea Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Lead Magnet Idea Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Lead Magnet Idea Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Lead Magnet Idea Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

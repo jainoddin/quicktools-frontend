@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Training Module Generator",
   description: "Create a structured training module draft with AI Training Module Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Training Module","Training Module AI","Free AI Training Module","Best AI Training Module","Online Training Module","AI Training Module Tool","QuickTools AI"],
+    keywords: ["AI Training Module","Training Module AI","Free AI Training Module","Best AI Training Module","Online Training Module","AI Training Module Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-training-module' },
     openGraph: {
             title: "AI Training Module Generator",
             description: "Create a structured training module draft with AI Training Module Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-training-module',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Training Module Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Training Module Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Training Module Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Training Module Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

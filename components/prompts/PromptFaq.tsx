@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     q: "Are these prompts free to use?",
-    a: "Yes! All prompts in the QuickTools Prompt Hub are completely free to view, copy, and use. You can also save them to your account for easy access later."
+    a: "Yes! All prompts in the QuickTool Prompt Hub are completely free to view, copy, and use. You can also save them to your account for easy access later."
   },
   {
     q: "How do I use these prompts?",
@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: "How can I save my favorite prompts?",
-    a: "Create a free QuickTools account, and click the 'Bookmark' icon on any prompt card. It will be saved to your personal library for quick access anytime."
+    a: "Create a free QuickTool account, and click the 'Bookmark' icon on any prompt card. It will be saved to your personal library for quick access anytime."
   }
 ];
 

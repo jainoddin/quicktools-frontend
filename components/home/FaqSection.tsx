@@ -6,19 +6,19 @@ import Link from 'next/link';
 
 const faqs = [
   {
-    q: 'What is QuickTools.ai?',
-    a: 'QuickTools.ai is an all-in-one platform providing access to powerful AI models for generating images, writing content, analyzing code, and creating videos.'
+    q: 'What is QuickTool?',
+    a: 'QuickTool is an all-in-one platform providing access to powerful AI models for generating images, writing content, analyzing code, and creating videos.'
   },
   {
     q: 'Are the tools really free to use?',
-    a: 'QuickTools.ai includes a free starter experience for eligible tools. Paid plans add more credits, premium tools, and faster processing.'
+    a: 'QuickTool includes a free starter experience for eligible tools. Paid plans add more credits, premium tools, and faster processing.'
   },
   {
     q: 'Do I need a credit card to start?',
     a: 'No, you do not need a credit card to sign up and start using the free tools. A credit card is only required when upgrading to a premium subscription.'
   },
   {
-    q: 'Is my data safe with QuickTools.ai?',
+    q: 'Is my data safe with QuickTool?',
     a: 'We use secure account sessions and do not display your private generation history to other users. Avoid entering passwords or highly sensitive personal information into any AI prompt.'
   }
 ];

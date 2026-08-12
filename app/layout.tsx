@@ -28,40 +28,40 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://quicktool.space'),
   title: {
-    default: "QuickTools.ai | 100+ Affordable AI Tools for Work and Creativity",
-    template: "%s | QuickTools.ai"
+    default: "QuickTool | 100+ Affordable AI Tools for Work and Creativity",
+    template: "%s | QuickTool"
   },
   description: "Write content, generate images, plan a business, understand code, and finish everyday work with 100+ affordable AI and utility tools.",
   authors: [{ name: "Shaik Jainoddin", url: "https://quicktool.space/author/quicktools-ai-team" }],
-  creator: "QuickTools.ai",
-  publisher: "QuickTools.ai",
+  creator: "QuickTool",
+  publisher: "QuickTool",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  applicationName: "QuickTools.ai",
+  applicationName: "QuickTool",
   generator: "Next.js",
   category: "technology",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://quicktool.space",
-    title: "QuickTools.ai | 100+ Affordable AI Tools for Work and Creativity",
+    title: "QuickTool | 100+ Affordable AI Tools for Work and Creativity",
     description: "Write content, generate images, plan a business, understand code, and finish everyday work with 100+ affordable AI and utility tools.",
-    siteName: "QuickTools.ai",
+    siteName: "QuickTool",
     images: [
       {
         url: "https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png",
         width: 1200,
         height: 630,
-        alt: "QuickTools.ai - The Ultimate AI Toolkit",
+        alt: "QuickTool - The Ultimate AI Toolkit",
       }
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "QuickTools.ai | 100+ Affordable AI Tools for Work and Creativity",
+    title: "QuickTool | 100+ Affordable AI Tools for Work and Creativity",
     description: "Write content, generate images, plan a business, understand code, and finish everyday work with 100+ affordable AI and utility tools.",
     creator: "@quicktool_ai",
     images: ["https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png"],
@@ -83,9 +83,9 @@ export const metadata: Metadata = {
   alternates: {
     types: {
       'application/rss+xml': [
-        { url: '/feed/news', title: 'QuickTools.ai News RSS Feed' },
-        { url: '/feed/articles', title: 'QuickTools.ai Articles RSS Feed' },
-        { url: '/feed/blogs', title: 'QuickTools.ai Blog RSS Feed' }
+        { url: '/feed/news', title: 'QuickTool News RSS Feed' },
+        { url: '/feed/articles', title: 'QuickTool Articles RSS Feed' },
+        { url: '/feed/blogs', title: 'QuickTool Blog RSS Feed' }
       ]
     }
   },
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    title: "QuickTools.ai",
+    title: "QuickTool",
     statusBarStyle: "black-translucent",
   },
 };
@@ -124,7 +124,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "QuickTools.ai",
+              "name": "QuickTool",
               "url": "https://quicktool.space",
               "logo": "https://quicktool.space/icon.svg",
               "sameAs": [
@@ -143,7 +143,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "QuickTools.ai",
+              "name": "QuickTool",
               "url": "https://quicktool.space",
               "potentialAction": {
                 "@type": "SearchAction",
@@ -164,7 +164,7 @@ export default function RootLayout({
                   "@type": "WebPage",
                   "@id": "https://quicktool.space/#webpage",
                   "url": "https://quicktool.space/",
-                  "name": "QuickTools.ai - The Ultimate AI Toolkit for Creators",
+                  "name": "QuickTool - The Ultimate AI Toolkit for Creators",
                   "isPartOf": { "@id": "https://quicktool.space/#website" }
                 },
                 {

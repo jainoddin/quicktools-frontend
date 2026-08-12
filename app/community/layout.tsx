@@ -4,16 +4,16 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   metadataBase: new URL('https://quicktool.space'),
   title: {
-    absolute: "AI Community - Ask Questions & Share Knowledge | QuickTools",
+    absolute: "AI Community - Ask Questions & Share Knowledge | QuickTool",
   },
-  description: "Join the QuickTools AI Community to ask questions, share knowledge, discuss ChatGPT, Claude, Gemini, coding, prompting, and AI tools.",
-  keywords: ["AI community", "AI forum", "AI questions", "AI answers", "AI discussions", "Ask AI questions", "AI tools community", "ChatGPT community", "Claude community", "Gemini community", "Prompt engineering", "AI help", "Developer community", "QuickTools Community", "AI knowledge sharing", "AI support forum", "AI learning community"],
+  description: "Join the QuickTool AI Community to ask questions, share knowledge, discuss ChatGPT, Claude, Gemini, coding, prompting, and AI tools.",
+  keywords: ["AI community", "AI forum", "AI questions", "AI answers", "AI discussions", "Ask AI questions", "AI tools community", "ChatGPT community", "Claude community", "Gemini community", "Prompt engineering", "AI help", "Developer community", "QuickTool Community", "AI knowledge sharing", "AI support forum", "AI learning community"],
   alternates: {
     canonical: 'https://quicktool.space/community',
   },
   openGraph: {
-    title: "AI Community - Ask Questions & Share Knowledge | QuickTools",
-    description: "Join the QuickTools AI Community to ask questions, share knowledge, discuss ChatGPT, Claude, Gemini, coding, prompting, and AI tools.",
+    title: "AI Community - Ask Questions & Share Knowledge | QuickTool",
+    description: "Join the QuickTool AI Community to ask questions, share knowledge, discuss ChatGPT, Claude, Gemini, coding, prompting, and AI tools.",
     url: "https://quicktool.space/community",
     type: "website",
   }

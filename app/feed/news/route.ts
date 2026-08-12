@@ -17,9 +17,9 @@ export async function GET() {
     const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>QuickTools.ai News</title>
+    <title>QuickTool News</title>
     <link>${siteUrl}/news</link>
-    <description>Latest breaking AI news and industry updates from QuickTools.ai</description>
+    <description>Latest breaking AI news and industry updates from QuickTool</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${siteUrl}/feed/news" rel="self" type="application/rss+xml" />

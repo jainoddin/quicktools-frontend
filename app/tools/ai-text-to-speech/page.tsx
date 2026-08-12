@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "AI Text to Speech Generator",
   description: "Convert any text into natural-sounding speech with AI assistance using advanced browser AI. Free online text to speech generator with multiple voices and languages.",
-  keywords: ["AI Text To Speech","Text To Speech AI","Free AI Text To Speech","Best AI Text To Speech","Online Text To Speech","AI Text To Speech Tool","QuickTools AI"],
+  keywords: ["AI Text To Speech","Text To Speech AI","Free AI Text To Speech","Best AI Text To Speech","Online Text To Speech","AI Text To Speech Tool","QuickTool AI"],
   alternates: { canonical: 'https://quicktool.space/tools/ai-text-to-speech' },
   openGraph: {
-    title: 'AI Text to Speech Generator | QuickTools',
+    title: 'AI Text to Speech Generator | QuickTool',
     description: 'Convert any text into natural-sounding speech with AI assistance using advanced browser AI.',
     url: 'https://quicktool.space/tools/ai-text-to-speech',
-    siteName: 'QuickTools.ai',
+    siteName: 'QuickTool',
     type: 'website',
-    images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Text to Speech")}&type=tool`, width: 1200, height: 630, alt: `AI Text to Speech - QuickTools.ai` }]
+    images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Text to Speech")}&type=tool`, width: 1200, height: 630, alt: `AI Text to Speech - QuickTool` }]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Text to Speech Generator | QuickTools',
+    title: 'AI Text to Speech Generator | QuickTool',
     description: 'Convert any text into natural-sounding speech with AI assistance using advanced browser AI.',
     images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Text to Speech")}&type=tool`]
   }

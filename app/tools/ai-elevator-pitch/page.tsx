@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Elevator Pitch Generator",
   description: "Craft a compelling and persuasive 30-second elevator pitch for yourself or your business with AI assistance.",
-    keywords: ["AI Elevator Pitch","Elevator Pitch AI","Free AI Elevator Pitch","Best AI Elevator Pitch","Online Elevator Pitch","AI Elevator Pitch Tool","QuickTools AI"],
+    keywords: ["AI Elevator Pitch","Elevator Pitch AI","Free AI Elevator Pitch","Best AI Elevator Pitch","Online Elevator Pitch","AI Elevator Pitch Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-elevator-pitch' },
     openGraph: {
-            title: "Free AI Elevator Pitch Generator | QuickTools",
+            title: "Free AI Elevator Pitch Generator | QuickTool",
             description: "Craft a compelling and persuasive 30-second elevator pitch for yourself or your business with AI assistance.",
             url: 'https://quicktool.space/tools/ai-elevator-pitch',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Elevator Pitch Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Elevator Pitch Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Elevator Pitch Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Elevator Pitch Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Elevator Pitch Generator | QuickTools",
+            title: "Free AI Elevator Pitch Generator | QuickTool",
             description: "Craft a compelling and persuasive 30-second elevator pitch for yourself or your business with AI assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Elevator Pitch Generator")}&type=tool`]
           }

@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Poem Generator",
   description: "Compose beautiful, rhyming, or free-verse poetry with AI assistance based on your chosen topic and emotion.",
-    keywords: ["AI Poem Generator","Poem Generator AI","Free AI Poem Generator","Best AI Poem Generator","Online Poem Generator","AI Poem Generator Tool","Poem Creator","AI Poem Creator","QuickTools AI"],
+    keywords: ["AI Poem Generator","Poem Generator AI","Free AI Poem Generator","Best AI Poem Generator","Online Poem Generator","AI Poem Generator Tool","Poem Creator","AI Poem Creator","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-poem-generator' },
     openGraph: {
-            title: "Free AI Poem Generator | QuickTools",
+            title: "Free AI Poem Generator | QuickTool",
             description: "Compose beautiful, rhyming, or free-verse poetry with AI assistance based on your chosen topic and emotion.",
             url: 'https://quicktool.space/tools/ai-poem-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Poem Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Poem Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Poem Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Poem Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Poem Generator | QuickTools",
+            title: "Free AI Poem Generator | QuickTool",
             description: "Compose beautiful, rhyming, or free-verse poetry with AI assistance based on your chosen topic and emotion.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Poem Generator")}&type=tool`]
           }

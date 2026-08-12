@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Motivational Quote Generator",
   description: "Generate highly inspiring, original-style motivational quotes on any topic using our AI Motivational Quote Generator.",
-    keywords: ["AI Quote Generator","Quote Generator AI","Free AI Quote Generator","Best AI Quote Generator","Online Quote Generator","AI Quote Generator Tool","Quote Creator","AI Quote Creator","QuickTools AI"],
+    keywords: ["AI Quote Generator","Quote Generator AI","Free AI Quote Generator","Best AI Quote Generator","Online Quote Generator","AI Quote Generator Tool","Quote Creator","AI Quote Creator","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-quote-generator' },
     openGraph: {
-            title: "Free AI Motivational Quote Generator | QuickTools",
+            title: "Free AI Motivational Quote Generator | QuickTool",
             description: "Generate highly inspiring, original-style motivational quotes on any topic using our AI Motivational Quote Generator.",
             url: 'https://quicktool.space/tools/ai-quote-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Motivational Quote Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Motivational Quote Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Motivational Quote Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Motivational Quote Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Motivational Quote Generator | QuickTools",
+            title: "Free AI Motivational Quote Generator | QuickTool",
             description: "Generate highly inspiring, original-style motivational quotes on any topic using our AI Motivational Quote Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Motivational Quote Generator")}&type=tool`]
           }

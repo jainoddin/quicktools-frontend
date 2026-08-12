@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { Cookie, Settings, EyeOff, ShieldCheck, CheckCircle2, Home, ChevronRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Cookies Policy | QuickTools.ai',
-  description: 'Learn how QuickTools.ai uses cookies and tracking technologies.',
+  title: 'Cookies Policy | QuickTool',
+  description: 'Learn how QuickTool uses cookies and tracking technologies.',
   alternates: { canonical: '/cookies' },
 };
 
@@ -13,19 +13,19 @@ export default function CookiesPolicyPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Cookies Policy | QuickTools.ai",
-    "description": "Learn how QuickTools.ai uses cookies and tracking technologies.",
+    "name": "Cookies Policy | QuickTool",
+    "description": "Learn how QuickTool uses cookies and tracking technologies.",
     "url": "https://quicktool.space/cookies",
     "mainEntity": {
       "@type": "Article",
       "headline": "Cookies Policy",
       "author": {
         "@type": "Organization",
-        "name": "QuickTools.ai"
+        "name": "QuickTool"
       },
       "publisher": {
         "@type": "Organization",
-        "name": "QuickTools.ai",
+        "name": "QuickTool",
         "logo": {
           "@type": "ImageObject",
           "url": "https://quicktool.space/icon.svg"

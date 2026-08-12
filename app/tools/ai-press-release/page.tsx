@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Press Release Writer",
   description: "Use AI Press Release Writer to create a structured press release draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
-    keywords: ["AI Press Release","Press Release AI","Free AI Press Release","Best AI Press Release","Online Press Release","AI Press Release Tool","QuickTools AI"],
+    keywords: ["AI Press Release","Press Release AI","Free AI Press Release","Best AI Press Release","Online Press Release","AI Press Release Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-press-release' },
     openGraph: {
             title: "AI Press Release Writer",
             description: "Use AI Press Release Writer to create a structured press release draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
             url: 'https://quicktool.space/tools/ai-press-release',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Press Release Writer")}&type=tool`, width: 1200, height: 630, alt: `AI Press Release Writer - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Press Release Writer")}&type=tool`, width: 1200, height: 630, alt: `AI Press Release Writer - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Real Estate Listing Generator",
   description: "Write captivating, conversion-optimized property descriptions that sell homes faster.",
-    keywords: ["AI Real Estate Listing","Real Estate Listing AI","Free AI Real Estate Listing","Best AI Real Estate Listing","Online Real Estate Listing","AI Real Estate Listing Tool","QuickTools AI"],
+    keywords: ["AI Real Estate Listing","Real Estate Listing AI","Free AI Real Estate Listing","Best AI Real Estate Listing","Online Real Estate Listing","AI Real Estate Listing Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-real-estate-listing' },
     openGraph: {
-            title: "Free AI Real Estate Listing Generator | QuickTools",
+            title: "Free AI Real Estate Listing Generator | QuickTool",
             description: "Write captivating, conversion-optimized property descriptions that sell homes faster.",
             url: 'https://quicktool.space/tools/ai-real-estate-listing',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Real Estate Listing Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Real Estate Listing Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Real Estate Listing Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Real Estate Listing Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Real Estate Listing Generator | QuickTools",
+            title: "Free AI Real Estate Listing Generator | QuickTool",
             description: "Write captivating, conversion-optimized property descriptions that sell homes faster.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Real Estate Listing Generator")}&type=tool`]
           }

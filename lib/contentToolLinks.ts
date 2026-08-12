@@ -1,6 +1,6 @@
 import { allTools, type ToolRegistryItem } from './toolsRegistry';
 
-const STOP = new Set(['with', 'from', 'that', 'this', 'your', 'tool', 'tools', 'using', 'into', 'about', 'quicktools', 'guide', 'best']);
+const STOP = new Set(['with', 'from', 'that', 'this', 'your', 'tool', 'tools', 'using', 'into', 'about', 'QuickTool', 'guide', 'best']);
 const words = (value: string) => new Set(value.toLowerCase().match(/[a-z0-9]+/g)?.filter(word => word.length > 2 && !STOP.has(word)) || []);
 
 export function getRelevantToolsForContent(content: string, limit = 4): ToolRegistryItem[] {

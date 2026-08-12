@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Workout Plan Generator",
   description: "Generate custom, highly effective workout plans with AI assistance based on your fitness goals and available time with our AI Workout Plan Generator.",
-    keywords: ["AI Workout Plan","Workout Plan AI","Free AI Workout Plan","Best AI Workout Plan","Online Workout Plan","AI Workout Plan Tool","QuickTools AI"],
+    keywords: ["AI Workout Plan","Workout Plan AI","Free AI Workout Plan","Best AI Workout Plan","Online Workout Plan","AI Workout Plan Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-workout-plan' },
     openGraph: {
-            title: "Free AI Workout Plan Generator | QuickTools",
+            title: "Free AI Workout Plan Generator | QuickTool",
             description: "Generate custom, highly effective workout plans with AI assistance based on your fitness goals and available time with our AI Workout Plan Generator.",
             url: 'https://quicktool.space/tools/ai-workout-plan',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Workout Plan Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Workout Plan Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Workout Plan Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Workout Plan Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Workout Plan Generator | QuickTools",
+            title: "Free AI Workout Plan Generator | QuickTool",
             description: "Generate custom, highly effective workout plans with AI assistance based on your fitness goals and available time with our AI Workout Plan Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Workout Plan Generator")}&type=tool`]
           }

@@ -10,14 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-color-palette'
   },
-    keywords: ["AI Color Palette","Color Palette AI","Free AI Color Palette","Best AI Color Palette","Online Color Palette","AI Color Palette Tool","QuickTools AI"],
+    keywords: ["AI Color Palette","Color Palette AI","Free AI Color Palette","Best AI Color Palette","Online Color Palette","AI Color Palette Tool","QuickTool AI"],
     openGraph: {
             title: "Free AI Color Palette Generator",
             description: "Generate beautiful color palettes from a brand name or mood description with our AI Color Palette Generator.",
             url: 'https://quicktool.space/tools/ai-color-palette',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Color Palette")}&type=tool`, width: 1200, height: 630, alt: `AI Color Palette - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Color Palette")}&type=tool`, width: 1200, height: 630, alt: `AI Color Palette - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
@@ -78,7 +78,7 @@ export default function AiColorPalettePage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Color Palette?</h3>
-              <p className="text-slate-600 mt-2">The AI Color Palette is an AI-assisted tool by QuickTools designed to help you generate beautiful color palettes from a brand name or mood description with our ai color palette generator.</p>
+              <p className="text-slate-600 mt-2">The AI Color Palette is an AI-assisted tool by QuickTool designed to help you generate beautiful color palettes from a brand name or mood description with our ai color palette generator.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What image formats are supported by AI Color Palette?</h3>

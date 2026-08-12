@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Product Description Generator",
   description: "Write compelling, conversion-focused product descriptions for your e-commerce store with AI assistance.",
-    keywords: ["AI Product Description","Product Description AI","Free AI Product Description","Best AI Product Description","Online Product Description","AI Product Description Tool","QuickTools AI"],
+    keywords: ["AI Product Description","Product Description AI","Free AI Product Description","Best AI Product Description","Online Product Description","AI Product Description Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-product-description' },
     openGraph: {
-            title: "Free AI Product Description Generator | QuickTools",
+            title: "Free AI Product Description Generator | QuickTool",
             description: "Write compelling, conversion-focused product descriptions for your e-commerce store with AI assistance.",
             url: 'https://quicktool.space/tools/ai-product-description',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Product Description Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Product Description Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Product Description Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Product Description Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Product Description Generator | QuickTools",
+            title: "Free AI Product Description Generator | QuickTool",
             description: "Write compelling, conversion-focused product descriptions for your e-commerce store with AI assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Product Description Generator")}&type=tool`]
           }

@@ -1,7 +1,7 @@
 type PromptAction = 'view' | 'copy' | 'use';
 
 const storageKey = (promptId: string, action: PromptAction) =>
-  `quicktools:prompt-action:${action}:${promptId}`;
+  `QuickTool:prompt-action:${action}:${promptId}`;
 
 export async function trackPromptAction(promptId: string, action: PromptAction, options: { oncePerBrowser?: boolean } = {}) {
   const key = storageKey(promptId, action);

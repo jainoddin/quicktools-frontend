@@ -99,7 +99,7 @@ export default async function LatestBlogs() {
                 />
               </div>
               <div>
-                <div className="text-sm font-bold">{featuredBlog.author?.name || 'QuickTools Team'}</div>
+                <div className="text-sm font-bold">{featuredBlog.author?.name || 'QuickTool Team'}</div>
                 <div className="text-xs text-gray-400">{featuredBlog.readTime || '5 min read'}</div>
               </div>
             </div>

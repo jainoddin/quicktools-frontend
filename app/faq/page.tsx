@@ -6,7 +6,7 @@ import FaqClient from '../../components/faq/FaqClient';
 
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions & Support FAQs',
-  description: 'Find quick answers to the most common questions about QuickTools.ai, including billing, accounts, tool features, and API usage. Explore our FAQs.',
+  description: 'Find quick answers to the most common questions about QuickTool, including billing, accounts, tool features, and API usage. Explore our FAQs.',
   alternates: { canonical: '/faq' },
 };
 
@@ -18,10 +18,10 @@ export default function FaqPage() {
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'What is QuickTools.ai?',
+        name: 'What is QuickTool?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'QuickTools.ai is an all-in-one platform providing access to the most powerful AI tools for image generation, content writing, video creation, coding assistance, and SEO optimization. It is designed to save you time and help you work smarter.',
+          text: 'QuickTool is an all-in-one platform providing access to the most powerful AI tools for image generation, content writing, video creation, coding assistance, and SEO optimization. It is designed to save you time and help you work smarter.',
         },
       },
       {
@@ -29,7 +29,7 @@ export default function FaqPage() {
         name: 'How do credits work?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Credits are used by eligible QuickTools.ai features. The Free Starter plan currently includes up to 3 eligible generations per day, while paid plans include the credit allowance shown on the pricing page.',
+          text: 'Credits are used by eligible QuickTool features. The Free Starter plan currently includes up to 3 eligible generations per day, while paid plans include the credit allowance shown on the pricing page.',
         },
       },
       {

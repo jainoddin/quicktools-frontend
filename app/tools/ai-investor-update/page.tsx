@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Investor Update Generator",
   description: "Create a structured investor update draft with AI Investor Update Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Investor Update","Investor Update AI","Free AI Investor Update","Best AI Investor Update","Online Investor Update","AI Investor Update Tool","QuickTools AI"],
+    keywords: ["AI Investor Update","Investor Update AI","Free AI Investor Update","Best AI Investor Update","Online Investor Update","AI Investor Update Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-investor-update' },
     openGraph: {
             title: "AI Investor Update Generator",
             description: "Create a structured investor update draft with AI Investor Update Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-investor-update',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Investor Update Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Investor Update Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Investor Update Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Investor Update Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

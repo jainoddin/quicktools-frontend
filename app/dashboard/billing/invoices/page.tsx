@@ -79,7 +79,7 @@ export default function InvoicesPage() {
   <div class="header">
     <div class="brand">
       <div class="brand-icon">⚡</div>
-      <span class="brand-name">QuickTools.ai</span>
+      <span class="brand-name">QuickTool</span>
     </div>
     <span class="invoice-badge">INVOICE</span>
   </div>
@@ -90,7 +90,7 @@ export default function InvoicesPage() {
   <div class="row"><span>Plan</span><span>${plan} Plan</span></div>
   <div class="row"><span>Status</span><span class="status-paid">PAID</span></div>
   <div class="row"><span class="total">Total Amount</span><span class="total">${amount}</span></div>
-  <div class="footer">QuickTools.ai &bull; AI-Powered Productivity Tools &bull; support@quicktools.ai</div>
+  <div class="footer">QuickTool &bull; AI-Powered Productivity Tools &bull; support@QuickTool</div>
 </body>
 </html>`;
 

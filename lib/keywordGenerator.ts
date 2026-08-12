@@ -64,7 +64,7 @@ export function generateToolKeywords(slug: string, category?: string): string[] 
     keywords.add('Social Media Calendar AI');
   }
 
-  keywords.add('QuickTools AI');
+  keywords.add('QuickTool AI');
 
   // Clean up and format
   return Array.from(keywords)

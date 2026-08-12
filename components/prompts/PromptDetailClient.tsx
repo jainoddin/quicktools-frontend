@@ -179,7 +179,7 @@ export default function PromptDetailClient({ prompt, selectedModel }: { prompt: 
          </div>
          <div>
            <span className="block text-gray-400 text-xs uppercase tracking-wider font-bold mb-1">Created By</span>
-           <span>QuickTools AI</span>
+           <span>QuickTool AI</span>
          </div>
          <div><span className="flex items-center gap-1.5 text-gray-400 text-xs uppercase tracking-wider font-bold mb-1"><Eye className="w-4 h-4" /> Views</span><span className="text-[#111827] font-bold">{counts.views}</span></div>
          <div><span className="flex items-center gap-1.5 text-gray-400 text-xs uppercase tracking-wider font-bold mb-1"><Copy className="w-4 h-4" /> Copies</span><span className="text-[#111827] font-bold">{counts.copies}</span></div>

@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Abandoned Cart Email Series",
   description: "AI Abandoned Cart Email Series creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
-    keywords: ["AI Abandoned Cart","Abandoned Cart AI","Free AI Abandoned Cart","Best AI Abandoned Cart","Online Abandoned Cart","AI Abandoned Cart Tool","QuickTools AI"],
+    keywords: ["AI Abandoned Cart","Abandoned Cart AI","Free AI Abandoned Cart","Best AI Abandoned Cart","Online Abandoned Cart","AI Abandoned Cart Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-abandoned-cart' },
     openGraph: {
             title: "AI Abandoned Cart Email Series",
             description: "AI Abandoned Cart Email Series creates a structured draft from guided inputs. Review key details, refine the output, and adapt it to your needs before use.",
             url: 'https://quicktool.space/tools/ai-abandoned-cart',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Abandoned Cart Email Series")}&type=tool`, width: 1200, height: 630, alt: `AI Abandoned Cart Email Series - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Abandoned Cart Email Series")}&type=tool`, width: 1200, height: 630, alt: `AI Abandoned Cart Email Series - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

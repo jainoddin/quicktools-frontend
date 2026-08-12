@@ -10,14 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/url-shortener'
   },
-    keywords: ["Url Shortener","AI Url Shortener","Url Shortener AI","Free Url Shortener","Best Url Shortener","Online Url Shortener","Url Shortener Tool","QuickTools AI"],
+    keywords: ["Url Shortener","AI Url Shortener","Url Shortener AI","Free Url Shortener","Best Url Shortener","Online Url Shortener","Url Shortener Tool","QuickTool AI"],
     openGraph: {
             title: "Free URL Shortener - Create Short Links",
             description: "Shorten any long URL into a clean, shareable link in one click with our free URL Shortener.",
             url: 'https://quicktool.space/tools/url-shortener',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("URL Shortener")}&type=tool`, width: 1200, height: 630, alt: `URL Shortener - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("URL Shortener")}&type=tool`, width: 1200, height: 630, alt: `URL Shortener - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
@@ -78,7 +78,7 @@ export default function UrlShortenerPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is URL Shortener?</h3>
-              <p className="text-slate-600 mt-2">The URL Shortener is an AI-assisted tool by QuickTools designed to help you shorten any long url into a clean, shareable link in one click with our free url shortener.</p>
+              <p className="text-slate-600 mt-2">The URL Shortener is an AI-assisted tool by QuickTool designed to help you shorten any long url into a clean, shareable link in one click with our free url shortener.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">How does the URL Shortener work?</h3>

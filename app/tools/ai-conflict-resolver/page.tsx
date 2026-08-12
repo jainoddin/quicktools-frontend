@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-conflict-resolver'
   },
-  openGraph: { title: 'AI Conflict Resolver - QuickTools.ai', description: 'Prepare calm, constructive conflict-resolution messages.', url: 'https://quicktool.space/tools/ai-conflict-resolver', type: 'website', images: [{ url: 'https://quicktool.space/api/og?title=AI%20Conflict%20Resolver&type=tool', width: 1200, height: 630, alt: 'AI Conflict Resolver' }] },
-  twitter: { card: 'summary_large_image', title: 'AI Conflict Resolver - QuickTools.ai', description: 'Prepare calm, constructive conflict-resolution messages.', images: ['https://quicktool.space/api/og?title=AI%20Conflict%20Resolver&type=tool'] }
+  openGraph: { title: 'AI Conflict Resolver - QuickTool', description: 'Prepare calm, constructive conflict-resolution messages.', url: 'https://quicktool.space/tools/ai-conflict-resolver', type: 'website', images: [{ url: 'https://quicktool.space/api/og?title=AI%20Conflict%20Resolver&type=tool', width: 1200, height: 630, alt: 'AI Conflict Resolver' }] },
+  twitter: { card: 'summary_large_image', title: 'AI Conflict Resolver - QuickTool', description: 'Prepare calm, constructive conflict-resolution messages.', images: ['https://quicktool.space/api/og?title=AI%20Conflict%20Resolver&type=tool'] }
 };
 
 export default function Page() {
@@ -61,7 +61,7 @@ export default function Page() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Conflict Resolver?</h3>
-              <p className="text-slate-600 mt-2">The AI Conflict Resolver is an AI-assisted tool by QuickTools designed to help you craft calm, mature, and de-escalating text messages to resolve conflicts with partners or bosses.</p>
+              <p className="text-slate-600 mt-2">The AI Conflict Resolver is an AI-assisted tool by QuickTool designed to help you craft calm, mature, and de-escalating text messages to resolve conflicts with partners or bosses.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">How does the AI Conflict Resolver work?</h3>
@@ -81,7 +81,7 @@ export default function Page() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the AI Conflict Resolver free to use?</h3>
-              <p className="text-slate-600 mt-2">QuickTools offers limited free access and paid plans. Current limits are shown on the pricing page.</p>
+              <p className="text-slate-600 mt-2">QuickTool offers limited free access and paid plans. Current limits are shown on the pricing page.</p>
             </div>
           </div>
         </div>

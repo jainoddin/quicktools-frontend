@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI User Persona Creator",
   description: "Create a structured user persona draft with AI User Persona Creator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI User Persona","User Persona AI","Free AI User Persona","Best AI User Persona","Online User Persona","AI User Persona Tool","QuickTools AI"],
+    keywords: ["AI User Persona","User Persona AI","Free AI User Persona","Best AI User Persona","Online User Persona","AI User Persona Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-user-persona' },
     openGraph: {
             title: "AI User Persona Creator",
             description: "Create a structured user persona draft with AI User Persona Creator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-user-persona',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI User Persona Creator")}&type=tool`, width: 1200, height: 630, alt: `AI User Persona Creator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI User Persona Creator")}&type=tool`, width: 1200, height: 630, alt: `AI User Persona Creator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

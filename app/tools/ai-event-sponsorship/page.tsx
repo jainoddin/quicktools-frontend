@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Event Sponsorship Deck",
   description: "Create a structured event sponsorship deck draft with AI Event Sponsorship Deck. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Event Sponsorship","Event Sponsorship AI","Free AI Event Sponsorship","Best AI Event Sponsorship","Online Event Sponsorship","AI Event Sponsorship Tool","QuickTools AI"],
+    keywords: ["AI Event Sponsorship","Event Sponsorship AI","Free AI Event Sponsorship","Best AI Event Sponsorship","Online Event Sponsorship","AI Event Sponsorship Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-event-sponsorship' },
     openGraph: {
             title: "AI Event Sponsorship Deck",
             description: "Create a structured event sponsorship deck draft with AI Event Sponsorship Deck. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-event-sponsorship',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Event Sponsorship Deck")}&type=tool`, width: 1200, height: 630, alt: `AI Event Sponsorship Deck - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Event Sponsorship Deck")}&type=tool`, width: 1200, height: 630, alt: `AI Event Sponsorship Deck - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

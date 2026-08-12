@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Gift Idea Generator",
   description: "Find the perfect, thoughtful gift for anyone with AI assistance based on their age, interests, and your budget with our AI Gift Idea Generator.",
-    keywords: ["AI Gift Idea","Gift Idea AI","Free AI Gift Idea","Best AI Gift Idea","Online Gift Idea","AI Gift Idea Tool","QuickTools AI"],
+    keywords: ["AI Gift Idea","Gift Idea AI","Free AI Gift Idea","Best AI Gift Idea","Online Gift Idea","AI Gift Idea Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-gift-idea' },
     openGraph: {
-            title: "Free AI Gift Idea Generator | QuickTools",
+            title: "Free AI Gift Idea Generator | QuickTool",
             description: "Find the perfect, thoughtful gift for anyone with AI assistance based on their age, interests, and your budget with our AI Gift Idea Generator.",
             url: 'https://quicktool.space/tools/ai-gift-idea',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Gift Idea Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Gift Idea Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Gift Idea Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Gift Idea Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Gift Idea Generator | QuickTools",
+            title: "Free AI Gift Idea Generator | QuickTool",
             description: "Find the perfect, thoughtful gift for anyone with AI assistance based on their age, interests, and your budget with our AI Gift Idea Generator.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Gift Idea Generator")}&type=tool`]
           }

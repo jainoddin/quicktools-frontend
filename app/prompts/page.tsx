@@ -75,7 +75,7 @@ export default async function PromptsLandingPage({ searchParams }: { searchParam
 
   return (
     <div className="flex-grow overflow-x-clip bg-[#F8FAFC] text-[#111827] font-sans selection:bg-[#4F46E5] selection:text-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'QuickTools AI Prompt Hub', description: 'A library of 300+ practical prompts for ChatGPT, Claude, and Gemini.', url: 'https://quicktool.space/prompts', isPartOf: { '@type': 'WebSite', name: 'QuickTools.ai', url: 'https://quicktool.space' } }).replace(/</g, '\\u003c') }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'QuickTool AI Prompt Hub', description: 'A library of 300+ practical prompts for ChatGPT, Claude, and Gemini.', url: 'https://quicktool.space/prompts', isPartOf: { '@type': 'WebSite', name: 'QuickTool', url: 'https://quicktool.space' } }).replace(/</g, '\\u003c') }} />
       
       {/* 1. Hero */}
       <PromptHero stats={stats || undefined} featuredPrompt={featured} />

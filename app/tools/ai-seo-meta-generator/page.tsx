@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI SEO Title & Meta Generator",
   description: "Generate search-focused, SEO-optimized Page Titles and Meta Descriptions with AI assistance.",
-    keywords: ["AI Seo Meta Generator","Seo Meta Generator AI","Free AI Seo Meta Generator","Best AI Seo Meta Generator","Online Seo Meta Generator","AI Seo Meta Generator Tool","Seo Meta Creator","AI Seo Meta Creator","QuickTools AI"],
+    keywords: ["AI Seo Meta Generator","Seo Meta Generator AI","Free AI Seo Meta Generator","Best AI Seo Meta Generator","Online Seo Meta Generator","AI Seo Meta Generator Tool","Seo Meta Creator","AI Seo Meta Creator","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-seo-meta-generator' },
     openGraph: {
-            title: "Free AI SEO Title & Meta Generator | QuickTools",
+            title: "Free AI SEO Title & Meta Generator | QuickTool",
             description: "Generate search-focused, SEO-optimized Page Titles and Meta Descriptions with AI assistance.",
             url: 'https://quicktool.space/tools/ai-seo-meta-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI SEO Title & Meta Generator")}&type=tool`, width: 1200, height: 630, alt: `AI SEO Title & Meta Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI SEO Title & Meta Generator")}&type=tool`, width: 1200, height: 630, alt: `AI SEO Title & Meta Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI SEO Title & Meta Generator | QuickTools",
+            title: "Free AI SEO Title & Meta Generator | QuickTool",
             description: "Generate search-focused, SEO-optimized Page Titles and Meta Descriptions with AI assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI SEO Title & Meta Generator")}&type=tool`]
           }

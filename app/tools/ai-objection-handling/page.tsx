@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Sales Objection Handler",
   description: "Create a structured sales objection handler draft with AI Sales Objection Handler. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Objection Handling","Objection Handling AI","Free AI Objection Handling","Best AI Objection Handling","Online Objection Handling","AI Objection Handling Tool","QuickTools AI"],
+    keywords: ["AI Objection Handling","Objection Handling AI","Free AI Objection Handling","Best AI Objection Handling","Online Objection Handling","AI Objection Handling Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-objection-handling' },
     openGraph: {
             title: "AI Sales Objection Handler",
             description: "Create a structured sales objection handler draft with AI Sales Objection Handler. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-objection-handling',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Sales Objection Handler")}&type=tool`, width: 1200, height: 630, alt: `AI Sales Objection Handler - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Sales Objection Handler")}&type=tool`, width: 1200, height: 630, alt: `AI Sales Objection Handler - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

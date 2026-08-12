@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Apology Letter Generator",
   description: "Draft sincere, well-worded, and appropriate apology letters for professional or personal situations with AI assistance.",
-    keywords: ["AI Apology Letter","Apology Letter AI","Free AI Apology Letter","Best AI Apology Letter","Online Apology Letter","AI Apology Letter Tool","QuickTools AI"],
+    keywords: ["AI Apology Letter","Apology Letter AI","Free AI Apology Letter","Best AI Apology Letter","Online Apology Letter","AI Apology Letter Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-apology-letter' },
     openGraph: {
-            title: "Free AI Apology Letter Generator | QuickTools",
+            title: "Free AI Apology Letter Generator | QuickTool",
             description: "Draft sincere, well-worded, and appropriate apology letters for professional or personal situations with AI assistance.",
             url: 'https://quicktool.space/tools/ai-apology-letter',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Apology Letter Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Apology Letter Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Apology Letter Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Apology Letter Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Apology Letter Generator | QuickTools",
+            title: "Free AI Apology Letter Generator | QuickTool",
             description: "Draft sincere, well-worded, and appropriate apology letters for professional or personal situations with AI assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Apology Letter Generator")}&type=tool`]
           }

@@ -10,14 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-code-generator'
   },
-    keywords: ["AI Code Generator","Code Generator AI","Free AI Code Generator","Best AI Code Generator","Online Code Generator","AI Code Generator Tool","Code Creator","AI Code Creator","QuickTools AI"],
+    keywords: ["AI Code Generator","Code Generator AI","Free AI Code Generator","Best AI Code Generator","Online Code Generator","AI Code Generator Tool","Code Creator","AI Code Creator","QuickTool AI"],
     openGraph: {
             title: "Intelligent AI Code Generator & Programming Assistant",
             description: "Generate editable code from the details you provide with our AI Code Generator. Boost development speed and debug effortlessly with intelligent assistance.",
             url: 'https://quicktool.space/tools/ai-code-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Code Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Code Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Code Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Code Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
@@ -86,7 +86,7 @@ export default function AiCodeGeneratorPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is AI Code Generator?</h3>
-              <p className="text-slate-600 mt-2">The AI Code Generator is an AI-assisted tool by QuickTools designed to help you generate editable code from the details you provide with our ai code generator. boost development speed and debug effortlessly with intelligent assistance.</p>
+              <p className="text-slate-600 mt-2">The AI Code Generator is an AI-assisted tool by QuickTool designed to help you generate editable code from the details you provide with our ai code generator. boost development speed and debug effortlessly with intelligent assistance.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the generated code from AI Code Generator secure?</h3>

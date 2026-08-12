@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Risk Assessment Report",
   description: "Create a structured risk assessment report draft with AI Risk Assessment Report. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Risk Assessment","Risk Assessment AI","Free AI Risk Assessment","Best AI Risk Assessment","Online Risk Assessment","AI Risk Assessment Tool","QuickTools AI"],
+    keywords: ["AI Risk Assessment","Risk Assessment AI","Free AI Risk Assessment","Best AI Risk Assessment","Online Risk Assessment","AI Risk Assessment Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-risk-assessment' },
     openGraph: {
             title: "AI Risk Assessment Report",
             description: "Create a structured risk assessment report draft with AI Risk Assessment Report. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-risk-assessment',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Risk Assessment Report")}&type=tool`, width: 1200, height: 630, alt: `AI Risk Assessment Report - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Risk Assessment Report")}&type=tool`, width: 1200, height: 630, alt: `AI Risk Assessment Report - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

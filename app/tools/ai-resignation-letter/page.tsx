@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Resignation Letter Generator",
   description: "Leave on good terms. Generate a polite, professional, and appropriately toned resignation letter with AI assistance.",
-    keywords: ["AI Resignation Letter","Resignation Letter AI","Free AI Resignation Letter","Best AI Resignation Letter","Online Resignation Letter","AI Resignation Letter Tool","QuickTools AI"],
+    keywords: ["AI Resignation Letter","Resignation Letter AI","Free AI Resignation Letter","Best AI Resignation Letter","Online Resignation Letter","AI Resignation Letter Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-resignation-letter' },
     openGraph: {
-            title: "Free AI Resignation Letter Generator | QuickTools",
+            title: "Free AI Resignation Letter Generator | QuickTool",
             description: "Leave on good terms. Generate a polite, professional, and appropriately toned resignation letter with AI assistance.",
             url: 'https://quicktool.space/tools/ai-resignation-letter',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Resignation Letter Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Resignation Letter Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Resignation Letter Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Resignation Letter Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Resignation Letter Generator | QuickTools",
+            title: "Free AI Resignation Letter Generator | QuickTool",
             description: "Leave on good terms. Generate a polite, professional, and appropriately toned resignation letter with AI assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Resignation Letter Generator")}&type=tool`]
           }

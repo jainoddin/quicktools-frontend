@@ -46,7 +46,7 @@ export default function LearnSidebarLeft() {
       <div className="py-4 mb-4 border-b border-slate-200">
         <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
           <BookOpen className="w-5 h-5 text-indigo-600" />
-          QuickTools Learn
+          QuickTool Learn
         </h2>
       </div>
       

@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'QuickTools.ai',
-    short_name: 'QuickTools',
+    name: 'QuickTool',
+    short_name: 'QuickTool',
     description: '100+ Affordable AI Tools for Work and Creativity',
     start_url: '/',
     display: 'standalone',

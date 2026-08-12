@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI SQL Query Generator",
   description: "Generate optimized SQL queries from plain English descriptions with AI assistance.",
-    keywords: ["AI Sql Generator","Sql Generator AI","Free AI Sql Generator","Best AI Sql Generator","Online Sql Generator","AI Sql Generator Tool","Sql Creator","AI Sql Creator","QuickTools AI"],
+    keywords: ["AI Sql Generator","Sql Generator AI","Free AI Sql Generator","Best AI Sql Generator","Online Sql Generator","AI Sql Generator Tool","Sql Creator","AI Sql Creator","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-sql-generator' },
     openGraph: {
-            title: "Free AI SQL Query Generator | QuickTools",
+            title: "Free AI SQL Query Generator | QuickTool",
             description: "Generate optimized SQL queries from plain English descriptions with AI assistance.",
             url: 'https://quicktool.space/tools/ai-sql-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI SQL Query Generator")}&type=tool`, width: 1200, height: 630, alt: `AI SQL Query Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI SQL Query Generator")}&type=tool`, width: 1200, height: 630, alt: `AI SQL Query Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI SQL Query Generator | QuickTools",
+            title: "Free AI SQL Query Generator | QuickTool",
             description: "Generate optimized SQL queries from plain English descriptions with AI assistance.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI SQL Query Generator")}&type=tool`]
           }

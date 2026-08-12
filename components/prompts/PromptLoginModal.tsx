@@ -23,7 +23,7 @@ export default function PromptLoginModal({ open, onClose }: { open: boolean; onC
         <button onClick={onClose} aria-label="Close login popup" className="absolute right-4 top-4 p-2 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-700"><X className="w-5 h-5" /></button>
         <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mx-auto mb-5"><Bookmark className="w-8 h-8 text-indigo-600" /></div>
         <h2 id="prompt-login-title" className="text-2xl font-black text-gray-900 mb-2">Save this prompt</h2>
-        <p className="text-sm text-gray-500 leading-relaxed mb-6">Log in to save prompts securely to your QuickTools account and access them from any device.</p>
+        <p className="text-sm text-gray-500 leading-relaxed mb-6">Log in to save prompts securely to your QuickTool account and access them from any device.</p>
         <div className="flex flex-col gap-3">
           <Link href="/login" className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition-colors">Log In</Link>
           <Link href="/signup" className="w-full py-3 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-xl font-bold transition-colors">Create Free Account</Link>

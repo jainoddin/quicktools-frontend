@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Case Study Writer",
   description: "Use AI Case Study Writer to create a structured case study draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
-    keywords: ["AI Case Study","Case Study AI","Free AI Case Study","Best AI Case Study","Online Case Study","AI Case Study Tool","QuickTools AI"],
+    keywords: ["AI Case Study","Case Study AI","Free AI Case Study","Best AI Case Study","Online Case Study","AI Case Study Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-case-study' },
     openGraph: {
             title: "AI Case Study Writer",
             description: "Use AI Case Study Writer to create a structured case study draft from guided inputs. Review, refine, and adapt the result before using it in your workflow.",
             url: 'https://quicktool.space/tools/ai-case-study',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Case Study Writer")}&type=tool`, width: 1200, height: 630, alt: `AI Case Study Writer - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Case Study Writer")}&type=tool`, width: 1200, height: 630, alt: `AI Case Study Writer - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

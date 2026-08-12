@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Paraphrasing Tool",
   description: "Rewrite and paraphrase text in different wording while retaining the original meaning with our advanced AI paraphraser.",
-    keywords: ["AI Paraphraser","Paraphraser AI","Free AI Paraphraser","Best AI Paraphraser","Online Paraphraser","AI Paraphraser Tool","QuickTools AI"],
+    keywords: ["AI Paraphraser","Paraphraser AI","Free AI Paraphraser","Best AI Paraphraser","Online Paraphraser","AI Paraphraser Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-paraphraser' },
     openGraph: {
-            title: "Free AI Paraphrasing Tool | QuickTools",
+            title: "Free AI Paraphrasing Tool | QuickTool",
             description: "Rewrite and paraphrase text in different wording while retaining the original meaning with our advanced AI paraphraser.",
             url: 'https://quicktool.space/tools/ai-paraphraser',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Paraphrasing Tool")}&type=tool`, width: 1200, height: 630, alt: `AI Paraphrasing Tool - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Paraphrasing Tool")}&type=tool`, width: 1200, height: 630, alt: `AI Paraphrasing Tool - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Paraphrasing Tool | QuickTools",
+            title: "Free AI Paraphrasing Tool | QuickTool",
             description: "Rewrite and paraphrase text in different wording while retaining the original meaning with our advanced AI paraphraser.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Paraphrasing Tool")}&type=tool`]
           }

@@ -38,7 +38,7 @@ export async function generateMetadata(
     `${courseTitle} beginner guide`,
     `${courseTitle} prompts`,
     `${courseTitle} AI`,
-    "QuickTools Learn",
+    "QuickTool Learn",
     lesson.title,
     `${courseTitle} ${lesson.title}`
   ];
@@ -47,11 +47,11 @@ export async function generateMetadata(
     keywords.push(...lesson.seoKeywords);
   }
 
-  const defaultDesc = `Learn ${courseTitle} AI from beginner to advanced with the QuickTools Learn platform. ${lesson.excerpt ? lesson.excerpt : `Understand ${courseTitle} and master it through step-by-step interactive lessons.`}`;
+  const defaultDesc = `Learn ${courseTitle} AI from beginner to advanced with the QuickTool Learn platform. ${lesson.excerpt ? lesson.excerpt : `Understand ${courseTitle} and master it through step-by-step interactive lessons.`}`;
   const finalDescription = lesson.seoDescription || defaultDesc;
 
   return {
-    title: lesson.seoTitle || `${lesson.title} - QuickTools Learn`,
+    title: lesson.seoTitle || `${lesson.title} - QuickTool Learn`,
     description: finalDescription,
     keywords: keywords,
     alternates: {
@@ -64,7 +64,7 @@ export async function generateMetadata(
       publishedTime: lesson.publishedAt,
       modifiedTime: lesson.lastUpdatedAt,
       url: lesson.canonicalUrl || `https://quicktool.space/learn/${resolvedParams.courseSlug}/${resolvedParams.lessonSlug}`,
-      images: [{ url: 'https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png', width: 1200, height: 630, alt: `${courseTitle} lesson on QuickTools Learn` }],
+      images: [{ url: 'https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/2016d9e2-797d-46ce-888e-1179fac50d79.png', width: 1200, height: 630, alt: `${courseTitle} lesson on QuickTool Learn` }],
     },
     twitter: {
       card: 'summary_large_image',

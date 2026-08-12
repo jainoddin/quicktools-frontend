@@ -56,7 +56,7 @@ export default async function LatestCommunity() {
               Join the Conversation
             </h2>
             <p className="text-lg text-gray-500 leading-relaxed">
-              Discover insights, ask questions, and share your knowledge with thousands of creators and developers.
+              Discover insights, ask questions, and share knowledge with other creators and developers.
             </p>
           </div>
           <Link 

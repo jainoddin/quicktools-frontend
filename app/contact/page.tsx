@@ -12,14 +12,14 @@ import FeedbackModal from '../../components/contact/FeedbackModal';
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Contact QuickTools | AI Support & Customer Assistance',
+    absolute: 'Contact QuickTool | AI Support & Customer Assistance',
   },
-  description: 'Contact the QuickTools team for support, feedback, partnerships, or questions. We\'re here to help you get the most from our AI platform.',
+  description: 'Contact the QuickTool team for support, feedback, partnerships, or questions. We\'re here to help you get the most from our AI platform.',
   keywords: [
-    'Contact QuickTools', 'QuickTools support', 'AI support',
-    'Contact AI platform', 'Customer support', 'QuickTools contact',
+    'Contact QuickTool', 'QuickTool support', 'AI support',
+    'Contact AI platform', 'Customer support', 'QuickTool contact',
     'AI tools support', 'Technical support', 'Help center',
-    'AI assistance', 'Contact us', 'QuickTools help'
+    'AI assistance', 'Contact us', 'QuickTool help'
   ],
   alternates: {
     canonical: 'https://quicktool.space/contact',
@@ -30,12 +30,12 @@ export default function ContactPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "name": "Contact QuickTools.ai",
-    "description": "Get in touch with the QuickTools.ai team. We are here to help you with any questions, feedback, or support requests regarding our AI tools.",
+    "name": "Contact QuickTool",
+    "description": "Get in touch with the QuickTool team. We are here to help you with any questions, feedback, or support requests regarding our AI tools.",
     "url": "https://quicktool.space/contact",
     "mainEntity": {
       "@type": "Organization",
-      "name": "QuickTools.ai",
+      "name": "QuickTool",
       "email": "hello@quicktool.space",
       "url": "https://quicktool.space",
       "contactPoint": {
@@ -100,7 +100,7 @@ export default function ContactPage() {
                 We'd love to hear<br />from <span className="text-[#6D5EF8]">you!</span>
               </h1>
               <p className="text-[#6B7280] text-sm leading-relaxed max-w-md">
-                Have a question, suggestion, or just want to say hi? We're always here to help and improve QuickTools.ai for you.
+                Have a question, suggestion, or just want to say hi? We're always here to help and improve QuickTool for you.
               </p>
             </div>
 

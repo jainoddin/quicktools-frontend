@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://quicktool.space/tools/ai-subscription-optimizer'
   },
-  openGraph: { title: 'Subscription Optimizer - QuickTools.ai', description: 'Compare subscriptions, overlaps, and cancellation decisions.', url: 'https://quicktool.space/tools/ai-subscription-optimizer', type: 'website', images: [{ url: 'https://quicktool.space/api/og?title=Subscription%20Optimizer&type=tool', width: 1200, height: 630, alt: 'Subscription Optimizer' }] },
-  twitter: { card: 'summary_large_image', title: 'Subscription Optimizer - QuickTools.ai', description: 'Compare subscriptions, overlaps, and cancellation decisions.', images: ['https://quicktool.space/api/og?title=Subscription%20Optimizer&type=tool'] }
+  openGraph: { title: 'Subscription Optimizer - QuickTool', description: 'Compare subscriptions, overlaps, and cancellation decisions.', url: 'https://quicktool.space/tools/ai-subscription-optimizer', type: 'website', images: [{ url: 'https://quicktool.space/api/og?title=Subscription%20Optimizer&type=tool', width: 1200, height: 630, alt: 'Subscription Optimizer' }] },
+  twitter: { card: 'summary_large_image', title: 'Subscription Optimizer - QuickTool', description: 'Compare subscriptions, overlaps, and cancellation decisions.', images: ['https://quicktool.space/api/og?title=Subscription%20Optimizer&type=tool'] }
 };
 
 export default function Page() {
@@ -61,7 +61,7 @@ export default function Page() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-800">What is Subscription Optimizer?</h3>
-              <p className="text-slate-600 mt-2">The Subscription Optimizer is an AI-assisted tool by QuickTools designed to help you analyze your active subscriptions to find feature overlaps and save money with AI assistance.</p>
+              <p className="text-slate-600 mt-2">The Subscription Optimizer is an AI-assisted tool by QuickTool designed to help you analyze your active subscriptions to find feature overlaps and save money with AI assistance.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Can the Subscription Optimizer generate content in different tones?</h3>

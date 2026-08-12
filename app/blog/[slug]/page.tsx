@@ -26,11 +26,11 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://quicktool.space';
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const res = await fetch(getEndpoint(`/api/blogs/${slug}`), { next: { revalidate: 60 } });
-  if (!res.ok) return { title: 'Blog Not Found | QuickTools.ai' };
+  if (!res.ok) return { title: 'Blog Not Found | QuickTool' };
 
   const json = await res.json();
   const blog = json.data;
-  if (!blog) return { title: 'Blog Not Found | QuickTools.ai' };
+  if (!blog) return { title: 'Blog Not Found | QuickTool' };
 
   const desc = blog.metaDescription || blog.description || '';
 
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     `${blog.title} tutorial`,
     `${blog.title} explained`,
     blog.category ? `${blog.category} AI` : '',
-    'QuickTools Blog'
+    'QuickTool Blog'
   ].filter(Boolean);
 
   return {
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: desc,
       type: 'article',
       url: canonicalUrl,
-      siteName: 'QuickTools.ai',
+      siteName: 'QuickTool',
       publishedTime: blog.publishedAt,
       modifiedTime: blog.updatedAt || blog.publishedAt,
       authors: [blog.author?.name || 'Shaik Jainoddin'],
@@ -116,7 +116,7 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
       },
       publisher: {
         '@type': 'Organization',
-        name: 'QuickTools.ai',
+        name: 'QuickTool',
         logo: {
           '@type': 'ImageObject',
           url: 'https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png'
@@ -228,7 +228,7 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
                 <Crown className="w-4 h-4 text-white fill-white" />
               </div>
               <p className="text-xs text-white/70 mb-0.5 font-medium">Unlock More with</p>
-              <h4 className="font-bold text-white text-sm mb-2">QuickTools.ai Pro</h4>
+              <h4 className="font-bold text-white text-sm mb-2">QuickTool Pro</h4>
               <p className="text-xs text-white/70 mb-4 leading-relaxed">
                 Get access to premium AI tools, faster generations & priority support.
               </p>
@@ -268,14 +268,14 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
                 />
               )}
               <div>
-                <div className="font-bold text-sm text-[#111827]">{blogPost.author?.name || 'QuickTools AI'}</div>
+                <div className="font-bold text-sm text-[#111827]">{blogPost.author?.name || 'QuickTool AI'}</div>
                 <div className="text-xs text-[#9CA3AF] flex items-center gap-2">
                   <span>{new Date(blogPost.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                   <span>·</span>
                   <Clock className="w-3 h-3" />
                   <span>{blogPost.readTime}</span>
                   <span>·</span>
-                  <span className="text-[#4F46E5]">Reviewed by QuickTools Quality Pipeline</span>
+                  <span className="text-[#4F46E5]">Reviewed by QuickTool Quality Pipeline</span>
                 </div>
               </div>
             </div>
@@ -358,7 +358,7 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
             {/* Conclusion Action */}
             <div className="mt-10 pt-4 border-t border-[#E5E7EB]">
               <Link href="/tools" className="inline-flex items-center gap-2 text-[#6D5EF8] font-semibold hover:underline text-sm">
-                Try AI Tools on QuickTools.ai <ArrowRight className="w-4 h-4" />
+                Try AI Tools on QuickTool <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
             <CrossLinksWidget category={blogPost.category} />

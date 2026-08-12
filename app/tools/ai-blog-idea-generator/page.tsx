@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Blog Idea Generator",
   description: "Generate highly engaging, audience-focused blog post ideas and titles with AI assistance. Move past a blank page.",
-    keywords: ["AI Blog Idea Generator","Blog Idea Generator AI","Free AI Blog Idea Generator","Best AI Blog Idea Generator","Online Blog Idea Generator","AI Blog Idea Generator Tool","Blog Idea Creator","AI Blog Idea Creator","QuickTools AI"],
+    keywords: ["AI Blog Idea Generator","Blog Idea Generator AI","Free AI Blog Idea Generator","Best AI Blog Idea Generator","Online Blog Idea Generator","AI Blog Idea Generator Tool","Blog Idea Creator","AI Blog Idea Creator","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-blog-idea-generator' },
     openGraph: {
-            title: "Free AI Blog Idea Generator | QuickTools",
+            title: "Free AI Blog Idea Generator | QuickTool",
             description: "Generate highly engaging, audience-focused blog post ideas and titles with AI assistance. Move past a blank page.",
             url: 'https://quicktool.space/tools/ai-blog-idea-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Blog Idea Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Blog Idea Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Blog Idea Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Blog Idea Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Blog Idea Generator | QuickTools",
+            title: "Free AI Blog Idea Generator | QuickTool",
             description: "Generate highly engaging, audience-focused blog post ideas and titles with AI assistance. Move past a blank page.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Blog Idea Generator")}&type=tool`]
           }

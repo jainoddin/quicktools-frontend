@@ -28,8 +28,8 @@ export default function GoogleAnalytics() {
       setHasConsent(Boolean((event as CustomEvent<{ granted: boolean }>).detail?.granted));
     };
     readConsent();
-    window.addEventListener('quicktools:analytics-consent', onConsent);
-    return () => window.removeEventListener('quicktools:analytics-consent', onConsent);
+    window.addEventListener('QuickTool:analytics-consent', onConsent);
+    return () => window.removeEventListener('QuickTool:analytics-consent', onConsent);
   }, []);
 
   if (process.env.NODE_ENV !== 'production') return null;

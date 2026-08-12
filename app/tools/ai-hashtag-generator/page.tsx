@@ -7,19 +7,19 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Free AI Instagram Hashtag Generator",
   description: "Boost your reach and engagement with AI-generated, highly relevant hashtags for Instagram, TikTok, and Twitter.",
-    keywords: ["AI Hashtag Generator","Hashtag Generator AI","Free AI Hashtag Generator","Best AI Hashtag Generator","Online Hashtag Generator","AI Hashtag Generator Tool","Hashtag Creator","AI Hashtag Creator","QuickTools AI"],
+    keywords: ["AI Hashtag Generator","Hashtag Generator AI","Free AI Hashtag Generator","Best AI Hashtag Generator","Online Hashtag Generator","AI Hashtag Generator Tool","Hashtag Creator","AI Hashtag Creator","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-hashtag-generator' },
     openGraph: {
-            title: "Free AI Instagram Hashtag Generator | QuickTools",
+            title: "Free AI Instagram Hashtag Generator | QuickTool",
             description: "Boost your reach and engagement with AI-generated, highly relevant hashtags for Instagram, TikTok, and Twitter.",
             url: 'https://quicktool.space/tools/ai-hashtag-generator',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Instagram Hashtag Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Instagram Hashtag Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Instagram Hashtag Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Instagram Hashtag Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
-            title: "Free AI Instagram Hashtag Generator | QuickTools",
+            title: "Free AI Instagram Hashtag Generator | QuickTool",
             description: "Boost your reach and engagement with AI-generated, highly relevant hashtags for Instagram, TikTok, and Twitter.",
             images: [`https://quicktool.space/api/og?title=${encodeURIComponent("AI Instagram Hashtag Generator")}&type=tool`]
           }

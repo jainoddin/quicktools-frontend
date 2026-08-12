@@ -5,7 +5,7 @@ import { Shield, Lock, FileKey, CheckCircle2, User, Home, ChevronRight } from 'l
 
 export const metadata: Metadata = {
   title: 'Privacy Policy - How We Protect Your Data',
-  description: 'Read our Privacy Policy to learn how QuickTools.ai collects, uses, and protects your personal information and ensures data security on our platform.',
+  description: 'Read our Privacy Policy to learn how QuickTool collects, uses, and protects your personal information and ensures data security on our platform.',
   alternates: { canonical: '/privacy' },
 };
 
@@ -13,19 +13,19 @@ export default function PrivacyPolicyPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Privacy Policy | QuickTools.ai",
-    "description": "Learn how QuickTools.ai collects, uses, and protects your information.",
+    "name": "Privacy Policy | QuickTool",
+    "description": "Learn how QuickTool collects, uses, and protects your information.",
     "url": "https://quicktool.space/privacy",
     "mainEntity": {
       "@type": "Article",
       "headline": "Privacy Policy",
       "author": {
         "@type": "Organization",
-        "name": "QuickTools.ai"
+        "name": "QuickTool"
       },
       "publisher": {
         "@type": "Organization",
-        "name": "QuickTools.ai",
+        "name": "QuickTool",
         "logo": {
           "@type": "ImageObject",
           "url": "https://quicktool.space/icon.svg"
@@ -96,7 +96,7 @@ export default function PrivacyPolicyPage() {
             <section id="overview" className="mb-12 scroll-mt-24">
               <h2 className="text-2xl mb-4">1. Overview</h2>
               <p>
-                At QuickTools.ai, your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and protect your information when you use our website, tools, and services.
+                At QuickTool, your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and protect your information when you use our website, tools, and services.
               </p>
             </section>
 
@@ -152,7 +152,7 @@ export default function PrivacyPolicyPage() {
               </p>
               <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl p-6 mt-4">
                 <strong>Email:</strong> <a href="mailto:hello@quicktool.space">hello@quicktool.space</a><br />
-                <strong>Address:</strong> QuickTools AI Inc., 123 Innovation Way, Tech City
+                <strong>Address:</strong> QuickTool AI Inc., 123 Innovation Way, Tech City
               </div>
             </section>
           </div>

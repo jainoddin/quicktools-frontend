@@ -138,7 +138,7 @@ export default function JsonFormatterClient() {
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder='Paste your JSON here... e.g. {"name": "QuickTools"}'
+            placeholder='Paste your JSON here... e.g. {"name": "QuickTool"}'
             className="flex-1 w-full p-6 text-sm font-mono text-[#374151] placeholder-gray-400 focus:outline-none resize-none bg-[#FAFAFA]"
             spellCheck="false"
           />

@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Webinar Script Generator",
   description: "Create a structured webinar script draft with AI Webinar Script Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Webinar Script","Webinar Script AI","Free AI Webinar Script","Best AI Webinar Script","Online Webinar Script","AI Webinar Script Tool","QuickTools AI"],
+    keywords: ["AI Webinar Script","Webinar Script AI","Free AI Webinar Script","Best AI Webinar Script","Online Webinar Script","AI Webinar Script Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-webinar-script' },
     openGraph: {
             title: "AI Webinar Script Generator",
             description: "Create a structured webinar script draft with AI Webinar Script Generator. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-webinar-script',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Webinar Script Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Webinar Script Generator - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Webinar Script Generator")}&type=tool`, width: 1200, height: 630, alt: `AI Webinar Script Generator - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',

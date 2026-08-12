@@ -6,15 +6,15 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "AI Partnership Proposal",
   description: "Create a structured partnership proposal draft with AI Partnership Proposal. Use guided inputs, then review, refine, and adapt the result for your workflow.",
-    keywords: ["AI Partnership Proposal","Partnership Proposal AI","Free AI Partnership Proposal","Best AI Partnership Proposal","Online Partnership Proposal","AI Partnership Proposal Tool","QuickTools AI"],
+    keywords: ["AI Partnership Proposal","Partnership Proposal AI","Free AI Partnership Proposal","Best AI Partnership Proposal","Online Partnership Proposal","AI Partnership Proposal Tool","QuickTool AI"],
     alternates: { canonical: 'https://quicktool.space/tools/ai-partnership-proposal' },
     openGraph: {
             title: "AI Partnership Proposal",
             description: "Create a structured partnership proposal draft with AI Partnership Proposal. Use guided inputs, then review, refine, and adapt the result for your workflow.",
             url: 'https://quicktool.space/tools/ai-partnership-proposal',
-            siteName: 'QuickTools.ai',
+            siteName: 'QuickTool',
             type: 'website',
-            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Partnership Proposal")}&type=tool`, width: 1200, height: 630, alt: `AI Partnership Proposal - QuickTools.ai` }]
+            images: [{ url: `https://quicktool.space/api/og?title=${encodeURIComponent("AI Partnership Proposal")}&type=tool`, width: 1200, height: 630, alt: `AI Partnership Proposal - QuickTool` }]
           },
     twitter: {
             card: 'summary_large_image',
