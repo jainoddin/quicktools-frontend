@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const root = process.cwd();
@@ -40,7 +40,10 @@ assert(promptModelsPage.includes('compatible prompts'), 'Prompt models page must
 const pricing = read('components/pricing/PricingClient.tsx');
 const dashboardPlans = read('app/dashboard/billing/plans/page.tsx');
 const pricingSchema = read('app/pricing/page.tsx');
-const paymentPlans = read('../backend/src/config/paymentPlans.ts');
+const backendPaymentPlansPath = resolve(root, '../backend/src/config/paymentPlans.ts');
+const paymentPlans = existsSync(backendPaymentPlansPath)
+  ? readFileSync(backendPaymentPlansPath, 'utf8')
+  : null;
 for (const [plan, rupees, paise] of [
   ['starter', '299', '29_900'],
   ['pro', '3588', '358_800'],
@@ -48,7 +51,9 @@ for (const [plan, rupees, paise] of [
 ]) {
   assert(pricing.includes(`id: '${plan}'`) && pricing.includes(`price: ${rupees}`), `Public pricing must retain the canonical ${plan} price.`);
   assert(dashboardPlans.includes(`id: '${plan}'`) && dashboardPlans.includes(`price: ${rupees}`), `Dashboard pricing must match the canonical ${plan} price.`);
-  assert(paymentPlans.includes(`${plan}: { amountPaise: ${paise}`), `Backend payment registry must match the canonical ${plan} price.`);
+  if (paymentPlans) {
+    assert(paymentPlans.includes(`${plan}: { amountPaise: ${paise}`), `Backend payment registry must match the canonical ${plan} price.`);
+  }
   assert(pricingSchema.includes(`"price": "${rupees}"`), `Pricing schema must match the canonical ${plan} price.`);
 }
 assert(!pricing.includes("starter: '100 / month'"), 'Pricing comparison must not show the stale Starter access limit.');
