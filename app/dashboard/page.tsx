@@ -12,9 +12,9 @@ import { getEndpoint } from '../../lib/api';
 
 const popularTools = [
   { name: 'AI Image Generator', icon: ImageIcon, color: 'bg-[#6D5EF8] text-white', lightColor: 'bg-[#F5F3FF] text-[#6D5EF8]', slug: '/tools/ai-image-generator' },
-  { name: 'AI Chat Assistant', icon: MessageSquare, color: 'bg-[#8B5CF6] text-white', lightColor: 'bg-[#F5F3FF] text-[#8B5CF6]', slug: '/tools/ai-chat-assistant' },
+  { name: 'AI Code Generator', icon: Code, color: 'bg-[#8B5CF6] text-white', lightColor: 'bg-[#F5F3FF] text-[#8B5CF6]', slug: '/tools/ai-code-generator' },
   { name: 'Background Remover', icon: LayoutGrid, color: 'bg-[#10B981] text-white', lightColor: 'bg-[#ECFDF5] text-[#10B981]', slug: '/tools/background-remover' },
-  { name: 'PDF Converter', icon: FileText, color: 'bg-[#EF4444] text-white', lightColor: 'bg-[#FEF2F2] text-[#EF4444]', slug: '/tools/pdf-converter' },
+  { name: 'AI Video Generator', icon: PlaySquare, color: 'bg-[#EF4444] text-white', lightColor: 'bg-[#FEF2F2] text-[#EF4444]', slug: '/tools/ai-video-generator' },
   { name: 'AI Writer', icon: PenTool, color: 'bg-[#3B82F6] text-white', lightColor: 'bg-[#EFF6FF] text-[#3B82F6]', slug: '/tools/ai-writer' },
   { name: 'AI Text Summarizer', icon: FileText, color: 'bg-[#F97316] text-white', lightColor: 'bg-[#FFF7ED] text-[#F97316]', slug: '/tools/ai-summarizer' },
   { name: 'AI Translator', icon: FileText, color: 'bg-[#06B6D4] text-white', lightColor: 'bg-[#ECFEFF] text-[#06B6D4]', slug: '/tools/ai-translator' },

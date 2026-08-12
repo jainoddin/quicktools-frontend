@@ -133,6 +133,92 @@ const nextConfig: NextConfig = {
         source: '/news/nvidia-unveils-rubin-the-next-generation-ai-chip-powering-the-future',
         destination: '/news/nvidia-unveils-rubin-next-gen-ai-chip-powering-future',
         permanent: true,
+      },
+      // 404 URL Cleanup Redirects
+      {
+        source: '/news/nvidia-unveils-rubin-next-gen-ai-chip-architecture-for-2026-1784792120691',
+        destination: '/news/nvidia-unveils-rubin-next-gen-ai-chip-architecture-for-2026',
+        permanent: true,
+      },
+      {
+        source: '/news/nvidia-unveils-rubin-next-gen-ai-chip-architecture-for-2026-1784774124785',
+        destination: '/news/nvidia-unveils-rubin-next-gen-ai-chip-architecture-for-2026',
+        permanent: true,
+      },
+      {
+        source: '/news/nvidia-unveils-rubin-the-next-gen-ai-architecture-for-2026',
+        destination: '/news/nvidia-unveils-rubin-next-gen-ai-chip-architecture-for-2026',
+        permanent: true,
+      },
+      {
+        source: '/news/nvidia-unveils-rubin-next-gen-ai-architecture-for-2026',
+        destination: '/news/nvidia-unveils-rubin-next-gen-ai-chip-architecture-for-2026',
+        permanent: true,
+      },
+      {
+        source: '/news/eu-passes-landmark-artificial-intelligence-regulation-act',
+        destination: '/news/eu-parliament-approves-landmark-artificial-intelligence-act',
+        permanent: true,
+      },
+      {
+        source: '/news/eu-parliament-passes-landmark-artificial-intelligence-act',
+        destination: '/news/eu-parliament-approves-landmark-artificial-intelligence-act',
+        permanent: true,
+      },
+      {
+        source: '/news/anthropic-secures-4b-series-e-to-accelerate-ai-development-1784100618004',
+        destination: '/news/anthropic-secures-4-billion-in-series-e-funding-round',
+        permanent: true,
+      },
+      {
+        source: '/news/anthropic-secures-4b-series-e-to-accelerate-ai-development',
+        destination: '/news/anthropic-secures-4-billion-in-series-e-funding-round',
+        permanent: true,
+      },
+      {
+        source: '/news/anthropic-secures-4b-series-e-accelerating-ai-development',
+        destination: '/news/anthropic-secures-4-billion-in-series-e-funding-round',
+        permanent: true,
+      },
+      {
+        source: '/news/microsoft-unleashes-ai-copilot-across-all-office-365-apps',
+        destination: '/news/microsoft-integrates-ai-copilot-across-office-365-suite-1784532912853',
+        permanent: true,
+      },
+      {
+        source: '/news/microsoft-brings-ai-copilot-to-entire-office-365-suite',
+        destination: '/news/microsoft-integrates-ai-copilot-across-office-365-suite-1784532912853',
+        permanent: true,
+      },
+      {
+        source: '/news/microsoft-integrates-ai-copilot-across-all-office-365',
+        destination: '/news/microsoft-integrates-ai-copilot-across-office-365-suite-1784532912853',
+        permanent: true,
+      },
+      {
+        source: '/tools/ai-workout-generator',
+        destination: '/tools/ai-workout-plan',
+        permanent: true,
+      },
+      {
+        source: '/tools/sql-query-generator',
+        destination: '/tools/ai-sql-generator',
+        permanent: true,
+      },
+      {
+        source: '/tools/ai-gift-idea-generator',
+        destination: '/tools/ai-gift-idea',
+        permanent: true,
+      },
+      {
+        source: '/tools/ai-video-editor',
+        destination: '/tools/ai-video-generator',
+        permanent: true,
+      },
+      {
+        source: '/category/content-creation',
+        destination: '/tools/category/creative',
+        permanent: true,
       }
     ];
   },

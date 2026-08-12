@@ -38,7 +38,7 @@ export default function AiWorkoutClient() {
         .then(data => {
           if (data.success && data.data?.history) {
             const items = data.data.history
-              .filter((item: any) => item.toolSlug === '/tools/ai-workout-generator')
+              .filter((item: any) => item.toolSlug === '/tools/ai-workout-plan')
               .map((item: any) => ({
                 id: item._id || Date.now() + Math.random(),
                 prompt: item.prompt,
