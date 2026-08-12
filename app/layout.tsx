@@ -108,8 +108,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      suppressHydrationWarning={true}
     >
-      <body className="flex flex-col min-h-[100dvh] bg-[#F8FAFC] text-[#111827] selection:bg-[#4F46E5] selection:text-white">
+      <body suppressHydrationWarning={true} className="flex flex-col min-h-[100dvh] bg-[#F8FAFC] text-[#111827] selection:bg-[#4F46E5] selection:text-white">
         {/* Razorpay Checkout SDK */}
         <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
 

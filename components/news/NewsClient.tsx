@@ -35,7 +35,13 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
 
   useEffect(() => {
     if (user?.savedNews) {
-      setSavedNews(user.savedNews);
+      const currentSaved = user.savedNews;
+      setSavedNews((prev: string[]) => {
+        if (JSON.stringify(prev) !== JSON.stringify(currentSaved)) {
+          return currentSaved;
+        }
+        return prev;
+      });
     }
   }, [user?.savedNews]);
 
@@ -261,10 +267,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
                 <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse"></span>
                 Breaking News
               </span>
-              <div className="hidden md:flex gap-2 items-center">
-                <button className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#4F46E5] hover:border-[#4F46E5] transition-colors"><ChevronLeft className="w-4 h-4" /></button>
-                <button className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#4F46E5] hover:border-[#4F46E5] transition-colors"><ChevronRight className="w-4 h-4" /></button>
-              </div>
+
             </div>
 
             <div className="bg-white rounded-3xl p-6 border border-[#E5E7EB] shadow-sm flex flex-col md:flex-row gap-8 items-center hover:border-[#4F46E5]/20 transition-colors group">
@@ -354,7 +357,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
 
 
             {/* Grid */}
-            {regularNews.length === 0 ? (
+            {regularNews.length === 0 && !isLoading ? (
               breakingNews ? null : (
                 activeCategory === 'Favorites' ? (
                   <div className="text-center py-20 bg-white rounded-3xl border border-[#E5E7EB]">
@@ -389,7 +392,7 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
 
 
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                 {regularNews.map((news: any, idx: number) => (
                   <Link href={`/news/${news.slug}`} key={news._id || idx} className="bg-white rounded-2xl border border-[#E5E7EB] overflow-hidden group hover:border-[#4F46E5]/30 hover:shadow-md transition-all flex flex-col">
                     <div className="aspect-[16/9] relative bg-gray-100 overflow-hidden">
@@ -421,22 +424,20 @@ export default function NewsClient({ initialNews, initialPagination, initialCate
                     </div>
                   </Link>
                 ))}
-              </div>
-            )}
 
-            {isLoading && (
-              <div className="space-y-6 mt-8">
-                {Array.from({ length: 2 }).map((_, i) => (
-                  <div key={`shimmer-${i}`} className="bg-white border border-[#E5E7EB] rounded-2xl flex flex-col md:flex-row p-4 gap-6 animate-pulse">
-                    <div className="w-full md:w-1/3 h-48 rounded-xl bg-gray-200"></div>
-                    <div className="flex-1 py-2">
-                      <div className="flex justify-between mb-4">
-                        <div className="w-16 h-4 bg-gray-200 rounded"></div>
-                        <div className="w-16 h-4 bg-gray-200 rounded"></div>
+                {isLoading && Array.from({ length: 3 }).map((_, i) => (
+                  <div key={`shimmer-${i}`} className="bg-white rounded-2xl border border-[#E5E7EB] overflow-hidden flex flex-col animate-pulse">
+                    <div className="aspect-[16/9] bg-gray-200"></div>
+                    <div className="p-6 flex flex-col flex-1">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="w-16 h-3 bg-gray-200 rounded"></div>
+                        <div className="w-12 h-3 bg-gray-200 rounded"></div>
                       </div>
-                      <div className="w-3/4 h-6 bg-gray-200 rounded mb-4"></div>
-                      <div className="w-full h-4 bg-gray-200 rounded mb-2"></div>
-                      <div className="w-5/6 h-4 bg-gray-200 rounded"></div>
+                      <div className="w-3/4 h-5 bg-gray-200 rounded mb-3"></div>
+                      <div className="w-full h-5 bg-gray-200 rounded mb-6"></div>
+                      <div className="w-full h-3 bg-gray-200 rounded mb-2"></div>
+                      <div className="w-5/6 h-3 bg-gray-200 rounded mb-6 flex-1"></div>
+                      <div className="w-24 h-4 bg-gray-200 rounded"></div>
                     </div>
                   </div>
                 ))}
