@@ -151,8 +151,7 @@ export default function PrivacyPolicyPage() {
                 If you have any questions about this Privacy Policy, please contact us at:
               </p>
               <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl p-6 mt-4">
-                <strong>Email:</strong> <a href="mailto:hello@quicktool.space">hello@quicktool.space</a><br />
-                <strong>Address:</strong> QuickTool AI Inc., 123 Innovation Way, Tech City
+                <strong>Email:</strong> <a href="mailto:hello@quicktool.space">hello@quicktool.space</a>
               </div>
             </section>
           </div>
@@ -179,16 +178,7 @@ export default function PrivacyPolicyPage() {
                   <Lock className="w-4 h-4 text-[#8B5CF6]" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-[#374151]">256-bit encryption</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-[#E9D5FF]">
-                  <FileKey className="w-4 h-4 text-[#8B5CF6]" />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-[#374151]">GDPR Compliant</p>
+                  <p className="text-sm font-bold text-[#374151]">Secure connections (HTTPS)</p>
                 </div>
               </div>
 
