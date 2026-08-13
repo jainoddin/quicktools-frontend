@@ -44,7 +44,7 @@ export default function Footer() {
                 <div className="relative flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-1">
                   <Zap className="w-6 h-6" style={{ color: themeColor, fill: themeColor }} />
                 </div>
-                <span className="text-xl font-black tracking-tighter text-[#111827]">QuickTool<span style={{ color: themeColor }}>.ai</span></span>
+                <span className="text-xl font-black tracking-tighter text-[#111827]">QuickTool</span>
               </div>
               <p className="text-sm text-[#6B7280] mb-6 pr-4">All AI tools you need in one place. Save time, work smarter, and achieve more with AI.</p>
               <div className="flex items-center gap-4 text-gray-400">

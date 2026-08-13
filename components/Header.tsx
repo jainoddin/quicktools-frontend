@@ -178,7 +178,6 @@ export default function Header() {
           </div>
           <span className="text-2xl font-black tracking-tighter animate-reveal-text sweep-mask px-1">
             <span className="text-[#111827] transition-all duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:to-fuchsia-500" style={{ '--tw-gradient-from': themeColor } as any}>QuickTool</span>
-            <span className="transition-colors duration-300 group-hover:text-fuchsia-500" style={{ color: themeColor }}>.ai</span>
           </span>
         </Link>
 

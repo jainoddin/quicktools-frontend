@@ -53,7 +53,7 @@ const duplicateMetadataDescriptions = duplicates(metadata.map(item => item.descr
 const missingCanonicals = metadata.filter(item => !item.canonical).map(item => item.slug);
 const missingOpenGraph = metadata.filter(item => !item.openGraph).map(item => item.slug);
 const missingTwitter = metadata.filter(item => !item.twitter).map(item => item.slug);
-const brandedMetadataTitles = metadata.filter(item => /\|\s*QuickTools(?:\.ai)?\s*$/i.test(item.title || '')).map(item => item.slug);
+const brandedMetadataTitles = metadata.filter(item => /\|\s*QuickTool(?:\.ai)?\s*$/i.test(item.title || '')).map(item => item.slug);
 const longRenderedTitles = metadata.filter(item => ((item.title || '').length + ' | QuickTool'.length) > 65).map(item => ({ slug: item.slug, length: (item.title || '').length + ' | QuickTool'.length }));
 const shortMetadataDescriptions = metadata.filter(item => (item.description || '').length < 70).map(item => ({ slug: item.slug, length: (item.description || '').length }));
 const longMetadataDescriptions = metadata.filter(item => (item.description || '').length > 165).map(item => ({ slug: item.slug, length: (item.description || '').length }));

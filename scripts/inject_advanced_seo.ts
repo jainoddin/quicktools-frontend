@@ -43,7 +43,7 @@ for (const folder of toolFolders) {
       if (!initializer.getProperty('keywords')) {
         initializer.addPropertyAssignment({
           name: 'keywords',
-          initializer: `['${toolName}', 'Free ${toolName}', 'AI ${toolName}', 'QuickTools', 'Online ${toolName}', 'AI Tool']`
+          initializer: `['${toolName}', 'Free ${toolName}', 'AI ${toolName}', 'QuickTool', 'Online ${toolName}', 'AI Tool']`
         });
       }
 
@@ -58,7 +58,7 @@ for (const folder of toolFolders) {
         initializer.addPropertyAssignment({
           name: 'openGraph',
           initializer: `{
-    title: ${titleStr ? JSON.stringify(titleStr) : `'${toolName} | QuickTools'`},
+    title: ${titleStr ? JSON.stringify(titleStr) : `'${toolName} | QuickTool'`},
     description: ${descStr ? JSON.stringify(descStr) : `'Free online ${toolName} tool.'`},
     url: 'https://quicktool.space/tools/${folder}',
     siteName: 'QuickTool',
@@ -73,7 +73,7 @@ for (const folder of toolFolders) {
           name: 'twitter',
           initializer: `{
     card: 'summary_large_image',
-    title: ${titleStr ? JSON.stringify(titleStr) : `'${toolName} | QuickTools'`},
+    title: ${titleStr ? JSON.stringify(titleStr) : `'${toolName} | QuickTool'`},
     description: ${descStr ? JSON.stringify(descStr) : `'Free online ${toolName} tool.'`},
     creator: '@quicktool_ai',
     images: ['https://quicktool.space/icon.svg']
