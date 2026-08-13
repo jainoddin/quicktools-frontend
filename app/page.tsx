@@ -32,11 +32,13 @@ export const metadata: Metadata = {
     url: 'https://quicktool.space',
     siteName: 'QuickTool',
     type: 'website',
+    images: [{ url: 'https://quicktool.space/og-image.jpg', width: 1200, height: 630, alt: 'QuickTool AI Workspace' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: '100+ AI Tools and Ready-to-Use AI Prompts | QuickTool',
     description: 'Explore AI tools and practical prompts for ChatGPT, Claude, and Gemini in one workspace.',
+    images: ['https://quicktool.space/og-image.jpg'],
   },
 };
 
@@ -124,10 +126,10 @@ export default function HomePage() {
               </div>
 
               {/* Popular Searches */}
-              <div className="mt-3 flex items-center gap-2 overflow-x-auto pb-1 text-[11px] sm:flex-wrap sm:justify-center sm:text-xs lg:justify-start">
-                <span className="text-gray-400 font-medium mr-1">Trending:</span>
+              <div className="mt-4 flex flex-wrap items-center gap-3 pb-1 text-[11px] sm:justify-center sm:text-xs lg:justify-start">
+                <span className="text-gray-400 font-medium mr-2">Trending:</span>
                 {['AI Writer', 'Image Generator', 'Business Plan', 'Code Generator'].map(tag => (
-                  <span key={tag} className="shrink-0 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-gray-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-white/10 hover:text-white">
+                  <span key={tag} className="shrink-0 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-gray-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-white/10 hover:text-white mr-1 mb-1">
                     {tag}
                   </span>
                 ))}
