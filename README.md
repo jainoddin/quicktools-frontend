@@ -1,6 +1,6 @@
-# QuickTools.ai Frontend
+# QuickTool Frontend
 
-Next.js app for QuickTools.ai — AI tools, dashboard, pricing, content (blog/news/articles).
+Next.js app for QuickTool — AI tools, dashboard, pricing, content (blog/news/articles).
 
 ## Stack
 

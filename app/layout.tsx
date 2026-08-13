@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: "%s | QuickTool"
   },
   description: "Write content, generate images, plan a business, understand code, and finish everyday work with 100+ affordable AI and utility tools.",
-  authors: [{ name: "Shaik Jainoddin", url: "https://quicktool.space/author/quicktools-ai-team" }],
+  authors: [{ name: "QuickTool Team", url: "https://quicktool.space/author/quicktool-team" }],
   creator: "QuickTool",
   publisher: "QuickTool",
   formatDetection: {

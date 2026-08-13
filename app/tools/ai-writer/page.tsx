@@ -94,7 +94,7 @@ export default function AiWriterPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is the content plagiarism-free?</h3>
-              <p className="text-slate-600 mt-2">Yes, the AI Writer  Create Blogs, Emails & Marketing Copy generates 100% unique, original text every time you use it, ensuring it passes plagiarism checkers.</p>
+              <p className="text-slate-600 mt-2">Yes, the AI Writer generates original text based on its training data and your prompts. While highly unique, we always recommend reviewing and lightly editing the output before publishing.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-800">Is it fast to generate results?</h3>

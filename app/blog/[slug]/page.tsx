@@ -111,8 +111,8 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
       dateModified: blogPost.updatedAt || blogPost.publishedAt,
       author: {
         '@type': 'Organization',
-        name: 'Shaik Jainoddin',
-        url: 'https://quicktool.space/author/quicktools-ai-team'
+        name: 'QuickTool Team',
+        url: 'https://quicktool.space/author/quicktool-team'
       },
       publisher: {
         '@type': 'Organization',

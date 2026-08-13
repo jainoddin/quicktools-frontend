@@ -61,7 +61,7 @@ for (const folder of toolFolders) {
     title: ${titleStr ? JSON.stringify(titleStr) : `'${toolName} | QuickTools'`},
     description: ${descStr ? JSON.stringify(descStr) : `'Free online ${toolName} tool.'`},
     url: 'https://quicktool.space/tools/${folder}',
-    siteName: 'QuickTools.ai',
+    siteName: 'QuickTool',
     type: 'website',
     images: [{ url: 'https://quicktool.space/icon.svg', width: 1200, height: 630, alt: '${toolName}' }]
   }`

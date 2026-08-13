@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { Mail, Briefcase, Award, Sparkles, Code2, Users, FileText } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Shaik Jainoddin - Founder & Editor of QuickTool',
-  description: 'Meet Shaik Jainoddin, founder of QuickTool, and learn how AI-assisted content is automatically evaluated before publication.',
+  title: 'QuickTool Team - Creators & Editors of QuickTool',
+  description: 'Meet the QuickTool Team, creators of QuickTool, and learn how AI-assisted content is automatically evaluated before publication.',
   alternates: {
-    canonical: 'https://quicktool.space/author/quicktools-ai-team'
+    canonical: 'https://quicktool.space/author/quicktool-team'
   }
 };
 
@@ -21,12 +21,11 @@ export default function AuthorPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Shaik Jainoddin",
-            "url": "https://quicktool.space/author/quicktools-ai-team",
-            "image": "https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/a5359b80-0e75-4262-8bb7-0f74c171fd8e.png",
-            "jobTitle": "Founder",
-            "description": "Founder of QuickTool, responsible for product direction and the automated publishing quality standards.",
+            "@type": "Organization",
+            "name": "QuickTool Team",
+            "url": "https://quicktool.space/author/quicktool-team",
+            "logo": "https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/a5359b80-0e75-4262-8bb7-0f74c171fd8e.png",
+            "description": "The team behind QuickTool, responsible for product direction and automated publishing quality standards.",
             "sameAs": [
               "https://www.linkedin.com/in/sk-jainoddin-699060250/"
             ]
@@ -40,16 +39,16 @@ export default function AuthorPage() {
             <Image
               src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/a5359b80-0e75-4262-8bb7-0f74c171fd8e.png"
               fill
-              alt="Shaik Jainoddin, founder of QuickTool"
+              alt="QuickTool Team"
               className="object-cover"
               unoptimized
             />
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#111827] mb-4">
-            Shaik Jainoddin
+            QuickTool Team
           </h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto leading-relaxed">
-            Founder of QuickTool. I build practical AI tools and maintain the automated quality standards used for AI-assisted publishing.
+            The team behind QuickTool. We build practical AI tools and maintain the automated quality standards used for AI-assisted publishing.
           </p>
 
           <div className="flex items-center justify-center gap-4 mt-8">

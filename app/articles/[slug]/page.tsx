@@ -123,8 +123,8 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
     "image": article.coverImage,
     "author": {
       "@type": "Organization",
-      "name": "Shaik Jainoddin",
-      "url": "https://quicktool.space/author/quicktools-ai-team"
+      "name": "QuickTool Team",
+      "url": "https://quicktool.space/author/quicktool-team"
     },
     "publisher": {
       "@type": "Organization",
@@ -253,7 +253,17 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                     </div>
                   </Link>
                 )) : (
-                  <p className="text-xs text-[#6B7280]">Loading tools...</p>
+                  <div className="space-y-3">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <div key={i} className="flex items-center gap-3 animate-pulse">
+                        <div className="w-8 h-8 rounded-lg bg-gray-200 shrink-0"></div>
+                        <div className="flex-1 space-y-2 py-1">
+                          <div className="h-3 bg-gray-200 rounded w-3/4"></div>
+                          <div className="h-2 bg-gray-200 rounded w-1/2"></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 )}
               </div>
               <Link href="/tools" className="mt-5 w-full flex items-center justify-center gap-1.5 text-xs font-bold text-[#4F46E5] bg-[#EEF2FF] hover:bg-[#E0E7FF] px-4 py-2.5 rounded-xl transition-colors">

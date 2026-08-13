@@ -22,7 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const coreRoutes: string[] = [
     '', '/tools', '/blog', '/articles', '/news', '/community',
     '/about', '/contact', '/pricing', '/learn', '/faq', '/help', '/privacy', '/terms',
-    '/author/quicktools-ai-team',
+    '/author/quicktool-team',
     '/prompts', '/prompts/chatgpt', '/prompts/claude', '/prompts/gemini',
     '/prompts/categories', '/prompts/generator', '/prompts/all', '/prompts/models',
   ];
