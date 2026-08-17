@@ -6,6 +6,8 @@ import PromptDetailClient from '../../../../components/prompts/PromptDetailClien
 import PromptQuickLinks from '../../../../components/prompts/PromptQuickLinks';
 import { promptMetadata } from '../../../../lib/promptMetadata';
 import RelevantToolsLinks from '../../../../components/shared/RelevantToolsLinks';
+import RelatedPromptsLinks from '../../../../components/shared/RelatedPromptsLinks';
+import Link from 'next/link';
 
 export const revalidate = 3600;
 
@@ -62,6 +64,12 @@ export default async function PromptDetailPage({ params }: { params: Promise<{ m
       <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 mt-10 -translate-y-16">
         <PromptDetailClient prompt={prompt} selectedModel={resolvedParams.model} />
         <RelevantToolsLinks content={`${prompt.title} ${prompt.description || ''} ${prompt.category || ''} ${(prompt.tags || []).join(' ')}`} />
+        <RelatedPromptsLinks prompts={prompt.relatedPrompts || []} />
+        <nav aria-label="Continue exploring" className="mt-6 flex flex-wrap gap-3 text-sm font-semibold">
+          <Link href={`/prompts/category/${String(prompt.category || 'productivity').toLowerCase().replace(/\s*\/\s*|\s+/g, '-')}`} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-indigo-600 hover:border-indigo-300">More {prompt.category || 'productivity'} prompts</Link>
+          <Link href="/learn" className="rounded-full border border-slate-200 bg-white px-4 py-2 text-indigo-600 hover:border-indigo-300">Learn prompt engineering</Link>
+          <Link href="/articles" className="rounded-full border border-slate-200 bg-white px-4 py-2 text-indigo-600 hover:border-indigo-300">Read AI guides</Link>
+        </nav>
       </div>
     </div>
   );

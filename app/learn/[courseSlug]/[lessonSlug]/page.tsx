@@ -7,6 +7,7 @@ import DynamicContentRenderer from '@/components/learn/DynamicContentRenderer';
 import { LEARN_UPDATE_BADGE_DAYS } from '@/lib/constants';
 import { getEndpoint } from '@/lib/api';
 import RelevantToolsLinks from '@/components/shared/RelevantToolsLinks';
+import RelatedPromptsLinks from '@/components/shared/RelatedPromptsLinks';
 
 type Props = {
   params: { courseSlug: string; lessonSlug: string }
@@ -90,7 +91,7 @@ export default async function LessonPage({ params }: Props) {
   } catch (err: any) {
     notFound();
   }
-  const { lesson, previousLesson, nextLesson } = data;
+  const { lesson, previousLesson, nextLesson, relatedPrompts = [] } = data;
 
   if (!lesson) {
     notFound();
@@ -216,6 +217,7 @@ export default async function LessonPage({ params }: Props) {
       {/* Main Content Rendered Server-Side */}
       <DynamicContentRenderer blocks={lesson.contentBlocks} updatedBlockIds={lesson.updatedBlockIds} />
       <RelevantToolsLinks content={`${courseTitle} ${lesson.title} ${lesson.excerpt || ''} ${(lesson.seoKeywords || []).join(' ')}`} />
+      <RelatedPromptsLinks prompts={relatedPrompts} title="Practice with related prompts" />
 
       {/* Footer Navigation */}
       <footer className="mt-16 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
