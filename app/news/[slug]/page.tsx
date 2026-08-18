@@ -207,7 +207,7 @@ export default async function NewsDetailPage({ params }: any) {
           </aside>
 
           {/* MAIN CONTENT CENTER */}
-          <main className="col-span-12 lg:col-span-7 xl:col-span-7 min-w-0">
+          <main className="content-detail-main col-span-12 lg:col-span-7 xl:col-span-7 min-w-0">
             
             {news.isBreaking ? (
               <div className="mb-6 inline-flex items-center gap-2 bg-[#FEF2F2] text-[#B91C1C] text-xs font-bold px-3 py-1.5 rounded-full border border-[#FCA5A5]/30 tracking-widest uppercase">

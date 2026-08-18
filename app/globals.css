@@ -110,3 +110,9 @@ a[disabled],
     animation: none;
   }
 }
+/* Long editorial pages stay fully present in the DOM for SEO and find-in-page,
+   while the browser skips layout/paint work for sections far below the fold. */
+.content-detail-main > :nth-child(n + 6) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 640px;
+}

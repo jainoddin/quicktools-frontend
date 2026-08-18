@@ -263,7 +263,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
           </aside>
 
           {/* MAIN CONTENT CENTER */}
-          <main className="col-span-12 lg:col-span-7 xl:col-span-7 min-w-0">
+          <main className="content-detail-main col-span-12 lg:col-span-7 xl:col-span-7 min-w-0">
             
             {/* Header / Meta */}
             <div className="mb-8">
