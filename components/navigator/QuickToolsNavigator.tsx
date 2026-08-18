@@ -85,10 +85,10 @@ function TypewriterMessage({ text }: { text: string }) {
   return <span aria-label={text}><span aria-hidden>{text.slice(0, visibleCharacters)}</span>{!complete && <span aria-hidden className="ml-0.5 inline-block h-4 w-[2px] animate-pulse bg-indigo-500 align-middle" />}</span>;
 }
 
-export default function QuickToolsNavigator() {
+export default function QuickToolsNavigator({ initialOpen = false }: { initialOpen?: boolean }) {
   const router = useRouter(); const pathname = usePathname();
   const { user, isAuthenticated, updateUser } = useAuth();
-  const [open, setOpen] = useState(false); const [input, setInput] = useState('');
+  const [open, setOpen] = useState(initialOpen); const [input, setInput] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([{ role: 'assistant', text: GREETING }]);
   const [listening, setListening] = useState(false); const [speaking, setSpeaking] = useState(false);
   const [micEnabled, setMicEnabled] = useState(false);
@@ -102,7 +102,7 @@ export default function QuickToolsNavigator() {
   const [context, setContext] = useState<SessionContext>({ currentPage: pathname, detectedLanguage: 'en', lastSearchResults: [] });
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null); const endRef = useRef<HTMLDivElement>(null);
   const navigatorRef = useRef<HTMLDivElement>(null);
-  const openRef = useRef(false); const autoListenRef = useRef(false); const speakingRef = useRef(false);
+  const openRef = useRef(initialOpen); const autoListenRef = useRef(false); const speakingRef = useRef(false);
   const voiceCommandPendingRef = useRef(false); const voiceTypingTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const greetedRef = useRef(false); const greetingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pendingContentRef = useRef<{ explain: boolean; read: boolean; title: string; language: Language } | null>(null);

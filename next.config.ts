@@ -6,7 +6,7 @@ const productionCsp = [
   "object-src 'none'",
   "frame-ancestors 'self'",
   "form-action 'self' https://api.razorpay.com https://checkout.razorpay.com",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://scripts.clarity.ms https://checkout.razorpay.com",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://scripts.clarity.ms https://checkout.razorpay.com https://cdn.razorpay.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://pub-0a928134dcdc420da2af02e6238ef06b.r2.dev https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev https://images.unsplash.com https://i.pravatar.cc https://cdn-icons-png.flaticon.com https://www.google-analytics.com https://www.clarity.ms https://image.pollinations.ai https://*.googleusercontent.com https://avatars.githubusercontent.com",
   "font-src 'self' data:",
@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   images: {
-    unoptimized: true,
+    unoptimized: false,
     remotePatterns: [
       { protocol: 'https', hostname: 'pub-0a928134dcdc420da2af02e6238ef06b.r2.dev' },
       { protocol: 'https', hostname: 'pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev' },

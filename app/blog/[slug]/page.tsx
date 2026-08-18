@@ -119,7 +119,7 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
         name: 'QuickTool',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png'
+          url: 'https://pub-0a928134dcdc420da2af02e6238ef06b.r2.dev/brand/7d404a746424124dc6b13ea6908c7adc.webp'
         }
       }
     },
@@ -261,7 +261,7 @@ export default async function BlogSlugPage({ params }: { params: Promise<{ slug:
             <div className="flex items-center gap-3 mb-8 pb-8 border-b border-[#E5E7EB]">
               {blogPost.author?.avatar && (
                 <Image
-                  src={blogPost.author.avatar === '/icon.svg' ? 'https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png' : blogPost.author.avatar}
+                  src={blogPost.author.avatar === '/icon.svg' ? 'https://pub-0a928134dcdc420da2af02e6238ef06b.r2.dev/brand/7d404a746424124dc6b13ea6908c7adc.webp' : blogPost.author.avatar}
                   width={40} height={40}
                   alt={blogPost.author.name || 'Author'}
                   className="rounded-full w-10 h-10 object-cover border-2 border-[#EEF2FF]"

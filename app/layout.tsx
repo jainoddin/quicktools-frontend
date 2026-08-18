@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Script from "next/script";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -11,7 +10,7 @@ import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
 import AnalyticsIdentity from "@/components/analytics/AnalyticsIdentity";
 import AnalyticsClickTracker from "@/components/analytics/AnalyticsClickTracker";
-import QuickToolsNavigator from "@/components/navigator/QuickToolsNavigator";
+import DeferredQuickToolsNavigator from "@/components/navigator/DeferredQuickToolsNavigator";
 import { AuthProvider } from "../contexts/AuthContext";
 import { ToastProvider } from "../contexts/ToastContext";
 
@@ -113,9 +112,6 @@ export default function RootLayout({
       suppressHydrationWarning={true}
     >
       <body suppressHydrationWarning={true} className="flex flex-col min-h-[100dvh] bg-[#F8FAFC] text-[#111827] selection:bg-[#4F46E5] selection:text-white">
-        {/* Razorpay Checkout SDK */}
-        <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
-
         <MicrosoftClarity />
         <GoogleAnalytics />
 
@@ -205,7 +201,7 @@ export default function RootLayout({
             </main>
             <Footer />
             <CookieBanner />
-            <QuickToolsNavigator />
+            <DeferredQuickToolsNavigator />
           </AuthProvider>
         </ToastProvider>
       </body>

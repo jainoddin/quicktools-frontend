@@ -123,7 +123,7 @@ export default async function NewsDetailPage({ params }: any) {
                 "name": "QuickTool",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
+                  "url": "https://pub-0a928134dcdc420da2af02e6238ef06b.r2.dev/brand/7d404a746424124dc6b13ea6908c7adc.webp"
                 }
               }
             },
@@ -210,7 +210,7 @@ export default async function NewsDetailPage({ params }: any) {
           <main className="col-span-12 lg:col-span-7 xl:col-span-7 min-w-0">
             
             {news.isBreaking ? (
-              <div className="mb-6 inline-flex items-center gap-2 bg-[#FEF2F2] text-[#DC2626] text-[10px] font-bold px-3 py-1.5 rounded-full border border-[#FCA5A5]/30 tracking-widest uppercase">
+              <div className="mb-6 inline-flex items-center gap-2 bg-[#FEF2F2] text-[#B91C1C] text-xs font-bold px-3 py-1.5 rounded-full border border-[#FCA5A5]/30 tracking-widest uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse"></span>
                 BREAKING NEWS
               </div>
@@ -231,7 +231,7 @@ export default async function NewsDetailPage({ params }: any) {
             <div className="flex flex-wrap items-center justify-between gap-6 py-6 border-y border-[#E5E7EB] mb-10">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-100 border border-gray-200">
-                  <Image src={news.author.avatar === '/icon.svg' ? 'https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png' : news.author.avatar} alt={news.author.name} width={48} height={48} className="object-cover" />
+                  <Image src={news.author.avatar === '/icon.svg' ? 'https://pub-0a928134dcdc420da2af02e6238ef06b.r2.dev/brand/7d404a746424124dc6b13ea6908c7adc.webp' : news.author.avatar} alt={news.author.name} width={48} height={48} className="object-cover" />
                 </div>
                 <div>
                   <div className="font-bold text-[#111827] flex items-center gap-1">
@@ -259,7 +259,7 @@ export default async function NewsDetailPage({ params }: any) {
             </div>
 
             <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden mb-12 shadow-sm border border-gray-100">
-              <Image src={news.heroImage} alt={news.title} fill className="object-cover" priority unoptimized />
+              <Image src={news.heroImage} alt={news.title} fill className="object-cover" priority fetchPriority="high" sizes="(min-width: 1280px) 58vw, (min-width: 1024px) 66vw, 100vw" />
             </div>
 
             {/* In Short Box */}

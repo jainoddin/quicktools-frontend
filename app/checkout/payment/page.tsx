@@ -187,12 +187,30 @@ function PaymentContent() {
   // PhonePe state
   const [mobile, setMobile]     = useState('');
 
+  const loadRazorpay = () => new Promise<void>((resolve, reject) => {
+    if ((window as any).Razorpay) return resolve();
+    const existing = document.querySelector<HTMLScriptElement>('script[data-quicktool-razorpay]');
+    if (existing) {
+      existing.addEventListener('load', () => resolve(), { once: true });
+      existing.addEventListener('error', () => reject(new Error('Razorpay failed to load')), { once: true });
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    script.dataset.quicktoolRazorpay = 'true';
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error('Razorpay failed to load'));
+    document.head.appendChild(script);
+  });
+
   const handlePay = async () => {
     setLoading(true);
     setError('');
 
     try {
       trackBeginCheckout(planId, Number(totalAmount));
+      await loadRazorpay();
 
       // Step 1 — Backend lo Razorpay order create
       const res = await fetch(getEndpoint('/api/payment/create-order'), {

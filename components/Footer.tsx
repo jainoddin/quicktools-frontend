@@ -47,7 +47,7 @@ export default function Footer() {
                 <span className="text-xl font-black tracking-tighter text-[#111827]">QuickTool</span>
               </div>
               <p className="text-sm text-[#6B7280] mb-6 pr-4">All AI tools you need in one place. Save time, work smarter, and achieve more with AI.</p>
-              <div className="flex items-center gap-4 text-gray-400">
+              <div className="flex items-center gap-4 text-gray-600">
                 <Link href="/" aria-label="Website">
                   <Globe className="w-5 h-5 cursor-pointer transition-colors" style={{ ':hover': { color: themeColor } } as any} />
                 </Link>

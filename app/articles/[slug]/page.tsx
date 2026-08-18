@@ -131,7 +131,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
       "name": "QuickTool",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
+        "url": "https://pub-0a928134dcdc420da2af02e6238ef06b.r2.dev/brand/7d404a746424124dc6b13ea6908c7adc.webp"
       }
     },
     "datePublished": new Date(article.publishedAt).toISOString(),
@@ -286,7 +286,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 border-2 border-[#4F46E5]/20 bg-[#EEF2FF]">
                     <Image
-                      src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
+                      src="https://pub-0a928134dcdc420da2af02e6238ef06b.r2.dev/brand/7d404a746424124dc6b13ea6908c7adc.webp"
                       width={40} height={40}
                       alt={article.author.name}
                       className="w-full h-full object-cover"
@@ -318,7 +318,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
 
             {/* Hero Image */}
             <div className="relative w-full aspect-[16/9] sm:aspect-[2/1] rounded-2xl overflow-hidden mb-8 shadow-sm border border-gray-100">
-              <Image src={article.coverImage} fill alt={article.title} className="object-cover" priority unoptimized />
+              <Image src={article.coverImage} fill alt={article.title} className="object-cover" priority fetchPriority="high" sizes="(min-width: 1280px) 58vw, (min-width: 1024px) 66vw, 100vw" />
             </div>
 
             {/* What You'll Learn box */}
@@ -466,7 +466,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
               <h3 className="font-bold text-[#111827] mb-5 text-sm">About the Author</h3>
               <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#4F46E5]/20 mb-4 bg-[#EEF2FF] flex items-center justify-center">
                 <Image
-                  src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
+                  src="https://pub-0a928134dcdc420da2af02e6238ef06b.r2.dev/brand/7d404a746424124dc6b13ea6908c7adc.webp"
                   width={64} height={64}
                   alt={article.author.name}
                   className="w-full h-full object-cover"

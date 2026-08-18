@@ -279,7 +279,7 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
                   <div className="flex items-center gap-3 mt-4">
                     <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-[#4F46E5]/20 shrink-0 bg-[#EEF2FF]">
                       <Image
-                        src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
+                        src="https://pub-0a928134dcdc420da2af02e6238ef06b.r2.dev/brand/7d404a746424124dc6b13ea6908c7adc.webp"
                         width={36} height={36}
                         alt="QuickTool AI"
                         className="w-full h-full object-cover"
@@ -465,7 +465,7 @@ export default function ArticlesClient({ initialArticles = [], initialPagination
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-[#4F46E5]/20 shrink-0 bg-[#EEF2FF]">
                         <Image
-                          src="https://pub-68a98c57e70a4a1fa317739dd20098b9.r2.dev/1b9be0e4-c385-49a5-b0b5-ef158e8ef402.png"
+                          src="https://pub-0a928134dcdc420da2af02e6238ef06b.r2.dev/brand/7d404a746424124dc6b13ea6908c7adc.webp"
                           width={32} height={32}
                           alt="QuickTool AI"
                           className="w-full h-full object-cover"
