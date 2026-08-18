@@ -4,7 +4,6 @@ import "./globals.css";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import SplashScreen from "@/components/SplashScreen";
 import CookieBanner from "@/components/shared/CookieBanner";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
@@ -194,7 +193,6 @@ export default function RootLayout({
           <AuthProvider>
             <AnalyticsIdentity />
             <AnalyticsClickTracker />
-            <SplashScreen />
             <Header />
             <main className="flex flex-col flex-grow">
               {children}
