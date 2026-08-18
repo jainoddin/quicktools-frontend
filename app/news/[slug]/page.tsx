@@ -90,10 +90,10 @@ export default async function NewsDetailPage({ params }: any) {
   // Fetch Top Tools
   let topTools = [];
   try {
-    const toolsRes = await fetch(getEndpoint(`/api/tools?limit=4`), { next: { revalidate: 3600 } });
+    const toolsRes = await fetch(getEndpoint('/api/tools/list'), { next: { revalidate: 3600 } });
     if (toolsRes.ok) {
       const tData = await toolsRes.json();
-      topTools = tData.data || [];
+      topTools = Array.isArray(tData.data) ? tData.data.slice(0, 4) : [];
     }
   } catch (e) {
     console.error("Failed to fetch tools", e);
@@ -179,7 +179,7 @@ export default async function NewsDetailPage({ params }: any) {
               </h3>
               <div className="space-y-4">
                 {topTools.length > 0 ? topTools.map((tool: any, idx: number) => (
-                  <Link href={`/tools/${tool.slug || tool._id}`} key={idx} className="flex gap-3 group items-center">
+                  <Link href={tool.slug?.startsWith('/') ? tool.slug : `/tools/${tool.slug || tool._id}`} key={idx} className="flex gap-3 group items-center">
                     <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0 border border-gray-100 bg-gray-50 flex items-center justify-center relative">
                       {tool.image ? (
                         <Image src={tool.image} fill alt={tool.title || tool.name || 'Tool'} className="object-cover" unoptimized />
@@ -197,17 +197,7 @@ export default async function NewsDetailPage({ params }: any) {
                     </div>
                   </Link>
                 )) : (
-                  <div className="space-y-3">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <div key={i} className="flex items-center gap-3 animate-pulse">
-                        <div className="w-8 h-8 rounded-lg bg-gray-200 shrink-0"></div>
-                        <div className="flex-1 space-y-2 py-1">
-                          <div className="h-3 bg-gray-200 rounded w-3/4"></div>
-                          <div className="h-2 bg-gray-200 rounded w-1/2"></div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <p className="text-xs text-[#6B7280]">Tools are temporarily unavailable.</p>
                 )}
               </div>
               <Link href="/tools" className="mt-5 w-full flex items-center justify-center gap-1.5 text-xs font-bold text-[#4F46E5] bg-[#EEF2FF] hover:bg-[#E0E7FF] px-4 py-2.5 rounded-xl transition-colors">
